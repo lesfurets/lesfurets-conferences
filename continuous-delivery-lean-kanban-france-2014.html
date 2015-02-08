@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Continuous delivery</title>
+    <meta name="description" content="Présentation du continuous delivery chez LesFurets.com">
+    <meta name="author" content="Alexandre DuBreuil">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.min.css">
+    <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="css/lesfurets-theme.css" id="theme">
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+    <!--[if lt IE 9]><script src="lib/js/html5shiv.js"></script><![endif]-->
+  </head>
+  <body>
+    <div class="footer">
+      <a href="https://www.lesfurets.com" target="_blank"><img class="logo" src="img/logo_lesfurets_885x128_no_back.png"></a><a class ="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a><a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a><a href="http://www.leankanban.fr/"><img class="logo" src="img/lkfr.png"></a>
+    </div>
+    <div class="reveal">
+      <div class="slides">
+      <section>
+          <h1>Continuous delivery</h1>
+          chez
+          <h2><a href="https://www.lesfurets.com" target="_blank"><img class="logo" width="66%" src="img/logo_lesfurets_885x128.jpg"></a></h2>
+          <p>Dimitri BAELI - Benjamin DEGERBAIX<br>Alexandre DUBREUIL - Arnaud PFLIEGER</p>
+      </section>
+      <section>
+          <section>
+              <h2>Le contexte</h2>
+          </section>
+          <section>
+              <h3>Organisation</h3>
+              <p>L'équipe de développement de LesFurets.com</p>
+              <ul>
+              <li class="fragment"><em>6 streams</em> ou feature teams</li>
+              <li class="fragment"><em>22 développeurs</em></li>
+              <li class="fragment"><em>3 devops</em> (automatisation et opération)</li>
+              <li class="fragment"><em>1 archi-codeur</em></li>
+              <li class="fragment">8 business analysts / product owners</li>
+            </ul>
+          </section>
+          <section>
+              <h3>Application</h3>
+              <p>Le site est constitué d'une application front et une application backoffice</p>
+              <ul>
+                  <li class="fragment">5 produits</li>
+                  <li class="fragment">1 code base avec 400k loc</li>
+                  <li class="fragment">40k tests unitaires et 200 tests Selenium</li>
+                  <li class="fragment">10+ serveurs</li>
+              </ul>
+          </section>
+          <section>
+              <h3>Rythme 2012 - mensuel</h3>
+              <h4>11 releases</h4>
+              <p>L'esprit :<br/>planifier / estimer / coder / tester / livrer de manière mensuelle</p>
+          </section>
+          <section>
+              <h3>Rythme 2014 - quotidien</h3>
+              <h4>171 releases</h4>
+              <p>L'esprit :<br/><span class="under">livrer ce qui est prêt le jour suivant</span></p>
+          </section>
+          <section>
+              <h3>2012</h3>
+              <p>L'ancienne organisation en scrum classique</p>
+              <ul>
+                  <li class="fragment">Build 15 minutes et 200 Selenium en 1 heure</li>
+                  <li class="fragment">Sprints d'un mois se terminant par une mise en production</li>
+                  <li class="fragment">Du commit à la MEP : <span class="under">en moyenne 2 semaines</span></li>
+                  <li class="fragment">Non satisfaisant pour un site Web</li>
+              </ul>
+          </section>
+          <section>
+             <h3>2014</h3>
+             <ul>
+                 <li class="fragment">Build 3 minutes + Selenium 10 minutes</li>
+                 <li class="fragment">Livraison de ce qui est prêt à J+1</li>
+                 <li class="fragment">Du commit à la MEP : <span class="under">en moyenne 5 jours</span></li>
+             </ul>
+          </section>
+      </section>
+      <section>
+          <section>
+              <h2>Quelques lectures</h2>
+          </section>
+          <section>
+              <h3>Manifeste Agile</h3>
+              <h4>Principe #1</h4>
+              <blockquote>"Notre plus haute priorité est de satisfaire le client en livrant rapidement et régulièrement des fonctionnalités à grande valeur ajoutée."</blockquote>
+              <p><a href="http://agilemanifesto.org/iso/fr/principles.html" target="_blank">http://agilemanifesto.org/iso/fr/principles.html</a></p>
+          </section>
+          <section>
+              <h3>Product development flow</h3>
+              <h4>Don Reinertsen</h4>
+              <img style="float:left" width="25%" src="img/book-flow.jpg">
+              <ul style="float:right;width:60%;">
+                  <li class="fragment">Travailler en flux</li>
+                  <li class="fragment">Gérer les files de d'attentes</li>
+                  <li class="fragment">Regarder le <em>lead time</em> plutôt que le coût de développement</li>
+                  <li class="fragment">Réduire le coût de livraison</li>
+              </ul>
+          </section>
+          <section>
+              <h3>Continuous Delivery</h3>
+              <h4>Jez Humble</h4>
+              <img style="float:left" width="25%" src="img/book-ContinuousDelivery.jpg">
+              <ol style="float:right;width:60%;">
+                  <li class="fragment">Build rapide</li>
+                  <li class="fragment">Build robuste</li>
+                  <li class="fragment">Déploiements simples et automatisés</li>
+                  <li class="fragment">Monitoring de production et alertes</li>
+                  <li class="fragment">Analyse des causes racines</li>
+              </ol>
+          </section>
+          <section>
+              <h3>Kanban : Evolutionary change</h3>
+              <h4>David Anderson</h4>
+              <img style="float:left" width="25%" src="img/book-kanban.jpg">
+              <ul style="float:right;width:60%;">
+                  <li class="fragment">Visualisation du travail</li>
+                  <li class="fragment">Limiter le travail en cours (WIP)</li>
+                  <li class="fragment">Règles explicites</li>
+                  <li class="fragment">Amélioration continue</li>
+                  <li class="fragment">Leadership</li>
+              </ul>
+          </section>
+          <section>
+              <h3>How Google Test Software</h3>
+              <h4>James Whitaker, Jason Arbon, Jeff Carollo</h4>
+              <img style="float:left" width="25%" src="img/book-google.jpeg">
+              <ul style="float:right;width:60%;">
+                  <li class="fragment">Quality Engineering plutôt que Quality Assurance</li>
+                  <li class="fragment">Création d'outils de test pour les dev</li>
+                  <li class="fragment">Les dev font la QA eux même</li>
+              </ul>
+          </section>
+          <section>
+              <h3>Git Flow</h3>
+              <h4>Vincent Driessen</h4>
+              <ul>
+                  <li class="fragment">Un puissant modèle de branches git</li>
+                  <li class="fragment"><a href="http://nvie.com/posts/a-successful-git-branching-model/" target="_blank">http://nvie.com/posts/a-successful-git-branching-model/</a>
+              </ul>
+              <img class="fragment" width="50%" src="img/book-git.png">
+          </section>
+          <section>
+              <h3>Livrer tôt, livrer souvent</h3>
+              <img src="img/book-facebook.png">
+              <p style="font-size: 0.5em;">Source: <a href="http://paulhammant.com/2013/03/13/facebook-tbd-take-2/" target="_blank">http://paulhammant.com/2013/03/13/facebook-tbd-take-2/</a></p>
+          </section>
+      </section>
+      <section>
+          <section>
+              <h2>Commencer par finir !</h2>
+          </section>
+          <section>
+              <h3>Le continuous delivery</h3>
+              <ul style="list-style: none; margin-left: 0;">
+                  <li class="fragment">5. Exploitation</li>
+                  <li class="fragment">4. Mise en production</li>
+                  <li class="fragment">3. Validation</li>
+                  <li class="fragment">2. Intégration continue</li>
+                  <li class="fragment">1. Implémentation</li>
+              </ul>
+          </section>
+      </section>
+      <section>
+          <section>
+              <h2>Exploitation</h2>
+          </section>
+          <section>
+              <h3>Monitoring technique</h3>
+              <img class="fragment" width="66%" src="img/exploitation-technique.png">
+          </section>
+          <section>
+              <h3>Monitoring fonctionnel</h3>
+              <img class="fragment" width="66%" src="img/exploitation-fonctionnel.png">
+          </section>
+          <section>
+              <h3>Erreurs & logs</h3>
+              <p>Les logs/traces d'erreurs arrivent par mail à partir de chaque environnement.</p>
+              <ul>
+                  <li class="fragment">200 erreurs/jour, <em>dont 20% depuis le JavaScript</em></li>
+                  <li class="fragment">1 erreur &#10140; 1 mail</li>
+                  <li class="fragment">1h synthétisée &#10140; 1 mail</li>
+                  <li class="fragment">24h synthétisées &#10140; 1 mail</li>
+              </ul>
+          </section>
+
+      </section>
+      <section>
+          <section>
+              <h2>Mise en production</h2>
+          </section>
+          <section>
+              <h3>Mise en production</h3>
+              <img src="img/go-button-green.jpg" width="60%">
+          </section>
+          <section>
+              <h3>Automatiser</h3>
+              <h4>"Infrastructure as code"</h4>
+              <img class="fragment" src="img/svg/detection-environnement.svg" width="30%">
+          </section>
+          <section>
+              <h3>Déploiement</h3>
+              <p>Tout le déploiement est fait avec <em>0 downtime</em> en utilisant un système style blue / green.</p>
+              <ul>
+                  <li class="fragment">Environnement de production dupliqué</li>
+                  <li class="fragment">Loadbalancer en entrée</li>
+              </ul>
+          </section>
+          <section>
+              <h3>Déploiement Blue / Green</h3>
+              <img src="img/svg/blue-green-1.svg" width="66%">
+              <img class="fragment" src="img/svg/blue-green-2.svg" width="66%">
+              <img class="fragment" src="img/svg/blue-green-3.svg" width="66%">
+          </section>
+      </section>
+      <section>
+          <section>
+              <h2>Validation</h2>
+          </section>
+          <section>
+              <h3>Outillage</h3>
+              <p>Regroupement d'outils de validations manuelles et automatiques</p>
+              <ul>
+                  <li class="fragment">Tests unitaires, d'intégration et Selenium</li>
+                  <li class="fragment">Code review</li>
+                  <li class="fragment">Showcase et validation fonctionnelle</li>
+                  <li class="fragment">Régressions UI : Zeno</li>
+                  <li class="fragment">Tests manuels exploratoires</li>
+              </ul>
+          </section>
+          <section>
+              <h3>Zeno</h3>
+              <h4>Régressions UI</h4>
+              <p>Outil développé par la QE chez LesFurets.com pour faire de la comparaison d'image (<em>perceptual diff</em>)</p>
+              <ul>
+                  <li class="fragment">Screenshots automatiques des pages du site</li>
+                  <li class="fragment">Cross-environment (stage, pre-prod, prod)</li>
+                  <li class="fragment">Cross-device (desktop, mobile, tablet)</li>
+                  <li class="fragment">Comparaisons des versions de chaque page</li>
+                  <li class="fragment">Calcul des différences graphiques</li>
+              </ul>
+          </section>
+          <section>
+              <h3>Zeno</h3>
+              <img src="img/zeno-diff.png">
+          </section>
+          <section>
+              <h3>Environnements features</h3>
+              <ul>
+                  <li class="fragment">1 environnement par feature</li>
+                  <li class="fragment">Déploiement dans un environnement isolé (Docker)</li>
+                  <li class="fragment">Isolation pour les tests, les Selenium, etc.</li>
+              </ul>
+          </section>
+          <section>
+              <h3>Environnement stage</h3>
+              <ul>
+                  <li class="fragment">Recette en continue</li>
+                  <li class="fragment">Seleniums sur le regroupement</li>
+                  <li class="fragment">Suivi des logs plus facile</li>
+                  <li class="fragment">Effets de bord des features</li>
+              </ul>
+          </section>
+          <section>
+              <h3>Environnements de déploiement</h3>
+              <p>Rassemble les branches features sur un même environnement grâce à l'octopus</p>
+              <img class="fragment" width="35%" src="img/svg/gitlog_environnement.svg">
+          </section>
+      </section>
+      <section>
+          <section>
+              <h2>Intégration continue</h2>
+          </section>
+          <section>
+              <h3>Intégration continue</h3>
+              <h4>Modèle de branches</h4>
+              <ul>
+                  <li class="fragment strike">Développement trunk</li>
+                  <li class="fragment strike">Développement trunk avec release branche</li>
+                  <li class="fragment">Features branches mergée en continu</li>
+                  <li class="fragment">Mise en production à partir d'une release branche</li>
+                  <li class="fragment">Release branche créée à partir des features branches qui sont <em>prêtes</em></li>
+              </ul>
+          </section>
+          <section>
+              <h3>Intégration continue</h3>
+              <h4>Impacts sur la base de code</h4>
+              <img width="75%" src="img/integration-continue-facebook.png">
+          </section>
+          <section>
+              <h3>Gérer les conflits en feature branche</h3>
+              <img width="50%" src="img/finish-first.jpg">
+              <p class="fragment" style="margin-top:-350px"><img width="20%" style="background:none;border:none;box-shadow:none" src="img/big-cross.png"></p>
+          </section>
+          <section>
+              <h3>Éviter les conflits</h3>
+              <blockquote>La facilité de merge témoigne de la santé du code</blockquote>
+              <p class="fragment"><span class="under">S</span>OLID &#10140; <span class="under">S</span>ingle responsibility principle</p>
+              <p class="fragment">En général, il est plus facile d'éviter un conflit que de le régler</p>
+          </section>
+          <section>
+              <h3>Intégration continue</h3>
+              <h4>Features branches</h4>
+              <img width="75%" src="img/tweet-feature-branching.png">
+          </section>
+          <section>
+              <h3>Intégration continue</h3>
+              <p>L'intégration continue (combinaison de TeamCity et Jenkins) effectue à chaque commit :</p>
+              <ul>
+                  <li class="fragment">Compilation</li>
+                  <li class="fragment">Tests automatisés</li>
+                  <li class="fragment"><strong>Merge des feature branches</strong> (octopus)</li>
+              </ul>
+              <p class="fragment">&#10140; On fait du <span class="under">continuous merge</span> avec l'octopus</p>
+          </section>
+          <section>
+              <h3>Octopus</h3>
+              <h4>Continuous merge</h4>
+              <img width="50%" src="img/svg/gitlog_octopus-1.svg">
+          </section>
+          <section>
+              <h3>Octopus</h3>
+              <h4>Continuous merge</h4>
+              <img width="50%" src="img/svg/gitlog_octopus-2.svg">
+          </section>
+          <section>
+              <h3>Octopus</h3>
+              <h4>Continuous merge</h4>
+              <img width="50%" src="img/svg/gitlog_octopus-3.svg">
+          </section>
+          <section>
+              <h3>Octopus</h3>
+              <h4>Continuous merge</h4>
+              <p>Outils de merge en continu développé chez LesFurets.com</p>
+              <p class="fragment">&#10140; <a href="https://github.com/lesfurets/git-octopus" target="_blank">https://github.com/lesfurets/git-octopus</a></p>
+              <ul>
+                  <li class="fragment">Construction de l'environnement de test</li>
+                  <li class="fragment">Détection des conflits entre branches</li>
+                  <li class="fragment">Plug / unplug les branches facilement</li>
+              </ul>
+          </section>
+          <section>
+              <h3>Octopus</h3>
+              <h4>Continuous merge</h4>
+              <p>L'octopus est utilisé pour merger en continu <em>toutes les features</em>, mais aussi pour créer la release branche avec un <em>sous ensemble de features</em></p>
+          </section>
+          <section>
+              <h3>L'octopus à l'oeuvre</h3>
+              <h4>30 branches features et plus !</h4>
+              <img width="66%" src="img/teamcity-octopus.png">
+          </section>
+      </section>
+      <section>
+          <h3>Commencer par finir !</h3>
+          <h4>En résumé</h4>
+          <blockquote class="fragment">Livrer ce qui est prêt, livrer en parallèle</blockquote>
+          <blockquote class="fragment">Éviter les conflits au lieu de régler les conflits</blockquote>
+      </section>
+      </div>
+    </div>
+    <script src="bower_components/reveal.js/lib/js/head.min.js"></script>
+    <script src="bower_components/reveal.js/js/reveal.min.js"></script>
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        embedded: true,
+
+        //theme: 'lesfurets', // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+  </body>
+</html>

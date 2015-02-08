@@ -1,0 +1,22 @@
+{
+  "name": "lesfurets-conferences",
+  "version": "1.0.0",
+  "authors": [
+    "benbaix <benjamin.degerbaix@gmail.com>"
+  ],
+  "description": "Conférences et présentations de l'équipe R&D du comparateur d'assurance LesFurets.com",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "https://www.lesfurets.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "reveal.js": "~2.6.2"
+  }
+}
