@@ -231,68 +231,43 @@
           </section>
           <section>
               <h3>Outillage</h3>
-              <p>Regroupement d'outils de validations manuelles et automatiques</p>
               <ul>
-                  <li class="fragment">Tests unitaires, d'intégration et Selenium</li>
-                  <li class="fragment">Code review</li>
-                  <li class="fragment">Showcase et validation fonctionnelle</li>
-                  <li class="fragment">Régressions UI : Zeno</li>
-                  <li class="fragment">Tests manuels exploratoires</li>
-              </ul>
-          </section>
-          <section>
-              <h3>Zeno</h3>
-              <h4>Régressions UI</h4>
-              <p>Outil développé par la QE chez LesFurets.com pour faire de la comparaison d'image (<em>perceptual diff</em>)</p>
-              <ul>
-                  <li class="fragment">Screenshots automatiques des pages du site</li>
-                  <li class="fragment">Cross-environment (stage, pre-prod, prod)</li>
-                  <li class="fragment">Cross-device (desktop, mobile, tablet)</li>
-                  <li class="fragment">Comparaisons des versions de chaque page</li>
-                  <li class="fragment">Calcul des différences graphiques</li>
+				  <li>Tests manuels exploratoires</li>
+                  <li>Tests automatisés : JUnit, Selenium</li>
+                  <li>Code review</li>
+                  <li>Validation fonctionnelle</li>
+                  <li>Régressions UI : Zeno</li>
               </ul>
           </section>
           <section>
               <h3>Zeno</h3>
               <img src="img/zeno-diff.png">
           </section>
-          <section>
-              <h3>Environnements features</h3>
+		  <section>
+              <h4>Modèle de branches</h4>
               <ul>
-                  <li class="fragment">1 environnement par feature</li>
-                  <li class="fragment">Déploiement dans un environnement isolé (Docker)</li>
-                  <li class="fragment">Isolation pour les tests, les Selenium, etc.</li>
+                  <li class="fragment strike">Trunk avec branches de maintenance</li>
+				  <li class="fragment strike">Gitflow</li>
+				  <li class="fragment strike">Trunk based deployment</li>
               </ul>
+			  <p class="fragment">Master + feature branches</p>
           </section>
-          <section>
-              <h3>Environnement stage</h3>
-              <ul>
-                  <li class="fragment">Recette en continue</li>
-                  <li class="fragment">Seleniums sur le regroupement</li>
-                  <li class="fragment">Suivi des logs plus facile</li>
-                  <li class="fragment">Effets de bord des features</li>
-              </ul>
-          </section>
-          <section>
-              <h3>Environnements de déploiement</h3>
-              <p>Rassemble les branches features sur un même environnement grâce à l'octopus</p>
-              <img class="fragment" width="35%" src="img/svg/gitlog_environnement.svg">
+		  <section>
+				  <img width="75%" src="img/tweet-feature-branching.png">
           </section>
       </section>
       <section>
           <section>
               <h2>Intégration continue</h2>
+			  <ul>
+				<li class="fragment">Build sur chaque branche</li>
+				<li class="fragment">Selenium par branche</li>
+			  </ul>
           </section>
           <section>
-              <h3>Intégration continue</h3>
-              <h4>Modèle de branches</h4>
-              <ul>
-                  <li class="fragment strike">Développement trunk</li>
-                  <li class="fragment strike">Développement trunk avec release branche</li>
-                  <li class="fragment">Features branches mergée en continu</li>
-                  <li class="fragment">Mise en production à partir d'une release branche</li>
-                  <li class="fragment">Release branche créée à partir des features branches qui sont <em>prêtes</em></li>
-              </ul>
+              <h3>Environnements de déploiement</h3>
+              <p>Rassemble les branches features sur un même environnement grâce à l'octopus</p>
+              <img class="fragment" width="35%" src="img/svg/gitlog_environnement.svg">
           </section>
           <section>
               <h3>Intégration continue</h3>
@@ -310,11 +285,7 @@
               <p class="fragment"><span class="under">S</span>OLID &#10140; <span class="under">S</span>ingle responsibility principle</p>
               <p class="fragment">En général, il est plus facile d'éviter un conflit que de le régler</p>
           </section>
-          <section>
-              <h3>Intégration continue</h3>
-              <h4>Features branches</h4>
-              <img width="75%" src="img/tweet-feature-branching.png">
-          </section>
+          
           <section>
               <h3>Intégration continue</h3>
               <p>L'intégration continue (combinaison de TeamCity et Jenkins) effectue à chaque commit :</p>
