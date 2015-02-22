@@ -248,86 +248,60 @@
       </section>
       <section>
           <section>
-              <h2>Intégration continue</h2>
+              <h3>Intégration continue</h3>
 			  <ul>
-				<li class="fragment">Build sur chaque branche</li>
-				<li class="fragment">Selenium par branche</li>
+				<li>Maven (compile + tests unitaires)</li>
+				<li class="fragment highlight-red" data-fragment-index="1">Selenium</li>
+				<li class="fragment highlight-red" data-fragment-index="1">Environnement de test (dog fooding)</li>
+				<li class="fragment highlight-red" data-fragment-index="1">Mutualisation du code - gestion des conflits</li>
 			  </ul>
           </section>
           <section>
-              <h3>Environnements de déploiement</h3>
-              <p>Rassemble les branches features sur un même environnement grâce à l'octopus</p>
-              <img class="fragment" width="35%" src="img/svg/gitlog_environnement.svg">
+              <h2>git-octopus</h2>
+			  
           </section>
           <section>
-              <h3>Intégration continue</h3>
-              <h4>Impacts sur la base de code</h4>
-              <img width="75%" src="img/integration-continue-facebook.png">
-          </section>
-          <section>
-              <h3>Gérer les conflits en feature branche</h3>
-              <img width="50%" src="img/finish-first.jpg">
-              <p class="fragment" style="margin-top:-350px"><img width="20%" style="background:none;border:none;box-shadow:none" src="img/big-cross.png"></p>
-          </section>
-          <section>
-              <h3>Éviter les conflits</h3>
-              <blockquote>La facilité de merge témoigne de la santé du code</blockquote>
-              <p class="fragment"><span class="under">S</span>OLID &#10140; <span class="under">S</span>ingle responsibility principle</p>
-              <p class="fragment">En général, il est plus facile d'éviter un conflit que de le régler</p>
-          </section>
-          
-          <section>
-              <h3>Intégration continue</h3>
-              <p>L'intégration continue (combinaison de TeamCity et Jenkins) effectue à chaque commit :</p>
-              <ul>
-                  <li class="fragment">Compilation</li>
-                  <li class="fragment">Tests automatisés</li>
-                  <li class="fragment"><strong>Merge des feature branches</strong> (octopus)</li>
-              </ul>
-              <p class="fragment">&#10140; On fait du <span class="under">continuous merge</span> avec l'octopus</p>
-          </section>
-          <section>
-              <h3>Octopus</h3>
-              <h4>Continuous merge</h4>
               <img width="50%" src="img/svg/gitlog_octopus-1.svg">
           </section>
           <section>
-              <h3>Octopus</h3>
-              <h4>Continuous merge</h4>
               <img width="50%" src="img/svg/gitlog_octopus-2.svg">
           </section>
           <section>
-              <h3>Octopus</h3>
-              <h4>Continuous merge</h4>
               <img width="50%" src="img/svg/gitlog_octopus-3.svg">
           </section>
           <section>
-              <h3>Octopus</h3>
+              <h3>git-Octopus</h3>
+			  <p>
               <h4>Continuous merge</h4>
-              <p>Outils de merge en continu développé chez LesFurets.com</p>
-              <p class="fragment">&#10140; <a href="https://github.com/lesfurets/git-octopus" target="_blank">https://github.com/lesfurets/git-octopus</a></p>
               <ul>
-                  <li class="fragment">Construction de l'environnement de test</li>
-                  <li class="fragment">Détection des conflits entre branches</li>
-                  <li class="fragment">Plug / unplug les branches facilement</li>
+                  <li>Construction de l'environnement de test</li>
+                  <li>Détection des conflits entre branches</li>
               </ul>
+			  </p>
+			  <div class="fragment">
+				  <h4>Bonus</h4>
+				  <ul>
+					<li>Plug / unplug les branches facilement</li>
+					<li>Reecriture de l'historique possible</li>
+				  </ul>
+			  </div>
           </section>
-          <section>
-              <h3>Octopus</h3>
-              <h4>Continuous merge</h4>
-              <p>L'octopus est utilisé pour merger en continu <em>toutes les features</em>, mais aussi pour créer la release branche avec un <em>sous ensemble de features</em></p>
-          </section>
+		  <section>
+			<h3>Les conflits</h3>
+			<ul>
+			  <li>Eviter le conflit</li>
+			  <li>Attendre qu'une branche parte dans le master</li>
+			  <li style="text-decoration: line-through">Merger une branche dans l'autre</li>
+		  </section>
           <section>
               <h3>L'octopus à l'oeuvre</h3>
               <h4>30 branches features et plus !</h4>
               <img width="66%" src="img/teamcity-octopus.png">
           </section>
-      </section>
-      <section>
-          <h3>Commencer par finir !</h3>
-          <h4>En résumé</h4>
-          <blockquote class="fragment">Livrer ce qui est prêt, livrer en parallèle</blockquote>
-          <blockquote class="fragment">Éviter les conflits au lieu de régler les conflits</blockquote>
+		  <section>
+			<h3>git-octopus</h3>
+			<p>&#10140; <a href="https://github.com/lesfurets/git-octopus" target="_blank">github.com/lesfurets/git-octopus</a></p>
+		  </section>
       </section>
       </div>
     </div>
