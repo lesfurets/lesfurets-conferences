@@ -24,7 +24,7 @@
   </head>
   <body>
     <div class="footer">
-      <a href="https://www.lesfurets.com" target="_blank"><img class="logo" src="img/logo_lesfurets_885x128_no_back.png"></a><a class ="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a><a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a><a href="http://www.leankanban.fr/"><img class="logo" src="img/lkfr.png"></a>
+      <a href="https://www.lesfurets.com" target="_blank"><img class="logo" src="img/logo_lesfurets_885x128_no_back.png"></a><a class ="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a><a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a>
     </div>
     <div class="reveal">
       <div class="slides">
@@ -42,18 +42,18 @@
               <h3>Organisation</h3>
               <p>L'équipe de développement de LesFurets.com</p>
               <ul>
-              <li class="fragment"><em>6 streams</em> ou feature teams</li>
+              <li class="fragment"><em>4 feature teams</em></li>
               <li class="fragment"><em>22 développeurs</em></li>
               <li class="fragment"><em>3 devops</em> (automatisation et opération)</li>
               <li class="fragment"><em>1 archi-codeur</em></li>
-              <li class="fragment">8 business analysts / product owners</li>
+              <li class="fragment"><em>7 business analysts / product owners</em></li>
             </ul>
           </section>
           <section>
               <h3>Application</h3>
               <p>Le site est constitué d'une application front et une application backoffice</p>
               <ul>
-                  <li class="fragment">5 produits</li>
+                  <li class="fragment">6 produits</li>
                   <li class="fragment">1 code base avec 400k loc</li>
                   <li class="fragment">40k tests unitaires et 200 tests Selenium</li>
                   <li class="fragment">10+ serveurs</li>
@@ -65,9 +65,9 @@
               <p>L'esprit :<br/>planifier / estimer / coder / tester / livrer de manière mensuelle</p>
           </section>
           <section>
-              <h3>Rythme 2014 - quotidien</h3>
-              <h4>171 releases</h4>
-              <p>L'esprit :<br/><span class="under">livrer ce qui est prêt le jour suivant</span></p>
+              <h3>Rythme 2014/15 - quotidien</h3>
+              <h4>208 releases en 2014 / déjà 36 en 2015</h4>
+              <p>L'esprit :<br/><em>livrer ce qui est prêt aujourd'hui</em><br> ... tous les jours !</p>
           </section>
           <section>
               <h3>2012</h3>
@@ -75,7 +75,7 @@
               <ul>
                   <li class="fragment">Build 15 minutes et 200 Selenium en 1 heure</li>
                   <li class="fragment">Sprints d'un mois se terminant par une mise en production</li>
-                  <li class="fragment">Du commit à la MEP : <span class="under">en moyenne 2 semaines</span></li>
+                  <li class="fragment"><em>Du commit à la MEP</em> : <span class="under">en moyenne 2 semaines</span></li>
                   <li class="fragment">Non satisfaisant pour un site Web</li>
               </ul>
           </section>
@@ -84,7 +84,7 @@
              <ul>
                  <li class="fragment">Build 3 minutes + Selenium 10 minutes</li>
                  <li class="fragment">Livraison de ce qui est prêt à J+1</li>
-                 <li class="fragment">Du commit à la MEP : <span class="under">en moyenne 5 jours</span></li>
+                 <li class="fragment"><em>Du commit à la MEP</em> : <span class="under">en moyenne 5 jours</span></li>
              </ul>
           </section>
       </section>
@@ -165,7 +165,7 @@
           <section>
               <h3>Le continuous delivery</h3>
               <ul style="list-style: none; margin-left: 0;">
-                  <li class="fragment">5. Exploitation</li>
+                  <li class="fragment">5. Production &amp; Exploitation</li>
                   <li class="fragment">4. Mise en production</li>
                   <li class="fragment">3. Validation</li>
                   <li class="fragment">2. Intégration continue</li>
@@ -186,7 +186,7 @@
               <img class="fragment" width="66%" src="img/exploitation-fonctionnel.png">
           </section>
           <section>
-              <h3>Erreurs & logs</h3>
+              <h3>Alertes &amp; logs</h3>
               <p>Les logs/traces d'erreurs arrivent par mail à partir de chaque environnement.</p>
               <ul>
                   <li class="fragment">200 erreurs/jour, <em>dont 20% depuis le JavaScript</em></li>
@@ -194,6 +194,12 @@
                   <li class="fragment">1h synthétisée &#10140; 1 mail</li>
                   <li class="fragment">24h synthétisées &#10140; 1 mail</li>
               </ul>
+          </section>
+          <section>
+              <h3>Infrastructure as code</h3>
+              <h4>Toutes les modifications sont historisées</h4>
+              <p>Les erreurs de configuration sont équivalentes à des erreurs de développement</p>
+              <img class="fragment" src="img/svg/detection-environnement.svg" width="30%">
           </section>
 
       </section>
@@ -204,11 +210,6 @@
           <section>
               <h3>Mise en production</h3>
               <img src="img/go-button-green.jpg" width="60%">
-          </section>
-          <section>
-              <h3>Automatiser</h3>
-              <h4>"Infrastructure as code"</h4>
-              <img class="fragment" src="img/svg/detection-environnement.svg" width="30%">
           </section>
           <section>
               <h3>Déploiement</h3>
@@ -223,6 +224,16 @@
               <img src="img/svg/blue-green-1.svg" width="66%">
               <img class="fragment" src="img/svg/blue-green-2.svg" width="66%">
               <img class="fragment" src="img/svg/blue-green-3.svg" width="66%">
+          </section>
+          <section>
+              <h3>Pre-prod: ce qui est prêt</h3>
+              <p>Entièrement automatisé :</p>
+              <ul>
+                  <li>Branche avec les tickets prêts</li>
+                  <li>JUnit</li>
+                  <li>Selenium</li>
+                  <li>Non Regressions UI</li>
+              </ul>
           </section>
       </section>
       <section>
