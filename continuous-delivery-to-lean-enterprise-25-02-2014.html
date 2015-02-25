@@ -67,7 +67,7 @@
           <section>
               <h3>Rythme 2014/15 - quotidien</h3>
               <h4>208 releases en 2014 / déjà 36 en 2015</h4>
-              <p>L'esprit :<br/><em>livrer ce qui est prêt aujourd'hui</em><br> ... tous les jours !</p>
+              <p>L'esprit :<br/><em>livrer ce qui est prêt aujourd'hui</em><br><span class="fragment"> ... tous les jours !</span></p>
           </section>
           <section>
               <h3>2012</h3>
@@ -99,17 +99,6 @@
               <p><a href="http://agilemanifesto.org/iso/fr/principles.html" target="_blank">http://agilemanifesto.org/iso/fr/principles.html</a></p>
           </section>
           <section>
-              <h3>Product development flow</h3>
-              <h4>Don Reinertsen</h4>
-              <img style="float:left" width="25%" src="img/book-flow.jpg">
-              <ul style="float:right;width:60%;">
-                  <li class="fragment">Travailler en flux</li>
-                  <li class="fragment">Gérer les files de d'attentes</li>
-                  <li class="fragment">Regarder le <em>lead time</em> plutôt que le coût de développement</li>
-                  <li class="fragment">Réduire le coût de livraison</li>
-              </ul>
-          </section>
-          <section>
               <h3>Continuous Delivery</h3>
               <h4>Jez Humble</h4>
               <img style="float:left" width="25%" src="img/book-ContinuousDelivery.jpg">
@@ -120,6 +109,21 @@
                   <li class="fragment">Monitoring de production et alertes</li>
                   <li class="fragment">Analyse des causes racines</li>
               </ol>
+          </section>
+          <section>
+              <h3>Livrer tôt, livrer souvent</h3>
+              <img src="img/book-facebook.png">
+              <p style="font-size: 0.5em;">Source: <a href="http://paulhammant.com/2013/03/13/facebook-tbd-take-2/" target="_blank">http://paulhammant.com/2013/03/13/facebook-tbd-take-2/</a></p>
+          </section>
+          <section>
+              <h3>How Google Test Software</h3>
+              <h4>James Whitaker, Jason Arbon, Jeff Carollo</h4>
+              <img style="float:left" width="25%" src="img/book-google.jpeg">
+              <ul style="float:right;width:60%;">
+                  <li class="fragment">Quality Engineering plutôt que Quality Assurance</li>
+                  <li class="fragment">Création d'outils de test pour les dev</li>
+                  <li class="fragment">Les dev font la QA eux même</li>
+              </ul>
           </section>
           <section>
               <h3>Kanban : Evolutionary change</h3>
@@ -134,13 +138,14 @@
               </ul>
           </section>
           <section>
-              <h3>How Google Test Software</h3>
-              <h4>James Whitaker, Jason Arbon, Jeff Carollo</h4>
-              <img style="float:left" width="25%" src="img/book-google.jpeg">
+              <h3>Product development flow</h3>
+              <h4>Don Reinertsen</h4>
+              <img style="float:left" width="25%" src="img/book-flow.jpg">
               <ul style="float:right;width:60%;">
-                  <li class="fragment">Quality Engineering plutôt que Quality Assurance</li>
-                  <li class="fragment">Création d'outils de test pour les dev</li>
-                  <li class="fragment">Les dev font la QA eux même</li>
+                  <li class="fragment">Travailler en flux</li>
+                  <li class="fragment">Gérer les files de d'attentes</li>
+                  <li class="fragment">Regarder le <em>lead time</em> plutôt que le coût de développement</li>
+                  <li class="fragment">Réduire le coût de livraison</li>
               </ul>
           </section>
           <section>
@@ -152,19 +157,14 @@
               </ul>
               <img class="fragment" width="50%" src="img/book-git.png">
           </section>
-          <section>
-              <h3>Livrer tôt, livrer souvent</h3>
-              <img src="img/book-facebook.png">
-              <p style="font-size: 0.5em;">Source: <a href="http://paulhammant.com/2013/03/13/facebook-tbd-take-2/" target="_blank">http://paulhammant.com/2013/03/13/facebook-tbd-take-2/</a></p>
-          </section>
       </section>
       <section>
           <section>
               <h2>Commencer par finir !</h2>
+              <h4 class="fragment" >Quitte à tout faire à l'envers</h4>
           </section>
           <section>
               <h3>Le continuous delivery</h3>
-              <h4>Amélioration continue des processus</h4>
               <ul style="list-style: none; margin-left: 0;">
                   <li class="fragment">5. Production &amp; Exploitation</li>
                   <li class="fragment">4. Mise En Production</li>
@@ -176,7 +176,7 @@
       </section>
       <section>
           <section>
-              <h2>Production &amp; Exploitation</h2>
+              <h2>5. Production &amp; Exploitation</h2>
           </section>
           <section>
               <h3>Monitoring technique</h3>
@@ -198,15 +198,15 @@
           </section>
           <section>
               <h3>Infrastructure as code</h3>
-              <h4>Toutes les modifications sont historisées</h4>
-              <p class="fragment">Les bugs de configuration sont équivalentes à des bugs de développement</p>
+              <p>Toutes les modifications sont historisées<br>
+              <span class="fragment">Les bugs de configuration sont des bugs de code</span></p>
               <img class="fragment" src="img/svg/detection-environnement.svg" width="28%">
           </section>
 
       </section>
       <section>
           <section>
-              <h2>Mise en production</h2>
+              <h2>4. Mise en production</h2>
           </section>
           <section>
               <h3>Mise en production</h3>
@@ -217,21 +217,10 @@
               <h4>Gérée de A à Z par un seul développeur</h4>
               <p>Automatisation des différentes étapes :</p>
               <ul>
-                  <li class="fragment">Création de la Release Branche</li>
-                  <li class="fragment">Déploiement de la Release Branche</li>
-                  <li class="fragment">Merge de la Release Branche dans le master</li>
+                  <li class="fragment">Création de la Release Candidate</li>
+                  <li class="fragment">Déploiement de la Release Candidate</li>
+                  <li class="fragment">Merge de la Release Candidate dans le master</li>
                   <li class="fragment">Création et diffusion de la Release Note</li>
-              </ul>
-          </section>
-          <section>
-              <h3>Release Branche :<br/>ce qui est prêt</h3>
-              <p>Entièrement automatisée :</p>
-              <ul>
-                  <li>Branche avec les tickets prêts (version JIRA)</li>
-                  <li>Déploiement sur Pre-Prod</li>
-                  <li>JUnit</li>
-                  <li>Selenium</li>
-                  <li>Non Regressions UI</li>
               </ul>
           </section>
           <section>
@@ -248,23 +237,18 @@
               <img class="fragment" src="img/png/blue-green-2.png" width="66%">
               <img class="fragment" src="img/png/blue-green-3.png" width="66%">
           </section>
-      </section>
-      <section>
           <section>
-              <h2>Validation</h2>
-          </section>
-          <section>
-              <h3>Outillage</h3>
-              <p>Regroupement d'outils de validations manuelles et automatiques</p>
+              <h3>Release Candidate :</h3>
+              <p>Entièrement automatisée</p>
               <ul>
-                  <li class="fragment">Tests unitaires, d'intégration et Selenium</li>
-                  <li class="fragment">Code review</li>
-                  <li class="fragment">Showcase et validation fonctionnelle</li>
-                  <li class="fragment">Régressions UI : Zeno</li>
-                  <li class="fragment">Tests manuels exploratoires</li>
+                  <li>Avec les développements prêts (version JIRA)</li>
+                  <li>Déploiement sur Pre-Prod</li>
+                  <li>JUnit</li>
+                  <li>Selenium</li>
+                  <li>Non Regressions UI</li>
               </ul>
           </section>
-          <section>
+           <section>
               <h3>Zeno</h3>
               <h4>Régressions UI</h4>
               <p>Outil développé par la QE chez LesFurets.com pour faire de la comparaison d'image (<em>perceptual diff</em>)</p>
@@ -279,6 +263,22 @@
           <section>
               <h3>Zeno</h3>
               <img src="img/zeno-diff.png">
+          </section>
+     </section>
+      <section>
+          <section>
+              <h2>3. Validation</h2>
+          </section>
+          <section>
+              <h3>Outillage</h3>
+              <p>Regroupement d'outils de validations manuelles et automatiques</p>
+              <ul>
+                  <li class="fragment">Tests unitaires, d'intégration et Selenium</li>
+                  <li class="fragment">Code review</li>
+                  <li class="fragment">Showcase et validation fonctionnelle</li>
+                  <li class="fragment">Régressions UI : Zeno</li>
+                  <li class="fragment">Tests manuels exploratoires</li>
+              </ul>
           </section>
           <section>
               <h3>Environnements features</h3>
@@ -305,7 +305,7 @@
       </section>
       <section>
           <section>
-              <h2>Intégration continue</h2>
+              <h2>2. Intégration continue</h2>
           </section>
           <section>
               <h3>Intégration continue</h3>
