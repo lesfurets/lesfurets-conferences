@@ -164,6 +164,7 @@
           </section>
           <section>
               <h3>Le continuous delivery</h3>
+              <h4>Amélioration continue des process</h4>
               <ul style="list-style: none; margin-left: 0;">
                   <li class="fragment">5. Production &amp; Exploitation</li>
                   <li class="fragment">4. Mise en production</li>
@@ -175,7 +176,7 @@
       </section>
       <section>
           <section>
-              <h2>Exploitation</h2>
+              <h2>Production &amp; Exploitation</h2>
           </section>
           <section>
               <h3>Monitoring technique</h3>
@@ -198,8 +199,8 @@
           <section>
               <h3>Infrastructure as code</h3>
               <h4>Toutes les modifications sont historisées</h4>
-              <p>Les erreurs de configuration sont équivalentes à des erreurs de développement</p>
-              <img class="fragment" src="img/svg/detection-environnement.svg" width="30%">
+              <p class="fragment">Les bugs de configuration sont équivalentes à des bugs de développement</p>
+              <img class="fragment" src="img/svg/detection-environnement.svg" width="28%">
           </section>
 
       </section>
@@ -212,6 +213,28 @@
               <img src="img/go-button-green.jpg" width="60%">
           </section>
           <section>
+              <h3>Mise en production</h3>
+              <h4>Gérée de A à Z par un seule même développeur</h4>
+              <p>Rendu possible par l'automatisation des différentes étapes :</p>
+              <ul>
+                  <li class="fragment">Création de la Release Branche</li>
+                  <li class="fragment">Déploiement de la Release Branche</li>
+                  <li class="fragment">Merge de la Release Branche dans le master</li>
+                  <li class="fragment">Création et diffusion de la Release Note</li>
+              </ul>
+          </section>
+          <section>
+              <h3>Release Branche :<br/>ce qui est prêt</h3>
+              <p>Entièrement automatisée :</p>
+              <ul>
+                  <li>Branche avec les tickets prêts (version JIRA)</li>
+                  <li>Déploiement sur Pre-Prod</li>
+                  <li>JUnit</li>
+                  <li>Selenium</li>
+                  <li>Non Regressions UI</li>
+              </ul>
+          </section>
+          <section>
               <h3>Déploiement</h3>
               <p>Tout le déploiement est fait avec <em>0 downtime</em> en utilisant un système style blue / green.</p>
               <ul>
@@ -221,19 +244,9 @@
           </section>
           <section>
               <h3>Déploiement Blue / Green</h3>
-              <img src="img/svg/blue-green-1.svg" width="66%">
-              <img class="fragment" src="img/svg/blue-green-2.svg" width="66%">
-              <img class="fragment" src="img/svg/blue-green-3.svg" width="66%">
-          </section>
-          <section>
-              <h3>Pre-prod: ce qui est prêt</h3>
-              <p>Entièrement automatisé :</p>
-              <ul>
-                  <li>Branche avec les tickets prêts</li>
-                  <li>JUnit</li>
-                  <li>Selenium</li>
-                  <li>Non Regressions UI</li>
-              </ul>
+              <img class="fragment" src="img/png/blue-green-1.png" width="66%">
+              <img class="fragment" src="img/png/blue-green-2.png" width="66%">
+              <img class="fragment" src="img/png/blue-green-3.png" width="66%">
           </section>
       </section>
       <section>
