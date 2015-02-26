@@ -43,11 +43,11 @@
               <h3>Organisation</h3>
               <p>L'équipe de développement de LesFurets.com</p>
               <ul>
-              <li class="fragment"><em>5 streams feature teams</em></li>
+              <li class="fragment"><em>4 feature teams</em></li>
               <li class="fragment"><em>22 développeurs</em></li>
               <li class="fragment"><em>3 devops</em> (automatisation et opération)</li>
               <li class="fragment"><em>1 archi-codeur</em></li>
-              <li class="fragment">8 business analysts / product owners</li>
+              <li class="fragment"><em>7 business analysts / product owners</em></li>
             </ul>
           </section>
           <section>
@@ -66,9 +66,9 @@
               <p>L'esprit :<br/>planifier / estimer / coder / tester / livrer de manière mensuelle</p>
           </section>
           <section>
-              <h3>Rythme 2014 - quotidien</h3>
-              <h4>171 releases</h4>
-              <p>L'esprit :<br/><span class="under">livrer ce qui est prêt le jour suivant</span></p>
+              <h3>Rythme 2014/15 - quotidien</h3>
+              <h4>208 releases en 2014 / déjà 36 en 2015</h4>
+              <p>L'esprit :<br/><em>livrer ce qui est prêt aujourd'hui</em><br><span class="fragment"> ... tous les jours !</span></p>
           </section>
           <section>
               <h3>2012</h3>
@@ -76,7 +76,7 @@
               <ul>
                   <li class="fragment">Build 15 minutes et 200 Seleniums en 1 heure</li>
                   <li class="fragment">Sprints d'un mois se terminant par une mise en production</li>
-                  <li class="fragment">Du commit à la MEP : <span class="under">en moyenne 2 semaines</span></li>
+                  <li class="fragment"><em>Du commit à la MEP</em> : <span class="under">en moyenne 2 semaines</span></li>
                   <li class="fragment">Non satisfaisant pour un site Web</li>
               </ul>
           </section>
@@ -85,7 +85,7 @@
              <ul>
                  <li class="fragment">Build 3 minutes + Selenium 10 minutes</li>
                  <li class="fragment">Livraison de ce qui est prêt à J+1</li>
-                 <li class="fragment">Du commit à la MEP : <span class="under">en moyenne 5 jours</span></li>
+                 <li class="fragment"><em>Du commit à la MEP</em> : <span class="under">en moyenne 5 jours</span></li>
              </ul>
           </section>
       </section>
@@ -112,18 +112,6 @@
               </ol>
           </section>
           <section>
-              <h3>Kanban : Evolutionary change</h3>
-              <h4>David Anderson</h4>
-              <img style="float:left" width="25%" src="img/book-kanban.jpg">
-              <ul style="float:right;width:60%;">
-                  <li class="fragment">Visualisation du travail</li>
-                  <li class="fragment">Limiter le travail en cours (WIP)</li>
-                  <li class="fragment">Règles explicites</li>
-                  <li class="fragment">Amélioration continue</li>
-                  <li class="fragment">Leadership</li>
-              </ul>
-          </section>
-          <section>
               <h3>How Google Test Software</h3>
               <h4>James Whitaker, Jason Arbon, Jeff Carollo</h4>
               <img style="float:left" width="25%" src="img/book-google.jpeg">
@@ -134,13 +122,16 @@
               </ul>
           </section>
           <section>
-              <h3>Git Flow</h3>
-              <h4>Vincent Driessen</h4>
-              <ul>
-                  <li class="fragment">Un puissant modèle de branches git</li>
-                  <li class="fragment"><a href="http://nvie.com/posts/a-successful-git-branching-model/" target="_blank">http://nvie.com/posts/a-successful-git-branching-model/</a>
+              <h3>Kanban : Evolutionary change</h3>
+              <h4>David Anderson</h4>
+              <img style="float:left" width="25%" src="img/book-kanban.jpg">
+              <ul style="float:right;width:60%;">
+                  <li class="fragment">Visualisation du travail</li>
+                  <li class="fragment">Limiter le travail en cours (WIP)</li>
+                  <li class="fragment">Règles explicites</li>
+                  <li class="fragment">Amélioration continue</li>
+                  <li class="fragment">Leadership</li>
               </ul>
-              <img class="fragment" width="50%" src="img/book-git.png">
           </section>
           <section>
               <h3>Livrer tôt, livrer souvent</h3>
@@ -155,17 +146,17 @@
           <section>
               <h3>Le continuous delivery</h3>
               <ul style="list-style: none; margin-left: 0;">
-                  <li class="fragment">5. Exploitation</li>
-                  <li class="fragment">4. Mise en production</li>
+                  <li class="fragment">5. Production &amp; Exploitation</li>
+                  <li class="fragment">4. Mise En Production</li>
                   <li class="fragment">3. Validation</li>
-                  <li class="fragment">2. Intégration continue</li>
+                  <li class="fragment">2. Intégration Continue</li>
                   <li class="fragment">1. Implémentation</li>
               </ul>
           </section>
       </section>
       <section>
           <section>
-              <h2>Exploitation</h2>
+              <h2>5. Production &amp; Exploitation</h2>
           </section>
           <section>
               <h3>Monitoring technique</h3>
@@ -176,7 +167,7 @@
               <img class="fragment" width="66%" src="img/exploitation-fonctionnel.png">
           </section>
           <section>
-              <h3>Erreurs & logs</h3>
+              <h3>Alertes &amp; logs</h3>
               <p>Les logs/traces d'erreurs arrivent par mail à partir de chaque environnement.</p>
               <ul>
                   <li class="fragment">200 erreurs/jour, <em>dont 20% depuis le JavaScript</em></li>
@@ -185,20 +176,32 @@
                   <li class="fragment">24h synthétisées &#10140; 1 mail</li>
               </ul>
           </section>
+          <section>
+              <h3>Infrastructure as code</h3>
+              <p>Toutes les modifications sont historisées<br>
+              <span class="fragment">Les bugs de configuration sont des bugs de code</span></p>
+              <img class="fragment" src="img/svg/detection-environnement.svg" width="28%">
+          </section>
 
       </section>
       <section>
           <section>
-              <h2>Mise en production</h2>
+              <h2>4. Mise en production</h2>
           </section>
           <section>
               <h3>Mise en production</h3>
               <img src="img/go-button-green.jpg" width="60%">
           </section>
           <section>
-              <h3>Automatiser</h3>
-              <h4>"Infrastructure as code"</h4>
-              <img class="fragment" src="img/svg/detection-environnement.svg" width="30%">
+              <h3>Mise en production</h3>
+              <h4>Gérée de A à Z par un seul développeur</h4>
+              <p>Automatisation des différentes étapes :</p>
+              <ul>
+                  <li class="fragment">Création de la Release Candidate</li>
+                  <li class="fragment">Déploiement de la Release Candidate</li>
+                  <li class="fragment">Merge de la Release Candidate dans le master</li>
+                  <li class="fragment">Création et diffusion de la Release Note</li>
+              </ul>
           </section>
           <section>
               <h3>Déploiement</h3>
@@ -210,9 +213,20 @@
           </section>
           <section>
               <h3>Déploiement Blue / Green</h3>
-              <img src="img/svg/blue-green-1.svg" width="66%">
-              <img class="fragment" src="img/svg/blue-green-2.svg" width="66%">
-              <img class="fragment" src="img/svg/blue-green-3.svg" width="66%">
+              <img class="fragment" src="img/png/blue-green-1.png" width="66%">
+              <img class="fragment" src="img/png/blue-green-2.png" width="66%">
+              <img class="fragment" src="img/png/blue-green-3.png" width="66%">
+          </section>
+          <section>
+              <h3>Release Candidate :</h3>
+              <p>Entièrement automatisée</p>
+              <ul>
+                  <li>Avec les développements prêts (version JIRA)</li>
+                  <li>Déploiement sur Pre-Prod</li>
+                  <li>JUnit</li>
+                  <li>Selenium</li>
+                  <li>Non Regressions UI</li>
+              </ul>
           </section>
       </section>
       <section>
@@ -248,7 +262,7 @@
       </section>
       <section>
           <section>
-              <h3>Intégration continue</h3>
+              <h3>2. Intégration continue</h3>
 			  <ul>
 				<li>Maven (compile + tests unitaires)</li>
 				<li class="fragment highlight-red" data-fragment-index="1">Selenium</li>
