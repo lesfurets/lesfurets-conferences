@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Continuous delivery</title>
+    <meta name="description" content="Présentation du continuous delivery chez LesFurets.com">
+    <meta name="author" content="Alexandre DuBreuil">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.min.css">
+    <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="css/lesfurets-theme.css" id="theme">
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+    <!--[if lt IE 9]><script src="lib/js/html5shiv.js"></script><![endif]-->
+  </head>
+  <body>
+    <div class="footer">
+      <a href="https://www.lesfurets.com" target="_blank"><img class="logo" src="img/logo_lesfurets_885x128_no_back.png"></a>
+    </div>
+    <div class="reveal">
+      <div class="slides">
+
+      <section>
+        <section>
+          <h2></h2>
+          <h1>Continuous delivery</h1>
+          <h2>The French Way</h2>
+          <br>
+          <br>Dimitri BAELI - Arnaud PFLIEGER
+          <br>https://github.com/lesfurets
+        </section>
+        <section>
+          <h2>LesFurets.com</h2>
+          <ul>
+            <li>22 software engineers</li>
+            <li>3 Devops (automation & operations)</li>
+            <li>1 Architect</li>
+          </ul>
+        </section>
+        
+        <section>
+          <h2>LesFurets.com</h2>
+          <ul>
+            <li>1 website, 6 product lines</li>
+            <li>400k lines of code, 30k Unit tests</li>
+            <li>200 Selenium tests</li>
+            <li>10+ Servers</li>
+            <li>1 code base</li>
+          </ul>
+        </section>
+        
+        
+        <section>
+          <h2>In 2012</h2>
+          <h3>11 releases</h3>
+          <ul>
+            <li><u>Mind set:</u></li>
+            <li>Plan/Estimate/Code/Test/Release monthly</li>
+          </ul>
+        </section>
+        <section>
+            <h2>In 2014</h2>
+            <h3>143 releases</h3>
+          <ul>
+            <li><u>Mind set:</u></li>
+            <li>Ship what is READY the next day</li>
+          </ul>
+        </section>
+        <section>
+          <h2>In 2012</h2>
+          <ul>
+            <li>Scrum sprints ended by a release</li>
+            <li>Subversion : trunk + 1 maintenance branch</li>
+            <li>Build : 15min, Selenium in a grid: 200 in 1h</li>
+            <li>Testing phase : 4-6 days, Deployment in 2h</li>
+            <li>Commit to Prod : from 5d to 4 weeks</li>
+          </ul>
+        </section>
+        <section>
+          <h2>In 2014</h2>
+          <ul>
+            <li>Lean Kanban</li>
+            <li>Daily releases</li>
+            <li>GIT : master + feature branches</li>
+            <li>Build : 3' (was 15') + Selenium : 10' (was 1h)</li>
+            <li>Release : 5min + 30min monitoring</li>
+            <li>Commit to Prod : coding time + 1 day</li>
+          </ul>
+        </section>
+    </section>
+
+    <section>    
+      <section>
+          <h2>A few things we read</h2>
+      </section>
+      <section>
+         <h2>Agile Manifesto</h2>
+         <h3>Principle 3</h3>
+         <br />
+         <p>"Our highest priority is to satisfy the customer through early and continuous delivery of valuable software."</p>
+       </section>
+       <section>
+          <h2>Product Development Flow</h2>
+          <h3>Don Reinertsen</h3>
+          <ul>
+           <li>Work with a flow</li>
+           <li>Manage Queues of work</li>
+           <li>Lead Time more than work duration</li>
+           <li>Reduce per release costs</li>
+         </ul>
+         <img class="book" src="img/book-flow.jpg">
+      </section>
+       <section>
+         <h2>Continuous Delivery</h2>
+         <h3>Jez Humble, David Farley</h3>
+         <ol>
+          <li>Fast builds</li>
+          <li>Pre-Commit check (all tests ever ok)</li>
+          <li>Simple and fast automated deployments</li>
+          <li>Production monitoring and alerting</li>
+          <li>Root Cause Analysis</li>
+        </ol>
+        <img class="book" src="img/book-ContinuousDelivery.jpg">
+       </section>
+       <section>
+       <h2>Deliver Early, Deliver Often</h2>
+       <img src="img/facebook2.png">
+       <p>Source: http://paulhammant.com/2013/03/13/facebook-tbd-take-2/</p>
+       </section>
+      <section>
+        <h2>Kanban : Evolutionary Change</h2>
+        <h3>David Anderson</h3>
+        <ul>
+         <li>Visualize the work</li>
+         <li>Limit the Work in Process</li>
+         <li>Explicit Rules</li>
+         <li>Continuous Improvement</li>
+         <li>Leadership</li>
+       </ul>
+       <img class="book" src="img/book-kanban.jpg">
+      </section>
+      <section>
+        <h2>How Google Test Software</h2>
+        <h3>James Whitaker</h3>
+      <ul>
+       <li>NoQA : Quality Engineering</li>
+       <li>SET : build test tools for devs</li>
+       <li>Dev QA their own changes</li>
+     </ul>
+     <img class="book" src="img/book-google.jpeg">
+       </section>
+       <section>
+         <h2>GIT FLOW</h2>
+         <h3>Vincent Driessen</h3>
+         <ul>
+           <li>A successful git branching model</li>
+           <li>http://nvie.com/posts/a-successful-git-branching-model/</li>
+         </ul>
+         <img class="book" src="img/book-git.png">
+       </section>
+      </section>
+
+      <section>
+         <h1>Start by finishing !</h1>
+         <h2>Because French guys are doing everything backward</h2>
+      </section>
+
+      <section>
+        <h2>Continuous Delivery</h2>
+        <ol>
+          <li>Operations</li>
+          <li>Delivery</li>
+          <li>Validation</li>
+          <li>Continuous integration</li>
+          <li>Analysis & Coding : Branch</li>
+        </ol>
+      </section>
+
+      <section class="first">
+        <section>
+          <h2>Operations</h2>
+          <h3>Technical Monitoring AND Alerting</h3>
+          <p>
+            <img width="50%" height="50%" src="img/lesfurets-production.png" >
+          </p>
+        </section> 
+        <section>
+          <h2>Operations</h2>
+          <h3>Functional Monitoring AND Alerting</h3>
+          <p>
+            <img width="50%" height="50%" src="img/lesfurets-functional.png" >
+          </p>
+        </section> 
+      </section>
+
+      <section>
+        <section>
+          <h2>Delivery</h2>
+          <img class="fragment" src="img/go-button-green.jpg">
+          <aside class="notes">
+            even before speaking about continuous delivery ...
+            has to be simple
+          </aside>
+        </section>
+        <section>
+          <h3>Automate</h3>
+          <p>"Infrastructure as code"</p>
+          <img class="svg big" src="img/svg/detection-environnement.svg">
+        </section>
+        <section>
+          <h3>Deployment</h3>
+          <p>0 downtime</p>
+          <p>Blue/green</p>
+          <ul class="fragment">
+            <li>Doubled production environment</li>
+            <li>Loadbalancer</li>
+          </ul>
+          <br>
+          <br>
+<!-- Casse avec le nouveau theme
+          <p class="blue-green fragment current-visible"><img class="svg" src="img/svg/blue-green-1.svg"></p>
+          <p class="blue-green fragment current-visible"><img class="svg" src="img/svg/blue-green-2.svg"></p>
+-->
+          <p class="blue-green fragment"><img class="svg" src="img/svg/blue-green-3.svg"></p>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2>Validation</h2>
+          <ul>
+            <li>Manual tests</li>
+            <li>Regression Testing : Zeno</li>
+            <li>Selenium</li>
+            <li>Code reviews</li>
+            <li>Showcase/functional validation</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Zeno</h2>
+          <h3>Visual Regression</h3>
+          <p><img src="img/zeno-diff.png"></p>
+        </section>
+        <section>
+          <h2>Selenium</h2>
+          <p><img src="img/tweet-selenium.png"></p>
+        </section>
+        <section>
+          <h2>Selenium</h2>
+          <ul>
+            <li>Page Object Pattern</li>
+            <li>Fluent API (FluentLenium like)</li>
+            <li>Selenium in the sky with LXC</li>
+            <li>200 Selenium tests in <10min</li>
+          </ul>
+        </section>
+      </section>
+
+      <section>
+       <section>
+           <h2>Continuous integration</h2>
+           <h3>impacts the codebase</h3>
+           <img src="img/facebook-2-branching.png">
+       </section>
+        <section>
+          <h2>Continuous integration</h2>
+          <h3>Branching model</h3>
+          <ul>
+            <li class="fragment" style="text-decoration:line-through">Trunk + Release branch</li>
+            <li class="fragment" style="text-decoration:line-through">Trunk based (all commits to master + toggle)</li>
+            <li class="fragment" >Feature Branching + Merge when ready</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Continuous integration</h2>
+          <p><img src="img/payage.JPG"></p>
+          <div>
+            Deliver ...
+          </div>
+          <div class="fragment">
+            when it's ready</p>
+          </div>
+        </section>
+        <section>
+          <h3>Feature branching</h3>
+          <img width="75%" src="img/feature-branching.png">
+        </section>
+        <section>
+          <h2>Continuous integration</h2>
+          <h3>On every commit</h3>
+          <ul>
+            <li>Compilation</li>
+            <li>Automated tests</li>
+            <li class="fragment" style="color:green">Continuous Merge (Octopus)</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Continuous Merge</h3>
+          <img class="svg big octopus fragment current-visible" src="img/svg/gitlog_octopus-1.svg">
+          <img class="svg big octopus fragment current-visible" src="img/svg/gitlog_octopus-2.svg">
+          <img class="svg big octopus fragment current-visible" src="img/svg/gitlog_octopus-3.svg">
+        </section>
+        <section>
+          <h3>Continuous Merge</h3>
+          <ul>
+            <li class="fragment">Build a test environment</li>
+            <li class="fragment">Detect conflicts</li>
+            <li class="fragment">Plug/unplug branches easily</li>
+            <li class="fragment">Git Octopus Merge</li>
+          </ul>
+        </section>
+        <section>
+            <h3>Managing conflicts</h3>
+            <p><img width="50%" class="fragment" style="" src="img/finish-first.jpg"></p>
+            <p style="margin-top:-400px;"><img height="250" class="fragment nostyle" src="img/big-cross.png"></p>
+            <p class="fragment">Avoid conflicts vs Resolve conflicts</p>
+        </section>
+        <section>
+          <h3>Managing conflicts</h3>
+          <br></br>
+          <h4>A lot of options</h4>
+          <ul>
+            <li class="fragment">Remove the conflicting branch (put aside, comeback later)</li>
+            <li class="fragment">Find a way to make it merge</li>
+            <li class="fragment">Merge branches in conflict (resolve the conflict)</li>
+            <li class="fragment">Merge in master (+ merge everywhere)</li>
+          </ul>
+          <br></br>
+          <p  class="fragment">Merge is the worst case (default in trunk based development)</p>          
+        </section>
+        <section>
+          <h3>30 branches at work !</h3>
+          <img width="75%" src="img/teamcity-octopus.png">
+        </section>
+      </section>
+
+      <section class="last">
+        <section>
+          <h3>Exceptions to the branching model</h3>
+            <ul>
+              <li>Feature toggles</li>
+              <li>Big refactorings</li>
+            </ul>
+        </section>
+        <section>
+          <h3>Feature toggle</h3>
+          <div class="fragment">
+            <p>When ?</p>
+            <ul>
+              <li>Lots of conflicts</li>
+              <li>Long term branch</li>
+            </ul>
+          </div>
+        </section>
+        <section>
+          <h2>Big refactorings</h2>
+          <ul>
+            <li>Too many conflicts</li>
+            <li>Long term task</li>
+          </ul>
+          <br><br>
+          <div class="fragment">
+            Special treatment<br>
+            Blocks the release
+          </div>
+        </section>
+      </section>
+
+      <section>
+        <h3>Thank you to </h3>
+        <ul>
+          <li class="fragment">Arnaud: let's see if branching really fails (octopus)</li>
+          <li class="fragment">Mehdi: I bet it won't work (bet accepted !)</li>
+          <li class="fragment">Matthieu: Perceptual Diff ? ok let's try</li>
+          <li class="fragment">Thomas: Docker+RamFS for the Selenium Grid (1h -> 10min)</li>
+          <li class="fragment">Andreï/Julien: Fluent Selenium Page Object generation</li>
+          <li class="fragment">Emmanuel: Ok for some bugs in production, but <u>fix them fast</u></li>
+          <li class="fragment">Gilles: Go, go, go ! </li>
+          <li class="fragment">And all the devteam to jump in deep end so easily</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h3>One more thing</h3>
+        <ul>
+          <li class="fragment">Fork us on GitHub</li>
+          <li class="fragment"><a href="http://github.com/lesfurets">http://github.com/lesfurets</a></li>
+          <li class="fragment">Selenium in the sky with LXC</li>
+          <li class="fragment">Git Octopus - Continuous Merging</li>
+          <li class="fragment">And more soon ...</li>
+          <li class="fragment">Follow us <a href="http://twitter.com/BeastieFurets">@BeastieFurets</a> cousins of <a href="http://twitter.com/ctmers">@ctmers</a></li>
+          <li class="fragment"><a href="http://tech.comparethemarket.com/selenium-in-the-sky-with-lxc-2">selenium-in-the-sky-with-lxc@ctmers</a></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Thank you</h3>
+        <img src="img/octave.jpg">
+      </section>
+</div>
+
+</div>
+
+    <script src="bower_components/reveal.js/lib/js/head.min.js"></script>
+    <script src="bower_components/reveal.js/js/reveal.min.js"></script>
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        embedded: true,
+
+        //theme: 'lesfurets', // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+  </body>
+</html>
+
