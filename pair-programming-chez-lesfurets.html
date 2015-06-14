@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Pair programming chez LesFurets.com</title>
+    <meta name="description" content="Pair programming chez LesFurets.com">
+    <meta name="author" content="Alexandre DuBreuil">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="css/lesfurets-theme.css" id="theme">
+    <link rel="stylesheet" href="css/pair-prog-theme.css" id="theme">
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+    <!--[if lt IE 9]><script src="lib/js/html5shiv.js"></script><![endif]-->
+  </head>
+  <body>
+    <div class="footer">
+      <a href="https://www.lesfurets.com" target="_blank"><img class="logo" src="img/logo_lesfurets_885x128_no_back.png"></a><a class ="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a><a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a>
+    </div>
+    <div class="reveal">
+      <div class="slides">
+      <!-- START -->
+      <section class="flushright" data-background="img/nwx/lesfurets-background-black-01.jpg">
+        <h1>Programmation en binôme<br/> chez LesFurets.com</h1>
+        <h2>Alexandre DuBreuil</h2>
+      </section>
+      <section class="flushleft"  data-background="img/nwx/lesfurets-background-black-01.jpg">
+        <h2>Alexandre DuBreuil</h2>
+        <h3 class="fragment">Tech lead équipe panel assureur</h3>
+        <h4 class="fragment">Canadien qui code dans une cabane en bois</h4>
+        <ul class="flushright nodisc">
+          <li class="fragment">
+            <a href="https://twitter.com/dubreuia">https://twitter.com/dubreuia</a>
+          </li>
+          <li class="fragment">
+            <a href="https://github.com/dubreuia">https://github.com/dubreuia</a>
+          </li>
+        </ul>
+      </section>
+      <section class="flushleft" data-background="img/nwx/lesfurets-background-black-01.jpg">
+        <h1 class="indigo500">LesFurets.com</h1>
+        <p class="fragment flushright">1er site indépendant de comparaison d’assurance, lancé en septembre 2012</p>
+        <p class="fragment flushright">Un lieu unique pour comparer rapidement des centaines d’offres
+        (assurances auto, moto, MRH, santé et emprunteur)</p>
+      </section>
+      <section class="flushleft">
+        <h2>Organisation</h2>
+        <p class="fragment">L'équipe de développement est séparé en 4 streams
+        ou feature team, avec 20+ développeurs</p>
+        <p class="fragment">Les différents stream sont responsables de la
+        <strong class="orange900">qualité</strong> de leur code... <strong
+        class="fragment">on a pas de QA</strong></p>
+        <aside class="notes">
+          qualité enforcée avec code review / inspections / pair programming
+        </aside>
+      </section>
+      <section class="flushright" data-background="#eeeeee">
+        <h1 class="indigo700">Programmation en binôme</h1>
+        <p class="fragment gray800"><strong class="deeporange900">Définition :
+        </strong>une méthode de développement Agile dans laquelle deux
+        développeurs travaillent ensemble sur un même poste de travail.</p>
+      </section>
+      <section>
+        <h1>Historique</h1>
+        <p class="fragment flushright"><strong>... c'est un peu vieux</strong></p>
+        <aside class="notes">
+          vieux pour l'informatique, on ne parle jamais de trucs très vieux
+        </aside>
+      </section>
+      <section class="flushright" data-background="img/nwx/old-computer-image-black-01.jpg">
+        <h2>1978-1988</h2>
+        <p class="fragment">P.J. Plauger, un des développeur du langage C :</p>
+        <blockquote class="fragment">
+          <p>A chaque terminal, deux développeurs. Évidemment,
+          seulement un développeur utilise le clavier, mais les autres
+          regardent par dessus son épaule</p>
+        </blockquote>
+      </section>
+      <section class="flushright" data-background="img/nwx/old-computer-image-black-01.jpg">
+        <h2>1978-1988</h2>
+        <p class="fragment"><strong class="">P.J. Plauger</strong> :
+        inventeur ou précurseur de la technique, sans la nommer "pair
+        programming".</p>
+      </section>
+      <section class="twocolumn black fragment" data-transition="fade-out">
+        <article>
+          <div class="halfpage flushright">
+            <h2 class="">1995</h2>
+            <p class="fragment">Le terme arrive plus tard...</p>
+          </div>
+          <div class="halfpage flushleft">
+            <ul >
+              <li class="fragment"><em>Developing in pairs</em>, un pattern dans
+                un livre de Jim Complien</li>
+              <li class="fragment"><em>Constantine on peopleware</em>, de Larry
+                Constantine</li>
+            </ul>
+          </div>
+        </article>
+        <aside class="notes">
+          constantine on peopleware : livre intéressant encore d'actualité sur
+          les intéractions humaines dans le monde du logiciel
+        </aside>
+      </section>
+      <section class="flushright" data-background="#212121">
+        <img width="200" style="float:left" src="img/nwx/extreme-programming-explained-01.jpg">
+        <h2 class="indigo400"><strong>1998</strong></h2>
+        <p class="fragment"><strong>Kent Beck</strong> : <em>eXtreme
+          programming explained</em></p>
+        <p class="fragment flushright">Le binômage est au centre de la pratique</p>
+      </section>
+      <section data-background="#212121">
+        <img src="img/nwx/extreme-programming-pair-prog-01.gif">
+        <aside class="notes">
+          - le pair programming en extreme programming est un outil pour rendre
+          collaborative la propriété du code
+          - aussi un outil de refactoring, de test, etc.
+        </aside>
+      </section>
+      <section class="flushleft">
+        <h2>2002</h2>
+        <img width="200" style="float:right" src="img/nwx/pair-programming-illuminated-01.jpg">
+        <p class="fragment"><strong>Laurie Williams</strong> : <em>Pair programming
+          illuminated</em></p>
+        <ul>
+          <li class="fragment">Premier livre dédié sur le pair programming</li>
+          <li class="fragment">Premières études empiriques</li>
+        </ul>
+        <aside class="notes">
+          la majorité des données pour cette présentation viennent de ce livre
+        </aside>
+      </section>
+      <section class="flushright" data-background="#f5f5f5">
+        <h1 class="indigo700">Programmation en binôme</h1>
+        <p class="fragment gray800"><strong class="deeporange900">Définition :
+        </strong>une <strong class="fragment">vieille</strong> méthode de
+        développement Agile dans laquelle deux développeurs travaillent
+        ensemble sur un même poste de travail.</p>
+      </section>
+      <section class="flushleft">
+        <h3>Pour <strong>15%</strong> d'augmentation du temps de développement</h3>
+        <p class="flushright indigo300 small">(si vous me croyez pas demandez a Mme Williams...)</p>
+      </section>
+      <section data-background="#212121" class="flushleft">
+        <h2>Avantages pour un <span class="indigo300">développeur</span></h2>
+        <ul>
+          <li class="fragment">améliore la satisfaction des développeurs</li>
+          <li class="fragment">améliore les capacités de résolution de problème</li>
+          <li class="fragment">permet de découvrir de nouveaux idiomes</li>
+          <li class="fragment">rend les tâches difficiles plus accessibles</li>
+          <li class="fragment">rend les tâches monotones plus intéressantes</li>
+        </ul>
+        <aside class="notes">
+          - satisfaction : plus agréable de travailler a deux / plus facile
+          - résolution : plus de solutions envisagées
+          - idiômes : nouvelles fonctions langages, env. développement
+          - tâches difficiles : donne du courage d'être a deux
+          - tâches monotones : donne la force de faire les refactorings (XP)
+        </aside>
+      </section>
+      <section data-background="#212121"class="flushright">
+        <h2>Avantages pour une <span class="indigo300">société</span></h2>
+        <ul>
+          <li class="fragment">améliore la cohésion d'équipe</li>
+          <li class="fragment">améliore les problématiques de recrutement</li>
+          <li class="fragment">augmente le "nombre bus"</li>
+          <li class="fragment">les inspections sont effectuées JIT</li>
+          <li class="fragment">permet de faire de la revue de code gratuitement</li>
+        </ul>
+        <aside class="notes">
+          - cohésion : plus de communication, développeurs plus proches
+          - recrutement : intégrations plus faciles, départs plus faciles
+          - nombre bus : nombre de départ qu'il faut pour rendre le projet a risque
+          - inspections : détections des anomalies très tôt
+          - revue code : anectdote sur les 2x plus de temps passé
+        </aside>
+      </section>
+      <section data-background="#212121"class="flushleft">
+        <h2>Avantages pour un <span class="indigo300">produit</span></h2>
+        <ul>
+          <li class="fragment">améliore la qualité du design</li>
+          <li class="fragment">diminue les coûts de productions</li>
+          <li class="fragment">moins de chance de faire la solution "sale"</li>
+        </ul>
+        <aside class="notes">
+          - design : phase la plus importante d'être en paire ! analyse tôt
+          - coûts : détection plus rapides anomalie, moins maintenance
+          - hacky : la pression sociale c'est fort et motivateur
+        </aside>
+      </section>
+      <section data-background="img/nwx/willi-waller-black-01.jpg">
+        <h2>C'est tu pas beautiful mon buddy boy ?</h2>
+      </section>
+      <section class="flushright" data-background="#eeeeee">
+        <h1 class="indigo700">Programmation en binôme</h1>
+        <p class="fragment gray800"><strong class="deeporange900">Définition :
+        </strong>une vieille méthode de développement Agile <strong
+        class="fragment">efficace et éprouvée</strong> dans laquelle deux
+      développeurs travaillent ensemble sur un même poste de travail.</p>
+      </section>
+      <section>
+        <h2 class="small indigo200">Et pourquoi personne n'en fait, du pair programming ?</h2>
+      </section>
+      <section class="twocolumn black fragment" data-transition="fade-out">
+        <article>
+          <div class="halfpage flushright">
+            <h2 class="">Le travail en équipe...</h2>
+          </div>
+          <div class="halfpage flushleft">
+          </div>
+        </article>
+        <article class="fragment">
+          <div class="halfpage flushright">
+          </div>
+          <div class="halfpage flushleft">
+            <p class="">... est indéfini dans notre métier</p>
+          </div>
+        </article>
+        <aside class="notes">
+          qu'est-ce que c'est le travail en équipe pour nous ? Plusieurs
+          pensent travailler en équipe mais pas vraiment le cas
+          - code seul dans sa cabane en bois avec les caribous ? NON
+          - envoyer son code dans git ? PRESQUE : peu intéractions directes
+          - faire de la code review ? PRESQUE : peu intéractions directes
+          - faire de de la programmation en binôme ? OUI
+        </aside>
+      </section>
+      <section class="twocolumn black" data-transition="fade-out">
+        <article>
+          <div class="halfpage flushright">
+            <h2 class="" style="word-break: break-all">Le développement...</h2>
+          </div>
+          <div class="halfpage flushleft">
+          </div>
+        </article>
+        <article class="fragment">
+          <div class="halfpage flushright">
+          </div>
+          <div class="halfpage flushleft">
+            <p class="">... est souvent appris comme une activité solo</p>
+          </div>
+        </article>
+        <aside class="notes">
+          - a l'école : cours magistraux, TD seuls, pas de système de
+          versionnement, pas de conférences, pas de code review, pas de pair
+          prog, ect.
+          - ça commence mais on y est pas encore
+        </aside>
+      </section>
+      <section class="twocolumn black" data-transition="fade-out">
+        <article>
+          <div class="halfpage flushright">
+            <h2 class="" style="">La mentalité rockstar...</h2>
+          </div>
+          <div class="halfpage flushleft">
+          </div>
+        </article>
+        <article class="fragment">
+          <div class="halfpage flushright">
+          </div>
+          <div class="halfpage flushleft">
+            <p class="">... est encouragée</p>
+          </div>
+        </article>
+        <aside class="notes">
+          - exemple de l'architecte tout puissant qui prend toutes les
+          décisions, qui refactore le code a 2h du mat sans le dire a personne
+          - ce genre d'exemple est partout : linux torvalds (tyrant sur les
+          mailings linux), bill gates (écrit FAT32 en une nuit), steve jobs
+          (tyrant ultime)
+        </aside>
+      </section>
+      <section class="flushleft">
+        <h2>Difficile à justifier auprès des gestionnaires...</h2>
+        <blockquote class="fragment"><p>Ça va prendre le double du temps</p></blockquote>
+        <p class="fragment flushright">... les idées sont fausses mais bien ancrées</p>
+        <aside class="notes">
+          j'en ai entendu plein : 
+          - vous allez aller sur youtube
+          - vous allez parler d'autre chose
+          - "retournez travailler"
+          maintenant vous avez pleins d'élément pour vous justifier
+        </aside>
+      </section>
+      <section data-background="#7986cb">
+        <h2 class="flushleft" style="width:66%;">Auditoire : "Je suis convaincu !"</h2>
+        <h2 class="fragment flushright">... et on fait comment ?</h2>
+      </section>
+      <section class="twocolumn" data-background="img/nwx/lesfurets-rallye-black-01.png">
+        <aside class="notes">
+          prendre exemple dans la vidéo de rallye de LesFurets.com :
+        </aside>
+      </section>
+      <section class="twocolumn black" data-transition="fade-out">
+        <article>
+          <div class="halfpage flushright">
+            <h2 class=""><strong>Pilote</strong></h2>
+          </div>
+          <div class="halfpage flushleft">
+            <ul>
+              <li>développe</li>
+              <li>explique sa démarche</li>
+            </ul>
+          </div>
+        </article>
+        <article class="fragment">
+          <div class="halfpage flushright">
+            <ul>
+              <li>vérifie</li>
+              <li>réfléchis aux problèmes</li>
+              <li>garde la structure globale en tête</li>
+            </ul>
+          </div>
+          <div class="halfpage flushleft">
+            <h2 class=""><strong>Copilote</strong></h2>
+          </div>
+        </article>
+        <aside class="notes">
+          pilote
+          - code (juste ça bien), mais aussi parle, sinon déconnection
+          copilote
+          - penses aux cas limites, aux tests, etc.
+          - navigateur court terme / long terme
+          - se rappelle des choses pour plus tard
+        </aside>
+      </section>
+      <section data-background="img/nwx/poutine-black-01.jpg">
+        <h3 class="fragment flushright">Une recette simple comme la poutine !</h3>
+      </section>
+      <section data-background="#d84315">
+        <h3><span class="step">0</span>Créer un environnement de développement</h3>
+        <aside class="notes">
+          - penser a tout : claviers accessibles, OS, outils de dev...
+          - rien d'exotique !
+          - peut-être différent par paire, mais s'assurer quelles peuvent
+          tourner facilement
+        </aside>
+      </section>
+      <section class="flushright" data-background="img/nwx/hhkb-black-02.jpg">
+        <p>avec des outils <strong>accessibles</strong>...</p>
+      </section>
+      <section data-background="#d84315">
+        <h3><span class="step">1</span>Sélectionnez correctement votre paire</h3>
+        <aside class="notes">
+          pleins de combinaisons possible :
+          - expert / junior, junior / junior, etc. (en âge ou sur un code en
+          particulier)
+          - pleins de théories la-dessus : pas important !
+          - définir un but et s'y tenir : intégrer un nouveau, améliorer le
+          code, etc.
+        </aside>
+      </section>
+      <section data-background="#d84315">
+        <h3><span class="step">2</span>Sélectionnez une tâche assez définie</h3>
+        <p class="flushright fragment">...mais pas trop !</p>
+        <aside class="notes">
+          - difficile de choisir une paire s'il n'y a pas de tâche définie (on
+          se rappelle du but)
+          - pas trop définie parce que la partie la plus importante c'est : le
+          design !
+        </aside>
+      </section>
+      <section data-background="#d84315">
+        <h3><span class="step">3</span>Faire confiance en son partenaire et le supporter</h3>
+        <aside class="notes">
+          - écouter et aller au fond des choses
+        </aside>
+      </section>
+      <section data-background="#d84315">
+        <h3><span class="step">4</span>Parler beaucoup</h3>
+        <p class="flushright fragment gray900">"qu'est-ce que tu penses de..."</p>
+        <p class="flushright fragment gray800">"comment ferais-tu pour..."</p>
+        <p class="flushright fragment gray700">"je vais tester comme ça..."</p>
+        <aside class="notes">
+          - évite l'exclusion
+          - évite la gêne
+        </aside>
+      </section>
+      <section data-background="#d84315">
+        <h3><span class="step">5</span>Se synchroniser souvent et chercher l'approbation</h3>
+        <aside class="notes">
+          - donne une structure a la session : "on en est la..."
+          - évite les différences de phase
+          - évite d'oublier des trucs
+        </aside>
+      </section>
+      <section data-background="img/nwx/champagne-black-01.jpg">
+        <h3><span class="step">6</span>Célébrer</h3>
+        <aside class="notes">
+          - veuve cliquot seulement
+        </aside>
+      </section>
+      <section data-background="#d84315">
+        <h3><span class="step">7</span>Varier les paires, varier le temps de travail</h3>
+        <aside class="notes">
+          - paires : pour la raison ici-haut
+          - temps : très éprouvant en fonction tâche (parfois 2 heures suffisent)
+        </aside>
+      </section>
+      <section data-background="#d84315">
+        <h3><span class="step">8</span>Tourner souvent</h3>
+        <aside class="notes">
+          - exemple : ping-pong development
+        </aside>
+      </section>
+      <section data-background="#d84315">
+        <h3><span class="step">9</span>Faire des rétros sur la pratique</h3>
+        <aside class="notes">
+          - encore une fois, histoire de communication
+        </aside>
+      </section>
+      <section data-background="#d84315">
+        <h3><span class="step">10</span>Planifier les paires dans le temps</h3>
+        <aside class="notes">
+          - si on planifie les tâches, alors on planifie les paires, ça va
+          ensemble
+          - si agile / scrum / les définir lors du planning poker
+        </aside>
+      </section>
+      <section data-background="img/nwx/jello-black-01.jpeg">
+        <h3><span class="step">11</span>Donner un temps de "jello"</h3>
+        <aside class="notes">
+          - expliquer le jello
+          - un de mes favoris : pas facile avec tout le monde, parfois 1 minute
+          de jello, parfois 1 an
+          - au moins quelques heure, comme tout nouveau process attendez vous a
+          ce que ce soit pénible avant d'être efficace
+        </aside>
+      </section>
+      <section class="flushleft" data-background="#d84315">
+        <h2>Comme toute méthode, c'est avant tout une question de culture</h2>
+        <p class="fragment flushright gray900"><strong>ça se développe</strong></p>
+        <p class="fragment flushright gray900"><strong>ça se travaille</strong></p>
+        <p class="fragment flushright gray900"><strong>ça s'apprend</strong></p>
+        <aside class="notes">
+          - comparaison avec la revue de code
+        </aside>
+      </section>
+      <section class="flushright" data-background="#eeeeee">
+        <h1 class="indigo700">Programmation en binôme</h1>
+        <p class="fragment gray800"><strong class="deeporange900">Définition :
+        </strong>une vieille méthode de développement Agile efficace et
+        éprouvée dans laquelle deux développeurs travaillent ensemble sur un
+        même poste de travail. <strong class="fragment">C'est une culture qui
+        se développe, s'entretient et se célèbre.</strong></p>
+      </section>
+      <section data-background="img/nwx/chat-t-rex-black-01.jpg">
+        <h1 class="fragment" style="width:66%">Questions / réponses</h1>
+        <p class="fragment flushright"><strong>par T-Rex le chat</strong></p>
+      </section>
+      <!-- END -->
+      </div>
+    </div>
+    <script src="bower_components/reveal.js/lib/js/head.min.js"></script>
+    <script src="bower_components/reveal.js/js/reveal.js"></script>
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        embedded: true,
+
+        //theme: 'lesfurets', // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+  </body>
+</html>

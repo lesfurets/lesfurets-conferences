@@ -1,6 +1,62 @@
 /**
  * Theme for lesfurets.com
  *
+ * indigo
+ * indigo50:  #e8eaf6
+ * indigo100: #c5cae9
+ * indigo200: #9fa8da
+ * indigo300: #7986cb
+ * indigo400: #5c6bc0
+ * indigo500: #3f51b5
+ * indigo600: #3949ab
+ * indigo700: #303f9f
+ * indigo800: #283593
+ * indigo900: #1a237e -> lf
+ * indigoA100: #8c9eff
+ * indigoA200: #536dfe
+ * indigoA400: #3d5afe
+ * indigoA700: #304ffe
+ *
+ * orange 
+ * orange50: #fff3e0
+ * orange100: #ffe0b2
+ * orange200: #ffcc80
+ * orange300: #ffb74d
+ * orange400: #ffa726
+ * orange500: #ff9800
+ * orange600: #fb8c00
+ * orange700: #f57c00
+ * orange800: #ef6c00
+ * orange900: #e65100 -> lf
+ * orangeA100: #ffd180
+ * orangeA200: #ffab40
+ * orangeA400: #ff9100
+ * orangeA700: #ff6d00
+ *
+ * grey
+ * gray50 : #fafafa
+ * gray100: #f5f5f5
+ * gray200: #eeeeee
+ * gray300: #e0e0e0
+ * gray400: #bdbdbd
+ * gray500: #9e9e9e
+ * gray600: #757575
+ * gray700: #616161
+ * gray800: #424242
+ * gray900: #212121
+ *
+ * deep orange
+ * deeporange50 : #fbe9e7
+ * deeporange100: #ffccbc
+ * deeporange200: #ffab91
+ * deeporange300: #ff8a65
+ * deeporange400: #ff7043
+ * deeporange500: #ff5722
+ * deeporange600: #f4511e
+ * deeporange700: #e64a19
+ * deeporange800: #d84315
+ * deeporange900: #bf360c
+ *
  * orange #f07d00
  * blue #3335a2
  * medium blue #d1d2ff
@@ -11,10 +67,13 @@
  * GLOBAL STYLES
  *********************************************/
 body {
+  background-color: #1a237e;
+  /*
   background-color: #3335a2;
   background-image: url("../../img/bg-dots.png"), radial-gradient(circle 1000px at top center, #3439b3 40%, #161875 60%);
   background-image: url("../../img/bg-dots.png"), -webkit-radial-gradient(top center, circle 1000px, #3439b3 40%, #161875 60%);
   background-image: url("../../img/bg-dots.png"),radial-gradient(circle 1000px at top center, #3439b3 40%, #161875 60%);
+  */
 }
 
 .reveal {
@@ -43,6 +102,10 @@ body {
   color: white;
 }
 
+.reveal .white {
+  color: white;
+}
+
 /*********************************************
  * HEADERS
  *********************************************/
@@ -58,29 +121,15 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
   line-height: 0.9em;
-  text-transform: uppercase;
   text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2); 
 }
 
-.reveal h1 {
-  text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 20px 20px rgba(0, 0, 0, 0.15); 
+.reveal em {
+  font-style: italic;
 }
 
-.reveal h1.lower,
-.reveal h2.lower,
-.reveal h3.lower,
-.reveal h4.lower,
-.reveal h5.lower,
-.reveal h6.lower {
-  text-transform: lowercase;
-}
-
-.reveal h3 {
-  border-bottom: 1px solid #ff971c;
-  border-bottom: 1px solid #8e8ff4;
-  padding: 0 20px 20px 20px;
-  margin: 0 100px 10px 100px;
-  margin: 0 50px 10px 50px;
+.reveal strong {
+  font-weight: bold;
 }
 
 /*********************************************
@@ -96,39 +145,39 @@ body {
  *********************************************/
 
 .reveal p {
-  color: #d1d2ff;
+  /*color: #d1d2ff;*/
+  color: white;
   padding: 25px 100px;
   padding: 25px 0;
+  line-height: 1.25em;
 }
 
 /*********************************************
  * LISTS
  *********************************************/
 
-
-/*
 .reveal li {
-  color: #b3b4ff;
+  color: white;
   padding: 5px;
+  line-height: 2.5ex;
 }
 
 .reveal li:before {
+  color: #e65100;
   content: "•";
-  color: red;
+  font-size: 2em;
+  padding-bottom: 0.2em;
+  padding-right: 0.25em;
+  vertical-align: middle;
+  line-height: 0.75em;
 }
 
 .reveal ul {
-  list-style: none;
-}
-*/
-
-.reveal li {
-  color: #b3b4ff;
-  padding: 5px;
+  list-style-type: none;
 }
 
-.reveal ul {
-  list-style-type: circle;
+.reveal ul.nodisc li:before {
+  content: none;
 }
 
 /*********************************************
@@ -245,12 +294,15 @@ body {
 /*********************************************
  * SLIDE NUMBER
  *********************************************/
+
 .reveal .slide-number {
   color: #13daec; 
 }
+
 /*********************************************
  * FOOTER
  *********************************************/
+
 .footer {
   background-color: white;
   bottom: 0;
@@ -260,16 +312,20 @@ body {
   width: 100%;
   z-index: 1;
 }
+
 .footer .link {
   display: block;
 }
+
 .footer .logo {
   height: 40px;
 }
+
 .footer .github, .footer .twitter {
   color: #161875;
   text-decoration: none;
 }
+
 .footer a {
   font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
@@ -277,6 +333,31 @@ body {
   vertical-align: middle;
   margin-right: 50px;
 }
+
 .footer a:last-child {
   margin-right: 0;
+}
+
+/*********************************************
+ * CUSTOM STYLES
+ *********************************************/
+
+.reveal .flushleft {
+  text-align: left;
+}
+
+.reveal .flushleft > * {
+  text-align: left;
+}
+
+.reveal .flushright {
+  text-align: right;
+}
+
+.reveal .flushright > * {
+  text-align: right;
+}
+
+.reveal .small {
+  font-size: 0.75em;
 }
