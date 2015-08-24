@@ -5,6 +5,7 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 ## Conférences
 
 - [Toutes les conférences](https://lesfurets.github.io/lesfurets-conferences/)
+- 16 juin 2015 (anglais) : [Cassandra Days Paris 2015 - From 0 to Cassandra on AWS in 30 days - Tsunami alerting with Cassandra](https://lesfurets.github.io/lesfurets-conferences/cassandra-days-paris-from-0-to-cassandra-on-aws-in-30-days.pdf)
 - 10 avril 2015 (français) : [Devoxx France - Livrer chaque jour ce qui est prêt](https://lesfurets.github.io/lesfurets-conferences/continuous-delivery-agile-tour-rennes-2014.html)
 - 5 mars 2015 (français) : [BBL chez Viseo - Continuous Delivery chez LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/continuous-delivery-BBL-viseo.html)
 - 25 février 2015 (français) : [Continuous Delivery Meetup - Continuous Delivery chez LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/continuous-delivery-lean-kanban-france-2014.html)
