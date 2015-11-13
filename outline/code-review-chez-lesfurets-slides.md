@@ -4,6 +4,8 @@
 
 # Présentation LF
 
+- Pas de QA : on arrive a avoir un haut niveau de qualite grace a nos tests unitiares, nos tests d'integration, les inspections, la code review et le pair programming
+
 # Linus law
 
 "Given enough eyes, all bugs are shallow" - Linus Tolvalds
