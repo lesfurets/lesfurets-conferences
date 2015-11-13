@@ -2,6 +2,14 @@ Linus'' law : "Given enough eyes, all bugs are shallow"
 
 ## WHY
 
+Le Why, je le tournerai plus vers l'éducation / remise à niveau / enrichissement de l'équipe:
+
+- "Why recruit one 10x developper when you can build 10 of them" - LesFurets
+- Faire émerger l'architecture
+    - (adu ?) L'injection de dépendances emerge des tests
+    - (adu ?) L'assignation rôles/responsabilités emerge de refactorings
+    - Tout ceci ne peut prendre tout son sens qu'en prenant du recul, et la code review est un bon moment pour ca, au delà du pair
+
 Impact favorable sur : la qualité / la communicatoin / le savoir / la documentation / le projet
 
 - Détection rapide de bugs (qualité)
@@ -31,6 +39,12 @@ Impact favorable sur : la qualité / la communicatoin / le savoir / la documenta
 Varie en fonction de la nature du code (entre 1 relecteur et oo)
 
 - Développeur
+    - Des devs expérimentés fonctionnellement pour les morceaux de code à valeur business ajoutée
+    - Des devs expérimentés techniquement pour des morceaux à valeur architecturale ajoutée
+    - Des devs débutants pour apprendre de nouvelles choses
+    - Une paire "expérimenté/débutant" pour former, éduquer
+    - Une paire "dev fonctionnel / dev procédural" pour former, éduquer, l'un ou l'autre ou les deux
+    - Toutes les paires sont intéressantes dans leur contexte, et apportent des éléments différents
 - Relecteur(s)
     - Les relecteurs n'ont pas travaillés sur le code, et n'ont pas été copilotes (s'il y a développement en binôme)
     - Le nombre de relecteur dépend la criticité du code (fonction de la taille et de l'importance du code)
@@ -77,23 +91,16 @@ Relire ligne par ligne
     - Noter les consensus dans un "guide de style"
 - Commencer a relire et faire relire a l'extérieur de l'équipe
 
+## TOOLING
+
+- La code review ça peut se faire sur un bout de papier
+- L'important c'est la culture de la code review, la discussion qui l'entoure, la relecture, etc.
+
 ## EXAMPLES / LIVE REVIEW
 
 - Hearthbleed bug : code not tested (but reviewed)
 - Goto fail bug : code not tested
 - TODO avoir du live review tout au long de la présentation ?
-
-## PITFALLS
-
-- Gold-plating
-- Infinite loop
-
-## SOURCES
-
-- http://martinfowler.com/articles/testing-culture.html
-
-We all have knowledge we take for granted, and we often don't realize that it may not be obvious to other people. In the process of making the code understandable by the reviewer, the author is often forced to spell out his assumptions and make the code's intent more obvious. Also, it increases the motiviation to "do things right" given the knowledge that your peers will actually see the code and comment on it openly. This improves code quality and sometimes exposes bugs.
-
 - why style matters ?
 
         if ((err = ReadyHash(&SSLHashSHA1, &hashCtx)) != 0)
@@ -108,46 +115,27 @@ We all have knowledge we take for granted, and we often don't realize that it ma
         if ((err = SSLHashSHA1.final(&hashCtx, &hashOut)) != 0)
             goto fail;
 
-- https://en.wikipedia.org/wiki/Code_smell / https://en.wikipedia.org/wiki/Anti-pattern
+## PITFALLS
 
-## MBO
-
-Ok, y'a pas mal de choses que j'avais envie de voir. Par contre, j'étais bien orienté sur le Who:
-
-- Des devs expérimentés fonctionnellement pour les morceaux de code à valeur business ajoutée
-- Des devs expérimentés techniquement pour des morceaux à valeur architecturale ajoutée
-- Des devs débutants pour apprendre de nouvelles choses
-- Une paire "expérimenté/débutant" pour former, éduquer
-- Une paire "dev fonctionnel / dev procédural" pour former, éduquer, l'un ou l'autre ou les deux
-
-Le Why, je le tournerai plus vers l'éducation / remise à niveau / enrichissement de l'équipe:
-
-- "Why buy one 10x developper when you can build 10 of them" (c'est de moi..)
-- Faire émerger l'architecture
-    - L'injection de dépendances emerge des tests
-    - L'assignation rôles/responsabilités emerge de refactorings
-    - Tout ceci ne peut prendre tout son sens qu'en prenant du recul, et la code review est un bon moment pour ca, au delà du pair
-
-Et je ferai bien aussi un "Dont":
+- Gold-plating
+- Infinite loop
 
 - Ne pas faire de "shame parade" (prendre un dev malheureux, et montrer son bout de code fautif dans une salle devant tout le monde. ceci n'est pas de la code review, et ce n'est pas bon)
 - Ne pas faire de "code réunion" (genre prendre un maximum de gens et passer un maximum de temps a regarder un petit bout de code parce qu'il est critique. s'il est si critique, alors il est petit et testable) (et puis le viol en réunion est une circonstance aggravante)
 - Ne pas faire de code review a l'oral, mais prendre des notes, expliquer pourquoi ca nous questionne, pourquoi on n'est pas d'accord, ne serais-ce que pour avoir une référence au moment de corriger, ou de laisser tomber
 - Je sais pas si tu as d'autres idées de "Don't"
 
-## ADU
+## SOURCES
 
-Pour le don't y'a ma section pitfall :
+- http://martinfowler.com/articles/testing-culture.html
 
-- Gold-plating : trop pointilleux sur la code review
-- Infinite loop : retours sur les retours, ou ça en fini plus et y'a rien qui sort
+We all have knowledge we take for granted, and we often don't realize that it may not be obvious to other people. In the process of making the code understandable by the reviewer, the author is often forced to spell out his assumptions and make the code's intent more obvious. Also, it increases the motiviation to "do things right" given the knowledge that your peers will actually see the code and comment on it openly. This improves code quality and sometimes exposes bugs.
 
-On ne parle pas du tout des outils (et c'est bien), mais ce serait bien de dire pourquoi on ne parle pas des outils :
+- https://en.wikipedia.org/wiki/Code_smell / https://en.wikipedia.org/wiki/Anti-pattern
 
-- La code review ça peut se faire sur un bout de papier
-- L'important c'est la culture de la code review, la discussion qui l'entoure, la relecture, etc.
-- etc.
+- find good books ?
 
 ## TWITTER
 
 https://twitter.com/neonleif/status/661451757730557953
+
