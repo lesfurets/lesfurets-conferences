@@ -2,6 +2,14 @@
 
 # Présentation adu / mbo
 
+# Contenu
+
+- Why
+- Who
+- What
+- How
+- Don't
+
 # Présentation LF
 
 - Pas de QA : on arrive a avoir un haut niveau de qualite grace a nos tests unitiares, nos tests d'integration, les inspections, la code review et le pair programming
@@ -11,6 +19,10 @@
 "Given enough eyes, all bugs are shallow" - Linus Tolvalds
 
 # WHY
+
+## Why : Resume
+
+"Contruction d'une equipe qui discute sur la qualité. On cherche a creer une culture d'artisants du code (software craftmans)."
 
 ## Why : Construction d'une équipe
 
@@ -32,11 +44,11 @@
 - Intentions explicites
 - Donner sens aux métriques
 
-## Why : Resume
-
-"Contruction d'une equipe qui discute sur la qualité. On cherche a creer une culture d'artisants du code (software craftmans)."
-
 # WHO
+
+## Who : Sommaire
+
+"On cherche a créer une connaissance commune, l'affectation du relecteur n'est pas anodine."
 
 ## Who : Relecteurs
 
@@ -53,14 +65,10 @@
 ## Who : Regles du jeu
 
 - Les relecteurs n'ont pas travaillé sur le code
-- Le nombre dépend de la critité du code
+- Le nombre dépend de la criticité du code
 - Relecteur sélectionnés selon la méthodologie de travail
 - Parfois relecteur désigé par le développeur
 - Parfois relecteur externe a l'equipe
-
-## Who : Sommaire
-
-"On cherche a créer une connaissance commune, l'affectation du relecteur n'est pas anodine."
 
 # WHAT
 

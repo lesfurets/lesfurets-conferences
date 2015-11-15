@@ -98,6 +98,10 @@ body {
   text-decoration: underline;
 }
 
+.strong {
+  font-weight: bold;
+}
+
 .reveal em {
   color: white;
 }

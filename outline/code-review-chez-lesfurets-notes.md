@@ -23,6 +23,10 @@
 - Amène a l'identification (implicite ou explicite) de code smells / anti-pattern spécifiques a l'application
 - Rédaction d'un style guide commun : base pour l'argumentation
 
+## Why : Code style
+
+- TODO
+
 ## Why : Qualité
 
 - Plus a même d'écrire du bon code si on sait qu'il sera relu / parler du concept de "auto code review"
@@ -63,6 +67,10 @@
 "On cherche a éduquer et coacher, l'affectation du relecteur n'est pas anodine."
 
 # WHAT
+
+## What : Resume
+
+"Chaque ligne de code incomprise est une ligne de code ajoutant de la dette technique."
 
 ## What : Tests unitaires
 
@@ -105,11 +113,11 @@ if ((err = SSLHashSHA1.final(&hashCtx, &hashOut)) != 0)
 - Expliquer que c'est un bug present pendant plusieurs mois dans iOS
 - TODO trouver source 
 
-## What : Resume
-
-"Chaque ligne de code incomprise est une ligne de code ajoutant de la dette technique."
-
 # HOW
+
+# How : Resume
+
+"Commencer avec un "crime partner", puis discuter de la discussion issue de la revue de code, pour donner du recul. Étendre graduellement."
 
 # How : Comment procéder ?
 
@@ -128,11 +136,11 @@ if ((err = SSLHashSHA1.final(&hashCtx, &hashOut)) != 0)
 - La code review ça peut (presque) se faire sur un bout de papier
 - L'important c'est la culture de la code review, la discussion qui l'entoure, la relecture, etc.
 
-# How : Resume
-
-"Commencer avec un "crime partner", puis discuter de la discussion issue de la revue de code, pour donner du recul. Étendre graduellement."
-
 # DONT
+
+# Don't : Resume
+
+"Se concentrer sur le "quoi" et non sur le "qui" est a la base du partage de connaissance"
 
 # Don't : shame
 
@@ -140,10 +148,6 @@ if ((err = SSLHashSHA1.final(&hashCtx, &hashOut)) != 0)
 - Ne pas faire de "code réunion" (genre prendre un maximum de gens et passer un maximum de temps a regarder un petit bout de code parce qu'il est critique. s'il est si critique, alors il est petit et testable) (et puis le viol en réunion est une circonstance aggravante)
 - Ne pas faire de code review a l'oral, mais prendre des notes, expliquer pourquoi ca nous questionne, pourquoi on n'est pas d'accord, ne serais-ce que pour avoir une référence au moment de corriger, ou de laisser tomber
 - Ne pas passer trop de temps a le faire, ni passer des revues sur des revues qui ne terminent plus, c'est deja assez chronophage : rester pragmatique 
-
-# Don't : Resume
-
-"Se concentrer sur le "quoi" et non sur le "qui" est a la base du partage de connaissance"
 
 # OPENING
 
