@@ -335,3 +335,14 @@
   font-weight: bold;
   color: red;
 }
+
+
+.speaker-mode .footer,
+.speaker-mode .footer {
+  display: none;
+}
+
+.reveal th,
+.reveal td {
+  border: 3px solid #fafafa;
+}
