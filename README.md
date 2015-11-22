@@ -5,12 +5,20 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 ## Conférences
 
 - [Toutes les conférences](https://lesfurets.github.io/lesfurets-conferences/)
-- 10 avril 2015 (français) : [Devoxx France - Livrer chaque jour ce qui est prêt](https://lesfurets.github.io/lesfurets-conferences/continuous-delivery-agile-tour-rennes-2014.html)
-- 5 mars 2015 (français) : [BBL chez Viseo - Continuous Delivery chez LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/continuous-delivery-BBL-viseo.html)
-- 25 février 2015 (français) : [Continuous Delivery Meetup - Continuous Delivery chez LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/continuous-delivery-lean-kanban-france-2014.html)
-- 1 novembre 2014 (français) : [LeanKanban France 2014 - Continuous Delivery chez LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/continuous-delivery-lean-kanban-france-2014.html)
-- 1 octobre 2014 (anglais) : [Agile Cambrige 2014 - Continuous Delivery the french way](https://lesfurets.github.io/lesfurets-conferences/continuous-delivery-agile-cambridge-2014.html)
-- 1 octobre 2014 (français) : [AgileTour Rennes 2014 - Continuous Delivery chez LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/continuous-delivery-agile-tour-rennes-2014.html)
+
+### Continuous delivery
+
+- 10 avril 2015 (fr) : [Devoxx France - Livrer chaque jour ce qui est prêt](https://lesfurets.github.io/lesfurets-conferences/continuous-delivery-agile-tour-rennes-2014.html)
+- 5 mars 2015 (fr) : [BBL chez Viseo - Continuous Delivery chez LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/continuous-delivery-BBL-viseo.html)
+- 25 février 2015 (fr) : [Continuous Delivery Meetup - Continuous Delivery chez LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/continuous-delivery-lean-kanban-france-2014.html)
+- 1 novembre 2014 (fr) : [LeanKanban France 2014 - Continuous Delivery chez LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/continuous-delivery-lean-kanban-france-2014.html)
+- 1 octobre 2014 (en) : [Agile Cambrige 2014 - Continuous Delivery the french way](https://lesfurets.github.io/lesfurets-conferences/continuous-delivery-agile-cambridge-2014.html)
+- 1 octobre 2014 (fr) : [AgileTour Rennes 2014 - Continuous Delivery chez LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/continuous-delivery-agile-tour-rennes-2014.html)
+
+### Software craftmanship
+
+- 26 novembre 2015 (fr) : [Codeurs en Seines Rennes - Code review chez LesFurets.com](https://dubreuia.github.io/lesfurets-conferences/code-review-chez-lesfurets.html)
+- 25 juin 2015 (en) : [NWX Summer Festival Rennes - Pair programming chez LesFurets.com](https://dubreuia.github.io/lesfurets-conferences/pair-programming-chez-lesfurets.html)
 
 ## Vidéos
 
