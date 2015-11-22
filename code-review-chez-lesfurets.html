@@ -42,20 +42,20 @@
         <h3 class="fragment">Tech lead équipe panel assureur</h3>
         <ul class="flushright nodisc">
           <li class="fragment">
-            <a href="https://twitter.com/dubreuia">https://twitter.com/dubreuia</a>
+            <a style="color:white" href="https://twitter.com/dubreuia">https://twitter.com/dubreuia</a>
           </li>
           <li class="fragment">
-            <a href="https://github.com/dubreuia">https://github.com/dubreuia</a>
+            <a style="color:white" href="https://github.com/dubreuia">https://github.com/dubreuia</a>
           </li>
         </ul>
         <h2>Mathieu Bolla</h2>
         <h3 class="fragment">Développeur backend équipe panel assureur</h3>
         <ul class="flushright nodisc">
           <li class="fragment">
-            <a href="https://twitter.com/TODO">https://twitter.com/mathieubolla</a>
+            <a style="color:white" href="https://twitter.com/mathieubolla">https://twitter.com/mathieubolla</a>
           </li>
           <li class="fragment">
-            <a href="https://github.com/TODO">https://github.com/mathieubolla</a>
+            <a style="color:white" href="https://github.com/mathieubolla">https://github.com/mathieubolla</a>
           </li>
         </ul>
       </section>
@@ -99,7 +99,7 @@
 
       <section class="flushright" data-background="#eeeeee">
         <h2 class="gray800"><strong>WHY</strong></h2>
-        <p class="gray800"><strong class="gray600">Notre définition du pourquoi :</strong> "Construction d'une équipe qui discute sur la qualité. On cherche à créer une culture d'artisants du code (software craftmans)."</p>
+        <p class="gray800"><strong class="gray600">Notre définition du pourquoi :</strong> "Construction d'une équipe qui discute sur la qualité. On cherche à créer une culture d'artisans du code (software craftsmanship)."</p>
       </section>
 
       <section class="flushleft">
@@ -110,32 +110,40 @@
         <p class="fragment">Démarre la conversation sur le code</p>
         <p class="fragment">Moyen de prendre du recul</p>
         <aside class="notes">
-          <p>Permet le partage de connaissance, à la fois en explication et en compréhension</p>
-          <p>Apprendre de nouvelles manière de faire les choses</p>
-          <p>Permet souvent de démarrer la conversation sur certaines parties du code / nouveau code / code legacy</p>
-          <p>Tout ceci ne peut prendre tout son sens qu'en prenant du recul, et la code review est un bon moment pour ca, au delà du pair</p>
+          <p>Partage de connaissance : à la fois en explication et en compréhension</p>
+          <p>Apprentissage : apprendre de nouvelles fonctionnalités d'un langage, d'une API, de nouvelles manières de tester, de nouveau algorithmes, etc.</p>
+          <p>Conversation : souvent obligé de discuter sur les retours, permet de se mettre d'accord et de voir les opinions communes et les opinions divergeantes</p>
+          <p>Recul : bon moment pour prendre du recul, au delà de la programmation en binome</p>
+        </aside>
+      </section>
+
+      <section data-background="#bf360c">
+        <h2><strong>"Quand on commence a construire une équipe"</strong></h2>
+        <img style="width:33%" class="fragment" src="img/code-review/construction-equipe-01.gif">
+        <aside class="notes">
         </aside>
       </section>
 
       <section class="flushleft">
-        <!-- TODO add background documentation image -->
         <h2 class="flushright"><strong>Documentation (implicite ou explicite)</strong></h2>
         <p class="fragment">Forme de documentation commune</p>
-        <p class="fragment">Identification des code smells</p>
+        <p class="fragment">Identification des "code smell"</p>
         <p class="fragment">Base d'argumentaire (style guide)</p>
         <aside class="notes">
-          <p>La code review est une forme de documentation commune (explicite ou explicite) : donne des choix, des code smell, des pitfalls, etc.</p>
-          <p>Amène a l'identification (implicite ou explicite) de code smells / anti-pattern spécifiques a l'application</p>
-          <p>Rédaction d'un style guide commun : base pour l'argumentation</p>
+          <p>Documentation commune : documente des choix ("je pense que tu devrais renommer cette méthode", "non parce que..."), des code smell (en les explicitant et en les listant), etc.</p>
+          <p>Code smell : certaines structures problématiques dans le code qui pourraient indiquer un problème plus important</p>
+          <p>Code smell (voir plus tard) : source de dette technique si non traité</p>
+          <p>Style guide : rédaction explicite d'un style guide commun qui est base pour l'argumentation, et qui permet d'éviter les conversations interminables sur des détails (placement des espaces, utilisation des accolades)</p>
+          <p>Style guide : ces choix sont importants (voir plus tard), mais il n'est pas nécessaire d'en discuter a chaque review</p>
         </aside>
       </section>
 
       <section class="flushleft">
         <h2 class="flushright"><strong>Code style</strong></h2>
-        <p class="fragment flushright">Idéalement automatique : <a class="strong gray900" href="https://github.com/dubreuia/intellij-plugin-save-actions">Intellij Save Action Plugin</a></p>
+        <p class="fragment flushright">Idéalement automatique : <a class="strong" href="https://github.com/dubreuia/intellij-plugin-save-actions">Intellij Save Action Plugin</a></p>
         <img class="fragment center" style="width:66%" src="img/code-review/code-style-01.png">
         <aside class="notes">
-            TODO
+          <p>Le code style devrait être un non-sujet, la meilleure manière de s'en assurer est que ce soit automatique</p>
         </aside>
       </section>
 
@@ -146,31 +154,31 @@
         <p class="fragment">Intentions explicites</p>
         <p class="fragment">Donner sens aux métriques</p>
         <aside class="notes">
-          <p>Plus a même d'écrire du bon code si on sait qu'il sera relu / parler du concept de "auto code review"</p>
-          <p>Les intentions doivent être explicites : si le développeur doit expliquer le code, c'est souvent parce qu'il n'est pas explicite</p>
-          <p>Donner du sens aux métriques qualités qui sont souvent peu utilisée : nombre de tests / couverture de tests / nombre d'erreurs / temps de correction des erreurs / root cause</p>
+          <p>Auto code review : plus a même d'écrire du bon code si on sait qu'il sera relu</p>
+          <p>Intentions explicites : si le développeur doit expliquer le code au relecteur, c'est souvent parce qu'il n'est pas suffisament explicite</p>
+          <p>Métriques : les métriques qualités sont souvent peu utilisées, mais servent de bonne base pour démarrer une code review (nombre de tests / couverture de tests / complexité)</p>
         </aside>
       </section>
 
       <section class="flushright" data-background="#eeeeee">
         <h2 class="gray800"><strong>WHO</strong></h2>
-        <p class="gray800"><strong class="gray600">Notre définition du qui :</strong> "On cherche a créer une connaissance commune, l'affectation du relecteur n'est pas anodine."</p>
+        <p class="gray800"><strong class="gray600">Notre définition du qui :</strong> "Si on cherche a créer une connaissance commune, toute affectation de relecteur est pertinante. Si on cherche a trouver des erreurs, certains relecteurs sont plus pertinants que d'autres."</p>
       </section>
 
-      <section class="flushleft">
-        <h2 class="flushright"><strong>WHO sont les devs?</strong></h2>
-        <p class="fragment">Hervé, le champion<img src="img/herve.png" width="45em"/></p>
-        <p class="fragment"><img src="img/francois.png" width="45em"/>François, le vieux de la vieille</p>
-        <p class="fragment">Oleg, fraichement sorti de l'oeuf<img src="img/oleg.png" width="45em"/></p>
+      <section class="">
+        <h2 class="flushright"><strong>Nos développeurs vedettes</strong></h2>
+        <p class="fragment person"><span><img class="photo" src="img/code-review/herve.png"><span class="name">Hervé</span><span class="description">Le champion</span></span></span></p>
+        <p class="fragment person"><span><img class="photo" src="img/code-review/francois.png"><span class="name">François</span><span class="description">Le vieux de la vieille</span></span></span></p>
+        <p class="fragment person"><span><img class="photo" src="img/code-review/oleg.png"><span class="name">Oleg</span><span class="description">Fraichement sorti de l'oeuf</span></span></span></p>
         <aside class="notes">
-          <p>Hervé: Expert technique, praticien artiste, mais parfois loin du fonctionnel, et un peu trop confiant</p>
-          <p>François: Expert métier, connais toutes les ficelles du métier, mais codeur à l'ancienne, parfois un peu rude</p>
-          <p>Oleg: Le junior, rempli d'envie d'apprendre, mais n'a pas encore les reflexes, parfois un peu hésitant</p>
+          <p>Hervé : Expert technique, praticien artiste, mais parfois loin du fonctionnel, et un peu trop confiant</p>
+          <p>François : Expert métier, connais toutes les ficelles du métier, mais codeur à l'ancienne, parfois un peu rude</p>
+          <p>Oleg : Le junior, rempli d'envie d'apprendre, mais n'a pas encore les reflexes, parfois un peu hésitant</p>
         </aside>
       </section>
 
-      <section class="flushleft">
-        <h2 class="flushright"><strong>Le combo gagnant</strong></h2>
+      <section class="flushleft" data-background="#212121">
+        <h2><strong>Le combo gagnant</strong></h2>
         <table>
           <tr><th>Relis/Code</th><th>Hervé</th><th>François</th><th>Oleg</th></tr>
           <tr><th>Hervé</th><td>_</td><td>_</td><td>_</td></tr>
@@ -184,13 +192,13 @@
         </aside>
       </section>
 
-      <section class="flushleft">
-        <h2 class="flushright"><strong>Le combo gagnant</strong></h2>
+      <section class="flushleft" data-background="#212121">
+        <h2><strong>Le combo gagnant</strong></h2>
         <table>
           <tr><th>Relis/Code</th><th>Hervé</th><th>François</th><th>Oleg</th></tr>
-          <tr><th>Hervé</th><td></td><td><img class="nope fragment" src="img/ok.png"></td><td><img class="nope fragment" src="img/ok.png"></td></tr>
-          <tr><th>François</th><td><img class="nope fragment" src="img/ok.png"></td><td></td><td><img class="nope fragment" src="img/ok.png"></td></tr>
-          <tr><th>Oleg</th><td><img class="nope fragment" src="img/ok.png"></td><td><img class="nope fragment" src="img/ok.png"></td><td></td></tr>
+          <tr><th>Hervé</th><td></td><td><img class="nope fragment" src="img/code-review/ok-02.png"></td><td><img class="nope fragment" src="img/code-review/ok-02.png"></td></tr>
+          <tr><th>François</th><td><img class="nope fragment" src="img/code-review/ok-02.png"></td><td></td><td><img class="nope fragment" src="img/code-review/ok-02.png"></td></tr>
+          <tr><th>Oleg</th><td><img class="nope fragment" src="img/code-review/ok-02.png"></td><td><img class="nope fragment" src="img/code-review/ok-02.png"></td><td></td></tr>
         </table>
         </p>
         <aside class="notes">
@@ -206,8 +214,8 @@
         <p class="fragment">Code technique (sécurité, performance...)</p>
         <p class="fragment">Architecture</p>
         <aside class="notes">
-          <p>Des développeurs expérimentés fonctionnellement pour les morceaux de code à valeur business ajoutée</p>
-          <p>Des développeurs expérimentés techniquement pour des morceaux à valeur architecturale ajoutée</p>
+          <p>Des relecteurs expérimentés fonctionnellement pour les morceaux de code à valeur business ajoutée</p>
+          <p>Des relecteurs expérimentés techniquement pour des morceaux à valeur architecturale ajoutée</p>
           <p>Des débutants pour relire un peu tout et être garants de la simplicité de lecture, facilité d'accès</p>
         </aside>
       </section>
@@ -220,27 +228,36 @@
         <p class="fragment">Les paires apportent des bénéfices différents</p>
         <p class="fragment">Garder le "coaching" a l'esprit</p>
         <aside class="notes">
-          <p>Une paire "expérimenté/débutant" pour former, éduquer</p>
+          <p>Une paire "expérimenté / débutant" pour former, éduquer</p>
           <p>Une paire "dev fonctionnel / dev procédural" pour former, éduquer, l'un ou l'autre ou les deux</p>
           <p>Toutes les paires sont intéressantes dans leur contexte, et apportent des éléments différents</p>
+          <p>Coaching : on cherche a créer une équipe d'artisans du code, on veut faire monter le niveau de tout le monde</p>
         </aside>
       </section>
 
       <section class="flushleft">
         <!-- TODO add a link to the pair prog conf -->
-        <h2 class="flushright"><strong>Règles du jeu</strong></h2>
+        <h2 class="flushright"><strong>Règles du jeu obligatoires</strong></h2>
         <p class="fragment">Les relecteurs n'ont pas travaillé sur le code</p>
         <p class="fragment">Le nombre dépend de la criticité du code</p>
-        <p class="fragment">Relecteur sélectionnés selon la méthodologie de travail</p>
-        <p class="fragment">Parfois relecteur désigé par le développeur</p>
-        <p class="fragment">Parfois relecteur externe a l'equipe</p>
+        <p class="fragment">Relecteurs sélectionnés selon la méthodologie de travail</p>
         <aside class="notes">
-          <p>Les relecteurs n'ont pas travaillés sur le code, et n'ont pas été copilotes (s'il y a développement en binôme)</p>
-          <p>Le nombre de relecteur dépend la criticité du code (fonction de la taille et de l'importance du code)</p>
-          <p>Les relecteurs sont sélectionnés selon la méthodologie de travail (en Agile lors du planning, en Kanban lorsque quelqu'un se libère, etc.)</p>
-          <p>Dans certains cas, un relecteur peut être désigné par le développeur (s'il est expert d'un sujet par exemple)</p>
-          <p>Dans certains cas, un relecteur peut être a l'extérieur de l'équipe (idem)</p>
-          <p>S'il y a relecteur désigné, il doit y avoir un relecteur choisi "normalement"</p>
+          <p>Affectation du relecteur : pas travaillés sur le code de près ou de loin, et n'ont pas été copilotes (s'il y a développement en binôme)</p>
+          <p>Nombre de relecteur : le nombre de relecteur dépend la criticité du code (pour définir la criticité du code : fonction de la taille, de la qualité actuelle et de l'importance du code)</p>
+          <p>Sélection du relecteur : les relecteurs sont sélectionnés selon la méthodologie de travail (en Agile lors du planning en début de sprint, en Kanban lorsque quelqu'un se libère, etc.)</p>
+          <p>A noter que ça peut rentrer en conflit avec certaines méthodologies, par exemple en kanban ce ne sera pas toujours la prochaine personne de libre, si par exemple cette personne a été en binome avec le développeur</p>
+        </aside>
+      </section>
+
+      <section class="flushleft">
+        <!-- TODO add a link to the pair prog conf -->
+        <h2 class="flushright"><strong>Règles du jeu optionnelles</strong></h2>
+        <p class="fragment">Relecteur désigé par le développeur</p>
+        <p class="fragment">Relecteur externe a l'equipe</p>
+        <aside class="notes">
+          <p>Désigné par le développeur : s'il est expert d'un sujet, si c'est un bout de code a mi-chemin entre 2 équipes, etc.</p>
+          <p>Externe a l'équipe : mêmes raions</p>
+          <p>S'il y a relecteur désigné, il doit y avoir un relecteur choisi "normalement" aussi</p>
         </aside>
       </section>
 
@@ -254,38 +271,91 @@
         <p class="fragment">Tests unitaires nécessaires</p>
         <p class="fragment">Donne le domaine métier du code</p>
         <p class="fragment">Permet de vérifier la couverture</p>
+        <p class="fragment">Nouvelles lignes et lignes modifiées</p>
         <aside class="notes">
-          <p>Il n'y a pas de revue de code sans tests unitaires : donne la compréhension nécessaire pour le relecteur</p>
-          <p>Permet au relecteur de savoir rapidement s'il manque des cas (et en suggérer de nouveaux)</p>
-          <p>La revue de code ne trouve pas les mêmes problèmes que les tests unitaires (et inversement)</p>
-          <p>Vérifier la couverture de test pour le nouveau code et le code modifié</p>
+          <p>Tests unitaires : nécessaires (sauf cas de non testabilité), ils donnent la compréhension nécessaire pour le relecteur qui ne connais pas le code avant d'avoir commencé</p>
+          <p>Domaine métier : permet au relecteur de savoir rapidement s'il manque des cas d'usage (et en suggérer de nouveaux) et si le domaine métier est respecté</p>
+          <p>La revue de code ne trouve pas les mêmes problèmes que les tests unitaires (et inversement), tout comme la revue de code ne sert pas les mêmes intérêts que la programmation en binome</p>
+          <p>Couverture : se baser sur les métriques de couverture, pour le nouveau code et pour le code modifié</p>
+          <p>Lignes modifiées : permet parfois d'ajouter des tests sur du code legacy, parfois c'est impossible, mais la démarche augmente la qualité du code légacy</p>
         </aside>
       </section>
 
       <section class="flushleft">
         <h2 class="flushright"><strong>Compréhension</strong></h2>
-        <p class="fragment">Relire toutes les lignes</p>
+        <p class="fragment">Relire toutes les lignes ajoutés ou modifiées</p>
         <p class="fragment">Explications sur les lignes incompréhensibles</p>
         <p class="fragment">Refactoring et retours basés sur les incompréhensions</p>
         <aside class="notes">
-          <p>Relire toutes les lignes</p>
-          <p>Toute ligne incomprehensible / difficile a comprendre, c'est un probleme</p>
-          <p>Demander au developpeur d'expliquer les parties difficiles a comprendre </p>
-          <p>Ensuite les refactorer basé sur ces commentaires</p>
+          <p>Toutes les lignes : pour accentuer le trait, chaque charactère, dans la mesure du possible</p>
+          <p>Explication : toute ligne incomprehensible ou difficile a comprendre, c'est de la dette technique qu'on laisse passer, demander au developpeur d'expliquer les parties difficiles a comprendre (discussion autour du code)</p>
+          <p>Refactoring : ensuite refactorer ces lignes en fonction des échanges</p>
+        </aside>
+      </section>
+
+      <section data-background="#bf360c">
+        <h2><strong>"Quand j'y comprend rien"</strong></h2>
+        <img style="width:33%" class="fragment" src="img/code-review/incomprehension-01.gif">
+        <aside class="notes">
         </aside>
       </section>
 
       <section class="flushleft">
-        <!-- TODO add examples of code smells and anti patterns -->
-        <h2 class="flushright"><strong>Anti-pattern et code smells</strong></h2>
-        <p class="fragment">Facile a détecter</p>
-        <p class="fragment">Cache souvent des problèmes plus graves</p>
-        <p class="fragment">TODO ...</p>
+        <h2 class="flushright"><strong>Anti-pattern et code smell</strong></h2>
+        <p class="fragment">Facile de les lister et de les repérer</p>
+        <p class="fragment">Automatisation (partielle) possible</p>
+        <p class="fragment">Cachent des problèmes plus graves</p>
+        <aside class="notes">
+          <p>Lister : facile ensuite s'entraîner a les détecter rapidement, et permet de les documenter</p>
+          <p>Automatisation : certains sont détectables par analyse statique (via checkstyle, pmd, findbugs, etc.)</p>
+          <p>Possible de définir des code smell spécifique a votre équipe ou a votre application</p>
+        </aside>
+      </section>
+
+      <section class="flushleft">
+        <h2 class="flushright"><strong>Exemples de code smell</strong></h2>
+        <p>
+          <ul class="fragment">
+            <li class="fragment">Code dupliqué</li>
+            <li class="fragment">God object</li>
+            <li class="fragment">Trop de paramètres</li>
+            <li class="fragment">...</li>
+            <li class="fragment">Martin, Robert C. (2009). "17: Smells and Heuristics". Clean Code: A Handbook of Agile Software Craftsmanship. <p>
+          </ul>
+        </p>
         <aside class="notes">
           <p>Facile de s'entraîner a les détecter rapidement</p>
-          <p>Cachent souvent des problèmes plus graves </p>
-          <p>Code dupliqué / réécriture d'une librairie existante</p>
-          <p>Non respect du style</p>
+          <p>Possible de définir des code smell spécifique a votre équipe ou a votre application</p>
+          <p>Code dupliqué : peut cacher des problèmes de design ou la réutilisation de code est difficile voir impossible</p>
+          <p>God object : un objet devenu trop gros, qui contient beaucoup de responsabilité, ou qui contrôle beaucoup d'autres objets</p>
+          <p>Trop de paramètres : une méthodes qui prendre trop d'arguments en entrée</p>
+        </aside>
+      </section>
+
+      <section class="flushleft" data-background="#212121">
+        <h2 class="flushright"><strong>Quizz : cherchez l'erreur</strong></h2>
+        <p class="code">if ((err = ReadyHash(&SSLHashSHA1, &hashCtx)) != 0) <span class="fragment code highlight">{</span></p>
+        <p class="code">&nbsp;&nbsp;&nbsp;&nbsp;goto fail;</p>
+        <p class="fragment code highlight">}</p>
+        <p class="code">if ((err = SSLHashSHA1.update(&hashCtx, &clientRandom)) != 0) <span class="fragment code highlight">{</span></p>
+        <p class="code">&nbsp;&nbsp;&nbsp;&nbsp;goto fail;</p>
+        <p class="fragment code highlight">}</p>
+        <p class="code">if ((err = SSLHashSHA1.update(&hashCtx, &serverRandom)) != 0) <span class="fragment code highlight">{</span></p>
+        <p class="code">&nbsp;&nbsp;&nbsp;&nbsp;goto fail;</p>
+        <p class="fragment code highlight">}</p>
+        <p class="code">if ((err = SSLHashSHA1.update(&hashCtx, &signedParams)) != 0) <span class="fragment code highlight">{</span></p>
+        <p class="code">&nbsp;&nbsp;&nbsp;&nbsp;goto fail;</p>
+        <p class="fragment code highlight">}</p>
+        <p class="code">&nbsp;&nbsp;&nbsp;&nbsp;goto fail;</p>
+        <p class="code">if ((err = SSLHashSHA1.final(&hashCtx, &hashOut)) != 0) <span class="fragment code highlight">{</span></p>
+        <p class="code">&nbsp;&nbsp;&nbsp;&nbsp;goto fail;</p>
+        <p class="fragment code highlight">}</p>
+        <p class="fragment">Apple's "goto fail" bug : <a style="color:white;" href="web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-1266">CVE-2014-1266</a></p>
+        <aside class="notes">
+          <p>Importance du style guide : pour le relecteur (pour ne pas s'en soucier) et pour le développeur (pour palier aux lacunes du langage)</p>
+          <p>Bug introduit avec iOS 7.0 et OS X Mavericks en 2012 sur les iPhones, iPads, AppleTVs</p>
+          <p>Fixé en février 2014 (17 mois plus tard)</p>
+          <p>Permettait une attaque du type "man-in-the-middle"</p>
         </aside>
       </section>
 
@@ -300,16 +370,16 @@
       </section>
 
       <section class="flushleft">
-        <h2 class="flushright"><strong>La recette de mémé relectrice</strong></h2>
+        <h2 class="flushright"><strong>La recette de Gandhi</strong></h2>
         <p class="fragment">Trouver un "partenaire de crime"</p>
         <p class="fragment">Faire une première revue de code</p>
         <p class="fragment">Discuter et valider les hypothèses</p>
         <p class="fragment">Étendre</p>
         <aside class="notes">
-          <p>Le plus simple c'est de trouver un ou des "partenaires de crime"</p>
-          <p>Discuter avec ces personnes et valider les hypothèses</p>
-          <p>Noter les consensus dans un "guide de style"</p>
-          <p>Commencer a relire et faire relire a l'extérieur de l'équipe</p>
+          <p>Partenaire de crime : pas besoin d'être d'accord avec lui sur quoi que ce soit (même pertinant si vous êtes jamais d'accord), il faut seulement que les 2 aient envie de faire de la revue de code</p>
+          <p>Discuter : discuter de la meilleure manière de procéder pour faire de la code review, valider les hypothèses sur les outils, le style guide, etc.</p>
+          <p>Étendre : étendre au reste de l'équipe avec les intéressés, les autres suivront (ne pas négliger l'aspect de l'intéressement de groupe)</p>
+          <p>Étendre : étendre aux autres équipes</p>
         </aside>
       </section>
 
@@ -317,19 +387,41 @@
         <h2 class="flushright"><strong>Outils</strong></h2>
         <p class="fragment">Prendre ce qui marche pour vous</p>
         <p class="fragment">Commence le plus a poil possible</p>
-        <p class="fragment">Un bout de papier suffit (presque)</p>
-        <p class="fragment">Mais il faut pouvoir documenter les discussions</p>
+        <p class="fragment">Un bout de papier suffit (presque...)</p>
+        <p class="fragment">... mais il faut pouvoir documenter les discussions</p>
         <aside class="notes">
-          <p>Prendre ce qui marche pour vous !</p>
-          <p>La code review ça peut (presque) se faire sur un bout de
-          papier</p>
-          <p>L'important c'est la culture de la code review, la discussion qui l'entoure, la relecture, etc.</p>
+          <p>Commencer a poil : le but c'est de se poser les vraies questions dès le début (voir le plan de cette présentation) et d'éviter la dérive ("cool le bouton +1 dans gerrit, mais qu'est-ce que je dois relire comme code ?")</p>
+          <p>Papier : ce serait suffisant si c'était historisable, un bon point de départ équivalent est JIRA ou votre bug tracker</p>
+        </aside>
+      </section>
+
+      <section class="flushleft">
+        <h2 class="flushright"><strong>Mise en place chez LesFurets.com</strong></h2>
+        <p class="fragment">TODO prendre une carte kanban en photo</p>
+        <p class="fragment">Case a cocher obligatoire</p>
+        <p class="fragment">Condition nécessaire pour la mise en production</p>
+        <aside class="notes">
+          <p>Ajout d'une case a cocher dans JIRA et dans sur le tableau kanban : la code review devient obligatoire</p>
+          <p>Le ticket JIRA (qui correspond a une branche git) ne peut pas partir tant qu'il n'a pas passé la validation fonctionnelle et la validation technique (code review)</p>
+      </section>
+
+      <section class="flushleft">
+        <h2 class="flushright"><strong>... pour les pro</strong></h2>
+        <p class="fragment"><strong>Github</strong> : puissant, la référence</p>
+        <p class="fragment"><strong>Gitlab</strong> : si github n'est pas une option</p>
+        <p class="fragment"><strong>Gerrit</strong> : pour un but très précis, très contraignant</p>
+        <p class="fragment">...</p>
+        <aside class="notes">
+          <p>Github : probablement le plus simple a mettre en place, ils ont popularisé le concept de "pull request" qui correspond plus ou moins a l'étape code review</p>
+          <p>Gitlab : si github n'est pas possible (prix, self-hosted), solution open source qui clone les fonctionnalités de github</p>
+          <p>Gerrit : permet de "+1" des groupements de commit, et tant que ça ne dépasse pas un seuil, le groupement de commit ne passe pas</p>
+          <p>Autres : JIRA, Sonar, Word, annotation Java, Javadoc, IDE tags...</p>
         </aside>
       </section>
 
       <section class="flushright" data-background="#eeeeee">
         <h2 class="gray800"><strong>DON'T</strong></h2>
-        <p class="gray800"><strong class="gray600">Notre définition de ce qu'il ne faut pas faire :</strong> "Se concentrer sur le "quoi" et non sur le "qui" est a la base du partage de connaissance."</p>
+        <p class="gray800"><strong class="gray600">Notre définition de ce qu'il ne faut pas faire :</strong> "Oublier l'objectif de partage de connaissance."</p>
       </section>
 
       <section class="flushleft">
@@ -346,9 +438,58 @@
         </aside>
       </section>
 
+      <section data-background="#bf360c">
+        <h2><strong>"Quand les revues de code sont désagréables"</strong></h2>
+        <img style="width:33%" class="fragment" src="img/code-review/reunion-01.gif">
+        <aside class="notes">
+        </aside>
+      </section>
+
       <section class="flushright" data-background="#eeeeee">
-        <h2 class="gray800"><strong>TODO</strong></h2>
-        <p class="gray800"><strong class="gray600"></p>
+        <h2 class="gray800"><strong>BONUS</strong></h2>
+        <p class="gray800"><strong class="gray600">Qu'est-ce que la code review ne résoud PAS ?</strong></p>
+      </section>
+
+      <section class="flushleft">
+        <h2 class="flushright"><strong>Code legacy</strong></h2>
+        <p class="fragment">N'aide en rien (ou presque) pour le code legacy</p>
+        <aside class="notes">
+          <p>On relit les parties du code modifiés ou ajoutés, donc a moins de modifier beaucoup de code legacy, le relecteur ne relira jamais ces lignes</p>
+          <p>On ne discute donc jamais de ces lignes de code</p>
+        </aside>
+      </section>
+
+      <section class="flushleft">
+        <h2 class="flushright"><strong>Architecture</strong></h2>
+        <p class="fragment">Entraîne peu de discussion sur l'architecture globale</p>
+        <aside class="notes">
+          <p>Même si la relecture de code c'est un moment pour prendre du recul et réfléchir au nouveau code, on discute rarement du système au global</p>
+        </aside>
+      </section>
+
+      <section class="flushleft">
+        <!-- TODO link pair programming conference -->
+        <h2 class="flushright"><strong>Ne remplace pas le pair programming</strong></h2>
+        <p class="fragment">Ne répond pas a la même problématique</p>
+        <p class="fragment">N'a pas les mêmes bénéfices...</p>
+        <p class="fragment">... même si c'est très semblables</p>
+        <p class="fragment"></p>
+        <aside class="notes">
+          <p>Différences notables : la programmation en binôme n'est pas toujours systématique, la programmation en binôme a tendance a augmenter la vélocité (instantanée), pas la relecture de code</p>
+          <p>Similarités notables : permet de créer une culture d'artisans du code, permet de discuter sur le code, augmente la qualité générale</p>
+          <p></p>
+        </aside>
+      </section>
+
+      <section data-background="#bf360c">
+        <h2><strong>"Quand on se lance dans la revue de code"</strong></h2>
+        <img style="width:33%" class="fragment" src="img/code-review/pair-programming-01.gif">
+        <aside class="notes">
+        </aside>
+      </section>
+
+      <section class="flushright" data-background="#eeeeee">
+        <h2 class="gray800"><strong>fin</strong></h2>
       </section>
 
       <!-- END -->

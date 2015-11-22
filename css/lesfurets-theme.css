@@ -167,7 +167,7 @@ body {
 }
 
 .reveal li:before {
-  color: #e65100;
+  color: #212121;
   content: "•";
   font-size: 2em;
   padding-bottom: 0.2em;

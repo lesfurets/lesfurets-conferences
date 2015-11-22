@@ -275,7 +275,7 @@
   font-size: 0.8em;
 }
 .reveal a:not(.image) {
-  color: #111111;
+  color: #fafafa;
   text-decoration: underline;
 }
 
@@ -303,4 +303,35 @@
   box-shadow: 0 0 0;
   border: none;
   padding: 0;
+}
+
+.reveal .person {
+  display: inline-block;
+  vertical-align: top;
+  width: 30%;
+}
+
+.reveal .person .photo {
+  width: 33%;
+}
+
+.reveal .person .name {
+  display: block;
+  font-weight: bold;
+}
+
+.reveal .person .description {
+  font-size: smaller;
+}
+
+.reveal .code {
+  font-family: monospace;
+  font-size: 20px;
+  margin: 5;
+  padding: 0;
+}
+
+.reveal .highlight {
+  font-weight: bold;
+  color: red;
 }
