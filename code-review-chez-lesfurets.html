@@ -86,6 +86,9 @@
       <section class="flushright" data-background="#eeeeee">
         <h1 class="indigo700">Linus' law</h1>
         <p class="fragment gray800">"Given enough eyes, all bugs are shallow" <strong class="deeporange900">-Linus Tolvalds</strong></p>
+        <aside class="notes">
+          <p>"A travers les yeux de plusieurs personnes, tout bug devient trivial"</p>
+        </aside>
       </section>
 
       <section class="flushleft" data-background="#eeeeee">
@@ -100,6 +103,9 @@
       <section class="flushright" data-background="#eeeeee">
         <h2 class="gray800"><strong>WHY</strong></h2>
         <p class="gray800"><strong class="gray600">Notre définition du pourquoi :</strong> "Construction d'une équipe qui discute sur la qualité. On cherche à créer une culture d'artisans du code (software craftsmanship)."</p>
+        <aside class="notes">
+          <p>ADU</p>
+        </aside>
       </section>
 
       <section class="flushleft">
@@ -116,12 +122,12 @@
         </aside>
       </section>
 
-      <section data-background="#bf360c">
-        <h2><strong>"Quand on commence quelque chose de nouveau"</strong></h2>
-        <img style="width:33%" class="fragment" src="img/code-review/construction-equipe-01.gif">
-        <aside class="notes">
-        </aside>
-      </section>
+      <!--<section data-background="#bf360c">-->
+      <!--  <h2><strong>"Quand on commence quelque chose de nouveau"</strong></h2>-->
+      <!--  <img style="width:33%" class="fragment" src="img/code-review/construction-equipe-01.gif">-->
+      <!--  <aside class="notes">-->
+      <!--  </aside>-->
+      <!--</section>-->
 
       <section class="flushleft">
         <h2 class="flushright"><strong>Documentation (implicite ou explicite)</strong></h2>
@@ -161,6 +167,9 @@
       <section class="flushright" data-background="#eeeeee">
         <h2 class="gray800"><strong>WHO</strong></h2>
         <p class="gray800"><strong class="gray600">Notre définition du qui :</strong> "Si on cherche a créer une connaissance commune, toute affectation de relecteur est pertinante. Si on cherche a trouver des erreurs, certains relecteurs sont plus pertinants que d'autres."</p>
+        <aside class="notes">
+          <p>MBO</p>
+        </aside>
       </section>
 
       <section class="">
@@ -179,27 +188,13 @@
         <h2><strong>Le combo gagnant</strong></h2>
         <table class="flushright">
           <tr><th>Relis/Code</th><th>Hervé</th><th>François</th><th>Oleg</th></tr>
-          <tr><th>Hervé</th><td>_</td><td>_</td><td>_</td></tr>
-          <tr><th>François</th><td>_</td><td>_</td><td>_</td></tr>
-          <tr><th>Oleg</th><td>_</td><td>_</td><td>_</td></tr>
-        </table>
-        </p>
-        <aside class="notes">
-          <p>Quelles sont les paires gagnantes?</p>
-          <p>Questionner le public, essayer de receuillir des arguments</p>
-        </aside>
-      </section>
-
-      <section class="flushleft" data-background="#212121">
-        <h2><strong>Le combo gagnant</strong></h2>
-        <table class="flushright">
-          <tr><th>Relis/Code</th><th>Hervé</th><th>François</th><th>Oleg</th></tr>
           <tr><th>Hervé</th><td></td><td><img class="nope fragment" src="img/code-review/ok-02.png"></td><td><img class="nope fragment" src="img/code-review/ok-02.png"></td></tr>
           <tr><th>François</th><td><img class="nope fragment" src="img/code-review/ok-02.png"></td><td></td><td><img class="nope fragment" src="img/code-review/ok-02.png"></td></tr>
           <tr><th>Oleg</th><td><img class="nope fragment" src="img/code-review/ok-02.png"></td><td><img class="nope fragment" src="img/code-review/ok-02.png"></td><td></td></tr>
         </table>
         </p>
         <aside class="notes">
+          <p>Quelles sont les paires gagnantes?</p>
           <p>En tant que relecteur, Hervé offre son expertise technique, et recois du fonctionnel et de la simplicité</p>
           <p>En tant que relecteur, Francois offre son oeil métier, et recois de l'expertise technique et de la simplicité<p>
           <p>En tant que relecteur, Oleg impose la clareté technique et fonctionnelle, et recois de l'expérience technique et fonctionnelle</p>
@@ -235,11 +230,9 @@
       <section class="flushleft">
         <h2 class="flushright"><strong>Règles du jeu obligatoires</strong></h2>
         <p class="fragment">Les relecteurs n'ont pas travaillé sur le code</p>
-        <p class="fragment">Le nombre dépend de la criticité du code</p>
         <p class="fragment">Relecteurs sélectionnés selon la méthodologie de travail</p>
         <aside class="notes">
           <p>Affectation du relecteur : pas travaillés sur le code de près ou de loin, et n'ont pas été copilotes (s'il y a développement en binôme)</p>
-          <p>Nombre de relecteur : le nombre de relecteur dépend la criticité du code (pour définir la criticité du code : fonction de la taille, de la qualité actuelle et de l'importance du code)</p>
           <p>Sélection du relecteur : les relecteurs sont sélectionnés selon la méthodologie de travail (en Agile lors du planning en début de sprint, en Kanban lorsque quelqu'un se libère, etc.)</p>
           <p>A noter que ça peut rentrer en conflit avec certaines méthodologies, par exemple en kanban ce ne sera pas toujours la prochaine personne de libre, si par exemple cette personne a été en binome avec le développeur</p>
         </aside>
@@ -259,6 +252,9 @@
       <section class="flushright" data-background="#eeeeee">
         <h2 class="gray800"><strong>WHAT</strong></h2>
         <p class="gray800"><strong class="gray600">Notre définition du quoi :</strong> "Chaque ligne de code incomprise est une ligne de code ajoutant de la dette technique."</p>
+        <aside class="notes">
+          <p>MBO</p>
+        </aside>
       </section>
 
       <section class="flushleft">
@@ -288,12 +284,12 @@
         </aside>
       </section>
 
-      <section data-background="#bf360c">
-        <h2><strong>"Quand j'y comprend rien"</strong></h2>
-        <img style="width:33%" class="fragment" src="img/code-review/incomprehension-01.gif">
-        <aside class="notes">
-        </aside>
-      </section>
+      <!--<section data-background="#bf360c">-->
+      <!--  <h2><strong>"Quand j'y comprend rien"</strong></h2>-->
+      <!--  <img style="width:33%" class="fragment" src="img/code-review/incomprehension-01.gif">-->
+      <!--  <aside class="notes">-->
+      <!--  </aside>-->
+      <!--</section>-->
 
       <section class="flushleft">
         <h2 class="flushright"><strong>Anti-pattern et code smell</strong></h2>
@@ -315,7 +311,7 @@
             <li class="fragment">God object</li>
             <li class="fragment">Trop de paramètres</li>
             <li class="fragment">...</li>
-            <li class="fragment">Martin, Robert C. (2009). "17: Smells and Heuristics". Clean Code: A Handbook of Agile Software Craftsmanship. <p>
+            <li class="fragment">Voir Checkstyle, PMD, etc.<p>
           </ul>
         </p>
         <aside class="notes">
@@ -323,7 +319,7 @@
           <p>Possible de définir des code smell spécifique a votre équipe ou a votre application</p>
           <p>Code dupliqué : peut cacher des problèmes de design ou la réutilisation de code est difficile voir impossible</p>
           <p>God object : un objet devenu trop gros, qui contient beaucoup de responsabilité, ou qui contrôle beaucoup d'autres objets</p>
-          <p>Trop de paramètres : une méthodes qui prendre trop d'arguments en entrée</p>
+          <p>Trop de paramètres : cache une méthode qui a trop de responsabilités</p>
         </aside>
       </section>
 
@@ -356,7 +352,10 @@
 
       <section class="flushright" data-background="#eeeeee">
         <h2 class="gray800"><strong>HOW</strong></h2>
-        <p class="gray800"><strong class="gray600">Notre définition du comment :</strong> "Commencer avec un "crime partner", puis discuter de la discussion issue de la revue de code, pour donner du recul. Étendre graduellement."</p>
+        <p class="gray800"><strong class="gray600">Notre définition du comment :</strong> "Commencer a faire de la code review avec un "crime partner". Étendre graduellement aux intéressés."</p>
+        <aside class="notes">
+          <p>ADU</p>
+        </aside>
       </section>
 
       <section class="flushright" data-background="#eeeeee">
@@ -417,6 +416,9 @@
       <section class="flushright" data-background="#eeeeee">
         <h2 class="gray800"><strong>DON'T</strong></h2>
         <p class="gray800"><strong class="gray600">Notre définition de ce qu'il ne faut pas faire :</strong> "Oublier l'objectif de partage de connaissance."</p>
+        <aside class="notes">
+          <p>MBO</p>
+        </aside>
       </section>
 
       <section class="flushleft">
@@ -442,12 +444,15 @@
 
       <section class="flushright" data-background="#eeeeee">
         <h2 class="gray800"><strong>BONUS</strong></h2>
-        <p class="gray800"><strong class="gray600">Qu'est-ce que la code review ne résoud PAS ?</strong></p>
+        <p class="gray800"><strong class="gray600">Qu'est-ce que la code review ne résoud parfois ? <br/> (mais pas toujours)</strong></p>
+        <aside class="notes">
+          <p>ADU</p>
+        </aside>
       </section>
 
       <section class="flushleft">
         <h2 class="flushright"><strong>Code legacy</strong></h2>
-        <p class="fragment">N'aide en rien (ou presque) pour le code legacy</p>
+        <p class="fragment">N'améliore que les parties modifiées</p>
         <aside class="notes">
           <p>On relit les parties du code modifiés ou ajoutés, donc a moins de modifier beaucoup de code legacy, le relecteur ne relira jamais ces lignes</p>
           <p>On ne discute donc jamais de ces lignes de code</p>
@@ -456,7 +461,7 @@
 
       <section class="flushleft">
         <h2 class="flushright"><strong>Architecture</strong></h2>
-        <p class="fragment">Entraîne peu de discussion sur l'architecture globale</p>
+        <p class="fragment">Entraîne parfois des discussions sur l'architecture si les développeurs prennent suffisament de recul</p>
         <aside class="notes">
           <p>Même si la relecture de code c'est un moment pour prendre du recul et réfléchir au nouveau code, on discute rarement du système au global</p>
         </aside>
@@ -484,7 +489,7 @@
       </section>
 
       <section class="flushright" data-background="#eeeeee">
-        <h2 class="gray800"><strong>fin</strong></h2>
+        <h2 class="gray800"><strong>fin + questions</strong></h2>
       </section>
 
       <!-- END -->
