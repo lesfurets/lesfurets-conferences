@@ -346,3 +346,7 @@
 .reveal td {
   border: 3px solid #fafafa;
 }
+
+.reveal em {
+  color: #ff6d00;
+}
