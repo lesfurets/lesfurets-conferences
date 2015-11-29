@@ -1,0 +1,1078 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>git - Gestion de version - M1</title>
+    <meta name="description" content="git - Gestion de version - M1">
+    <meta name="author" content="Alexandre DuBreuil">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="css/lesfurets-theme.css" id="theme">
+    <link rel="stylesheet" href="css/git-theme.css" id="theme">
+    <script>
+if( window.location.search.match( /print-pdf/gi ) ) {
+var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = 'css/print/pdf.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );
+}
+    </script>
+    <!--[if lt IE 9]><script src="lib/js/html5shiv.js"></script><![endif]-->
+</head>
+<body>
+
+<!-- FOOTER -->
+
+<div id="footer" class="footer show">
+    <a href="https://www.lesfurets.com" target="_blank"><img class="logo" src="img/logo_lesfurets_885x128_no_back.png"></a><a class ="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a><a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a>
+</div>
+
+<!-- REVEAL -->
+
+<div class="reveal">
+    <div class="slides">
+        <!-- START -->
+
+        <section class="flushright" data-background="img/nwx/lesfurets-background-black-01.jpg">
+            <h1>git (M1) <br/> Gestion de version</h1>
+            <h2>Alexandre DuBreuil</h2>
+        </section>
+
+        <section class="flushleft"  data-background="img/nwx/lesfurets-background-black-01.jpg">
+            <h2>Alexandre DuBreuil</h2>
+            <h3 class="oldfragment">Tech lead équipe panel assureur</h3>
+            <ul class="flushright nodisc">
+                <li class="oldfragment">
+                    <a style="color:white" href="https://twitter.com/dubreuia">https://twitter.com/dubreuia</a>
+                </li>
+                <li class="oldfragment">
+                    <a style="color:white" href="https://github.com/dubreuia">https://github.com/dubreuia</a>
+                </li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="img/nwx/lesfurets-background-black-01.jpg">
+            <h1 class="indigo500">LesFurets.com</h1>
+            <p class="oldfragment flushright">1er site indépendant de comparaison d’assurance, lancé en septembre 2012</p>
+            <p class="oldfragment flushright">Un lieu unique pour comparer rapidement des centaines d’offres
+            (assurances auto, moto, MRH, santé et emprunteur)</p>
+        </section>
+
+        <section class="flushright" data-background="#eeeeee">
+            <h1 class="indigo700"><strong>VCS : Version Control System</strong></h1>
+            <p class="gray800"> "La gestion de versions (en <em>anglais version</em> control ou <em>revision control</em>) consiste à maintenir l'ensemble des versions d'un ou plusieurs fichiers (généralement en texte)."</p>
+            <aside class="notes">
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>La gestion de versions</strong></h2>
+            <p class="oldfragment">Essentiellement utilisée dans le domaine de la création de logiciels (code source), mais commence a être utilisé dans d'autres domaines : </p>
+            <p class="oldfragment">- Pour le code civil français</p>
+            <p class="oldfragment">- Pour les architectes (Open BIM)</p>
+            <p class="oldfragment">- ...</p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Le code civil dans git</strong></h2>
+            <img class="oldfragment" width="100%" src="img/git-m1/github-code-civil-france-01.jpg">
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Historique de git</strong></h2>
+            <p class="oldfragment"><strong>1972</strong> : Début des VCS chez Bell labs avec SCCS</p>
+            <p class="oldfragment"><strong>1990</strong> : Beaucoup de développements, autant en open source qu'en propriétaire, naissance de CVS</p>
+            <p class="oldfragment"><strong>2002</strong> : Jusqu'a cette année, le code de Linux est partagé sous forme de patchs</p>
+            <p class="oldfragment"><strong>2002</strong> : Passage a un DVCS propriétaire, Bitkeeper</p>
+            <p class="oldfragment"><strong>2005</strong> : Relations tendues avec les développeurs de Bitkeeper, Linus Tolvalds (et la communauté linux) développent git</p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Types de VCS</strong></h2>
+            <p class="oldfragment"><strong>Centralisé</strong> : gestion de source "historique" avec CVS et SVN, il n'y a qu'un seul serveur de source</p>
+            <p class="oldfragment"><strong>Décentralisé</strong> : popularisé au début des années 2000, prend son ampleur avec git, la totalité du code est présent sur chacune des machines clients</p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Centralisé (type SVN)</strong></h2>
+            <p class="oldfragment center image"><img width="66%" src="img/git-m1/vcs-centralise-01.jpg"></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Décentralisé (type git)</strong></h2>
+            <p class="oldfragment center image"><img width="50%" src="img/git-m1/vcs-decentralise-01.jpg"></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushright" data-background="#eeeeee">
+            <h1 class="indigo700"><strong>git</strong></h1>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Objectifs de git</strong></h2>
+            <p class="oldfragment">Complètement distribué</p>
+            <p class="oldfragment">Support pour les dévelopements non linéaires</p>
+            <p class="oldfragment">Vitesse pour certaines opérations très précises (changement de branche, merge, etc.)</p>
+            <p class="oldfragment">Peut gérer d'énormes projets (noyau linux, code base google, etc.)</p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Git est très optimisé</strong></h2>
+            <p class="oldfragment">Chez Google...</p>
+            <p class="oldfragment flushright"><strong>Lignes de codes</strong> : 2 millards</p>
+            <p class="oldfragment flushright"><strong>Historique</strong> : 35 millions de commits</p>
+            <p class="oldfragment flushright"><strong>Taille</strong> : 86 terabytes</p>
+            <p class="oldfragment flushright"><strong>Commits par jour</strong> : 45 000</p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Stockage des deltas (type SVN)</strong></h2>
+            <p class="oldfragment center image"><img width="100%" src="img/git-m1/delta-commits-01.jpg"></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Stockage des instantanés (type git)</strong></h2>
+            <p class="oldfragment center image"><img width="100%" src="img/git-m1/full-commits-01.jpg"></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Caractéristiques GIT</strong></h2>
+            <p class="oldfragment">Opérations presques toutes locales</p>
+            <p class="oldfragment">Gestion de l'intégrité (SHA-1)</p>
+            <p class="oldfragment">Ajout seulement (append only sauf rebase)</p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Le répertoire de travail</strong></h2>
+            <p class="oldfragment center image"><img width="100%" src="img/git-m1/working-staging-01.jpg"></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <pre><code data-trim>
+.git
+├── branches
+├── COMMIT_EDITMSG
+├── config
+├── description
+├── FETCH_HEAD
+├── HEAD # Le pointeur de branche courante
+├── hooks
+├── index # L'index actuel (ou staging)
+├── info
+├── logs
+├── objects # Contient les fichiers sous forme de BLOB
+├── ORIG_HEAD
+├── packed-refs
+└── refs # Contient les pointeurs de branche
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushright" data-background="#eeeeee">
+            <h1 class="indigo700"><strong>Commandes de base</strong></h1>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Votre meilleur ami (help)</strong></h2>
+            <pre><code class="bash" data-trim>
+$ git help
+usage: git [--version] [--help] [-C path] [-c name=value]
+           [--exec-path[=path]] [--html-path] [--man-path] [--info-path]
+           [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=path] [--work-tree=path] [--namespace=name]
+           command [args]
+
+The most commonly used git commands are:
+   add        Add file contents to the index
+   bisect     Find by binary search the change that introduced a bug
+...
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Pour chaque commande</strong></h2>
+            <pre><code class="bash" data-trim>
+$ git help add
+GIT-ADD(1) / Git Manual / GIT-ADD(1)
+
+NAME
+       git-add - Add file contents to the index
+
+SYNOPSIS
+       git add [-n] [-v] [--force | -f] ...
+...
+
+DESCRIPTION
+...
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Démarrer un dépôt git (init)</strong></h2>
+            <pre><code class="bash" data-trim>
+$ git init .
+Initialized empty Git repository in /home/dubreuia/Documents/project/git/src/.git/
+$ git add git-gestion-version-m1.html
+$ git commit -m "Ajout presentation HTML"
+[master (root-commit) 876c849] Ajout presentation HTML
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 git-gestion-version-m1.html
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Cloner un repo (clone)</strong></h2>
+            <pre><code class="bash" data-trim>
+$ git clone https://github.com/dubreuia/lesfurets-conferences.git
+Cloning into 'lesfurets-conferences'...
+remote: Counting objects: 547, done.
+remote: Total 547 (delta 0), reused 0 (delta 0), pack-reused 547
+Receiving objects: 100% (547/547), 39.13 MiB | 1.09 MiB/s, done.
+Resolving deltas: 100% (234/234), done.
+Checking connectivity... done.
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>États d'un fichier</strong></h2>
+            <p class="oldfragment center image"><img width="100%" src="img/git-m1/untracked-unmodified-modified-staged-01.jpg"></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Statut d'un repo (status)</strong></h2>
+            <pre><code class="bash" data-trim>
+$ git status
+On branch master
+Untracked files:
+  (use "git add file..." to include in what will be committed)
+
+	github-code-civil-france-01.jpg
+	google-repository-02.jpg
+
+nothing added to commit but untracked files present (use "git add" to track)
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Ajout de fichier (add)</strong></h2>
+            <pre><code class="bash" data-trim>
+$ git add github-code-civil-france-01.jpg 
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD file..." to unstage)
+
+	new file:   github-code-civil-france-01.jpg
+
+Untracked files:
+  (use "git add file..." to include in what will be committed)
+
+	google-repository-02.jpg
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Modifier un fichier</strong></h2>
+            <pre><code class="bash" data-trim>
+$ vim git-gestion-version-m1.html 
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD file..." to unstage)
+
+	new file:   github-code-civil-france-01.jpg
+
+Changes not staged for commit:
+  (use "git add file..." to update what will be committed)
+  (use "git checkout -- file..." to discard changes in working directory)
+
+	modified:   git-gestion-version-m1.html
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Ajouter a l'index (add)</strong></h2>
+            <pre><code class="bash" data-trim>
+$ git add git-gestion-version-m1.html
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD file..." to unstage)
+
+	modified:   git-gestion-version-m1.html
+	new file:   github-code-civil-france-01.jpg
+
+Untracked files:
+  (use "git add file..." to include in what will be committed)
+
+	google-repository-02.jpg
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>États d'un fichier</strong></h2>
+            <p class="oldfragment">On a fait les transitions "add", "edit", "stage", il y a 2 fichiers dans l'index (staged)</p>
+            <p class="oldfragment center image"><img width="100%" src="img/git-m1/untracked-unmodified-modified-staged-01.jpg"></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Ignorer des fichiers (.gitignore)</strong></h2>
+            <pre><code class="bash" data-trim>
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD file..." to unstage)
+
+	modified:   git-gestion-version-m1.html
+	new file:   github-code-civil-france-01.jpg
+
+Untracked files:
+  (use "git add file..." to include in what will be committed)
+
+	.outline.md.swp
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Ignorer des fichiers</strong></h2>
+            <pre><code class="bash" data-trim>
+$ echo "*.swp" >> .gitignore
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD file..." to unstage)
+
+	modified:   git-gestion-version-m1.html
+	new file:   github-code-civil-france-01.jpg
+
+Untracked files:
+  (use "git add file..." to include in what will be committed)
+
+	.gitignore
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Voir les différences (diff)</strong></h2>
+            <pre><code class="bash" data-trim>
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD file..." to unstage)
+
+	modified:   git-gestion-version-m1.html
+
+Changes not staged for commit:
+  (use "git add file..." to update what will be committed)
+  (use "git checkout -- file..." to discard changes in working directory)
+
+	modified:   git-gestion-version-m1.html
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>... dans les fichiers de l'index</strong></h2>
+            <pre><code class="bash" data-trim>
+$ git diff --staged
+diff --git a/git-gestion-version-m1.html b/git-gestion-version-m1.html
+index e69de29..a839173 100644
+--- a/git-gestion-version-m1.html
++++ b/git-gestion-version-m1.html
+@@ -0,0 +1,5 @@
++&lt;html&gt;
++&lt;head&gt;
++&lt;/head&gt;
++&lt;body&gt;
++&lt;/body&gt;
+
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>... dans les fichiers modifiés</strong></h2>
+            <pre><code class="bash" data-trim>
+$ git diff
+diff --git a/git-gestion-version-m1.html b/git-gestion-version-m1.html
+index a839173..d0d1147 100644
+--- a/git-gestion-version-m1.html
++++ b/git-gestion-version-m1.html
+@@ -1,4 +1,4 @@
+-&lt;html&gt;
++&lt;!DOCTYPE html&gt;
+ &lt;head&gt;
+ &lt;/head&gt;
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Valider les modifications (commit)</strong></h2>
+            <pre><code class="bash" data-trim>
+$ git commit -m "Ajouter la structure HTML"
+[master 19b4b66] Ajouter la structure HTML
+ 2 files changed, 5 insertions(+)
+ create mode 100644 github-code-civil-france-01.jpg
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add &ltfile&gt..." to update what will be committed)
+  (use "git checkout -- &ltfile&gt..." to discard changes in working directory)
+
+	modified:   git-gestion-version-m1.html
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Effacer des fichiers (rm)</strong></h2>
+            <pre><code class="bash" data-trim>
+$ git rm poubelle.txt 
+rm 'poubelle.txt'
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD &ltfile&gt..." to unstage)
+
+	deleted:    poubelle.txt
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Déplacer des fichiers (mv)</strong></h2>
+            <p class="">Support partiel dans git, basé sur la quantité de contenu modifié, ne fonctionne que si le fichier est seulement renommé et modifié partiellement</p>
+            <pre><code class="bash" data-trim>
+$ git mv git-gestion-version-m1.html \
+         git-gestion-version-m1-super-presentation.html 
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD &ltfile&gt..." to unstage)
+
+	renamed:    git-gestion-version-m1.html -&gt 
+	            git-gestion-version-m1-super-presentation.html
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Visualiser l'historique (log)</strong></h2>
+            <pre><code class="bash" data-trim>
+$ git log
+commit 19b4b66ac5fd3483e549e300656f1de2618891c4
+Author: Alexandre DuBreuil &ltdubreuil.alex@gmail.com&gt
+Date:   Sun Nov 29 18:52:37 2015 +0100
+
+    Ajouter la structure HTML
+
+commit 876c849d8e41e1fdb59ae71bce6d94cc47242663
+Author: Alexandre DuBreuil &ltdubreuil.alex@gmail.com&gt
+Date:   Sun Nov 29 18:24:34 2015 +0100
+
+    Ajout presentation HTML
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Enlever de l'index (reset)</strong></h2>
+            <pre><code class="bash" data-trim>
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD &ltfile&gt..." to unstage)
+
+	modified:   git-gestion-version-m1.html
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Enlever de l'index</strong></h2>
+            <pre><code class="bash" data-trim>
+$ git reset HEAD git-gestion-version-m1.html
+Unstaged changes after reset:
+M	git-gestion-version-m1.html
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add &ltfile&gt..." to update what will be committed)
+  (use "git checkout -- &ltfile&gt..." to discard changes in working directory)
+
+	modified:   git-gestion-version-m1.html
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Réinitialiser un fichier (checkout)</strong></h2>
+            <p class="">Attention : perte de donnée possible ! La modification du fichier est perdue, sauf si elle est présente dans un autre commit</p>
+            <pre><code class="bash" data-trim>
+
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add &ltfile&gt..." to update what will be committed)
+  (use "git checkout -- &ltfile&gt..." to discard changes in working directory)
+
+	modified:   git-gestion-version-m1.html
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Réinitialiser un fichier</strong></h2>
+            <pre><code class="bash" data-trim>
+$ git checkout -- git-gestion-version-m1.html
+$ git status
+On branch master
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>États d'un fichier</strong></h2>
+            <p class="oldfragment">On a fait les transitions "commit" et "remove"</p>
+            <p class="oldfragment center image"><img width="100%" src="img/git-m1/untracked-unmodified-modified-staged-01.jpg"></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Dépôts distants / dépots locaux</strong></h2>
+            <p class="oldfragment">Jusqu'a présent, on n'a travaillé qu'en local, mais il faut pouvoir récupérer / envoyer des commits</p>
+            <p class="oldfragment">On récupère toujours tout (copie complète) avec le <em>fetch</em>, mais on applique ce qu'on veut avec le <em>pull</em> (<em>fetch</em> + <em>merge</em>)</p>
+            <p class="oldfragment">On pousse a partir d'un commit avec le <em>push</em></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Cloner un dépôt (clone)</strong></h2>
+            <pre><code class="bash" data-trim>
+$ git clone https://github.com/dubreuia/lesfurets-conferences.git
+Cloning into 'lesfurets-conferences'...
+remote: Counting objects: 547, done.
+remote: Total 547 (delta 0), reused 0 (delta 0), pack-reused 547
+Receiving objects: 100% (547/547), 39.13 MiB | 760.00 KiB/s, done.
+Resolving deltas: 100% (234/234), done.
+Checking connectivity... done.
+$ cd lesfurets-conferences/
+$ git remote
+origin
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Récupérer les commits (fetch)</strong></h2>
+            <p class="">N'applique pas les commits, le <em>fetch</em> ne fait que les récupérer sur le dépôt distant</p>
+            <pre><code class="bash" data-trim>
+$ git fetch origin
+remote: Counting objects: 43, done.
+remote: Compressing objects: 100% (36/36), done.
+remote: Total 43 (delta 10), reused 31 (delta 5)
+Dépaquetage des objets: 100% (43/43), fait.
+Depuis https://github.com/dubreuia/lesfurets-conferences.git
+* [nouvelle branche] master
+-&gt origin/master
+* [nouvelle branche] ticgit
+-&gt origin/ticgit
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Appliquer les commits (pull)</strong></h2>
+            <p class="">Applique les commits, le <em>pull</em> récupère les données du dépôt distant (<em>fetch</em>) et les fusionne (<em>merge</em>) avec l'état courant</p>
+            <pre><code class="bash" data-trim>
+$ git status
+On branch gh-pages
+Your branch is behind 'origin/gh-pages' by 1 commit, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+nothing to commit, working directory clean
+$ git pull origin
+Updating 4c4ef8a..cffa4b1
+Fast-forward
+ code-review-chez-lesfurets.html | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Autres commandes</strong></h2>
+            <p class="oldfragment"><strong>git tag  </strong>: Étiquetage d'un commit</p>
+            <p class="oldfragment"><strong>git show </strong>: Contenu d'un commit</p>
+            <p class="oldfragment"><strong>git grep </strong>: Recherche d'un commit</p>
+            <p class="oldfragment"><strong>git reset</strong> : Retour a un commit</p>
+            <p class="oldfragment"><strong>git blame</strong> : Trouver qui a ajouté une ligne</p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushright" data-background="#eeeeee">
+            <h1 class="indigo700"><strong>Branches</strong></h1>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Un arbre de fichiers binaires</strong></h2>
+            <p class="oldfragment center image"><img width="100%" src="img/git-m1/commit-blob-01.jpg"></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Un arbre de commits</strong></h2>
+            <p class="oldfragment center image"><img width="100%" src="img/git-m1/commit-tree-01.jpg"></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Le pointeur HEAD</strong></h2>
+            <p class="oldfragment center image"><img width="100%" src="img/git-m1/commit-head-01.jpg"></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Créer une nouvelle branche (branch)</strong></h2>
+            <pre><code class="bash" data-trim>
+$ git branch testing
+            </code></pre>
+            <p class="oldfragment center image"><img width="80%" src="img/git-m1/branche-ajout-testing-01.jpg"></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Changer de branche (checkout)</strong></h2>
+            <pre><code class="bash" data-trim>
+$ git checkout testing
+Switched to branch 'testing'
+            </code></pre>
+            <p class="oldfragment center image"><img width="80%" src="img/git-m1/branche-checkout-testing-01.jpg"></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Ajouter un commit sur "testing"</strong></h2>
+            <pre><code class="bash" data-trim>
+$ vim git-gestion-version-m1.html 
+$ git commit -a -m "Ajout experimental"
+[testing 64ff99b] Ajout experimental
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+            </code></pre>
+            <p class="oldfragment center image"><img width="90%" src="img/git-m1/branche-commit-testing-01.jpg"></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Ajouter un commit sur "master"</strong></h2>
+            <p class="oldfragment">Il faut revenir sur master avec <em>git checkout master</em>, puis faire un commit</p>
+            <p class="oldfragment center image"><img width="80%" src="img/git-m1/branche-commit-master-01.jpg"></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>L'arbre de commit a divergé entre les 2 branches</strong></h2>
+            <pre><code class="bash" data-trim>
+$ git log --graph --oneline --all
+* a2d71b4 Commit sur branche master
+| * dc1d4a9 Ajout d'un commit sur testing
+|/  
+* 19b4b66 Ajouter la structure HTML
+* 876c849 Ajout presentation HTML
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushright" data-background="#eeeeee">
+            <h1 class="indigo700"><strong>Fusion</strong></h1>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Types de fusion</strong></h2>
+            <p class="oldfragment">Plusieurs types de fusion, git décide lui-même quoi faire</p>
+            <p class="oldfragment"><strong>Fast-forward   </strong> : pas de conflit possible, on ajoute seulement ce qui manque</p>
+            <p class="oldfragment"><strong>Recursive merge</strong> : merge par défaut, conflits possibles a resoudre a la main</p>
+            <p class="oldfragment"><strong>Octopus merge  </strong> : comme le merge récursif, mais avec plus de 2 branches</p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Avant la fusion</strong></h2>
+            <p class="oldfragment center image"><img width="100%" src="img/git-m1/branche-avant-merge-01.jpg"></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Effectuer la fusion</strong></h2>
+            <p class="oldfragment">Se positionner sur la branche de base (master), puis merger l'autre branche (fusion-pas-de-conflit) dans la branche de base</p>
+            <pre><code class="bash" data-trim>
+$ git checkout master
+$ git merge fusion-pas-de-conflit 
+Updating a2d71b4..bea04e9
+Fast-forward
+ pas-de-conflit | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 pas-de-conflit
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Commit de merge</strong></h2>
+            <p class="oldfragment center image"><img width="100%" src="img/git-m1/branche-merge-01.jpg"></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Conflits de merge</strong></h2>
+            <p class="oldfragment">Lorsque la même ligne est modifiée, git ne peut pas merger, il faut le faire a la main</p>
+            <pre><code class="bash" data-trim>
+$ git merge fusion-avec-conflit 
+Auto-merging git-gestion-version-m1.html
+CONFLICT (content): Merge conflict in git-gestion-version-m1.html
+Automatic merge failed; fix conflicts and then commit the result.
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Marquage du conflit par git</strong></h2>
+            <pre><code class="bash" data-trim>
+&lt&lt&lt&lt&lt&lt&lt HEAD
+&lt!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" 
+                        "http://www.w3.org/TR/html4/strict.dtd"&gt 
+=======
+&lt!DOCTYPE html&gt
+&gt&gt&gt&gt&gt&gt&gt testing
+&lthead&gt
+&lt/head&gt
+&ltbody&gt
+&lt/body&gt
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Résolution du conflit</strong></h2>
+            <p class="oldfragment">Enlever les marqueurs voulus</p>
+            <pre><code class="bash" data-trim>
+&lt!DOCTYPE html&gt
+&lthead&gt
+&lt/head&gt
+&ltbody&gt
+&lt/body&gt
+            </code></pre>
+            <p class="oldfragment">Faire ensuite un commit, le message sera déja renseigné par git avec <em>Merge branch 'testing'</em> et les fichiers en conflit</p>
+            <pre><code class="bash" data-trim>
+$ git add git-gestion-version-m1.html
+$ git commit
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Gestion des branches distantes</strong></h2>
+            <p class="oldfragment">Pour l'instant, on n'a traité que des branches locales. Pour les branches distantes, les pointeurs sont préfixés par le nom du serveur, souvent <em>origin</em></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Gestion des branches distantes</strong></h2>
+            <p class="oldfragment center image"><img width="75%" src="img/git-m1/branche-distantes-01.jpg"></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Dépôt local</strong></h2>
+            <p class="oldfragment">Le pointeur de branche <em>master</em> avance en local... mais pas le pointeur de branche <em>origin/master</em></p>
+            <p class="oldfragment center image"><img width="75%" src="img/git-m1/branche-master-local-01.jpg"></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>... mais le serveur avance aussi</strong></h2>
+            <p class="oldfragment">Après un <em>git fetch</em> le pointeur <em>origin/master</em> peut avancer</p>
+            <p class="oldfragment center image"><img width="66%" src="img/git-m1/branche-master-remote-01.jpg"></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>On ne peut plus pousser !</strong></h2>
+            <p>Le type de fusion "fast-forward" n'est plus disponible</p>
+            <pre><code class="bash" data-trim>
+$ git push 
+To https://github.com/dubreuia/conferences.git
+ ! [rejected]        gh-pages -&gt gh-pages (non-fast-forward)
+error: failed to push some refs to 
+       'https://github.com/dubreuia/conferences.git'
+hint: Updates were rejected because the tip of 
+      your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 
+      'git push --help' for details.
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>D'abord récupérer les données</strong></h2>
+            <p class="oldfragment">Rappel : le <em>pull</em> est un <em>fetch</em> (récupération des données du distant) + <em>merge</em> (fusion d'une branche, soit la branche distante)</p>
+            <pre><code class="bash" data-trim>
+$ git pull # git fetch && git merge origin/master
+Merge branch 'gh-pages' of https://github.com/dubreuia/conferences into gh-pages
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Retour a la normale</strong></h2>
+            <pre><code class="bash" data-trim>
+$ git log --graph --oneline
+*   988e120 Merge branch 'gh-pages' 
+            of https://github.com/dubreuia/conferences 
+            into gh-pages
+|\  
+| * af401f2 Add architecture slide
+* | f9a1aef nouveau commit
+|/  
+* 5faf3ff Add concert page and correct logo
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft" data-background="#212121">
+            <h2 class="flushright"><strong>Au lieu du merge : rebase</strong></h2>
+            <p class="oldfragment">Copie les commit du distant avant les commits locaux, utile pour avoir un historique sans "branchement"</p>
+            <p class="oldfragment"><strong>Attention</strong> : fonctionnalitée avancée, c'est facile de se planter</p>
+            <pre><code class="bash" data-trim>
+$ git pull --rebase # git fetch && git rebase origin/master
+First, rewinding head to replay your work on top of it...
+Applying: nouveau commit
+            </code></pre>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Merge vs rebase</strong></h2>
+            <p class="oldfragment center image"><img width="75%" src="img/git-m1/branche-merge-vs-rebase-01.jpg"></p>
+            <p class="oldfragment center image"><img width="75%" src="img/git-m1/branche-rebase-vs-merge-01.jpg"></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushright" data-background="#eeeeee">
+            <h1 class="indigo700"><strong>Références</strong></h1>
+            <p class="gray800">- Les images de ces slides viennent de <br/> https://www.git-scm.com/book/fr/v2</p>
+            <p class="gray800">- Voir aussi le man page en ligne <br/> https://www.kernel.org/pub/software/scm/git/docs/
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <!-- END -->
+    </div>
+</div>
+<script src="bower_components/reveal.js/lib/js/head.min.js"></script>
+<script src="bower_components/reveal.js/js/reveal.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+controls: true,
+progress: true,
+history: true,
+center: true,
+embedded: true,
+
+//theme: 'lesfurets', // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+// Parallax scrolling
+// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+// parallaxBackgroundSize: '2100px 900px',
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+{ src: 'bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+{ src: 'bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+{ src: 'bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+{ src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+{ src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+    { src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+]
+});
+</script>
+<script src="js/lesfurets-theme.js" async></script>
+</body>
+</html>

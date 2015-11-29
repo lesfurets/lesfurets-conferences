@@ -236,6 +236,11 @@ body {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); 
 }
 
+.reveal section p.image {
+  padding: 0;
+  margin: 0;
+}
+
 /*********************************************
  * NAVIGATION CONTROLS
  *********************************************/
@@ -367,6 +372,14 @@ body {
 
 .reveal .flushright > * {
   text-align: right;
+}
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .center > * {
+  text-align: center;
 }
 
 .reveal .small {
