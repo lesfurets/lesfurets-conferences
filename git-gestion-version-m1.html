@@ -72,7 +72,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
         <section class="flushleft">
             <h2 class="flushright"><strong>La gestion de versions</strong></h2>
             <p class="oldfragment">Fait partie d'une pratique plus large, le SCM, soit <em>software configuration management</em> qui contient la gestion et la construction du code</p>
-            <p class="oldfragment">Essentiellement utilisée dans le domaine de la création de logiciels (code source), mais commence a être utilisé dans d'autres domaines : </p>
+            <p class="oldfragment">Essentiellement utilisée dans le domaine de la création de logiciels (code source), mais commence à être utilisé dans d'autres domaines : </p>
             <p class="oldfragment">- Pour le code civil français</p>
             <p class="oldfragment">- Pour les architectes (Open BIM)</p>
             <aside class="notes">
@@ -92,7 +92,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
             <h2 class="flushright"><strong>Historique de SVN</strong></h2>
             <p class="oldfragment"><strong>1972</strong> : Début des VCS chez Bell labs avec SCCS</p>
             <p class="oldfragment"><strong>1986</strong> : Naissance de CVS (Concurrent Version System), qui deviendra l'un des gestionnaire de source les plus utilisés pendant plusieurs années (encore utilisé aujourd'hui)</p>
-            <p class="oldfragment"><strong>2000</strong> : Création de Apache Subversion (abbrévié SVN) pour succéder a CVS et palier a ses défauts</p>
+            <p class="oldfragment"><strong>2000</strong> : Création de Apache Subversion (SVN) pour succéder à CVS et palier à ses défauts</p>
             <p class="oldfragment"><strong>2015</strong> : Encore très utilisé aujourd'hui</p>
             <aside class="notes">
                 <p></p>
@@ -102,8 +102,8 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
         <section class="flushleft">
             <h2 class="flushright"><strong>Historique de git</strong></h2>
             <p class="oldfragment"><strong>1990</strong> : Beaucoup de développements, autant en open source qu'en propriétaire, de différents systèmes (centralisés ou non)</p>
-            <p class="oldfragment"><strong>2002</strong> : Le code de Linux est partagé sous forme de patchs jusqu'en 2002, puis passage a un DVCS propriétaire, Bitkeeper</p>
-            <p class="oldfragment"><strong>2005</strong> : Relations tendues avec les développeurs de Bitkeeper, Linus Tolvalds (et la communauté linux) développent git</p>
+            <p class="oldfragment"><strong>2002</strong> : Le code de Linux est partagé sous forme de patchs jusqu'en 2002, puis passage à un DVCS propriétaire, Bitkeeper</p>
+            <p class="oldfragment"><strong>2005</strong> : Relations tendues avec les développeurs de Bitkeeper, Linus Tolvalds (et la communauté Linux) développent git</p>
             <p class="oldfragment"><strong>2015</strong> : Probablement le gestionnaire de source le plus utilisé aujourd'hui</p>
             <aside class="notes">
                 <p></p>
@@ -176,9 +176,9 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
         <section class="flushleft">
             <h2 class="flushright"><strong>Objectifs de git</strong></h2>
             <p class="oldfragment">Complètement distribué</p>
-            <p class="oldfragment">Support pour les dévelopements non linéaires</p>
-            <p class="oldfragment">Vitesse pour certaines opérations très précises (changement de branche, merge, etc.)</p>
-            <p class="oldfragment">Peut gérer d'énormes projets (noyau linux, code base google, etc.)</p>
+            <p class="oldfragment">Support pour les développements non linéaires</p>
+            <p class="oldfragment">Vitesse pour certaines opérations très précises (changement de branche, fusion, etc.)</p>
+            <p class="oldfragment">Peut gérer d'énormes projets (noyau Linux, code base Google, etc.)</p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -187,7 +187,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
         <section class="flushleft">
             <h2 class="flushright"><strong>DCVS sont très optimisés</strong></h2>
             <p class="oldfragment">Chez Google...</p>
-            <p class="oldfragment flushright"><strong>Lignes de codes</strong> : 2 millards</p>
+            <p class="oldfragment flushright"><strong>Lignes de codes</strong> : 2 milliard</p>
             <p class="oldfragment flushright"><strong>Historique</strong> : 35 millions de commits</p>
             <p class="oldfragment flushright"><strong>Taille</strong> : 86 terabytes</p>
             <p class="oldfragment flushright"><strong>Commits par jour</strong> : 45 000</p>
@@ -214,9 +214,9 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 
         <section class="flushleft">
             <h2 class="flushright"><strong>Caractéristiques GIT</strong></h2>
-            <p class="oldfragment">Opérations presques toutes locales</p>
+            <p class="oldfragment">Opérations presque toutes locales</p>
             <p class="oldfragment">Gestion de l'intégrité (SHA-1)</p>
-            <p class="oldfragment">Ajout seulement (append only sauf rebase)</p>
+            <p class="oldfragment">Ajout seulement (sauf rebase)</p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -255,6 +255,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 
         <section class="flushright" data-background="#eeeeee">
             <h1 class="indigo700"><strong>Commandes de base</strong></h1>
+            <p class="gray800">Les commandes de base permettent d'ajouter des fichiers à git, de les enlever, de lister les modifications, de faire la différences entre des versions, etc.</p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -342,7 +343,7 @@ Checking connectivity... done.
         </section>
 
         <section class="flushleft" data-background="#212121">
-            <h2 class="flushright"><strong>Statut d'un repo (status)</strong></h2>
+            <h2 class="flushright"><strong>Statut d'un dépôt (status)</strong></h2>
             <pre><code class="bash" data-trim>
 $ git status
 On branch master
@@ -403,7 +404,7 @@ Changes not staged for commit:
         </section>
 
         <section class="flushleft" data-background="#212121">
-            <h2 class="flushright"><strong>Ajouter a l'index (add)</strong></h2>
+            <h2 class="flushright"><strong>Ajouter à l'index (add)</strong></h2>
             <pre><code class="bash" data-trim>
 $ git add git-gestion-version-m1.html
 $ git status
@@ -689,9 +690,9 @@ On branch master
 
         <section class="flushleft">
             <h2 class="flushright"><strong>Dépôts distants / dépots locaux</strong></h2>
-            <p class="oldfragment">Jusqu'a présent, on n'a travaillé qu'en local, mais il faut pouvoir récupérer / envoyer des commits</p>
+            <p class="oldfragment">Jusqu'à présent, on n'a travaillé qu'en local, mais il faut pouvoir récupérer / envoyer des commits</p>
             <p class="oldfragment">On récupère toujours tout (copie complète) avec le <em>fetch</em>, mais on applique ce qu'on veut avec le <em>pull</em> (<em>fetch</em> + <em>merge</em>)</p>
-            <p class="oldfragment">On pousse a partir d'un commit avec le <em>push</em></p>
+            <p class="oldfragment">On pousse à partir d'un commit avec le <em>push</em></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -770,6 +771,7 @@ Fast-forward
 
         <section class="flushright" data-background="#eeeeee">
             <h1 class="indigo700"><strong>Branches</strong></h1>
+            <p class="gray800">Les branches permettent de maintenir en parallèle 2 historiques de développement. Elles sont indépendantes jusqu'au moment de la fusion (merge).</p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -862,6 +864,7 @@ $ git log --graph --oneline --all
 
         <section class="flushright" data-background="#eeeeee">
             <h1 class="indigo700"><strong>Fusion</strong></h1>
+            <p class="gray800">La fusion (merge) est l'inverse de la branche, parce qu'elle rassemble 2 historiques de développement. La fusion ne supprime pas les branches, et en fonction des fichiers modifiés, il faut parfois régler les conflits.</p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -871,7 +874,7 @@ $ git log --graph --oneline --all
             <h2 class="flushright"><strong>Types de fusion</strong></h2>
             <p class="oldfragment">Plusieurs types de fusion, git décide lui-même quoi faire</p>
             <p class="oldfragment"><strong>Fast-forward   </strong> : pas de conflit possible, on ajoute seulement ce qui manque</p>
-            <p class="oldfragment"><strong>Recursive merge</strong> : merge par défaut, conflits possibles a resoudre a la main</p>
+            <p class="oldfragment"><strong>Recursive merge</strong> : merge par défaut, conflits possibles à résoudre à la main</p>
             <p class="oldfragment"><strong>Octopus merge  </strong> : comme le merge récursif, mais avec plus de 2 branches</p>
             <aside class="notes">
                 <p></p>
@@ -913,7 +916,7 @@ Fast-forward
 
         <section class="flushleft" data-background="#212121">
             <h2 class="flushright"><strong>Conflits de merge</strong></h2>
-            <p class="oldfragment">Lorsque la même ligne est modifiée, git ne peut pas merger, il faut le faire a la main</p>
+            <p class="oldfragment">Lorsque la même ligne est modifiée, git ne peut pas merger, il faut le faire à la main</p>
             <pre><code class="bash" data-trim>
 $ git merge fusion-avec-conflit 
 Auto-merging git-gestion-version-m1.html
@@ -1032,7 +1035,7 @@ Merge branch 'gh-pages' of https://github.com/dubreuia/conferences into gh-pages
         </section>
 
         <section class="flushleft" data-background="#212121">
-            <h2 class="flushright"><strong>Retour a la normale</strong></h2>
+            <h2 class="flushright"><strong>Retour à la normale</strong></h2>
             <pre><code class="bash" data-trim>
 $ git log --graph --oneline
 *   988e120 Merge branch 'gh-pages' 
@@ -1052,7 +1055,7 @@ $ git log --graph --oneline
         <section class="flushleft" data-background="#212121">
             <h2 class="flushright"><strong>Au lieu du merge : rebase</strong></h2>
             <p class="oldfragment">Copie les commit du distant avant les commits locaux, utile pour avoir un historique sans "branchement"</p>
-            <p class="oldfragment"><strong>Attention</strong> : fonctionnalitée avancée, c'est facile de se planter</p>
+            <p class="oldfragment"><strong>Attention</strong> : fonctionnalité avancée, c'est facile de se planter</p>
             <pre><code class="bash" data-trim>
 $ git pull --rebase # git fetch && git rebase origin/master
 First, rewinding head to replay your work on top of it...
