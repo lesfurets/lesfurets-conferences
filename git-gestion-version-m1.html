@@ -64,17 +64,17 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 
         <section class="flushright" data-background="#eeeeee">
             <h1 class="indigo700"><strong>VCS : Version Control System</strong></h1>
-            <p class="gray800"> "La gestion de versions (en <em>anglais version</em> control ou <em>revision control</em>) consiste à maintenir l'ensemble des versions d'un ou plusieurs fichiers (généralement en texte)."</p>
+            <p class="gray800"> "La gestion de versions (en anglais <em>version control</em> ou <em>revision control</em>) consiste à maintenir l'ensemble des versions d'un ou plusieurs fichiers (généralement en texte)."</p>
             <aside class="notes">
             </aside>
         </section>
 
         <section class="flushleft">
             <h2 class="flushright"><strong>La gestion de versions</strong></h2>
+            <p class="oldfragment">Fait partie d'une pratique plus large, le SCM, soit <em>software configuration management</em> qui contient la gestion et la construction du code</p>
             <p class="oldfragment">Essentiellement utilisée dans le domaine de la création de logiciels (code source), mais commence a être utilisé dans d'autres domaines : </p>
             <p class="oldfragment">- Pour le code civil français</p>
             <p class="oldfragment">- Pour les architectes (Open BIM)</p>
-            <p class="oldfragment">- ...</p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -89,12 +89,22 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
         </section>
 
         <section class="flushleft">
-            <h2 class="flushright"><strong>Historique de git</strong></h2>
+            <h2 class="flushright"><strong>Historique de SVN</strong></h2>
             <p class="oldfragment"><strong>1972</strong> : Début des VCS chez Bell labs avec SCCS</p>
-            <p class="oldfragment"><strong>1990</strong> : Beaucoup de développements, autant en open source qu'en propriétaire, naissance de CVS</p>
-            <p class="oldfragment"><strong>2002</strong> : Jusqu'a cette année, le code de Linux est partagé sous forme de patchs</p>
-            <p class="oldfragment"><strong>2002</strong> : Passage a un DVCS propriétaire, Bitkeeper</p>
+            <p class="oldfragment"><strong>1986</strong> : Naissance de CVS (Concurrent Version System), qui deviendra l'un des gestionnaire de source les plus utilisés pendant plusieurs années (encore utilisé aujourd'hui)</p>
+            <p class="oldfragment"><strong>2000</strong> : Création de Apache Subversion (abbrévié SVN) pour succéder a CVS et palier a ses défauts</p>
+            <p class="oldfragment"><strong>2015</strong> : Encore très utilisé aujourd'hui</p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Historique de git</strong></h2>
+            <p class="oldfragment"><strong>1990</strong> : Beaucoup de développements, autant en open source qu'en propriétaire, de différents systèmes (centralisés ou non)</p>
+            <p class="oldfragment"><strong>2002</strong> : Le code de Linux est partagé sous forme de patchs jusqu'en 2002, puis passage a un DVCS propriétaire, Bitkeeper</p>
             <p class="oldfragment"><strong>2005</strong> : Relations tendues avec les développeurs de Bitkeeper, Linus Tolvalds (et la communauté linux) développent git</p>
+            <p class="oldfragment"><strong>2015</strong> : Probablement le gestionnaire de source le plus utilisé aujourd'hui</p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -126,6 +136,37 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
         </section>
 
         <section class="flushright" data-background="#eeeeee">
+            <h1 class="indigo700"><strong>SVN</strong></h1>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Architecture SVN</strong></h2>
+            <p class="oldfragment center image"><img width="90%" src="img/git-m1/svn-architecture-01.jpg"></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Organisation dépot SVN</strong></h2>
+            <p class="oldfragment center image"><img width="90%" src="img/git-m1/svn-repository-01.jpg"></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Checkout SVN</strong></h2>
+            <p class="oldfragment center image"><img width="90%" src="img/git-m1/svn-checkout-01.jpg"></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushright" data-background="#eeeeee">
             <h1 class="indigo700"><strong>git</strong></h1>
             <aside class="notes">
                 <p></p>
@@ -144,7 +185,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
         </section>
 
         <section class="flushleft">
-            <h2 class="flushright"><strong>Git est très optimisé</strong></h2>
+            <h2 class="flushright"><strong>DCVS sont très optimisés</strong></h2>
             <p class="oldfragment">Chez Google...</p>
             <p class="oldfragment flushright"><strong>Lignes de codes</strong> : 2 millards</p>
             <p class="oldfragment flushright"><strong>Historique</strong> : 35 millions de commits</p>
@@ -1032,9 +1073,25 @@ Applying: nouveau commit
         </section>
 
         <section class="flushright" data-background="#eeeeee">
+            <h1 class="indigo700"><strong>Pendant ce temps chez LesFurets.com</strong></h1>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushleft">
+            <h2 class="flushright"><strong>Fusion en continue de 30 branches</strong></h2>
+            <p class="oldfragment center image"><img width="75%" src="img/git-m1/teamcity-octopus-01.jpg"></p>
+            <aside class="notes">
+                <p></p>
+            </aside>
+        </section>
+
+        <section class="flushright" data-background="#eeeeee">
             <h1 class="indigo700"><strong>Références</strong></h1>
-            <p class="gray800">- Les images de ces slides viennent de <br/> https://www.git-scm.com/book/fr/v2</p>
-            <p class="gray800">- Voir aussi le man page en ligne <br/> https://www.kernel.org/pub/software/scm/git/docs/
+            <p class="gray800">- Les images de ces slides viennent de <br/> <strong>https://www.git-scm.com/book/fr/v2</strong></p>
+            <p class="gray800">- Voir aussi le man page en ligne <br/> <strong>https://www.kernel.org/pub/software/scm/git/docs/</strong></p>
+            <p class="gray800">- Et notre projet open-source git-octopus <br/> <strong>https://github.com/lesfurets/git-octopus</strong></p>
             <aside class="notes">
                 <p></p>
             </aside>
