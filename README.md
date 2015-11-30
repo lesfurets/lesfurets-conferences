@@ -17,8 +17,12 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 
 ### Software craftmanship
 
-- 26 novembre 2015 (fr) : [Codeurs en Seines Rennes - Code review chez LesFurets.com](https://dubreuia.github.io/lesfurets-conferences/code-review-chez-lesfurets.html)
-- 25 juin 2015 (en) : [NWX Summer Festival Rennes - Pair programming chez LesFurets.com](https://dubreuia.github.io/lesfurets-conferences/pair-programming-chez-lesfurets.html)
+- 26 novembre 2015 (fr) : [Codeurs en Seines - Rouen - Code review chez LesFurets.com](https://dubreuia.github.io/lesfurets-conferences/code-review-chez-lesfurets.html)
+- 25 juin 2015 (en) : [NWX Summer Festival - Rouen - Pair programming chez LesFurets.com](https://dubreuia.github.io/lesfurets-conferences/pair-programming-chez-lesfurets.html)
+
+### Cours
+
+- 1 décembre 2015 (fr) : [Université de Rouen - git (M1) Gestion de version](https://dubreuia.github.io/lesfurets-conferences/git-gestion-version-m1.html)
 
 ## Vidéos
 
