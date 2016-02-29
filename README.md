@@ -18,6 +18,7 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 
 ### Software craftmanship
 
+- 4 mars 2016 (en) : [BGL Tech Conference - London - Live code review at LesFurets.com](https://dubreuia.github.io/lesfurets-conferences/live-code-review-at-lesfurets.html)
 - 26 novembre 2015 (fr) : [Codeurs en Seines - Rouen - Code review chez LesFurets.com](https://dubreuia.github.io/lesfurets-conferences/code-review-chez-lesfurets.html)
 - 25 juin 2015 (en) : [NWX Summer Festival - Rouen - Pair programming chez LesFurets.com](https://dubreuia.github.io/lesfurets-conferences/pair-programming-chez-lesfurets.html)
 
