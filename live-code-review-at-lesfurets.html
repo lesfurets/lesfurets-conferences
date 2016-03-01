@@ -233,23 +233,88 @@ TODO
 
       <section class="flushleft" data-background="#333">
         <h3 class="center">Simplicity</h3>
-        <div>TODO</div>
+        <div class="code-wrapper">
+        <pre><code class="code java" data-trim data-noescape>
+private boolean isPreviousVersion(String version, String compareWith) {
+    String[] versionDigits = compare.split("\\.");
+    String[] compareDigits = compareWith.split("\\.");
+    if (Integer.valueOf(versionDigits[0]) < Integer.valueOf(compareDigits[0]))
+        return true;
+    else if (Integer.valueOf(versionDigits[0]) == Integer.valueOf(compareDigits[0])) {
+        if (Integer.valueOf(versionDigits[1]) < Integer.valueOf(compareDigits[1]))
+            return true;
+        else {
+            if (Integer.valueOf(versionDigits[1]) == Integer.valueOf(compareDigits[1])) {
+                return Integer.valueOf(versionDigits[2]) < Integer.valueOf(compareDigits[2]);
+            }
+            return false;
+        }
+    }
+    return false;
+}
+        </code></pre>
+        </div>
       </section>
 
       <section class="flushleft" data-background="#333">
         <h3 class="center">Review simplicity</h3>
-        <div>TODO</div>
+        <div class="code-wrapper">
+        <pre><code class="code java" data-trim data-noescape>
+private boolean isPreviousVersion(String version, String compareWith) {
+    String[] versionDigits = compare.split("\\.");
+    String[] compareDigits = compareWith.split("\\.");
+    if (Integer.valueOf(versionDigits[0]) < Integer.valueOf(compareDigits[0]))
+        return true;
+    <mark>// Do not compare Integer with == (it only works up to 127), use equals instead</mark>
+    else if (Integer.valueOf(versionDigits[0]) == Integer.valueOf(compareDigits[0])) {
+        if (Integer.valueOf(versionDigits[1]) < Integer.valueOf(compareDigits[1]))
+            return true;
+        else {
+            <mark>// Exact same behaviour as above, use private method</mark>
+            if (Integer.valueOf(versionDigits[1]) == Integer.valueOf(compareDigits[1])) {
+                return Integer.valueOf(versionDigits[2]) < Integer.valueOf(compareDigits[2]);
+            }
+            return false;
+        }
+    }
+    <mark>// A lot of return statement, isn't there a simplier way ?</mark>
+    return false;
+}
+<mark>// General remark : you only compare the first 3 numbers ?</mark>
+        </code></pre>
+        </div>
       </section>
 
       <section class="flushleft" data-background="#333">
         <h3 class="center">Correct simplicity</h3>
-        <div>TODO</div>
+        <div class="code-wrapper">
+        <pre><code class="code java" data-trim data-noescape>
+private boolean isPreviousVersion(String version, String compareWith) {
+    String[] versionDigits = compare.split("\\.");
+    String[] compareDigits = compareWith.split("\\.");
+    // General remark : you only compare the first 3 numbers ?
+    <mark>for (int i = 0; i < versionDigits.length; i++) {</mark>
+        // Exact same behaviour as above, use private method
+        <mark>if (isSameVersion(versionDigits[i], compareDigits[i])) {</mark>
+            continue;
+        }
+        return isPreviousVersion(versionDigits[i], compareDigits[i]);
+    }
+    // A lot of return statement, isn't there a simplier way ?
+    <mark>return false;</mark>
+}
+    </code></pre>
       </section>
 
       <section class="flushleft" data-background="#333">
         <h3 class="center">Simplicity wrapup</h3>
         <ul class="white">
-          <li>TODO</li>
+          <li>A method should be simple to read/understand</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;When you're done coding a method, read yourself again
+          <li>Beware of nested if and loops</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;It never smells good...</li>
+          <li>Do not duplicate code, use private methods</li>
+          <li>Could refer to Sonar complexity metric</li>
         </ul>
       </section>
 
@@ -261,26 +326,118 @@ TODO
 
       <section class="flushleft" data-background="#333">
         <h3 class="center">Object Oriented Programming</h3>
-        <div>TODO</div>
+        <div class="code-wrapper">
+        <pre><code class="code java" data-trim data-noescape>
+public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
+  BigDecimal quoteTotalPrice;
+  quoteTotalPrice = new BigDecimal(quote.getPrice().doubleValue());
+  if (quote.getWarrantyAvailability1().equals(quote.getQuoteType())) {
+      quoteTotalPrice = quoteTotalPrice.add(quote.getWarrantyPrice1());
+  }
+  if (quote.getWarrantyAvailability2().equals(quote.getQuoteType())) {
+      quoteTotalPrice = quoteTotalPrice.add(quote.getWarrantyPrice2());
+  }
+  if (quote.getExpirationDate().isBefore(LocalDate.now())) {
+      throw new ComputationPriceException("It's too late !");
+  }
+  if (!quote.isFeesIncluded()) {
+      if (quote.getOneTimeFees() != null) {
+          quoteTotalPrice = quoteTotalPrice.add(quote.getOneTimeFees());
+      }
+      if (quote.getAnnualFees() != null) {
+          quoteTotalPrice = quoteTotalPrice.add(quote.getAnnualFees());
+      }
+  }
+  // Taxes has changed after 1st January 2015
+  if (quote.getDate().isBefore(LocalDate.of(2015, 1, 1))) {
+      quoteTotalPrice = quoteTotalPrice.multiply(new BigDecimal(1.20));
+  } else {
+      quoteTotalPrice = quoteTotalPrice.multiply(new BigDecimal(1.196));
+  }
+  // Rounding
+  return quoteTotalPrice.setScale(2, BigDecimal.ROUND_HALF_UP);
+}
+    </code></pre>
       </section>
 
       <section class="flushleft" data-background="#333">
         <h3 class="center">Review Object Oriented Programming</h3>
-        <div>TODO</div>
+        <div class="code-wrapper">
+        <pre><code class="code java" data-trim data-noescape>
+public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
+  BigDecimal quoteTotalPrice;
+  <mark>// Variables with numbers is rarely a good option, use a list instead ?</mark>
+  <mark>// Warranties look independant from the quote, encapsulate in an object</mark>
+  quoteTotalPrice = new BigDecimal(quote.getPrice().doubleValue());
+  if (quote.getWarrantyAvailability1().equals(quote.getQuoteType())) {
+      quoteTotalPrice = quoteTotalPrice.add(quote.getWarrantyPrice1());
+  }
+  if (quote.getWarrantyAvailability2().equals(quote.getQuoteType())) {
+      quoteTotalPrice = quoteTotalPrice.add(quote.getWarrantyPrice2());
+  }
+  <mark>// Exception check at the beginning if possible</mark>
+  if (quote.getExpirationDate().isBefore(LocalDate.now())) {
+      throw new ComputationPriceException("It's too late !");
+  }
+  <mark>// Fees in a separate object</mark>
+  if (!quote.isFeesIncluded()) {
+      if (quote.getOneTimeFees() != null) {
+          quoteTotalPrice = quoteTotalPrice.add(quote.getOneTimeFees());
+      }
+      if (quote.getAnnualFees() != null) {
+          quoteTotalPrice = quoteTotalPrice.add(quote.getAnnualFees());
+      }
+  }
+  <mark>// Extract taxes in a separate service, quote doesn't really have to know how they're calculated</mark>
+  // Taxes has changed after 1st January 2015
+  if (quote.getDate().isBefore(LocalDate.of(2015, 1, 1))) {
+      quoteTotalPrice = quoteTotalPrice.multiply(new BigDecimal(1.20));
+  } else {
+      quoteTotalPrice = quoteTotalPrice.multiply(new BigDecimal(1.196));
+  }
+  // Rounding
+  return quoteTotalPrice.setScale(2, BigDecimal.ROUND_HALF_UP);
+}
+    </code></pre>
       </section>
 
       <section class="flushleft" data-background="#333">
         <h3 class="center">Correct Object Oriented Programming</h3>
-        <div>TODO</div>
+        <div class="code-wrapper">
+        <pre><code class="code java" data-trim data-noescape>
+public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
+  // Exception check at the beginning if possible
+  <mark>checkQuoteIsStillValid(quote.getExpirationDate(), quote.getInsurer());</mark>
+
+  // Independant objects
+  BigDecimal quoteTotalPrice = new BigDecimal(quote.getPrice().doubleValue())
+                  .add(warrantyService.computeWarrantiesAmount(quote.getQuoteType(), <mark>quote.getWarranties()</mark>))
+                  .add(feesService.computeFeesAmount(<mark>quote.getFees()</mark>));
+
+  // Extract taxes in a separate service, quote doesn't really have to know how they're calculated
+  return <mark>taxesService</mark>.applyTaxes(quote.getDate(), quoteTotalPrice);
+}
+        </code></pre>
+      </section>
+
+      <section class="flushleft" data-background="#333">
+        <h3 class="center">Object Oriented Programming Class Diagram</h3>
+        <ul class="white">
+          <img src="img/class-diagram.png" />
+        </ul>
       </section>
 
       <section class="flushleft" data-background="#333">
         <h3 class="center">Object Oriented Programming wrapup</h3>
         <ul class="white">
-          <li>TODO</li>
+          <li>Encapsulation, inheritance, abstraction, polymorphism</li>
+          <li>No god object</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;Don't be afraid of creating new classes</li>
+          <li>No duplication in objects</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;Don't forget inheritance when necessary</li>
+          <li>Structure your data in a smart way</li>
         </ul>
       </section>
-
       <!-- CONCLUSION -->
 
       <section class="flushleft" data-background="#333">
