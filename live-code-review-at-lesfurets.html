@@ -252,16 +252,16 @@ Collection&lt;Object&gt; removeDuplicates(Collection&lt;?&gt; collection) {
 private boolean isPreviousVersion(String version, String compareWith) {
     String[] versionDigits = compare.split("\\.");
     String[] compareDigits = compareWith.split("\\.");
-    if (Integer.valueOf(versionDigits[0]) < Integer.valueOf(compareDigits[0]))
+    if (valueOf(versionDigits[0]) < valueOf(compareDigits[0]))
         return true;
-    else if (Integer.valueOf(versionDigits[0]) == Integer.valueOf(compareDigits[0])) {
-        if (Integer.valueOf(versionDigits[1]) < Integer.valueOf(compareDigits[1]))
+    else if (valueOf(versionDigits[0]) == valueOf(compareDigits[0])) {
+        if (valueOf(versionDigits[1]) < valueOf(compareDigits[1]))
             return true;
         else {
-            if (Integer.valueOf(versionDigits[1]) == Integer.valueOf(compareDigits[1])) {
-                return Integer.valueOf(versionDigits[2]) < Integer.valueOf(compareDigits[2]);
-            }
-            return false;
+          if (valueOf(versionDigits[1]) == valueOf(compareDigits[1])) {
+              return valueOf(versionDigits[2]) < valueOf(compareDigits[2]);
+          }
+          return false;
         }
     }
     return false;
@@ -276,16 +276,16 @@ private boolean isPreviousVersion(String version, String compareWith) {
 private boolean isPreviousVersion(String version, String compareWith) {
     String[] versionDigits = compare.split("\\.");
     String[] compareDigits = compareWith.split("\\.");
-    if (Integer.valueOf(versionDigits[0]) < Integer.valueOf(compareDigits[0]))
+    if (valueOf(versionDigits[0]) < valueOf(compareDigits[0]))
         return true;
     <mark>// Do not compare Integer with == (it only works up to 127), use equals instead</mark>
-    else if (Integer.valueOf(versionDigits[0]) == Integer.valueOf(compareDigits[0])) {
-        if (Integer.valueOf(versionDigits[1]) < Integer.valueOf(compareDigits[1]))
+    else if (valueOf(versionDigits[0]) == valueOf(compareDigits[0])) {
+        if (valueOf(versionDigits[1]) < valueOf(compareDigits[1]))
             return true;
         else {
             <mark>// Exact same behaviour as above, use private method</mark>
-            if (Integer.valueOf(versionDigits[1]) == Integer.valueOf(compareDigits[1])) {
-                return Integer.valueOf(versionDigits[2]) < Integer.valueOf(compareDigits[2]);
+            if (valueOf(versionDigits[1]) == valueOf(compareDigits[1])) {
+                return valueOf(versionDigits[2]) < valueOf(compareDigits[2]);
             }
             return false;
         }
@@ -314,6 +314,12 @@ private boolean isPreviousVersion(String version, String compareWith) {
     }
     // A lot of return statement, isn't there a simplier way ?
     <mark>return false;</mark>
+    
+    private boolean isSameVersion(String versionNumber, String compareWith) {
+        return Integer.compare(
+            <mark>Integer.parseInt(versionNumber)</mark>, 
+            Integer.parseInt(compareWith)) == 0;
+    }
 }
     </code></pre>
       </section>
@@ -324,9 +330,9 @@ private boolean isPreviousVersion(String version, String compareWith) {
           <li>A method should be simple to read/understand</li>
           <li>&nbsp;&nbsp;&nbsp;&nbsp;When you're done coding a method, read yourself again
           <li>Beware of nested if and loops</li>
-          <li>&nbsp;&nbsp;&nbsp;&nbsp;It never smells good...</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;Too much complexity</li>
           <li>Do not duplicate code, use private methods</li>
-          <li>Could refer to Sonar complexity metric</li>
+          <li>You can use Sonar complexity metric</li>
         </ul>
       </section>
 
@@ -340,31 +346,24 @@ private boolean isPreviousVersion(String version, String compareWith) {
         <div class="code-wrapper small">
         <pre><code class="code java" data-trim data-noescape>
 public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
-  BigDecimal quoteTotalPrice;
-  quoteTotalPrice = new BigDecimal(quote.getPrice().doubleValue());
-  if (quote.getWarrantyAvailability1().equals(quote.getQuoteType())) {
+  BigDecimal quoteTotalPrice = new BigDecimal(quote.getPrice().doubleValue());
+  if (quote.getWarrantyAvailability1().equals(quote.getQuoteType()))
       quoteTotalPrice = quoteTotalPrice.add(quote.getWarrantyPrice1());
-  }
-  if (quote.getWarrantyAvailability2().equals(quote.getQuoteType())) {
+  if (quote.getWarrantyAvailability2().equals(quote.getQuoteType()))
       quoteTotalPrice = quoteTotalPrice.add(quote.getWarrantyPrice2());
-  }
-  if (quote.getExpirationDate().isBefore(LocalDate.now())) {
+  if (quote.getExpirationDate().isBefore(LocalDate.now()))
       throw new ComputationPriceException("It's too late !");
-  }
   if (!quote.isFeesIncluded()) {
-      if (quote.getOneTimeFees() != null) {
+      if (quote.getOneTimeFees() != null)
           quoteTotalPrice = quoteTotalPrice.add(quote.getOneTimeFees());
-      }
-      if (quote.getAnnualFees() != null) {
+      if (quote.getAnnualFees() != null)
           quoteTotalPrice = quoteTotalPrice.add(quote.getAnnualFees());
-      }
   }
   // Taxes has changed after 1st January 2015
-  if (quote.getDate().isBefore(LocalDate.of(2015, 1, 1))) {
+  if (quote.getDate().isBefore(LocalDate.of(2015, 1, 1)))
       quoteTotalPrice = quoteTotalPrice.multiply(new BigDecimal(1.20));
-  } else {
+  else
       quoteTotalPrice = quoteTotalPrice.multiply(new BigDecimal(1.196));
-  }
   // Rounding
   return quoteTotalPrice.setScale(2, BigDecimal.ROUND_HALF_UP);
 }
@@ -375,36 +374,29 @@ public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
         <div class="code-wrapper smaller">
         <pre><code class="code java" data-trim data-noescape>
 public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
-  BigDecimal quoteTotalPrice;
   <mark>// Variables with numbers is rarely a good option, use a list instead ?</mark>
   <mark>// Warranties look independant from the quote, extract in an object</mark>
-  quoteTotalPrice = new BigDecimal(quote.getPrice().doubleValue());
-  if (quote.getWarrantyAvailability1().equals(quote.getQuoteType())) {
+  BigDecimal quoteTotalPrice = new BigDecimal(quote.getPrice().doubleValue());
+  if (quote.getWarrantyAvailability1().equals(quote.getQuoteType()))
       quoteTotalPrice = quoteTotalPrice.add(quote.getWarrantyPrice1());
-  }
-  if (quote.getWarrantyAvailability2().equals(quote.getQuoteType())) {
+  if (quote.getWarrantyAvailability2().equals(quote.getQuoteType()))
       quoteTotalPrice = quoteTotalPrice.add(quote.getWarrantyPrice2());
-  }
   <mark>// Exception check at the beginning if possible</mark>
-  if (quote.getExpirationDate().isBefore(LocalDate.now())) {
+  if (quote.getExpirationDate().isBefore(LocalDate.now()))
       throw new ComputationPriceException("It's too late !");
-  }
-  <mark>// Hide implementation, we don't need to know about it here</mark>
+  <mark>// Encapsulate implementation, we don't need to know about it here</mark>
   if (!quote.isFeesIncluded()) {
-      if (quote.getOneTimeFees() != null) {
+      if (quote.getOneTimeFees() != null)
           quoteTotalPrice = quoteTotalPrice.add(quote.getOneTimeFees());
-      }
-      if (quote.getAnnualFees() != null) {
+      if (quote.getAnnualFees() != null)
           quoteTotalPrice = quoteTotalPrice.add(quote.getAnnualFees());
-      }
   }
   <mark>// Same remark as above</mark>
   // Taxes has changed after 1st January 2015
-  if (quote.getDate().isBefore(LocalDate.of(2015, 1, 1))) {
+  if (quote.getDate().isBefore(LocalDate.of(2015, 1, 1)))
       quoteTotalPrice = quoteTotalPrice.multiply(new BigDecimal(1.20));
-  } else {
+  else
       quoteTotalPrice = quoteTotalPrice.multiply(new BigDecimal(1.196));
-  }
   // Rounding
   return quoteTotalPrice.setScale(2, BigDecimal.ROUND_HALF_UP);
 }

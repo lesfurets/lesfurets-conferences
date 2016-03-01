@@ -331,6 +331,10 @@
   padding: 0;
 }
 
+.reveal .code-wrapper.small {
+  font-size: 2em;
+}
+
 .reveal .highlight {
   font-weight: bold;
   color: red;

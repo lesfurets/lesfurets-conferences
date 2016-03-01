@@ -328,15 +328,14 @@
     position: relative;
     right: 50%;
     text-align: center;
-
 }
 
 .reveal .code-wrapper.small {
-    font-size: 18px;
+    font-size: 0.7em;
 }
 
 .reveal .code-wrapper.smaller {
-    font-size: 15px;
+    font-size: 0.55em;
 }
 
 .reveal .code {
