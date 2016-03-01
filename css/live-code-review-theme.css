@@ -1,356 +1,375 @@
 .reveal h1 {
-  font-size:112px;
-  font-weight:300;
-  letter-spacing:-5px;
-  line-height:128px;
+    font-size:112px;
+    font-weight: bold;
+    letter-spacing:-5px;
+    line-height:128px;
 }
 .reveal h2 {
-  font-size: 56px;
-  font-weight: 400;
-  line-height: 64px;
+    font-size: 56px;
+    font-weight: bold;
+    line-height: 64px;
 }
 .reveal h3 {
-  font-size: 45px;
-  font-weight: 400;
-  line-height: 64px;
+    font-size: 45px;
+    font-weight: bold;
+    line-height: 64px;
 }
 .reveal h4 {
-  font-size: 34px;
-  font-weight: 400;
-  line-height: 52px;
+    font-size: 34px;
+    line-height: 52px;
 }
 
 .reveal blockquote {
-  background-color: rgba(255, 255, 255, 0.75);
-  border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 5px;
 }
 
 .reveal blockquote:before {
-  color: black;
-  content: open-quote;
-  font-size: 4em;
-  line-height: 0.1em;
-  margin-right: 0.3em;
-  vertical-align: -0.4em;
+    color: black;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.3em;
+    vertical-align: -0.4em;
 }
 
 .reveal blockquote p {
-  display: inline;
-  color: #283593;
-  font-style: italic;
+    display: inline;
+    color: #283593;
+    font-style: italic;
 }
 
 .reveal .halfpage {
-  display: inline-block;
-  vertical-align: top;
-  width: 40%;
+    display: inline-block;
+    vertical-align: top;
+    width: 40%;
 }
 
 .reveal .halfpage:nth-child(1) {
-  color: red;
-  margin: 0 1em 0 0;
+    color: red;
+    margin: 0 1em 0 0;
 }
 
 .reveal .halfpage:nth-child(2) {
-  color: red;
-  margin: 0 0 0 1em;
+    color: red;
+    margin: 0 0 0 1em;
 }
 
 .reveal .twocolumn:before {
-  content: "";
-  height: 100%;
-  left: 0%;
-  position: absolute;
-  width: 50%;
-  z-index: -1;
+    content: "";
+    height: 100%;
+    left: 0%;
+    position: absolute;
+    width: 50%;
+    z-index: -1;
 }
 
 .reveal .twocolumn.black:before {
-  background-color: #212121;
+    background-color: #212121;
 }
 
 .reveal .step {
-  color: black;
-  font-size: 1.5em;
-  margin: 0.5ex;
+    color: black;
+    font-size: 1.5em;
+    margin: 0.5ex;
 }
 
 .reveal .indigo50 {
-  color: #e8eaf6;
+    color: #e8eaf6;
 }
 
 .reveal .indigo100 {
-  color: #c5cae9;
+    color: #c5cae9;
 }
 
 .reveal .indigo200 {
-  color: #9fa8da;
+    color: #9fa8da;
 }
 
 .reveal .indigo300 {
-  color: #7986cb;
+    color: #7986cb;
 }
 
 .reveal .indigo400 {
-  color: #5c6bc0;
+    color: #5c6bc0;
 }
 
 .reveal .indigo500 {
-  color: #3f51b5;
+    color: #3f51b5;
 }
 
 .reveal .indigo600 {
-  color: #3949ab;
+    color: #3949ab;
 }
 
 .reveal .indigo700 {
-  color: #303f9f;
+    color: #303f9f;
 }
 
 .reveal .indigo800 {
-  color: #283593;
+    color: #283593;
 }
 
 .reveal .indigo900 {
-  color: #1a237e;
+    color: #1a237e;
 }
 
 .reveal .indigoA100 {
-  color: #8c9eff;
+    color: #8c9eff;
 }
 
 .reveal .indigoA200 {
-  color: #536dfe;
+    color: #536dfe;
 }
 
 .reveal .indigoA400 {
-  color: #3d5afe;
+    color: #3d5afe;
 }
 
 .reveal .indigoA700 {
-  color: #304ffe;
+    color: #304ffe;
 }
 
 .reveal .orange50 {
-  color: #fff3e0;
+    color: #fff3e0;
 }
 
 .reveal .orange100 {
-  color: #ffe0b2;
+    color: #ffe0b2;
 }
 
 .reveal .orange200 {
-  color: #ffcc80;
+    color: #ffcc80;
 }
 
 .reveal .orange300 {
-  color: #ffb74d;
+    color: #ffb74d;
 }
 
 .reveal .orange400 {
-  color: #ffa726;
+    color: #ffa726;
 }
 
 .reveal .orange500 {
-  color: #ff9800;
+    color: #ff9800;
 }
 
 .reveal .orange600 {
-  color: #fb8c00;
+    color: #fb8c00;
 }
 
 .reveal .orange700 {
-  color: #f57c00;
+    color: #f57c00;
 }
 
 .reveal .orange800 {
-  color: #ef6c00;
+    color: #ef6c00;
 }
 
 .reveal .orange900 {
-  color: #e65100;
+    color: #e65100;
 }
 
 .reveal .orangeA100 {
-  color: #ffd180;
+    color: #ffd180;
 }
 
 .reveal .orangeA200 {
-  color: #ffab40;
+    color: #ffab40;
 }
 
 .reveal .orangeA400 {
-  color: #ff9100;
+    color: #ff9100;
 }
 
 .reveal .orangeA700 {
-  color: #ff6d00;
+    color: #ff6d00;
 }
 
 .reveal .gray50  {
-  color: #fafafa;
+    color: #fafafa;
 }
 
 .reveal .gray100 {
-  color: #f5f5f5;
+    color: #f5f5f5;
 }
 
 .reveal .gray200 {
-  color: #eeeeee;
+    color: #eeeeee;
 }
 
 .reveal .gray300 {
-  color: #e0e0e0;
+    color: #e0e0e0;
 }
 
 .reveal .gray400 {
-  color: #bdbdbd;
+    color: #bdbdbd;
 }
 
 .reveal .gray500 {
-  color: #9e9e9e;
+    color: #9e9e9e;
 }
 
 .reveal .gray600 {
-  color: #757575;
+    color: #757575;
 }
 
 .reveal .gray700 {
-  color: #616161;
+    color: #616161;
 }
 
 .reveal .gray800 {
-  color: #424242;
+    color: #424242;
 }
 
 .reveal .gray900 {
-  color: #212121;
+    color: #212121;
 }
 
 .reveal .gray1000 {
-  color: #111111;
+    color: #111111;
 }
 
 .reveal .deeporange50  {
-  color: #fbe9e7;
+    color: #fbe9e7;
 }
 
 .reveal .deeporange100 {
-  color: #ffccbc;
+    color: #ffccbc;
 }
 
 .reveal .deeporange200 {
-  color: #ffab91;
+    color: #ffab91;
 }
 
 .reveal .deeporange300 {
-  color: #ff8a65;
+    color: #ff8a65;
 }
 
 .reveal .deeporange400 {
-  color: #ff7043;
+    color: #ff7043;
 }
 
 .reveal .deeporange500 {
-  color: #ff5722;
+    color: #ff5722;
 }
 
 .reveal .deeporange600 {
-  color: #f4511e;
+    color: #f4511e;
 }
 
 .reveal .deeporange700 {
-  color: #e64a19;
+    color: #e64a19;
 }
 
 .reveal .deeporange800 {
-  color: #d84315;
+    color: #d84315;
 }
 
 .reveal .deeporange900 {
-  color: #bf360c;
+    color: #bf360c;
 }
 
 .reveal .small {
-  font-size: 0.8em;
+    font-size: 0.8em;
 }
 .reveal a:not(.image) {
-  color: #fafafa;
-  text-decoration: underline;
+    color: #fafafa;
+    text-decoration: underline;
 }
 
 .reveal table {
-  border: solid 0.07em white;
-  border-collapse: collapse;
-  padding: 0.1em;
+    border: solid 0.07em white;
+    border-collapse: collapse;
+    padding: 0.1em;
 }
 
 .reveal th {
-  border: solid 0.05em white;
-  padding: 0.2em;
-  font-weight: bold;
+    border: solid 0.05em white;
+    padding: 0.2em;
+    font-weight: bold;
 }
 
 .reveal td {
-  border: solid 0.05em grey;
-  padding: 0.1em;
-  font-weight: lighter;
-  text-align: center;
+    border: solid 0.05em grey;
+    padding: 0.1em;
+    font-weight: lighter;
+    text-align: center;
 }
 
 .reveal section img.nope {
-  background-color: transparent;
-  box-shadow: 0 0 0;
-  border: none;
-  padding: 0;
+    background-color: transparent;
+    box-shadow: 0 0 0;
+    border: none;
+    padding: 0;
 }
 
 .reveal .person {
-  display: inline-block;
-  vertical-align: top;
-  width: 30%;
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
 }
 
 .reveal .person .photo {
-  width: 33%;
+    width: 33%;
 }
 
 .reveal .person .name {
-  display: block;
-  font-weight: bold;
+    display: block;
+    font-weight: bold;
 }
 
 .reveal .person .description {
-  font-size: smaller;
+    font-size: smaller;
+}
+
+.reveal .code-wrapper {
+    position: relative;
+    right: 50%;
+    text-align: center;
 }
 
 .reveal .code {
-  font-family: monospace;
-  font-size: 20px;
-  margin: 5;
-  padding: 0;
+    display: inline-block;
+    font-family: monospace;
+    line-height: 1.25;
+    margin-right:-100%;
+    padding: 5px 20px;
+    text-align: left;
+    width: 95vw;
+    overflow: hidden;
 }
 
 .reveal .highlight {
-  font-weight: bold;
-  color: red;
+    font-weight: bold;
+    color: red;
 }
 
 
 .speaker-mode .footer,
 .speaker-mode .footer {
-  display: none;
+    display: none;
 }
 
 .reveal th,
 .reveal td {
-  border: 3px solid #fafafa;
+    border: 3px solid #fafafa;
 }
 
 .reveal em {
-  color: #ff6d00;
+    color: #ff6d00;
 }
 
 .reveal ul.white li:before {
-  color: #cccccc;
+    color: #cccccc;
+}
+
+.reveal mark {
+    background-color: #fff;
+    color: #000;
+}
+
+.reveal mark .hljs-comment,
+.reveal mark .hljs-title {
+    color: #000;
 }

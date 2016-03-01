@@ -79,78 +79,212 @@
 
       <!-- CODE STYLE / NAMING -->
 
-      <section class="flushleft" data-background="#333">
-        <h2>Style / naming</h2>
-        <div>TODO</div>
+      <section class="flushleft" data-background="#eee">
+        <h2 style="color:#333">Code style and naming</h2>
       </section>
 
       <section class="flushleft" data-background="#333">
-        <h2>Review style / naming</h2>
-        <div>TODO</div>
+        <h3 class="center">Style and naming</h3>
+        <div class="code-wrapper">
+        <pre><code class="code java" data-trim data-noescape>
+void check(MainDriver d1, Driver d2, Besoins b) 
+                        throws ExclusionException {
+
+  int age = DateHelper.getAge(driver.getBirthDate(),
+  DateHelper.getToday(),
+  EPrecision.day);
+
+  if (age < 18)
+      throw new ExclusionException("Must be at least " 
+                                   + "18 years old");
+}
+        </code></pre>
+        </div>
       </section>
 
       <section class="flushleft" data-background="#333">
-        <h2>Correct style / naming</h2>
-        <div>TODO</div>
-        <div>TODO should be automatic + link to save-actions</div>
+        <h3 class="center">Review style and naming</h3>
+        <div class="code-wrapper">
+        <pre><code class="code java" data-trim data-noescape>
+<mark>// Use precise method naming, parameter naming,</mark>
+<mark>// and remove unused parameters</mark>
+void check(MainDriver d1, Driver d2, Besoins b) 
+                        throws ExclusionException {
+  <mark>// Use static imports if clearer and correct indentation</mark>
+  int age = DateHelper.getAge(driver.getBirthDate(),
+  DateHelper.getToday(),
+  EPrecision.day);
+  <mark>// Use constants for magic numbers and string</mark>
+  if (age < 18)
+      <mark>// Use brackets for single line statements</mark>
+      throw new ExclusionException("Must be at least " 
+                                   + "18 years old");
+}
+        </code></pre>
+        </div>
+      </section>
+
+      <section class="flushleft" data-background="#333">
+        <h3 class="center">Correct style and naming</h3>
+        <div class="code-wrapper">
+        <pre><code class="code java" data-trim data-noescape>
+// Use precise method naming, parameter naming, 
+// and remove unused parameters
+void <mark>checkMainDriverAge</mark>(MainDriver <mark>mainDriver</mark>, 
+                               Besoins <mark>besoins</mark>) 
+                                   throws ExclusionException {
+  // Use static imports if clearer
+  int age = <mark>getAge</mark>(driver.getBirthDate(), <mark>getToday()</mark>, 
+                   EPrecision.day);
+  // Use constants for magic numbers and string
+  if (age < <mark>MINIMUM_AGE</mark>) <mark>{</mark>
+      // Use brackets for single line statements
+      throw new ExclusionException(<mark>EXCLUSION_MESSAGE_18_YEARS</mark>);
+  <mark>}</mark>
+}
+        </code></pre>
+        </div>
+      </section>
+
+      <section class="flushleft" data-background="#333">
+        <h3>Style and naming wrapup</h3>
+        <ul class="white">
+          <li>Define a style guide and naming rules with your team...</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;...and stick to it !</li>
+          <li>https://google.github.io/styleguide/cppguide.html</li>
+          <li>Some of it can be automated:</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>Eclipse:</em> settings -&gt; save-actions</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>Intellij:</em> plugins -&gt; save-actions (TODO link)</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>Sonar:</em> static code analysis</li>
+        </ul>
       </section>
 
       <!-- LANGUAGE AND API USAGE -->
 
-      <section class="flushleft" data-background="#333">
-        <h2>Language and API usage</h2>
-        <div>TODO</div>
+      <section class="flushleft" data-background="#eee">
+        <h2 style="color:#333">Language and API usage</h2>
       </section>
 
       <section class="flushleft" data-background="#333">
-        <h2>Review language and API usage</h2>
-        <div>TODO</div>
+        <h3 class="center">Language and API usage</h3>
+        <div class="code-wrapper">
+        <pre><code class="code java" data-trim data-noescape>
+Collection&lt;Object&gt; removeDuplicates(Collection&lt;?&gt; collection) {
+    List&lt;Object&gt; uniques = new ArrayList&lt;&gt;();
+    for (Object object : collection)
+        if (!uniques.contains(object))
+            uniques.add((object));
+    return uniques;
+}
+
+TODO
+        </code></pre>
+        </div>
       </section>
 
       <section class="flushleft" data-background="#333">
-        <h2>Correct language and API usage</h2>
-        <div>TODO</div>
-        <div>TODO should be automatic + link to sonar</div>
+        <h3 class="center">Review language and API usage</h3>
+        <div class="code-wrapper">
+        <pre><code class="code java" data-trim data-noescape>
+Collection&lt;Object&gt; removeDuplicates(Collection&lt;?&gt; collection) {
+    <mark>// Use a set to remove duplicates</mark>
+    List&lt;Object&gt; uniques = new ArrayList&lt;&gt;();
+    for (Object object : collection)
+        if (!uniques.contains(object))
+            uniques.add(object);
+    return uniques;
+}
+
+TODO
+        </code></pre>
+        </div>
+      </section>
+
+      <section class="flushleft" data-background="#333">
+        <h3 class="center">Correct language and API usage</h3>
+        <div class="code-wrapper">
+        <pre><code class="code java" data-trim data-noescape>
+Collection&lt;Object&gt; removeDuplicates(Collection&lt;?&gt; collection) {
+    // Use a set to remove duplicates
+    return <mark>new HashSet&lt;&gt;(collection)</mark>;
+}
+
+TODO
+        </code></pre>
+        </div>
+      </section>
+
+      <section class="flushleft" data-background="#333">
+        <h3>Language and API wrapup</h3>
+        <ul class="white">
+          <li>Know your langage inside out</li>
+          <li>Create your own methods if needed</li>
+          <li>Some of it can be automated:</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;Eclipse and Intellij have warnings</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;Sonar can have custom rules</li>
+        </ul>
       </section>
 
       <!-- SIMPLICITY -->
 
+      <section class="flushleft" data-background="#eee">
+        <h2 style="color:#333">Simplicity</h2>
+      </section>
+
       <section class="flushleft" data-background="#333">
-        <h2>Simplicity</h2>
+        <h3 class="center">Simplicity</h3>
         <div>TODO</div>
       </section>
 
       <section class="flushleft" data-background="#333">
-        <h2>Review simplicity</h2>
+        <h3 class="center">Review simplicity</h3>
         <div>TODO</div>
       </section>
 
       <section class="flushleft" data-background="#333">
-        <h2>Correct simplicity</h2>
+        <h3 class="center">Correct simplicity</h3>
         <div>TODO</div>
+      </section>
+
+      <section class="flushleft" data-background="#333">
+        <h3 class="center">Simplicity wrapup</h3>
+        <ul class="white">
+          <li>TODO</li>
+        </ul>
       </section>
 
       <!-- OBJECT ORIENTED PROGRAMMING -->
 
+      <section class="flushleft" data-background="#eee">
+        <h2 style="color:#333">Object Oriented Programming (OOP)</h2>
+      </section>
+
       <section class="flushleft" data-background="#333">
-        <h2>Object Oriented Programming</h2>
+        <h3 class="center">Object Oriented Programming</h3>
         <div>TODO</div>
       </section>
 
       <section class="flushleft" data-background="#333">
-        <h2>Review Object Oriented Programming</h2>
+        <h3 class="center">Review Object Oriented Programming</h3>
         <div>TODO</div>
       </section>
 
       <section class="flushleft" data-background="#333">
-        <h2>Correct Object Oriented Programming</h2>
+        <h3 class="center">Correct Object Oriented Programming</h3>
         <div>TODO</div>
+      </section>
+
+      <section class="flushleft" data-background="#333">
+        <h3 class="center">Object Oriented Programming wrapup</h3>
+        <ul class="white">
+          <li>TODO</li>
+        </ul>
       </section>
 
       <!-- CONCLUSION -->
 
       <section class="flushleft" data-background="#333">
-        <h2>Why do we do code review</h2>
+        <h3>Why do we do code review</h3>
         <ul class="white">
           <li>Quality: uniformity, best practices, style</li>
           <li>Communication: bus factor, discussions, sharing</li>
@@ -160,7 +294,7 @@
       </section>
 
       <section class="flushleft" data-background="#333">
-        <h2>Who does code review</h2>
+        <h3>Who does code review</h3>
         <ul class="white">
           <li>Junior developers (simplicity)</li>
           <li>Senior developers (design / oop / language)</li>
@@ -169,13 +303,17 @@
       </section>
 
       <section class="flushleft" data-background="#333">
-        <h2>TODO</h2>
+        <h3>TODO</h3>
         <ul class="white">
           <li>TODO tests unitaires</li>
           <li>TODO compréhension</li>
           <li>TODO anti pattern et code smell</li>
           <li>TODO avoid shaming</li>
         </ul>
+      </section>
+
+      <section class="flushleft" data-background="#333">
+        <h3>END</h3>
       </section>
 
       <!-- END -->
