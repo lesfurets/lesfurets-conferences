@@ -361,15 +361,15 @@
 
 /* http://www.webestools.com/web20-badge-generator-free-image-beta-photoshop-web20-badge-generator.html */
 .reveal .badge.code {
-    background-image: url('../img/live-code-review/badge-code.png');
+    background-image: url('../img/live-code-review/badge-code-01.png');
 }
 
 .reveal .badge.review {
-    background-image: url('../img/live-code-review/badge-review.png');
+    background-image: url('../img/live-code-review/badge-review-01.png');
 }
 
 .reveal .badge.correct {
-    background-image: url('../img/live-code-review/badge-correct.png');
+    background-image: url('../img/live-code-review/badge-correct-01.png');
 }
 
 .reveal .highlight {
