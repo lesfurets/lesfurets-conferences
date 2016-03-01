@@ -60,6 +60,21 @@
         </ul>
       </section>
 
+      <section class="flushleft" data-background="#333">
+        <h2>Code review is a process...</h2>
+        <img src="img/live-code-review/code-review-flow-01.png">
+      </section>
+
+      <section class="flushleft" data-background="#333">
+        <h2>... sometimes it is a cycle</h2>
+        <img src="img/live-code-review/code-review-flow-02.png">
+      </section>
+
+      <section class="flushleft" data-background="#333">
+        <h2>Code review request</h2>
+        <p>You request a code review by doing a <em>pull request</em> (github), a <em>merge request</em> (gitlab), or by changing the status in JIRA to <em>to review</em> (lesfurets.com).</p>
+      </section>
+
       <section class="flushleft" data-background="#222222">
         <h2>What do we review</h2>
         <ul class="white">
@@ -69,12 +84,6 @@
           <li>Object oriented programming</li>
           <li>Other things that fits your team</li>
         </ul>
-      </section>
-
-      <section class="flushleft" data-background="#333">
-        <h2>How / when do you do it</h2>
-        <div>TODO graph</div>
-        <div>code -&gt; CR + proposition -&gt; correction -&gt; cycle !</div>
       </section>
 
       <!-- CODE STYLE / NAMING -->
@@ -150,11 +159,11 @@ void <mark>checkMainDriverAge</mark>(MainDriver <mark>mainDriver</mark>,
         <h3>Style and naming wrapup</h3>
         <ul class="white">
           <li>Define a style guide and naming rules with your team...</li>
-          <li>&nbsp;&nbsp;&nbsp;&nbsp;...and stick to it !</li>
-          <li>https://google.github.io/styleguide/cppguide.html</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;...and stick to it!</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;Example : <a href="https://google.github.io/styleguide/cppguide.html">Google C++ guide</a></li>
           <li>Some of it can be automated:</li>
           <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>Eclipse:</em> settings -&gt; save-actions</li>
-          <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>Intellij:</em> plugins -&gt; save-actions (TODO link)</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>Intellij:</em> plugins -&gt; save-actions (<a href="https://github.com/dubreuia/intellij-plugin-save-actions">@dubreuia</a>)</li>
           <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>Sonar:</em> static code analysis</li>
         </ul>
       </section>
@@ -220,8 +229,8 @@ TODO
           <li>Know your langage inside out</li>
           <li>Create your own methods if needed</li>
           <li>Some of it can be automated:</li>
-          <li>&nbsp;&nbsp;&nbsp;&nbsp;Eclipse and Intellij have warnings</li>
-          <li>&nbsp;&nbsp;&nbsp;&nbsp;Sonar can have custom rules</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>Eclipse</em> and <em>Intellij</em> have warnings</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>Sonar</em> can have custom rules</li>
         </ul>
       </section>
 
@@ -438,39 +447,39 @@ public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
           <li>Structure your data in a smart way</li>
         </ul>
       </section>
+
       <!-- CONCLUSION -->
 
+      <section class="flushleft" data-background="#eee">
+        <h2 style="color:#333">It's all about quality and communication</h2>
+      </section>
+
       <section class="flushleft" data-background="#333">
-        <h3>Why do we do code review</h3>
+        <h3>Why review</h3>
         <ul class="white">
-          <li>Quality: uniformity, best practices, style</li>
-          <li>Communication: bus factor, discussions, sharing</li>
-          <li>Documentation: basis for argumentation, identifying specific code smells</li>
-          <li>Bugs: reduce bugs</li>
+          <li><em><strong>Quality:</strong></em> uniformity, best practices, style</li>
+          <li><em><strong>Communication:</strong></em> bus factor, discussions, sharing</li>
+          <li><em><strong>Documentation:</strong></em> basis for argumentation, identifying specific code smells</li>
+          <li><em><strong>Bugs:</strong></em> reduce bugs</li>
         </ul>
       </section>
 
       <section class="flushleft" data-background="#333">
-        <h3>Who does code review</h3>
+        <h3>Who reviews</h3>
         <ul class="white">
           <li>Junior developers (simplicity)</li>
           <li>Senior developers (design / oop / language)</li>
-          <li>Everybody !</li>
+          <li>Everybody!</li>
         </ul>
       </section>
 
-      <section class="flushleft" data-background="#333">
-        <h3>TODO</h3>
-        <ul class="white">
-          <li>TODO tests unitaires</li>
-          <li>TODO compréhension</li>
-          <li>TODO anti pattern et code smell</li>
-          <li>TODO avoid shaming</li>
-        </ul>
+      <section class="flushleft" data-background="#eee">
+        <h2 style="color:#333">Things we didn't talk about</h2>
+        <p style="color:#111">Review units tests, make sure you understand every line of code, check for anti-pattern and code smells, avoid shaming when doing review, do pair programming.</p>
       </section>
 
-      <section class="flushleft" data-background="#333">
-        <h3>END</h3>
+      <section class="flushright" data-background="img/nwx/lesfurets-background-black-01.jpg">
+        <h1>END</h1>
       </section>
 
       <!-- END -->

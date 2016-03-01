@@ -336,8 +336,14 @@
     margin-right:-100%;
     padding: 5px 20px;
     text-align: left;
-    width: 95vw;
+    /*width: 95vw;*/
     overflow: hidden;
+}
+
+@media all and (max-width: 1280px) {
+    .reveal .code {
+        width: 95vw;
+    }
 }
 
 .reveal .highlight {
