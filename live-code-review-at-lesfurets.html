@@ -178,7 +178,12 @@ Collection&lt;Object&gt; removeDuplicates(Collection&lt;?&gt; collection) {
     return uniques;
 }
 
-TODO
+Date addDaysToDate(Date date, int numberOfDays) {
+    Calendar calendar = Calendar.getInstance();
+    calendar.setTime(date);
+    calendar.add(Calendar.DAY_OF_YEAR, numberOfDays);
+    return calendar.getTime();
+}
         </code></pre>
         </div>
       </section>
@@ -196,7 +201,13 @@ Collection&lt;Object&gt; removeDuplicates(Collection&lt;?&gt; collection) {
     return uniques;
 }
 
-TODO
+Date addDaysToDate(Date date, int numberOfDays) {
+    <mark>// Use Java 8 LocalDate API</mark>
+    Calendar calendar = Calendar.getInstance();
+    calendar.setTime(date);
+    calendar.add(Calendar.DAY_OF_YEAR, numberOfDays);
+    return calendar.getTime();
+}
         </code></pre>
         </div>
       </section>
@@ -210,7 +221,9 @@ Collection&lt;Object&gt; removeDuplicates(Collection&lt;?&gt; collection) {
     return <mark>new HashSet&lt;&gt;(collection)</mark>;
 }
 
-TODO
+<mark>LocalDate</mark> addDaysToDate(<mark>LocalDate</mark> date, int numberOfDays) {
+    return <mark>date.plus(numberOfDays, ChronoUnit.DAYS)</mark>;
+}
         </code></pre>
         </div>
       </section>
@@ -218,10 +231,11 @@ TODO
       <section class="flushleft" data-background="#333">
         <h3>Language and API wrapup</h3>
         <ul class="white">
-          <li>Know your langage inside out</li>
+          <li>Language usage should be short, simple, explicit</li>
+          <li>Know your language inside out</li>
           <li>Create your own methods if needed</li>
           <li>Some of it can be automated:</li>
-          <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>Eclipse</em> and <em>Intellij</em> have warnings</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>Eclipse</em> and <em>Intellij</em> warnings can help</li>
           <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>Sonar</em> can have custom rules</li>
         </ul>
       </section>
