@@ -328,6 +328,14 @@
     font-size: 0.75em;
 }
 
+.reveal .code-wrapper.small {
+    font-size: 18px;
+}
+
+.reveal .code-wrapper.smaller {
+    font-size: 15px;
+}
+
 .reveal .code {
     display: inline-block;
     font-family: monospace;
