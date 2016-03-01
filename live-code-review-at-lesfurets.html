@@ -231,8 +231,7 @@ TODO
         <h2 style="color:#333">Simplicity</h2>
       </section>
 
-      <section class="flushleft" data-background="#333">
-        <h3 class="center">Simplicity</h3>
+      <section class="flushleft" data-background="#333" fullscreen=1>
         <div class="code-wrapper">
         <pre><code class="code java" data-trim data-noescape>
 private boolean isPreviousVersion(String version, String compareWith) {
@@ -256,8 +255,7 @@ private boolean isPreviousVersion(String version, String compareWith) {
         </div>
       </section>
 
-      <section class="flushleft" data-background="#333">
-        <h3 class="center">Review simplicity</h3>
+      <section class="flushleft" data-background="#333" fullscreen=1>
         <div class="code-wrapper">
         <pre><code class="code java" data-trim data-noescape>
 private boolean isPreviousVersion(String version, String compareWith) {
@@ -285,8 +283,7 @@ private boolean isPreviousVersion(String version, String compareWith) {
         </div>
       </section>
 
-      <section class="flushleft" data-background="#333">
-        <h3 class="center">Correct simplicity</h3>
+      <section class="flushleft" data-background="#333" fullscreen=1>
         <div class="code-wrapper">
         <pre><code class="code java" data-trim data-noescape>
 private boolean isPreviousVersion(String version, String compareWith) {
@@ -324,8 +321,7 @@ private boolean isPreviousVersion(String version, String compareWith) {
         <h2 style="color:#333">Object Oriented Programming (OOP)</h2>
       </section>
 
-      <section class="flushleft" data-background="#333">
-        <h3 class="center">Object Oriented Programming</h3>
+      <section class="flushleft" data-background="#333" fullscreen=1>
         <div class="code-wrapper">
         <pre><code class="code java" data-trim data-noescape>
 public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
@@ -360,14 +356,13 @@ public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
     </code></pre>
       </section>
 
-      <section class="flushleft" data-background="#333">
-        <h3 class="center">Review Object Oriented Programming</h3>
+      <section class="flushleft" data-background="#333" fullscreen=1>
         <div class="code-wrapper">
         <pre><code class="code java" data-trim data-noescape>
 public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
   BigDecimal quoteTotalPrice;
   <mark>// Variables with numbers is rarely a good option, use a list instead ?</mark>
-  <mark>// Warranties look independant from the quote, encapsulate in an object</mark>
+  <mark>// Warranties look independant from the quote, extract in an object</mark>
   quoteTotalPrice = new BigDecimal(quote.getPrice().doubleValue());
   if (quote.getWarrantyAvailability1().equals(quote.getQuoteType())) {
       quoteTotalPrice = quoteTotalPrice.add(quote.getWarrantyPrice1());
@@ -379,7 +374,7 @@ public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
   if (quote.getExpirationDate().isBefore(LocalDate.now())) {
       throw new ComputationPriceException("It's too late !");
   }
-  <mark>// Fees in a separate object</mark>
+  <mark>// Hide implementation, we don't need to know about it here</mark>
   if (!quote.isFeesIncluded()) {
       if (quote.getOneTimeFees() != null) {
           quoteTotalPrice = quoteTotalPrice.add(quote.getOneTimeFees());
@@ -388,7 +383,7 @@ public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
           quoteTotalPrice = quoteTotalPrice.add(quote.getAnnualFees());
       }
   }
-  <mark>// Extract taxes in a separate service, quote doesn't really have to know how they're calculated</mark>
+  <mark>// Same remark as above</mark>
   // Taxes has changed after 1st January 2015
   if (quote.getDate().isBefore(LocalDate.of(2015, 1, 1))) {
       quoteTotalPrice = quoteTotalPrice.multiply(new BigDecimal(1.20));
@@ -401,7 +396,7 @@ public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
     </code></pre>
       </section>
 
-      <section class="flushleft" data-background="#333">
+      <section class="flushleft" data-background="#333" fullscreen=1>
         <h3 class="center">Correct Object Oriented Programming</h3>
         <div class="code-wrapper">
         <pre><code class="code java" data-trim data-noescape>
@@ -411,10 +406,10 @@ public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
 
   // Independant objects
   BigDecimal quoteTotalPrice = new BigDecimal(quote.getPrice().doubleValue())
-                  .add(warrantyService.computeWarrantiesAmount(quote.getQuoteType(), <mark>quote.getWarranties()</mark>))
+                  .add(warrantyService.computeWarrantiesAmount(<mark>quote.getWarranties()</mark>))
                   .add(feesService.computeFeesAmount(<mark>quote.getFees()</mark>));
 
-  // Extract taxes in a separate service, quote doesn't really have to know how they're calculated
+  // Extract taxes in a separate service
   return <mark>taxesService</mark>.applyTaxes(quote.getDate(), quoteTotalPrice);
 }
         </code></pre>
@@ -506,6 +501,6 @@ public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
         ]
       });
     </script>
-    <script src="js/lesfurets-theme.js" async></script>
+    <script src="js/lesfurets-codereview-theme.js" async></script>
   </body>
 </html>
