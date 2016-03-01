@@ -348,17 +348,34 @@
     margin-right: -100%;
 }
 
-@media all and (max-width: 1280px) {
-    .reveal .code {
-        width: 95vw;
-    }
+.reveal .badge {
+    background-size: cover;
+    display: block;
+    height: 75px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: -30px;
+    width: 75px;
+}
+
+/* http://www.webestools.com/web20-badge-generator-free-image-beta-photoshop-web20-badge-generator.html */
+.reveal .badge.code {
+    background-image: url('../img/live-code-review/badge-code.png');
+}
+
+.reveal .badge.review {
+    background-image: url('../img/live-code-review/badge-review.png');
+}
+
+.reveal .badge.correct {
+    background-image: url('../img/live-code-review/badge-correct.png');
 }
 
 .reveal .highlight {
     font-weight: bold;
     color: red;
 }
-
 
 .speaker-mode .footer,
 .speaker-mode .footer {
