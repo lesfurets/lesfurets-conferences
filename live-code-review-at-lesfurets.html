@@ -39,19 +39,19 @@
 
       <section class="flushleft"  data-background="img/nwx/lesfurets-background-black-01.jpg">
         <h2>Alexandre DuBreuil</h2>
-        <h3 class="fragment">Tech lead team insurer panel</h3>
+        <h3>Tech lead team insurer panel</h3>
         <ul class="flushright nodisc">
-          <li class="fragment">
+          <li>
             <a style="color:white" href="https://twitter.com/dubreuia">https://twitter.com/dubreuia</a>
           </li>
-          <li class="fragment">
+          <li>
             <a style="color:white" href="https://github.com/dubreuia">https://github.com/dubreuia</a>
           </li>
         </ul>
         <h2>Jeremy Maltis</h2>
-        <h3 class="fragment">Front developer team journey</h3>
+        <h3>Front developer team journey</h3>
         <ul class="flushright nodisc">
-          <li class="fragment">
+          <li>
             <a style="color:white" href="https://github.com/jmaltis">https://github.com/jmaltis</a>
           </li>
         </ul>
@@ -68,24 +68,21 @@
       </section>
 
       <section class="flushleft" data-background="#222222">
-        <h2>What do we review</h2>
+        <h2>What we're going to review</h2>
         <ul class="white">
-          <li>Style / naming</li>
-          <li>Language and API usage</li>
-          <li>Simplicity</li>
-          <li>Object oriented programming</li>
-          <li>Other things that fits your team</li>
+          <li>1/ Style / naming</li>
+          <li>2/ Language and API usage</li>
+          <li>3/ Simplicity</li>
+          <li>4/ Object oriented programming</li>
         </ul>
       </section>
 
       <!-- CODE STYLE / NAMING -->
-
       <section class="flushleft" data-background="#eee">
-        <h2 style="color:#333">Code style and naming</h2>
+        <h2 style="color:#333">1/ Code style and naming</h2>
       </section>
 
       <section class="flushleft" data-background="#333">
-        <h3 class="center">Style and naming</h3>
         <div class="code-wrapper">
         <pre><code class="code java" data-trim data-noescape>
 void check(MainDriver d1, Driver d2, Besoins b) 
@@ -104,7 +101,6 @@ void check(MainDriver d1, Driver d2, Besoins b)
       </section>
 
       <section class="flushleft" data-background="#333">
-        <h3 class="center">Review style and naming</h3>
         <div class="code-wrapper">
         <pre><code class="code java" data-trim data-noescape>
 <mark>// Use precise method naming, parameter naming,</mark>
@@ -126,7 +122,6 @@ void check(MainDriver d1, Driver d2, Besoins b)
       </section>
 
       <section class="flushleft" data-background="#333">
-        <h3 class="center">Correct style and naming</h3>
         <div class="code-wrapper">
         <pre><code class="code java" data-trim data-noescape>
 // Use precise method naming, parameter naming, 
@@ -161,13 +156,11 @@ void <mark>checkMainDriverAge</mark>(MainDriver <mark>mainDriver</mark>,
       </section>
 
       <!-- LANGUAGE AND API USAGE -->
-
       <section class="flushleft" data-background="#eee">
-        <h2 style="color:#333">Language and API usage</h2>
+        <h2 style="color:#333">2/ Language and API usage</h2>
       </section>
 
       <section class="flushleft" data-background="#333">
-        <h3 class="center">Language and API usage</h3>
         <div class="code-wrapper">
         <pre><code class="code java" data-trim data-noescape>
 Collection&lt;Object&gt; removeDuplicates(Collection&lt;?&gt; collection) {
@@ -189,7 +182,6 @@ Date addDaysToDate(Date date, int numberOfDays) {
       </section>
 
       <section class="flushleft" data-background="#333">
-        <h3 class="center">Review language and API usage</h3>
         <div class="code-wrapper">
         <pre><code class="code java" data-trim data-noescape>
 Collection&lt;Object&gt; removeDuplicates(Collection&lt;?&gt; collection) {
@@ -213,7 +205,6 @@ Date addDaysToDate(Date date, int numberOfDays) {
       </section>
 
       <section class="flushleft" data-background="#333">
-        <h3 class="center">Correct language and API usage</h3>
         <div class="code-wrapper">
         <pre><code class="code java" data-trim data-noescape>
 Collection&lt;Object&gt; removeDuplicates(Collection&lt;?&gt; collection) {
@@ -241,9 +232,8 @@ Collection&lt;Object&gt; removeDuplicates(Collection&lt;?&gt; collection) {
       </section>
 
       <!-- SIMPLICITY -->
-
       <section class="flushleft" data-background="#eee">
-        <h2 style="color:#333">Simplicity</h2>
+        <h2 style="color:#333">3/ Simplicity</h2>
       </section>
 
       <section class="flushleft" data-background="#333" >
@@ -278,7 +268,7 @@ private boolean isPreviousVersion(String version, String compareWith) {
     String[] compareDigits = compareWith.split("\\.");
     if (valueOf(versionDigits[0]) < valueOf(compareDigits[0]))
         return true;
-    <mark>// Do not compare Integer with == (it only works up to 127), use equals instead</mark>
+    <mark>// Do not compare Integer with == (it only works up to 127), use int instead</mark>
     else if (valueOf(versionDigits[0]) == valueOf(compareDigits[0])) {
         if (valueOf(versionDigits[1]) < valueOf(compareDigits[1]))
             return true;
@@ -290,7 +280,7 @@ private boolean isPreviousVersion(String version, String compareWith) {
             return false;
         }
     }
-    <mark>// A lot of return statement, isn't there a simplier way ?</mark>
+    <mark>// A lot of return statement, isn't there a simpler way ?</mark>
     return false;
 }
 <mark>// General remark : you only compare the first 3 numbers ?</mark>
@@ -314,12 +304,11 @@ private boolean isPreviousVersion(String version, String compareWith) {
     }
     // A lot of return statement, isn't there a simplier way ?
     <mark>return false;</mark>
-    
-    private boolean isSameVersion(String versionNumber, String compareWith) {
-        return Integer.compare(
-            <mark>Integer.parseInt(versionNumber)</mark>, 
-            Integer.parseInt(compareWith)) == 0;
-    }
+}
+
+// Do not compare Integer with == (it only works up to 127), use int instead
+private boolean isSameVersion(String versionNumber, String compareWith) {
+    return <mark>Integer.parseInt</mark>(versionNumber) == <mark>Integer.parseInt</mark>(compareWith);
 }
     </code></pre>
       </section>
@@ -332,14 +321,13 @@ private boolean isPreviousVersion(String version, String compareWith) {
           <li>Beware of nested if and loops</li>
           <li>&nbsp;&nbsp;&nbsp;&nbsp;Too much complexity</li>
           <li>Do not duplicate code, use private methods</li>
-          <li>You can use Sonar complexity metric</li>
+          <li>You can use <em>Sonar</em> complexity metric</li>
         </ul>
       </section>
 
       <!-- OBJECT ORIENTED PROGRAMMING -->
-
       <section class="flushleft" data-background="#eee">
-        <h2 style="color:#333">Object Oriented Programming (OOP)</h2>
+        <h2 style="color:#333">4/ Object Oriented Programming (OOP)</h2>
       </section>
 
       <section class="flushleft" data-background="#333" >
@@ -381,7 +369,7 @@ public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
       quoteTotalPrice = quoteTotalPrice.add(quote.getWarrantyPrice1());
   if (quote.getWarrantyAvailability2().equals(quote.getQuoteType()))
       quoteTotalPrice = quoteTotalPrice.add(quote.getWarrantyPrice2());
-  <mark>// Exception check at the beginning if possible</mark>
+  <mark>// Use fail fast that avoid executing the function if not necessary</mark>
   if (quote.getExpirationDate().isBefore(LocalDate.now()))
       throw new ComputationPriceException("It's too late !");
   <mark>// Encapsulate implementation, we don't need to know about it here</mark>
@@ -404,17 +392,16 @@ public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
       </section>
 
       <section class="flushleft" data-background="#333" >
-        <h3 class="center">Correct Object Oriented Programming</h3>
         <div class="code-wrapper">
         <pre><code class="code java" data-trim data-noescape>
 public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
   // Exception check at the beginning if possible
-  <mark>checkQuoteIsStillValid(quote.getExpirationDate(), quote.getInsurer());</mark>
+  <mark>checkQuoteIsStillValid(quote.getExpirationDate());</mark>
 
-  // Independant objects
+  // Service encapsulation, object separation
   BigDecimal quoteTotalPrice = new BigDecimal(quote.getPrice().doubleValue())
-                  .add(warrantyService.computeWarrantiesAmount(<mark>quote.getWarranties()</mark>))
-                  .add(feesService.computeFeesAmount(<mark>quote.getFees()</mark>));
+                  .add(<mark>warrantyService</mark>.computeWarrantiesAmount(<mark>quote.getWarranties()</mark>))
+                  .add(<mark>feesService</mark>.computeFeesAmount(<mark>quote.getFees()</mark>));
 
   // Extract taxes in a separate service
   return <mark>taxesService</mark>.applyTaxes(quote.getDate(), quoteTotalPrice);
@@ -424,9 +411,9 @@ public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
 
       <section class="flushleft" data-background="#333">
         <h3 class="center">Object Oriented Programming Class Diagram</h3>
-        <ul class="white">
-          <img src="img/class-diagram.png" />
-        </ul>
+        <div class="center">
+          <img src="img/class-diagram.png"/>
+        <div>
       </section>
 
       <section class="flushleft" data-background="#333">
@@ -435,14 +422,13 @@ public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
           <li>Encapsulation, inheritance, abstraction, polymorphism</li>
           <li>No god object</li>
           <li>&nbsp;&nbsp;&nbsp;&nbsp;Don't be afraid of creating new classes</li>
-          <li>No duplication in objects</li>
-          <li>&nbsp;&nbsp;&nbsp;&nbsp;Don't forget inheritance when necessary</li>
+          <li>Do not duplicate classes</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;Use inheritance or delegation accordingly</li>
           <li>Structure your data in a smart way</li>
         </ul>
       </section>
 
       <!-- CONCLUSION -->
-
       <section class="flushleft" data-background="#eee">
         <h2 style="color:#333">It's all about quality and communication</h2>
       </section>
@@ -468,7 +454,8 @@ public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
 
       <section class="flushleft" data-background="#eee">
         <h2 style="color:#333">Things we didn't talk about</h2>
-        <p style="color:#111">Review units tests, make sure you understand every line of code, check for anti-pattern and code smells, avoid shaming when doing review, do pair programming.</p>
+        <p style="color:#111">Other code review examples : units tests, code coverage, check for anti-pattern and code smells</p>
+        <p>Bonus : make sure you understand every line of code, avoid shaming when doing review, do pair programming</p>
       </section>
 
       <section class="flushright" data-background="img/nwx/lesfurets-background-black-01.jpg">
