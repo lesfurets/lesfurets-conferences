@@ -324,8 +324,11 @@
 }
 
 .reveal .code-wrapper {
-    text-align: center;
     font-size: 0.75em;
+    position: relative;
+    right: 50%;
+    text-align: center;
+
 }
 
 .reveal .code-wrapper.small {
@@ -343,6 +346,7 @@
     padding: 5px 20px;
     text-align: left;
     overflow: hidden;
+    margin-right: -100%;
 }
 
 @media all and (max-width: 1280px) {
