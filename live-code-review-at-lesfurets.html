@@ -59,16 +59,20 @@
 
       <section class="flushleft" data-background="#333">
         <h2>Code review is a process...</h2>
+        <p>TODO ajouter showcase ? non</p>
+        <p>TODO aller plus lentement</p>
+        <p>TODO ne pas parler de github / gitlab</p>
+        <p>TODO parler un peu plus de LesFurets</p>
         <img src="img/live-code-review/code-review-flow-03.jpg">
       </section>
 
       <section class="flushleft" data-background="#333">
-        <h2>Code review request</h2>
+        <h2>How to ask for code review?</h2>
         <p>You request a code review by changing the status in JIRA to <em>code review</em> (lesfurets.com), by doing a <em>pull request</em> (github) or a <em>merge request</em> (gitlab).</p>
       </section>
 
       <section class="flushleft" data-background="#222222">
-        <h2>What we're going to review</h2>
+        <h2>Code review topics</h2>
         <p><strong style="color:#e65100;padding:5px;">(1)</strong> Style and naming</p>
         <p><strong style="color:#e65100;padding:5px;">(2)</strong> Language and API usage</p>
         <p><strong style="color:#e65100;padding:5px;">(3)</strong> Simplicity</p>
@@ -84,6 +88,7 @@
 
       <section class="flushleft" data-background="#333">
         <div class="badge code"></div>
+        <div class="badge person alex"></div>
         <div class="code-wrapper">
         <pre><code class="code java" data-trim data-noescape>
 void check(MainDriver d1, Driver d2, Besoins b) 
@@ -103,11 +108,12 @@ void check(MainDriver d1, Driver d2, Besoins b)
 
       <section class="flushleft" data-background="#333">
         <div class="badge review"></div>
+        <div class="badge person alex"></div>
         <div class="code-wrapper">
         <pre><code class="code java" data-trim data-noescape>
 <mark>// Use precise method naming, parameter naming,</mark>
 <mark>// and remove unused parameters</mark>
-void check(MainDriver d1, Driver d2, Besoins b) 
+void check(MainDriver d1, Driver d2, Requirements r) 
                         throws ExclusionException {
   <mark>// Use static imports if clearer and correct indentation</mark>
   int age = DateHelper.getAge(driver.getBirthDate(),
@@ -116,8 +122,7 @@ void check(MainDriver d1, Driver d2, Besoins b)
   <mark>// Use constants for magic numbers and string</mark>
   if (age < 18)
       <mark>// Use brackets for single line statements</mark>
-      throw new ExclusionException("Must be at least " 
-                                   + "18 years old");
+      throw new ExclusionException("Must be at least 18 years old");
 }
         </code></pre>
         </div>
@@ -125,48 +130,151 @@ void check(MainDriver d1, Driver d2, Besoins b)
 
       <section class="flushleft" data-background="#333">
         <div class="badge correct"></div>
+        <div class="badge person alex"></div>
         <div class="code-wrapper">
         <pre><code class="code java" data-trim data-noescape>
-// Use precise method naming, parameter naming, 
-// and remove unused parameters
-void <mark>checkMainDriverAge</mark>(MainDriver <mark>mainDriver</mark>, 
-                               Besoins <mark>besoins</mark>) 
-                                   throws ExclusionException {
-  // Use static imports if clearer
-  int age = <mark>getAge</mark>(driver.getBirthDate(), <mark>getToday()</mark>, 
-                   EPrecision.day);
-  // Use constants for magic numbers and string
+void <mark>checkAge</mark>(MainDriver <mark>mainDriver</mark>) throws ExclusionException {
+  int age = <mark>getAge</mark>(driver.getBirthDate(), <mark>getToday()</mark>, EPrecision.day);
   if (age < <mark>MINIMUM_AGE</mark>) <mark>{</mark>
-      // Use brackets for single line statements
-      throw new ExclusionException(<mark>EXCLUSION_MESSAGE_18_YEARS</mark>);
+      throw new ExclusionException("Must be at least 18 years old");
   <mark>}</mark>
+}
+        </code></pre>
+        </div>
+        <aside class="notes">
+          <p>Use precise method naming, parameter naming, and remove unused parameters</p>
+          <p>Use static imports if clearer</p>
+          <p>Use constants for magic numbers and string</p>
+          <p>Use brackets for single line statements</p>
+        </aside>
+      </section>
+
+      <section class="flushleft" data-background="#333">
+        <h3>Style and naming wrap up</h3>
+        <ul class="white">
+          <li>Define a style guide and naming rules with your team...</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;...and stick to it!</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;Example: <a href="https://google.github.io/styleguide/cppguide.html">Google C++ guide</a></li>
+          <li>Some of it can be automated:</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>IDEs:</em> use automatic formatting</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>Sonar:</em> static code analysis</li>
+        </ul>
+      </section>
+
+      <!-- SIMPLICITY -->
+
+      <section class="flushleft" data-background="#eee">
+        <h2 style="color:#1a237e">Example 2</h2>
+        <h3 style="color:#333" class="flushright">Simplicity</h3>
+      </section>
+
+      <section class="flushleft" data-background="#333" >
+        <div class="badge code"></div>
+        <div class="badge person alex"></div>
+        <div class="code-wrapper">
+        <pre><code class="code java" data-trim data-noescape>
+private boolean isPreviousVersion(String version, String compareWith) {
+    String[] versionDigits = compare.split("\\.");
+    String[] compareDigits = compareWith.split("\\.");
+    if (valueOf(versionDigits[0]) < valueOf(compareDigits[0]))
+        return true;
+    else if (valueOf(versionDigits[0]) == valueOf(compareDigits[0])) {
+        if (valueOf(versionDigits[1]) < valueOf(compareDigits[1]))
+            return true;
+        else {
+          if (valueOf(versionDigits[1]) == valueOf(compareDigits[1]))
+              return valueOf(versionDigits[2]) < valueOf(compareDigits[2]);
+          return false;
+        }
+    }
+    return false;
 }
         </code></pre>
         </div>
       </section>
 
+      <section class="flushleft" data-background="#333" >
+        <div class="badge review"></div>
+        <div class="badge person alex"></div>
+        <div class="code-wrapper small">
+        <pre><code class="code java" data-trim data-noescape>
+<mark>// General remark: you only compare the first 3 numbers?</mark>
+private boolean isPreviousVersion(String version, String compareWith) {
+    String[] versionDigits = compare.split("\\.");
+    String[] compareDigits = compareWith.split("\\.");
+    if (valueOf(versionDigits[0]) < valueOf(compareDigits[0]))
+        return true;
+    <mark>// Do not compare Integer with == (it only works up to 127), use int instead</mark>
+    <mark>// or use .equals if Integer</mark>
+    else if (valueOf(versionDigits[0]) == valueOf(compareDigits[0])) {
+        if (valueOf(versionDigits[1]) < valueOf(compareDigits[1]))
+            return true;
+        else {
+            <mark>// Exact same behaviour as above, use private method</mark>
+            if (valueOf(versionDigits[1]) == valueOf(compareDigits[1]))
+                return valueOf(versionDigits[2]) < valueOf(compareDigits[2]);
+            return false;
+        }
+    }
+    <mark>// A lot of return statement, isn't there a simpler way?</mark>
+    return false;
+}
+        </code></pre>
+        </div>
+      </section>
+
+      <section class="flushleft" data-background="#333" >
+        <div class="badge correct"></div>
+        <div class="badge person alex"></div>
+        <div class="code-wrapper">
+        <pre><code class="code java" data-trim data-noescape>
+private boolean isPreviousVersion(String version, String compareWith) {
+    String[] versionDigits = compare.split("\\.");
+    String[] compareDigits = compareWith.split("\\.");
+    <mark>for (int i = 0; i < versionDigits.length; i++) {</mark>
+        <mark>if (isSameVersion(versionDigits[i], compareDigits[i])) {</mark>
+            continue;
+        }
+        return isPreviousVersion(versionDigits[i], compareDigits[i]);
+    }
+    <mark>return false;</mark>
+}
+
+private boolean isSameVersion(String versionNumber, String compareWith) {
+    return <mark>Integer.parseInt</mark>(versionNumber) == <mark>Integer.parseInt</mark>(compareWith);
+}
+    </code></pre>
+        <aside class="notes">
+          <p>General remark: you only compare the first 3 numbers?</p>
+          <p>Exact same behaviour as above, use private method</p>
+          <p>A lot of return statement, isn't there a simplier way?</p>
+          <p>Do not compare Integer with == (it only works up to 127), use int instead</p>
+        </aside>
+      </section>
+
       <section class="flushleft" data-background="#333">
-        <h3>Style and naming wrapup</h3>
+        <h3 class="center">Simplicity wrap up</h3>
         <ul class="white">
-          <li>Define a style guide and naming rules with your team...</li>
-          <li>&nbsp;&nbsp;&nbsp;&nbsp;...and stick to it!</li>
-          <li>&nbsp;&nbsp;&nbsp;&nbsp;Example : <a href="https://google.github.io/styleguide/cppguide.html">Google C++ guide</a></li>
-          <li>Some of it can be automated:</li>
-          <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>Eclipse:</em> settings -&gt; save-actions</li>
-          <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>Intellij:</em> plugins -&gt; save-actions (<a href="https://github.com/dubreuia/intellij-plugin-save-actions">@dubreuia</a>)</li>
-          <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>Sonar:</em> static code analysis</li>
+          <li>A method should be simple to read/understand</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;When you're done coding a method, read yourself again
+          <li>Beware of nested if and loops</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;Too much complexity</li>
+          <li>Do not duplicate code, use private methods</li>
+          <li>You can use <em>Sonar</em> complexity metric</li>
         </ul>
       </section>
+
 
       <!-- LANGUAGE AND API USAGE -->
 
       <section class="flushleft" data-background="#eee">
-        <h2 style="color:#1a237e">Example 2</h2>
+        <h2 style="color:#1a237e">Example 3</h2>
         <h3 style="color:#333" class="flushright">Language and API usage</h3>
       </section>
 
       <section class="flushleft" data-background="#333">
         <div class="badge code"></div>
+        <div class="badge person alex"></div>
         <div class="code-wrapper">
         <pre><code class="code java" data-trim data-noescape>
 Collection&lt;Object&gt; removeDuplicates(Collection&lt;?&gt; collection) {
@@ -189,10 +297,11 @@ Date addDaysToDate(Date date, int numberOfDays) {
 
       <section class="flushleft" data-background="#333">
         <div class="badge review"></div>
+        <div class="badge person alex"></div>
         <div class="code-wrapper">
         <pre><code class="code java" data-trim data-noescape>
 Collection&lt;Object&gt; removeDuplicates(Collection&lt;?&gt; collection) {
-    <mark>// Use a set to remove duplicates</mark>
+    <mark>// You could use a set to remove duplicates</mark>
     List&lt;Object&gt; uniques = new ArrayList&lt;&gt;();
     for (Object object : collection)
         if (!uniques.contains(object))
@@ -201,7 +310,7 @@ Collection&lt;Object&gt; removeDuplicates(Collection&lt;?&gt; collection) {
 }
 
 Date addDaysToDate(Date date, int numberOfDays) {
-    <mark>// Use Java 8 LocalDate API</mark>
+    <mark>// You could use the new Java 8 LocalDate API</mark>
     Calendar calendar = Calendar.getInstance();
     calendar.setTime(date);
     calendar.add(Calendar.DAY_OF_YEAR, numberOfDays);
@@ -213,128 +322,31 @@ Date addDaysToDate(Date date, int numberOfDays) {
 
       <section class="flushleft" data-background="#333">
         <div class="badge correct"></div>
+        <div class="badge person alex"></div>
         <div class="code-wrapper">
         <pre><code class="code java" data-trim data-noescape>
 Collection&lt;Object&gt; removeDuplicates(Collection&lt;?&gt; collection) {
-    // Use a set to remove duplicates
     return <mark>new HashSet&lt;&gt;(collection)</mark>;
 }
 
 <mark>LocalDate</mark> addDaysToDate(<mark>LocalDate</mark> date, int numberOfDays) {
-    return <mark>date.plus(numberOfDays, ChronoUnit.DAYS)</mark>;
+    return <mark>date.plus(numberOfDays, DAYS)</mark>;
 }
         </code></pre>
         </div>
+        <aside class="notes">
+          <p>Use a set to remove duplicates</p>
+        </aside>
       </section>
 
       <section class="flushleft" data-background="#333">
-        <h3>Language and API wrapup</h3>
+        <h3>Language and API wrap up</h3>
         <ul class="white">
           <li>Language usage should be short, simple, explicit</li>
-          <li>Know your language inside out</li>
-          <li>Create your own methods if needed</li>
+          <li>Know your language and data structures inside out</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;TODO examples (Maps, date, Thread, etc.)</li>
           <li>Some of it can be automated:</li>
-          <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>Eclipse</em> and <em>Intellij</em> warnings can help</li>
-          <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>Sonar</em> can have custom rules</li>
-        </ul>
-      </section>
-
-      <!-- SIMPLICITY -->
-
-      <section class="flushleft" data-background="#eee">
-        <h2 style="color:#1a237e">Example 3</h2>
-        <h3 style="color:#333" class="flushright">Simplicity</h3>
-      </section>
-
-      <section class="flushleft" data-background="#333" >
-        <div class="badge code"></div>
-        <div class="code-wrapper">
-        <pre><code class="code java" data-trim data-noescape>
-private boolean isPreviousVersion(String version, String compareWith) {
-    String[] versionDigits = compare.split("\\.");
-    String[] compareDigits = compareWith.split("\\.");
-    if (valueOf(versionDigits[0]) < valueOf(compareDigits[0]))
-        return true;
-    else if (valueOf(versionDigits[0]) == valueOf(compareDigits[0])) {
-        if (valueOf(versionDigits[1]) < valueOf(compareDigits[1]))
-            return true;
-        else {
-          if (valueOf(versionDigits[1]) == valueOf(compareDigits[1])) {
-              return valueOf(versionDigits[2]) < valueOf(compareDigits[2]);
-          }
-          return false;
-        }
-    }
-    return false;
-}
-        </code></pre>
-        </div>
-      </section>
-
-      <section class="flushleft" data-background="#333" >
-        <div class="badge review"></div>
-        <div class="code-wrapper small">
-        <pre><code class="code java" data-trim data-noescape>
-private boolean isPreviousVersion(String version, String compareWith) {
-    String[] versionDigits = compare.split("\\.");
-    String[] compareDigits = compareWith.split("\\.");
-    if (valueOf(versionDigits[0]) < valueOf(compareDigits[0]))
-        return true;
-    <mark>// Do not compare Integer with == (it only works up to 127), use int instead</mark>
-    else if (valueOf(versionDigits[0]) == valueOf(compareDigits[0])) {
-        if (valueOf(versionDigits[1]) < valueOf(compareDigits[1]))
-            return true;
-        else {
-            <mark>// Exact same behaviour as above, use private method</mark>
-            if (valueOf(versionDigits[1]) == valueOf(compareDigits[1])) {
-                return valueOf(versionDigits[2]) < valueOf(compareDigits[2]);
-            }
-            return false;
-        }
-    }
-    <mark>// A lot of return statement, isn't there a simpler way ?</mark>
-    return false;
-}
-<mark>// General remark : you only compare the first 3 numbers ?</mark>
-        </code></pre>
-        </div>
-      </section>
-
-      <section class="flushleft" data-background="#333" >
-        <div class="badge correct"></div>
-        <div class="code-wrapper">
-        <pre><code class="code java" data-trim data-noescape>
-private boolean isPreviousVersion(String version, String compareWith) {
-    String[] versionDigits = compare.split("\\.");
-    String[] compareDigits = compareWith.split("\\.");
-    // General remark : you only compare the first 3 numbers ?
-    <mark>for (int i = 0; i < versionDigits.length; i++) {</mark>
-        // Exact same behaviour as above, use private method
-        <mark>if (isSameVersion(versionDigits[i], compareDigits[i])) {</mark>
-            continue;
-        }
-        return isPreviousVersion(versionDigits[i], compareDigits[i]);
-    }
-    // A lot of return statement, isn't there a simplier way ?
-    <mark>return false;</mark>
-}
-
-// Do not compare Integer with == (it only works up to 127), use int instead
-private boolean isSameVersion(String versionNumber, String compareWith) {
-    return <mark>Integer.parseInt</mark>(versionNumber) == <mark>Integer.parseInt</mark>(compareWith);
-}
-    </code></pre>
-      </section>
-
-      <section class="flushleft" data-background="#333">
-        <h3 class="center">Simplicity wrapup</h3>
-        <ul class="white">
-          <li>A method should be simple to read/understand</li>
-          <li>&nbsp;&nbsp;&nbsp;&nbsp;When you're done coding a method, read yourself again
-          <li>Beware of nested if and loops</li>
-          <li>&nbsp;&nbsp;&nbsp;&nbsp;Too much complexity</li>
-          <li>Do not duplicate code, use private methods</li>
-          <li>You can use <em>Sonar</em> complexity metric</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>IDEs</em>, <em>Sonar</em> have simplification warnings that can help</li>
         </ul>
       </section>
 
@@ -347,6 +359,7 @@ private boolean isSameVersion(String versionNumber, String compareWith) {
 
       <section class="flushleft" data-background="#333" >
         <div class="badge code"></div>
+        <div class="badge person alex"></div>
         <div class="code-wrapper small">
         <pre><code class="code java" data-trim data-noescape>
 public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
@@ -376,10 +389,11 @@ public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
 
       <section class="flushleft" data-background="#333" >
         <div class="badge review"></div>
+        <div class="badge person alex"></div>
         <div class="code-wrapper smaller">
         <pre><code class="code java" data-trim data-noescape>
 public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
-  <mark>// Variables with numbers is rarely a good option, use a list instead ?</mark>
+  <mark>// Variables with numbers is rarely a good option, use a list instead?</mark>
   <mark>// Warranties look independant from the quote, extract in an object</mark>
   BigDecimal quoteTotalPrice = new BigDecimal(quote.getPrice().doubleValue());
   if (quote.getWarrantyAvailability1().equals(quote.getQuoteType()))
@@ -410,32 +424,30 @@ public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
 
       <section class="flushleft" data-background="#333" >
         <div class="badge correct"></div>
+        <div class="badge person alex"></div>
         <div class="code-wrapper">
         <pre><code class="code java" data-trim data-noescape>
 public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
-  // Exception check at the beginning if possible
   <mark>checkQuoteIsStillValid(quote.getExpirationDate());</mark>
 
-  // Service encapsulation, object separation
   BigDecimal quoteTotalPrice = new BigDecimal(quote.getPrice().doubleValue())
                   .add(<mark>warrantyService</mark>.computeWarrantiesAmount(<mark>quote.getWarranties()</mark>))
                   .add(<mark>feesService</mark>.computeFeesAmount(<mark>quote.getFees()</mark>));
 
-  // Extract taxes in a separate service
   return <mark>taxesService</mark>.applyTaxes(quote.getDate(), quoteTotalPrice);
 }
         </code></pre>
       </section>
 
       <section class="flushleft" data-background="#333">
-        <h3 class="center">Object Oriented Programming Class Diagram</h3>
+        <h3 class="center">Object Oriented Programming class diagram</h3>
         <div class="center">
           <img src="img/class-diagram.png"/>
         <div>
       </section>
 
       <section class="flushleft" data-background="#333">
-        <h3 class="center">Object Oriented Programming wrapup</h3>
+        <h3 class="center">Object Oriented Programming wrap up</h3>
         <ul class="white">
           <li>Encapsulation, inheritance, abstraction, polymorphism</li>
           <li>No god object</li>
@@ -446,34 +458,49 @@ public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
         </ul>
       </section>
 
+      <section class="center" data-background="#1a237e">
+        <h3 class="flushleft">References for more code review topics...</h3>
+        <img style="padding:0;margin:25px;" src="img/live-code-review/book-clean-code-01.jpg">
+        <img style="padding:0;margin:25px;" src="img/live-code-review/book-code-complete-01.jpg">
+        <img style="padding:0;margin:25px;" src="img/live-code-review/book-design-pattern-01.jpg">
+      </section>
+
       <!-- CONCLUSION -->
+
       <section class="flushleft" data-background="#eee">
         <h2 style="color:#333">It's all about quality and communication</h2>
       </section>
 
       <section class="flushleft" data-background="#333">
-        <h3>Why review</h3>
+        <h3>Why review?</h3>
         <ul class="white">
           <li><em><strong>Quality:</strong></em> uniformity, best practices, style</li>
           <li><em><strong>Communication:</strong></em> discussions, sharing, reduce project risk</li>
-          <li><em><strong>Documentation:</strong></em> basis for argumentation, identifying specific code smells</li>
+          <li><em><strong>Documentation:</strong></em> style guide used for discussion, list specific code smells</li>
           <li><em><strong>Bugs:</strong></em> prevent regressions, incomplete features</li>
         </ul>
       </section>
 
       <section class="flushleft" data-background="#333">
-        <h3>Who reviews</h3>
+        <h3>Who reviews?</h3>
         <ul class="white">
           <li>Junior developers (simplicity)</li>
-          <li>Senior developers (design / oop / language)</li>
-          <li>Everybody!</li>
+          <li>Senior developers (oop / language)</li>
+          <li>Domain model expert developers (design / domain)</li>
+          <li class="fragment">... <strong><em>everybody!</em></strong></li>
         </ul>
       </section>
 
       <section class="flushleft" data-background="#eee">
         <h2 style="color:#333">Things we didn't talk about</h2>
-        <p style="color:#111"><strong>Other code review examples:</strong> units tests and code coverage, check for anti-pattern and code smells</p>
-        <p style="color:#111"><strong>Bonus topics:</strong> make sure you understand every line of code, avoid shaming when doing review, do pair programming</p>
+        <p style="color:#111"><strong>Other code review topics:</strong> feature validation, units tests and code coverage, anti-pattern and code smells</p>
+        <p style="color:#111"><strong>Other review types:</strong> we don't do reviews during development or reviews by group, but it works too!</p>
+        <p style="color:#111"><strong>Bonus:</strong> make sure you understand every line of code, review code not people (no shaming), do pair programming</p>
+        <aside class="notes">
+          <p>feature validation : make sure the code corresponds to the feature</p>
+          <p>unit tests and coverage : make sure all new code and modified code are tested and TODO</p>
+          <p>make sure you understand every line of code: take your time to review</p>
+        </aside>
       </section>
 
       <section class="flushright" data-background="img/live-code-review/blindard-01.jpeg">
