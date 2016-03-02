@@ -102,8 +102,7 @@ void check(MainDriver d1, Driver d2, Besoins b)
   EPrecision.day);
 
   if (age < 18)
-      throw new ExclusionException("Must be at least " 
-                                   + "18 years old");
+      throw new ExclusionException("Must be at least 18 years old");
 }
         </code></pre>
         </div>
@@ -440,6 +439,10 @@ public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
   return <mark>taxesService</mark>.applyTaxes(quote.getDate(), quoteTotalPrice);
 }
         </code></pre>
+        <aside class="notes">
+          <p>Separated computation in different services</p>
+          <p>Extracted objects from quotes</p>
+        </aside>
       </section>
 
       <section class="flushleft" data-background="#333">
@@ -501,8 +504,8 @@ public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
         <p style="color:#111"><strong>Bonus:</strong> make sure you understand every line of code, review code not people (no shaming), do pair programming</p>
         <aside class="notes">
           <p>feature validation : make sure the code corresponds to the feature</p>
-          <p>unit tests and coverage : make sure all new code and modified code are tested and TODO</p>
-          <p>make sure you understand every line of code: take your time to review</p>
+          <p>unit tests and coverage : make sure all new code and modified code are tested and well tested</p>
+          <p>make sure you understand every line of code: take your time to review, no more than 500 line per hour</p>
         </aside>
       </section>
 
