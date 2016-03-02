@@ -355,7 +355,7 @@
     margin: 0;
     padding: 0;
     position: absolute;
-    top: -30px;
+    top: -40px;
     width: 75px;
 }
 
@@ -381,7 +381,7 @@
 }
 
 .reveal .badge.jeremy {
-    background-image: url('../img/live-code-review/badge-empty-01.jpg');
+    background-image: url('../img/live-code-review/badge-jeremy-01.jpg');
 }
 
 .reveal .highlight {
