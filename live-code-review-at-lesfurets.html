@@ -25,7 +25,7 @@
   </head>
   <body>
     <div id="footer" class="footer show">
-      <a href="https://www.lesfurets.com" target="_blank"><img class="logo" src="img/logo_lesfurets_885x128_no_back.png"></a><a class ="github" href="https://github.com/lesfurets" target="_blank">LesFurets.com github</a><a class ="github" href="https://github.com/dubreuia" target="_blank">dubreuia github</a><a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a><a class="twitter" href="https://twitter.com/dubreuia" target="_blank">@dubreuia</a>
+      <a href="https://www.lesfurets.com" target="_blank"><img class="logo" src="img/logo_lesfurets_885x128_no_back.png"></a><a class ="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a><a class ="github" href="https://github.com/dubreuia" target="_blank">https://github.com/dubreuia</a><a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a><a class="twitter" href="https://twitter.com/dubreuia" target="_blank">@dubreuia</a>
     </div>
     <div class="reveal">
       <div class="slides">
@@ -57,17 +57,20 @@
         </ul>
       </section>
 
-      <section class="flushleft" data-background="#333">
+      <section class="center" data-background="#333">
         <h2>Code review is a process...</h2>
-        <p>TODO ajouter showcase ? non</p>
-        <p>TODO aller plus lentement</p>
-        <p>TODO ne pas parler de github / gitlab</p>
-        <p>TODO parler un peu plus de LesFurets</p>
-        <img src="img/live-code-review/code-review-flow-03.jpg">
+        <img src="img/live-code-review/code-review-flow-04.jpg">
+        <p>Our code review process is based on a <em>git flow</em> branching strategy and does not require any tool.</p>
+        <aside class="notes">
+          <p>TODO ajouter showcase ? non</p>
+          <p>TODO aller plus lentement</p>
+          <p>TODO ne pas parler de github / gitlab</p>
+          <p>TODO parler un peu plus de LesFurets</p>
+        </aside>
       </section>
 
       <section class="flushleft" data-background="#333">
-        <h2>How to ask for code review?</h2>
+        <h2>How do you ask for a code review?</h2>
         <p>You request a code review by changing the status in JIRA to <em>code review</em> (lesfurets.com), by doing a <em>pull request</em> (github) or a <em>merge request</em> (gitlab).</p>
       </section>
 
@@ -108,7 +111,7 @@ void check(MainDriver d1, Driver d2, Besoins b)
 
       <section class="flushleft" data-background="#333">
         <div class="badge review"></div>
-        <div class="badge person alex"></div>
+        <div class="badge person jeremy"></div>
         <div class="code-wrapper">
         <pre><code class="code java" data-trim data-noescape>
 <mark>// Use precise method naming, parameter naming,</mark>
@@ -170,7 +173,7 @@ void <mark>checkAge</mark>(MainDriver <mark>mainDriver</mark>) throws ExclusionE
 
       <section class="flushleft" data-background="#333" >
         <div class="badge code"></div>
-        <div class="badge person alex"></div>
+        <div class="badge person jeremy"></div>
         <div class="code-wrapper">
         <pre><code class="code java" data-trim data-noescape>
 private boolean isPreviousVersion(String version, String compareWith) {
@@ -225,7 +228,7 @@ private boolean isPreviousVersion(String version, String compareWith) {
 
       <section class="flushleft" data-background="#333" >
         <div class="badge correct"></div>
-        <div class="badge person alex"></div>
+        <div class="badge person jeremy"></div>
         <div class="code-wrapper">
         <pre><code class="code java" data-trim data-noescape>
 private boolean isPreviousVersion(String version, String compareWith) {
@@ -297,7 +300,7 @@ Date addDaysToDate(Date date, int numberOfDays) {
 
       <section class="flushleft" data-background="#333">
         <div class="badge review"></div>
-        <div class="badge person alex"></div>
+        <div class="badge person jeremy"></div>
         <div class="code-wrapper">
         <pre><code class="code java" data-trim data-noescape>
 Collection&lt;Object&gt; removeDuplicates(Collection&lt;?&gt; collection) {
@@ -359,7 +362,7 @@ Collection&lt;Object&gt; removeDuplicates(Collection&lt;?&gt; collection) {
 
       <section class="flushleft" data-background="#333" >
         <div class="badge code"></div>
-        <div class="badge person alex"></div>
+        <div class="badge person jeremy"></div>
         <div class="code-wrapper small">
         <pre><code class="code java" data-trim data-noescape>
 public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
@@ -424,7 +427,7 @@ public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
 
       <section class="flushleft" data-background="#333" >
         <div class="badge correct"></div>
-        <div class="badge person alex"></div>
+        <div class="badge person jeremy"></div>
         <div class="code-wrapper">
         <pre><code class="code java" data-trim data-noescape>
 public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {

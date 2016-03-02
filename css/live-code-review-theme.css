@@ -377,7 +377,11 @@
 }
 
 .reveal .badge.alex {
-    background-image: url('../img/live-code-review/badge-review-01.png');
+    background-image: url('../img/live-code-review/badge-alex-01.jpg');
+}
+
+.reveal .badge.jeremy {
+    background-image: url('../img/live-code-review/badge-empty-01.jpg');
 }
 
 .reveal .highlight {
