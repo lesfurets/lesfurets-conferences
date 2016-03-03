@@ -413,6 +413,7 @@
 }
 
 .reveal mark .hljs-comment,
+.reveal mark .hljs-keyword,
 .reveal mark .hljs-title {
     color: #000;
 }

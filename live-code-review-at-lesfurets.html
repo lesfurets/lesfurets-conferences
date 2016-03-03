@@ -62,10 +62,13 @@
         <img src="img/live-code-review/code-review-flow-04.jpg">
         <p>Our code review process is based on a <em>git flow</em> branching strategy and does not require any tool.</p>
         <aside class="notes">
-          <p>TODO ajouter showcase ? non</p>
-          <p>TODO aller plus lentement</p>
-          <p>TODO ne pas parler de github / gitlab</p>
-          <p>TODO parler un peu plus de LesFurets</p>
+          <p>We have the master branch, and a <strong>feature branch</strong> that corresponds to a JIRA ticket</p>
+          <p>The developer codes the feature in the commit that is called <strong>code</strong></p>
+          <p>The developer <strong>opens a code review</strong> in the red arrow</p>
+          <p>The reviewer <strong>reviews code and refuses the code review</strong></p>
+          <p>The developer corrects the feature in the commit that is called <strong>correct</strong></p>
+          <p>The reviewer <strong>reviews code and accepts the code review</strong></p>
+          <p>Then the branch is merged in the master branch, for us it is taken by the <strong>release octopus</strong> for production deployment</p>
         </aside>
       </section>
 
@@ -117,11 +120,11 @@ void check(MainDriver d1, Driver d2, Besoins b)
 <mark>// and remove unused parameters</mark>
 void check(MainDriver d1, Driver d2, Requirements r) 
                         throws ExclusionException {
-  <mark>// Use static imports if clearer and correct indentation</mark>
+  <mark>// Could use static imports if clearer and correct indentation</mark>
   int age = DateHelper.getAge(driver.getBirthDate(),
   DateHelper.getToday(),
   EPrecision.day);
-  <mark>// Use constants for magic numbers and string</mark>
+  <mark>// Maybe use constants for magic numbers and string</mark>
   if (age < 18)
       <mark>// Use brackets for single line statements</mark>
       throw new ExclusionException("Must be at least 18 years old");
@@ -144,23 +147,25 @@ void <mark>checkAge</mark>(MainDriver <mark>mainDriver</mark>) throws ExclusionE
         </code></pre>
         </div>
         <aside class="notes">
-          <p>Use precise method naming, parameter naming, and remove unused parameters</p>
-          <p>Use static imports if clearer</p>
-          <p>Use constants for magic numbers and string</p>
-          <p>Use brackets for single line statements</p>
+          <p>Use precise method naming for <strong>checkAge</strong>, correct parameter naming for <strong>mainDriver</strong>, and remove unused parameters for <strong>Driver and Requirements</strong></p>
+          <p>Use static imports if clearer for <strong>getAge</strong> and <strong>getToday</strong>, but not <strong>day</strong>, because it is clearer with the precision prefix</p>
+          <p>Use constants for magic numbers and string for <strong>MINIMUM_AGE</strong> but not the string</p>
+          <p>Use <strong>brackets</strong> for single line statements</p>
         </aside>
       </section>
 
       <section class="flushleft" data-background="#333">
         <h3>Style and naming wrap up</h3>
         <ul class="white">
-          <li>Define a style guide and naming rules with your team...</li>
-          <li>&nbsp;&nbsp;&nbsp;&nbsp;...and stick to it!</li>
-          <li>&nbsp;&nbsp;&nbsp;&nbsp;Example: <a href="https://google.github.io/styleguide/cppguide.html">Google C++ guide</a></li>
-          <li>Some of it can be automated:</li>
+          <li>Code review is a <strong>discussion</strong> and you can discuss about which elements to correct</li>
+          <li>Define a style guide and naming rules with your team as a basis for discussion</li>
+          <li>Example: <a href="https://google.github.io/styleguide/cppguide.html">Google C++ guide</a></li>
+          <li>Most of it can be automated:</li>
           <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>IDEs:</em> use automatic formatting</li>
           <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>Sonar:</em> static code analysis</li>
         </ul>
+        <aside class="notes">
+        </aside>
       </section>
 
       <!-- SIMPLICITY -->
@@ -206,8 +211,8 @@ private boolean isPreviousVersion(String version, String compareWith) {
     String[] compareDigits = compareWith.split("\\.");
     if (valueOf(versionDigits[0]) < valueOf(compareDigits[0]))
         return true;
-    <mark>// Do not compare Integer with == (it only works up to 127), use int instead</mark>
-    <mark>// or use .equals if Integer</mark>
+    <mark>// Do not compare Integer with == (it only works up to 127)</mark>
+    <mark>// either use int instead, or use .equals if Integer</mark>
     else if (valueOf(versionDigits[0]) == valueOf(compareDigits[0])) {
         if (valueOf(versionDigits[1]) < valueOf(compareDigits[1]))
             return true;
@@ -223,6 +228,11 @@ private boolean isPreviousVersion(String version, String compareWith) {
 }
         </code></pre>
         </div>
+        <aside class="notes">
+          <p>General remark: not a general function, can you do better?</p>
+          <p>Know that <strong>valueOf returns an Integer</strong>, which is the <strong>object type</strong> of the primitive type int. Comparing with equality on Integer object types only work up to 127, so you have 2 options: either <strong>compare primitve type int with ==</strong> or <strong>compare object Integer type with .equals method</strong></p>
+          <p>Method flow: too many return statements</p>
+        </aside>
       </section>
 
       <section class="flushleft" data-background="#333" >
@@ -337,7 +347,9 @@ Collection&lt;Object&gt; removeDuplicates(Collection&lt;?&gt; collection) {
         </code></pre>
         </div>
         <aside class="notes">
-          <p>Use a set to remove duplicates</p>
+          <p>Know your <strong>data structures</strong> and use them everywhere</p>
+          <p>Know your <strong>language features (new and old)</strong> and use them everywhere</p>
+          <p>Don't reinvent the wheel!</p>
         </aside>
       </section>
 
@@ -345,11 +357,19 @@ Collection&lt;Object&gt; removeDuplicates(Collection&lt;?&gt; collection) {
         <h3>Language and API wrap up</h3>
         <ul class="white">
           <li>Language usage should be short, simple, explicit</li>
-          <li>Know your language and data structures inside out</li>
-          <li>&nbsp;&nbsp;&nbsp;&nbsp;TODO examples (Maps, date, Thread, etc.)</li>
+          <li>Know your language and data structures inside out:</li>
+          <li style="font-size:0.75em">&nbsp;&nbsp;&nbsp;&nbsp;java.util.Map#[putIfAbsent, computeIfAbsent] <em>(Java 8)</em></li>
+          <li style="font-size:0.75em">&nbsp;&nbsp;&nbsp;&nbsp;java.time.[LocalDate, DateTimeFormatter] <em>(Java 8)</em></li>
+          <li style="font-size:0.75em">&nbsp;&nbsp;&nbsp;&nbsp;java.util.concurrent.[ExecutorService, CompletableFuture] <em>(Java 5, 8)</em></li>
+          <li style="font-size:0.75em">&nbsp;&nbsp;&nbsp;&nbsp;etc...</li>
           <li>Some of it can be automated:</li>
           <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>IDEs</em>, <em>Sonar</em> have simplification warnings that can help</li>
         </ul>
+        <aside class="notes">
+          <p>Some examples of nice language features that people do not always use</p>
+          <p>Know your language and the external library you are using and use them</p>
+          <p><strong>Help developers discover new usages</strong></p>
+        </aside>
       </section>
 
       <!-- OBJECT ORIENTED PROGRAMMING -->
@@ -422,6 +442,12 @@ public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
   return quoteTotalPrice.setScale(2, BigDecimal.ROUND_HALF_UP);
 }
     </code></pre>
+        <aside class="notes">
+          <p>Variables with number means a list</p>
+          <p>You could separate the <strong>quote object</strong> from the <strong>warranty object</strong></p>
+          <p>Put exception at the beginning of the method</p>
+          <p>You could extract the <strong>fees calculation</strong> in a service, as well as the <strong>taxes calculation</strong>, we don't need to know about the implementation details there</p>
+        </aside>
       </section>
 
       <section class="flushleft" data-background="#333" >
@@ -480,21 +506,30 @@ public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
       <section class="flushleft" data-background="#333">
         <h3>Why review?</h3>
         <ul class="white">
-          <li><em><strong>Quality:</strong></em> uniformity, best practices, style</li>
+          <li><em><strong>Quality:</strong></em> uniformity, style, best practices</li>
           <li><em><strong>Communication:</strong></em> discussions, sharing, reduce project risk</li>
           <li><em><strong>Documentation:</strong></em> style guide used for discussion, list specific code smells</li>
           <li><em><strong>Bugs:</strong></em> prevent regressions, incomplete features</li>
         </ul>
+        <aside class="notes">
+          <p>Code review is about quality because it helps with uniformity in the code in terms of <strong>style and coding practices</strong>, and you make sure <strong>best practices are applied everywhere</strong></p>
+          <p>Code review is about communication because it starts <strong>discussions between developers that do not talk a lot</strong>, it <strong>distributes knowledge</strong> and because of that it reduces project risk</p>
+          <p>Code review is about documentation because you need to <strong>create a base for argumentation like the style guide</strong> and list code smells <strong>specific to your application</strong></p>
+          <p>Code review is about reducing bugs because you <strong>find bad code</strong> to prevent regressions and <strong>make sure the code is complete</strong></p>
+        </aside>
       </section>
 
       <section class="flushleft" data-background="#333">
-        <h3>Who reviews?</h3>
+        <h3>Who can review code?</h3>
         <ul class="white">
           <li>Junior developers (simplicity)</li>
           <li>Senior developers (oop / language)</li>
           <li>Domain model expert developers (design / domain)</li>
           <li class="fragment">... <strong><em>everybody!</em></strong></li>
         </ul>
+        <aside class="notes">
+            <p>The developers who can review <strong>are NOT pretty much everybody</strong>, it is <strong>everybody</strong> that can reviews code, because all developers will bring something to the review</p>
+        </aside>
       </section>
 
       <section class="flushleft" data-background="#eee">
