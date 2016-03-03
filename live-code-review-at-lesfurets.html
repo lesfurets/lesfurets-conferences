@@ -244,15 +244,15 @@ private boolean isPreviousVersion(String version, String compareWith) {
     String[] versionDigits = compare.split("\\.");
     String[] compareDigits = compareWith.split("\\.");
     <mark>for (int i = 0; i < versionDigits.length; i++) {</mark>
-        <mark>if (isSameVersion(versionDigits[i], compareDigits[i])) {</mark>
+        <mark>if (isEquals(versionDigits[i], compareDigits[i])) {</mark>
             continue;
         }
-        return isPreviousVersion(versionDigits[i], compareDigits[i]);
+        return isPrevious(versionDigits[i], compareDigits[i]);
     }
     <mark>return false;</mark>
 }
 
-private boolean isSameVersion(String versionNumber, String compareWith) {
+private boolean isEquals(String versionNumber, String compareWith) {
     return <mark>Integer.parseInt</mark>(versionNumber) == <mark>Integer.parseInt</mark>(compareWith);
 }
     </code></pre>
@@ -270,7 +270,7 @@ private boolean isSameVersion(String versionNumber, String compareWith) {
           <li>A method should be simple to read/understand</li>
           <li>&nbsp;&nbsp;&nbsp;&nbsp;When you're done coding a method, read yourself again
           <li>Beware of nested if and loops</li>
-          <li>&nbsp;&nbsp;&nbsp;&nbsp;Too much complexity</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;Bring complexity</li>
           <li>Do not duplicate code, use private methods</li>
           <li>You can use <em>Sonar</em> complexity metric</li>
         </ul>
@@ -466,7 +466,7 @@ public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
 }
         </code></pre>
         <aside class="notes">
-          <p>Separated computation in different services</p>
+          <p>Separated computation in different services, which take as parameter only what they need</p>
           <p>Extracted objects from quotes</p>
         </aside>
       </section>
@@ -484,10 +484,14 @@ public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
           <li>Encapsulation, inheritance, abstraction, polymorphism</li>
           <li>No god object</li>
           <li>&nbsp;&nbsp;&nbsp;&nbsp;Don't be afraid of creating new classes</li>
-          <li>Do not duplicate classes</li>
+          <li>Do not duplicate classes for one special case</li>
           <li>&nbsp;&nbsp;&nbsp;&nbsp;Use inheritance or delegation accordingly</li>
           <li>Structure your data in a smart way</li>
         </ul>
+        <aside class="notes">
+          <p>Separate concerns</p>
+          <p>Single responsability principle</p>
+        </aside>
       </section>
 
       <section class="center" data-background="#1a237e">
@@ -495,6 +499,10 @@ public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
         <img style="padding:0;margin:25px;" src="img/live-code-review/book-clean-code-01.jpg">
         <img style="padding:0;margin:25px;" src="img/live-code-review/book-code-complete-01.jpg">
         <img style="padding:0;margin:25px;" src="img/live-code-review/book-design-pattern-01.jpg">
+        <aside class="notes">
+          <p>Code samples and discussions: Robert Martin, Steve McConnel</p>
+          <p>Design patterns and oop in general</p>
+        </aside>
       </section>
 
       <!-- CONCLUSION -->
@@ -535,10 +543,10 @@ public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
       <section class="flushleft" data-background="#eee">
         <h2 style="color:#333">Things we didn't talk about</h2>
         <p style="color:#111"><strong>Other code review topics:</strong> feature validation, units tests and code coverage, anti-pattern and code smells</p>
-        <p style="color:#111"><strong>Other review types:</strong> we don't do reviews during development or reviews by group, but it works too!</p>
+        <p style="color:#111"><strong>Other review types:</strong> reviews during development or reviews by group, we don't do it but it works too!</p>
         <p style="color:#111"><strong>Bonus:</strong> make sure you understand every line of code, review code not people (no shaming), do pair programming</p>
         <aside class="notes">
-          <p>feature validation : make sure the code corresponds to the feature</p>
+          <p>feature validation : make sure the code corresponds to the expected feature</p>
           <p>unit tests and coverage : make sure all new code and modified code are tested and well tested</p>
           <p>make sure you understand every line of code: take your time to review, no more than 500 line per hour</p>
         </aside>
