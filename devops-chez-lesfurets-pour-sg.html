@@ -52,7 +52,7 @@
 
       <section class="center" data-background="#222">
         <p>Notre équipe est constitué de <strong>21 développeurs dont 2 ops</strong>.</p>
-        <p class="color-gray400">Les déveleppeurs ont des responsabilités devops, telles que la livraison en production, le maintient de la configuration des environnements, le monitoring, etc.</p>
+        <p class="color-gray400">Les développeurs ont des responsabilités devops, telles que la livraison en production, la gestion de la configuration des environnements, le monitoring, etc.</p>
         <aside class="notes">
           <p>TODO</p>
         </aside>
@@ -85,7 +85,7 @@
 
       <section class="center" data-background="#222">
         <p>On a besoin de certains éléments préalables</p>
-        <p class="color-gray400">Un code correctement <strong class="color-gray50">segmenté</strong> (avec des parties indéprendantes), une bonne <strong class="color-gray50">couverture de test</strong>, des <strong class="color-gray50">features indépendantes</strong> (donc des branches indépendantes) et une chaine de <strong class="color-gray50">build rapide et automatique</strong> (y compris le déploiement).</p>
+        <p class="color-gray400">Un code correctement <strong class="color-gray50">segmenté</strong> (avec des parties indépendantes), une bonne <strong class="color-gray50">couverture de test</strong>, des <strong class="color-gray50">features indépendantes</strong> (donc des branches indépendantes) et une chaine de <strong class="color-gray50">build rapide et automatique</strong> (y compris le déploiement).</p>
         <aside class="notes">
           <p>TODO</p>
         </aside>
@@ -135,7 +135,7 @@
 
       <section class="center" data-background="#222">
         <p>Continuous merge</p>
-        <img style="width: 66%;" src="img/devops/octopus-merge-features-01.png">
+        <img style="width: 75%;" src="img/devops/octopus-merge-features-01.png">
         <aside class="notes">
           <p>TODO</p>
         </aside>
@@ -178,7 +178,7 @@ git merge features/*
       </section>
 
       <section class="center" data-background="#222">
-        <p><strong>git-conflict</strong><br/> est un gestionnaire de conflit reproductible distribué (cool !)</p>
+        <p><strong>git-conflict</strong> (livré avec git-octopus)<br/> est un gestionnaire de conflit reproductible distribué (cool !)</p>
         <img style="width:75%" src="img/devops/octopus-merge-features-04.png">
         <aside class="notes">
           <p>TODO</p>
@@ -194,7 +194,7 @@ git merge features/*
 
       <section class="center" data-background="#222">
         <p class="color-gray400">Les déploiements se font vers plusieurs environnements : <strong>personnel</strong> (la feature courtante), <strong>docker</strong> (une feature en isolé, disponible de l'extérieur), <strong>developpement</strong> (toutes les features), <strong>staging / dog fooding</strong> (validation fonctionnelle), <strong>pre-production</strong> (release de demain) et <strong>production</strong>.</p>
-        <p>On utilise l'octopus pour l'environnemnet de staging (<span class="color-indigo500">octopus-features</span>) et pour l'environnement de preprod (<span class="color-indigo500">octopus-releases</span>).</p>
+        <p>On utilise l'octopus pour l'environnement de staging (<span class="color-indigo500">octopus-features</span>) et pour l'environnement de preprod (<span class="color-indigo500">octopus-releases</span>).</p>
         <aside class="notes">
           <p>TODO</p>
         </aside>
@@ -202,7 +202,16 @@ git merge features/*
 
       <!-- SECTION - CONCLUSION -->
 
+      <section class="center" data-background="#222">
+        <p class="color-gray400">En résumé : le continuous delivery est atteignable pour une équipe de toute taille.</p>
+        <p>Il faut y arriver pas à pas, en commençant par le <span class="color-indigo500">continuous merge</span>, qu'on peut mettre en place immédiatement sans impact !</p>
+        <aside class="notes">
+          <p>TODO</p>
+        </aside>
+      </section>
+
       <section class="flushright" data-background="img/live-code-review/blindard-01.jpeg">
+        <h3>Ajoutez git-octopus à votre CI dès maintenant...</h3>
         <h2>FIN</h2>
       </section>
 
