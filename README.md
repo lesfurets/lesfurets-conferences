@@ -8,6 +8,7 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 
 ### Continuous delivery
 
+- 13 octobre 2016 (fr) : [Marseilles JUG - Le continuous delivery chez LesFurets.com](https://dubreuia.github.io/lesfurets-conferences/continuous-delivery-marseille-jug-2016.html)
 - 29 juin 2016 (fr) : [Societe Generale - Le continuous delivery chez LesFurets.com](https://dubreuia.github.io/lesfurets-conferences/devops-chez-lesfurets-pour-sg.html)
 - 10 décembre 2015 (fr) : [Octo - Le continuous merge chez LesFurets.com](https://dubreuia.github.io/lesfurets-conferences/pdf/git-octopus-chez-octo-2015.pdf)
 - 10 avril 2015 (fr) : [Devoxx France - Livrer chaque jour ce qui est prêt](https://lesfurets.github.io/lesfurets-conferences/continuous-delivery-agile-tour-rennes-2014.html)
