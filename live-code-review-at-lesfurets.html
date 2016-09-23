@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Live code review at LesFurets.com</title>
+    <meta name="description" content="Live code review at LesFurets.com">
+    <meta name="author" content="Alexandre DuBreuil, Jeremy Maltis">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="css/lesfurets-theme.css" id="theme">
+    <link rel="stylesheet" href="css/live-code-review-theme.css" id="theme">
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+    <!--[if lt IE 9]><script src="lib/js/html5shiv.js"></script><![endif]-->
+  </head>
+  <body>
+    <div id="footer" class="footer show">
+      <a href="https://www.lesfurets.com" target="_blank"><img class="logo" src="img/logo_lesfurets_885x128_no_back.png"></a><a class ="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a><a class ="github" href="https://github.com/dubreuia" target="_blank">https://github.com/dubreuia</a><a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a><a class="twitter" href="https://twitter.com/dubreuia" target="_blank">@dubreuia</a>
+    </div>
+    <div class="reveal">
+      <div class="slides">
+      <!-- START -->
+
+      <section class="flushright" data-background="img/nwx/lesfurets-background-black-01.jpg">
+        <h1>Live code review<br/> at LesFurets.com</h1>
+        <h2>Alexandre DuBreuil</h2>
+        <h2>Jeremy Maltis</h2>
+      </section>
+
+      <section class="flushleft"  data-background="img/nwx/lesfurets-background-black-01.jpg">
+        <h2>Alexandre DuBreuil</h2>
+        <h3>Tech lead team insurer panel</h3>
+        <ul class="flushright nodisc">
+          <li>
+            <a style="color:white" href="https://twitter.com/dubreuia">https://twitter.com/dubreuia</a>
+          </li>
+          <li>
+            <a style="color:white" href="https://github.com/dubreuia">https://github.com/dubreuia</a>
+          </li>
+        </ul>
+        <h2>Jeremy Maltis</h2>
+        <h3>Front developer team journey</h3>
+        <ul class="flushright nodisc">
+          <li>
+            <a style="color:white" href="https://github.com/jmaltis">https://github.com/jmaltis</a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="center" data-background="#333">
+        <h2>Code review is a process...</h2>
+        <img src="img/live-code-review/code-review-flow-04.jpg">
+        <p>Our code review process is based on a <em>git flow</em> branching strategy and does not require any tool.</p>
+        <aside class="notes">
+          <p>We have the master branch, and a <strong>feature branch</strong> that corresponds to a JIRA ticket</p>
+          <p>The developer codes the feature in the commit that is called <strong>code</strong></p>
+          <p>The developer <strong>opens a code review</strong> in the red arrow</p>
+          <p>The reviewer <strong>reviews code and refuses the code review</strong></p>
+          <p>The developer corrects the feature in the commit that is called <strong>correct</strong></p>
+          <p>The reviewer <strong>reviews code and accepts the code review</strong></p>
+          <p>Then the branch is merged in the master branch, for us it is taken by the <strong>release octopus</strong> for production deployment</p>
+        </aside>
+      </section>
+
+      <section class="flushleft" data-background="#333">
+        <h2>How do you ask for a code review?</h2>
+        <p>You request a code review by changing the status in JIRA to <em>code review</em> (lesfurets.com), by doing a <em>pull request</em> (github) or a <em>merge request</em> (gitlab).</p>
+      </section>
+
+      <section class="flushleft" data-background="#222222">
+        <h2>Code review topics</h2>
+        <p><strong style="color:#e65100;padding:5px;">(1)</strong> Style and naming</p>
+        <p><strong style="color:#e65100;padding:5px;">(2)</strong> Language and API usage</p>
+        <p><strong style="color:#e65100;padding:5px;">(3)</strong> Simplicity</p>
+        <p><strong style="color:#e65100;padding:5px;">(4)</strong> Object oriented programming</p>
+      </section>
+
+      <!-- CODE STYLE / NAMING -->
+
+      <section class="flushleft" data-background="#eee">
+        <h2 style="color:#1a237e">Example 1</h2>
+        <h3 style="color:#333" class="flushright">Code style and naming</h3>
+      </section>
+
+      <section class="flushleft" data-background="#333">
+        <div class="badge code"></div>
+        <div class="badge person alex"></div>
+        <div class="code-wrapper">
+        <pre><code class="code java" data-trim data-noescape>
+void check(MainDriver d1, Driver d2, Besoins b) 
+                        throws ExclusionException {
+
+  int age = DateHelper.getAge(driver.getBirthDate(),
+  DateHelper.getToday(),
+  EPrecision.day);
+
+  if (age < 18)
+      throw new ExclusionException("Must be at least 18 years old");
+}
+        </code></pre>
+        </div>
+      </section>
+
+      <section class="flushleft" data-background="#333">
+        <div class="badge review"></div>
+        <div class="badge person jeremy"></div>
+        <div class="code-wrapper">
+        <pre><code class="code java" data-trim data-noescape>
+<mark>// Use precise method naming, parameter naming,</mark>
+<mark>// and remove unused parameters</mark>
+void check(MainDriver d1, Driver d2, Requirements r) 
+                        throws ExclusionException {
+  <mark>// Could use static imports if clearer and correct indentation</mark>
+  int age = DateHelper.getAge(driver.getBirthDate(),
+  DateHelper.getToday(),
+  EPrecision.day);
+  <mark>// Maybe use constants for magic numbers and string</mark>
+  if (age < 18)
+      <mark>// Use brackets for single line statements</mark>
+      throw new ExclusionException("Must be at least 18 years old");
+}
+        </code></pre>
+        </div>
+      </section>
+
+      <section class="flushleft" data-background="#333">
+        <div class="badge correct"></div>
+        <div class="badge person alex"></div>
+        <div class="code-wrapper">
+        <pre><code class="code java" data-trim data-noescape>
+void <mark>checkAge</mark>(MainDriver <mark>mainDriver</mark>) throws ExclusionException {
+  int age = <mark>getAge</mark>(driver.getBirthDate(), <mark>getToday()</mark>, EPrecision.day);
+  if (age < <mark>MINIMUM_AGE</mark>) <mark>{</mark>
+      throw new ExclusionException("Must be at least 18 years old");
+  <mark>}</mark>
+}
+        </code></pre>
+        </div>
+        <aside class="notes">
+          <p>Use precise method naming for <strong>checkAge</strong>, correct parameter naming for <strong>mainDriver</strong>, and remove unused parameters for <strong>Driver and Requirements</strong></p>
+          <p>Use static imports if clearer for <strong>getAge</strong> and <strong>getToday</strong>, but not <strong>day</strong>, because it is clearer with the precision prefix</p>
+          <p>Use constants for magic numbers and string for <strong>MINIMUM_AGE</strong> but not the string</p>
+          <p>Use <strong>brackets</strong> for single line statements</p>
+        </aside>
+      </section>
+
+      <section class="flushleft" data-background="#333">
+        <h3>Style and naming wrap up</h3>
+        <ul class="white">
+          <li>Code review is a <strong>discussion</strong> and you can discuss about which elements to correct</li>
+          <li>Define a style guide and naming rules with your team as a basis for discussion</li>
+          <li>Example: <a href="https://google.github.io/styleguide/cppguide.html">Google C++ guide</a></li>
+          <li>Most of it can be automated:</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>IDEs:</em> use automatic formatting</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>Sonar:</em> static code analysis</li>
+        </ul>
+        <aside class="notes">
+        </aside>
+      </section>
+
+      <!-- SIMPLICITY -->
+
+      <section class="flushleft" data-background="#eee">
+        <h2 style="color:#1a237e">Example 2</h2>
+        <h3 style="color:#333" class="flushright">Simplicity</h3>
+      </section>
+
+      <section class="flushleft" data-background="#333" >
+        <div class="badge code"></div>
+        <div class="badge person jeremy"></div>
+        <div class="code-wrapper">
+        <pre><code class="code java" data-trim data-noescape>
+private boolean isPreviousVersion(String version, String compareWith) {
+    String[] versionDigits = compare.split("\\.");
+    String[] compareDigits = compareWith.split("\\.");
+    if (valueOf(versionDigits[0]) < valueOf(compareDigits[0]))
+        return true;
+    else if (valueOf(versionDigits[0]) == valueOf(compareDigits[0])) {
+        if (valueOf(versionDigits[1]) < valueOf(compareDigits[1]))
+            return true;
+        else {
+          if (valueOf(versionDigits[1]) == valueOf(compareDigits[1]))
+              return valueOf(versionDigits[2]) < valueOf(compareDigits[2]);
+          return false;
+        }
+    }
+    return false;
+}
+        </code></pre>
+        </div>
+      </section>
+
+      <section class="flushleft" data-background="#333" >
+        <div class="badge review"></div>
+        <div class="badge person alex"></div>
+        <div class="code-wrapper small">
+        <pre><code class="code java" data-trim data-noescape>
+<mark>// General remark: you only compare the first 3 numbers?</mark>
+private boolean isPreviousVersion(String version, String compareWith) {
+    String[] versionDigits = compare.split("\\.");
+    String[] compareDigits = compareWith.split("\\.");
+    if (valueOf(versionDigits[0]) < valueOf(compareDigits[0]))
+        return true;
+    <mark>// Do not compare Integer with == (it only works up to 127)</mark>
+    <mark>// either use int instead, or use .equals if Integer</mark>
+    else if (valueOf(versionDigits[0]) == valueOf(compareDigits[0])) {
+        if (valueOf(versionDigits[1]) < valueOf(compareDigits[1]))
+            return true;
+        else {
+            <mark>// Exact same behaviour as above, use private method</mark>
+            if (valueOf(versionDigits[1]) == valueOf(compareDigits[1]))
+                return valueOf(versionDigits[2]) < valueOf(compareDigits[2]);
+            return false;
+        }
+    }
+    <mark>// A lot of return statement, isn't there a simpler way?</mark>
+    return false;
+}
+        </code></pre>
+        </div>
+        <aside class="notes">
+          <p>General remark: not a general function, can you do better?</p>
+          <p>Know that <strong>valueOf returns an Integer</strong>, which is the <strong>object type</strong> of the primitive type int. Comparing with equality on Integer object types only work up to 127, so you have 2 options: either <strong>compare primitve type int with ==</strong> or <strong>compare object Integer type with .equals method</strong></p>
+          <p>Method flow: too many return statements</p>
+        </aside>
+      </section>
+
+      <section class="flushleft" data-background="#333" >
+        <div class="badge correct"></div>
+        <div class="badge person jeremy"></div>
+        <div class="code-wrapper">
+        <pre><code class="code java" data-trim data-noescape>
+private boolean isPreviousVersion(String version, String compareWith) {
+    String[] versionDigits = compare.split("\\.");
+    String[] compareDigits = compareWith.split("\\.");
+    <mark>for (int i = 0; i < versionDigits.length; i++) {</mark>
+        <mark>if (isEquals(versionDigits[i], compareDigits[i])) {</mark>
+            continue;
+        }
+        return isPrevious(versionDigits[i], compareDigits[i]);
+    }
+    <mark>return false;</mark>
+}
+
+private boolean isEquals(String versionNumber, String compareWith) {
+    return <mark>Integer.parseInt</mark>(versionNumber) == <mark>Integer.parseInt</mark>(compareWith);
+}
+    </code></pre>
+        <aside class="notes">
+          <p>General remark: you only compare the first 3 numbers?</p>
+          <p>Exact same behaviour as above, use private method</p>
+          <p>A lot of return statement, isn't there a simplier way?</p>
+          <p>Do not compare Integer with == (it only works up to 127), use int instead</p>
+        </aside>
+      </section>
+
+      <section class="flushleft" data-background="#333">
+        <h3 class="center">Simplicity wrap up</h3>
+        <ul class="white">
+          <li>A method should be simple to read/understand</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;When you're done coding a method, read yourself again
+          <li>Beware of nested if and loops</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;Bring complexity</li>
+          <li>Do not duplicate code, use private methods</li>
+          <li>You can use <em>Sonar</em> complexity metric</li>
+        </ul>
+      </section>
+
+
+      <!-- LANGUAGE AND API USAGE -->
+
+      <section class="flushleft" data-background="#eee">
+        <h2 style="color:#1a237e">Example 3</h2>
+        <h3 style="color:#333" class="flushright">Language and API usage</h3>
+      </section>
+
+      <section class="flushleft" data-background="#333">
+        <div class="badge code"></div>
+        <div class="badge person alex"></div>
+        <div class="code-wrapper">
+        <pre><code class="code java" data-trim data-noescape>
+Collection&lt;Object&gt; removeDuplicates(Collection&lt;?&gt; collection) {
+    List&lt;Object&gt; uniques = new ArrayList&lt;&gt;();
+    for (Object object : collection)
+        if (!uniques.contains(object))
+            uniques.add((object));
+    return uniques;
+}
+
+Date addDaysToDate(Date date, int numberOfDays) {
+    Calendar calendar = Calendar.getInstance();
+    calendar.setTime(date);
+    calendar.add(Calendar.DAY_OF_YEAR, numberOfDays);
+    return calendar.getTime();
+}
+        </code></pre>
+        </div>
+      </section>
+
+      <section class="flushleft" data-background="#333">
+        <div class="badge review"></div>
+        <div class="badge person jeremy"></div>
+        <div class="code-wrapper">
+        <pre><code class="code java" data-trim data-noescape>
+Collection&lt;Object&gt; removeDuplicates(Collection&lt;?&gt; collection) {
+    <mark>// You could use a set to remove duplicates</mark>
+    List&lt;Object&gt; uniques = new ArrayList&lt;&gt;();
+    for (Object object : collection)
+        if (!uniques.contains(object))
+            uniques.add(object);
+    return uniques;
+}
+
+Date addDaysToDate(Date date, int numberOfDays) {
+    <mark>// You could use the new Java 8 LocalDate API</mark>
+    Calendar calendar = Calendar.getInstance();
+    calendar.setTime(date);
+    calendar.add(Calendar.DAY_OF_YEAR, numberOfDays);
+    return calendar.getTime();
+}
+        </code></pre>
+        </div>
+      </section>
+
+      <section class="flushleft" data-background="#333">
+        <div class="badge correct"></div>
+        <div class="badge person alex"></div>
+        <div class="code-wrapper">
+        <pre><code class="code java" data-trim data-noescape>
+Collection&lt;Object&gt; removeDuplicates(Collection&lt;?&gt; collection) {
+    return <mark>new HashSet&lt;&gt;(collection)</mark>;
+}
+
+<mark>LocalDate</mark> addDaysToDate(<mark>LocalDate</mark> date, int numberOfDays) {
+    return <mark>date.plus(numberOfDays, DAYS)</mark>;
+}
+        </code></pre>
+        </div>
+        <aside class="notes">
+          <p>Know your <strong>data structures</strong> and use them everywhere</p>
+          <p>Know your <strong>language features (new and old)</strong> and use them everywhere</p>
+          <p>Don't reinvent the wheel!</p>
+        </aside>
+      </section>
+
+      <section class="flushleft" data-background="#333">
+        <h3>Language and API wrap up</h3>
+        <ul class="white">
+          <li>Language usage should be short, simple, explicit</li>
+          <li>Know your language and data structures inside out:</li>
+          <li style="font-size:0.75em">&nbsp;&nbsp;&nbsp;&nbsp;java.util.Map#[putIfAbsent, computeIfAbsent] <em>(Java 8)</em></li>
+          <li style="font-size:0.75em">&nbsp;&nbsp;&nbsp;&nbsp;java.time.[LocalDate, DateTimeFormatter] <em>(Java 8)</em></li>
+          <li style="font-size:0.75em">&nbsp;&nbsp;&nbsp;&nbsp;java.util.concurrent.[ExecutorService, CompletableFuture] <em>(Java 5, 8)</em></li>
+          <li style="font-size:0.75em">&nbsp;&nbsp;&nbsp;&nbsp;etc...</li>
+          <li>Some of it can be automated:</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;<em>IDEs</em>, <em>Sonar</em> have simplification warnings that can help</li>
+        </ul>
+        <aside class="notes">
+          <p>Some examples of nice language features that people do not always use</p>
+          <p>Know your language and the external library you are using and use them</p>
+          <p><strong>Help developers discover new usages</strong></p>
+        </aside>
+      </section>
+
+      <!-- OBJECT ORIENTED PROGRAMMING -->
+
+      <section class="flushleft" data-background="#eee">
+        <h2 style="color:#1a237e">Example 4</h2>
+        <h3 style="color:#333" class="flushright">Object Oriented Programming (OOP)</h3>
+      </section>
+
+      <section class="flushleft" data-background="#333" >
+        <div class="badge code"></div>
+        <div class="badge person jeremy"></div>
+        <div class="code-wrapper small">
+        <pre><code class="code java" data-trim data-noescape>
+public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
+  BigDecimal quoteTotalPrice = new BigDecimal(quote.getPrice().doubleValue());
+  if (quote.getWarrantyAvailability1().equals(quote.getQuoteType()))
+      quoteTotalPrice = quoteTotalPrice.add(quote.getWarrantyPrice1());
+  if (quote.getWarrantyAvailability2().equals(quote.getQuoteType()))
+      quoteTotalPrice = quoteTotalPrice.add(quote.getWarrantyPrice2());
+  if (quote.getExpirationDate().isBefore(LocalDate.now()))
+      throw new ComputationPriceException("It's too late !");
+  if (!quote.isFeesIncluded()) {
+      if (quote.getOneTimeFees() != null)
+          quoteTotalPrice = quoteTotalPrice.add(quote.getOneTimeFees());
+      if (quote.getAnnualFees() != null)
+          quoteTotalPrice = quoteTotalPrice.add(quote.getAnnualFees());
+  }
+  // Taxes has changed after 1st January 2015
+  if (quote.getDate().isBefore(LocalDate.of(2015, 1, 1)))
+      quoteTotalPrice = quoteTotalPrice.multiply(new BigDecimal(1.20));
+  else
+      quoteTotalPrice = quoteTotalPrice.multiply(new BigDecimal(1.196));
+  // Rounding
+  return quoteTotalPrice.setScale(2, BigDecimal.ROUND_HALF_UP);
+}
+    </code></pre>
+      </section>
+
+      <section class="flushleft" data-background="#333" >
+        <div class="badge review"></div>
+        <div class="badge person alex"></div>
+        <div class="code-wrapper smaller">
+        <pre><code class="code java" data-trim data-noescape>
+public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
+  <mark>// Variables with numbers is rarely a good option, use a list instead?</mark>
+  <mark>// Warranties look independant from the quote, extract in an object</mark>
+  BigDecimal quoteTotalPrice = new BigDecimal(quote.getPrice().doubleValue());
+  if (quote.getWarrantyAvailability1().equals(quote.getQuoteType()))
+      quoteTotalPrice = quoteTotalPrice.add(quote.getWarrantyPrice1());
+  if (quote.getWarrantyAvailability2().equals(quote.getQuoteType()))
+      quoteTotalPrice = quoteTotalPrice.add(quote.getWarrantyPrice2());
+  <mark>// Use fail fast that avoid executing the function if not necessary</mark>
+  if (quote.getExpirationDate().isBefore(LocalDate.now()))
+      throw new ComputationPriceException("It's too late !");
+  <mark>// Encapsulate implementation, we don't need to know about it here</mark>
+  if (!quote.isFeesIncluded()) {
+      if (quote.getOneTimeFees() != null)
+          quoteTotalPrice = quoteTotalPrice.add(quote.getOneTimeFees());
+      if (quote.getAnnualFees() != null)
+          quoteTotalPrice = quoteTotalPrice.add(quote.getAnnualFees());
+  }
+  <mark>// Same remark as above</mark>
+  // Taxes has changed after 1st January 2015
+  if (quote.getDate().isBefore(LocalDate.of(2015, 1, 1)))
+      quoteTotalPrice = quoteTotalPrice.multiply(new BigDecimal(1.20));
+  else
+      quoteTotalPrice = quoteTotalPrice.multiply(new BigDecimal(1.196));
+  // Rounding
+  return quoteTotalPrice.setScale(2, BigDecimal.ROUND_HALF_UP);
+}
+    </code></pre>
+        <aside class="notes">
+          <p>Variables with number means a list</p>
+          <p>You could separate the <strong>quote object</strong> from the <strong>warranty object</strong></p>
+          <p>Put exception at the beginning of the method</p>
+          <p>You could extract the <strong>fees calculation</strong> in a service, as well as the <strong>taxes calculation</strong>, we don't need to know about the implementation details there</p>
+        </aside>
+      </section>
+
+      <section class="flushleft" data-background="#333" >
+        <div class="badge correct"></div>
+        <div class="badge person jeremy"></div>
+        <div class="code-wrapper">
+        <pre><code class="code java" data-trim data-noescape>
+public BigDecimal recomputePrice(Quote quote) throws ComputationPriceException {
+  <mark>checkQuoteIsStillValid(quote.getExpirationDate());</mark>
+
+  BigDecimal quoteTotalPrice = new BigDecimal(quote.getPrice().doubleValue())
+                  .add(<mark>warrantyService</mark>.computeWarrantiesAmount(<mark>quote.getWarranties()</mark>))
+                  .add(<mark>feesService</mark>.computeFeesAmount(<mark>quote.getFees()</mark>));
+
+  return <mark>taxesService</mark>.applyTaxes(quote.getDate(), quoteTotalPrice);
+}
+        </code></pre>
+        <aside class="notes">
+          <p>Separated computation in different services, which take as parameter only what they need</p>
+          <p>Extracted objects from quotes</p>
+        </aside>
+      </section>
+
+      <section class="flushleft" data-background="#333">
+        <h3 class="center">Object Oriented Programming class diagram</h3>
+        <div class="center">
+          <img src="img/class-diagram.png"/>
+        <div>
+      </section>
+
+      <section class="flushleft" data-background="#333">
+        <h3 class="center">Object Oriented Programming wrap up</h3>
+        <ul class="white">
+          <li>Encapsulation, inheritance, abstraction, polymorphism</li>
+          <li>No god object</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;Don't be afraid of creating new classes</li>
+          <li>Do not duplicate classes for one special case</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;Use inheritance or delegation accordingly</li>
+          <li>Structure your data in a smart way</li>
+        </ul>
+        <aside class="notes">
+          <p>Separate concerns</p>
+          <p>Single responsability principle</p>
+        </aside>
+      </section>
+
+      <section class="center" data-background="#1a237e">
+        <h3 class="flushleft">References for more code review topics...</h3>
+        <img style="padding:0;margin:25px;" src="img/live-code-review/book-clean-code-01.jpg">
+        <img style="padding:0;margin:25px;" src="img/live-code-review/book-code-complete-01.jpg">
+        <img style="padding:0;margin:25px;" src="img/live-code-review/book-design-pattern-01.jpg">
+        <aside class="notes">
+          <p>Code samples and discussions: Robert Martin, Steve McConnel</p>
+          <p>Design patterns and oop in general</p>
+        </aside>
+      </section>
+
+      <!-- CONCLUSION -->
+
+      <section class="flushleft" data-background="#eee">
+        <h2 style="color:#333">It's all about quality and communication</h2>
+      </section>
+
+      <section class="flushleft" data-background="#333">
+        <h3>Why review?</h3>
+        <ul class="white">
+          <li><em><strong>Quality:</strong></em> uniformity, style, best practices</li>
+          <li><em><strong>Communication:</strong></em> discussions, sharing, reduce project risk</li>
+          <li><em><strong>Documentation:</strong></em> style guide used for discussion, list specific code smells</li>
+          <li><em><strong>Bugs:</strong></em> prevent regressions, incomplete features</li>
+        </ul>
+        <aside class="notes">
+          <p>Code review is about quality because it helps with uniformity in the code in terms of <strong>style and coding practices</strong>, and you make sure <strong>best practices are applied everywhere</strong></p>
+          <p>Code review is about communication because it starts <strong>discussions between developers that do not talk a lot</strong>, it <strong>distributes knowledge</strong> and because of that it reduces project risk</p>
+          <p>Code review is about documentation because you need to <strong>create a base for argumentation like the style guide</strong> and list code smells <strong>specific to your application</strong></p>
+          <p>Code review is about reducing bugs because you <strong>find bad code</strong> to prevent regressions and <strong>make sure the code is complete</strong></p>
+        </aside>
+      </section>
+
+      <section class="flushleft" data-background="#333">
+        <h3>Who can review code?</h3>
+        <ul class="white">
+          <li>Junior developers (simplicity)</li>
+          <li>Senior developers (oop / language)</li>
+          <li>Domain model expert developers (design / domain)</li>
+          <li class="fragment">... <strong><em>everybody!</em></strong></li>
+        </ul>
+        <aside class="notes">
+            <p>The developers who can review <strong>are NOT pretty much everybody</strong>, it is <strong>everybody</strong> that can reviews code, because all developers will bring something to the review</p>
+        </aside>
+      </section>
+
+      <section class="flushleft" data-background="#eee">
+        <h2 style="color:#333">Things we didn't talk about</h2>
+        <p style="color:#111"><strong>Other code review topics:</strong> feature validation, units tests and code coverage, anti-pattern and code smells</p>
+        <p style="color:#111"><strong>Other review types:</strong> reviews during development or reviews by group, we don't do it but it works too!</p>
+        <p style="color:#111"><strong>Bonus:</strong> make sure you understand every line of code, review code not people (no shaming), do pair programming</p>
+        <aside class="notes">
+          <p>feature validation : make sure the code corresponds to the expected feature</p>
+          <p>unit tests and coverage : make sure all new code and modified code are tested and well tested</p>
+          <p>make sure you understand every line of code: take your time to review, no more than 500 line per hour</p>
+        </aside>
+      </section>
+
+      <section class="flushright" data-background="img/live-code-review/blindard-01.jpeg">
+        <h1>Even Blindard does code review...</h1>
+        <h2>... you should do it too!</h2>
+      </section>
+
+      <!-- END -->
+      </div>
+    </div>
+    <script src="bower_components/reveal.js/lib/js/head.min.js"></script>
+    <script src="bower_components/reveal.js/js/reveal.js"></script>
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        embedded: true,
+
+        //theme: 'lesfurets', // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+    <script src="js/lesfurets-theme.js" async></script>
+    <script src="js/lesfurets-codereview-theme.js" async></script>
+  </body>
+</html>
