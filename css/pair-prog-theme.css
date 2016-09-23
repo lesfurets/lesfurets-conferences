@@ -1,0 +1,272 @@
+.reveal h1 {
+  font-size:112px;
+  font-weight:300;
+  letter-spacing:-5px;
+  line-height:128px;
+}
+.reveal h2 {
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 64px;
+}
+.reveal h3 {
+  font-size: 45px;
+  font-weight: 400;
+  line-height: 64px;
+}
+.reveal h4 {
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 52px;
+}
+
+.reveal blockquote {
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 5px;
+}
+
+.reveal blockquote:before {
+  color: black;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.3em;
+  vertical-align: -0.4em;
+}
+
+.reveal blockquote p {
+  display: inline;
+  color: #283593;
+  font-style: italic;
+}
+
+.reveal .halfpage {
+  display: inline-block;
+  vertical-align: top;
+  width: 40%;
+}
+
+.reveal .halfpage:nth-child(1) {
+  color: red;
+  margin: 0 1em 0 0;
+}
+
+.reveal .halfpage:nth-child(2) {
+  color: red;
+  margin: 0 0 0 1em;
+}
+
+.reveal .twocolumn:before {
+  content: "";
+  height: 100%;
+  left: 0%;
+  position: absolute;
+  width: 50%;
+  z-index: -1;
+}
+
+.reveal .twocolumn.black:before {
+  background-color: #212121;
+}
+
+.reveal .step {
+  color: black;
+  font-size: 1.5em;
+  margin: 0.5ex;
+}
+
+.reveal .indigo50 {
+  color: #e8eaf6;
+}
+
+.reveal .indigo100 {
+  color: #c5cae9;
+}
+
+.reveal .indigo200 {
+  color: #9fa8da;
+}
+
+.reveal .indigo300 {
+  color: #7986cb;
+}
+
+.reveal .indigo400 {
+  color: #5c6bc0;
+}
+
+.reveal .indigo500 {
+  color: #3f51b5;
+}
+
+.reveal .indigo600 {
+  color: #3949ab;
+}
+
+.reveal .indigo700 {
+  color: #303f9f;
+}
+
+.reveal .indigo800 {
+  color: #283593;
+}
+
+.reveal .indigo900 {
+  color: #1a237e;
+}
+
+.reveal .indigoA100 {
+  color: #8c9eff;
+}
+
+.reveal .indigoA200 {
+  color: #536dfe;
+}
+
+.reveal .indigoA400 {
+  color: #3d5afe;
+}
+
+.reveal .indigoA700 {
+  color: #304ffe;
+}
+
+.reveal .orange50 {
+  color: #fff3e0;
+}
+
+.reveal .orange100 {
+  color: #ffe0b2;
+}
+
+.reveal .orange200 {
+  color: #ffcc80;
+}
+
+.reveal .orange300 {
+  color: #ffb74d;
+}
+
+.reveal .orange400 {
+  color: #ffa726;
+}
+
+.reveal .orange500 {
+  color: #ff9800;
+}
+
+.reveal .orange600 {
+  color: #fb8c00;
+}
+
+.reveal .orange700 {
+  color: #f57c00;
+}
+
+.reveal .orange800 {
+  color: #ef6c00;
+}
+
+.reveal .orange900 {
+  color: #e65100;
+}
+
+.reveal .orangeA100 {
+  color: #ffd180;
+}
+
+.reveal .orangeA200 {
+  color: #ffab40;
+}
+
+.reveal .orangeA400 {
+  color: #ff9100;
+}
+
+.reveal .orangeA700 {
+  color: #ff6d00;
+}
+
+.reveal .gray50  {
+  color: #fafafa;
+}
+
+.reveal .gray100 {
+  color: #f5f5f5;
+}
+
+.reveal .gray200 {
+  color: #eeeeee;
+}
+
+.reveal .gray300 {
+  color: #e0e0e0;
+}
+
+.reveal .gray400 {
+  color: #bdbdbd;
+}
+
+.reveal .gray500 {
+  color: #9e9e9e;
+}
+
+.reveal .gray600 {
+  color: #757575;
+}
+
+.reveal .gray700 {
+  color: #616161;
+}
+
+.reveal .gray800 {
+  color: #424242;
+}
+
+.reveal .gray900 {
+  color: #212121;
+}
+
+.reveal .deeporange50  {
+  color: #fbe9e7;
+}
+
+.reveal .deeporange100 {
+  color: #ffccbc;
+}
+
+.reveal .deeporange200 {
+  color: #ffab91;
+}
+
+.reveal .deeporange300 {
+  color: #ff8a65;
+}
+
+.reveal .deeporange400 {
+  color: #ff7043;
+}
+
+.reveal .deeporange500 {
+  color: #ff5722;
+}
+
+.reveal .deeporange600 {
+  color: #f4511e;
+}
+
+.reveal .deeporange700 {
+  color: #e64a19;
+}
+
+.reveal .deeporange800 {
+  color: #d84315;
+}
+
+.reveal .deeporange900 {
+  color: #bf360c;
+}
+
+.reveal .small {
+  font-size: 0.8em;
+}
