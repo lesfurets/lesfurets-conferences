@@ -23,14 +23,5 @@
     "node_modules",
     "bower_components",
     "test"
-  ],
-  "_release": "3.3.0",
-  "_resolution": {
-    "type": "version",
-    "tag": "3.3.0",
-    "commit": "539e774d31f91676bcc3f75e28168921cd27d819"
-  },
-  "_source": "https://github.com/hakimel/reveal.js.git",
-  "_target": "~3.3.0",
-  "_originalSource": "reveal.js"
+  ]
 }
