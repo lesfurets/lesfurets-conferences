@@ -8,30 +8,30 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
-    <link rel="stylesheet" href="css/lesfurets-theme.css" id="theme">
+    <link rel="stylesheet" href="../bower_components/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="../bower_components/reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="../css/lesfurets-theme.css" id="theme">
     <script>
       if( window.location.search.match( /print-pdf/gi ) ) {
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = 'css/print/pdf.css';
+        link.href = '../css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
       }
     </script>
-    <!--[if lt IE 9]><script src="lib/js/html5shiv.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="../bower_components/reveal.js/lib/js/html5shiv.js"></script><![endif]-->
   </head>
   <body>
     <div class="footer">
-      <a href="https://www.lesfurets.com" target="_blank"><img class="logo" src="img/logo_lesfurets_885x128_no_back.png"></a><a class ="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a><a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a>
+      <a href="https://www.lesfurets.com" target="_blank"><img class="logo" src="../img/logo_lesfurets_885x128_no_back.png"></a><a class ="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a><a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a>
     </div>
     <div class="reveal">
       <div class="slides">
       <section>
           <h1>Continuous delivery</h1>
           
-          <a href="https://www.lesfurets.com" target="_blank"><img class="logo" width="66%" src="img/logo_lesfurets_885x128.jpg"></a>
+          <a href="https://www.lesfurets.com" target="_blank"><img class="logo" width="66%" src="../img/logo_lesfurets_885x128.jpg"></a>
           <h3>Arnaud PFLIEGER - Raphaël BRUGIER</h3>
           <p>Dimitri BAELI - Benjamin DEGERBAIX - Alexandre DUBREUIL</p>
       </section>
@@ -91,7 +91,7 @@
           <section>
               <h3>Continuous Delivery</h3>
               <h4>Jez Humble</h4>
-              <img style="float:left" width="25%" src="img/book-ContinuousDelivery.jpg">
+              <img style="float:left" width="25%" src="../img/book-ContinuousDelivery.jpg">
               <ol class="fragment" style="float:right;width:60%;">
                   <li>Build rapide</li>
                   <li>Build robuste</li>
@@ -103,7 +103,7 @@
           <section>
               <h3>How Google Test Software</h3>
               <h4>James Whitaker, Jason Arbon, Jeff Carollo</h4>
-              <img style="float:left" width="25%" src="img/book-google.jpeg">
+              <img style="float:left" width="25%" src="../img/book-google.jpeg">
               <ul class="fragment" style="float:right;width:60%;">
                   <li>Quality Engineering plutôt que Quality Assurance</li>
                   <li>Création d'outils de test pour les dev</li>
@@ -113,7 +113,7 @@
           <section>
               <h3>Kanban : Evolutionary change</h3>
               <h4>David Anderson</h4>
-              <img style="float:left" width="25%" src="img/book-kanban.jpg">
+              <img style="float:left" width="25%" src="../img/book-kanban.jpg">
               <ul class="fragment" style="float:right;width:60%;">
                   <li>Visualisation du travail</li>
                   <li>Limiter le travail en cours (WIP)</li>
@@ -124,7 +124,7 @@
           </section>
           <section>
               <h3>Livrer tôt, livrer souvent</h3>
-              <img src="img/book-facebook.png">
+              <img src="../img/book-facebook.png">
               <p style="font-size: 0.5em;">Source: <a href="http://paulhammant.com/2013/03/13/facebook-tbd-take-2/" target="_blank">http://paulhammant.com/2013/03/13/facebook-tbd-take-2/</a></p>
           </section>
       </section>
@@ -149,15 +149,15 @@
           </section>
           <section>
               <h3>Monitoring technique</h3>
-              <img width="66%" src="img/exploitation-technique.png">
+              <img width="66%" src="../img/exploitation-technique.png">
           </section>
           <section>
               <h3>Monitoring fonctionnel</h3>
-              <img width="66%" src="img/exploitation-fonctionnel.png">
+              <img width="66%" src="../img/exploitation-fonctionnel.png">
           </section>
           <section>
               <h3>Monitoring Open Space</h3>
-              <img width="66%" src="img/office-monitoring.png">
+              <img width="66%" src="../img/office-monitoring.png">
           </section>
           <section>
               <h3>Alertes &amp; logs</h3>
@@ -177,7 +177,7 @@
           </section>
           <section>
               <h3>Mise en production</h3>
-              <img src="img/go-button-green.jpg" width="60%">
+              <img src="../img/go-button-green.jpg" width="60%">
           </section>
           <section>
               <h3>Mise en production</h3>
@@ -200,15 +200,15 @@
           </section>
           <section>
               <h3>Déploiement Blue / Green</h3>
-              <img class="fragment" src="img/png/blue-green-1.png" width="66%">
-              <img class="fragment" src="img/png/blue-green-2.png" width="66%">
-              <img class="fragment" src="img/png/blue-green-3.png" width="66%">
+              <img class="fragment" src="../img/png/blue-green-1.png" width="66%">
+              <img class="fragment" src="../img/png/blue-green-2.png" width="66%">
+              <img class="fragment" src="../img/png/blue-green-3.png" width="66%">
           </section>
           <section>
               <h3>Infrastructure as code</h3>
               <p>Toutes les modifications sont historisées<br>
               <span>Les bugs de configuration sont des bugs de code</span></p>
-              <img src="img/svg/detection-environnement.svg" width="28%">
+              <img src="../img/svg/detection-environnement.svg" width="28%">
           </section>
       </section>
       <section>
@@ -228,7 +228,7 @@
           </section>
           <section>
               <h3>Zeno</h3>
-              <img src="img/zeno-diff.png">
+              <img src="../img/zeno-diff.png">
           </section>
           <section>
               <h4>Modèle de branches</h4>
@@ -240,7 +240,7 @@
               <p class="fragment">Master + feature branches</p>
           </section>
 		  <section>
-				  <img width="75%" src="img/tweet-feature-branching.png">
+				  <img width="75%" src="../img/tweet-feature-branching.png">
           </section>
       </section>
       <section>
@@ -258,13 +258,13 @@
 			  
           </section>
           <section>
-              <img width="50%" src="img/svg/gitlog_octopus-1.svg">
+              <img width="50%" src="../img/svg/gitlog_octopus-1.svg">
           </section>
           <section>
-              <img width="50%" src="img/svg/gitlog_octopus-2.svg">
+              <img width="50%" src="../img/svg/gitlog_octopus-2.svg">
           </section>
           <section>
-              <img width="50%" src="img/svg/gitlog_octopus-3.svg">
+              <img width="50%" src="../img/svg/gitlog_octopus-3.svg">
           </section>
           <section>
               <h3>git-Octopus</h3>
@@ -293,7 +293,7 @@
           <section>
               <h3>L'octopus à l'oeuvre</h3>
               <h4>30 branches features et plus !</h4>
-              <img width="66%" src="img/teamcity-octopus.png">
+              <img width="66%" src="../img/teamcity-octopus.png">
           </section>
       </section>
       <section>
@@ -335,8 +335,8 @@
       </section>
       </div>
     </div>
-    <script src="bower_components/reveal.js/lib/js/head.min.js"></script>
-    <script src="bower_components/reveal.js/js/reveal.js"></script>
+    <script src="../bower_components/reveal.js/lib/js/head.min.js"></script>
+    <script src="../bower_components/reveal.js/js/reveal.js"></script>
     <script>
       // Full list of configuration options available here:
       // https://github.com/hakimel/reveal.js#configuration
@@ -356,12 +356,12 @@
 
         // Optional libraries used to extend on reveal.js
         dependencies: [
-          { src: 'bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-          { src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-          { src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          { src: '../bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '../bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '../bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
         ]
       });
     </script>

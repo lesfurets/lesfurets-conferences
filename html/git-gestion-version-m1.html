@@ -8,27 +8,27 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
-    <link rel="stylesheet" href="css/lesfurets-theme.css" id="theme">
-    <link rel="stylesheet" href="css/git-theme.css" id="theme">
+    <link rel="stylesheet" href="../bower_components/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="../bower_components/reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="../css/lesfurets-theme.css" id="theme">
+    <link rel="stylesheet" href="../css/git-theme.css" id="theme">
     <script>
 if( window.location.search.match( /print-pdf/gi ) ) {
 var link = document.createElement( 'link' );
 link.rel = 'stylesheet';
 link.type = 'text/css';
-link.href = 'css/print/pdf.css';
+link.href = '../css/print/pdf.css';
 document.getElementsByTagName( 'head' )[0].appendChild( link );
 }
     </script>
-    <!--[if lt IE 9]><script src="lib/js/html5shiv.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="../bower_components/reveal.js/lib/js/html5shiv.js"></script><![endif]-->
 </head>
 <body>
 
 <!-- FOOTER -->
 
 <div id="footer" class="footer show">
-    <a href="https://www.lesfurets.com" target="_blank"><img class="logo" src="img/logo_lesfurets_885x128_no_back.png"></a><a class ="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a><a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a>
+    <a href="https://www.lesfurets.com" target="_blank"><img class="logo" src="../img/logo_lesfurets_885x128_no_back.png"></a><a class ="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a><a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a>
 </div>
 
 <!-- REVEAL -->
@@ -37,12 +37,12 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
     <div class="slides">
         <!-- START -->
 
-        <section class="flushright" data-background="img/nwx/lesfurets-background-black-01.jpg">
+        <section class="flushright" data-background="../img/nwx/lesfurets-background-black-01.jpg">
             <h1>git (M1) <br/> Gestion de version</h1>
             <h2>Alexandre DuBreuil</h2>
         </section>
 
-        <section class="flushleft"  data-background="img/nwx/lesfurets-background-black-01.jpg">
+        <section class="flushleft"  data-background="../img/nwx/lesfurets-background-black-01.jpg">
             <h2>Alexandre DuBreuil</h2>
             <h3 class="oldfragment">Tech lead équipe panel assureur</h3>
             <ul class="flushright nodisc">
@@ -55,7 +55,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
             </ul>
         </section>
 
-        <section class="flushleft" data-background="img/nwx/lesfurets-background-black-01.jpg">
+        <section class="flushleft" data-background="../img/nwx/lesfurets-background-black-01.jpg">
             <h1 class="indigo500">LesFurets.com</h1>
             <p class="oldfragment flushright">1er site indépendant de comparaison d’assurance, lancé en septembre 2012</p>
             <p class="oldfragment flushright">Un lieu unique pour comparer rapidement des centaines d’offres
@@ -82,7 +82,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 
         <section class="flushleft">
             <h2 class="flushright"><strong>Le code civil dans git</strong></h2>
-            <img class="oldfragment" width="100%" src="img/git-m1/github-code-civil-france-01.jpg">
+            <img class="oldfragment" width="100%" src="../img/git-m1/github-code-civil-france-01.jpg">
             <aside class="notes">
                 <p></p>
             </aside>
@@ -121,7 +121,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 
         <section class="flushleft">
             <h2 class="flushright"><strong>Centralisé (type SVN)</strong></h2>
-            <p class="oldfragment center image"><img width="66%" src="img/git-m1/vcs-centralise-01.jpg"></p>
+            <p class="oldfragment center image"><img width="66%" src="../img/git-m1/vcs-centralise-01.jpg"></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -129,7 +129,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 
         <section class="flushleft">
             <h2 class="flushright"><strong>Décentralisé (type git)</strong></h2>
-            <p class="oldfragment center image"><img width="50%" src="img/git-m1/vcs-decentralise-01.jpg"></p>
+            <p class="oldfragment center image"><img width="50%" src="../img/git-m1/vcs-decentralise-01.jpg"></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -144,7 +144,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 
         <section class="flushleft">
             <h2 class="flushright"><strong>Architecture SVN</strong></h2>
-            <p class="oldfragment center image"><img width="90%" src="img/git-m1/svn-architecture-01.jpg"></p>
+            <p class="oldfragment center image"><img width="90%" src="../img/git-m1/svn-architecture-01.jpg"></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -152,7 +152,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 
         <section class="flushleft">
             <h2 class="flushright"><strong>Organisation dépot SVN</strong></h2>
-            <p class="oldfragment center image"><img width="90%" src="img/git-m1/svn-repository-01.jpg"></p>
+            <p class="oldfragment center image"><img width="90%" src="../img/git-m1/svn-repository-01.jpg"></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -160,7 +160,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 
         <section class="flushleft">
             <h2 class="flushright"><strong>Checkout SVN</strong></h2>
-            <p class="oldfragment center image"><img width="90%" src="img/git-m1/svn-checkout-01.jpg"></p>
+            <p class="oldfragment center image"><img width="90%" src="../img/git-m1/svn-checkout-01.jpg"></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -198,7 +198,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 
         <section class="flushleft">
             <h2 class="flushright"><strong>Stockage des deltas (type SVN)</strong></h2>
-            <p class="oldfragment center image"><img width="100%" src="img/git-m1/delta-commits-01.jpg"></p>
+            <p class="oldfragment center image"><img width="100%" src="../img/git-m1/delta-commits-01.jpg"></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -206,7 +206,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 
         <section class="flushleft">
             <h2 class="flushright"><strong>Stockage des instantanés (type git)</strong></h2>
-            <p class="oldfragment center image"><img width="100%" src="img/git-m1/full-commits-01.jpg"></p>
+            <p class="oldfragment center image"><img width="100%" src="../img/git-m1/full-commits-01.jpg"></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -224,7 +224,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 
         <section class="flushleft">
             <h2 class="flushright"><strong>Le répertoire de travail</strong></h2>
-            <p class="oldfragment center image"><img width="100%" src="img/git-m1/working-staging-01.jpg"></p>
+            <p class="oldfragment center image"><img width="100%" src="../img/git-m1/working-staging-01.jpg"></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -336,7 +336,7 @@ Checking connectivity... done.
 
         <section class="flushleft">
             <h2 class="flushright"><strong>États d'un fichier</strong></h2>
-            <p class="oldfragment center image"><img width="100%" src="img/git-m1/untracked-unmodified-modified-staged-01.jpg"></p>
+            <p class="oldfragment center image"><img width="100%" src="../img/git-m1/untracked-unmodified-modified-staged-01.jpg"></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -428,7 +428,7 @@ Untracked files:
         <section class="flushleft">
             <h2 class="flushright"><strong>États d'un fichier</strong></h2>
             <p class="oldfragment">On a fait les transitions "add", "edit", "stage", il y a 2 fichiers dans l'index (staged)</p>
-            <p class="oldfragment center image"><img width="100%" src="img/git-m1/untracked-unmodified-modified-staged-01.jpg"></p>
+            <p class="oldfragment center image"><img width="100%" src="../img/git-m1/untracked-unmodified-modified-staged-01.jpg"></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -682,7 +682,7 @@ On branch master
         <section class="flushleft">
             <h2 class="flushright"><strong>États d'un fichier</strong></h2>
             <p class="oldfragment">On a fait les transitions "commit" et "remove"</p>
-            <p class="oldfragment center image"><img width="100%" src="img/git-m1/untracked-unmodified-modified-staged-01.jpg"></p>
+            <p class="oldfragment center image"><img width="100%" src="../img/git-m1/untracked-unmodified-modified-staged-01.jpg"></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -779,7 +779,7 @@ Fast-forward
 
         <section class="flushleft">
             <h2 class="flushright"><strong>Un arbre de fichiers binaires</strong></h2>
-            <p class="oldfragment center image"><img width="100%" src="img/git-m1/commit-blob-01.jpg"></p>
+            <p class="oldfragment center image"><img width="100%" src="../img/git-m1/commit-blob-01.jpg"></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -787,7 +787,7 @@ Fast-forward
 
         <section class="flushleft">
             <h2 class="flushright"><strong>Un arbre de commits</strong></h2>
-            <p class="oldfragment center image"><img width="100%" src="img/git-m1/commit-tree-01.jpg"></p>
+            <p class="oldfragment center image"><img width="100%" src="../img/git-m1/commit-tree-01.jpg"></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -795,7 +795,7 @@ Fast-forward
 
         <section class="flushleft">
             <h2 class="flushright"><strong>Le pointeur HEAD</strong></h2>
-            <p class="oldfragment center image"><img width="100%" src="img/git-m1/commit-head-01.jpg"></p>
+            <p class="oldfragment center image"><img width="100%" src="../img/git-m1/commit-head-01.jpg"></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -806,7 +806,7 @@ Fast-forward
             <pre><code class="bash" data-trim>
 $ git branch testing
             </code></pre>
-            <p class="oldfragment center image"><img width="80%" src="img/git-m1/branche-ajout-testing-01.jpg"></p>
+            <p class="oldfragment center image"><img width="80%" src="../img/git-m1/branche-ajout-testing-01.jpg"></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -818,7 +818,7 @@ $ git branch testing
 $ git checkout testing
 Switched to branch 'testing'
             </code></pre>
-            <p class="oldfragment center image"><img width="80%" src="img/git-m1/branche-checkout-testing-01.jpg"></p>
+            <p class="oldfragment center image"><img width="80%" src="../img/git-m1/branche-checkout-testing-01.jpg"></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -832,7 +832,7 @@ $ git commit -a -m "Ajout experimental"
 [testing 64ff99b] Ajout experimental
  1 file changed, 1 insertion(+), 1 deletion(-)
             </code></pre>
-            <p class="oldfragment center image"><img width="90%" src="img/git-m1/branche-commit-testing-01.jpg"></p>
+            <p class="oldfragment center image"><img width="90%" src="../img/git-m1/branche-commit-testing-01.jpg"></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -841,7 +841,7 @@ $ git commit -a -m "Ajout experimental"
         <section class="flushleft" data-background="#212121">
             <h2 class="flushright"><strong>Ajouter un commit sur "master"</strong></h2>
             <p class="oldfragment">Il faut revenir sur master avec <em>git checkout master</em>, puis faire un commit</p>
-            <p class="oldfragment center image"><img width="80%" src="img/git-m1/branche-commit-master-01.jpg"></p>
+            <p class="oldfragment center image"><img width="80%" src="../img/git-m1/branche-commit-master-01.jpg"></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -883,7 +883,7 @@ $ git log --graph --oneline --all
 
         <section class="flushleft">
             <h2 class="flushright"><strong>Avant la fusion</strong></h2>
-            <p class="oldfragment center image"><img width="100%" src="img/git-m1/branche-avant-merge-01.jpg"></p>
+            <p class="oldfragment center image"><img width="100%" src="../img/git-m1/branche-avant-merge-01.jpg"></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -908,7 +908,7 @@ Fast-forward
 
         <section class="flushleft">
             <h2 class="flushright"><strong>Commit de merge</strong></h2>
-            <p class="oldfragment center image"><img width="100%" src="img/git-m1/branche-merge-01.jpg"></p>
+            <p class="oldfragment center image"><img width="100%" src="../img/git-m1/branche-merge-01.jpg"></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -977,7 +977,7 @@ $ git commit
 
         <section class="flushleft">
             <h2 class="flushright"><strong>Gestion des branches distantes</strong></h2>
-            <p class="oldfragment center image"><img width="75%" src="img/git-m1/branche-distantes-01.jpg"></p>
+            <p class="oldfragment center image"><img width="75%" src="../img/git-m1/branche-distantes-01.jpg"></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -986,7 +986,7 @@ $ git commit
         <section class="flushleft">
             <h2 class="flushright"><strong>Dépôt local</strong></h2>
             <p class="oldfragment">Le pointeur de branche <em>master</em> avance en local... mais pas le pointeur de branche <em>origin/master</em></p>
-            <p class="oldfragment center image"><img width="75%" src="img/git-m1/branche-master-local-01.jpg"></p>
+            <p class="oldfragment center image"><img width="75%" src="../img/git-m1/branche-master-local-01.jpg"></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -995,7 +995,7 @@ $ git commit
         <section class="flushleft">
             <h2 class="flushright"><strong>... mais le serveur avance aussi</strong></h2>
             <p class="oldfragment">Après un <em>git fetch</em> le pointeur <em>origin/master</em> peut avancer</p>
-            <p class="oldfragment center image"><img width="66%" src="img/git-m1/branche-master-remote-01.jpg"></p>
+            <p class="oldfragment center image"><img width="66%" src="../img/git-m1/branche-master-remote-01.jpg"></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -1068,8 +1068,8 @@ Applying: nouveau commit
 
         <section class="flushleft">
             <h2 class="flushright"><strong>Merge vs rebase</strong></h2>
-            <p class="oldfragment center image"><img width="75%" src="img/git-m1/branche-merge-vs-rebase-01.jpg"></p>
-            <p class="oldfragment center image"><img width="75%" src="img/git-m1/branche-rebase-vs-merge-01.jpg"></p>
+            <p class="oldfragment center image"><img width="75%" src="../img/git-m1/branche-merge-vs-rebase-01.jpg"></p>
+            <p class="oldfragment center image"><img width="75%" src="../img/git-m1/branche-rebase-vs-merge-01.jpg"></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -1084,7 +1084,7 @@ Applying: nouveau commit
 
         <section class="flushleft">
             <h2 class="flushright"><strong>Fusion en continue de 30 branches</strong></h2>
-            <p class="oldfragment center image"><img width="75%" src="img/git-m1/teamcity-octopus-01.jpg"></p>
+            <p class="oldfragment center image"><img width="75%" src="../img/git-m1/teamcity-octopus-01.jpg"></p>
             <aside class="notes">
                 <p></p>
             </aside>
@@ -1103,8 +1103,8 @@ Applying: nouveau commit
         <!-- END -->
     </div>
 </div>
-<script src="bower_components/reveal.js/lib/js/head.min.js"></script>
-<script src="bower_components/reveal.js/js/reveal.js"></script>
+<script src="../bower_components/reveal.js/lib/js/head.min.js"></script>
+<script src="../bower_components/reveal.js/js/reveal.js"></script>
 <script>
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
@@ -1124,15 +1124,15 @@ transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/c
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
-{ src: 'bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-{ src: 'bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-{ src: 'bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-{ src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-{ src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-    { src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+{ src: '../bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+{ src: '../bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+{ src: '../bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+{ src: '../bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+{ src: '../bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+{ src: '../bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 ]
 });
 </script>
-<script src="js/lesfurets-theme.js" async></script>
+<script src="../js/lesfurets-theme.js" async></script>
 </body>
 </html>
