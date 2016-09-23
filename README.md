@@ -11,7 +11,7 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 - 13 octobre 2016 (fr) : [Marseilles JUG - Le continuous delivery chez LesFurets.com](https://dubreuia.github.io/lesfurets-conferences/continuous-delivery-marseille-jug-2016.html)
 - 29 juin 2016 (fr) : [Societe Generale - Le continuous delivery chez LesFurets.com](https://dubreuia.github.io/lesfurets-conferences/devops-chez-lesfurets-pour-sg.html)
 - 10 décembre 2015 (fr) : [Octo - Le continuous merge chez LesFurets.com](https://dubreuia.github.io/lesfurets-conferences/pdf/git-octopus-chez-octo-2015.pdf)
-- 16 juin 2015 (anglais) : [Cassandra Days Paris 2015 - From 0 to Cassandra on AWS in 30 days - Tsunami alerting with Cassandra](https://lesfurets.github.io/lesfurets-conferences/cassandra-days-paris-from-0-to-cassandra-on-aws-in-30-days.pdf)
+- 16 juin 2015 (anglais) : [Cassandra Days Paris 2015 - From 0 to Cassandra on AWS in 30 days - Tsunami alerting with Cassandra](https://lesfurets.github.io/lesfurets-conferences/pdf/cassandra-days-paris-from-0-to-cassandra-on-aws-in-30-days.pdf)
 - 10 avril 2015 (fr) : [Devoxx France - Livrer chaque jour ce qui est prêt](https://lesfurets.github.io/lesfurets-conferences/continuous-delivery-agile-tour-rennes-2014.html)
 - 5 mars 2015 (fr) : [BBL chez Viseo - Continuous Delivery chez LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/continuous-delivery-BBL-viseo.html)
 - 25 février 2015 (fr) : [Continuous Delivery Meetup - Continuous Delivery chez LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/continuous-delivery-lean-kanban-france-2014.html)
