@@ -36,6 +36,18 @@ Continuous Delivery :
 - The French Way (en) - Agile Cambridge : https://www.youtube.com/watch?v=ayvVYc01iEk
 - SoftIt http://blog.softit.fr/?tag=/Continuous+Delivery+to+Lean+Enterprise
 
+## Installation
+
+Il faut avoir bower pour mettre à jour reveal.js, tout est commité dans bower_components/reveal.js et linké dans les présentations.
+
+    sudo install -g bower
+
+Pour savoir s'il y a une nouvelle version de reveal.js
+
+    bower info reveal.js
+
+Ensuite il faut mettre à jour le bower.json
+
 ## Infos / Questions
 
 - Twitter : https://twitter.com/BeastieFurets
