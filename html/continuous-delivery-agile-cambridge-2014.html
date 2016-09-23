@@ -8,23 +8,23 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
-    <link rel="stylesheet" href="css/lesfurets-theme.css" id="theme">
+    <link rel="stylesheet" href="../bower_components/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="../bower_components/reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="../css/lesfurets-theme.css" id="theme">
     <script>
       if( window.location.search.match( /print-pdf/gi ) ) {
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = 'css/print/pdf.css';
+        link.href = '../css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
       }
     </script>
-    <!--[if lt IE 9]><script src="lib/js/html5shiv.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="../bower_components/reveal.js/lib/js/html5shiv.js"></script><![endif]-->
   </head>
   <body>
     <div class="footer">
-      <a href="https://www.lesfurets.com" target="_blank"><img class="logo" src="img/logo_lesfurets_885x128_no_back.png"></a>
+      <a href="https://www.lesfurets.com" target="_blank"><img class="logo" src="../img/logo_lesfurets_885x128_no_back.png"></a>
     </div>
     <div class="reveal">
       <div class="slides">
@@ -117,7 +117,7 @@
            <li>Lead Time more than work duration</li>
            <li>Reduce per release costs</li>
          </ul>
-         <img class="book" src="img/book-flow.jpg">
+         <img class="book" src="../img/book-flow.jpg">
       </section>
        <section>
          <h2>Continuous Delivery</h2>
@@ -129,11 +129,11 @@
           <li>Production monitoring and alerting</li>
           <li>Root Cause Analysis</li>
         </ol>
-        <img class="book" src="img/book-ContinuousDelivery.jpg">
+        <img class="book" src="../img/book-ContinuousDelivery.jpg">
        </section>
        <section>
        <h2>Deliver Early, Deliver Often</h2>
-       <img src="img/facebook2.png">
+       <img src="../img/facebook2.png">
        <p>Source: http://paulhammant.com/2013/03/13/facebook-tbd-take-2/</p>
        </section>
       <section>
@@ -146,7 +146,7 @@
          <li>Continuous Improvement</li>
          <li>Leadership</li>
        </ul>
-       <img class="book" src="img/book-kanban.jpg">
+       <img class="book" src="../img/book-kanban.jpg">
       </section>
       <section>
         <h2>How Google Test Software</h2>
@@ -156,7 +156,7 @@
        <li>SET : build test tools for devs</li>
        <li>Dev QA their own changes</li>
      </ul>
-     <img class="book" src="img/book-google.jpeg">
+     <img class="book" src="../img/book-google.jpeg">
        </section>
        <section>
          <h2>GIT FLOW</h2>
@@ -165,7 +165,7 @@
            <li>A successful git branching model</li>
            <li>http://nvie.com/posts/a-successful-git-branching-model/</li>
          </ul>
-         <img class="book" src="img/book-git.png">
+         <img class="book" src="../img/book-git.png">
        </section>
       </section>
 
@@ -190,14 +190,14 @@
           <h2>Operations</h2>
           <h3>Technical Monitoring AND Alerting</h3>
           <p>
-            <img width="50%" height="50%" src="img/lesfurets-production.png" >
+            <img width="50%" height="50%" src="../img/lesfurets-production.png" >
           </p>
         </section> 
         <section>
           <h2>Operations</h2>
           <h3>Functional Monitoring AND Alerting</h3>
           <p>
-            <img width="50%" height="50%" src="img/lesfurets-functional.png" >
+            <img width="50%" height="50%" src="../img/lesfurets-functional.png" >
           </p>
         </section> 
       </section>
@@ -205,7 +205,7 @@
       <section>
         <section>
           <h2>Delivery</h2>
-          <img class="fragment" src="img/go-button-green.jpg">
+          <img class="fragment" src="../img/go-button-green.jpg">
           <aside class="notes">
             even before speaking about continuous delivery ...
             has to be simple
@@ -214,7 +214,7 @@
         <section>
           <h3>Automate</h3>
           <p>"Infrastructure as code"</p>
-          <img class="svg big" src="img/svg/detection-environnement.svg">
+          <img class="svg big" src="../img/svg/detection-environnement.svg">
         </section>
         <section>
           <h3>Deployment</h3>
@@ -227,10 +227,10 @@
           <br>
           <br>
 <!-- Casse avec le nouveau theme
-          <p class="blue-green fragment current-visible"><img class="svg" src="img/svg/blue-green-1.svg"></p>
-          <p class="blue-green fragment current-visible"><img class="svg" src="img/svg/blue-green-2.svg"></p>
+          <p class="blue-green fragment current-visible"><img class="svg" src="../img/svg/blue-green-1.svg"></p>
+          <p class="blue-green fragment current-visible"><img class="svg" src="../img/svg/blue-green-2.svg"></p>
 -->
-          <p class="blue-green fragment"><img class="svg" src="img/svg/blue-green-3.svg"></p>
+          <p class="blue-green fragment"><img class="svg" src="../img/svg/blue-green-3.svg"></p>
         </section>
       </section>
 
@@ -248,11 +248,11 @@
         <section>
           <h2>Zeno</h2>
           <h3>Visual Regression</h3>
-          <p><img src="img/zeno-diff.png"></p>
+          <p><img src="../img/zeno-diff.png"></p>
         </section>
         <section>
           <h2>Selenium</h2>
-          <p><img src="img/tweet-selenium.png"></p>
+          <p><img src="../img/tweet-selenium.png"></p>
         </section>
         <section>
           <h2>Selenium</h2>
@@ -269,7 +269,7 @@
        <section>
            <h2>Continuous integration</h2>
            <h3>impacts the codebase</h3>
-           <img src="img/facebook-2-branching.png">
+           <img src="../img/facebook-2-branching.png">
        </section>
         <section>
           <h2>Continuous integration</h2>
@@ -282,7 +282,7 @@
         </section>
         <section>
           <h2>Continuous integration</h2>
-          <p><img src="img/payage.JPG"></p>
+          <p><img src="../img/payage.JPG"></p>
           <div>
             Deliver ...
           </div>
@@ -292,7 +292,7 @@
         </section>
         <section>
           <h3>Feature branching</h3>
-          <img width="75%" src="img/feature-branching.png">
+          <img width="75%" src="../img/feature-branching.png">
         </section>
         <section>
           <h2>Continuous integration</h2>
@@ -305,9 +305,9 @@
         </section>
         <section>
           <h3>Continuous Merge</h3>
-          <img class="svg big octopus fragment current-visible" src="img/svg/gitlog_octopus-1.svg">
-          <img class="svg big octopus fragment current-visible" src="img/svg/gitlog_octopus-2.svg">
-          <img class="svg big octopus fragment current-visible" src="img/svg/gitlog_octopus-3.svg">
+          <img class="svg big octopus fragment current-visible" src="../img/svg/gitlog_octopus-1.svg">
+          <img class="svg big octopus fragment current-visible" src="../img/svg/gitlog_octopus-2.svg">
+          <img class="svg big octopus fragment current-visible" src="../img/svg/gitlog_octopus-3.svg">
         </section>
         <section>
           <h3>Continuous Merge</h3>
@@ -320,8 +320,8 @@
         </section>
         <section>
             <h3>Managing conflicts</h3>
-            <p><img width="50%" class="fragment" style="" src="img/finish-first.jpg"></p>
-            <p style="margin-top:-400px;"><img height="250" class="fragment nostyle" src="img/big-cross.png"></p>
+            <p><img width="50%" class="fragment" style="" src="../img/finish-first.jpg"></p>
+            <p style="margin-top:-400px;"><img height="250" class="fragment nostyle" src="../img/big-cross.png"></p>
             <p class="fragment">Avoid conflicts vs Resolve conflicts</p>
         </section>
         <section>
@@ -339,7 +339,7 @@
         </section>
         <section>
           <h3>30 branches at work !</h3>
-          <img width="75%" src="img/teamcity-octopus.png">
+          <img width="75%" src="../img/teamcity-octopus.png">
         </section>
       </section>
 
@@ -403,14 +403,14 @@
       </section>
       <section>
         <h3>Thank you</h3>
-        <img src="img/octave.jpg">
+        <img src="../img/octave.jpg">
       </section>
 </div>
 
 </div>
 
-    <script src="bower_components/reveal.js/lib/js/head.min.js"></script>
-    <script src="bower_components/reveal.js/js/reveal.js"></script>
+    <script src="../bower_components/reveal.js/lib/js/head.min.js"></script>
+    <script src="../bower_components/reveal.js/js/reveal.js"></script>
     <script>
       // Full list of configuration options available here:
       // https://github.com/hakimel/reveal.js#configuration
@@ -430,12 +430,12 @@
 
         // Optional libraries used to extend on reveal.js
         dependencies: [
-          { src: 'bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-          { src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-          { src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          { src: '../bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '../bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '../bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
         ]
       });
     </script>

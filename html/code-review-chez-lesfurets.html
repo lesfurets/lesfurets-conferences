@@ -8,36 +8,36 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
-    <link rel="stylesheet" href="css/lesfurets-theme.css" id="theme">
-    <link rel="stylesheet" href="css/code-review-theme.css" id="theme">
+    <link rel="stylesheet" href="../bower_components/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="../bower_components/reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="../css/lesfurets-theme.css" id="theme">
+    <link rel="stylesheet" href="../css/code-review-theme.css" id="theme">
     <script>
       if( window.location.search.match( /print-pdf/gi ) ) {
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = 'css/print/pdf.css';
+        link.href = '../css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
       }
     </script>
-    <!--[if lt IE 9]><script src="lib/js/html5shiv.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="../bower_components/reveal.js/lib/js/html5shiv.js"></script><![endif]-->
   </head>
   <body>
     <div id="footer" class="footer show">
-      <a href="https://www.lesfurets.com" target="_blank"><img class="logo" src="img/logo_lesfurets_885x128_no_back.png"></a><a class ="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a><a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a>
+      <a href="https://www.lesfurets.com" target="_blank"><img class="logo" src="../img/logo_lesfurets_885x128_no_back.png"></a><a class ="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a><a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a>
     </div>
     <div class="reveal">
       <div class="slides">
       <!-- START -->
 
-      <section class="flushright" data-background="img/nwx/lesfurets-background-black-01.jpg">
+      <section class="flushright" data-background="../img/nwx/lesfurets-background-black-01.jpg">
         <h1>Code review<br/> chez LesFurets.com</h1>
         <h2>Alexandre DuBreuil</h2>
         <h2>Mathieu Bolla</h2>
       </section>
 
-      <section class="flushleft"  data-background="img/nwx/lesfurets-background-black-01.jpg">
+      <section class="flushleft"  data-background="../img/nwx/lesfurets-background-black-01.jpg">
         <h2>Alexandre DuBreuil</h2>
         <h3 class="fragment">Tech lead équipe panel assureur</h3>
         <ul class="flushright nodisc">
@@ -60,7 +60,7 @@
         </ul>
       </section>
 
-      <section class="flushleft" data-background="img/nwx/lesfurets-background-black-01.jpg">
+      <section class="flushleft" data-background="../img/nwx/lesfurets-background-black-01.jpg">
         <h1 class="indigo500">LesFurets.com</h1>
         <p class="fragment flushright">1er site indépendant de comparaison d’assurance, lancé en Septembre 2012</p>
         <p class="fragment flushright">Un lieu unique pour comparer rapidement des centaines d’offres
@@ -123,12 +123,12 @@
 
       <!--<section data-background="#bf360c">-->
       <!--  <h2><strong>"Quand on commence quelque chose de nouveau"</strong></h2>-->
-      <!--  <img style="width:33%" class="fragment" src="img/code-review/construction-equipe-01.gif">-->
+      <!--  <img style="width:33%" class="fragment" src="../img/code-review/construction-equipe-01.gif">-->
       <!--  <aside class="notes">-->
       <!--  </aside>-->
       <!--</section>-->
 
-      <section class="flushleft" data-background="img/code-review/documentation-01.jpeg">
+      <section class="flushleft" data-background="../img/code-review/documentation-01.jpeg">
         <h2 class="flushright"><strong>Documentation (implicite ou explicite)</strong></h2>
         <p class="fragment">Forme de documentation commune</p>
         <p class="fragment">Identification des "code smells"</p>
@@ -146,7 +146,7 @@
       <section class="flushleft" data-background="#212121">
         <h2 class="flushright"><strong>Code style</strong></h2>
         <p class="fragment flushright">Idéalement automatique : <a class="strong" href="https://github.com/dubreuia/intellij-plugin-save-actions">Intellij Save Action Plugin</a></p>
-        <img class="fragment center" style="width:66%" src="img/code-review/code-style-01.png">
+        <img class="fragment center" style="width:66%" src="../img/code-review/code-style-01.png">
         <aside class="notes">
           <p>POURQUOI</p>
           <p>Code style : devrait être un non-sujet, la meilleure manière de s'en assurer est que ce soit automatique</p>
@@ -177,9 +177,9 @@
 
       <section class="">
         <h2 class="flushright"><strong>Nos développeurs vedettes</strong></h2>
-        <p class="fragment person"><span><img class="photo" src="img/code-review/herve.png"><span class="name">Hervé</span><span class="description">Le champion</span></span></span></p>
-        <p class="fragment person"><span><img class="photo" src="img/code-review/francois.png"><span class="name">François</span><span class="description">Le vieux de la vieille</span></span></span></p>
-        <p class="fragment person"><span><img class="photo" src="img/code-review/oleg.png"><span class="name">Oleg</span><span class="description">Fraichement sorti de l'oeuf</span></span></span></p>
+        <p class="fragment person"><span><img class="photo" src="../img/code-review/herve.png"><span class="name">Hervé</span><span class="description">Le champion</span></span></span></p>
+        <p class="fragment person"><span><img class="photo" src="../img/code-review/francois.png"><span class="name">François</span><span class="description">Le vieux de la vieille</span></span></span></p>
+        <p class="fragment person"><span><img class="photo" src="../img/code-review/oleg.png"><span class="name">Oleg</span><span class="description">Fraichement sorti de l'oeuf</span></span></span></p>
         <aside class="notes">
           <p>QUI</p>
           <p>Hervé : Expert technique, praticien artiste, mais parfois loin du fonctionnel, et un peu trop confiant</p>
@@ -192,9 +192,9 @@
         <h2><strong>Le combo gagnant</strong></h2>
         <table class="flushright">
           <tr><th>Relis/Code</th><th>Hervé le champion</th><th>François l'ancien</th><th>Oleg le nouveau</th></tr>
-          <tr><th>Hervé le champion</th><td></td><td><img class="nope fragment" src="img/code-review/ok-02.png"></td><td><img class="nope fragment" src="img/code-review/ok-02.png"></td></tr>
-          <tr><th>François l'ancien</th><td><img class="nope fragment" src="img/code-review/ok-02.png"></td><td></td><td><img class="nope fragment" src="img/code-review/ok-02.png"></td></tr>
-          <tr><th>Oleg le nouveau</th><td><img class="nope fragment" src="img/code-review/ok-02.png"></td><td><img class="nope fragment" src="img/code-review/ok-02.png"></td><td></td></tr>
+          <tr><th>Hervé le champion</th><td></td><td><img class="nope fragment" src="../img/code-review/ok-02.png"></td><td><img class="nope fragment" src="../img/code-review/ok-02.png"></td></tr>
+          <tr><th>François l'ancien</th><td><img class="nope fragment" src="../img/code-review/ok-02.png"></td><td></td><td><img class="nope fragment" src="../img/code-review/ok-02.png"></td></tr>
+          <tr><th>Oleg le nouveau</th><td><img class="nope fragment" src="../img/code-review/ok-02.png"></td><td><img class="nope fragment" src="../img/code-review/ok-02.png"></td><td></td></tr>
         </table>
         </p>
         <aside class="notes">
@@ -234,7 +234,7 @@
         </aside>
       </section>
 
-      <section class="flushleft" data-background="img/code-review/jeu-mario-01.jpeg">
+      <section class="flushleft" data-background="../img/code-review/jeu-mario-01.jpeg">
         <h2 class="flushright"><strong>Règles du jeu obligatoires</strong></h2>
         <p class="fragment">Les relecteurs n'ont pas travaillé sur le code</p>
         <p class="fragment">Relecteurs sélectionnés selon la méthodologie de travail</p>
@@ -246,7 +246,7 @@
         </aside>
       </section>
 
-      <section class="flushleft" data-background="img/code-review/jeu-mario-01.jpeg">
+      <section class="flushleft" data-background="../img/code-review/jeu-mario-01.jpeg">
         <h2 class="flushright"><strong>Règles du jeu optionnelles</strong></h2>
         <p class="fragment">Relecteur désigné par le développeur</p>
         <p class="fragment">Relecteur externe à l'équipe</p>
@@ -297,12 +297,12 @@
 
       <!--<section data-background="#bf360c">-->
       <!--  <h2><strong>"Quand j'y comprend rien"</strong></h2>-->
-      <!--  <img style="width:33%" class="fragment" src="img/code-review/incomprehension-01.gif">-->
+      <!--  <img style="width:33%" class="fragment" src="../img/code-review/incomprehension-01.gif">-->
       <!--  <aside class="notes">-->
       <!--  </aside>-->
       <!--</section>-->
 
-      <section class="flushleft" data-background="img/code-review/code-smell-02.jpeg">
+      <section class="flushleft" data-background="../img/code-review/code-smell-02.jpeg">
         <h2 class="flushright"><strong>Anti-patterns et code smells</strong></h2>
         <p class="fragment">Faciles à lister et repérer</p>
         <p class="fragment">Automatisation (partielle) possible</p>
@@ -315,7 +315,7 @@
         </aside>
       </section>
 
-      <section class="flushleft" data-background="img/code-review/code-smell-02.jpeg">
+      <section class="flushleft" data-background="../img/code-review/code-smell-02.jpeg">
         <h2 class="flushright"><strong>Exemples de code smells</strong></h2>
         <p class="fragment">Code dupliqué</p>
         <p class="fragment">God object</p>
@@ -387,7 +387,7 @@
         </aside>
       </section>
 
-      <section class="flushleft" data-background="img/code-review/outils-01.jpeg">
+      <section class="flushleft" data-background="../img/code-review/outils-01.jpeg">
         <h2 class="flushright"><strong>Outils</strong></h2>
         <p class="fragment">Prenez ce qui marche pour vous</p>
         <p class="fragment">Commencez le plus à poil possible</p>
@@ -404,7 +404,7 @@
         <h2><strong>Mise en place chez LesFurets.com</strong></h2>
         <p class="fragment">Sur le tableau / dans JIRA : case à cocher</p>
         <p class="fragment">Condition nécessaire pour la mise en production</p>
-        <img style="width:50%" class="fragment" src="img/code-review/jira-ticket.jpg">
+        <img style="width:50%" class="fragment" src="../img/code-review/jira-ticket.jpg">
         <aside class="notes">
           <p>COMMENT</p>
           <p>Ajout d'une case a cocher dans JIRA et dans sur le tableau kanban : la code review devient obligatoire</p>
@@ -490,7 +490,7 @@
 
       <section data-background="#bf360c">
         <h2><strong>"Quand on se lance dans la revue de code"</strong></h2>
-        <img style="width:33%" class="fragment" src="img/code-review/pair-programming-01.gif">
+        <img style="width:33%" class="fragment" src="../img/code-review/pair-programming-01.gif">
         <aside class="notes">
         </aside>
       </section>
@@ -502,8 +502,8 @@
       <!-- END -->
       </div>
     </div>
-    <script src="bower_components/reveal.js/lib/js/head.min.js"></script>
-    <script src="bower_components/reveal.js/js/reveal.js"></script>
+    <script src="../bower_components/reveal.js/lib/js/head.min.js"></script>
+    <script src="../bower_components/reveal.js/js/reveal.js"></script>
     <script>
       // Full list of configuration options available here:
       // https://github.com/hakimel/reveal.js#configuration
@@ -523,15 +523,15 @@
 
         // Optional libraries used to extend on reveal.js
         dependencies: [
-          { src: 'bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-          { src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-          { src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          { src: '../bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '../bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '../bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
         ]
       });
     </script>
-    <script src="js/lesfurets-theme.js" async></script>
+    <script src="../js/lesfurets-theme.js" async></script>
   </body>
 </html>
