@@ -1,6 +1,62 @@
 /**
  * Theme for lesfurets.com
  *
+ * indigo
+ * indigo50:  #e8eaf6
+ * indigo100: #c5cae9
+ * indigo200: #9fa8da
+ * indigo300: #7986cb
+ * indigo400: #5c6bc0
+ * indigo500: #3f51b5
+ * indigo600: #3949ab
+ * indigo700: #303f9f
+ * indigo800: #283593
+ * indigo900: #1a237e -> lf
+ * indigoA100: #8c9eff
+ * indigoA200: #536dfe
+ * indigoA400: #3d5afe
+ * indigoA700: #304ffe
+ *
+ * orange 
+ * orange50: #fff3e0
+ * orange100: #ffe0b2
+ * orange200: #ffcc80
+ * orange300: #ffb74d
+ * orange400: #ffa726
+ * orange500: #ff9800
+ * orange600: #fb8c00
+ * orange700: #f57c00
+ * orange800: #ef6c00
+ * orange900: #e65100 -> lf
+ * orangeA100: #ffd180
+ * orangeA200: #ffab40
+ * orangeA400: #ff9100
+ * orangeA700: #ff6d00
+ *
+ * grey
+ * gray50 : #fafafa
+ * gray100: #f5f5f5
+ * gray200: #eeeeee
+ * gray300: #e0e0e0
+ * gray400: #bdbdbd
+ * gray500: #9e9e9e
+ * gray600: #757575
+ * gray700: #616161
+ * gray800: #424242
+ * gray900: #212121
+ *
+ * deep orange
+ * deeporange50 : #fbe9e7
+ * deeporange100: #ffccbc
+ * deeporange200: #ffab91
+ * deeporange300: #ff8a65
+ * deeporange400: #ff7043
+ * deeporange500: #ff5722
+ * deeporange600: #f4511e
+ * deeporange700: #e64a19
+ * deeporange800: #d84315
+ * deeporange900: #bf360c
+ *
  * orange #f07d00
  * blue #3335a2
  * medium blue #d1d2ff
@@ -11,10 +67,13 @@
  * GLOBAL STYLES
  *********************************************/
 body {
+  background-color: #1a237e;
+  /*
   background-color: #3335a2;
   background-image: url("../../img/bg-dots.png"), radial-gradient(circle 1000px at top center, #3439b3 40%, #161875 60%);
   background-image: url("../../img/bg-dots.png"), -webkit-radial-gradient(top center, circle 1000px, #3439b3 40%, #161875 60%);
   background-image: url("../../img/bg-dots.png"),radial-gradient(circle 1000px at top center, #3439b3 40%, #161875 60%);
+  */
 }
 
 .reveal {
@@ -39,7 +98,15 @@ body {
   text-decoration: underline;
 }
 
+.strong {
+  font-weight: bold;
+}
+
 .reveal em {
+  color: white;
+}
+
+.reveal .white {
   color: white;
 }
 
@@ -58,29 +125,36 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
   line-height: 0.9em;
-  text-transform: uppercase;
   text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2); 
 }
 
 .reveal h1 {
-  text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 20px 20px rgba(0, 0, 0, 0.15); 
+  font-size: 112px;
+  font-weight:  bold;
+  letter-spacing: -5px;
+  line-height: 128px;
 }
-
-.reveal h1.lower,
-.reveal h2.lower,
-.reveal h3.lower,
-.reveal h4.lower,
-.reveal h5.lower,
-.reveal h6.lower {
-  text-transform: lowercase;
+.reveal h2 {
+  font-size: 56px;
+  font-weight: bold;
+  line-height: 64px;
 }
-
 .reveal h3 {
-  border-bottom: 1px solid #ff971c;
-  border-bottom: 1px solid #8e8ff4;
-  padding: 0 20px 20px 20px;
-  margin: 0 100px 10px 100px;
-  margin: 0 50px 10px 50px;
+  font-size: 45px;
+  font-weight: bold;
+  line-height: 64px;
+}
+.reveal h4 {
+  font-size: 34px;
+  line-height: 52px;
+}
+
+.reveal em {
+  font-style: italic;
+}
+
+.reveal strong {
+  font-weight: bold;
 }
 
 /*********************************************
@@ -96,47 +170,47 @@ body {
  *********************************************/
 
 .reveal p {
-  color: #d1d2ff;
+  /*color: #d1d2ff;*/
+  color: white;
   padding: 25px 100px;
   padding: 25px 0;
+  line-height: 1.25em;
 }
 
 /*********************************************
  * LISTS
  *********************************************/
 
-
-/*
 .reveal li {
-  color: #b3b4ff;
+  color: white;
   padding: 5px;
+  line-height: 2.5ex;
 }
 
 .reveal li:before {
+  color: #212121;
   content: "•";
-  color: red;
+  font-size: 2em;
+  padding-bottom: 0.2em;
+  padding-right: 0.25em;
+  vertical-align: middle;
+  line-height: 0.75em;
 }
 
 .reveal ul {
-  list-style: none;
-}
-*/
-
-.reveal li {
-  color: #b3b4ff;
-  padding: 5px;
+  list-style-type: none;
 }
 
-.reveal ul {
-  list-style-type: circle;
+.reveal ul.nodisc li:before {
+  content: none;
 }
 
 /*********************************************
  * LINKS
  *********************************************/
 .reveal a:not(.image) {
-  color: #f07d00;
-  text-decoration: none;
+  color: #3f51b5;
+  text-decoration: underline;
   -webkit-transition: color .15s ease;
   -moz-transition: color .15s ease;
   -ms-transition: color .15s ease;
@@ -167,7 +241,6 @@ body {
   -ms-transition: all .2s linear;
   -o-transition: all .2s linear;
   transition: all .2s linear; 
-  background-color: white;
   padding: 10px;
   border-radius: 5px;
 }
@@ -181,6 +254,11 @@ body {
 .reveal a:hover img {
   border-color: #13daec;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); 
+}
+
+.reveal section p.image {
+  padding: 0;
+  margin: 0;
 }
 
 /*********************************************
@@ -245,12 +323,15 @@ body {
 /*********************************************
  * SLIDE NUMBER
  *********************************************/
+
 .reveal .slide-number {
   color: #13daec; 
 }
+
 /*********************************************
  * FOOTER
  *********************************************/
+
 .footer {
   background-color: white;
   bottom: 0;
@@ -259,24 +340,141 @@ body {
   position: absolute;
   width: 100%;
   z-index: 1;
+  transition: all 500ms;
 }
+
 .footer .link {
   display: block;
 }
+
 .footer .logo {
   height: 40px;
 }
+
 .footer .github, .footer .twitter {
   color: #161875;
   text-decoration: none;
 }
+
 .footer a {
   font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
   display: inline-block;
   vertical-align: middle;
-  margin-right: 50px;
+  margin-right: 25px;
 }
+
 .footer a:last-child {
   margin-right: 0;
 }
+
+.footer.hide {
+  -ms-transform: translateY(100px);
+  -webkit-transform: translateY(100px);
+  transform: translateY(100px);
+}
+
+/*********************************************
+ * CUSTOM STYLES
+ *********************************************/
+
+.reveal .flushleft {
+  text-align: left;
+}
+
+.reveal .flushleft > * {
+  text-align: left;
+}
+
+.reveal .flushright {
+  text-align: right;
+}
+
+.reveal .flushright > * {
+  text-align: right;
+}
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .center > * {
+  text-align: center;
+}
+
+.reveal .small {
+  font-size: 0.75em;
+}
+
+/*********************************************
+ * CODE
+ *********************************************/
+.reveal code {
+    font-family: monospace;
+}
+
+.reveal .code {
+    display: inline-block;
+    line-height: 1.25;
+    padding: 5px 20px;
+    text-align: left;
+    overflow: hidden;
+}
+
+/*********************************************
+ * COLORS
+ *********************************************/
+
+.reveal .color-indigo50 { color: #e8eaf6; }
+.reveal .color-indigo100 { color: #c5cae9; }
+.reveal .color-indigo200 { color: #9fa8da; }
+.reveal .color-indigo300 { color: #7986cb; }
+.reveal .color-indigo400 { color: #5c6bc0; }
+.reveal .color-indigo500 { color: #3f51b5; }
+.reveal .color-indigo600 { color: #3949ab; }
+.reveal .color-indigo700 { color: #303f9f; }
+.reveal .color-indigo800 { color: #283593; }
+.reveal .color-indigo900 { color: #1a237e /* lf */; }
+.reveal .color-indigoA100 { color: #8c9eff; }
+.reveal .color-indigoA200 { color: #536dfe; }
+.reveal .color-indigoA400 { color: #3d5afe; }
+.reveal .color-indigoA700 { color: #304ffe; }
+.reveal .color-orange50 { color: #fff3e0; }
+.reveal .color-orange100 { color: #ffe0b2; }
+.reveal .color-orange200 { color: #ffcc80; }
+.reveal .color-orange300 { color: #ffb74d; }
+.reveal .color-orange400 { color: #ffa726; }
+.reveal .color-orange500 { color: #ff9800; }
+.reveal .color-orange600 { color: #fb8c00; }
+.reveal .color-orange700 { color: #f57c00; }
+.reveal .color-orange800 { color: #ef6c00; }
+.reveal .color-orange900 { color: #e65100 /* lf */; }
+.reveal .color-orangeA100 { color: #ffd180; }
+.reveal .color-orangeA200 { color: #ffab40; }
+.reveal .color-orangeA400 { color: #ff9100; }
+.reveal .color-orangeA700 { color: #ff6d00; }
+.reveal .color-gray50 { color: #fafafa; }
+.reveal .color-gray100 { color: #f5f5f5; }
+.reveal .color-gray200 { color: #eeeeee; }
+.reveal .color-gray300 { color: #e0e0e0; }
+.reveal .color-gray400 { color: #bdbdbd; }
+.reveal .color-gray500 { color: #9e9e9e; }
+.reveal .color-gray600 { color: #757575; }
+.reveal .color-gray700 { color: #616161; }
+.reveal .color-gray800 { color: #424242; }
+.reveal .color-gray900 { color: #212121; }
+.reveal .color-deeporange50 { color: #fbe9e7; }
+.reveal .color-deeporange100 { color: #ffccbc; }
+.reveal .color-deeporange200 { color: #ffab91; }
+.reveal .color-deeporange300 { color: #ff8a65; }
+.reveal .color-deeporange400 { color: #ff7043; }
+.reveal .color-deeporange500 { color: #ff5722; }
+.reveal .color-deeporange600 { color: #f4511e; }
+.reveal .color-deeporange700 { color: #e64a19; }
+.reveal .color-deeporange800 { color: #d84315; }
+.reveal .color-deeporange900 { color: #bf360c; }
+.reveal .color-orange { color: #f07d00; }
+.reveal .color-blue { color: #3335a2; }
+.reveal .color-medium-blue { color: #d1d2ff; }
+.reveal .color-light-blue { color: #b3b4ff; }
+
