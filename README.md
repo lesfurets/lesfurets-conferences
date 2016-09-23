@@ -2,11 +2,7 @@
 
 Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesFurets.com](https://www.lesfurets.com).
 
-## Conférences
-
-- [Toutes les conférences](https://lesfurets.github.io/lesfurets-conferences/)
-
-### Continuous delivery
+## Continuous delivery
 
 - 13 octobre 2016 (fr) : [Marseilles JUG - Le continuous delivery chez LesFurets.com](https://dubreuia.github.io/lesfurets-conferences/html/continuous-delivery-marseille-jug-2016.html)
 - 29 juin 2016 (fr) : [Societe Generale - Le continuous delivery chez LesFurets.com](https://dubreuia.github.io/lesfurets-conferences/html/devops-chez-lesfurets-pour-sg.html)
@@ -19,13 +15,13 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 - 1 octobre 2014 (en) : [Agile Cambrige 2014 - Continuous Delivery the french way](https://lesfurets.github.io/lesfurets-conferences/html/continuous-delivery-agile-cambridge-2014.html)
 - 1 octobre 2014 (fr) : [AgileTour Rennes 2014 - Continuous Delivery chez LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/html/continuous-delivery-agile-tour-rennes-2014.html)
 
-### Software craftmanship
+## Software craftmanship
 
 - 4 mars 2016 (en) : [BGL Tech Conference - London - Live code review at LesFurets.com](https://dubreuia.github.io/lesfurets-conferences/html/live-code-review-at-lesfurets.html)
 - 26 novembre 2015 (fr) : [Codeurs en Seines - Rouen - Code review chez LesFurets.com](https://dubreuia.github.io/lesfurets-conferences/html/code-review-chez-lesfurets.html)
 - 25 juin 2015 (en) : [NWX Summer Festival - Rouen - Pair programming chez LesFurets.com](https://dubreuia.github.io/lesfurets-conferences/html/pair-programming-chez-lesfurets.html)
 
-### Cours
+## Cours
 
 - 1 décembre 2015 (fr) : [Université de Rouen - git (M1) Gestion de version](https://dubreuia.github.io/lesfurets-conferences/html/git-gestion-version-m1.html)
 
@@ -40,3 +36,4 @@ Continuous Delivery :
 ## Infos / Questions
 
 - Twitter : https://twitter.com/BeastieFurets
+
