@@ -20,6 +20,10 @@
   line-height: 52px;
 }
 
+.reveal p.compact {
+  padding: 5px 0;
+}
+
 .reveal blockquote {
   background-color: rgba(255, 255, 255, 0.75);
   border-radius: 5px;
@@ -324,18 +328,10 @@
   font-size: smaller;
 }
 
-.reveal .code {
-  font-family: monospace;
-  font-size: 20px;
-  margin: 5;
-  padding: 0;
-}
-
 .reveal .highlight {
   font-weight: bold;
   color: red;
 }
-
 
 .speaker-mode .footer,
 .speaker-mode .footer {
@@ -359,3 +355,10 @@
   position: relative;
   width: 100vmin;
 }
+
+.reveal code.output {
+  background-color: #616161;
+  font-size: 75%;
+}
+
+
