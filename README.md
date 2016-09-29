@@ -12,9 +12,16 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 
 Nous allons faire un tour d'horizon de notre process de mise en production chez LesFurets.com pour comprendre comment nous arrivons à faire du continuous delivery, avec des mises en production tous les jours. Nous allons surtout parler de notre outil "git octopus", qui nous permet de faire du continuous merge, et de détecter en amont les problèmes de merge entre nos branches.
 
+This presentation tackles the subject of continuous delivery with tangible solutions, that covers code versioning, handling of multiple parallel developments for big teams and deployment of artifacts. We'll show how we do daily delivery without sacrificing quality. The concept of "continuous merge", made possible by the open-source tool git-octopus developed at LesFurets.com, will be presented as the most important part of our continuous delivery process. A live demo of git-octopus and how to handle conflicts between development histories will also be shown.
+
 - 13 octobre 2016 (fr) : [Marseilles JUG - Le continuous delivery chez LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/html/continuous-delivery-marseille-jug-2016.html)
 - 29 juin 2016 (fr) : [Societe Generale - Le continuous delivery chez LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/html/devops-chez-lesfurets-pour-sg.html)
+- 28 juin 2016 (fr) : Paris JUG (https://www.parisjug.org/xwiki/wiki/oldversion/view/Meeting/20160628)
+- 30 juin 2016 (fr) : Ch'ti JUG (http://chtijug.org/)
+- 31 mai 2016 (fr) : Geneva JUG (http://genevajug.ch/jug/archive.html)
+- 31 janvier 2016 (fr) : Tours JUG (http://www.toursjug.org)
 - 10 décembre 2015 (fr) : [Octo - Le continuous merge chez LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/pdf/git-octopus-chez-octo-2015.pdf)
+- 22 octobre 2015 (fr) : SoftShake Genève (http://soft-shake.ch/2015/fr/)
 - 10 avril 2015 (fr) : [Devoxx France - Livrer chaque jour ce qui est prêt](https://lesfurets.github.io/lesfurets-conferences/html/continuous-delivery-agile-tour-rennes-2014.html)
 - 5 mars 2015 (fr) : [BBL chez Viseo - Continuous Delivery chez LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/html/continuous-delivery-BBL-viseo.html)
 - 25 février 2015 (fr) : [Continuous Delivery Meetup - Continuous Delivery chez LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/html/continuous-delivery-lean-kanban-france-2014.html)
@@ -28,9 +35,13 @@ Pour faire du traitement de données, les listes, tableaux et maps sont les stru
 
 Chez LesFurets.com nous avons résolu ce problème en développant un KVM (Key Value Mapping). Ce framework est utilisé au cœur de l'application et cohabite avec le modèle métier. Grâce au mapping bidirectionnel de notre modèle métier vers un modèle clé-valeur, les manipulations de données deviennent extrêmement simples à réaliser. La mise en place de ce nouveau paradigme a nécessité un important refactoring de l'application et a permis de l'ouvrir à de nombreux outils actuels (Stream Java 8, RxJava, Spark, Cassandra)
 
-- TODO : SoftShake
-- TODO : JUG Tours
-- TODO ...
+- 13 octobre 2016 (fr) : Marseille JUG (http://marsjug.org/#reunions)
+- 28 juin 2016 (fr) : Paris JUG (https://www.parisjug.org/xwiki/wiki/oldversion/view/Meeting/20160628)
+- 30 juin 2016 (fr) : Ch'ti JUG (http://chtijug.org/)
+- 31 mai 2016 (fr) : Geneva JUG (http://genevajug.ch/jug/archive.html)
+- 31 janvier 2016 (fr) : Tours JUG (http://www.toursjug.org)
+- 8 janvier 2016 : Breizh JUG (http://www.breizhjug.org/#/events)
+- 22 octobre 2015 (fr) : SoftShake Genève (http://soft-shake.ch/2015/fr/)
 
 ## Software craftmanship
 
@@ -41,7 +52,8 @@ Chez LesFurets.com nous avons résolu ce problème en développant un KVM (Key V
 
 ## Big Data
 
-- 16 juin 2015 (anglais) : [Cassandra Days Paris 2015 - From 0 to Cassandra on AWS in 30 days - Tsunami alerting with Cassandra](https://lesfurets.github.io/lesfurets-conferences/pdf/cassandra-days-paris-from-0-to-cassandra-on-aws-in-30-days.pdf)
+- 22 mars 2016 (fr) : Architecture C* chez Ippon retour expérience (http://blog.ippon.fr/2016/03/16/retour-dexperience-lesfurets-com-le-22-mars/)
+- 16 juin 2015 (en) : [Cassandra Days Paris 2015 - From 0 to Cassandra on AWS in 30 days - Tsunami alerting with Cassandra](https://lesfurets.github.io/lesfurets-conferences/pdf/cassandra-days-paris-from-0-to-cassandra-on-aws-in-30-days.pdf)
 
 ## Cours
 
@@ -53,6 +65,7 @@ Chez LesFurets.com nous avons résolu ce problème en développant un KVM (Key V
 - BreizhCamp - Rennes - Continuous delivery : https://www.youtube.com/watch?v=ayvVYc01iEk
 - The French Way (en) - Agile Cambridge - Continuous delivery : https://www.youtube.com/watch?v=ayvVYc01iEk
 - SoftIt - Continuous delivery : http://blog.softit.fr/?tag=/Continuous+Delivery+to+Lean+Enterprise
+- GenevaJUG Session - Domain().stream() et Continuous merge : https://www.youtube.com/watch?v=mRu30jO2c18
 
 # Idée de conférences
 
