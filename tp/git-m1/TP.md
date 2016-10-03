@@ -64,3 +64,8 @@ Commandes utiles : svn checkout, svn add, svn commit, svn update
 - git commit + git push = svn commit
 - git pull = svn update
 
+## Cheat sheets
+
+![http://www.patrickzahnd.ch/](../../img/git-m1/git-cheat-sheet-01.png "http://www.patrickzahnd.ch/")
+![https://jan-krueger.net/git-cheat-sheet-take-two](../../img/git-m1/git-cheat-sheet-02.png "https://jan-krueger.net/git-cheat-sheet-take-two")
+![https://www.git-tower.com/blog/git-cheat-sheet/](../../img/git-m1/git-cheat-sheet-03.png "https://www.git-tower.com/blog/git-cheat-sheet/")
