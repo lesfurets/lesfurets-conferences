@@ -107,11 +107,11 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
                 <section class="flushleft" data-background="#212121">
                     <h2 class="flushright"><strong>Les principaux VCS</strong></h2>
-                    <p class="oldfragment"><img src="../img/git-m1/logo-bazaar.png" style="vertical-align:middle;width:50px;margin-right:10px">GNU Bazaar : maintenu par Canonial (Ubuntu)</p>
-                    <p class="oldfragment"><img src="../img/git-m1/logo-git.png" style="vertical-align:middle;width:100px;margin-right:10px">git : utilisé pour le code source de Linux</p>
-                    <p class="oldfragment"><img src="../img/git-m1/logo-mercurial.png" style="vertical-align:middle;width:50px;margin-right:10px">Mercurial : semblable à git</p>
-                    <p class="oldfragment"><img src="../img/git-m1/logo-svn.png" style="vertical-align:middle;width:100px;margin-right:10px">Subversion (SVN) : historiquement plus utilisé</p>
-                    <p class="oldfragment"><img src="../img/git-m1/logo-tfs.png" style="vertical-align:middle;width:100px;margin-right:10px">Team Foundation Server : propriétaire microsoft</p>
+                    <p class="oldfragment compact"><img src="../img/git-m1/logo-svn.png" style="vertical-align:middle;width:100px;margin-right:10px;background-color:white">Subversion (SVN) : historiquement plus utilisé</p>
+                    <p class="oldfragment compact"><img src="../img/git-m1/logo-git.png" style="vertical-align:middle;width:100px;margin-right:10px;background-color:white">git : utilisé pour le code source de Linux</p>
+                    <p class="oldfragment compact"><img src="../img/git-m1/logo-bazaar.png" style="vertical-align:middle;width:50px;margin-right:10px;background-color:white">GNU Bazaar : maintenu par Canonial (Ubuntu)</p>
+                    <p class="oldfragment compact"><img src="../img/git-m1/logo-mercurial.png" style="vertical-align:middle;width:50px;margin-right:10px;background-color:white">Mercurial : semblable à git</p>
+                    <p class="oldfragment compact"><img src="../img/git-m1/logo-tfs.png" style="vertical-align:middle;width:100px;margin-right:10px;background-color:white">Team Foundation Server : propriétaire microsoft</p>
                     <aside class="notes">
                         <p></p>
                     </aside>
@@ -120,6 +120,9 @@ if( window.location.search.match( /print-pdf/gi ) ) {
                 <section class="flushleft" data-background="#212121">
                     <h2 class="flushright"><strong>Le vocabulaire commun VCS</strong></h2>
                     <p class="oldfragment">TODO https://en.wikipedia.org/wiki/Version_control#Common_vocabulary</p>
+                    <p class="oldfragment">Branch, merge</p>
+                    <p class="oldfragment">Checkout, commit</p>
+                    <p class="oldfragment">Pull, push</p>
                     <aside class="notes">
                         <p></p>
                     </aside>
@@ -206,10 +209,10 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
                 <section class="flushleft" data-background="#212121">
                     <h2 class="flushright"><strong>Les commandes SVN</strong></h2>
-                    <p class="oldfragment">co (or checkout) : Récupère la version actuelle du code</p>
-                    <p class="oldfragment">update : Synchronise vos changements locaux le distant</p>
-                    <p class="oldfragment">add : Ajoute un fichier au gestionnaire de version</p>
-                    <p class="oldfragment">commit : Commit les changements locaux dans le master</p>
+                    <p class="oldfragment"><strong>checkout</strong> : Récupère la version actuelle du code</p>
+                    <p class="oldfragment"><strong>update</strong> : Synchronise vos changements locaux avec le distant</p>
+                    <p class="oldfragment"><strong>add</strong> : Ajoute un fichier au gestionnaire de version</p>
+                    <p class="oldfragment"><strong>commit</strong> : Persiste les changements locaux dans le master</p>
                     <aside class="notes">
                         <p></p>
                     </aside>
@@ -267,6 +270,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
                     </aside>
                 </section>
 
+                <!--
                 <section class="flushleft" data-background="#212121" data-background="#212121">
                     <pre><code data-trim>
 .git
@@ -289,18 +293,11 @@ if( window.location.search.match( /print-pdf/gi ) ) {
                         <p></p>
                     </aside>
                 </section>
+                -->
 
                 <section class="flushleft" data-background="#212121">
-                    <h2 class="flushright"><strong>Notre historique git chez LesFurets.com</strong></h2>
-                    <img width="100%" src="../img/git-m1/git-graph.png">
-                    <aside class="notes">
-                        <p></p>
-                    </aside>
-                </section>
-
-                <section class="flushleft" data-background="#212121">
-                    <h2 class="flushright"><strong>Github</strong></h2>
-                    <p class="oldfragment">TODO github</p>
+                    <h2 class="flushright"><strong>Un historique git</strong></h2>
+                    <img width="100%" src="../img/git-m1/repo-history-exemple.png">
                     <aside class="notes">
                         <p></p>
                     </aside>
@@ -339,7 +336,7 @@ The most commonly used git commands are:
 
                 <section class="flushleft" data-background="#212121">
                     <h2 class="flushright"><strong>git help 'commande'</strong></h2>
-                    <p class="center oldfragment compact">Utiliser git help avec une commande pour en savoir plus sur celle ci</p>
+                    <p class="center oldfragment compact">Utiliser git help avec une commande pour en savoir plus</p>
                     <pre><code class="bash" data-trim>
 $ git help add
                     </code></pre>
@@ -398,14 +395,6 @@ Receiving objects: 100% (547/547), 39.13 MiB | 1.09 MiB/s, done.
 Resolving deltas: 100% (234/234), done.
 Checking connectivity... done.
                     </code></pre>
-                    <aside class="notes">
-                        <p></p>
-                    </aside>
-                </section>
-
-                <section class="flushleft" data-background="#212121">
-                    <h2 class="flushright"><strong>TODO show apres clone</strong></h2>
-                    <p class="oldfragment">TODO avec difference working dir et git dir</p>
                     <aside class="notes">
                         <p></p>
                     </aside>
@@ -617,7 +606,7 @@ index a839173..d0d1147 100644
 
                 <section class="flushleft" data-background="#212121">
                     <h2 class="flushright"><strong>git diff --staged</strong></h2>
-                    <p class="center oldfragment compact">Utiliser --staged pour voir les différences dans les fichiers modifiés ET ajoutés avec git add (autrement dit dans l'index)</p>
+                    <p class="center oldfragment compact">Utiliser --staged pour voir les différences dans les fichiers modifiés et ajoutés avec git add (autrement dit dans l'index)</p>
                     <pre><code class="bash" data-trim>
 $ git diff --staged
                     </code></pre>
@@ -640,8 +629,7 @@ index e69de29..a839173 100644
 
                 <section class="flushleft" data-background="#212121">
                     <h2 class="flushright"><strong>git commit</strong></h2>
-                    <p class="center oldfragment compact">Valider et persister les modifications de l'index (autrement dit les fichiers sur lesquels on a fait git add)</p>
-                    <p class="center oldfragment compact">Le message de commit avec -m "Message" est nécessaire</p>
+                    <p class="center oldfragment compact">Valider et persister les modifications de l'index (autrement dit les fichiers sur lesquels on a fait git add), avec un message de commit obligatoire</p>
                     <pre><code class="bash" data-trim>
 $ git commit -m "Ajouter la structure HTML"
                     </code></pre>
@@ -825,7 +813,7 @@ On branch master
 
                 <section class="flushleft" data-background="#212121">
                     <h2 class="flushright"><strong>git clone</strong></h2>
-                    <p class="center oldfragment compact">Copier ou cloner un dépôt exitant</p>
+                    <p class="center oldfragment compact">Copier ou cloner un dépôt exitant (qui est par défaut nommé <strong>origin</strong> mais peut s'appeler autrement), c'est qu'on appelle l'upstream.</p>
                     <pre><code class="bash" data-trim>
 $ git clone https://github.com/dubreuia/lesfurets-conferences.git
                     </code></pre>
@@ -836,8 +824,12 @@ remote: Total 547 (delta 0), reused 0 (delta 0), pack-reused 547
 Receiving objects: 100% (547/547), 39.13 MiB | 760.00 KiB/s, done.
 Resolving deltas: 100% (234/234), done.
 Checking connectivity... done.
+                    </code></pre>
+                    <pre><code class="bash" data-trim>
 $ cd lesfurets-conferences/
 $ git remote
+                    </code></pre>
+                    <pre><code class="bash output" data-trim>
 origin
                     </code></pre>
                     <aside class="notes">
@@ -894,12 +886,27 @@ Fast-forward
                 </section>
 
                 <section class="flushleft" data-background="#212121">
+                    <h2 class="flushright"><strong>Les nouvelles commandes</strong></h2>
+                    <p class="oldfragment"><strong>TODO  </strong></p>
+                    <aside class="notes">
+                        <p></p>
+                    </aside>
+                </section>
+
+                <section class="flushleft" data-background="#212121">
                     <h2 class="flushright"><strong>Autres commandes</strong></h2>
                     <p class="oldfragment"><strong>git tag  </strong>: Étiquetage d'un commit</p>
                     <p class="oldfragment"><strong>git show </strong>: Contenu d'un commit</p>
                     <p class="oldfragment"><strong>git grep </strong>: Recherche d'un commit</p>
                     <p class="oldfragment"><strong>git reset</strong> : Retour a un commit</p>
                     <p class="oldfragment"><strong>git blame</strong> : Trouver qui a ajouté une ligne</p>
+                    <aside class="notes">
+                        <p></p>
+                    </aside>
+                </section>
+
+                <section class="flushleft" data-background="#212121">
+                    <h2 class="flushright"><strong>Demo 1</strong></h2>
                     <aside class="notes">
                         <p></p>
                     </aside>
@@ -938,33 +945,39 @@ Fast-forward
                 </section>
 
                 <section class="flushleft" data-background="#212121">
-                    <h2 class="flushright"><strong>Créer une nouvelle branche (branch)</strong></h2>
+                    <h2 class="flushright"><strong>git branch</strong></h2>
+                    <p class="oldfragment">Créer une nouvelle branche avec comme nom "testing"</p>
                     <pre><code class="bash" data-trim>
 $ git branch testing
                     </code></pre>
-                    <p class="oldfragment center image"><img width="80%" src="../img/git-m1/branche-ajout-testing-01.jpg"></p>
+                    <p class="oldfragment center image"><img width="66%" src="../img/git-m1/branche-ajout-testing-01.jpg"></p>
                     <aside class="notes">
                         <p></p>
                     </aside>
                 </section>
 
                 <section class="flushleft" data-background="#212121">
-                    <h2 class="flushright"><strong>Changer de branche (checkout)</strong></h2>
+                    <h2 class="flushright"><strong>git checkout</strong></h2>
+                    <p class="oldfragment">Changer de branche sur la branche "testing"</p>
                     <pre><code class="bash" data-trim>
 $ git checkout testing
+                    </code></pre>
+                    <pre><code class="bash output" data-trim>
 Switched to branch 'testing'
                     </code></pre>
-                    <p class="oldfragment center image"><img width="80%" src="../img/git-m1/branche-checkout-testing-01.jpg"></p>
+                    <p class="oldfragment center image"><img width="66%" src="../img/git-m1/branche-checkout-testing-01.jpg"></p>
                     <aside class="notes">
                         <p></p>
                     </aside>
                 </section>
 
                 <section class="flushleft" data-background="#212121">
-                    <h2 class="flushright"><strong>Ajouter un commit sur "testing"</strong></h2>
+                    <p class="oldfragment">Ajouter un commit sur la branche "testing" avec git commit</p>
                     <pre><code class="bash" data-trim>
 $ vim git-gestion-version-m1.html
 $ git commit -a -m "Ajout experimental"
+                    </code></pre>
+                    <pre><code class="bash output" data-trim>
 [testing 64ff99b] Ajout experimental
  1 file changed, 1 insertion(+), 1 deletion(-)
                     </code></pre>
@@ -975,8 +988,7 @@ $ git commit -a -m "Ajout experimental"
                 </section>
 
                 <section class="flushleft" data-background="#212121">
-                    <h2 class="flushright"><strong>Ajouter un commit sur "master"</strong></h2>
-                    <p class="oldfragment">Il faut revenir sur master avec <em>git checkout master</em>, puis faire un commit</p>
+                    <p class="oldfragment">Ajouter un commit sur la branche "master", en revenant sur master avec <em>git checkout master</em>, puis en faisant un commit</p>
                     <p class="oldfragment center image"><img width="80%" src="../img/git-m1/branche-commit-master-01.jpg"></p>
                     <aside class="notes">
                         <p></p>
@@ -984,15 +996,26 @@ $ git commit -a -m "Ajout experimental"
                 </section>
 
                 <section class="flushleft" data-background="#212121">
-                    <h2 class="flushright"><strong>L'arbre de commit a divergé entre les 2 branches</strong></h2>
+                    <h2 class="flushright"><strong>L'arbre de commit à divergé entre les 2 branches</strong></h2>
                     <pre><code class="bash" data-trim>
 $ git log --graph --oneline --all
+                    </code></pre>
+                    <pre><code class="bash output" data-trim>
 * a2d71b4 Commit sur branche master
 | * dc1d4a9 Ajout d'un commit sur testing
 |/
 * 19b4b66 Ajouter la structure HTML
 * 876c849 Ajout presentation HTML
                     </code></pre>
+                    <aside class="notes">
+                        <p></p>
+                    </aside>
+                </section>
+
+                <section class="flushleft" data-background="#212121">
+                    <h2 class="flushright"><strong>Les nouvelles commandes</strong></h2>
+                    <p class="oldfragment"><strong>git branch  </strong> : créer une nouvelle branche</p>
+                    <p class="oldfragment"><strong>git checkout</strong> : se positionner sur une nouvelle branche (même commande que pour récupérer un fichier, ce qui revient à faire "récupérer tous les fichiers d'une branche")</p>
                     <aside class="notes">
                         <p></p>
                     </aside>
@@ -1026,11 +1049,13 @@ $ git log --graph --oneline --all
                 </section>
 
                 <section class="flushleft" data-background="#212121">
-                    <h2 class="flushright"><strong>Effectuer la fusion</strong></h2>
-                    <p class="oldfragment">Se positionner sur la branche de base (master), puis merger l'autre branche (fusion-pas-de-conflit) dans la branche de base</p>
+                    <h2 class="flushright"><strong>git merge</strong></h2>
+                    <p class="oldfragment">Fusionner deux branches en se positionnant sur la branche de base "master", puis en mergeant l'autre branche "fusion-pas-de-conflit" dans la branche de base</p>
                     <pre><code class="bash" data-trim>
 $ git checkout master
 $ git merge fusion-pas-de-conflit
+                    </code></pre>
+                    <pre><code class="bash output" data-trim>
 Updating a2d71b4..bea04e9
 Fast-forward
  pas-de-conflit | 0
@@ -1055,6 +1080,8 @@ Fast-forward
                     <p class="oldfragment">Lorsque la même ligne est modifiée, git ne peut pas merger, il faut le faire à la main</p>
                     <pre><code class="bash" data-trim>
 $ git merge fusion-avec-conflit
+                    </code></pre>
+                    <pre><code class="bash output" data-trim>
 Auto-merging git-gestion-version-m1.html
 CONFLICT (content): Merge conflict in git-gestion-version-m1.html
 Automatic merge failed; fix conflicts and then commit the result.
@@ -1066,7 +1093,7 @@ Automatic merge failed; fix conflicts and then commit the result.
 
                 <section class="flushleft" data-background="#212121">
                     <h2 class="flushright"><strong>Marquage du conflit par git</strong></h2>
-                    <pre><code class="bash" data-trim>
+                    <pre><code class="bash output" data-trim>
 &lt&lt&lt&lt&lt&lt&lt HEAD
 &lt!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
                         "http://www.w3.org/TR/html4/strict.dtd"&gt
@@ -1086,7 +1113,7 @@ Automatic merge failed; fix conflicts and then commit the result.
                 <section class="flushleft" data-background="#212121">
                     <h2 class="flushright"><strong>Résolution du conflit</strong></h2>
                     <p class="oldfragment">Enlever les marqueurs voulus</p>
-                    <pre><code class="bash" data-trim>
+                    <pre><code class="bash output" data-trim>
 &lt!DOCTYPE html&gt
 &lthead&gt
 &lt/head&gt
@@ -1129,8 +1156,25 @@ $ git commit
                 </section>
 
                 <section class="flushleft" data-background="#212121">
-                    <h2 class="flushright"><strong>... mais le serveur avance aussi</strong></h2>
-                    <p class="oldfragment">Après un <em>git fetch</em> le pointeur <em>origin/master</em> peut avancer</p>
+                    <h2 class="flushright"><strong>git fetch</strong></h2>
+                    <p class="oldfragment">Permet de récupérer les commits qui sont disponibles sur le serveur</p>
+                    <pre><code class="bash" data-trim>
+$ git fetch
+                    </code></pre>
+                    <pre><code class="bash output" data-trim>
+remote: Counting objects: 3, done.
+remote: Total 3 (delta 2), reused 2 (delta 2), pack-reused 1
+Unpacking objects: 100% (3/3), done.
+From github.com:lesfurets/lesfurets-conferences
+   a2e5c10..11f08f8  gh-pages   -> origin/gh-pages
+                    </code></pre>
+                    <aside class="notes">
+                        <p></p>
+                    </aside>
+                </section>
+
+                <section class="flushleft" data-background="#212121">
+                    <p class="oldfragment">Après un <em>git fetch</em> le pointeur <em>origin/master</em> a avancé, dans ce cas de deux nouveaux commits</p>
                     <p class="oldfragment center image"><img width="66%" src="../img/git-m1/branche-master-remote-01.jpg"></p>
                     <aside class="notes">
                         <p></p>
@@ -1139,19 +1183,18 @@ $ git commit
 
                 <section class="flushleft" data-background="#212121">
                     <h2 class="flushright"><strong>On ne peut plus pousser !</strong></h2>
-                    <p>Le type de fusion "fast-forward" n'est plus disponible</p>
+                    <p>Le type de fusion "fast-forward" n'est plus disponible, parce que les 2 historiques ont "divergé" (il y a des nouveaux commits des 2 côtés)</p>
                     <pre><code class="bash" data-trim>
 $ git push
+                    </code></pre>
+                    <pre><code class="bash output" data-trim>
 To https://github.com/dubreuia/conferences.git
  ! [rejected]        gh-pages -&gt gh-pages (non-fast-forward)
-error: failed to push some refs to
-       'https://github.com/dubreuia/conferences.git'
-hint: Updates were rejected because the tip of
-      your current branch is behind
+error: failed to push some refs to 'https://github.com/dubreuia/conferences.git'
+hint: Updates were rejected because the tip of your current branch is behind
 hint: its remote counterpart. Integrate the remote changes (e.g.
 hint: 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in
-      'git push --help' for details.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
                     </code></pre>
                     <aside class="notes">
                         <p></p>
@@ -1162,8 +1205,14 @@ hint: See the 'Note about fast-forwards' in
                     <h2 class="flushright"><strong>D'abord récupérer les données</strong></h2>
                     <p class="oldfragment">Rappel : le <em>pull</em> est un <em>fetch</em> (récupération des données du distant) + <em>merge</em> (fusion d'une branche, soit la branche distante)</p>
                     <pre><code class="bash" data-trim>
-$ git pull # git fetch && git merge origin/master
+$ git pull
+                    </code></pre>
+                    <pre><code class="bash output" data-trim>
 Merge branch 'gh-pages' of https://github.com/dubreuia/conferences into gh-pages
+                    </code></pre>
+                    <p class="oldfragment">Équivalent à :</p>
+                    <pre><code class="bash" data-trim>
+$ git fetch && git merge origin/master
                     </code></pre>
                     <aside class="notes">
                         <p></p>
@@ -1174,9 +1223,9 @@ Merge branch 'gh-pages' of https://github.com/dubreuia/conferences into gh-pages
                     <h2 class="flushright"><strong>Retour à la normale</strong></h2>
                     <pre><code class="bash" data-trim>
 $ git log --graph --oneline
-*   988e120 Merge branch 'gh-pages'
-            of https://github.com/dubreuia/conferences
-            into gh-pages
+                    </code></pre>
+                    <pre><code class="bash output" data-trim>
+*   988e120 Merge branch 'gh-pages' of https://github.com/dubreuia/conferences into gh-pages
 |\
 | * af401f2 Add architecture slide
 * | f9a1aef nouveau commit
@@ -1193,9 +1242,15 @@ $ git log --graph --oneline
                     <p class="oldfragment">Copie les commit du distant avant les commits locaux, utile pour avoir un historique sans "branchement"</p>
                     <p class="oldfragment"><strong>Attention</strong> : fonctionnalité avancée, c'est facile de se planter</p>
                     <pre><code class="bash" data-trim>
-$ git pull --rebase # git fetch && git rebase origin/master
+$ git pull --rebase
+                    </code></pre>
+                    <pre><code class="bash output" data-trim>
 First, rewinding head to replay your work on top of it...
 Applying: nouveau commit
+                    </code></pre>
+                    <p class="oldfragment">Équivalent à :</p>
+                    <pre><code class="bash" data-trim>
+$ git fetch && git rebase origin/master
                     </code></pre>
                     <aside class="notes">
                         <p></p>
@@ -1211,16 +1266,41 @@ Applying: nouveau commit
                     </aside>
                 </section>
 
-                <section class="flushright" data-background="#eeeeee">
-                    <h1 class="indigo700"><strong>Pendant ce temps chez LesFurets.com</strong></h1>
+                <section class="flushleft" data-background="#212121">
+                    <h2 class="flushright"><strong>Les nouvelles commandes</strong></h2>
+                    <p class="oldfragment"><strong>git fetch</strong> : récupérer les commits du server</p>
+                    <p class="oldfragment"><strong>git pull </strong> : récupérer les commits du server et les appliquer</p>
+                    <p class="oldfragment"><strong>git push </strong> : envoyer les commits sur le serveur</p>
                     <aside class="notes">
                         <p></p>
                     </aside>
                 </section>
 
                 <section class="flushleft" data-background="#212121">
-                    <h2 class="flushright"><strong>Fusion en continue de 30 branches</strong></h2>
-                    <p class="oldfragment center image"><img width="75%" src="../img/git-m1/teamcity-octopus-01.jpg"></p>
+                    <h2 class="flushright"><strong>Quelques cheat sheets</strong></h2>
+                    <aside class="notes">
+                        <p></p>
+                    </aside>
+                </section>
+
+                <section class="flushleft" data-background="#212121">
+                    <p class="oldfragment"><a href="http://www.patrickzahnd.ch/">http://www.patrickzahnd.ch/</a></p>
+                    <p class="oldfragment center image"><img width="80%" src="../img/git-m1/git-cheat-sheet-01.png"></p>
+                    <aside class="notes">
+                        <p></p>
+                    </aside>
+                </section>
+
+                <section class="flushleft" data-background="#212121">
+                    <p class="oldfragment"><a href="https://jan-krueger.net/git-cheat-sheet-take-two">https://jan-krueger.net/git-cheat-sheet-take-two</a></p>
+                    <p class="oldfragment center image"><img width="80%" src="../img/git-m1/git-cheat-sheet-02.png"></p>
+                    <aside class="notes">
+                        <p></p>
+                    </aside>
+                </section>
+                <section class="flushleft" data-background="#212121">
+                    <p class="oldfragment"><a href="https://www.git-tower.com/blog/git-cheat-sheet/">https://www.git-tower.com/blog/git-cheat-sheet/</a></p>
+                    <p class="oldfragment center image"><img width="80%" src="../img/git-m1/git-cheat-sheet-03.png"></p>
                     <aside class="notes">
                         <p></p>
                     </aside>
@@ -1228,9 +1308,10 @@ Applying: nouveau commit
 
                 <section class="flushright" data-background="#eeeeee">
                     <h1 class="indigo700"><strong>Références</strong></h1>
-                    <p class="gray800">- Les images de ces slides viennent de <br/> <strong>https://www.git-scm.com/book/fr/v2</strong></p>
-                    <p class="gray800">- Voir aussi le man page en ligne <br/> <strong>https://www.kernel.org/pub/software/scm/git/docs/</strong></p>
-                    <p class="gray800">- Et notre projet open-source git-octopus <br/> <strong>https://github.com/lesfurets/git-octopus</strong></p>
+                    <p class="oldfragment compact gray800">- Ces slides sont sur github <br/> <strong><a style="color:black" href="https://github.com/lesfurets/lesfurets-conferences">https://github.com/lesfurets/lesfurets-conferences</a></strong></p>
+                    <p class="oldfragment compact gray800">- Les images de ces slides viennent de <br/> <strong><a style="color:black" href="https://www.git-scm.com/book/fr/v2">https://www.git-scm.com/book/fr/v2</a></strong></p>
+                    <p class="oldfragment compact gray800">- Voir aussi le man page en ligne <br/> <strong><a style="color:black" href="https://www.kernel.org/pub/software/scm/git/docs/">https://www.kernel.org/pub/software/scm/git/docs/</a></strong></p>
+                    <p class="oldfragment compact gray800">- Et notre projet open-source git-octopus <br/> <strong><a style="color:black" href="https://github.com/lesfurets/git-octopus">https://github.com/lesfurets/git-octopus</a></strong></p>
                     <aside class="notes">
                         <p></p>
                     </aside>

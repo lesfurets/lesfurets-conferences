@@ -349,11 +349,11 @@
 
 .reveal code {
   font-family: monospace;
-  left: calc(-50vmin + 50%);
+  left: calc(-45vw + 50%);
   line-height: 1.25;
   padding: 5px 20px;
   position: relative;
-  width: 100vmin;
+  width: 90vw;
 }
 
 .reveal code.output {
