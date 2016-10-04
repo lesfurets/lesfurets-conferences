@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../bower_components/reveal.js/css/reveal.css">
     <link rel="stylesheet" href="../bower_components/reveal.js/lib/css/zenburn.css">
     <link rel="stylesheet" href="../css/lesfurets-theme.css" id="theme">
+    <link rel="stylesheet" href="../css/git-octopus-theme.css" id="theme">
     <script>
       if( window.location.search.match( /print-pdf/gi ) ) {
         var link = document.createElement( 'link' );
@@ -138,7 +139,7 @@
       </section>
 
       <section class="center" data-background="#222">
-        <p>Avec une code base en <strong class="color-indigo500">trunk based</strong>, toutes les features sont dans le master, ce qui permet de faire du <strong>build automatique</strong>, tous les commits sont <strong>envoyés en production à chaque release</strong>, et nécessite du <strong>feature toggling</strong>.</p>
+        <p>Avec une code base en <strong class="color-indigo400">trunk based</strong>, toutes les features sont dans le master, ce qui permet de faire du <strong>build automatique</strong>, tous les commits sont <strong>envoyés en production à chaque release</strong>, nécessite du <strong>feature toggling</strong> et une <strong>forte maturité sur les tests</strong>.</p>
         <p class="fragment">La migration vers le CD est un "big bang"</p>
         <aside class="notes">
           <p>TODO</p>
@@ -146,7 +147,7 @@
       </section>
 
       <section class="center" data-background="#222">
-        <p>Avec une code base en <strong class="color-indigo500">feature branching</strong>, chaque feature est <strong>sur une branche dédiée</strong>, la production est la <strong>fusion du master et des features</strong>, les développement avancent en <strong>isolation</strong>, et on livre une branche <strong>lorsqu'elle est prête</strong>.</p>
+        <p>Avec une code base en <strong class="color-indigo400">feature branching</strong>, chaque feature est <strong>sur une branche dédiée</strong>, la production est la <strong>fusion du master et des features</strong>, les développement avancent en <strong>isolation</strong>, et on livre une branche <strong>lorsqu'elle est prête</strong>.</p>
         <p class="fragment">On pert l'intégration continue et la gestion des conflits</p>
         <aside class="notes">
           <p>TODO</p>
@@ -161,15 +162,8 @@
       </section>
 
       <section class="center" data-background="#222">
-        <p>TODO github flow ?</p>
-        <p>feature branch + code review</p>
-        <aside class="notes">
-          <p>TODO</p>
-        </aside>
-      </section>
-
-      <section class="center" data-background="#222">
-        <p>Avec une code base en <strong class="color-indigo500">feature branching</strong>, sur laquelle on veut préserver l'IC, comment on fait ?</p>
+        <p>On veut une code base en feature branching (pour sa flexibilité) et on veut faire du continuous delivery (pour sa valeur ajouté), sans perdre de qualité.</p>
+        <p>Autrement dit, comment réconcilier feature branching et continuous delivery ?</p>
         <p class="fragment">On fait du feature branche + <span class="color-indigo500">continuous merge</span>.</p>
         <aside class="notes">
           <p>TODO</p>
@@ -311,15 +305,201 @@ git merge features/*
 
       <section class="flushleft" data-background="#eee">
         <h2 style="color:#1a237e">Conflits</h2>
-        <p style="color:black">Comment les éviter</p>
+        <p style="color:black">TODO</p>
       </section>
 
+      <section class="flushleft" data-background="#d1d2ff">
+        <h3 style="color:#1a237e">Solution 1</h3>
+        <p class="flushright" style="color:black">éviter le conflit au niveau du code</p>
+        <p class="flushright" style="color:black">TODO danger zone</p>
+      </section>
 
       <section class="center" data-background="#222">
-        <p>END</p>
+        <p>L'octopus n'arrive pas à fusionner les branches à cause de features/new</p>
+        <p>TODO</p>
         <aside class="notes">
           <p>TODO</p>
         </aside>
+      </section>
+
+      <section class="center" data-background="#222">
+        <p>Modifier le code de features/new pour éviter le conflit</p>
+        <p>TODO</p>
+        <aside class="notes">
+          <p>TODO</p>
+        </aside>
+      </section>
+
+      <section class="center" data-background="#222">
+        <p>L'octopus passe</p>
+        <p>TODO</p>
+        <aside class="notes">
+          <p>TODO</p>
+        </aside>
+      </section>
+
+      <section class="flushleft" data-background="#d1d2ff">
+        <h3 style="color:#1a237e">Solution 2</h3>
+        <p class="flushright" style="color:black">enlever la branche de l'octopus</p>
+        <p class="flushright" style="color:black">TODO danger zone</p>
+      </section>
+
+      <section class="center" data-background="#222">
+        <p>L'octopus n'arrive pas à fusionner les branches à cause de features/new</p>
+        <p>TODO</p>
+        <aside class="notes">
+          <p>TODO</p>
+        </aside>
+      </section>
+
+      <section class="center" data-background="#222">
+        <p>On utilise le pattern de nommage pour enlever la branche de l'octopus</p>
+        <p>TODO</p>
+        <aside class="notes">
+          <p>TODO</p>
+        </aside>
+      </section>
+
+      <section class="center" data-background="#222">
+        <p>L'octopus passe</p>
+        <p>TODO</p>
+        <aside class="notes">
+          <p>TODO</p>
+        </aside>
+      </section>
+
+      <section class="flushleft" data-background="#d1d2ff">
+        <h3 style="color:#1a237e">Solution 3</h3>
+        <p class="flushright" style="color:black">fusionner la branche</p>
+        <p class="flushright" style="color:black">TODO danger zone</p>
+      </section>
+
+      <section class="center" data-background="#222">
+        <p>L'octopus n'arrive pas à fusionner les branches à cause de features/new</p>
+        <p>TODO</p>
+        <aside class="notes">
+          <p>TODO</p>
+        </aside>
+      </section>
+
+      <section class="center" data-background="#222">
+        <p>On fusionne les 2 branches features/f2 et features/new ensemble en feature/f2_new</p>
+        <p>TODO</p>
+        <aside class="notes">
+          <p>TODO</p>
+        </aside>
+      </section>
+
+      <section class="center" data-background="#222">
+        <p>On supprime les 2 anciennes branches features/f2 et features/new</p>
+        <p>TODO</p>
+        <aside class="notes">
+          <p>TODO</p>
+        </aside>
+      </section>
+
+      <section class="center" data-background="#222">
+        <p>L'octopus passe</p>
+        <p>TODO</p>
+        <aside class="notes">
+          <p>TODO</p>
+        </aside>
+      </section>
+
+      <section class="flushleft" data-background="#d1d2ff">
+        <h3 style="color:#1a237e">Solution 4</h3>
+        <p class="flushright" style="color:black">rebase la branche</p>
+        <p class="flushright" style="color:black">TODO danger zone</p>
+      </section>
+
+      <section class="center" data-background="#222">
+        <p>L'octopus n'arrive pas à fusionner les branches à cause de features/new</p>
+        <p>TODO</p>
+        <aside class="notes">
+          <p>TODO</p>
+        </aside>
+      </section>
+
+      <section class="center" data-background="#222">
+        <p>On rebase features/new sur features/f2</p>
+        <p>TODO</p>
+        <aside class="notes">
+          <p>TODO</p>
+        </aside>
+      </section>
+
+      <section class="center" data-background="#222">
+        <p>L'octopus passe</p>
+        <p>TODO</p>
+        <aside class="notes">
+          <p>TODO</p>
+        </aside>
+      </section>
+
+      <section class="flushleft" data-background="#d1d2ff">
+        <h3 style="color:#1a237e">Solution 5</h3>
+        <p class="flushright" style="color:black">git-conflict</p>
+        <p class="flushright" style="color:black">TODO danger zone</p>
+      </section>
+
+      <section class="center" data-background="#222">
+        <p>L'octopus n'arrive pas à fusionner les branches à cause de features/new</p>
+        <p>TODO</p>
+        <aside class="notes">
+          <p>TODO</p>
+        </aside>
+      </section>
+
+      <section class="center" data-background="#222">
+        <p>Un dépôt de résolution de conflit est situé sous conflict/resolutions</p>
+        <p>TODO</p>
+        <aside class="notes">
+          <p>TODO</p>
+        </aside>
+      </section>
+
+      <section class="center" data-background="#222">
+        <p>La fusion ne fonctionne pas</p>
+        <p>TODO</p>
+        <aside class="notes">
+          <p>TODO</p>
+        </aside>
+      </section>
+
+      <section class="center" data-background="#222">
+        <p>On vérifie pour le conflit en question s'il y a une résolution de disponible</p>
+        <p>TODO</p>
+        <aside class="notes">
+          <p>TODO</p>
+        </aside>
+      </section>
+
+      <section class="center" data-background="#222">
+        <p>L'octopus passe</p>
+        <p>TODO</p>
+        <aside class="notes">
+          <p>TODO</p>
+        </aside>
+      </section>
+
+      <section class="flushleft" data-background="#d1d2ff">
+        <h3 style="color:#1a237e">Résumé</h3>
+        <p class="flushright" style="color:black">Éviter les conflits</p>
+        <p class="flushright" style="color:black">Utiliser git-conflict</p>
+        <p class="flushright" style="color:black">Enlever la branche de l'octopus</p>
+        <p class="flushright" style="color:black">Fusionner les branches</p>
+      </section>
+
+      <!-- SECTION - DEMO -->
+
+      <section class="flushleft" data-background="#eee">
+        <h2 style="color:#1a237e">Demo</h2>
+      </section>
+
+      <!-- SECTION - WORFLOW LF -->
+
+      <section class="flushleft" data-background="#eee">
+        <h2 style="color:#1a237e">Notre process chez LesFurets</h2>
       </section>
 
       <section class="center" data-background="#222">
@@ -329,58 +509,10 @@ git merge features/*
         </aside>
       </section>
 
-      <section class="center" data-background="#222">
-        <p><code>features/new</code> ne fusionne pas avec <code>features/f2</code></p>
-        <img style="width:75%" src="../img/devops/octopus-merge-features-03.png">
-        <aside class="notes">
-          <p>TODO</p>
-        </aside>
-      </section>
-
-      <section class="center" data-background="#222">
-        <p>Lors de conflit, on a plusieurs solutions de différentes natures :</p>
-        <p class="color-gray500">On peut <span class="color-indigo500">enlever la branche</span> (le plus simple), on peut <span class="color-indigo500">éviter le conflit</span> (souvent la solution préférée), on peut utiliser <span class="color-indigo500">git-conflict</span> (livré avec git-octopus) ou on peut <span class="color-deeporange700">fusionner / rebaser les branches en conflit</span> (danger zone).</p>
-        <aside class="notes">
-          <p>TODO</p>
-        </aside>
-      </section>
-
-      <section class="center" data-background="#222">
-        <p><strong>git-conflict</strong> (livré avec git-octopus)<br/> est un gestionnaire de conflit reproductible distribué (cool !)</p>
-        <img style="width:75%" src="../img/devops/octopus-merge-features-04.png">
-        <aside class="notes">
-          <p>TODO</p>
-        </aside>
-      </section>
-
-      <section class="center" data-background="#222">
-        <img style="width:100%;" src="../img/devops/octopus-merge-features-05.png">
-        <aside class="notes">
-          <p>TODO</p>
-        </aside>
-      </section>
-
-      <section class="center" data-background="#222">
-        <p class="color-gray400">Les déploiements se font vers plusieurs environnements : <strong>personnel</strong> (la feature courtante), <strong>docker</strong> (une feature en isolé, disponible de l'extérieur), <strong>developpement</strong> (toutes les features), <strong>staging / dog fooding</strong> (validation fonctionnelle), <strong>pre-production</strong> (release de demain) et <strong>production</strong>.</p>
-        <p>On utilise l'octopus pour l'environnement de staging (<span class="color-indigo500">octopus-features</span>) et pour l'environnement de preprod (<span class="color-indigo500">octopus-releases</span>).</p>
-        <aside class="notes">
-          <p>TODO</p>
-        </aside>
-      </section>
-
-      <!-- SECTION - CONCLUSION -->
-
-      <section class="center" data-background="#222">
-        <p class="color-gray400">En résumé : le continuous delivery est atteignable pour une équipe de toute taille.</p>
-        <p>Il faut y arriver pas à pas, en commençant par le <span class="color-indigo500">continuous merge</span>, qu'on peut mettre en place immédiatement sans impact !</p>
-        <aside class="notes">
-          <p>TODO</p>
-        </aside>
-      </section>
+      <!-- SECTION - END -->
 
       <section class="flushright" data-background="../img/live-code-review/blindard-01.jpeg">
         <h3>Ajoutez git-octopus à votre CI dès maintenant...</h3>
-        <h2>FIN</h2>
       </section>
 
       <!-- END -->
