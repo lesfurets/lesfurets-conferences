@@ -10,9 +10,13 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 
 ## Continuous delivery / git octopus
 
-Nous allons faire un tour d'horizon de notre process de mise en production chez LesFurets.com pour comprendre comment nous arrivons à faire du continuous delivery, avec des mises en production tous les jours. Nous allons surtout parler de notre outil "git octopus", qui nous permet de faire du continuous merge, et de détecter en amont les problèmes de merge entre nos branches.
+**Titre** : Continuous merge : réconcilier feature branching et continuous delivery
 
-This presentation tackles the subject of continuous delivery with tangible solutions, that covers code versioning, handling of multiple parallel developments for big teams and deployment of artifacts. We'll show how we do daily delivery without sacrificing quality. The concept of "continuous merge", made possible by the open-source tool git-octopus developed at LesFurets.com, will be presented as the most important part of our continuous delivery process. A live demo of git-octopus and how to handle conflicts between development histories will also be shown.
+**Abstract** : Cette présentation offre des solutions tangibles au continuous delivery, qui couvrent le versionnement du code, la gestion des développements parallèles et le déploiement des artefacts. Ces solutions s'articulent autour du "continuous merge", rendu possible grâce à l'outil open-source "git-octopus" développé chez LesFurets.com. Le continuous merge est une pratique issue de nos 2 années de daily delivery et nous permet de détecter en amont les problèmes de merge entre les branches et de les résoudre rapidement. Cette pratique nous permet de livrer en production tous les jours sans sacrifier de qualité et sans alourdir le processus de développement.
+
+**Title** : Continuous merge : Reconciling feature branching and continuous delivery
+
+**Abstract** : This presentation tackles the subject of continuous delivery with tangible solutions, that covers code versioning, handling of multiple parallel developments and deployment of artifacts. The concept of "continuous merge", made possible by the open-source tool git-octopus developed at LesFurets.com, is the most important part of our continuous delivery process. Continuous merge is a process that emerged from 2 years of daily delivery and enables the early detection of merge problems between branches. It is therefore possible to push to production everyday without sacrificing quality and without adding a burden on our development process.
 
 - 13 octobre 2016 (fr) : [Marseilles JUG - Le continuous delivery chez LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/html/continuous-delivery-marseille-jug-2016.html)
 - 29 juin 2016 (fr) : [Societe Generale - Le continuous delivery chez LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/html/devops-chez-lesfurets-pour-sg.html)
@@ -31,9 +35,7 @@ This presentation tackles the subject of continuous delivery with tangible solut
 
 ## DomainModel.stream()
 
-Pour faire du traitement de données, les listes, tableaux et maps sont les structures de données les plus faciles à manipuler. Malheureusement la plupart des applications sont conçues autour d'un modèle métier.
-
-Chez LesFurets.com nous avons résolu ce problème en développant un KVM (Key Value Mapping). Ce framework est utilisé au cœur de l'application et cohabite avec le modèle métier. Grâce au mapping bidirectionnel de notre modèle métier vers un modèle clé-valeur, les manipulations de données deviennent extrêmement simples à réaliser. La mise en place de ce nouveau paradigme a nécessité un important refactoring de l'application et a permis de l'ouvrir à de nombreux outils actuels (Stream Java 8, RxJava, Spark, Cassandra)
+**Abstract** : Pour faire du traitement de données, les listes, tableaux et maps sont les structures de données les plus faciles à manipuler. Malheureusement la plupart des applications sont conçues autour d'un modèle métier. Chez LesFurets.com nous avons résolu ce problème en développant un KVM (Key Value Mapping). Ce framework est utilisé au cœur de l'application et cohabite avec le modèle métier. Grâce au mapping bidirectionnel de notre modèle métier vers un modèle clé-valeur, les manipulations de données deviennent extrêmement simples à réaliser. La mise en place de ce nouveau paradigme a nécessité un important refactoring de l'application et a permis de l'ouvrir à de nombreux outils actuels (Stream Java 8, RxJava, Spark, Cassandra)
 
 - 13 octobre 2016 (fr) : Marseille JUG (http://marsjug.org/#reunions)
 - 28 juin 2016 (fr) : Paris JUG (https://www.parisjug.org/xwiki/wiki/oldversion/view/Meeting/20160628)
