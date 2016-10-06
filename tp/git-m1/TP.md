@@ -4,8 +4,8 @@
 
 ### Exercice 1 / Modifications locales
 
-- Ouvrir le fichier "NoteDeVotreTPx.java" qui correspond à votre groupe
-- La méthode portant votre nom donne la note que vous aurez (sur 10)
+- Ouvrir le fichier "GroupeTpX.java" qui correspond à votre groupe de TP
+- La méthode portant votre numero (demandez votre numero) donne la note que vous aurez (sur 10)
 - Modifier la ligne qui vous concerne et donnez vous une note
 - Faire un commit
 - Visualiser votre commit

@@ -59,6 +59,7 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 
 ## Cours
 
+- 7 octobre 2016 (fr) : [Université de Rouen - git (M1) Gestion de version](https://lesfurets.github.io/lesfurets-conferences/html/git-gestion-version-m1.html)
 - 1 décembre 2015 (fr) : [Université de Rouen - git (M1) Gestion de version](https://lesfurets.github.io/lesfurets-conferences/html/git-gestion-version-m1.html)
 - TODO : cours cassandra
 
