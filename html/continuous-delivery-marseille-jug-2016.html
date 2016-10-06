@@ -25,7 +25,7 @@
   </head>
   <body>
     <div id="footer" class="footer show">
-      <a href="https://www.lesfurets.com" target="_blank"><img class="logo" src="../img/logo_lesfurets_885x128_no_back.png"></a><a class ="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a><a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a> - - - - - <a class ="github" href="https://github.com/dubreuia" target="_blank">https://github.com/dubreuia</a><a class="twitter" href="https://twitter.com/dubreuia" target="_blank">@dubreuia</a>
+      <a href="https://www.lesfurets.com" target="_blank"><img class="logo" src="../img/logo_lesfurets_885x128_no_back.png"></a><a class ="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a><a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a><a class ="github" href="https://github.com/dubreuia" target="_blank">https://github.com/dubreuia</a><a class="twitter" href="https://twitter.com/dubreuia" target="_blank">@dubreuia</a>
     </div>
     <div class="reveal">
       <div class="slides">
@@ -132,7 +132,7 @@
       </section>
 
       <section class="center" data-background="#222">
-        <p>TODO parler de CI pure / pas pure </p>
+        <p>Historiquement, Martin Fowler, Jez Humble et d'autre enthousiaste de CD étaient contre le feature branching.</p>
         <aside class="notes">
           <p>TODO</p>
         </aside>
@@ -140,7 +140,7 @@
 
       <section class="center" data-background="#222">
         <p>Avec une code base en <strong class="color-indigo400">trunk based</strong>, toutes les features sont dans le master, ce qui permet de faire du <strong>build automatique</strong>, tous les commits sont <strong>envoyés en production à chaque release</strong>, nécessite du <strong>feature toggling</strong> et une <strong>forte maturité sur les tests</strong>.</p>
-        <p class="fragment">La migration vers le CD est un "big bang"</p>
+        <p class="fragment larger">La migration vers le continuous delivery est risqué</p>
         <aside class="notes">
           <p>TODO</p>
         </aside>
@@ -148,7 +148,7 @@
 
       <section class="center" data-background="#222">
         <p>Avec une code base en <strong class="color-indigo400">feature branching</strong>, chaque feature est <strong>sur une branche dédiée</strong>, la production est la <strong>fusion du master et des features</strong>, les développement avancent en <strong>isolation</strong>, et on livre une branche <strong>lorsqu'elle est prête</strong>.</p>
-        <p class="fragment">On pert l'intégration continue et la gestion des conflits</p>
+        <p class="fragment larger">On pert l'intégration continue et la gestion des conflits</p>
         <aside class="notes">
           <p>TODO</p>
         </aside>
@@ -164,7 +164,7 @@
       <section class="center" data-background="#222">
         <p>On veut une code base en feature branching (pour sa flexibilité) et on veut faire du continuous delivery (pour sa valeur ajouté), sans perdre de qualité.</p>
         <p>Autrement dit, comment réconcilier feature branching et continuous delivery ?</p>
-        <p class="fragment">On fait du feature branche + <span class="color-indigo500">continuous merge</span>.</p>
+        <p class="fragment larger">On fait du feature branche + <span class="color-indigo500">continuous merge</span>.</p>
         <aside class="notes">
           <p>TODO</p>
         </aside>
@@ -214,6 +214,7 @@
 
       <section class="flushleft" data-background="#eee">
         <h2 style="color:#1a237e">Continuous merge <img style="width:5%;vertical-align:middle;border:none;background:none;" src="../img/coeur.png"></h2>
+        <p style="color:black">Le continuous merge est un process au coeur de notre capacité à faire du CD</p>
       </section>
 
       <section class="center" data-background="#222">
@@ -308,10 +309,10 @@ git merge features/*
         <p style="color:black">TODO</p>
       </section>
 
-      <section class="flushleft" data-background="#d1d2ff">
-        <h3 style="color:#1a237e">Solution 1</h3>
-        <p class="flushright" style="color:black">éviter le conflit au niveau du code</p>
-        <p class="flushright" style="color:black">TODO danger zone</p>
+      <section class="flushleft" data-background="#3335a2">
+        <h3 style="color:white">Solution 1</h3>
+        <p class="flushright" style="color:white">éviter le conflit au niveau du code</p>
+        <p class="flushright" style="color:white">TODO danger zone</p>
       </section>
 
       <section class="center" data-background="#222">
@@ -548,7 +549,6 @@ git merge features/*
         ]
       });
     </script>
-    <script src="js/lesfurets-theme.js" async></script>
-    <script src="js/lesfurets-codereview-theme.js" async></script>
+    <script src="../js/lesfurets-theme.js" async></script>
   </body>
 </html>
