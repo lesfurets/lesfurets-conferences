@@ -1,67 +1,83 @@
 public class VotreNoteDeTP3 {
 
-    public int noteEtudiant1() {
+    public int saïd_oulguendouz() {
         return 0;
     }
 
-    public int noteEtudiant2() {
+    public int khaled_islam() {
         return 0;
     }
 
-    public int noteEtudiant3() {
+    public int jordan() {
         return 0;
     }
 
-    public int noteEtudiant4() {
+    public int mohand-said() {
         return 0;
     }
 
-    public int noteEtudiant5() {
+    public int sami() {
         return 0;
     }
 
-    public int noteEtudiant6() {
+    public int arthur() {
         return 0;
     }
 
-    public int noteEtudiant7() {
+    public int franck-junior() {
         return 0;
     }
 
-    public int noteEtudiant8() {
+    public int pierre() {
         return 0;
     }
 
-    public int noteEtudiant9() {
+    public int thinhinane() {
         return 0;
     }
 
-    public int noteEtudiant10() {
+    public int mohammed() {
         return 0;
     }
 
-    public int noteEtudiant11() {
+    public int islam() {
         return 0;
     }
 
-    public int noteEtudiant12() {
+    public int nicolas() {
         return 0;
     }
 
-    public int noteEtudiant13() {
+    public int clément() {
         return 0;
     }
 
-    public int noteEtudiant14() {
+    public int hajer() {
         return 0;
     }
 
-    public int noteEtudiant15() {
+    public int yacine() {
+        return 0;
+    }
+
+    public int françois() {
+        return 0;
+    }
+
+    public int camille() {
+        return 0;
+    }
+
+    public int emilien() {
+        return 0;
+    }
+
+    public int romain() {
         return 0;
     }
 
     public double noteMoyenne() {
-      return etudiant1() + etudiant2() + etudiant3() + etudiant4() + etudiant5() + etudiant6() + etudiant7() + etudiant8() + etudiant9() + etudiant10() + etudiant11() + etudiant12() + etudiant13() + etudiant14() + etudiant15();
+        return saïd_oulguendouz() + khaled_islam() + jordan() + mohand-said() + sami() + arthur() + franck-junior() + pierre() + thinhinane() + mohammed() + islam() + nicolas() + clément() + hajer() + yacine() + françois() + camille() + emilien() + romain();
     }
 
 }
