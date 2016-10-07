@@ -64,6 +64,31 @@ Commandes utiles : svn checkout, svn add, svn commit, svn update
 - git commit + git push = svn commit
 - git pull = svn update
 
+## Installation serveur git
+
+Comme exercice facultatif, installer un serveur git pour partager du contenu.
+
+- Installer sshd sur le serveur (normalement pré-installé)
+- Installer git sur le serveur
+- Initialiser un dépôt vide sur le serveur
+```bash
+    mkdir -p /var/depot
+    cd /var/depot
+    git init --bare m1
+```
+- Récupérer ce dépôt sur la même machine afin de tester
+```bash
+    cd ~
+    git clone /var/depot/m1
+    cd m1
+```
+- Récupérer ce dépôt à partir d'une autre machine, le USER est votre login / mdp sur cette machine, et IP est l'IP de la machine (doit être accessible).
+```bash
+    cd ~
+    git clone USER@IP:/var/depot/m1
+    cd m1
+```
+
 ## Cheat sheets
 
 ![http://www.patrickzahnd.ch/](../../img/git-m1/git-cheat-sheet-01.png "http://www.patrickzahnd.ch/")
