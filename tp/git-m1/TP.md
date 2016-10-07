@@ -14,9 +14,6 @@ Commandes utiles : git add, git commit, git log
 
 ### Exercice 2 / Modifications distantes
 
-Faire un clone du dépôt pour votre TP (voir au tableau pour l'URL)
-
-- Ajouter le fichier de nouveau, faire un commit sans modifier le fichier
 - Faire un push de votre commit
 - Qu'est-ce qui se passe ?
 
