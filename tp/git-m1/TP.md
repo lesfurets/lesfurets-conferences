@@ -1,4 +1,4 @@
-# TP - git / SVN - M1
+# TP - git et svn - M1
 
 ## git
 
