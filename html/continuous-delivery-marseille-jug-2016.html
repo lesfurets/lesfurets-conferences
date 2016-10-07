@@ -131,12 +131,14 @@
         <h2 style="color:#1a237e">Source code management</h2>
       </section>
 
+      <!--
       <section class="center" data-background="#222">
-        <p>Historiquement, Martin Fowler, Jez Humble et d'autre enthousiaste de CD étaient contre le feature branching.</p>
+        <p>Historiquement, Martin Fowler, Jez Humble et la communautée continuous delivery étaient contre le feature branching.</p>
         <aside class="notes">
           <p>TODO</p>
         </aside>
       </section>
+      -->
 
       <section class="center" data-background="#222">
         <p>Avec une code base en <strong class="color-indigo400">trunk based</strong>, toutes les features sont dans le master, ce qui permet de faire du <strong>build automatique</strong>, tous les commits sont <strong>envoyés en production à chaque release</strong>, nécessite du <strong>feature toggling</strong> et une <strong>forte maturité sur les tests</strong>.</p>
@@ -214,7 +216,7 @@
 
       <section class="flushleft" data-background="#eee">
         <h2 style="color:#1a237e">Continuous merge <img style="width:5%;vertical-align:middle;border:none;background:none;" src="../img/coeur.png"></h2>
-        <p style="color:black">Le continuous merge est un process au coeur de notre capacité à faire du CD</p>
+        <p style="color:black">Le continuous merge est un process au coeur de notre capacité à faire du continuous delivery</p>
       </section>
 
       <section class="center" data-background="#222">
@@ -242,7 +244,7 @@
       </section>
 
       <section class="center" data-background="#222">
-        <p>Le merge de plusieurs branches avec git :</p>
+        <p>Le merge de plusieurs branches avec pattern :</p>
         <pre><code class="code java" data-trim data-noescape>
 git merge features/*
         </code></pre>
@@ -306,13 +308,13 @@ git merge features/*
 
       <section class="flushleft" data-background="#eee">
         <h2 style="color:#1a237e">Conflits</h2>
-        <p style="color:black">TODO</p>
+        <p style="color:black">L'utilisation de git-octopus dans l'intégration continue permet de détecter les conflits très tôt</p>
       </section>
 
       <section class="flushleft" data-background="#3335a2">
         <h3 style="color:white">Solution 1</h3>
-        <p class="flushright" style="color:white">éviter le conflit au niveau du code</p>
-        <p class="flushright" style="color:white">TODO danger zone</p>
+        <p class="flushleft" style="color:white">éviter le conflit au niveau du code</p>
+        <p class="flushright" style="color:white">DANGER ZONE : <span class="dangerzone safe">safe</span></p>
       </section>
 
       <section class="center" data-background="#222">
@@ -339,10 +341,10 @@ git merge features/*
         </aside>
       </section>
 
-      <section class="flushleft" data-background="#d1d2ff">
-        <h3 style="color:#1a237e">Solution 2</h3>
-        <p class="flushright" style="color:black">enlever la branche de l'octopus</p>
-        <p class="flushright" style="color:black">TODO danger zone</p>
+      <section class="flushleft" data-background="#3335a2">
+        <h3 style="color:white">Solution 2</h3>
+        <p class="flushleft" style="color:white">enlever la branche de l'octopus</p>
+        <p class="flushright" style="color:white">DANGER ZONE : <span class="dangerzone safe">safe</span></p>
       </section>
 
       <section class="center" data-background="#222">
@@ -369,10 +371,10 @@ git merge features/*
         </aside>
       </section>
 
-      <section class="flushleft" data-background="#d1d2ff">
-        <h3 style="color:#1a237e">Solution 3</h3>
-        <p class="flushright" style="color:black">fusionner la branche</p>
-        <p class="flushright" style="color:black">TODO danger zone</p>
+      <section class="flushleft" data-background="#3335a2">
+        <h3 style="color:white">Solution 3</h3>
+        <p class="flushleft" style="color:white">fusionner la branche</p>
+        <p class="flushright" style="color:white">DANGER ZONE : <span class="dangerzone danger">danger</span></p>
       </section>
 
       <section class="center" data-background="#222">
@@ -407,10 +409,10 @@ git merge features/*
         </aside>
       </section>
 
-      <section class="flushleft" data-background="#d1d2ff">
-        <h3 style="color:#1a237e">Solution 4</h3>
-        <p class="flushright" style="color:black">rebase la branche</p>
-        <p class="flushright" style="color:black">TODO danger zone</p>
+      <section class="flushleft" data-background="#3335a2">
+        <h3 style="color:white">Solution 4</h3>
+        <p class="flushleft" style="color:white">rebase la branche</p>
+        <p class="flushright" style="color:white">DANGER ZONE : <span class="dangerzone danger">danger</span></p>
       </section>
 
       <section class="center" data-background="#222">
@@ -437,10 +439,10 @@ git merge features/*
         </aside>
       </section>
 
-      <section class="flushleft" data-background="#d1d2ff">
-        <h3 style="color:#1a237e">Solution 5</h3>
-        <p class="flushright" style="color:black">git-conflict</p>
-        <p class="flushright" style="color:black">TODO danger zone</p>
+      <section class="flushleft" data-background="#3335a2">
+        <h3 style="color:white">Solution 5</h3>
+        <p class="flushleft" style="color:white">git-conflict TODO STAR ICON <span class="color-gray400">(résolution de conflit distribué, livré avec git-octopus)</span></p>
+        <p class="flushright" style="color:white">DANGER ZONE : <span class="dangerzone safe">safe</span></p>
       </section>
 
       <section class="center" data-background="#222">
@@ -483,18 +485,12 @@ git merge features/*
         </aside>
       </section>
 
-      <section class="flushleft" data-background="#d1d2ff">
-        <h3 style="color:#1a237e">Résumé</h3>
-        <p class="flushright" style="color:black">Éviter les conflits</p>
-        <p class="flushright" style="color:black">Utiliser git-conflict</p>
-        <p class="flushright" style="color:black">Enlever la branche de l'octopus</p>
-        <p class="flushright" style="color:black">Fusionner les branches</p>
-      </section>
-
-      <!-- SECTION - DEMO -->
-
-      <section class="flushleft" data-background="#eee">
-        <h2 style="color:#1a237e">Demo</h2>
+      <section class="flushleft" data-background="#3335a2">
+        <h3 style="color:white">Donc, en cas de conflit</h3>
+        <p class="flushleft" style="color:white">(1) éviter les conflits</p>
+        <p class="flushleft" style="color:white">(2) enlever la branche de l'octopus</p>
+        <p class="flushleft" style="color:white">(3) utiliser git-conflict</p>
+        <p class="flushleft" style="color:white">(4) fusionner / rebase les branches</p>
       </section>
 
       <!-- SECTION - WORFLOW LF -->
@@ -504,19 +500,31 @@ git merge features/*
       </section>
 
       <section class="center" data-background="#222">
-        <img style="width: 100%" src="../img/devops/octopus-merge-features-02.png">
+        <img style="width:125%;margin-left:-10vw" src="../img/devops/octopus-merge-features-02.png">
         <aside class="notes">
           <p>TODO</p>
         </aside>
       </section>
 
+      <!-- SECTION - DEMO -->
+
+      <section class="flushleft" data-background="#eee">
+        <h2 style="color:#1a237e">Demo</h2>
+      </section>
+
       <!-- SECTION - END -->
 
       <section class="flushright" data-background="../img/live-code-review/blindard-01.jpeg">
-        <h3>Ajoutez git-octopus à votre CI dès maintenant...</h3>
+        <h3>"Ajoutez git-octopus à votre CI dès maintenant"</h3>
       </section>
 
-      <!-- END -->
+      <!-- SECTION - CONTRIBUTION -->
+
+      <section class="flushleft" data-background="#eee">
+        <h2 style="color:#1a237e">Page utilisateur</h2>
+        <p class="flushright" style="color:black">- TODO lien vers google-groups</p>
+        <p class="flushright" style="color:black">- TODO lien vers git-octopus</p>
+      </section>
       </div>
     </div>
     <script src="../bower_components/reveal.js/lib/js/head.min.js"></script>

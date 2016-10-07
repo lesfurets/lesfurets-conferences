@@ -1,31 +1,50 @@
 .reveal p {
-  color: #bdbdbd;
+    color: #bdbdbd;
 }
 
 .reveal p.fragment {
-  color: #fafafa;
+    color: #fafafa;
 }
 
 .reveal strong {
-  color: #e0e0e0;
+    color: #e0e0e0;
 }
 
 .reveal p.smaller {
-  font-size: 50%;
+    font-size: 50%;
 }
 
 .reveal p.small {
-  font-size: 75%;
+    font-size: 75%;
 }
 
 .reveal p.normal {
-  font-size: 100%;
+    font-size: 100%;
 }
 
 .reveal p.large {
-  font-size: 125%;
+    font-size: 125%;
 }
 
 .reveal p.larger {
-  font-size: 150%;
+    font-size: 150%;
+}
+
+.reveal .dangerzone {
+    background-color: white;
+    border-radius: 200px;
+    display: inline-block;
+    font-weight: bold;
+    height: 100px;
+    padding-top: 50px;
+    text-align: center;
+    width: 150px;
+}
+
+.reveal .dangerzone.safe {
+    color: green;
+}
+
+.reveal .dangerzone.danger {
+    color: red;
 }
