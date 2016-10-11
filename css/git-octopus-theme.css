@@ -54,3 +54,18 @@
     color: red;
 }
 
+.reveal span.ko {
+    color: red;
+    font-weight: bold;
+}
+
+.reveal span.ok {
+    color: green;
+    font-weight: bold;
+}
+
+.reveal code {
+    background-color: #424242;
+    padding: 0 5px;
+}
+

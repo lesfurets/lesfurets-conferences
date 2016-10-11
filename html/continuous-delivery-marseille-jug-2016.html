@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -60,7 +60,7 @@
       <!-- SECTION - DELIVERY -->
 
       <section class="center" data-background="#222">
-        <p>Notre équipe est constitué de <strong>25 développeurs</strong> séparé en 3 sous-équipes.</p>
+        <p>L'équipe IT est constitué de <strong>25 développeurs</strong>, séparés en 3 features team.</p>
         <p class="color-gray400">Les développeurs ont des responsabilités devops, telles que la livraison en production, la gestion de la configuration des environnements, le monitoring, etc.</p>
       </section>
 
@@ -72,43 +72,60 @@
       <section class="flushleft" data-background="#222">
         <p>Notre évolution du delivery en transformation vers du <strong>continuous delivery</strong></p>
         <ul class="color-gray400">
-        <li class="color-gray400"><strong>2012</strong> : <span class="color-indigo500">12 releases</span> en sprint scrum mensuel <span class="color-gray">(build 15 minutes et selenium 1 heure)</span></li>
-        <li class="color-gray400"><strong>2013</strong> : <span class="color-indigo500">45 releases</span> en sprint scrum hebdo <span class="color-gray">(build 3 minutes, release 1 jour)</span></li>
-        <li class="color-gray400"><strong>2014-2016</strong> : <span class="color-indigo500">300+ releases</span> par ans, en kanban daily delivery <span class="color-gray">(release 2 heures)</span></li>
-        <li class="color-gray400"><strong>2017 ?</strong> : one feature release et partial release</li>
+        <li class="color-gray400"><strong>2012</strong> : <span class="color-indigo300">12 releases</span> en sprint scrum mensuel <span class="color-gray">(build 15 minutes et selenium 1 heure)</span></li>
+        <li class="color-gray400"><strong>2013</strong> : <span class="color-indigo300">45 releases</span> en sprint scrum hebdo <span class="color-gray">(build 3 minutes, release 1 jour)</span></li>
+        <li class="color-gray400"><strong>2014-2016</strong> : <span class="color-indigo300">300+ releases</span> par an, en kanban daily delivery <span class="color-gray">(release 2 heures)</span></li>
+        <li class="color-gray400"><strong>2017 +</strong> : one feature release et partial release</li>
         </ul>
       </section>
 
+      <!-- SECTION - EXIGENCES -->
+
+      <section class="flushleft" data-background="#eee">
+        <h2 style="color:#1a237e">Exigences</h2>
+        <p style="color:black">Pour passer en daily delivery, on a besoin de certains éléments préalables</p>
+      </section>
+
       <section class="center" data-background="#222">
-        <p>On a besoin de certains éléments préalables</p>
-        <p class="color-gray400">Un code correctement <strong class="color-gray50">segmenté</strong> (avec des parties indépendantes), une bonne <strong class="color-gray50">couverture de test</strong>, des <strong class="color-gray50">features indépendantes</strong> (donc des branches indépendantes) et une chaine de <strong class="color-gray50">build rapide et automatique</strong> (y compris le déploiement).</p>
+        <p class="color-gray400">Un code correctement <strong class="color-gray50">segmenté</strong> (avec des parties indépendantes), <span class="fragment">une bonne <strong class="color-gray50">couverture de test</strong>, </span><span class="fragment">des <strong class="color-gray50">features indépendantes</strong> (donc des branches indépendantes), </span><span class="fragment">un bon système de <strong class="color-gray50">monitoring</strong> <span class="fragment">et une chaine de <strong class="color-gray50">build rapide et automatique</strong> (y compris le déploiement).</span></p>
       </section>
 
       <section class="center" data-background="#222">
         <p class="color-gray400">Normalement, nos 200 tests selenium prendraient <strong>6 heures</strong>. Avec un grid selenium classique, on arrive à <strong>1 heure</strong></p>
-        <p>Avec un grid selenium en RAMFS ? <strong class="color-indigo500">10 minutes</strong></p>
-        <p>LesFurets <strong>selenium grid</strong> : <br/><a href="https://github.com/lesfurets/selenium-lxc">https://github.com/lesfurets/selenium-lxc</a></p>
+        <p class="fragment">Avec un grid selenium en RAMFS ? <strong class="color-indigo300">10 minutes</strong></p>
+        <p class="fragment">LesFurets <strong>selenium grid</strong> : <br/><a href="https://github.com/lesfurets/selenium-lxc">https://github.com/lesfurets/selenium-lxc</a></p>
       </section>
 
-      <section class="center" data-background="#222">
-        <p>TODO graylog datadog tessera</p>
-        <img src="../img/devops/deployment-blue-green-01.png">
+      <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+        <p>Gestionnaire de logs : <strong class="color-deeporange300">Graylog</strong></p>
+        <img style="width: 100%;" src="../img/monitoring-graylog.png">
       </section>
 
-      <section class="center" data-background="#222">
-        <p>En plus du monitoring technique et métier, on a besoin d'un monitoring UI, LesFurets <strong>Zeno pixel</strong> : <br/><a href="https://github.com/lesfurets/zeno-pixel">https://github.com/lesfurets/zeno-pixel</a></p>
+      <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+        <p>Monitoring technique : <strong class="color-deeporange300">Datadog</strong></p>
+        <img style="width: 100%;" src="../img/monitoring-datadog.png">
+      </section>
+
+      <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+        <p>Monitoring fonctionnel : <strong class="color-deeporange300">Graphite et Tessera</strong></p>
+        <img style="width: 100%;" src="../img/monitoring-graphite-tessera.png">
+      </section>
+
+      <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+        <p>Monitoring graphique UI : LesFurets <strong class="color-deeporange300">Zeno pixel</strong> <br/><a href="https://github.com/lesfurets/zeno-pixel">https://github.com/lesfurets/zeno-pixel</a></p>
         <img style="width: 100%;" src="../img/devops/zeno-pixel-01.png">
       </section>
 
       <section class="center" data-background="#222">
-        <p>Déploiement blue / green, <span class="color-indigo500">0 downtime</span>, avec HAProxy</p>
+        <p>Déploiement blue / green, <span class="color-indigo300">0 downtime</span>, avec <strong class="color-deeporange300">HAProxy</strong></p>
         <img src="../img/devops/deployment-blue-green-01.png">
       </section>
 
       <!-- SECTION - SOURCE CODE -->
 
       <section class="flushleft" data-background="#eee">
-        <h2 style="color:#1a237e">Source code management</h2>
+        <h2 style="color:#1a237e">Gestion de code source</h2>
+        <p style="color:black">La manière de gérer son code source est important pour le delivery</p>
       </section>
 
       <!--
@@ -118,14 +135,19 @@
       -->
 
       <section class="center" data-background="#222">
-        <p>Avec une code base en <strong class="color-indigo400">trunk based</strong>, toutes les features sont dans le master, ce qui permet de faire du <strong>build automatique</strong> et tous les commits sont <strong>envoyés en production à chaque release</strong></p>
-        <p>Nécessite du <strong>feature toggling</strong> et une <strong>forte maturité sur les tests</strong>.</p>
-        <p class="fragment large color-deeporange300"><strong>La migration vers le continuous delivery est risquée</strong></p>
+        <img src="../img/integration-continue-facebook.png">
+        <p>http://paulhammant.com/2013/03/13/facebook-tbd-take-2/</p>
       </section>
 
       <section class="center" data-background="#222">
-        <p>Avec une code base en <strong class="color-indigo400">feature branching</strong>, chaque feature est <strong>sur une branche dédiée</strong>, la production est la <strong>fusion du master et des features</strong>, les développement avancent en <strong>isolation</strong>, et on livre une branche <strong>lorsqu'elle est prête</strong>.</p>
-        <p class="fragment large color-deeporange300"><strong>On pert l'intégration continue et la gestion des conflits</strong></p>
+        <p class="color-gray400">Avec une code base en <strong class="color-indigo300">trunk based</strong> (<strong class="color-gray50">option 1</strong>), toutes les features sont dans le master, <span class="fragment">ce qui permet de faire du <strong class="color-gray50">build automatique</strong></span> <span class="fragment">et tous les commits sont <strong class="color-gray50">envoyés en production à chaque release</strong></span></p>
+        <p class="fragment color-gray400">Nécessite du <strong class="color-gray50">feature toggling</strong> et une <strong class="color-gray50">forte maturité sur les tests</strong>.</p>
+        <p class="fragment large color-deeporange300"><strong>La migration vers le continuous delivery est un "big bang"</strong></p>
+      </section>
+
+      <section class="center" data-background="#222">
+        <p class="color-gray400">Avec une code base en <strong class="color-indigo300">feature branching</strong> (<strong class="color-gray50">option 2</strong>), chaque feature est <strong class="color-gray50">sur une branche dédiée</strong>, <span class="fragment">la production est la <strong class="color-gray50">fusion du master et des features</strong>, </span><span class="fragment">les développements avancent en <strong class="color-gray50">isolation</strong>, </span><span class="fragment">et on livre une branche <strong class="color-gray50">lorsqu'elle est prête</strong>.<span></p>
+        <p class="fragment large color-deeporange300"><strong>On perd l'intégration continue et la gestion des conflits</strong></p>
       </section>
 
       <section class="center" data-background="#222">
@@ -133,9 +155,9 @@
       </section>
 
       <section class="center" data-background="#222">
-        <p>On veut une code base en <strong class="color-indigo500">feature branching</strong> (pour sa flexibilité) et on veut faire du <strong class="color-indigo500">continuous delivery</strong> (pour sa valeur ajouté), sans perdre de qualité.</p>
-        <p>Autrement dit, comment réconcilier feature branching et continuous delivery ?</p>
-        <p class="fragment large color-deeporange300"><strong>On fait du feature branche + continuous merge !</strong></p>
+        <p>On veut une code base en <strong class="color-indigo300">feature branching</strong> (pour sa flexibilité) et on veut faire du <strong class="color-indigo300">continuous delivery</strong> (pour sa valeur ajouté), sans perdre l'<strong class="color-indigo300">intégration continue</strong>.</p>
+        <p class="fragment">Autrement dit, comment réconcilier feature branching et intégration continue ?</p>
+        <p class="fragment large color-deeporange300"><strong>On fait du continuous merge !</strong></p>
       </section>
 
           <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
@@ -166,10 +188,17 @@
 
           <!-- SECTION - CONTINUOUS MERGE -->
 
-      <section class="flushleft" data-background="#eee">
-        <h2 style="color:#1a237e">Continuous merge <img class="nostyle" style="width:5%;vertical-align:middle;border:none;background:none;" src="../img/coeur.png"></h2>
-        <p style="color:black">Le continuous merge est un process au coeur de notre capacité à faire du continuous delivery</p>
-      </section>
+          <section class="flushleft" data-background="#eee">
+              <h2 style="color:#1a237e">Continuous merge <img class="nostyle" style="width:5%;vertical-align:middle;border:none;background:none;" src="../img/coeur.png"></h2>
+              <p style="color:black">Le continuous merge nous permet de récupérer un environnement commun pour l'intégration continue</p>
+          </section>
+
+          <section class="flushleft" data-background="#222">
+              <p class="">En plus de récupérer l'intégration continue, on constitue facilement les environnements :</p>
+              <p class="">- <strong class="color-indigo300">dev</strong> avec toutes les features</p>
+              <p class="">- <strong class="color-indigo300">stage</strong> pour la validation</p>
+              <p class="">- <strong class="color-indigo300">preprod</strong> pour les tickets validés</p>
+          </section>
 
           <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
               <!--<p>Continuous merge <br><span>on sait fusioner ponctuellement 2 historiques</span></p>-->
@@ -179,7 +208,7 @@
 
           <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
               <img class="nostyle" src="../img/octopus-diagrams/continuous_merge_2.svg" />
-              <p class="flushleft svg-header small"><strong>continuous merge</strong> : une des branches avance</p>
+              <p class="flushleft svg-header small"><strong>continuous merge</strong> : nouveau commit sur <code>features/f1</code></p>
           </section>
 
           <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
@@ -188,13 +217,13 @@
           </section>
 
           <section class="center" data-background="#222">
-              <p>Le merge de plusieurs branches avec pattern :</p>
-              <pre><code class="code java" data-trim data-noescape>
+              <pre class=""><code class="code bash" data-trim data-noescape>
+# On aimerait faire :
 git merge features/*
               </code></pre>
-              <p class="color-gray400">...n'existe pas, donc on l'a créé</p>
-              <p>LesFurets <strong>git-octopus</strong> : <br/><a href="https://github.com/lesfurets/git-octopus">https://github.com/lesfurets/git-octopus</a></p>
-              <p class="color-gray400">Mais que se passe-t'il lorsqu'il y a des conflits ?</p>
+              <p class="">Mais le merge de plusieurs branches à partir d'un pattern n'existe pas dans git...</p>
+              <p class="fragment"><strong>LesFurets git-octopus</strong> : <br/><a href="https://github.com/lesfurets/git-octopus">https://github.com/lesfurets/git-octopus</a></p>
+              <p class="fragment large"><strong class="color-deeporange300">Et comment gérer les conflits ?</strong></p>
       </section>
 
           <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
@@ -209,22 +238,22 @@ git merge features/*
 
           <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
               <img class="nostyle" src="../img/octopus-diagrams/octopus_3.svg" />
-              <p class="flushleft svg-header small"><strong>gestion des conflits</strong> : git-octopus merge <span style="color:red">KO</span> TODO WRONG GRAPH</p>
+              <p class="flushleft svg-header small"><strong>gestion des conflits</strong> : git-octopus merge <span class="ko">KO</span> TODO WRONG GRAPH</p>
           </section>
 
           <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
               <img class="nostyle" src="../img/octopus-diagrams/octopus_4.svg" />
-              <p class="flushleft svg-header small"><strong>gestion des conflits</strong> : git-octopus merge <code>master</code> et <code>features/new</code> <span style="color:green">OK</span></p>
+              <p class="flushleft svg-header small"><strong>gestion des conflits</strong> : git-octopus merge <code>master</code> et <code>features/new</code> <span class="ok">OK</span></p>
           </section>
 
           <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
               <img class="nostyle" src="../img/octopus-diagrams/octopus_5.svg" />
-              <p class="flushleft svg-header small"><strong>gestion des conflits</strong> : git-octopus merge <code>features/f1</code> et <code>features/new</code> <span style="color:green">OK</span></p>
+              <p class="flushleft svg-header small"><strong>gestion des conflits</strong> : git-octopus merge <code>features/f1</code> et <code>features/new</code> <span class="ok">OK</span></p>
           </section>
 
           <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
               <img class="nostyle" src="../img/octopus-diagrams/octopus_6.svg" />
-              <p class="flushleft svg-header small"><strong>gestion des conflits</strong> : git-octopus merge <code>features/f2</code> et <code>features/new</code> <span style="color:red">KO</span> TODO WRONG GRAPH</p>
+              <p class="flushleft svg-header small"><strong>gestion des conflits</strong> : git-octopus merge <code>features/f2</code> et <code>features/new</code> <span class="ko">KO</span> TODO WRONG GRAPH</p>
           </section>
 
           <!-- SECTION - CONFLICTS -->
@@ -244,7 +273,7 @@ git merge features/*
 
           <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
               <img class="nostyle" src="../img/octopus-diagrams/clever_1.svg" />
-              <p class="flushleft svg-header small"><strong>éviter les conflits</strong> : git-octopus merge <span style="color:red">KO</span> à cause de <code>features/new</code> TODO WRONG GRAPH</p>
+              <p class="flushleft svg-header small"><strong>éviter les conflits</strong> : git-octopus merge <span class="ko">KO</span> à cause de <code>features/new</code> TODO WRONG GRAPH</p>
           </section>
 
           <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
@@ -254,7 +283,7 @@ git merge features/*
 
           <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
               <img class="nostyle" src="../img/octopus-diagrams/clever_3.svg" />
-              <p class="flushleft svg-header small"><strong>éviter les conflits</strong> : git-octopus merge <span style="color:green">OK</span></p>
+              <p class="flushleft svg-header small"><strong>éviter les conflits</strong> : git-octopus merge <span class="ok">OK</span></p>
           </section>
 
           <!-- SECTION - SOLUTION 2 -->
@@ -267,7 +296,7 @@ git merge features/*
 
           <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
               <img class="nostyle" src="../img/octopus-diagrams/leave_1.svg" />
-              <p class="flushleft svg-header small"><strong>sortir de l'octopus</strong> : git-octopus merge <span style="color:red">KO</span> à cause de <code>features/new</code> TODO WRONG GRAPH</p>
+              <p class="flushleft svg-header small"><strong>sortir de l'octopus</strong> : git-octopus merge <span class="ko">KO</span> à cause de <code>features/new</code> TODO WRONG GRAPH</p>
           </section>
 
             <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
@@ -277,7 +306,7 @@ git merge features/*
 
           <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
               <img class="nostyle" src="../img/octopus-diagrams/leave_3.svg" />
-              <p class="flushleft svg-header small"><strong>sortir de l'octopus</strong> : git-octopus merge <span style="color:green">OK</span></p>
+              <p class="flushleft svg-header small"><strong>sortir de l'octopus</strong> : git-octopus merge <span class="ok">OK</span></p>
           </section>
 
           <!-- SECTION - SOLUTION 3 -->
@@ -290,7 +319,7 @@ git merge features/*
 
           <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
               <img class="nostyle" src="../img/octopus-diagrams/merge_1.svg" />
-              <p class="flushleft svg-header small"><strong>fusionner la branche</strong> : git-octopus merge <span style="color:red">KO</span> à cause de <code>features/new</code> TODO WRONG GRAPH</p>
+              <p class="flushleft svg-header small"><strong>fusionner la branche</strong> : git-octopus merge <span class="ko">KO</span> à cause de <code>features/new</code> TODO WRONG GRAPH</p>
           </section>
 
           <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
@@ -305,7 +334,7 @@ git merge features/*
 
           <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
               <img class="nostyle" src="../img/octopus-diagrams/merge_4.svg" />
-              <p class="flushleft svg-header small"><strong>fusionner la branche</strong> : git-octopus merge <span style="color:green">OK</span></p>
+              <p class="flushleft svg-header small"><strong>fusionner la branche</strong> : git-octopus merge <span class="ok">OK</span></p>
           </section>
 
           <!-- SECTION - SOLUTION 4 -->
@@ -318,7 +347,7 @@ git merge features/*
 
           <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
               <img class="nostyle" src="../img/octopus-diagrams/rebase_1.svg" />
-              <p class="flushleft svg-header small"><strong>rebase la branche</strong> : git-octopus merge <span style="color:red">KO</span> à cause de <code>features/new</code> TODO WRONG GRAPH</p>
+              <p class="flushleft svg-header small"><strong>rebase la branche</strong> : git-octopus merge <span class="ko">KO</span> à cause de <code>features/new</code> TODO WRONG GRAPH</p>
           </section>
 
           <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
@@ -328,7 +357,7 @@ git merge features/*
 
           <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
               <img class="nostyle" src="../img/octopus-diagrams/rebase_3.svg" />
-              <p class="flushleft svg-header small"><strong>rebase la branche</strong> : git-octopus merge <span style="color:green">OK</span></p>
+              <p class="flushleft svg-header small"><strong>rebase la branche</strong> : git-octopus merge <span class="ok">OK</span></p>
           </section>
 
           <!-- SECTION - SOLUTION 5 -->
@@ -341,7 +370,7 @@ git merge features/*
 
           <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
               <img class="nostyle" src="../img/octopus-diagrams/conflict_1.svg" />
-              <p class="flushleft svg-header small"><strong>git-conflict</strong> : git-octopus merge <span style="color:red">KO</span> à cause de <code>features/new</code> TODO WRONG GRAPH</p>
+              <p class="flushleft svg-header small"><strong>git-conflict</strong> : git-octopus merge <span class="ko">KO</span> à cause de <code>features/new</code> TODO WRONG GRAPH</p>
           </section>
 
           <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
@@ -351,7 +380,7 @@ git merge features/*
 
           <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
               <img class="nostyle" src="../img/octopus-diagrams/conflict_3.svg" />
-              <p class="flushleft svg-header small"><strong>git-conflict</strong> : git-octopus merge <code>features/f2</code> et <code>features/new</code> <span style="color:red">KO</span> </p>
+              <p class="flushleft svg-header small"><strong>git-conflict</strong> : git-octopus merge <code>features/f2</code> et <code>features/new</code> <span class="ko">KO</span> </p>
           </section>
 
           <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
@@ -383,7 +412,7 @@ git merge features/*
 
           <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
               <img class="nostyle" src="../img/octopus-diagrams/conflict_9.svg" />
-              <p class="flushleft svg-header small"><strong>git-conflict</strong> : git-octopus merge <span style="color:green">OK</span></p>
+              <p class="flushleft svg-header small"><strong>git-conflict</strong> : git-octopus merge <span class="ok">OK</span></p>
           </section>
 
           <section class="flushleft" data-background="#3335a2">
@@ -414,16 +443,16 @@ git merge features/*
       <!-- SECTION - END -->
 
       <section class="flushright" data-background="../img/live-code-review/blindard-01.jpeg">
-        <h3>"Ajoutez git-octopus à votre CI dès maintenant"</h3>
+        <h2>Ajoutez git-octopus à votre CI dès maintenant !</h2>
       </section>
 
       <!-- SECTION - CONTRIBUTION -->
 
       <section class="flushleft" data-background="#eee">
         <h2 style="color:#1a237e">Références</h2>
-        <p class="flushright" style="color:black">- Page git-octopus sur github<br/><a href="http://github.com/lesfurets/lesfurets-conferences">https://github.com/lesfurets/git-octopus</a></p>
+        <p class="flushright" style="color:black">- Code source git-octopus sur github<br/><a href="http://github.com/lesfurets/lesfurets-conferences">https://github.com/lesfurets/git-octopus</a></p>
         <p class="flushright" style="color:black">- Forum git-octopus sur Google Groups<br/><a href="https://groups.google.com/forum/#!forum/git-octopus">https://groups.google.com/forum/#!forum/git-octopus</a></p>
-        <p class="flushright" style="color:black">- Page conférence sur github<br/><a href="http://github.com/lesfurets/lesfurets-conferences">https://github.com/lesfurets/lesfurets-conferences</a></p>
+        <p class="flushright" style="color:black">- Page conférences sur github<br/><a href="http://github.com/lesfurets/lesfurets-conferences">https://github.com/lesfurets/lesfurets-conferences</a></p>
       </section>
       </div>
     </div>
