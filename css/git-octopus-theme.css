@@ -46,6 +46,11 @@
     color: green;
 }
 
+.reveal .dangerzone.cool {
+    color: blue;
+}
+
 .reveal .dangerzone.danger {
     color: red;
 }
+
