@@ -1,13 +1,5 @@
 .reveal p {
-    color: #bdbdbd;
-}
-
-.reveal p.fragment {
     color: #fafafa;
-}
-
-.reveal strong {
-    color: #e0e0e0;
 }
 
 .reveal p.smaller {
@@ -28,6 +20,15 @@
 
 .reveal p.larger {
     font-size: 150%;
+}
+
+.reveal p.strong {
+    font-weight: bold;
+}
+
+.reveal p.svg-header {
+    position: absolute;
+    bottom: -100px;
 }
 
 .reveal .dangerzone {

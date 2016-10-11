@@ -60,19 +60,10 @@
       <!-- SECTION - DELIVERY -->
 
       <section class="center" data-background="#222">
-        <p>Notre équipe est constitué de <strong>21 développeurs dont 2 ops</strong>.</p>
+        <p>Notre équipe est constitué de <strong>25 développeurs</strong> séparé en 3 sous-équipes.</p>
         <p class="color-gray400">Les développeurs ont des responsabilités devops, telles que la livraison en production, la gestion de la configuration des environnements, le monitoring, etc.</p>
-        <aside class="notes">
-          <p>TODO</p>
-        </aside>
+        <aside class="notes"><p>TODO</p></aside>
       </section>
-
-      <!--
-      13 developpeurs : mbe mbo hvi equ ogu jma ebo gbe svi sco jbe luis aar
-      5 tech lead : adu sdi bde dra spi
-      2 archi : gdu jba
-      1 ops : tdb
-      -->
 
       <section class="flushleft" data-background="#eee">
         <h2 style="color:#1a237e">Le delivery chez LesFurets.com</h2>
@@ -84,45 +75,35 @@
         <ul class="color-gray400">
         <li class="color-gray400"><strong>2012</strong> : <span class="color-indigo500">12 releases</span> en sprint scrum mensuel <span class="color-gray">(build 15 minutes et selenium 1 heure)</span></li>
         <li class="color-gray400"><strong>2013</strong> : <span class="color-indigo500">45 releases</span> en sprint scrum hebdo <span class="color-gray">(build 3 minutes, release 1 jour)</span></li>
-        <li class="color-gray400"><strong>2014</strong> : <span class="color-indigo500">200+ releases</span> en kanban daily delivery <span class="color-gray">(release 2 heures)</span></li>
-        <li class="color-gray400"><strong>2016</strong> : <span class="color-indigo500">300+ releases</span> en kanban one feature release (one click release)</li>
+        <li class="color-gray400"><strong>2014-2016</strong> : <span class="color-indigo500">300+ releases</span> par ans, en kanban daily delivery <span class="color-gray">(release 2 heures)</span></li>
+        <li class="color-gray400"><strong>2017 ?</strong> : one feature release et partial release</li>
         </ul>
-        <aside class="notes">
-          <p>TODO</p>
-        </aside>
+        <aside class="notes"><p>TODO</p></aside>
       </section>
 
       <section class="center" data-background="#222">
         <p>On a besoin de certains éléments préalables</p>
         <p class="color-gray400">Un code correctement <strong class="color-gray50">segmenté</strong> (avec des parties indépendantes), une bonne <strong class="color-gray50">couverture de test</strong>, des <strong class="color-gray50">features indépendantes</strong> (donc des branches indépendantes) et une chaine de <strong class="color-gray50">build rapide et automatique</strong> (y compris le déploiement).</p>
-        <aside class="notes">
-          <p>TODO</p>
-        </aside>
+        <aside class="notes"><p>TODO</p></aside>
       </section>
 
       <section class="center" data-background="#222">
         <p class="color-gray400">Normalement, nos 200 tests selenium prendraient <strong>6 heures</strong>. Avec un grid selenium classique, on arrive à <strong>1 heure</strong></p>
         <p>Avec un grid selenium en RAMFS ? <strong class="color-indigo500">10 minutes</strong></p>
         <p>LesFurets <strong>selenium grid</strong> : <br/><a href="https://github.com/lesfurets/selenium-lxc">https://github.com/lesfurets/selenium-lxc</a></p>
-        <aside class="notes">
-          <p>TODO</p>
-        </aside>
+        <aside class="notes"><p>TODO</p></aside>
       </section>
 
       <section class="center" data-background="#222">
         <p>En plus du monitoring technique et métier, on a besoin d'un monitoring UI, LesFurets <strong>Zeno pixel</strong> : <br/><a href="https://github.com/lesfurets/zeno-pixel">https://github.com/lesfurets/zeno-pixel</a></p>
         <img style="width: 100%;" src="../img/devops/zeno-pixel-01.png">
-        <aside class="notes">
-          <p>TODO</p>
-        </aside>
+        <aside class="notes"><p>TODO</p></aside>
       </section>
 
       <section class="center" data-background="#222">
         <p>Déploiement blue / green, <span class="color-indigo500">0 downtime</span>, avec HAProxy</p>
         <img src="../img/devops/deployment-blue-green-01.png">
-        <aside class="notes">
-          <p>TODO</p>
-        </aside>
+        <aside class="notes"><p>TODO</p></aside>
       </section>
 
       <!-- SECTION - SOURCE CODE -->
@@ -134,326 +115,336 @@
       <!--
       <section class="center" data-background="#222">
         <p>Historiquement, Martin Fowler, Jez Humble et la communautée continuous delivery étaient contre le feature branching.</p>
-        <aside class="notes">
-          <p>TODO</p>
-        </aside>
+        <aside class="notes"><p>TODO</p></aside>
       </section>
       -->
 
       <section class="center" data-background="#222">
         <p>Avec une code base en <strong class="color-indigo400">trunk based</strong>, toutes les features sont dans le master, ce qui permet de faire du <strong>build automatique</strong>, tous les commits sont <strong>envoyés en production à chaque release</strong>, nécessite du <strong>feature toggling</strong> et une <strong>forte maturité sur les tests</strong>.</p>
-        <p class="fragment larger">La migration vers le continuous delivery est risqué</p>
-        <aside class="notes">
-          <p>TODO</p>
-        </aside>
+        <p class="fragment large"><strong>La migration vers le continuous delivery est risqué</strong></p>
+        <aside class="notes"><p>TODO</p></aside>
       </section>
 
       <section class="center" data-background="#222">
         <p>Avec une code base en <strong class="color-indigo400">feature branching</strong>, chaque feature est <strong>sur une branche dédiée</strong>, la production est la <strong>fusion du master et des features</strong>, les développement avancent en <strong>isolation</strong>, et on livre une branche <strong>lorsqu'elle est prête</strong>.</p>
-        <p class="fragment larger">On pert l'intégration continue et la gestion des conflits</p>
-        <aside class="notes">
-          <p>TODO</p>
-        </aside>
+        <p class="fragment large"><strong>On pert l'intégration continue et la gestion des conflits</strong></p>
+        <aside class="notes"><p>TODO</p></aside>
       </section>
 
       <section class="center" data-background="#222">
         <img style="width: 75%;" src="../img/feature-branching.png">
-        <aside class="notes">
-          <p>TODO</p>
-        </aside>
+        <aside class="notes"><p>TODO</p></aside>
       </section>
 
       <section class="center" data-background="#222">
-        <p>On veut une code base en feature branching (pour sa flexibilité) et on veut faire du continuous delivery (pour sa valeur ajouté), sans perdre de qualité.</p>
+        <p>On veut une code base en <strong class="color-indigo500">feature branching</strong> (pour sa flexibilité) et on veut faire du <strong class="color-indigo500">continuous delivery</strong> (pour sa valeur ajouté), sans perdre de qualité.</p>
         <p>Autrement dit, comment réconcilier feature branching et continuous delivery ?</p>
-        <p class="fragment larger">On fait du feature branche + <span class="color-indigo500">continuous merge</span>.</p>
-        <aside class="notes">
-          <p>TODO</p>
-        </aside>
+        <p class="fragment large color-deeporange300"><strong>On fait du feature branche + continuous merge !</strong></p>
+        <aside class="notes"><p>TODO</p></aside>
       </section>
 
-          <section class="center" data-background="#222">
-              <p>Feature branching <br><span class="color-gray400">on part d'un <code>master</code></span></p>
-              <img src="../img/octopus-diagrams/feature_branch_1.svg" />
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/feature_branch_1.svg" />
+              <p class="flushleft svg-header small"><strong>feature branching</strong> : on part d'un master</p>
               <aside class="notes"><p>TODO</p></aside>
           </section>
 
-          <section class="center" data-background="#222">
-              <p>Feature branching <br><span class="color-gray400">création branche développement <code>features/f1</code></span></p>
-              <img src="../img/octopus-diagrams/feature_branch_2.svg" />
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/feature_branch_2.svg" />
+              <p class="flushleft svg-header small"><strong>feature branching</strong> : création d'une branche de développement <code>features/f1</code></p>
               <aside class="notes"><p>TODO</p></aside>
           </section>
 
-          <section class="center" data-background="#222">
-              <p>Feature branching <br><span class="color-gray400">création branche développement <code>features/f2</code></span></p>
-              <img src="../img/octopus-diagrams/feature_branch_3.svg" />
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/feature_branch_3.svg" />
+              <p class="flushleft svg-header small"><strong>feature branching</strong> : création d'une branche de développement <code>features/f2</code></p>
               <aside class="notes"><p>TODO</p></aside>
           </section>
 
+          <!--
           <section class="center" data-background="#222">
-              <p>Feature merge <br><span class="color-gray400">les historiques de <code>features/f1</code> et <code>features/f2</code> sont séparés</span></p>
-              <img src="../img/octopus-diagrams/feature_merge_1.svg" />
+              <img class="nostyle" src="../img/octopus-diagrams/feature_merge_1.svg" />
               <aside class="notes"><p>TODO</p></aside>
           </section>
+          -->
 
-          <section class="center" data-background="#222">
-              <p>Feature merge <br><span class="color-gray400">on fusionne les deux avec un commit de merge</span></p>
-              <img src="../img/octopus-diagrams/feature_merge_2.svg" />
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/feature_merge_2.svg" />
+              <p class="flushleft svg-header small"><strong>feature branching</strong> : merge de <code>features/f1</code> et <code>features/f2</code></p>
               <aside class="notes"><p>TODO</p></aside>
           </section>
 
           <!-- SECTION - CONTINUOUS MERGE -->
 
       <section class="flushleft" data-background="#eee">
-        <h2 style="color:#1a237e">Continuous merge <img style="width:5%;vertical-align:middle;border:none;background:none;" src="../img/coeur.png"></h2>
+        <h2 style="color:#1a237e">Continuous merge <img class="nostyle" style="width:5%;vertical-align:middle;border:none;background:none;" src="../img/coeur.png"></h2>
         <p style="color:black">Le continuous merge est un process au coeur de notre capacité à faire du continuous delivery</p>
       </section>
 
-          <section class="center" data-background="#222">
-              <p>Continuous merge <br><span>on sait fusioner ponctuellement 2 historiques</span></p>
-              <img src="../img/octopus-diagrams/continuous_merge_1.svg" />
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <!--<p>Continuous merge <br><span>on sait fusioner ponctuellement 2 historiques</span></p>-->
+              <img class="nostyle" src="../img/octopus-diagrams/continuous_merge_1.svg" />
+              <p class="flushleft svg-header small"><strong>continuous merge</strong> : fusion ponctuelle deux historiques</p>
+              <aside class="notes"><p>TODO</p></aside>
+          </section>
+
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/continuous_merge_2.svg" />
+              <p class="flushleft svg-header small"><strong>continuous merge</strong> : une des branches avance</p>
+              <aside class="notes"><p>TODO</p></aside>
+          </section>
+
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/continuous_merge_3.svg" />
+              <p class="flushleft svg-header small"><strong>continuous merge</strong> : fusion automatique</p>
               <aside class="notes"><p>TODO</p></aside>
           </section>
 
           <section class="center" data-background="#222">
-              <p>Continuous merge <br><span>alors losqu'un des historique avance</span></p>
-              <img src="../img/octopus-diagrams/continuous_merge_2.svg" />
-              <aside class="notes"><p>TODO</p></aside>
-          </section>
-
-          <section class="center" data-background="#222">
-              <p>Continuous merge <br><span>on le fusionne automatiquement avec le reste</span></p>
-              <img src="../img/octopus-diagrams/continuous_merge_3.svg" />
-              <aside class="notes"><p>TODO</p></aside>
-          </section>
-
-          <section class="center" data-background="#222">
-        <p>Le merge de plusieurs branches avec pattern :</p>
-        <pre><code class="code java" data-trim data-noescape>
+              <p>Le merge de plusieurs branches avec pattern :</p>
+              <pre><code class="code java" data-trim data-noescape>
 git merge features/*
-        </code></pre>
-        <p class="color-gray400">...n'existe pas, donc on l'a créé</p>
-        <p>LesFurets <strong>git-octopus</strong> : <br/><a href="https://github.com/lesfurets/git-octopus">https://github.com/lesfurets/git-octopus</a></p>
-        <p class="color-gray400">Mais que se passe-t'il lorsqu'il y a des conflits ?</p>
-        <aside class="notes">
-          <p>TODO</p>
-        </aside>
+              </code></pre>
+              <p class="color-gray400">...n'existe pas, donc on l'a créé</p>
+              <p>LesFurets <strong>git-octopus</strong> : <br/><a href="https://github.com/lesfurets/git-octopus">https://github.com/lesfurets/git-octopus</a></p>
+              <p class="color-gray400">Mais que se passe-t'il lorsqu'il y a des conflits ?</p>
+              <aside class="notes"><p>TODO</p></aside>
       </section>
 
-          <section class="center" data-background="#222"><p>Gestion des conflits <br><span>jusqu'ici tout va bien</span></p>
-              <img src="../img/octopus-diagrams/octopus_1.svg" />
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/octopus_1.svg" />
+              <p class="flushleft svg-header small"><strong>gestion des conflits</strong></p>
               <aside class="notes"><p>TODO</p></aside>
           </section>
 
-          <section class="center" data-background="#222"><p>Gestion des conflits <br><span>une nouvelle branche sauvage "new" apparaît</span></p>
-              <img src="../img/octopus-diagrams/octopus_2.svg" />
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/octopus_2.svg" />
+              <p class="flushleft svg-header small"><strong>gestion des conflits</strong> : une nouvelle branche sauvage <code>features/new</code> apparaît</p>
               <aside class="notes"><p>TODO</p></aside>
           </section>
 
-          <section class="center" data-background="#222"><p>Gestion des conflits <br><span>git-octopus nous dit quelle ne fusionne pas</span></p>
-              <img src="../img/octopus-diagrams/octopus_3.svg" />
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/octopus_3.svg" />
+              <p class="flushleft svg-header small"><strong>gestion des conflits</strong> : git-octopus merge <span style="color:red">KO</span> TODO WRONG GRAPH</p>
               <aside class="notes"><p>TODO</p></aside>
           </section>
 
-          <section class="center" data-background="#222"><p>Gestion des conflits <br><span>alors git-octopus teste le merge entre new et master</span></p>
-              <img src="../img/octopus-diagrams/octopus_4.svg" />
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/octopus_4.svg" />
+              <p class="flushleft svg-header small"><strong>gestion des conflits</strong> : git-octopus merge <code>master</code> et <code>features/new</code> <span style="color:green">OK</span></p>
               <aside class="notes"><p>TODO</p></aside>
           </section>
 
-          <section class="center" data-background="#222"><p>Gestion des conflits <br><span>alors git-octopus teste le merge entre new et f1</span></p>
-              <img src="../img/octopus-diagrams/octopus_5.svg" />
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/octopus_5.svg" />
+              <p class="flushleft svg-header small"><strong>gestion des conflits</strong> : git-octopus merge <code>features/f1</code> et <code>features/new</code> <span style="color:green">OK</span></p>
               <aside class="notes"><p>TODO</p></aside>
           </section>
 
-          <section class="center" data-background="#222"><p>Gestion des conflits <br><span>alors git-octopus teste le merge entre new et f2, qui échoue, donc new ne fusionne pas avec f2</span>
-          </p>
-              <img src="../img/octopus-diagrams/octopus_6.svg" />
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/octopus_6.svg" />
+              <p class="flushleft svg-header small"><strong>gestion des conflits</strong> : git-octopus merge <code>features/f2</code> et <code>features/new</code> <span style="color:red">KO</span> TODO WRONG GRAPH</p>
               <aside class="notes"><p>TODO</p></aside>
           </section>
 
           <!-- SECTION - CONFLICTS -->
 
-      <section class="flushleft" data-background="#eee">
-        <h2 style="color:#1a237e">Conflits</h2>
-        <p style="color:black">L'utilisation de git-octopus dans l'intégration continue permet de détecter les conflits très tôt</p>
-      </section>
+          <section class="flushleft" data-background="#eee">
+              <h2 style="color:#1a237e">Conflits</h2>
+              <p style="color:black">L'utilisation de git-octopus dans l'intégration continue permet de détecter les conflits très tôt</p>
+          </section>
 
-      <section class="flushleft" data-background="#3335a2">
-        <h3 style="color:white">Solution 1</h3>
-        <p class="flushleft" style="color:white">éviter le conflit au niveau du code</p>
-        <p class="flushright" style="color:white">DANGER ZONE : <span class="dangerzone safe">safe</span></p>
-      </section>
+          <!-- SECTION - SOLUTION 1 -->
 
-          <section class="center" data-background="#222">
-            <p>L'octopus n'arrive pas à fusionner les branches à cause de features/new</p>
-            <img src="../img/octopus-diagrams/clever_1.svg" />
+          <section class="flushleft" data-background="#3335a2">
+              <h3 style="color:white">Solution 1</h3>
+              <p class="flushleft" style="color:white">éviter le conflit au niveau du code</p>
+              <p class="flushright" style="color:white">DANGER ZONE : <span class="dangerzone safe">safe</span></p>
+          </section>
+
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/clever_1.svg" />
+              <p class="flushleft svg-header small"><strong>éviter les conflits</strong> : git-octopus merge <span style="color:red">KO</span> à cause de <code>features/new</code> TODO WRONG GRAPH</p>
+              <aside class="notes"><p>TODO</p></aside>
+          </section>
+
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/clever_2.svg" />
+              <p class="flushleft svg-header small"><strong>éviter les conflits</strong> : modifier le code de <code>features/new</code> pour éviter le conflit</p>
+              <aside class="notes"><p>TODO</p></aside>
+          </section>
+
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/clever_3.svg" />
+              <p class="flushleft svg-header small"><strong>éviter les conflits</strong> : git-octopus merge <span style="color:green">OK</span></p>
+              <aside class="notes"><p>TODO</p></aside>
+          </section>
+
+          <!-- SECTION - SOLUTION 2 -->
+
+          <section class="flushleft" data-background="#3335a2">
+              <h3 style="color:white">Solution 2</h3>
+              <p class="flushleft" style="color:white">enlever la branche de l'octopus</p>
+              <p class="flushright" style="color:white">DANGER ZONE : <span class="dangerzone safe">safe</span></p>
+          </section>
+
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/leave_1.svg" />
+              <p class="flushleft svg-header small"><strong>sortir de l'octopus</strong> : git-octopus merge <span style="color:red">KO</span> à cause de <code>features/new</code> TODO WRONG GRAPH</p>
+              <aside class="notes"><p>TODO</p></aside>
+          </section>
+
+            <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/leave_2.svg" />
+              <p class="flushleft svg-header small"><strong>sortir de l'octopus</strong> : utilisation du pattern de nommage pour sortir la branche</p>
             <aside class="notes"><p>TODO</p></aside>
           </section>
 
-          <section class="center" data-background="#222">
-            <p>Modifier le code de features/new pour éviter le conflit</p>
-            <img src="../img/octopus-diagrams/clever_2.svg" />
-            <aside c  lass="notes"><p>TODO</p></aside>
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/leave_3.svg" />
+              <p class="flushleft svg-header small"><strong>sortir de l'octopus</strong> : git-octopus merge <span style="color:green">OK</span></p>
+              <aside class="notes"><p>TODO</p></aside>
           </section>
 
-          <section class="center" data-background="#222">
-            <p>L'octopus passe</p>
-            <img src="../img/octopus-diagrams/clever_3.svg" />
-            <aside class="notes"><p>TODO</p></aside>
-          </section>
+          <!-- SECTION - SOLUTION 3 -->
 
           <section class="flushleft" data-background="#3335a2">
-        <h3 style="color:white">Solution 2</h3>
-        <p class="flushleft" style="color:white">enlever la branche de l'octopus</p>
-        <p class="flushright" style="color:white">DANGER ZONE : <span class="dangerzone safe">safe</span></p>
-      </section>
-
-          <section class="center" data-background="#222">
-            <p>L'octopus n'arrive pas à fusionner les branches à cause de features/new</p>
-            <img src="../img/octopus-diagrams/leave_1.svg" />
-            <aside class="notes"><p>TODO</p></aside>
+              <h3 style="color:white">Solution 3</h3>
+              <p class="flushleft" style="color:white">fusionner la branche</p>
+              <p class="flushright" style="color:white">DANGER ZONE : <span class="dangerzone danger">danger</span></p>
           </section>
 
-          <section class="center" data-background="#222">
-            <p>On utilise le pattern de nommage pour enlever la branche de l'octopus</p>
-            <img src="../img/octopus-diagrams/leave_2.svg" />
-            <aside class="notes"><p>TODO</p></aside>
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/merge_1.svg" />
+              <p class="flushleft svg-header small"><strong>fusionner la branche</strong> : git-octopus merge <span style="color:red">KO</span> à cause de <code>features/new</code> TODO WRONG GRAPH</p>
+              <aside class="notes"><p>TODO</p></aside>
           </section>
 
-          <section class="center" data-background="#222">
-            <p>L'octopus passe</p>
-            <img src="../img/octopus-diagrams/leave_3.svg" />
-            <aside class="notes"><p>TODO</p></aside>
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/merge_2.svg" />
+              <p class="flushleft svg-header small"><strong>fusionner la branche</strong> : fusion de <code>features/f2</code> et <code>features/new</code> en <code>features/f2_new</code></p>
+              <aside class="notes"><p>TODO</p></aside>
           </section>
+
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/merge_3.svg" />
+              <p class="flushleft svg-header small"><strong>fusionner la branche</strong> : suppression de <code>features/f2</code> et <code>features/new</code></p>
+              <aside class="notes"><p>TODO</p></aside>
+          </section>
+
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/merge_4.svg" />
+              <p class="flushleft svg-header small"><strong>fusionner la branche</strong> : git-octopus merge <span style="color:green">OK</span></p>
+              <aside class="notes"><p>TODO</p></aside>
+          </section>
+
+          <!-- SECTION - SOLUTION 4 -->
 
           <section class="flushleft" data-background="#3335a2">
-        <h3 style="color:white">Solution 3</h3>
-        <p class="flushleft" style="color:white">fusionner la branche</p>
-        <p class="flushright" style="color:white">DANGER ZONE : <span class="dangerzone danger">danger</span></p>
-      </section>
+             <h3 style="color:white">Solution 4</h3>
+             <p class="flushleft" style="color:white">rebase la branche</p>
+             <p class="flushright" style="color:white">DANGER ZONE : <span class="dangerzone danger">danger</span></p>
+          </section>
 
-          <section class="center" data-background="#222">
-              <p>L'octopus n'arrive pas à fusionner les branches à cause de features/new</p>
-              <img src="../img/octopus-diagrams/merge_1.svg" />
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/rebase_1.svg" />
+              <p class="flushleft svg-header small"><strong>rebase la branche</strong> : git-octopus merge <span style="color:red">KO</span> à cause de <code>features/new</code> TODO WRONG GRAPH</p>
               <aside class="notes"><p>TODO</p></aside>
           </section>
 
-          <section class="center" data-background="#222">
-              <p>On fusionne les 2 branches features/f2 et features/new ensemble en feature/f2_new</p>
-              <img src="../img/octopus-diagrams/merge_2.svg" />
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/rebase_2.svg" />
+              <p class="flushleft svg-header small"><strong>rebase la branche</strong> : rebase de <code>feature/new</code> sur <code>features/f2</code></p>
               <aside class="notes"><p>TODO</p></aside>
           </section>
 
-          <section class="center" data-background="#222">
-              <p>On supprime les 2 anciennes branches features/f2 et features/new</p>
-              <img src="../img/octopus-diagrams/merge_3.svg" />
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/rebase_3.svg" />
+              <p class="flushleft svg-header small"><strong>rebase la branche</strong> : git-octopus merge <span style="color:green">OK</span></p>
               <aside class="notes"><p>TODO</p></aside>
           </section>
 
-          <section class="center" data-background="#222">
-              <p>L'octopus passe</p>
-              <img src="../img/octopus-diagrams/merge_4.svg" />
-              <aside class="notes"><p>TODO</p></aside>
-          </section>
+          <!-- SECTION - SOLUTION 5 -->
 
           <section class="flushleft" data-background="#3335a2">
-        <h3 style="color:white">Solution 4</h3>
-        <p class="flushleft" style="color:white">rebase la branche</p>
-        <p class="flushright" style="color:white">DANGER ZONE : <span class="dangerzone danger">danger</span></p>
+              <h3 style="color:white">Solution 5</h3>
+              <p class="flushleft" style="color:white">git-conflict TODO STAR ICON <span class="color-gray400"> : résolution de conflit distribué, livré avec git-octopus</span></p>
+              <p class="flushright" style="color:white">DANGER ZONE : <span class="dangerzone safe">safe</span></p>
       </section>
 
-          <section class="center" data-background="#222">
-              <p>L'octopus n'arrive pas à fusionner les branches à cause de features/new</p>
-              <img src="../img/octopus-diagrams/rebase_1.svg" />
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/conflict_1.svg" />
+              <p class="flushleft svg-header small"><strong>git-conflict</strong> : git-octopus merge <span style="color:red">KO</span> à cause de <code>features/new</code> TODO WRONG GRAPH</p>
               <aside class="notes"><p>TODO</p></aside>
           </section>
 
-          <section class="center" data-background="#222">
-              <p>On rebase features/new sur features/f2</p>
-              <img src="../img/octopus-diagrams/rebase_2.svg" />
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/conflict_2.svg" />
+              <p class="flushleft svg-header small"><strong>git-conflict</strong> : dépôt résolution de conflit situé sous <code>conflict/resolutions</code></p>
               <aside class="notes"><p>TODO</p></aside>
           </section>
 
-          <section class="center" data-background="#222">
-              <img src="../img/octopus-diagrams/rebase_3.svg" />
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/conflict_3.svg" />
+              <p class="flushleft svg-header small"><strong>git-conflict</strong> : git-octopus merge <code>features/f2</code> et <code>features/new</code> <span style="color:red">KO</span> </p>
               <aside class="notes"><p>TODO</p></aside>
           </section>
 
-          <section class="flushleft" data-background="#3335a2">
-        <h3 style="color:white">Solution 5</h3>
-        <p class="flushleft" style="color:white">git-conflict TODO STAR ICON <span class="color-gray400">(résolution de conflit distribué, livré avec git-octopus)</span></p>
-        <p class="flushright" style="color:white">DANGER ZONE : <span class="dangerzone safe">safe</span></p>
-      </section>
-
-          <section class="center" data-background="#222">
-              <p>L'octopus n'arrive pas à fusionner les branches à cause de features/new</p>
-              <img src="../img/octopus-diagrams/conflict_1.svg" />
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/conflict_4.svg" />
+              <p class="flushleft svg-header small"><strong>git-conflict</strong> : TODO </p>
+              <aside class="notes"><p>TODO</p></aside>
               <aside class="notes"><p>TODO</p></aside>
           </section>
 
-          <section class="center" data-background="#222">
-              <p>Un dépôt de résolution de conflit est situé sous conflict/resolutions</p>
-              <img src="../img/octopus-diagrams/conflict_2.svg" />
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/conflict_5.svg" />
+              <p class="flushleft svg-header small"><strong>git-conflict</strong> : TODO </p>
               <aside class="notes"><p>TODO</p></aside>
           </section>
 
-          <section class="center" data-background="#222">
-              <p>La fusion ne fonctionne pas</p>
-              <img src="../img/octopus-diagrams/conflict_3.svg" />
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/conflict_6.svg" />
+              <p class="flushleft svg-header small"><strong>git-conflict</strong> : TODO </p>
               <aside class="notes"><p>TODO</p></aside>
           </section>
 
-          <section class="center" data-background="#222">
-              <p>On vérifie pour le conflit en question s'il y a une résolution de disponible</p>
-              <img src="../img/octopus-diagrams/conflict_4.svg" />
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/conflict_7.svg" />
+              <p class="flushleft svg-header small"><strong>git-conflict</strong> : TODO </p>
               <aside class="notes"><p>TODO</p></aside>
           </section>
 
-          <section class="center" data-background="#222">
-              <img src="../img/octopus-diagrams/conflict_5.svg" />
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/conflict_8.svg" />
+              <p class="flushleft svg-header small"><strong>git-conflict</strong> : TODO </p>
               <aside class="notes"><p>TODO</p></aside>
           </section>
 
-          <section class="center" data-background="#222">
-              <img src="../img/octopus-diagrams/conflict_6.svg" />
-              <aside class="notes"><p>TODO</p></aside>
-          </section>
-
-          <section class="center" data-background="#222">
-              <img src="../img/octopus-diagrams/conflict_7.svg" />
-              <aside class="notes"><p>TODO</p></aside>
-          </section>
-
-          <section class="center" data-background="#222">
-              <img src="../img/octopus-diagrams/conflict_8.svg" />
-              <aside class="notes"><p>TODO</p></aside>
-          </section>
-
-          <section class="center" data-background="#222">
-              <p>L'octopus passe</p>
-              <img src="../img/octopus-diagrams/conflict_9.svg" />
+          <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
+              <img class="nostyle" src="../img/octopus-diagrams/conflict_9.svg" />
+              <p class="flushleft svg-header small"><strong>git-conflict</strong> : git-octopus merge <span style="color:green">OK</span></p>
               <aside class="notes"><p>TODO</p></aside>
           </section>
 
           <section class="flushleft" data-background="#3335a2">
-        <h3 style="color:white">Donc, en cas de conflit</h3>
-        <p class="flushleft" style="color:white">(1) éviter les conflits</p>
-        <p class="flushleft" style="color:white">(2) enlever la branche de l'octopus</p>
-        <p class="flushleft" style="color:white">(3) utiliser git-conflict</p>
-        <p class="flushleft" style="color:white">(4) fusionner / rebase les branches</p>
-      </section>
+              <h3 style="color:white">Donc, en cas de conflit</h3>
+              <p class="flushleft" style="color:white">(1) éviter les conflits</p>
+              <p class="flushleft" style="color:white">(2) enlever la branche de l'octopus</p>
+              <p class="flushleft" style="color:white">(3) utiliser git-conflict</p>
+              <p class="flushleft" style="color:white">(4) fusionner / rebase les branches</p>
+            </section>
 
       <!-- SECTION - WORFLOW LF -->
 
       <section class="flushleft" data-background="#eee">
-        <h2 style="color:#1a237e">Notre process chez LesFurets</h2>
+        <h2 style="color:#1a237e">Process chez LesFurets.com</h2>
+        <p style="color:black">L'objectif est de pouvoir prendre le temps de valider et de pouvoir livrer une feature dès qu'elle est prête</p>
       </section>
 
       <section class="center" data-background="#222">
-        <img style="width:125%;margin-left:-10vw" src="../img/devops/octopus-merge-features-02.png">
-        <aside class="notes">
-          <p>TODO</p>
-        </aside>
+        <img class="nostyle" style="width:125%;margin-left:-7vw" src="../img/octopus-diagrams/git_repo_setup_1.png">
+        <aside class="notes"><p>TODO</p></aside>
       </section>
 
       <!-- SECTION - DEMO -->
@@ -471,9 +462,10 @@ git merge features/*
       <!-- SECTION - CONTRIBUTION -->
 
       <section class="flushleft" data-background="#eee">
-        <h2 style="color:#1a237e">Page utilisateur</h2>
-        <p class="flushright" style="color:black">- TODO lien vers google-groups</p>
-        <p class="flushright" style="color:black">- TODO lien vers git-octopus</p>
+        <h2 style="color:#1a237e">Références</h2>
+        <p class="flushright" style="color:black">- Page git-octopus sur github<br/><a href="http://github.com/lesfurets/lesfurets-conferences">https://github.com/lesfurets/git-octopus</a></p>
+        <p class="flushright" style="color:black">- Forum git-octopus sur Google Groups<br/><a href="https://groups.google.com/forum/#!forum/git-octopus">https://groups.google.com/forum/#!forum/git-octopus</a></p>
+        <p class="flushright" style="color:black">- Page conférence sur github<br/><a href="http://github.com/lesfurets/lesfurets-conferences">https://github.com/lesfurets/lesfurets-conferences</a></p>
       </section>
       </div>
     </div>

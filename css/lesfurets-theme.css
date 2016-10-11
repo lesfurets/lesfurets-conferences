@@ -249,6 +249,8 @@ body {
   background-color: transparent;
   border: none;
   box-shadow: none;
+  margin: 0;
+  padding: 0;
 }
 
 .reveal a:hover img {
@@ -378,6 +380,14 @@ body {
  * CUSTOM STYLES
  *********************************************/
 
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .center > * {
+  text-align: center;
+}
+
 .reveal .flushleft {
   text-align: left;
 }
@@ -393,15 +403,6 @@ body {
 .reveal .flushright > * {
   text-align: right;
 }
-
-.reveal .center {
-  text-align: center;
-}
-
-.reveal .center > * {
-  text-align: center;
-}
-
 .reveal .small {
   font-size: 0.75em;
 }
