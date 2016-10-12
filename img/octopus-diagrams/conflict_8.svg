@@ -1,8 +1,8 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" height="490" width="850">
   <g>
-    <text x="85" y="70" dx="-17" dy="-32" font-size="20" fill="rgb(198,40,23)" font-family="Arial">conflict/resolution
+    <text x="85" y="70" dx="-17" dy="-32" font-size="20" fill="rgb(244,56,56)" font-family="Arial">conflict/resolution
     </text>
-    <circle cx="85" cy="70" r="16" fill="rgb(198,40,23)"></circle>
+    <circle cx="85" cy="70" r="16" fill="rgb(244,56,56)"></circle>
   </g>
   <text x="300" y="60" font-size="60" fill="rgb(241,143,46)">?</text>
   <g>

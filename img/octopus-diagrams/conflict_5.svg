@@ -1,14 +1,14 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" height="490" width="850">
   <g>
-    <text x="85" y="70" dx="-17" dy="-32" font-size="20" fill="rgb(198,40,23)" font-family="Arial">conflict/resolution
+    <text x="85" y="70" dx="-17" dy="-32" font-size="20" fill="rgb(244,56,56)" font-family="Arial">conflict/resolution
     </text>
-    <circle cx="85" cy="70" r="16" fill="none" stroke-dasharray="8,7" stroke="rgb(198,40,23)" stroke-width="4"></circle>
+    <circle cx="85" cy="70" r="16" fill="none" stroke-dasharray="8,7" stroke="rgb(244,56,56)" stroke-width="4"></circle>
   </g>
   <g>
-    <path d="M 425 210 Q 425 140 510 140" stroke="rgb(198,40,23)" stroke-width="4" fill="none"></path>
-    <path d="M 595 210 Q 595 140 510 140" stroke="rgb(198,40,23)" stroke-width="4" fill="none"></path>
-    <circle cx="510" cy="140" r="12" fill="rgb(198,40,23)"></circle>
-    <text x="510" y="140" dx="17" dy="-5" font-size="20" fill="rgb(198,40,23)" font-family="Arial" text-anchor="start">
+    <path d="M 425 210 Q 425 140 510 140" stroke="rgb(244,56,56)" stroke-width="4" fill="none"></path>
+    <path d="M 595 210 Q 595 140 510 140" stroke="rgb(244,56,56)" stroke-width="4" fill="none"></path>
+    <circle cx="510" cy="140" r="12" fill="rgb(244,56,56)"></circle>
+    <text x="510" y="140" dx="17" dy="-5" font-size="20" fill="rgb(244,56,56)" font-family="Arial" text-anchor="start">
       conflict/f2_new
     </text>
   </g>

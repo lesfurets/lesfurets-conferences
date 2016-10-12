@@ -55,12 +55,14 @@
 }
 
 .reveal span.ko {
-    color: red;
+    /*color: red;*/
+    color: #f43838;
     font-weight: bold;
 }
 
 .reveal span.ok {
-    color: green;
+    /*color: green;*/
+    color: #b26edf;
     font-weight: bold;
 }
 

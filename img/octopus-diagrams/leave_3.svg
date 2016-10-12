@@ -24,7 +24,7 @@
     <g>
       <line x1="595" y1="280" x2="595" y2="210" stroke="rgb(244,210,62)" stroke-width="4"></line>
       <circle cx="595" cy="210" r="12" fill="rgb(244,210,62)"></circle>
-      <text x="595" y="210" dx="-17" dy="5" font-size="20" fill="rgb(244,210,62)" font-family="Arial" text-anchor="end">
+      <text x="595" y="210" dx="17" dy="5" font-size="20" fill="rgb(244,210,62)" font-family="Arial" text-anchor="start">
         studies/new
       </text>
     </g>

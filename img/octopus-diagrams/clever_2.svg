@@ -21,7 +21,7 @@
   </g>
   <g>
     <circle cx="595" cy="210" r="12" fill="rgb(244,210,62)"></circle>
-    <text x="595" y="210" dx="-17" dy="5" font-size="20" fill="rgb(244,210,62)" font-family="Arial" text-anchor="end">
+    <text x="595" y="210" dx="17" dy="5" font-size="20" fill="rgb(244,210,62)" font-family="Arial" text-anchor="start">
       features/new*
     </text>
   </g>
