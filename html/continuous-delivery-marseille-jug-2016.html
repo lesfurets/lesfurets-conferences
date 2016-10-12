@@ -472,6 +472,29 @@ git merge features/*
         center: true,
         embedded: true,
 
+        // Hack my remote because it send 5 events
+        keyboard: {
+          // Tab : nop
+          9: null,
+          // Page down : previous slide
+          33: function() { 
+            if (!window.animate) {
+              window.animate = true;
+              Reveal.left();
+              setTimeout(function() { window.animate = false; }, 1000);
+            }
+          },
+          // Page up : next slide
+          34: function() { 
+            if (!window.animate) {
+              window.animate = true;
+              Reveal.right(); 
+              setTimeout(function() { window.animate = false; }, 1000);
+            }
+          }
+        },
+
+
         //theme: 'lesfurets', // available themes are in /css/theme
         transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
 
