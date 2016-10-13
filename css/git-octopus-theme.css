@@ -43,15 +43,23 @@
 }
 
 .reveal .dangerzone.safe {
-    color: green;
+    background-color: green;
+    color: black;
 }
 
 .reveal .dangerzone.cool {
-    color: blue;
+    background-color: blue;
+    color: black;
+}
+
+.reveal .dangerzone.warning {
+    background-color: yellow;
+    color: black;
 }
 
 .reveal .dangerzone.danger {
-    color: red;
+    background-color: red;
+    color: black;
 }
 
 .reveal span.ko {

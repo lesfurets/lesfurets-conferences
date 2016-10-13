@@ -5,12 +5,12 @@
     <circle cx="85" cy="70" r="16" fill="none" stroke-dasharray="8,7" stroke="rgb(244,56,56)" stroke-width="4"></circle>
   </g>
   <g>
-    <path d="M 85 210 Q 85 105 595 105" stroke="rgb(178,110,223)" stroke-width="4" fill="none"></path>
-    <path d="M 255 210 Q 255 105 595 105" stroke="rgb(178,110,223)" stroke-width="4" fill="none"></path>
-    <path d="M 425 210 Q 425 105 595 105" stroke="rgb(178,110,223)" stroke-width="4" fill="none"></path>
-    <line x1="595" y1="210" x2="595" y2="105" stroke="rgb(178,110,223)" stroke-width="4"></line>
-    <circle cx="595" cy="105" r="12" fill="rgb(178,110,223)"></circle>
-    <text x="595" y="105" dx="17" dy="5" font-size="20" fill="rgb(178,110,223)" font-family="Arial" text-anchor="start">
+    <path d="M 85 210 Q 85 105 595 105" stroke="rgb(244,56,56)" stroke-width="4" fill="none"></path>
+    <path d="M 255 210 Q 255 105 595 105" stroke="rgb(244,56,56)" stroke-width="4" fill="none"></path>
+    <path d="M 425 210 Q 425 105 595 105" stroke="rgb(244,56,56)" stroke-width="4" fill="none"></path>
+    <line x1="595" y1="210" x2="595" y2="105" stroke="rgb(244,56,56)" stroke-width="4"></line>
+    <circle cx="595" cy="105" r="12" fill="rgb(244,56,56)"></circle>
+    <text x="595" y="105" dx="17" dy="5" font-size="20" fill="rgb(244,56,56)" font-family="Arial" text-anchor="start" text-decoration="line-through">
       octopus
     </text>
   </g>
