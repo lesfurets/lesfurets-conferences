@@ -1,3 +1,7 @@
+body {
+    background-color: #222;
+}
+
 .reveal p {
     color: #fafafa;
 }
@@ -79,3 +83,55 @@
     padding: 0 5px;
 }
 
+html.background-furets .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-size: cover;
+    background-image: url("../img/nwx/lesfurets-background-black-01.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+html.background-marathon .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-image: url("../img/section/marathon.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: saturate(.3) brightness(.5);
+}
+
+html.background-pipeline .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../img/section/gas-pipeline-reduced.jpeg");
+    filter: saturate(.3) brightness(.5);
+}
+
+html.background-scm .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../img/section/git-scm-white.png");
+    filter: saturate(.3) brightness(.3);
+}
+
+html.background-merge .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../img/section/railroad-tracks-reduced.jpeg");
+    filter: saturate(.3) brightness(.5);
+}
+
+html.background-conflict .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../img/section/uruguay-bridge-reduced.jpeg");
+    filter: saturate(.3) brightness(.5);
+}
