@@ -406,10 +406,9 @@ git merge features/*
 
       <!-- SECTION - SOLUTION 1 -->
 
-      <section class="flushleft" data-background="#8c9eff">
+      <section class="center" data-background="#7986cb">
         <h3 style="color:black">Solution 1</h3>
-        <p class="flushleft" style="color:black">éviter le conflit au niveau du code</p>
-        <p class="flushright" style="color:black">DANGER ZONE : <span class="dangerzone safe">safe</span></p>
+        <p style="color:black">éviter le conflit au niveau du code</p>
       </section>
 
       <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
@@ -430,12 +429,20 @@ git merge features/*
             class="ok">OK</span></p>
       </section>
 
+      <section class="flushleft" data-background="#7986cb">
+        <h3 style="color:black">Eviter le conflit au niveau code</h3>
+        <p style="color:black;">Nécessite des conventions de code partagées,
+          éviter les binaires,
+          un code base modulaire,
+          évolutions par abstraction</p>
+        <p class="flushright" style="color:black;font-weight: bold;">DANGER: <span class="dangerzone safe">safe</span></p>
+      </section>
+
       <!-- SECTION - SOLUTION 2 -->
 
-      <section class="flushleft" data-background="#8c9eff">
+      <section class="center" data-background="#7986cb">
         <h3 style="color:black">Solution 2</h3>
-        <p class="flushleft" style="color:black">enlever la branche de l'octopus</p>
-        <p class="flushright" style="color:black">DANGER ZONE : <span class="dangerzone safe">safe</span></p>
+        <p style="color:black">enlever la branche de l'octopus</p>
       </section>
 
       <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
@@ -456,12 +463,17 @@ git merge features/*
             class="ok">OK</span></p>
       </section>
 
+      <section class="flushleft" data-background="#7986cb">
+        <h3 style="color:black">Enlever la branche de l'octopus</h3>
+        <p style="color:black;">Nécessite de pouvoir séparer les branches de longues durée, les WIP</p>
+        <p class="flushright" style="color:black;font-weight: bold;">DANGER : <span class="dangerzone safe">safe</span></p>
+      </section>
+
       <!-- SECTION - SOLUTION 3 -->
 
-      <section class="flushleft" data-background="#8c9eff">
+      <section class="center" data-background="#7986cb">
         <h3 style="color:black">Solution 3</h3>
-        <p class="flushleft" style="color:black">fusionner la branche</p>
-        <p class="flushright" style="color:black">DANGER ZONE : <span class="dangerzone danger">danger</span></p>
+        <p style="color:black">fusionner la branche</p>
       </section>
 
       <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
@@ -490,12 +502,17 @@ git merge features/*
         </p>
       </section>
 
+      <section class="flushleft" data-background="#7986cb">
+        <h3 style="color:black">Fusionner la branche</h3>
+        <p style="color:black">Nécessite de coupler la livraison de deux branches.</p>
+        <p class="flushright" style="color:black;font-weight: bold;">DANGER : <span class="dangerzone danger">danger</span></p>
+      </section>
+
       <!-- SECTION - SOLUTION 4 -->
 
-      <section class="flushleft" data-background="#8c9eff">
+      <section class="center" data-background="#7986cb">
         <h3 style="color:black">Solution 4</h3>
-        <p class="flushleft" style="color:black">rebaser la branche</p>
-        <p class="flushright" style="color:black">DANGER ZONE : <span class="dangerzone danger">danger</span></p>
+        <p style="color:black">rebaser la branche</p>
       </section>
 
       <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
@@ -517,14 +534,19 @@ git merge features/*
             class="ok">OK</span></p>
       </section>
 
+      <section class="flushleft" data-background="#7986cb">
+        <h3 style="color:black">Rebaser la branche</h3>
+        <p style="color:black">Nécessite de suivre les évolutions ultérieures de la branche de base.</p>
+        <p class="flushright" style="color:black;font-weight: bold;">DANGER :<span class="dangerzone danger">danger</span></p>
+      </section>
+
       <!-- SECTION - SOLUTION 5 -->
 
-      <section class="flushleft" data-background="#8c9eff">
-        <h3 style="color:black">Solution 5 <img class="nostyle" style="width:100px;vertical-align:middle;margin:25px;"
-                                                src="../img/icon-star.png"></h3>
-        <p class="flushleft" style="color:black">git-conflict : résolution de conflit distribué, livré avec
-          git-octopus</span></p>
-        <p class="flushright" style="color:black">DANGER ZONE : <span class="dangerzone warning">warning</span></p>
+      <section class="center" data-background="#7986cb">
+        <h3 style="color:black">Solution 5</h3>
+          <p style="color:black;"><span style="font-weight: bold;">git-conflict : </span>
+            résolution de conflit distribué, livré avec <br>git-octopus</p>
+        <img class="nostyle" style="width:100px;vertical-align:middle;margin:25px;" src="../img/icon-star.png">
       </section>
 
       <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
@@ -556,12 +578,14 @@ git merge features/*
       <!--
         <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
         <img class="nostyle" src="../img/octopus-diagrams/conflict_5.svg" />
-        <p class="flushleft svg-header small"><strong>git-conflict</strong> : TODO </p>
+          <p class="flushleft svg-header small"><strong>git-conflict</strong> : git-conflict permet de résoudre le
+            conflit en local </p>
         </section>
 
         <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
         <img class="nostyle" src="../img/octopus-diagrams/conflict_6.svg" />
-        <p class="flushleft svg-header small"><strong>git-conflict</strong> : TODO </p>
+        <p class="flushleft svg-header small"><strong>git-conflict</strong> : Et pousser cette résolution au repository
+          distant </p>
         </section>
 
         <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
@@ -582,7 +606,14 @@ git merge features/*
         </p>
       </section>
 
-      <section class="flushleft" data-background="#8c9eff">
+      <section class="flushleft" data-background="#7986cb">
+        <h3 style="color:black;font-weight: bold;">git-conflict</h3>
+        <p style="color:black">Permet l'évolutions indépendants des branches.<br>
+          Nécessite de surveiller le contenu des resolutions de conflit.</p>
+        <p class="flushright" style="color:black;font-weight: bold;">DANGER : <span class="dangerzone warning">warning</span></p>
+      </section>
+
+      <section class="flushleft" data-background="#7986cb">
         <h3 class="flushright" style="color:black">En résumé...</h3>
         <p class="flushleft" style="color:black"><strong>1</strong> : éviter les conflits</p>
         <p class="flushleft" style="color:black"><strong>2</strong> : enlever la branche de l'octopus</p>
