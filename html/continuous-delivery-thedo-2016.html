@@ -137,19 +137,19 @@
         <!--class="color-gray50">build rapide et automatique</strong> (y compris le déploiement).</span></p>-->
 
         <ul class="color-gray400 nodisc">
-          <span class="fragment" data-fragment-index="7"><li>Continuous Integration</li></span>
-          <span class="fragment" data-fragment-index="6"><li>Versatile SCM</li></span>
-          <span class="fragment" data-fragment-index="5"><li>Modular code base</li></span>
-          <span class="fragment" data-fragment-index="4"><li>Reliable Testing</li></span>
-          <span class="fragment" data-fragment-index="3"><li>Fast Build</li></span>
-          <span class="fragment" data-fragment-index="2"><li>Automated Deployment</li></span>
+          <span class="fragment" data-fragment-index="6"><li>Gestion de code source flexible</li></span>
+          <span class="fragment" data-fragment-index="5"><li>Integration continue</li></span>
+          <span class="fragment" data-fragment-index="4"><li>Build rapide et automatique avec des tests fiables</li></span>
+          <span class="fragment" data-fragment-index="3"><li>Gestion des artéfacts</li></span>
+          <span class="fragment" data-fragment-index="2"><li>Déploiement automatique</li></span>
           <span class="fragment" data-fragment-index="1"><li>Monitoring & Alerting</li></span>
         </ul>
-        <p class="flushright">TODO</p>
         <aside class="notes">
-          <p>Development Process</p>
+          <p>Conception</p>
+          <p>Development</p>
           <p>Validation</p>
-          <p>Operations</p>
+          <p>Mise en production</p>
+          <p>Exploitation</p>
         </aside>
       </section>
 
@@ -201,6 +201,29 @@
       <section class="flushleft" data-state="background-scm">
         <h2 style="color:#f07d00">Gestion de code source</h2>
         <h3 class="flushright section-subheader">La manière de gérer son code source est important pour le delivery</h3>
+      </section>
+
+      <section class="center">
+          <strong>
+            <span class="color-indigo300">Intégration continue</span>
+            <span> &ne; </span>
+            <span class="color-gray400">Jenkins, TeamCity, Travis...</span>
+          </strong>
+        <br>
+        <br>
+        <br>
+        <span class="fragment">
+          <strong>
+            <span class="color-indigo300">Intégration continue</span><br>
+            <span> = </span><br>
+            <span>intégrations fréquents</span><br>
+            <span>vérifications automatiques</span><br>
+            <span>détection d'erreur au plus tôt</span><br>
+          </strong>
+        </span>
+        <aside class="notes"> Les membres de l'équipe intègrent fréquemment leurs travaux,
+          Chaque intégration déclenchant une suite de vérifications automatiques,
+          Afin de détecter les erreurs le plutôt possible.</aside>
       </section>
 
       <section class="center" data-background="#222">
@@ -329,25 +352,48 @@ git merge features/*
         <p class="">Mais le merge de plusieurs branches à partir d'un pattern n'existe pas dans git...</p>
         <p class="fragment"><strong>LesFurets git-octopus</strong> : <br/><a
             href="https://github.com/lesfurets/git-octopus">https://github.com/lesfurets/git-octopus</a></p>
-        <!--<p class="fragment large"><strong class="color-deeporange300">Et comment gérer les conflits ?</strong></p>-->
       </section>
 
       <section class="flushleft" data-background="#222">
-        <p class="">En plus de récupérer l'intégration continue, on constitue facilement les environnements :</p>
-        <p class="">- <strong class="color-indigo300">dev</strong> avec toutes les features</p>
-        <p class="">- <strong class="color-indigo300">stage</strong> pour la validation</p>
-        <p class="">- <strong class="color-indigo300">preprod</strong> pour les tickets validés</p>
+        <p class="strong color-indigo300">
+          Intégration continue<span style="color:green"> &#10003;</span>
+        </p>
+        <p class="strong color-gray50">
+          Livre ce qui est prête avec <span class="color-indigo300">feature branching</span>
+          <span style="color:green"> &#10003;</span>
+        </p>
+        <p class="strong color-gray50">
+          Peu d'investissements pour mettre en place <br>
+          <span class="color-gray400">(Git, Jenkins, git-octopus)</span>
+        </p>
+        <p class="strong color-gray50">
+          Plus facile à appliquer que le trunk based
+        </p>
+        <p class="strong color-gray50">
+          Passe à l'echelle
+        </p>
+      </section>
+
+      <section class="center" data-background="#222">
+        <strong style="font-size: larger">+</strong><br>
+        <p class="color-gray50 strong">On constitue facilement les environnements</p>
+        <p>
+          <strong class="color-indigo300">dev</strong> avec toutes les features<br>
+          <strong class="color-indigo300">stage</strong> pour la validation<br>
+          <strong class="color-indigo300">preprod</strong> pour les tickets validés
+        </p>
       </section>
 
       <section class="flushleft" data-background="#222">
-        <p class="">Différents environnements : </p>
-        <p class="flushright">TODO : simplify image</p>
         <img class="nostyle" style="width:125%;margin-left:-7vw" src="../img/octopus-diagrams/git_repo_setup_1.png">
+        <aside class="notes">
+        <!--TODO : replace with a simple image-->
+        </aside>
       </section>
 
       <section class="center" data-background="#222">
         <p class="fragment">Si la probabilité d'avoir un conflit entre 2 branches est <span style="font-style: italic;">C</span>,
-        <span class="fragment">Quelle est la probabilité d'avoir au moins un conflit lorsqu'on merge <span
+        <span class="fragment"><br>Quelle est la probabilité d'avoir au moins un conflit lorsqu'on merge <span
             style="font-style: italic;">N</span> branches?</span>
         </p>
 
@@ -356,12 +402,13 @@ git merge features/*
              target="_blank"><img
               src="https://latex.codecogs.com/png.latex?\dpi{200}&space;\bg_white&space;\large&space;1-(1-C)^{\binom{N}{2}}"
               title="\large 1-(1-C)^{\binom{N}{2}}"/></a>
-        </p>
-        <p class="fragment fade-in">
+        <br>
+        <span class="fragment fade-in">
           <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\bg_white&space;\large&space;1-(1-0.05)^{\binom{20}{2}}&space;=&space;0.9999"
              target="_blank"><img
               src="https://latex.codecogs.com/png.latex?\dpi{200}&space;\bg_white&space;\large&space;1-(1-0.05)^{\binom{20}{2}}&space;=&space;0.9999"
               title="\large 1-(1-0.05)^{\binom{20}{2}} = 0.9999"/></a>
+        </span>
         </p>
         <p class="fragment large"><strong class="color-deeporange300">Et comment gérer les conflits ?</strong></p>
       </section>
