@@ -112,9 +112,9 @@
             (release 2 heures)
           </li>
           <br>
-          <li class="color-gray400">
-            <span style="color:#f07d00;font-weight: bold">2017+</span>:
-            release/déploiement par feature / WIP
+          <li class="white">
+            <span style="color:#f07d00;font-weight: bold">2017+</span> :
+            release par feature, release partial
           </li>
         </ul>
       </section>
@@ -128,14 +128,6 @@
       </section>
 
       <section class="center" data-background="#222">
-
-        <!--<p class="color-gray400">Un code correctement <strong class="color-gray50">segmenté</strong> (avec des parties-->
-        <!--indépendantes), <span class="fragment">une bonne <strong-->
-        <!--class="color-gray50">couverture de test</strong>, </span><span class="fragment">des <strong-->
-        <!--class="color-gray50">features indépendantes</strong> (donc des branches indépendantes), </span><span-->
-        <!--class="fragment">un bon système de <strong class="color-gray50">monitoring</strong> <span class="fragment">et une chaine de <strong-->
-        <!--class="color-gray50">build rapide et automatique</strong> (y compris le déploiement).</span></p>-->
-
         <ul class="color-gray400 nodisc">
           <span class="fragment" data-fragment-index="6"><li>Gestion de code source flexible</li></span>
           <span class="fragment" data-fragment-index="5"><li>Integration continue</li></span>
@@ -252,7 +244,7 @@
         <p class="color-gray400">Avec une code base en <strong class="color-indigo300">feature branching</strong>
           (<strong
               class="color-gray50">option 2</strong>), chaque feature est <strong class="color-gray50">sur une branche
-            dédiée</strong>, <span class="fragment">la production est la <strong class="color-gray50">fusion du master et des features</strong>, </span><span
+            dédiée</strong>, <span class="fragment">la prochaine release est la <strong class="color-gray50">fusion du master et des features</strong>, </span><span
               class="fragment">les développements avancent en <strong
               class="color-gray50">isolation</strong>, </span><span
               class="fragment">et on livre une branche <strong
@@ -496,10 +488,10 @@ git merge features/*
 
       <section class="flushleft" data-background="#7986cb">
         <h3 style="color:black">Eviter le conflit au niveau code</h3>
-        <p style="color:black;">Nécessite des conventions de code partagées,
+        <p style="color:black;">Conventions de code partagées,
           éviter les binaires,
           un code base modulaire,
-          évolutions par abstraction</p>
+          évolutions par abstraction, <span class="under">S</span>OLID</p>
         <p class="flushright" style="color:black;font-weight: bold;">DANGER: <span class="dangerzone safe">safe</span></p>
       </section>
 
@@ -530,7 +522,7 @@ git merge features/*
 
       <section class="flushleft" data-background="#7986cb">
         <h3 style="color:black">Enlever la branche de l'octopus</h3>
-        <p style="color:black;">Nécessite de pouvoir séparer les branches de longues durée, les WIP</p>
+        <p style="color:black;">Séparer les branches de longues durée, reprioriser la tâche.</p>
         <p class="flushright" style="color:black;font-weight: bold;">DANGER : <span class="dangerzone safe">safe</span></p>
       </section>
 
@@ -569,7 +561,7 @@ git merge features/*
 
       <section class="flushleft" data-background="#7986cb">
         <h3 style="color:black">Fusionner la branche</h3>
-        <p style="color:black">Nécessite de coupler la livraison de deux branches.</p>
+        <p style="color:black">Coupler la livraison de deux branches.</p>
         <p class="flushright" style="color:black;font-weight: bold;">DANGER : <span class="dangerzone danger">danger</span></p>
       </section>
 
@@ -601,7 +593,7 @@ git merge features/*
 
       <section class="flushleft" data-background="#7986cb">
         <h3 style="color:black">Rebaser la branche</h3>
-        <p style="color:black">Nécessite de suivre les évolutions ultérieures de la branche de base.</p>
+        <p style="color:black">Surveiller les évolutions ultérieures de la branche de base.</p>
         <p class="flushright" style="color:black;font-weight: bold;">DANGER :<span class="dangerzone danger">danger</span></p>
       </section>
 
