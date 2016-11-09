@@ -2,13 +2,16 @@
 
 Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesFurets.com](https://www.lesfurets.com).
 
-* **Git Octopus** ([open-source](https://github.com/lesfurets/git-octopus/)) : Notre organisation en feature branching & continuous merge
-* **Continuous delivery** : Historique et mindset sur le chemin du continuous delivery
-* **Architecture Cassandra** : Retour d’expérience sur l’évolution de notre infrastructure vers une architecture lambda
-* **DomainModel.stream()** : Comment on applatit notre modèle de données dans un KVM (Key Value Mapping)
+* **[Continuous merge : réconcilier feature branching et continuous delivery](https://github.com/lesfurets/lesfurets-conferences#continuous-merge--r%C3%A9concilier-feature-branching-et-continuous-delivery)** ([open-source](https://github.com/lesfurets/git-octopus/)) : Notre organisation en feature branching & continuous merge
+* **[DomainModel.stream()](https://github.com/lesfurets/lesfurets-conferences#domainmodelstream)** : Comment on applatit notre modèle de données dans un KVM (Key Value Mapping)
+* **[Apache spark dans la vraie vie](https://github.com/lesfurets/lesfurets-conferences#apache-spark-dans-la-vraie-vie-de-d%C3%A9veloppeur-java)** : Apache spark dans la vraie vie (de développeur Java)
+* **[Software craftmanship](https://github.com/lesfurets/lesfurets-conferences#software-craftmanship)** : Retour d’expérience sur notre manière de travailler ensemble sur le code
+* **[Big Data](https://github.com/lesfurets/lesfurets-conferences#big-data)** : Retour d’expérience sur notre data
 * **Zeno Pixel** ([open-source](https://github.com/lesfurets/zeno-pixel)) : Test de régression graphique pixel à pixel
 
-## Continuous delivery / git octopus
+## Conférences
+
+### Continuous merge : réconcilier feature branching et continuous delivery
 
 **Titre** : Continuous merge : réconcilier feature branching et continuous delivery
 
@@ -35,7 +38,7 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 - 1 octobre 2014 (en) : [Agile Cambrige 2014 - Continuous Delivery the french way](https://lesfurets.github.io/lesfurets-conferences/html/continuous-delivery-agile-cambridge-2014.html)
 - 1 octobre 2014 (fr) : [AgileTour Rennes 2014 - Continuous Delivery chez LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/html/continuous-delivery-agile-tour-rennes-2014.html)
 
-## DomainModel.stream()
+### DomainModel.stream()
 
 **Abstract** : Pour faire du traitement de données, les listes, tableaux et maps sont les structures de données les plus faciles à manipuler. Malheureusement la plupart des applications sont conçues autour d'un modèle métier. Chez LesFurets.com nous avons résolu ce problème en développant un KVM (Key Value Mapping). Ce framework est utilisé au cœur de l'application et cohabite avec le modèle métier. Grâce au mapping bidirectionnel de notre modèle métier vers un modèle clé-valeur, les manipulations de données deviennent extrêmement simples à réaliser. La mise en place de ce nouveau paradigme a nécessité un important refactoring de l'application et a permis de l'ouvrir à de nombreux outils actuels (Stream Java 8, RxJava, Spark, Cassandra)
 
@@ -47,16 +50,20 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 - 8 janvier 2016 : Breizh JUG (http://www.breizhjug.org/#/events)
 - 22 octobre 2015 (fr) : SoftShake Genève (http://soft-shake.ch/2015/fr/)
 
-## Software craftmanship
+### Apache Spark dans la vraie vie (de développeur Java)
+
+**Abstract** : Spark est un framework open source de calcul distribué, utilisé pour faire de l'analyse de donnée sur de grands volumes. Mais devons-nous être "data scientist" et passionné de Scala pour l'utiliser ? Non seulement l'analyse de donnée avec Spark est à portée de tout développeur Java, mais elle permet d'avoir un impact direct sur le business. Depuis la version 2.0 de Spark, l'API des DataFrames permet de profiter des optimisations du moteur d'exécution peu importe le langage utilisé, dont Java. Nous allons utiliser Spark sur différentes sources de données (fichiers plats, MySQL, Cassandra) et dans des cas d'usages concrets basés sur les données de LesFurets.com, tout en passant en revue les principales fonctionnalités du moteur, soit Spark Core, Spark SQL, Spark Streaming et Spark MLlib Machine Learning Library, dans une présentation alternant slides et démonstrations live.
+
+### Software craftmanship
 
 - 21 - 22 Avril 2016 (fr) : [Devoxx - France - Live code review at LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/html/live-code-review-at-lesfurets-devoxx.html)
 - 4 mars 2016 (en) : [BGL Tech Conference - London - Live code review at LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/html/live-code-review-at-lesfurets.html)
 - 26 novembre 2015 (fr) : [Codeurs en Seines - Rouen - Code review chez LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/html/code-review-chez-lesfurets.html)
 - 25 juin 2015 (en) : [NWX Summer Festival - Rouen - Pair programming chez LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/html/pair-programming-chez-lesfurets.html)
 
-## Big Data
+### Big Data
 
-- 22 mars 2016 (fr) : Architecture C* chez Ippon retour expérience (http://blog.ippon.fr/2016/03/16/retour-dexperience-lesfurets-com-le-22-mars/)
+- 22 mars 2016 (fr) : Architecture Cassandra chez Ippon retour expérience (http://blog.ippon.fr/2016/03/16/retour-dexperience-lesfurets-com-le-22-mars/)
 - 16 juin 2015 (en) : [Cassandra Days Paris 2015 - From 0 to Cassandra on AWS in 30 days - Tsunami alerting with Cassandra](https://lesfurets.github.io/lesfurets-conferences/pdf/cassandra-days-paris-from-0-to-cassandra-on-aws-in-30-days.pdf)
 
 ## Cours
@@ -65,14 +72,20 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 - 1 décembre 2015 (fr) : [Université de Rouen - git (M1) Gestion de version](https://lesfurets.github.io/lesfurets-conferences/html/git-gestion-version-m1.html)
 - TODO : cours cassandra
 
-# Vidéos
+## Speakers
+
+### Alexandre DuBreuil [@dubreuia](https://twitter.com/dubreuia)
+
+Architecte canadien (certifié sans accent) de l'équipe data chez LesFurets.com, je m'intéresse particulièrement au software craftsmanship et à la manière de travailler efficacement le code en équipe. J'affectionne les sujets comme la gestion du code source, la construction d'application et les techniques de continuous delivery.
+
+## Vidéos
 
 - BreizhCamp - Rennes - Continuous delivery : https://www.youtube.com/watch?v=ayvVYc01iEk
 - The French Way (en) - Agile Cambridge - Continuous delivery : https://www.youtube.com/watch?v=ayvVYc01iEk
 - SoftIt - Continuous delivery : http://blog.softit.fr/?tag=/Continuous+Delivery+to+Lean+Enterprise
 - GenevaJUG Session - Domain().stream() et Continuous merge : https://www.youtube.com/watch?v=mRu30jO2c18
 
-# Idée de conférences
+## Idée de conférences
 
 * Monitoring ops & métier avec datadog / graphite-tessera
 * Eviter les conflits de code (inventaire, résolution, stratégie)
@@ -82,7 +95,7 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 * Infra Selenium Grid : 200 séléniums sur une machine en 10min c'est possible (grid docker en ram)
 * Infra docker de tests (et déploiement local dev avec dns)
 
-# Installation reveal
+## Installation reveal
 
 Il faut avoir bower pour mettre à jour reveal.js, tout est commité dans `bower_components/reveal.js` et linké dans les présentations.
 
@@ -94,7 +107,7 @@ Pour savoir s'il y a une nouvelle version de reveal.js
 
 Ensuite il faut mettre à jour le bower.json
 
-# Infos / Questions
+## Infos / Questions
 
 - Twitter : https://twitter.com/BeastieFurets
 
