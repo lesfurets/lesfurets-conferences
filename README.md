@@ -68,6 +68,10 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 
 **Abstract** : Spark est un framework open source de calcul distribué, utilisé pour faire de l'analyse de donnée sur de grands volumes. Mais devons-nous être "data scientist" et passionné de Scala pour l'utiliser ? Non seulement l'analyse de donnée avec Spark est à portée de tout développeur Java, mais elle permet d'avoir un impact direct sur le business. Depuis la version 2.0 de Spark, l'API des DataFrames permet de profiter des optimisations du moteur d'exécution peu importe le langage utilisé, dont Java. Nous allons utiliser Spark sur différentes sources de données (fichiers plats, MySQL, Cassandra) et dans des cas d'usages concrets basés sur les données de LesFurets.com (avec écriture de tests unitaires), en passant en revue les principales fonctionnalités du moteur, soit Spark Core, Spark SQL, Spark Streaming et Spark MLlib (Machine Learning Library), dans une présentation alternant slides et démonstrations live.
 
+### JOOQ et JOOλ : le duo qui rend beau votre code de mapping de base de donnée
+
+**Abstract** : JOOQ et JOOλ sont des solutions open-source permettant d'intégrer proprement votre application Java avec votre base de données. Quoi de nouveau sous le soleil me diriez-vous ? Après tout la problématique de mapping objet-relationnel est au moins aussi vieille que la plateforme Java. Mais depuis Java 8, JOOQ permet d'utiliser l'API Stream du JDK avec le mapping objet-relationnel, ce qui, couplé avec  JOOλ, a pour effet d'écrire des DAO plus simples et dans un paradigme fonctionnel. Au cours de ce tools in action nous allons vous présenter les avantages que nous pouvons tirer des frameworks JOOQ et JOOλ, par rapport à du JDBC pur sucre,  JPA sans oublier Spring JDBC Template. Cerise sur le gâteau, nous vous indiquerons comment simplement introduire JOOQ et JOOλ dans votre code existant.
+
 ### Software craftmanship
 
 - 21 - 22 Avril 2016 (fr) : [Devoxx - France - Live code review at LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/html/live-code-review-at-lesfurets-devoxx.html)
