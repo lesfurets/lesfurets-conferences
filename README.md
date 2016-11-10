@@ -50,9 +50,23 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 - 8 janvier 2016 : Breizh JUG (http://www.breizhjug.org/#/events)
 - 22 octobre 2015 (fr) : SoftShake Genève (http://soft-shake.ch/2015/fr/)
 
+<!--
 ### Apache Spark dans la vraie vie (de développeur Java)
+### Apache Spark : Utilisation journalière pour dévelopeur Java
+### Apache Spark : Hands-on pour développeur Java
+### A concise introduction to Apache Spark for Java developers
+### Apache Spark : Real World Use Cases for Java Developers
+### Apache Spark : Use cases réels pour développeurs Java
+### Apache Spark : Utilisation pour développeurs Java et Mme Michu
+### Apache Spark : Data science pour développeurs Java et Mme Michu
+### Apache Spark : Hands-on pour développeurs Java et Mme Michu
+### SparkOscope: Enabling Apache Spark Optimization Through Cross-Stack Monitoring and Visualization 
+### Apache Spark : Hands-on pour développeurs Java dans la vraie vie
+### Apache Spark : Hands-on pour développeurs Java avec de vrais use case
+-->
+### Apache Spark : Hands-on et use cases pour développeurs Java
 
-**Abstract** : Spark est un framework open source de calcul distribué, utilisé pour faire de l'analyse de donnée sur de grands volumes. Mais devons-nous être "data scientist" et passionné de Scala pour l'utiliser ? Non seulement l'analyse de donnée avec Spark est à portée de tout développeur Java, mais elle permet d'avoir un impact direct sur le business. Depuis la version 2.0 de Spark, l'API des DataFrames permet de profiter des optimisations du moteur d'exécution peu importe le langage utilisé, dont Java. Nous allons utiliser Spark sur différentes sources de données (fichiers plats, MySQL, Cassandra) et dans des cas d'usages concrets basés sur les données de LesFurets.com, tout en passant en revue les principales fonctionnalités du moteur, soit Spark Core, Spark SQL, Spark Streaming et Spark MLlib Machine Learning Library, dans une présentation alternant slides et démonstrations live.
+**Abstract** : Spark est un framework open source de calcul distribué, utilisé pour faire de l'analyse de donnée sur de grands volumes. Mais devons-nous être "data scientist" et passionné de Scala pour l'utiliser ? Non seulement l'analyse de donnée avec Spark est à portée de tout développeur Java, mais elle permet d'avoir un impact direct sur le business. Depuis la version 2.0 de Spark, l'API des DataFrames permet de profiter des optimisations du moteur d'exécution peu importe le langage utilisé, dont Java. Nous allons utiliser Spark sur différentes sources de données (fichiers plats, MySQL, Cassandra) et dans des cas d'usages concrets basés sur les données de LesFurets.com (avec écriture de tests unitaires), en passant en revue les principales fonctionnalités du moteur, soit Spark Core, Spark SQL, Spark Streaming et Spark MLlib (Machine Learning Library), dans une présentation alternant slides et démonstrations live.
 
 ### Software craftmanship
 
