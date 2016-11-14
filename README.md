@@ -72,6 +72,32 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 
 **Abstract** : JOOQ et JOOλ sont des solutions open-source permettant d'intégrer proprement votre application Java avec votre base de données. Quoi de nouveau sous le soleil me diriez-vous ? Après tout la problématique de mapping objet-relationnel est au moins aussi vieille que la plateforme Java. Mais depuis Java 8, JOOQ permet d'utiliser l'API Stream du JDK avec le mapping objet-relationnel, ce qui, couplé avec  JOOλ, a pour effet d'écrire des DAO plus simples et dans un paradigme fonctionnel. Au cours de ce tools in action nous allons vous présenter les avantages que nous pouvons tirer des frameworks JOOQ et JOOλ, par rapport à du JDBC pur sucre,  JPA sans oublier Spring JDBC Template. Cerise sur le gâteau, nous vous indiquerons comment simplement introduire JOOQ et JOOλ dans votre code existant.
 
+<!-- 
+### Applying Reactive programming for handling server-side concurrency
+-->
+### Programmation réactive pour gérer la concurrence côté serveur
+
+**Abstract** : 
+La concurrence côté serveur est un prérequis afin d'obtenir des temps de réponse acceptables pour les tâches d'orchestration de services externes.
+Traditionnellement, Java traite la concurrence via des threads, des files d'attentes et des locks.
+Bien que matures, ces constructions sont de très bas niveau pour travailler avec.
+Non seulement ils sont sujets à l'erreur, ils manquent d'abstractions de haut niveau pour aider à mettre en œuvre des politiques pour l'optimisation des ressources, la résilience, la performance, etc.
+La programmation réactive propose une solution pour gérer les problèmes de concurrence.
+Basé sur des messages asynchrones, la programmation réactive permet aux développeurs de décrire les opérations sur les flux de données.
+Dans cette présentation, nous démontrons nos efforts pour appliquer une programmation réactive sur une composante critique de notre architecture de backend chez LesFurets.com, l'orchestrateur de service.
+En utilisant des exemples de code en direct, nous allons comparer différentes API telles que RxJava2, Reactive Streams (Java 9 Flow) et CompletableFutures.
+
+<!--
+Server-side concurrency is a must in order to achieve acceptable response times for tasks orchestrating external services.
+Traditionally Java deals with concurrency via threads, queues and locks. 
+Although mature, these constructs are very low-level to work with. 
+Not only they are error-prone, they lack high-level abstractions to help implementing custom policies for resource optimization, resilience, performance, etc.
+Reactive programming proposes a solution to handle concurrency problems. 
+Based on asynchronous messages, reactive programming lets developers describe operations on top of streams of data.
+In this presentation we demonstrate our efforts to apply reactive programming on a critical component of our backend architecture at LesFurets.com, the service orchestrator. 
+Using live code examples we will compare different APIs such as RxJava2, Reactive Streams (Java 9 Flow) and CompletableFutures.
+-->
+
 ### Software craftmanship
 
 - 21 - 22 Avril 2016 (fr) : [Devoxx - France - Live code review at LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/html/live-code-review-at-lesfurets-devoxx.html)
