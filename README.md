@@ -96,6 +96,11 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 
 Architecte canadien (certifié sans accent) de l'équipe data chez LesFurets.com, je m'intéresse particulièrement au software craftsmanship et à la manière de travailler efficacement le code en équipe. J'affectionne les sujets comme la gestion du code source, la construction d'application et les techniques de continuous delivery.
 
+### Ozan Gunalp [@ozangunalp](https://twitter.com/ozangunalp)
+
+Ingénieur docteur avec 5+ ans d'expérience dans les systèmes distribués, l'Internet des objets et les processus de développement logiciels.
+Chez LesFurets.com je m'intéresse à l'amélioration de la qualité et du pipeline de livraison de logiciel.
+
 ## Vidéos
 
 - BreizhCamp - Rennes - Continuous delivery : https://www.youtube.com/watch?v=ayvVYc01iEk
