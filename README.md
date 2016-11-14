@@ -74,18 +74,19 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 
 <!-- 
 ### Applying Reactive programming for handling server-side concurrency
--->
 ### Programmation réactive pour gérer la concurrence côté serveur
+-->
+### Programmation réactive pour l'orchestration de services au sein de la JVM
 
 **Abstract** : 
-La concurrence côté serveur est un prérequis afin d'obtenir des temps de réponse acceptables pour les tâches d'orchestration de services externes.
-Traditionnellement, Java traite la concurrence via des threads, des files d'attentes et des locks.
-Bien que matures, ces constructions sont de très bas niveau pour travailler avec.
-Non seulement ils sont sujets à l'erreur, ils manquent d'abstractions de haut niveau pour aider à mettre en œuvre des politiques pour l'optimisation des ressources, la résilience, la performance, etc.
-La programmation réactive propose une solution pour gérer les problèmes de concurrence.
-Basé sur des messages asynchrones, la programmation réactive permet aux développeurs de décrire les opérations sur les flux de données.
-Dans cette présentation, nous démontrons nos efforts pour appliquer une programmation réactive sur une composante critique de notre architecture de backend chez LesFurets.com, l'orchestrateur de service.
-En utilisant des exemples de code en direct, nous allons comparer différentes API telles que RxJava2, Reactive Streams (Java 9 Flow) et CompletableFutures.
+Lorsque vous effectuez une recherche d'assurance sur LesFurets.com, nous interrogeons jusqu’à 40 partenaires pour offrir un maximum d'offres à nos clients.
+Pour collecter ces offres, nous utilisons des patterns à base de locks, threads et files d'attentes en mémoire pour orchestrer des services au seins de la JVM.
+Bien que matures, ces constructions sont de très bas niveau et sont sujets à de nombreuses erreurs:
+ils manquent d'abstractions pour aider à mettre en œuvre des politiques pour l'optimisation des ressources, la résilience, la performance, etc.
+La programmation réactive propose une solution pour gérer les problèmes de concurrence. 
+Basé sur des messages asynchrones, elle permet aux développeurs de décrire les opérations sur les flux de données.
+Dans cette présentation, nous comparons différents patterns pour appliquer une programmation réactive sur un composant critique de notre architecture.
+Nous allons utiliser différentes API telles que RxJava2, Reactive Streams (Java 9 Flow) et CompletableFutures pour implémenter une orchestration de services et maîtriser la qualité de services pour les utilisateurs.
 
 <!--
 Server-side concurrency is a must in order to achieve acceptable response times for tasks orchestrating external services.
