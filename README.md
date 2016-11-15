@@ -80,13 +80,12 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 
 **Abstract** : 
 Lorsque vous effectuez une recherche d'assurance sur LesFurets.com, nous interrogeons jusqu’à 40 partenaires pour offrir un maximum d'offres à nos clients.
-Pour collecter ces offres, nous utilisons des patterns à base de locks, threads et files d'attentes en mémoire pour orchestrer des services au seins de la JVM.
-Bien que matures, ces constructions sont de très bas niveau et sont sujets à de nombreuses erreurs:
-ils manquent d'abstractions pour aider à mettre en œuvre des politiques pour l'optimisation des ressources, la résilience, la performance, etc.
-La programmation réactive propose une solution pour gérer les problèmes de concurrence. 
-Basé sur des messages asynchrones, elle permet aux développeurs de décrire les opérations sur les flux de données.
+Pour collecter ces offres, nous utilisons des patterns à base de locks, threads et files d'attentes en mémoire pour orchestrer des services au sein de la JVM.
+Bien que matures, ces constructions sont de très bas niveau et sont sujettes à de nombreuses erreurs :
+il manque des abstractions pour aider à mettre en œuvre des politiques pour l'optimisation des ressources, la résilience et la performance.
+La programmation réactive propose une approche différente pour aborder ces problèmes de concurrence en permettant aux développeurs de décrire les opérations sur les flux de données.
 Dans cette présentation, nous comparons différents patterns pour appliquer une programmation réactive sur un composant critique de notre architecture.
-Nous allons utiliser différentes API telles que RxJava2, Reactive Streams (Java 9 Flow) et CompletableFutures pour implémenter une orchestration de services et maîtriser la qualité de services pour les utilisateurs.
+Nous donnons des exemples de différentes API telles que RxJava2, Reactive Streams (Java 9 Flow) et CompletableFutures pour implémenter une orchestration de services tout en garantissant la qualité de services pour les utilisateurs.
 
 <!--
 Server-side concurrency is a must in order to achieve acceptable response times for tasks orchestrating external services.
