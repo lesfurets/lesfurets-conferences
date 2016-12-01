@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JOOQ et JOOλ : Comment écrire du code propre dans vos DAO</title>
+    <meta name="description" content="JOOQ et JOOλ : Comment écrire du code propre dans vos DAO">
+    <meta name="author" content="Mathieu Gandin">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../bower_components/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="../bower_components/reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="../css/lesfurets-theme.css" id="theme">
+    <link rel="stylesheet" href="../css/code-jooq-theme.css" id="theme">
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = '../css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+    <!--[if lt IE 9]>
+    <script src="../bower_components/reveal.js/lib/js/html5shiv.js"></script><![endif]-->
+</head>
+<body>
+<div id="footer" class="footer show">
+    <a href="https://www.lesfurets.com" target="_blank"><img class="logo"
+                                                             src="../img/logo_lesfurets_885x128_no_back.png"></a><a
+        class="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a><a
+        class="github" href="https://github.com/mgandin" target="_blank">https://github.com/mgandin</a><a
+        class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a><a class="twitter"
+                                                                                                      href="https://twitter.com/m_gandin"
+                                                                                                      target="_blank">@m_gandin</a>
+</div>
+<div class="reveal">
+    <div class="slides">
+        <!-- START -->
+
+        <section class="flushright" data-background="../img/nwx/lesfurets-background-black-01.jpg">
+            <h1>JOOQ et JOOλ :</h1>
+            <h2>Comment écrire du code propre dans vos DAO</h2>
+            <h3>Mathieu Gandin</h3>
+            <h4>Tech lead @LesFurets.com</h4>
+            <ul class="flushright nodisc">
+                <li>
+                    <a style="color:white" href="https://twitter.com/m_gandin">https://twitter.com/m_gandin</a>
+                </li>
+                <li>
+                    <a style="color:white" href="https://github.com/mgandin">https://github.com/mgandin</a>
+                </li>
+            </ul>
+        </section>
+
+        <section class="center" data-background="#333">
+            <h2>Mon problème</h2>
+            <ul class="white">
+                <li>En 2016, SQL est toujours là dans le code des DAOs</li>
+                <li>Le mapping entre Java et la base de données revient toujours à combiner deux langages</li>
+                <li>Une fois ce constat fait, comment écrire du meilleur code dans ces zones de l'application ?</li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Pourtant Java ne manque pas de solutions à ce problème</h2>
+            <ul class="white">
+                <li>JDBC</li>
+                <li>JPA / Hibernate</li>
+                <li>JDBC Template</li>
+                <li>MyBatis, framework maison, ...</li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Mais si nous avons tendance à préfèrer ...</h2>
+            <div class="code-wrapper">
+          <pre><code class="code java" data-trim data-noescape>
+public static double compute(int n, int k) {
+  return Stream.iterate(n, e -> e + 1)
+                .filter(Run::isPrime)
+                .mapToDouble(Math::sqrt)
+                .limit(k)
+                .sum();
+}
+          </pre>
+                </code>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>... à ça</h2>
+            <div class="code-wrapper">
+          <pre>
+          <code class="code java" data-trim data-noescape>
+public static double compute(int n, int k) {
+  int index = n;
+  int count = 0;
+  double total = 0;
+  while(count < k) {
+    if(isPrime(index)) {
+      total += Math.sqrt(index);
+      count++;
+    }
+    index++;
+  }
+  return total;
+}
+          </code>
+        </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>On trouve encore du code qui ressemble à ça ...</h2>
+            <div class="code-wrapper">
+        <pre>
+          <code class="code java" data-trim data-noescape>
+public List<PriceListItem> findAll(Connection conn) throws SQLException {
+  try (PreparedStatement st = conn.prepareStatement(SQL_SELECT_ALL);
+    ResultSet rs = st.executeQuery()) {
+    List<PriceListItem> items = new ArrayList<>();
+      while (rs.next()) {
+        items.add(buildItemFromResultSet(rs));
+      }
+      return items;
+    }
+}
+        </code>
+        </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>... alors qu'on peut très facilement avoir du code qui ressemble à ça</h2>
+            <div class="code-wrapper">
+        <pre>
+          <code class="code java" data-trim data-noescape>
+public List<PriceListItem> findAll(Connection conn) throws SQLException {
+  return DSL.using(conn)
+              .fetch(SQL_SELECT_ALL)
+              .stream()
+              .map(this::buildItemFromResultSet)
+              .collect(toList());
+}
+        </code>
+        </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h3>Welcome !</h3>
+            <h2>Mathieu Gandin</h2>
+            <ul class="white">
+                <li>Tech lead at LesFurets.com</li>
+                <li>Ship code in production since 2000</li>
+                <li>Semi-retired agile coach</li>
+                <li>Poor guitar player</li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Java Object Oriented Query</h2>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Alternatives</h2>
+            <ul class="white">
+                <li>JDBC</li>
+                <li>JPA</li>
+                <li>Spring JDBC Template</li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Mapping SQL ?</h2>
+            <div class="code-wrapper">
+            <pre>
+                <code class="code java" data-trim data-noescape>
+try {
+    preparedStatement = connection.prepareStatement(
+                "select departement,manager,netprofit,
+                    operatingexpense,year,turnover from result");
+    resultSet = preparedStatement.executeQuery();
+    while(resultSet.next()) {
+        Result result = new Result();
+        result.setDepartement(resultSet.getString("departement"));
+        result.setManager(resultSet.getString("manager"));
+        result.setNetProfit(resultSet.getDouble("netprofit"));
+        result.setOperatingExpense(resultSet.getDouble("operatingexpense"));
+        result.setYear(resultSet.getInt("year"));
+        results.add(result);
+    }
+    return results;
+} catch (SQLException e) {
+                ...
+            </code>
+            </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>JDBC</h2>
+            <ul class="white">
+                <li>Simple, rapide, pas de restrictions</li>
+                <li>Basé sur des types String</li>
+                <li>Pas de vérification de la syntax avant d'exécuter le code</li>
+                <li>Beaucoup de code répétitif pour gérer les erreurs, ressources, et finalement faire le mapping</li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Un DSL expressif pour mapper du SQL</h2>
+            <div class="code-wrapper">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+return DSL.using(connection)
+            .fetch("Select departement,manager,netprofit,
+                operatingexpense,year,turnover from result")
+            .stream()
+            .map(record -> {
+                Result result = new Result();
+                result.setDepartement(record.get("DEPARTEMENT", String.class));
+                result.setManager(record.get("MANAGER", String.class));
+                result.setNetProfit(record.get("NETPROFIT", Double.class));
+                result.setOperatingExpense(record.get("OPERATINGEXPENSE", Double.class));
+                result.setYear(record.get("YEAR", Integer.class));
+                result.setTurnover(record.get("TURNOVER", Integer.class));
+                return result;
+            })
+            .collect(toList());
+        </code>
+        </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h3>Teaser !</h3>
+            <h2>On peut faire mieux, mais on verra ça plus tard !</h2>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Java Object Oriented Query</h2>
+            <ul class="white">
+                <li><b>Un DSL expressif pour mapper du SQL</b></li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>JPA</h2>
+            <div class="code-wrapper">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+@Entity
+@Table(name = "marques")
+public class Marque {
+
+    @Id
+    private String code;
+    private String name;
+    private String logoUrl;
+    @Transient
+    private byte[] logo;
+    @Transient
+    private String logoName;
+
+    @OneToMany(mappedBy = "marque", fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
+    private List<Brochure> brochures;
+            </code>
+            </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>JPA</h2>
+            <div class="code-wrapper">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+public class MarqueDao {
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    public Marque findByCode(String code) {
+        try {
+            Query query = entityManager
+                .createQuery("from Marque to where to.code=:code")
+                .setParameter("code", code);
+            return (Marque) query.getSingleResult();
+        } catch (Exception e) {
+            throw new ResourceNotFoundException(e);
+        }
+    }
+    ...
+
+            </code>
+            </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>JPA</h2>
+            <ul class="white">
+                <li>Approche POJO bien plus intuitive</li>
+                <li>Navigation par objets</li>
+                <li>Beaucoup de configuration</li>
+                <li>Faut encore faire du JQL/HQL (plus limité que SQL)</li>
+                <li>Les CriteriaQuery ...</li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Typé Java / Valide d'un point de vue SQL</h2>
+            <div class="code-wrapper smaller">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+public Set<Commission> findCommissionsBy(Connection connection, ESite site, EModule module)
+                throws SQLException {
+    return DSL.using(connection)
+        .selectDistinct(field(COL_REFMODULE),
+                        field(COL_REFCUSTOMER),
+                        field(COL_COMMISSION),
+                        field(COL_CREATIONDATETIME, LocalDateTime.class))
+        .from(new TableImpl<>(BO_PRICE_LIST.toString()))
+        .where(COL_REFCUSTOMER + "=" + site.getIntValue())
+        .and(COL_REFMODULE + "=" + module.getIntValue())
+        .orderBy(field(COL_CREATIONDATETIME).desc())
+        .stream()
+        .map(record -> new Commission(EModule.fromIntValue(record.get(COL_REFMODULE, Integer.class)),
+                        ESite.fromIntValue(record.get(COL_REFCUSTOMER, Integer.class)),
+                        ECommissionType.valueOf(record.get(COL_COMMISSION, String.class)),
+                        record.get(COL_CREATIONDATETIME, LocalDateTime.class)))
+        .collect(toSet());
+}
+            </code>
+            </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Valide d'un point de vue SQL</h2>
+            <div class="code-wrapper">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+SELECT distinct
+    COL_REFMODULE,
+    COL_REFCUSTOMER,
+    COL_COMMISSION,
+    COL_CREATIONDATETIME
+FROM BO_PRICE_LIST
+WHERE COL_REFCUSTOMER = 'amaguiz'
+AND COL_REFMODULE = 'auto'
+ORDER BY COL_CREATIONDATETIME
+DESC;
+            </code>
+            </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Java Object Oriented Query</h2>
+            <ul class="white">
+                <li>Un DSL expressif pour mapper du SQL</li>
+                <li><b>Typé Java / Valide d'un point de vue SQL</b></li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Spring JDBC Template</h2>
+            <div class="code-wrapper">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+@Autowired
+public InsuranceParamRepository(DataSource dataSource) {
+    this.jdbcTemplate = new JdbcTemplate(dataSource);
+}
+
+public List<Provider> findProvidersBy(String agencyId) {
+    return jdbcTemplate.query(FIND_PROVIDER_BY_AGENCY_ID, new Object[] { agencyId },
+                    (resultSet, i) -> new Provider(resultSet.getString("CODE"),
+                                    resultSet.getString("NAME"),
+                                    resultSet.getString("COUNTRY_CODE")));
+
+}
+            </code>
+            </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Spring JDBC Template</h2>
+            <ul class="white">
+                <li>Améliore largement les douleurs d'un JDBC</li>
+                <li>Mapping encore un peu pénible</li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Vous vous rappelez ?</h2>
+            <div class="code-wrapper">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+return DSL.using(connection)
+            .fetch("Select departement,manager,netprofit,
+                operatingexpense,year,turnover from result")
+            .stream()
+            .map(record -> {
+                Result result = new Result();
+                result.setDepartement(record.get("DEPARTEMENT", String.class));
+                result.setManager(record.get("MANAGER", String.class));
+                result.setNetProfit(record.get("NETPROFIT", Double.class));
+                result.setOperatingExpense(record.get("OPERATINGEXPENSE", Double.class));
+                result.setYear(record.get("YEAR", Integer.class));
+                result.setTurnover(record.get("TURNOVER", Integer.class));
+                return result;
+            })
+            .collect(toList());
+        </code>
+        </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Manipulation de Collection et donc de Stream pour le mapping</h2>
+            <div class="code-wrapper">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+    return DSL.using(connection)
+                .fetch("Select departement,manager,netprofit,
+                    operatingexpense,year,turnover from result")
+                .stream()
+                .map(this::map)
+                .collect(toList());
+            </code>
+            </pre>
+            </div>
+            <p>avec</p>
+            <div class="code-wrapper">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+private Result map(Record record) {
+		...
+	return result;
+}
+            </code>
+            </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Java Object Oriented Query</h2>
+            <ul class="white">
+                <li>Un DSL expressif pour mapper du SQL</li>
+                <li>Typé Java / Valide d'un point de vue SQL</li>
+                <li><b>Manipulation de Collection et donc de Stream pour le mapping</b></li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Les dates</h2>
+            <div class="code-wrapper">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+Date creationDate = resultSet.getDate("creation_date");
+LocalDateTime date = Instant.ofEpochMilli(creationDate.getTime())
+                        .atZone(ZoneId.systemDefault())
+                        .toLocalDateTime();
+            </code>
+            </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Mapping simplifié</h2>
+            <div class="code-wrapper">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+public List<Tuple2<LocalDateTime, String>> findPlate(Connection connection) throws SQLException {
+    return DSL.using(connection)
+        .fetch(FIND_PLATE_AND_CREATION_DATE)
+        .stream()
+        .map(r -> {
+            String plate = r.getValue(PLATE, String.class);
+            LocalDateTime date = r.getValue(CREATION_DATE, LocalDateTime.class);
+            return new Tuple2<>(date, plate);
+        }).collect(toList());
+}
+            </code>
+            </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Java Object Oriented Query</h2>
+            <ul class="white">
+                <li>Un DSL expressif pour mapper du SQL</li>
+                <li>Typé Java / Valide d'un point de vue SQL</li>
+                <li>Manipulation de Collection et donc de Stream pour le mapping</li>
+                <li><b>Mapping simplifié (notamment pour java.time)</b></li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>What ? Tuple ?</h2>
+            <div class="code-wrapper">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+public List<Tuple2<LocalDateTime, String>> findPlate(Connection connection) throws SQLException {
+    return DSL.using(connection)
+        .fetch(FIND_PLATE_AND_CREATION_DATE)
+        .stream()
+        .map(r -> {
+            String plate = r.getValue(PLATE, String.class);
+            LocalDateTime date = r.getValue(CREATION_DATE, LocalDateTime.class);
+            return new Tuple2<>(date, plate);
+        }).collect(toList());
+}
+            </code>
+            </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>JOOλ</h2>
+            <ul class="white">
+                <li>Extension de classes utilitaires pour les lambdas</li>
+                <li>Function1 à Function16</li>
+                <li>Tuple 1 à Tuple16</li>
+                <code class="code java" data-trim data-noescape>
+                    Tuple2
+                    <LocalDate
+                    , String> tuple = Tuple.tuple(LocalDate.now(), "Yolo");
+                </code>
+                <li>Sequential, des streams ordonnés et séquentiel</li>
+                <code class="code java" data-trim data-noescape>
+                    Seq.of(1, 2, 3).concat(Seq.of(4, 5, 6));
+                </code>
+                <li>Function, Supplier, Consumer Unchecked</li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Function, Supplier, Consumer Unchecked</h2>
+            <div class="code-wrapper">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+public void clean(Connection connection, List<String> plates) throws SQLException {
+    plates.forEach(Unchecked.consumer(plate -> {
+        DSL.using(connection)
+                .deleteFrom(new TableImpl<>(REGISTRATION_CODE_SRA))
+                        .where("plate='" + plate + "'")
+                        .execute();
+        DSL.using(connection)
+                        .deleteFrom(new TableImpl<>(REGISTRATION_DATA))
+                        .where("plate='" + plate + "'")
+                        .execute();
+    }));
+}
+            </code>
+            </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>JOOλ, principes de précaution</h2>
+            <ul class="white">
+                <li>N'utilisez pas le Tuple pour remplacer des POJOs</li>
+                <li>Si vous utilisez Function16, vous avez peut être besoin de refactorer quelques choses avant</li>
+                <li>Rappelez vous que Java n'est pas un langage fonctionnel</li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Code génération, donc la gestion de changement casse le build (plutôt qu'une erreur runtime)</h2>
+            <ul class="white">
+                <li>Pas testé</li>
+                <li>Potentiellement plus compliqué à mettre en oeuvre sur notre existant et son modèle métier</li>
+                <li>Ne pas utiliser cette features introduit du <i>boiler-plate code</i></li>
+            </ul>
+            <div class="code-wrapper">
+                <pre>
+                <code class="code java" data-trim data-noescape>
+                .selectDistinct(field(COL_REFMODULE),
+                field(COL_REFCUSTOMER),
+                field(COL_COMMISSION),
+                field(COL_CREATIONDATETIME, LocalDateTime.class))
+                .from(new TableImpl<>(BO_PRICE_LIST.toString()))
+                .where(COL_REFCUSTOMER + "=" + site.getIntValue())
+                .and(COL_REFMODULE + "=" + module.getIntValue())
+                .orderBy(field(COL_CREATIONDATETIME).desc())
+                </code>
+                </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Java Object Oriented Query</h2>
+            <ul class="white">
+                <li>Un DSL expressif pour mapper du SQL</li>
+                <li>Typé Java / Valide d'un point de vue SQL</li>
+                <li>Manipulation de Collection et donc de Stream pour le mapping</li>
+                <li>Mapping simplifié (notamment pour java.time)</li>
+                <li>Code génération, donc la gestion de changement casse le build (plutôt qu'une erreur runtime)</li>
+                <li>Support de MariaDB, MySQL, Oracle, Oracle, PostgreSQL, SQLite, SQL Server ...</li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h3>Questions ?</h3>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h3>Merci !</h3>
+        </section>
+
+        <!-- END -->
+    </div>
+</div>
+<script src="../bower_components/reveal.js/lib/js/head.min.js"></script>
+<script src="../bower_components/reveal.js/js/reveal.js"></script>
+<script>
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        embedded: true,
+
+        //theme: 'lesfurets', // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            {
+                src: '../bower_components/reveal.js/lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function () {
+                return !!document.body.classList;
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function () {
+                return !!document.body.classList;
+            }
+            }
+        ]
+    });
+</script>
+<script src="../js/lesfurets-theme.js" async></script>
+<script src="../js/lesfurets-codereview-theme.js" async></script>
+</body>
+</html>
