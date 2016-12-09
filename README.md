@@ -4,7 +4,7 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 
 * **[Continuous merge : réconcilier feature branching et continuous delivery](https://github.com/lesfurets/lesfurets-conferences#continuous-merge--r%C3%A9concilier-feature-branching-et-continuous-delivery)** ([open-source](https://github.com/lesfurets/git-octopus/)) : Notre organisation en feature branching & continuous merge
 * **[DomainModel.stream()](https://github.com/lesfurets/lesfurets-conferences#domainmodelstream)** : Comment on applatit notre modèle de données dans un KVM (Key Value Mapping)
-* **[Apache spark dans la vraie vie](https://github.com/lesfurets/lesfurets-conferences#apache-spark-dans-la-vraie-vie-de-d%C3%A9veloppeur-java)** : Apache spark dans la vraie vie (de développeur Java)
+* **[Apache Spark : Hands-on et use cases pour développeurs Java](https://github.com/lesfurets/lesfurets-conferences#apache-spark--hands-on-et-use-cases-pour-d%C3%A9veloppeurs-java)** : Application de spark sur des cas d'usage pour développeurs Java
 * **[Software craftmanship](https://github.com/lesfurets/lesfurets-conferences#software-craftmanship)** : Retour d’expérience sur notre manière de travailler ensemble sur le code
 * **[Big Data](https://github.com/lesfurets/lesfurets-conferences#big-data)** : Retour d’expérience sur notre data
 * **Zeno Pixel** ([open-source](https://github.com/lesfurets/zeno-pixel)) : Test de régression graphique pixel à pixel
@@ -66,7 +66,7 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 -->
 ### Apache Spark : Hands-on et use cases pour développeurs Java
 
-**Abstract** : Spark est un framework open source de calcul distribué, utilisé pour faire de l'analyse de donnée sur de grands volumes. Mais devons-nous être "data scientist" et passionné de Scala pour l'utiliser ? Non seulement l'analyse de donnée avec Spark est à portée de tout développeur Java, mais elle permet d'avoir un impact direct sur le business. Depuis la version 2.0 de Spark, l'API des DataFrames permet de profiter des optimisations du moteur d'exécution peu importe le langage utilisé, dont Java. Nous allons utiliser Spark sur différentes sources de données (fichiers plats, MySQL, Cassandra) et dans des cas d'usages concrets basés sur les données de LesFurets.com (avec écriture de tests unitaires), en passant en revue les principales fonctionnalités du moteur, soit Spark Core, Spark SQL, Spark Streaming et Spark MLlib (Machine Learning Library), dans une présentation alternant slides et démonstrations live.
+**Abstract** : Spark est un framework open source de calcul distribué, utilisé pour faire de l'analyse de donnée sur de grands volumes. Est-il nécessaire d'être "data scientist" et développeur Scala pour utiliser Spark ? Pas du tout ! Non seulement l'analyse de donnée avec Spark est à portée de tout développeur Java, mais elle permet d'avoir un impact direct sur le business. Depuis la version 2.0 de Spark, l'API des DataFrames permet de profiter des optimisations du moteur d'exécution peu importe le langage utilisé, dont Java. Nous allons utiliser Spark sur différentes sources de données (fichiers plats, MySQL, Cassandra) et dans des cas d'usages concrets basés sur les données de LesFurets.com (avec écriture de tests unitaires), en passant en revue les principales fonctionnalités du moteur, soit Spark Core, Spark SQL, Spark Streaming et Spark MLlib (Machine Learning Library), dans une présentation alternant slides et démonstrations live.
 
 ### JOOQ et JOOλ : Comment écrire du code propre dans vos DAO 
 
