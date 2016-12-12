@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Apache Spark : Hands-on et use cases pour développeurs Java</title>
+        <meta name="description" content="Continuous delivery chez LesFurets.com">
+        <meta name="author" content="Alexandre DuBreuil">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="../bower_components/reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="../bower_components/reveal.js/lib/css/zenburn.css">
+        <link rel="stylesheet" href="../css/lesfurets-theme.css" id="theme">
+        <link rel="stylesheet" href="../css/git-octopus-theme.css" id="theme">
+        <script>
+if( window.location.search.match( /print-pdf/gi ) ) {
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = '../css/print/pdf.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+}
+        </script>
+        <!--[if lt IE 9]><script src="../bower_components/reveal.js/lib/js/html5shiv.js"></script><![endif]-->
+    </head>
+    <body>
+        <div id="footer" class="footer show">
+            <a href="https://www.lesfurets.com" target="_blank">
+                <img class="logo" src="../img/logo_lesfurets_885x128_no_back.png">
+            </a>
+            <a class="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a>
+            <a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a>
+            <a class="github" href="https://github.com/dubreuia" target="_blank">https://github.com/dubreuia</a>
+            <a style="margin-right: 10px;" class="twitter" href="https://twitter.com/dubreuia" target="_blank">@dubreuia</a>
+            <img style="height:40px;vertical-align:middle;padding:0 10px 0 25px" src="../img/TODO.png">
+            <span style="font-family:arial;font-weight:bold;font-size:25px;vertical-align:middle">SNOWCAMP</span>
+        </div>
+        <div class="reveal">
+            <div class="slides">
+
+                <!-- SECTION - INTRO -->
+
+                <section class="flushright" data-background="../img/nwx/lesfurets-background-black-01.jpg">
+                    <h1>Apache Spark</h1>
+                    <h2>hands-on et use cases pour développeurs Java</h2>
+                    <h3>Alexandre DuBreuil</h3>
+                </section>
+
+                <section class="flushleft" data-background="../img/nwx/lesfurets-background-black-01.jpg">
+                    <h2>Alexandre DuBreuil</h2>
+                    <ul class="flushright nodisc">
+                        <li>
+                            <a style="color:white" href="https://twitter.com/dubreuia">https://twitter.com/dubreuia</a>
+                        </li>
+                        <li>
+                            <a style="color:white" href="https://github.com/dubreuia">https://github.com/dubreuia</a>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- SECTION - TODO -->
+
+                <section>
+
+                    <section class="flushleft" data-state="background-pipeline">
+                        <h2 style="color:white"></h2>
+                    </section>
+
+                    <section class="center" data-background="#222">
+                        <p>TODO</p>
+                    </section>
+
+                </section>
+
+                <!-- SECTION - END -->
+
+                <section>
+
+                    <section class="flushleft" data-background="../img/nwx/lesfurets-background-black-01.jpg">
+                        <h2 style="color:white">END</h2>
+                    </section>
+
+                </section>
+
+            </div>
+        </div>
+        <script src="../bower_components/reveal.js/lib/js/head.min.js"></script>
+        <script src="../bower_components/reveal.js/js/reveal.js"></script>
+        <script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+    embedded: true,
+
+    // Hack my remote because it send 5 events
+    keyboard: {
+        // Tab : nop
+        9: null,
+        // Page down : previous slide
+        33: function() { 
+            if (!window.animate) {
+                window.animate = true;
+                Reveal.left();
+                setTimeout(function() { window.animate = false; }, 1000);
+            }
+        },
+        // Page up : next slide
+        34: function() { 
+            if (!window.animate) {
+                window.animate = true;
+                Reveal.right(); 
+                setTimeout(function() { window.animate = false; }, 1000);
+            }
+        }
+    },
+
+
+    //theme: 'lesfurets', // available themes are in /css/theme
+    transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Parallax scrolling
+    // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+    // parallaxBackgroundSize: '2100px 900px',
+
+    // Optional libraries used to extend on reveal.js
+    dependencies: [
+    { src: '../bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+    { src: '../bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: '../bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: '../bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    { src: '../bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+    { src: '../bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+    ]
+});
+        </script>
+        <script src="../js/lesfurets-theme.js" async></script>
+    </body>
+</html>
+
