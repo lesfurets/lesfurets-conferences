@@ -58,12 +58,12 @@ if( window.location.search.match( /print-pdf/gi ) ) {
                     </ul>
                 </section>
 
-                <!-- SECTION - TODO -->
+                <!-- SECTION - INTRODUCTION -->
 
                 <section>
 
                     <section class="flushleft" data-state="background-pipeline">
-                        <h2 style="color:white">Apache Spark</h2>
+                        <h2 style="color:white">Introduction</h2>
                     </section>
 
                     <section class="flushleft" data-background="#222">
@@ -74,6 +74,98 @@ if( window.location.search.match( /print-pdf/gi ) ) {
                     <section class="flushleft" data-background="#222">
                         <h3>Architecture</h3>
                         <p>Glossary + image on https://spark.apache.org/docs/latest/cluster-overview.html<p>
+                    </section>
+
+                    <section class="flushleft" data-background="#222">
+                        <h3>Chez LesFurets.com</h3>
+                        <p>Glossary + image on https://spark.apache.org/docs/latest/cluster-overview.html<p>
+                    </section>
+
+                </section>
+
+                <!-- SECTION - APACHE SPARK -->
+
+                <section>
+
+                    <section class="flushleft" data-state="background-pipeline">
+                        <h2 style="color:white">Apache Spark</h2>
+                    </section>
+
+                    <section class="flushleft" data-background="#222">
+                        <h3>SparkSQL, DataFrames and DataSets Represent the Same Component in Modern Spark</h3>
+                        <!--
+Modern SparkSQL and DataFrames represent the same thing: a new language-independent, high-performance query engine implementation
+SparkSQL/DataFrames is different from, and replaces, a variety of older approaches including Shark, Hive-on-Spark, and SchemaRDD
+Although Spark contains its own data processing engine, it can integrate closely with a Hive metastore
+
+DataFrame/DataSet API and SQL (typically via the HiveQL parser) are equivalent ways to do the same tasks.
+SQL serves many general purposes, including analytic work via BI tools (over JDBC and the Thriftserver)
+DataFrames offer more programmatic control and an API familiar to users of Pandas or R
+DataSets are a generalization of DataFrames and the underlying engine, to support more data types and stronger type enforcement
+                        -->
+                    </section>
+
+                    <section class="flushleft" data-background="#222">
+                        <h3>DataFrame / DataSet</h3>
+                        <!--
+DataFrames
+The preferred abstraction in Spark (introduced in 1.3)
+Strongly typed collection of distributed elements
+Built on Resilient Distributed Datasets
+Immutable once constructed
+Track lineage information to efficiently recompute lost data
+Enable operations on collection of elements in parallel
+
+You construct DataFrames
+by parallelizing existing collections (e.g., Pandas DataFrames)
+by transforming an existing DataFrame
+from files in HDFS, Hive tables, or any other storage system (e.g., Parquet in S3)
+                        -->
+                    </section>
+
+                    <section class="flushleft" data-background="#222">
+                        <h3>DateFrame API</h3>
+                        <img style="width:66%" src="../img/spark/dataframe-diagram.png">
+                        <!-- 
+Why Use DataFrames instead of RDDs?
+For new users familiar with data frames in other programming languages, this API should make them feel at home
+For existing Spark users, the API will make Spark easier to program than using RDDs
+For both sets of users, DataFrames will improve performance through intelligent optimizations and code-generation 
+                        -->
+                    </section>
+
+                    <section class="flushleft" data-background="#222">
+                        <h3>Performance</h3>
+                        <img style="width:66%" src="../img/spark/dataframe-performance.png">
+                        <!-- 
+https://databricks.com/blog/2015/02/17/introducing-dataframes-in-spark-for-large-scale-data-science.html
+https://gist.github.com/rxin/c1592c133e4bccf515dd
+                        -->
+                    </section>
+
+                    <section class="flushleft" data-background="#222">
+                        <h3>Catalyst / whole-stage codegen</h3>
+                        <img style="width:66%" src="../img/spark/dataframe-performance.png">
+                        <!-- 
+TODO
+                        -->
+                    </section>
+
+                    <section class="flushleft" data-background="#222">
+                        <h3>DataFrames have Schemas</h3>
+                        <p>val df = spark.read.option("header", "true").option("inferSchema", "true").csv("/databricks-datasets/samples/population-vs-price/data_geo.csv")</p>
+                        <!-- 
+In the previous example, we created DataFrames from Parquet and JSON data.
+A Parquet table has a schema (column names and types) that Spark can use. Parquet also allows Spark to be efficient about how it pares down data.
+Spark can infer a Schema from a JSON file.
+                        -->
+                    </section>
+
+                    <section class="flushleft" data-background="#222">
+                        <h3>Data sources</h3>
+                        <img style="width:66%" src="../img/spark/dataframe-sources.png">
+                        <!-- 
+                        -->
                     </section>
 
                     <section class="flushleft" data-background="#222">
@@ -88,22 +180,39 @@ if( window.location.search.match( /print-pdf/gi ) ) {
                         <p>https://academy.datastax.com/resources/getting-started-apache-spark-and-cassandra?unit=getting-started-apache-spark-and-cassandra<p>
                     </section>
 
-                    <section class="flushleft" data-background="#222">
-                        <h3>RDD</h3>
-                        <p>code<p>
-                    </section>
-
-                    <section class="flushleft" data-background="#222">
-                        <h3>DataFrame / DataSet</h3>
-                        <p>code<p>
-                    </section>
-
                 </section>
+
+                <!-- SECTION - ENVIRONNEMENT -->
 
                 <section>
 
                     <section class="flushleft" data-state="background-pipeline">
-                        <h2 style="color:white">USE CASE</h2>
+                        <h2 style="color:white">Environnement pour développeur</h2>
+                    </section>
+
+                    <section class="flushleft" data-background="#222">
+                        <h3>Notebook</h3>
+                    </section>
+
+                    <section class="flushleft" data-background="#222">
+                        <h3>Maven</h3>
+                        <p>parler du versionning</p>
+                        <p>parler de l'emplacement et du contenu des jars</p>
+                        <p>sparksession, etc.</p>
+                    </section>
+
+                    <section class="flushleft" data-background="#222">
+                        <h3>IDE</h3>
+                    </section>
+
+                </section>
+
+                <!-- SECTION - USE CASE -->
+
+                <section>
+
+                    <section class="flushleft" data-state="background-pipeline">
+                        <h2 style="color:white">Cas d'utilisation</h2>
                         <h3 style="color:white">Todo find use case</h3>
                     </section>
 
