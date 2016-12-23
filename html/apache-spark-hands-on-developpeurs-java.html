@@ -68,12 +68,21 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
                     <section class="flushleft" data-background="#222">
                         <h3>Definition</h3>
-                        <p>Apache Spark is a fast and general-purpose cluster computing system. It provides high-level APIs in Java, Scala, Python and R, and an optimized engine that supports general execution graphs. It also supports a rich set of higher-level tools including Spark SQL for SQL and structured data processing, MLlib for machine learning, GraphX for graph processing, and Spark Streaming.<p>
+                        <p class="">Apache Spark est un système de calcul distribué général haute performance</p>
+                        <p class="fragment">Il propose des API haut niveau en Java, Scala, Python et R et contient un engin d'optimisation générique</p>
+                        <p class="fragment">Il contient plusieurs outils tels que Spark SQL pour la gestion de donnée en SQL, MLlib pour le machine learning, GraphX pour le processing de graph et Spark Streaming pour du micro-batching</p>
+                    </section>
+
+                    <section class="flushleft" data-background="#222">
+                        <h3>Composants</h3>
+                        <!-- https://image.slidesharecdn.com/sparksolrrev-timpotter-151021184307-lva1-app6892/95/solr-and-spark-for-realtime-big-data-analytics-presented-by-tim-potter-lucidworks-5-638.jpg -->
+                        <img style="width:66%" src="../img/spark/spark-components.jpg">
                     </section>
 
                     <section class="flushleft" data-background="#222">
                         <h3>Architecture</h3>
-                        <p>Glossary + image on https://spark.apache.org/docs/latest/cluster-overview.html<p>
+                        <!-- https://spark.apache.org/docs/latest/cluster-overview.html -->
+                        <img style="width:66%" src="../img/spark/cluster-overview.png">
                     </section>
 
                     <section class="flushleft" data-background="#222">
@@ -92,21 +101,74 @@ if( window.location.search.match( /print-pdf/gi ) ) {
                     </section>
 
                     <section class="flushleft" data-background="#222">
-                        <h3>SparkSQL, DataFrames and DataSets Represent the Same Component in Modern Spark</h3>
-                        <!--
-Modern SparkSQL and DataFrames represent the same thing: a new language-independent, high-performance query engine implementation
-SparkSQL/DataFrames is different from, and replaces, a variety of older approaches including Shark, Hive-on-Spark, and SchemaRDD
-Although Spark contains its own data processing engine, it can integrate closely with a Hive metastore
+                        <h3>SparkSession</h3>
+                        <p>Le point d'entrée de toute les fonctionnalités spark est la classe <code>SparkSession</code></p>
+                        <pre><code class="java" data-trim>
+SparkSession spark = SparkSession.builder()
+        .appName("Salut Snowcamp")
+        .config("spark.some.config.option",
+                "some-value")
+        .getOrCreate();
+                        </code></pre>
+                    </section>
 
-DataFrame/DataSet API and SQL (typically via the HiveQL parser) are equivalent ways to do the same tasks.
-SQL serves many general purposes, including analytic work via BI tools (over JDBC and the Thriftserver)
-DataFrames offer more programmatic control and an API familiar to users of Pandas or R
-DataSets are a generalization of DataFrames and the underlying engine, to support more data types and stronger type enforcement
+                    <section class="flushleft" data-background="#222">
+                        <h3>DataFrame</h3>
+                        <p>Un DataFrame est une collection distribuée de data organisée en colonnes nommées et typées. Les exécutions basées sur cette API vont être optimisée par Catalyst.</p>
+                        <p>A partir de notre <code>SparkSession</code> on récupère un <code>DataSet&lt;Row&gt;</code> (soit un DataSet non-typé, appelé DataFrame).</p>
+                        <pre><code class="java" data-trim>
+// Lecture d'un fichier data.csv avec inférence de schéma
+Dataset&lt;Row&gt; data = spark.read()
+        .option("inferSchema", true)
+        .csv("data.csv");
+                        </code></pre>
+                        <!-- In Spark, a DataFrame is a distributed collection of data organized into named columns. Users can use DataFrame API to perform various relational operations on both external data sources and Spark’s built-in distributed collections without providing specific procedures for processing data. Also, programs based on DataFrame API will be automatically optimized by Spark’s built-in optimizer, Catalyst -->
+                    </section>
+
+                    <section class="flushleft" data-background="#222">
+                        <h3>Les DataFrames ont un schéma</h3>
+                        <pre><code class="java" data-trim>
+data.printSchema();
+                        </code></pre>
+                        <pre><code class="java" data-trim>
+root
+ |-- uid: string (nullable = true)
+ |-- email_hash: integer (nullable = true)
+ |-- date: timestamp (nullable = true)
+ |-- heure: string (nullable = true)
+ |-- module: string (nullable = true)
+                        </code></pre>
+                    </section>
+
+                    <section class="flushleft" data-background="#222">
+                        <h3>DateFrame API</h3>
+                        <img style="width:66%" src="../img/spark/dataframe-diagram.png">
+                        <!-- TODO why reduceByKey missing ? slower than groupByKey... check instapaper article -->
+                        <!-- 
+Why Use DataFrames instead of RDDs?
+For new users familiar with data frames in other programming languages, this API should make them feel at home
+For existing Spark users, the API will make Spark easier to program than using RDDs
+For both sets of users, DataFrames will improve performance through intelligent optimizations and code-generation 
                         -->
                     </section>
 
                     <section class="flushleft" data-background="#222">
-                        <h3>DataFrame / DataSet</h3>
+                        <h3>DataSet</h3>
+                        <p>On récupère un <code>DataSet</code> tel quel, ou on converti un <code>DataFrame</code> en le typant.</p>
+                        <p>Soit <code>Question</code> un bean java qui correspond à une question du formulaire LesFurets</p>
+                        <p>%md Dataset strong typing is "virtual" -- it's just a view that can be applied when you want it:</p>
+                        <pre><code class="java" data-trim>
+// Convertion du Dataset&lt;Row&gt; en Dataset&lt;Question&gt;
+Dataset&lt;Question&gt; domainData = data
+        .as(Encoders.bean(Question.class))
+                        </code></pre>
+                    </section>
+
+                    <section class="flushleft" data-background="#222">
+                        <h3>RDD / DataFrames / DataSets</h3>
+                        <p>À partir de Spark 2.0, SparkSQL, DataFrames and DataSets représentent le même composant</p>
+                        <!-- https://i.stack.imgur.com/3rF6p.png -->
+                        <img style="width:66%" src="../img/spark/rdd-dataframe-dataset.png">
                         <!--
 DataFrames
 The preferred abstraction in Spark (introduced in 1.3)
@@ -120,44 +182,48 @@ You construct DataFrames
 by parallelizing existing collections (e.g., Pandas DataFrames)
 by transforming an existing DataFrame
 from files in HDFS, Hive tables, or any other storage system (e.g., Parquet in S3)
+
+Modern SparkSQL and DataFrames represent the same thing: a new language-independent, high-performance query engine implementation
+SparkSQL/DataFrames is different from, and replaces, a variety of older approaches including Shark, Hive-on-Spark, and SchemaRDD
+Although Spark contains its own data processing engine, it can integrate closely with a Hive metastore
+
+DataFrame/DataSet API and SQL (typically via the HiveQL parser) are equivalent ways to do the same tasks.
+SQL serves many general purposes, including analytic work via BI tools (over JDBC and the Thriftserver)
+DataFrames offer more programmatic control and an API familiar to users of Pandas or R
+DataSets are a generalization of DataFrames and the underlying engine, to support more data types and stronger type enforcement
                         -->
                     </section>
 
                     <section class="flushleft" data-background="#222">
-                        <h3>DateFrame API</h3>
-                        <img style="width:66%" src="../img/spark/dataframe-diagram.png">
+                        <h3>Resilient Distributed Datasets (RDDs)</h3>
+                        <p>C'est la plomberie interne de spark : on n'y touche pas, sauf si vous avez besoin / savez exactement ce que vous faites</p>
                         <!-- 
-Why Use DataFrames instead of RDDs?
-For new users familiar with data frames in other programming languages, this API should make them feel at home
-For existing Spark users, the API will make Spark easier to program than using RDDs
-For both sets of users, DataFrames will improve performance through intelligent optimizations and code-generation 
                         -->
+                        <pre><code class="java" data-trim>
+// Récupération du RDD sous-jacent au dataset
+RDD&lt;Question&gt; rdd = domainData.rdd();
+// API Java du RDD
+JavaRDD&lt;Question&gt; javaRDD = domainData.javaRDD();
+                        </code></pre>
                     </section>
 
-                    <section class="flushleft" data-background="#222">
-                        <h3>Performance</h3>
-                        <img style="width:66%" src="../img/spark/dataframe-performance.png">
-                        <!-- 
-https://databricks.com/blog/2015/02/17/introducing-dataframes-in-spark-for-large-scale-data-science.html
-https://gist.github.com/rxin/c1592c133e4bccf515dd
-                        -->
-                    </section>
 
                     <section class="flushleft" data-background="#222">
                         <h3>Catalyst / whole-stage codegen</h3>
-                        <img style="width:66%" src="../img/spark/dataframe-performance.png">
+                        <p>TODO whole-stage codegen example</p>
+                        <p>TODO link spark summit conference</p>
                         <!-- 
 TODO
                         -->
                     </section>
 
                     <section class="flushleft" data-background="#222">
-                        <h3>DataFrames have Schemas</h3>
-                        <p>val df = spark.read.option("header", "true").option("inferSchema", "true").csv("/databricks-datasets/samples/population-vs-price/data_geo.csv")</p>
+                        <h3>Performance</h3>
+                        <!-- https://www.ardentex.com/publications/RDDs-DataFrames-and-Datasets-in-Apache-Spark/images/dataframe-performance.png -->
+                        <img style="width:66%" src="../img/spark/dataframe-performance.png">
                         <!-- 
-In the previous example, we created DataFrames from Parquet and JSON data.
-A Parquet table has a schema (column names and types) that Spark can use. Parquet also allows Spark to be efficient about how it pares down data.
-Spark can infer a Schema from a JSON file.
+https://databricks.com/blog/2015/02/17/introducing-dataframes-in-spark-for-large-scale-data-science.html
+https://gist.github.com/rxin/c1592c133e4bccf515dd
                         -->
                     </section>
 
@@ -172,6 +238,11 @@ Spark can infer a Schema from a JSON file.
                         <h3>Data store (disk / parquet)</h3>
                         <p>code</p>
                         <p>https://academy.datastax.com/resources/getting-started-apache-spark-and-cassandra?unit=getting-started-apache-spark-and-cassandra<p>
+                        <!-- 
+In the previous example, we created DataFrames from Parquet and JSON data.
+A Parquet table has a schema (column names and types) that Spark can use. Parquet also allows Spark to be efficient about how it pares down data.
+Spark can infer a Schema from a JSON file.
+                        -->
                     </section>
 
                     <section class="flushleft" data-background="#222">
@@ -192,17 +263,70 @@ Spark can infer a Schema from a JSON file.
 
                     <section class="flushleft" data-background="#222">
                         <h3>Notebook</h3>
+                        <!-- our -->
+                        <img style="width:66%" src="../img/spark/databricks-notebook.png">
+                    </section>
+
+                    <section class="flushleft" data-background="#222">
+                        <h3>Industrialisation</h3>
+                        <p>Les notebooks Java n'existent pas, entre autre parce qu'on n'a pas (encore) de REPL en Java</p>
+                        <p>Les notebooks peuvent être pratiques, mais on a besoin de gérer le versionnement du code source, la compilation, les tests unitaires, l'analyse statique, la mise en production.</p>
+                    </section>
+
+                    <section class="flushleft" data-background="#222">
+                        <h3>Exécution locale</h3>
+                        <p>Avoir un cluster en local : facile, c'est ce que je fais pour cette démo (mode standalone)</p>
+                        <p>Il y a plusieurs possibilités, soit standalone, soit standalone single-jvm (aussi appellé "local"). Ce dernier permet d'éviter d'avoir à gérer un jar à distribuer entre les instances des exécuteurs</p>
+                    </section>
+
+                    <section class="flushleft" data-background="#222">
+                        <h3>local[*]</h3>
+                        <p>Spark local (pseudo-cluster): You can run Spark in local mode. In this non-distributed single-JVM deployment mode, Spark spawns all the execution components - driver, executor, backend, and master - in the same single JVM. The default parallelism is the number of threads as specified in the master URL. This is the only mode where a driver is used for execution.</p>
                     </section>
 
                     <section class="flushleft" data-background="#222">
                         <h3>Maven</h3>
-                        <p>parler du versionning</p>
-                        <p>parler de l'emplacement et du contenu des jars</p>
-                        <p>sparksession, etc.</p>
+                        <p>Les dépendances dans votre code peuvent être gérés par Maven, les packages Spark sont dans Maven Central.</p>
+                        <p>Ici, on utilise la version 2.0.2 de spark-core qui a été compilée avec Scala 2.11 (important que cette version corresponde aux versions installées sur les machines d'exécution, parce que les jar runtime sont partagés)</p>
+                        <pre><code class="xml" data-trim>
+<dependency>
+  <groupId>org.apache.spark</groupId>
+  <artifactId>spark-core_2.11</artifactId>
+  <version>2.0.2</version>
+</dependency>
+                        </code></pre>
                     </section>
 
                     <section class="flushleft" data-background="#222">
                         <h3>IDE</h3>
+                        <p>Dans n'importe quel IDE, il suffit de lancer un cluster local et d'exécuter un main pour utiliser spark</p>
+                        <p>DEMO TIME</p>
+                        <p>voir com.lesfurets.slides.IDE</p>
+                    </section>
+
+                    <section class="flushleft" data-background="#222">
+                        <h3>TU</h3>
+                        <p>Spark est facilement testable, il suffit de créer des Dataframe ou Dataset basé sur du contenu de test. Il est aussi possible de tester SparkSql en créant à la volée les tables nécessaires.</p>
+                        <p>DEMO TIME</p>
+                        <p>voir com.lesfurets.slides.TestUnitaires</p>
+                    </section>
+
+                    <section class="flushleft" data-background="#222">
+                        <h3>JUnit5</h3>
+                        <p>Instancier un SparkContext global avec @BeforeAll et @AfterAll</p>
+                        <p>@Tag pour tagger des tests spark d'integration</p>
+                        <p>org.junit.jupiter.api.Assumptions pour activer des tests en local</p>
+                    </section>
+
+                    <section class="flushleft" data-background="#222">
+                        <h3>CI</h3>
+                        <p>todo jenkins</p>
+                        <p>DEMO TIME</p>
+                    </section>
+
+                    <section class="flushleft" data-background="#222">
+                        <h3>vs Scala</h3>
+                        <p>todo api diff</p>
                     </section>
 
                 </section>
@@ -213,7 +337,7 @@ Spark can infer a Schema from a JSON file.
 
                     <section class="flushleft" data-state="background-pipeline">
                         <h2 style="color:white">Cas d'utilisation</h2>
-                        <h3 style="color:white">Todo find use case</h3>
+                        <h3 style="color:white">Todo decision tree ?</h3>
                     </section>
 
                 </section>
