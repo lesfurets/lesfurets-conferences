@@ -3,25 +3,25 @@
     <g>
       <line x1="85" y1="490" x2="85" y2="420" stroke="rgb(86,169,246)" stroke-width="4"></line>
       <circle cx="85" cy="420" r="12" fill="rgb(86,169,246)"></circle>
-      <text x="85" y="420" dx="-17" dy="5" font-size="20" fill="rgb(86,169,246)" font-family="Arial"
+      <text x="75" y="420" dx="-17" dy="5" font-size="20" fill="rgb(86,169,246)" font-family="Arial"
             text-anchor="end"></text>
     </g>
     <g>
       <line x1="85" y1="420" x2="85" y2="350" stroke="rgb(86,169,246)" stroke-width="4"></line>
       <circle cx="85" cy="350" r="12" fill="rgb(86,169,246)"></circle>
-      <text x="85" y="350" dx="-17" dy="5" font-size="20" fill="rgb(86,169,246)" font-family="Arial"
+      <text x="75" y="350" dx="-17" dy="5" font-size="20" fill="rgb(86,169,246)" font-family="Arial"
             text-anchor="end"></text>
     </g>
     <g>
       <line x1="85" y1="350" x2="85" y2="280" stroke="rgb(86,169,246)" stroke-width="4"></line>
       <circle cx="85" cy="280" r="12" fill="rgb(86,169,246)"></circle>
-      <text x="85" y="280" dx="-17" dy="5" font-size="20" fill="rgb(86,169,246)" font-family="Arial"
+      <text x="75" y="280" dx="-17" dy="5" font-size="20" fill="rgb(86,169,246)" font-family="Arial"
             text-anchor="end"></text>
     </g>
     <g>
       <line x1="85" y1="280" x2="85" y2="210" stroke="rgb(86,169,246)" stroke-width="4"></line>
       <circle cx="85" cy="210" r="12" fill="rgb(86,169,246)"></circle>
-      <text x="85" y="210" dx="-17" dy="5" font-size="20" fill="rgb(86,169,246)" font-family="Arial" text-anchor="end">
+      <text x="75" y="210" dx="-17" dy="5" font-size="20" fill="rgb(86,169,246)" font-family="Arial" text-anchor="end">
         master
       </text>
     </g>

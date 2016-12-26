@@ -33,19 +33,19 @@
     <g>
       <path d="M 85 420 Q 425 420 425 350" stroke="rgb(114,199,69)" stroke-width="4" fill="none"></path>
       <circle cx="425" cy="350" r="12" fill="rgb(114,199,69)"></circle>
-      <text x="425" y="350" dx="-17" dy="5" font-size="20" fill="rgb(114,199,69)" font-family="Arial"
+      <text x="415" y="350" dx="-17" dy="5" font-size="20" fill="rgb(114,199,69)" font-family="Arial"
             text-anchor="end"></text>
     </g>
     <g>
       <line x1="425" y1="350" x2="425" y2="280" stroke="rgb(114,199,69)" stroke-width="4"></line>
       <circle cx="425" cy="280" r="12" fill="rgb(114,199,69)"></circle>
-      <text x="425" y="280" dx="-17" dy="5" font-size="20" fill="rgb(114,199,69)" font-family="Arial"
+      <text x="415" y="280" dx="-17" dy="5" font-size="20" fill="rgb(114,199,69)" font-family="Arial"
             text-anchor="end"></text>
     </g>
     <g>
       <line x1="425" y1="280" x2="425" y2="210" stroke="rgb(114,199,69)" stroke-width="4"></line>
       <circle cx="425" cy="210" r="12" fill="rgb(114,199,69)"></circle>
-      <text x="425" y="210" dx="-17" dy="5" font-size="20" fill="rgb(114,199,69)" font-family="Arial" text-anchor="end">
+      <text x="415" y="210" dx="-17" dy="5" font-size="20" fill="rgb(114,199,69)" font-family="Arial" text-anchor="end">
         features/f2
       </text>
     </g>
@@ -54,13 +54,13 @@
     <g>
       <path d="M 85 350 Q 255 350 255 280" stroke="rgb(114,199,69)" stroke-width="4" fill="none"></path>
       <circle cx="255" cy="280" r="12" fill="rgb(114,199,69)"></circle>
-      <text x="255" y="280" dx="-17" dy="5" font-size="20" fill="rgb(114,199,69)" font-family="Arial"
+      <text x="245" y="280" dx="-17" dy="5" font-size="20" fill="rgb(114,199,69)" font-family="Arial"
             text-anchor="end"></text>
     </g>
     <g>
       <line x1="255" y1="280" x2="255" y2="210" stroke="rgb(114,199,69)" stroke-width="4"></line>
       <circle cx="255" cy="210" r="12" fill="rgb(114,199,69)"></circle>
-      <text x="255" y="210" dx="-17" dy="5" font-size="20" fill="rgb(114,199,69)" font-family="Arial" text-anchor="end">
+      <text x="245" y="210" dx="-17" dy="5" font-size="20" fill="rgb(114,199,69)" font-family="Arial" text-anchor="end">
         features/f1
       </text>
     </g>
@@ -69,25 +69,25 @@
     <g>
       <line x1="85" y1="490" x2="85" y2="420" stroke="rgb(86,169,246)" stroke-width="4"></line>
       <circle cx="85" cy="420" r="12" fill="rgb(86,169,246)"></circle>
-      <text x="85" y="420" dx="-17" dy="5" font-size="20" fill="rgb(86,169,246)" font-family="Arial"
+      <text x="75" y="420" dx="-17" dy="5" font-size="20" fill="rgb(86,169,246)" font-family="Arial"
             text-anchor="end"></text>
     </g>
     <g>
       <line x1="85" y1="420" x2="85" y2="350" stroke="rgb(86,169,246)" stroke-width="4"></line>
       <circle cx="85" cy="350" r="12" fill="rgb(86,169,246)"></circle>
-      <text x="85" y="350" dx="-17" dy="5" font-size="20" fill="rgb(86,169,246)" font-family="Arial"
+      <text x="75" y="350" dx="-17" dy="5" font-size="20" fill="rgb(86,169,246)" font-family="Arial"
             text-anchor="end"></text>
     </g>
     <g>
       <line x1="85" y1="350" x2="85" y2="280" stroke="rgb(86,169,246)" stroke-width="4"></line>
       <circle cx="85" cy="280" r="12" fill="rgb(86,169,246)"></circle>
-      <text x="85" y="280" dx="-17" dy="5" font-size="20" fill="rgb(86,169,246)" font-family="Arial"
+      <text x="75" y="280" dx="-17" dy="5" font-size="20" fill="rgb(86,169,246)" font-family="Arial"
             text-anchor="end"></text>
     </g>
     <g>
       <line x1="85" y1="280" x2="85" y2="210" stroke="rgb(86,169,246)" stroke-width="4"></line>
       <circle cx="85" cy="210" r="12" fill="rgb(86,169,246)"></circle>
-      <text x="85" y="210" dx="-17" dy="5" font-size="20" fill="rgb(86,169,246)" font-family="Arial" text-anchor="end">
+      <text x="75" y="210" dx="-17" dy="5" font-size="20" fill="rgb(86,169,246)" font-family="Arial" text-anchor="end">
         master
       </text>
     </g>
