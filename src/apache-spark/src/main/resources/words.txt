@@ -1,0 +1,147 @@
+Apache Spark
+From Wikipedia, the free encyclopedia
+Apache Spark
+Spark Logo
+Original author(s)	Matei Zaharia
+Developer(s)	Apache Software Foundation, UC Berkeley AMPLab, Databricks
+Initial release	May 30, 2014; 2 years ago
+Stable release
+v2.0.2 / November 14, 2016; 37 days ago
+Development status	Active
+Written in	Scala, Java, Python, R[1]
+Operating system	Microsoft Windows, OS X, Linux
+Type	Data analytics, machine learning algorithms
+License	Apache License 2.0
+Website	spark.apache.org
+Apache Spark is an open-source cluster-computing framework. Originally developed at the University of California, Berkeley's AMPLab, the Spark codebase was later donated to the Apache Software Foundation, which has maintained it since. Spark provides an interface for programming entire clusters with implicit data parallelism and fault-tolerance.
+
+Contents  [hide]
+1	Overview
+1.1	Spark Core
+1.2	Spark SQL
+1.3	Spark Streaming
+1.4	MLlib Machine Learning Library
+1.5	GraphX
+2	History
+3	Notes
+4	See also
+5	References
+6	External links
+Overview[edit]
+Apache Spark provides programmers with an application programming interface centered on a data structure called the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way.[2] It was developed in response to limitations in the MapReduce cluster computing paradigm, which forces a particular linear dataflow structure on distributed programs: MapReduce programs read input data from disk, map a function across the data, reduce the results of the map, and store reduction results on disk. Spark's RDDs function as a working set for distributed programs that offers a (deliberately) restricted form of distributed shared memory.[3]
+
+The availability of RDDs facilitates the implementation of both iterative algorithms, that visit their dataset multiple times in a loop, and interactive/exploratory data analysis, i.e., the repeated database-style querying of data. The latency of such applications (compared to Apache Hadoop, a popular MapReduce implementation) may be reduced by several orders of magnitude.[2][4] Among the class of iterative algorithms are the training algorithms for machine learning systems, which formed the initial impetus for developing Apache Spark.[5]
+
+Apache Spark requires a cluster manager and a distributed storage system. For cluster management, Spark supports standalone (native Spark cluster), Hadoop YARN, or Apache Mesos.[6] For distributed storage, Spark can interface with a wide variety, including Hadoop Distributed File System (HDFS),[7] MapR File System (MapR-FS),[8] Cassandra,[9] OpenStack Swift, Amazon S3, Kudu, or a custom solution can be implemented. Spark also supports a pseudo-distributed local mode, usually used only for development or testing purposes, where distributed storage is not required and the local file system can be used instead; in such a scenario, Spark is run on a single machine with one executor per CPU core.
+
+Spark Core[edit]
+Spark Core is the foundation of the overall project. It provides distributed task dispatching, scheduling, and basic I/O functionalities, exposed through an application programming interface (for Java, Python, Scala, and R) centered on the RDD abstraction (the Java API is available for other JVM languages, but is also usable for some other non-JVM languages, such as Julia,[10] that can connect to the JVM). This interface mirrors a functional/higher-order model of programming: a "driver" program invokes parallel operations such as map, filter or reduce on an RDD by passing a function to Spark, which then schedules the function's execution in parallel on the cluster.[2] These operations, and additional ones such as joins, take RDDs as input and produce new RDDs. RDDs are immutable and their operations are lazy; fault-tolerance is achieved by keeping track of the "lineage" of each RDD (the sequence of operations that produced it) so that it can be reconstructed in the case of data loss. RDDs can contain any type of Python, Java, or Scala objects.
+
+Aside from the RDD-oriented functional style of programming, Spark provides two restricted forms of shared variables: broadcast variables reference read-only data that needs to be available on all nodes, while accumulators can be used to program reductions in an imperative style.[2]
+
+A typical example of RDD-centric functional programming is the following Scala program that computes the frequencies of all words occurring in a set of text files and prints the most common ones. Each map, flatMap (a variant of map) and reduceByKey takes an anonymous function that performs a simple operation on a single data item (or a pair of items), and applies its argument to transform an RDD into a new RDD.
+
+val conf = new SparkConf().setAppName("wiki_test") // create a spark config object
+val sc = new SparkContext(conf) // Create a spark context
+val data = sc.textFile("/path/to/somedir") // Read files from "somedir" into an RDD of (filename, content) pairs.
+val tokens = data.flatMap(_.split(" ")) // Split each file into a list of tokens (words).
+val wordFreq = tokens.map((_, 1)).reduceByKey(_ + _) // Add a count of one to each token, then sum the counts per word type.
+wordFreq.sortBy(s => -s._2).map(x => (x._2, x._1)).top(10) // Get the top 10 words. Swap word and count to sort by count.
+Spark SQL[edit]
+Spark SQL is a component on top of Spark Core that introduced a data abstraction called DataFrames,[a] which provides support for structured and semi-structured data. Spark SQL provides a domain-specific language (DSL) to manipulate DataFrames in Scala, Java, or Python. It also provides SQL language support, with command-line interfaces and ODBC/JDBC server.
+
+import org.apache.spark.sql.SQLContext
+
+val url = "jdbc:mysql://yourIP:yourPort/test?user=yourUsername;password=yourPassword" // URL for your database server.
+val sqlContext = new org.apache.spark.sql.SQLContext(sc) // Create a sql context object
+
+val df = sqlContext
+  .read
+  .format("jdbc")
+  .option("url", url)
+  .option("dbtable", "people")
+  .load()
+
+df.printSchema() // Looks the schema of this DataFrame.
+val countsByAge = df.groupBy("age").count() // Counts people by age
+Spark Streaming[edit]
+Spark Streaming leverages Spark Core's fast scheduling capability to perform streaming analytics. It ingests data in mini-batches and performs RDD transformations on those mini-batches of data. This design enables the same set of application code written for batch analytics to be used in streaming analytics, thus facilitating easy implementation of lambda architecture.[11][12] However, this convenience comes with the penalty of latency equal to the mini-batch duration. Other streaming data engines that process event by event rather than in mini-batches include Storm and the streaming component of Flink.[13] Spark Streaming has support built-in to consume from Kafka, Flume, Twitter, ZeroMQ, Kinesis, and TCP/IP sockets.[14]
+
+MLlib Machine Learning Library[edit]
+Spark MLlib is a distributed machine learning framework on top of Spark Core that, due in large part to the distributed memory-based Spark architecture, is as much as nine times as fast as the disk-based implementation used by Apache Mahout (according to benchmarks done by the MLlib developers against the Alternating Least Squares (ALS) implementations, and before Mahout itself gained a Spark interface), and scales better than Vowpal Wabbit.[15] Many common machine learning and statistical algorithms have been implemented and are shipped with MLlib which simplifies large scale machine learning pipelines, including:
+
+summary statistics, correlations, stratified sampling, hypothesis testing, random data generation[16]
+classification and regression: support vector machines, logistic regression, linear regression, decision trees, naive Bayes classification
+collaborative filtering techniques including alternating least squares (ALS)
+cluster analysis methods including k-means, and Latent Dirichlet Allocation (LDA)
+dimensionality reduction techniques such as singular value decomposition (SVD), and principal component analysis (PCA)
+feature extraction and transformation functions
+optimization algorithms such as stochastic gradient descent, limited-memory BFGS (L-BFGS)
+GraphX[edit]
+GraphX is a distributed graph processing framework on top of Apache Spark. Because it is based on RDDs, which are immutable, graphs are immutable and thus GraphX is unsuitable for graphs that need to be updated, let alone in a transactional manner like a graph database.[17] GraphX provides two separate APIs for implementation of massively parallel algorithms (such as PageRank): a Pregel abstraction, and a more general MapReduce style API.[18] Unlike its predecessor Bagel, which was formally deprecated in Spark 1.6, GraphX has full support for property graphs (graphs where properties can be attached to edges and vertices).[19]
+
+GraphX can be viewed as being the Spark in-memory version of Apache Giraph, which utilized Hadoop disk-based MapReduce.[20]
+
+Like Apache Spark, GraphX initially started as a research project at UC Berkeley's AMPLab and Databricks, and was later donated to the Apache Software Foundation and the Spark project.[21]
+
+History[edit]
+Spark was initially started by Matei Zaharia at UC Berkeley's AMPLab in 2009, and open sourced in 2010 under a BSD license.
+
+In 2013, the project was donated to the Apache Software Foundation and switched its license to Apache 2.0. In February 2014, Spark became a Top-Level Apache Project.[22]
+
+In November 2014, Spark founder M. Zaharia's company Databricks set a new world record in large scale sorting using Spark.[23][third-party source needed]
+
+Spark had in excess of 1000 contributors in 2015,[24] making it one of the most active projects in the Apache Software Foundation[25] and one of the most active open source big data projects.[26]
+
+Version	Original release date	Latest version	Release date
+0.5	2012-06-12	0.5.1	2012-10-07
+0.6	2012-10-14	0.6.1	2012-11-16
+0.7	2013-02-27	0.7.3	2013-07-16
+0.8	2013-09-25	0.8.1	2013-12-19
+0.9	2014-02-02	0.9.2	2014-07-23
+1.0	2014-05-30	1.0.2	2014-08-05
+1.1	2014-09-11	1.1.1	2014-11-26
+1.2	2014-12-18	1.2.2	2015-04-17
+1.3	2015-03-13	1.3.1	2015-04-17
+1.4	2015-06-11	1.4.1	2015-07-15
+1.5	2015-09-09	1.5.2	2015-11-09
+1.6	2016-01-04	1.6.3	2016-11-07
+2.0	2016-07-26	2.0.2	2016-11-14
+Legend:Old versionOlder version, still supportedLatest versionLatest preview version
+Notes[edit]
+Jump up ^ Called SchemaRDDs before Spark 1.3[citation needed]
+See also[edit]
+List of concurrent and parallel programming APIs/Frameworks
+References[edit]
+Jump up ^ "Spark Release 2.0.0". MLlib in R: SparkR now offers MLlib APIs [..] Python: PySpark now offers many more MLlib algorithms"
+^ Jump up to: a b c d Zaharia, Matei; Chowdhury, Mosharaf; Franklin, Michael J.; Shenker, Scott; Stoica, Ion. Spark: Cluster Computing with Working Sets (PDF). USENIX Workshop on Hot Topics in Cloud Computing (HotCloud).
+Jump up ^ Zaharia, Matei; Chowdhury, Mosharaf; Das, Tathagata; Dave, Ankur; Ma,, Justin; McCauley, Murphy; J., Michael; Shenker, Scott; Stoica, Ion. Resilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing (PDF). USENIX Symp. Networked Systems Design and Implementation.
+Jump up ^ Xin, Reynold; Rosen, Josh; Zaharia, Matei; Franklin, Michael; Shenker, Scott; Stoica, Ion (June 2013). "Shark: SQL and Rich Analytics at Scale" (PDF).
+Jump up ^ Harris, Derrick (28 June 2014). "4 reasons why Spark could jolt Hadoop into hyperdrive". Gigaom.
+Jump up ^ "Cluster Mode Overview - Spark 1.2.0 Documentation - Cluster Manager Types". apache.org. Apache Foundation. 2014-12-18. Retrieved 2015-01-18.
+Jump up ^ Figure showing Spark in relation to other open-source Software projects including Hadoop
+Jump up ^ MapR ecosystem support matrix
+Jump up ^ Doan, DuyHai (2014-09-10). "Re: cassandra + spark / pyspark". Cassandra User (Mailing list). Retrieved 2014-11-21.
+Jump up ^ https://github.com/dfdx/Spark.jl
+Jump up ^ "Applying the Lambda Architecture with Spark, Kafka, and Cassandra | Pluralsight". www.pluralsight.com. Retrieved 2016-11-20.
+Jump up ^ Shapira, Gwen (29 August 2014). "Building Lambda Architecture with Spark Streaming". cloudera.com. Cloudera. Retrieved 17 June 2016. re-use the same aggregates we wrote for our batch application on a real-time data stream
+Jump up ^ "Benchmarking Streaming Computation Engines: Storm, Flink and Spark Streaming" (PDF). IEEE. May 2016.
+Jump up ^ Kharbanda, Arush (17 March 2015). "Getting Data into Spark Streaming". sigmoid.com. Sigmoid (Sunnyvale, California IT product company). Retrieved 7 July 2016.
+Jump up ^ Sparks, Evan; Talwalkar, Ameet (2013-08-06). "Spark Meetup: MLbase, Distributed Machine Learning with Spark". slideshare.net. Spark User Meetup, San Francisco, California. Retrieved 10 February 2014.
+Jump up ^ "MLlib | Apache Spark". spark.apache.org. Retrieved 2016-01-18.
+Jump up ^ Malak, Michael (14 June 2016). "Finding Graph Isomorphisms In GraphX And GraphFrames: Graph Processing vs. Graph Database". slideshare.net. sparksummit.org. Retrieved 11 Julyh 2016. Check date values in: |access-date= (help)
+Jump up ^ Malak, Michael (1 July 2016). Spark GraphX in Action. Manning. p. 89. ISBN 9781617292521. Pregel and its little sibling aggregateMessages() are the cornerstones of graph processing in GraphX. ... algorithms that require more flexibility for the terminating condition have to be implemented using aggregateMessages()
+Jump up ^ Malak, Michael (14 June 2016). "Finding Graph Isomorphisms In GraphX And GraphFrames: Graph Processing vs. Graph Database". slideshare.net. sparksummit.org. Retrieved 11 Julyh 2016. Check date values in: |access-date= (help)
+Jump up ^ Malak, Michael (1 July 2016). Spark GraphX in Action. Manning. p. 9. ISBN 9781617292521. Giraph is limited to slow Hadoop Map/Reduce
+Jump up ^ Gonzalez, Joseph; Xin, Reynold; Dave, Ankur; Crankshaw, Daniel; Franklin, Michael; Stoica, Ion (Oct 2014). "GraphX: Graph Processing in a Distributed Dataflow Framework" (PDF).
+Jump up ^ "The Apache Software Foundation Announces Apache&#8482 Spark&#8482 as a Top-Level Project". apache.org. Apache Software Foundation. 27 February 2014. Retrieved 4 March 2014.
+Jump up ^ Spark officially sets a new record in large-scale sorting
+Jump up ^ Open HUB Spark development activity
+Jump up ^ "The Apache Software Foundation Announces Apache&#8482 Spark&#8482 as a Top-Level Project". apache.org. Apache Software Foundation. 27 February 2014. Retrieved 4 March 2014.
+Jump up ^ Introduction to Apache Spark
+External links[edit]
+Official website
+Spark SQL
+Spark Streaming
+MLlib machine learning library
+GraphX graph processing library

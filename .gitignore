@@ -30,3 +30,7 @@ build/Release
 
 # Vim
 *.swp
+
+# Idea
+.idea
+*.iml
