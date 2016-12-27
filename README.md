@@ -126,6 +126,23 @@ Using live code examples we will compare different APIs such as RxJava2, Reactiv
 
 Architecte canadien (certifié sans accent) de l'équipe data chez LesFurets.com, je m'intéresse particulièrement au software craftsmanship et à la manière de travailler efficacement le code en équipe. J'affectionne les sujets comme la gestion du code source, la construction d'application et les techniques de continuous delivery.
 
+<!--
+Continuous delivery
+
+- 7 novembre 2016 (fr) : WorkIT Software BBL
+- 13 octobre 2016 (fr) : Marseilles JUG
+- 29 juin 2016 (fr) : Societe Generale
+- 31 janvier 2016 (fr) : Tours JUG
+- 10 décembre 2015 (fr) : Octo BBL
+- 1 octobre 2014 (fr) : AgileTour Rennes 2014
+
+Software craftmanship
+
+- 4 mars 2016 (en) : BGL Tech Conference - London
+- 26 novembre 2015 (fr) : Codeurs en Seines - Rouen
+- 25 juin 2015 (en) : NWX Summer Festival - Rouen
+-->
+
 ### Ozan Gunalp [@ozangunalp](https://twitter.com/ozangunalp)
 
 Ingénieur docteur avec 5+ ans d'expérience dans les systèmes distribués, l'Internet des objets et les processus de développement logiciels.
