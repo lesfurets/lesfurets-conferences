@@ -102,6 +102,14 @@ In this presentation we demonstrate our efforts to apply reactive programming on
 Using live code examples we will compare different APIs such as RxJava2, Reactive Streams (Java 9 Flow) and CompletableFutures.
 -->
 
+<!--
+
+### Introduction au synthétiseur modulaire et à la musique électronique
+
+**Abstract** : Le synthétiseur est la base de la création de la musique électronique qui était produite, avant l'invention du premier oscillateur à base de système de transistor en 1960, par enregistrements et montages sur bande magnétique. Depuis les premiers synthétiseurs commerciaux lancés par Moog et Buchla au début des années 60, l'évolution du matériel et des techniques de production musicale analogique et été constante, et reste d'actualité aujourd'hui, avec un marché grandissant dans le domaine du synthétiseur modulaire. Nous allons expliquer, et surtout entendre, les différents modules d'un synthétiseur modulaire classique (le Doefper A-100, sorti en 1995), c'est-à-dire les VCO (voltage controled oscilator), les VCF (voltage controlled filter), les VCA (voltage controlled amplifier), les LFO (low frequency oscilattor) et les EG (enveloppe generator).
+
+-->
+
 ### Software craftmanship
 
 - 21 - 22 Avril 2016 (fr) : [Devoxx - France - Live code review at LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/html/live-code-review-at-lesfurets-devoxx.html)
