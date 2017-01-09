@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Programmation réactive pour l'orchestration de services au sein de la JVM</title>
+  <meta name="description" content="Continuous delivery chez LesFurets.com">
+  <meta name="author" content="Ozan Gunalp">
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="../bower_components/reveal.js/css/reveal.css">
+  <link rel="stylesheet" href="../bower_components/reveal.js/lib/css/zenburn.css">
+  <link rel="stylesheet" href="../css/lesfurets-theme.css" id="theme">
+  <link rel="stylesheet" href="../css/git-octopus-theme.css" id="octopus-theme">
+  <link rel="stylesheet" href="../css/code-jooq-theme.css" id="jooq-theme">
+  <script>
+      if (window.location.search.match(/print-pdf/gi)) {
+          var link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.type = 'text/css';
+          link.href = '../css/print/pdf.css';
+          document.getElementsByTagName('head')[0].appendChild(link);
+      }
+  </script>
+  <!--[if lt IE 9]>
+  <script src="../bower_components/reveal.js/lib/js/html5shiv.js"></script><![endif]-->
+</head>
+<body>
+<div id="footer" class="footer show">
+  <a href="https://www.lesfurets.com" target="_blank">
+    <img class="logo" src="../img/logo_lesfurets_885x128_no_back.png">
+  </a>
+  <a class="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a>
+  <a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a>
+  <a class="github" href="https://github.com/ozangunalp" target="_blank">https://github.com/ozangunalp</a>
+  <a style="margin-right: 10px;" class="twitter" href="https://twitter.com/ozangunalp" target="_blank">@ozangunalp</a>
+  <!--<img style="width:50px;vertical-align:middle;padding-left:25px" src="../img/theodo-logo-medium.png">-->
+  <span style="font-family:arial;font-weight:bold;font-size:25px;vertical-align:middle">BreizhJUG</span>
+</div>
+<div class="reveal">
+  <div class="slides">
+    <!-- SECTION - INTRO -->
+
+    <section class="flushright" data-state="background-furets">
+      <h1>Programmation réactive</h1>
+      <h2>Orchestration de services <br> au sein de la JVM</h2>
+      <h3>Ozan Gunalp</h3>
+    </section>
+
+    <section class="flushleft" data-state="background-furets">
+      <h3 style="color:#f07d00">Ozan GUNALP</h3>
+      <ul class="flushright nodisc">
+        <li>
+          <a style="color:white" href="https://twitter.com/ozangunalp">twitter.com/ozangunalp</a>
+        </li>
+        <li>
+          <a style="color:white" href="https://github.com/ozangunalp">github.com/ozangunalp</a>
+        </li>
+      </ul>
+      <h3 style="color:#f07d00">Contributeurs</h3>
+      <ul class="flushleft small nodisc">
+        <li>Gilles </li>
+      </ul>
+    </section>
+
+    <!-- SECTION - CONTEXT -->
+
+    <section class="center" data-background="#333">
+      <h2>LesFurets.com</h2>
+      <ul class="white nodisc">
+        <li>Comparateur d'assurances</li>
+        <li>Nous solicitons les web-services pour avoir les meilleurs prix</li>
+        <li>Image : PPS chez LesFurets.com</li>
+      </ul>
+    </section>
+
+    <section class="center" data-background="#333">
+      <h2>L'orchestrator de service</h2>
+      <img style="width: 100%;" src="../img/reactive/scattergather.gif">
+      <ul class="white nodisc">
+        <!--<li>Image : Scatter - Gather pattern</li>-->
+        <li>20-40 pps par minute (confidentiel ?)</li>
+      </ul>
+    </section>
+
+      <section class="center" data-background="#333">
+        <h2>Problème</h2>
+        <h3>Illusions de l'informatique distribuée</h3>
+        <ul class="white nodisc">
+          <li>1.	The network is reliable</li>
+          <li>2.	Latency is zero</li>
+          <li>3.	Bandwidth is infinite</li>
+          <li>4.	The network is secure</li>
+          <li>5.	Topology doesn't change</li>
+          <li>6.	There is one administrator</li>
+          <li>7.	Transport cost is zero</li>
+          <li>8.	The network is homogeneous</li>
+        </ul>
+      </section>
+
+      <section class="center" data-background="#333">
+      <h2>Problème</h2>
+        <div class="code-wrapper">
+      <pre>
+          <code class="code java" data-trim data-noescape>
+        if (executor.getActiveCount() >= POOL_SIZE) {
+            throw new NoExecutorAvailable("ThreadPool buzy");
+        }
+          </code>
+      </pre>
+        </div>
+    </section>
+
+
+    <section class="center" data-background="#333">
+      <h2>Problèmes soujacents</h2>
+      <ul class="white nodisc">
+        <li>Passage à l'echelle: + de ressources =? + de perf</li>
+        <li>Maintenabilité : Clairté de code</li>
+        <li>Gestion de SLA / résilience</li>
+      </ul>
+    </section>
+
+    <section class="center" data-background="#333">
+      <h2>Traitement asynchrone</h2>
+      <ul class="white nodisc">
+        <li>Scalability & Performance : répartir les tâches sur plusieurs ressources</li>
+        <li>Résilience : isolation des erreurs</li>
+      </ul>
+    </section>
+
+    <section class="center" data-background="#333">
+      <h2>Solutions classiques pour traitement asynchrone</h2>
+      <ul class="white nodisc">
+        <li>Gestion des threads & locks, appels bloquantes</li>
+        <li>Queues de message/tâches avec buffering</li>
+        <li>Event loops avec callbacks</li>
+        <!--<li>Acteurs avec message passing</li>-->
+      </ul>
+      <p>TODO : problèmes avec les abstractions classiques : accès aux ressources partagées / gestion des threads bloquante / callback hell / thread starvation</p>
+    </section>
+
+    <section class="center" data-background="#333">
+      <h2>Systèmes réactives</h2>
+      <ul class="white nodisc">
+        <li>Responsive - they respond in an acceptable time</li>
+        <li>Elastic - they scale up and down</li>
+        <li>Resilient - they are designed to handle failures gracefully</li>
+        <li>Asynchronous - they interact using async messages</li>
+      </ul>
+      <p>!= Reactive programming</p>
+    </section>
+
+    <section class="center" data-background="#333">
+      <h2>Programmation réactive</h2>
+      <ul class="white nodisc">
+        <li>Evenements asynchrones</li>
+        <li>Flux de données déclarative</li>
+      </ul>
+      <p>TODO : emphasize difference between reactive systems</p>
+    </section>
+
+    <section class="center" data-background="#333">
+      <h2>Abstractions pour la programmation réactive</h2>
+      <ul class="white nodisc">
+        <li>Reactive Streams</li>
+        <li>Promes/Future/CompletableFuture</li>
+        <li>Actor model (?)</li>
+        <!--<li>Dataflow</li>-->
+      </ul>
+    </section>
+
+    <section class="center" data-background="#333">
+      <h2>Reactive Streams</h2>
+      <h3>Streams ? </h3>
+      <ul class="white nodisc">
+        Collection : iterable group of items with definite size = define data
+        Stream = operations on a unbounded group of items = define work
+      </ul>
+      <p>TODO : code sample, immutability</p>
+    </section>
+
+    <section class="center" data-background="#333">
+      <h2>Reactive Streams</h2>
+      <ul class="white nodisc">
+        Définit les opérations sur un group d'evénements
+        Publisher Subscriber
+      </ul>
+    </section>
+
+    <section class="center" data-background="#333">
+      <h2>RxJava</h2>
+      <ul class="white nodisc">
+        Observables + Operators + Scheduling
+      </ul>
+      <p>Sépare les </p>
+    </section>
+
+    <section class="center" data-background="#333">
+      <h2>Orchestrateur classique</h2>
+      <ul class="white nodisc">
+        <p>TODO : runnables, waitAll</p>
+      </ul>
+    </section>
+
+    <section class="center" data-background="#333">
+      <h2>Orchestrateur parallel stream</h2>
+      <ul class="white nodisc">
+      </ul>
+      <p>TODO : Gestion de ressources </p>
+    </section>
+
+    <section class="center" data-background="#333">
+      <h2>Orchestrateur CompletableFuture</h2>
+      <ul class="white nodisc">
+        <li>completeOnTimeout</li>
+      </ul>
+      <p>TODO : gestion des threads de timeout</p>
+    </section>
+
+    <section class="center" data-background="#333">
+      <h2>Orchestrateur RxJava Observables</h2>
+      <ul class="white nodisc">
+        <li></li>
+      </ul>
+    </section>
+
+    <section class="center" data-background="#333">
+      <h2>Orchestrateur RxJava2 Flowable</h2>
+      <ul class="white nodisc">
+      </ul>
+    </section>
+
+    <section class="center" data-background="#333">
+      <h2>Scheduling</h2>
+      <ul class="white nodisc">
+        <li>Pool de threads séparés par backend ou global ? </li>
+        <li>Buffering</li>
+      </ul>
+    </section>
+
+    <section class="center" data-background="#333">
+      <h2>Backpressure</h2>
+      <ul class="white nodisc">
+        <li>RxJava2 vs RxJava : Flowables ajoute</li>
+        <li>Différentes stratégies</li>
+      </ul>
+    </section>
+
+    <section class="center" data-background="#333">
+      <h2>Java 9 Flow</h2>
+      <ul class="white nodisc">
+        <li>Publisher Subscriber</li>
+        <li>Implementation de reactive-streams specification</li>
+        <li>Contient très peu d'implementation</li>
+      </ul>
+    </section>
+
+    <section class="center" data-background="#333">
+      <h2>Best practices & Pitfalls RxJava</h2>
+      <ul class="white nodisc">
+        <li>Différence entre subsribeOn vs observeOn</li>
+        <li>Configuration de backpressure</li>
+        <li>Gestion des erreurs</li>
+        <li>Creation des Observable/Flowable</li>
+      </ul>
+    </section>
+
+    <section class="center" data-background="#333">
+      <h2>Perspectives</h2>
+      <h3>Gestion de SLA</h3>
+      <ul class="white nodisc">
+        <li>Choisir la taille de buffer (compension de backpressure) par backend</li>
+        <li>Implementer circuit breaker</li>
+      </ul>
+    </section>
+
+  </div>
+</div>
+<script src="../bower_components/reveal.js/lib/js/head.min.js"></script>
+<script src="../bower_components/reveal.js/js/reveal.js"></script>
+<script>
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        embedded: true,
+
+        // Hack my remote because it send 5 events
+        keyboard: {
+            // Tab : nop
+            9: null,
+            // Page down : previous slide
+            33: function () {
+                if (!window.animate) {
+                    window.animate = true;
+                    Reveal.left();
+                    setTimeout(function () {
+                        window.animate = false;
+                    }, 1000);
+                }
+            },
+            // Page up : next slide
+            34: function () {
+                if (!window.animate) {
+                    window.animate = true;
+                    Reveal.right();
+                    setTimeout(function () {
+                        window.animate = false;
+                    }, 1000);
+                }
+            }
+        },
+
+
+        //theme: 'lesfurets', // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            {
+                src: '../bower_components/reveal.js/lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function () {
+                return !!document.body.classList;
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function () {
+                return !!document.body.classList;
+            }
+            }
+        ]
+    });
+</script>
+<script src="../js/lesfurets-theme.js" async></script>
+</body>
+</html>
