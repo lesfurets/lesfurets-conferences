@@ -1,7 +1,3 @@
-TODO
-
-- Check how to start 2 executors
-
 Enable persistent event log to see execution after the fact
  
     spark.eventLog.enabled=true
@@ -24,18 +20,12 @@ Bins
     ./sbin/start-master.sh
     ./sbin/start-slave.sh spark://lesfurets:7077
     ./sbin/start-history-server.sh
- 
-Versions
- 
-    2.1.8 cassandra version (deb)
-    ??? spark (deb)
-    ??? spark cassandra connector (github clone tag 2.0.0 and sbt install)
 
 Spark submit
 
     ./bin/spark-submit --class Count /home/alexandre/Documents/project/snowcamp/target/snowcamp-0.0.1.jar
 
-Send on wire (NOT necessary if you use the local[*] syntax)
+Standalone mode (NOT necessary if you use the local[*] syntax)
 
     private static SparkSession spark = SparkSession
             .builder()

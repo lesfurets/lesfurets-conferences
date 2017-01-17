@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="../bower_components/reveal.js/lib/css/zenburn.css">
         <link rel="stylesheet" href="../css/lesfurets-theme.css" id="theme">
         <link rel="stylesheet" href="../css/git-octopus-theme.css" id="theme">
+        <link rel="stylesheet" href="../css/live-code-review-theme.css" id="theme">
         <script>
 if( window.location.search.match( /print-pdf/gi ) ) {
     var link = document.createElement( 'link' );
@@ -58,118 +59,270 @@ if( window.location.search.match( /print-pdf/gi ) ) {
                     </ul>
                 </section>
 
-                <!-- SECTION - INTRODUCTION -->
+                <!--
+                  catalyst vs tungsten
+                  ortho
+                  good exemple
+                  garder udf
+                  driver / master / worker schema plus tot
+                  le jar est envoyé par le cluster manager au driver
+                  exécution dans le driver / worker
+                  example new FilterFunction
+                  show() et expression terminales
+                  thread vs cluster
+                -->
 
-                <section>
+                <!-- SECTION - LUNE DE MIEL -->
 
-                    <section class="flushleft" data-state="background-pipeline">
-                        <h2 style="color:white">Introduction</h2>
-                    </section>
-
-                    <section class="flushleft" data-background="#222">
-                        <h3>Definition</h3>
-                        <p class="">Apache Spark est un système de calcul distribué général haute performance</p>
-                        <p class="fragment">Il propose des API haut niveau en Java, Scala, Python et R et contient un engin d'optimisation générique</p>
-                        <p class="fragment">Il contient plusieurs outils tels que Spark SQL pour la gestion de donnée en SQL, MLlib pour le machine learning, GraphX pour le processing de graph et Spark Streaming pour du micro-batching</p>
-                    </section>
-
-                    <section class="flushleft" data-background="#222">
-                        <h3>Composants</h3>
-                        <!-- https://image.slidesharecdn.com/sparksolrrev-timpotter-151021184307-lva1-app6892/95/solr-and-spark-for-realtime-big-data-analytics-presented-by-tim-potter-lucidworks-5-638.jpg -->
-                        <img style="width:66%" src="../img/spark/spark-components.jpg">
-                    </section>
-
-                    <section class="flushleft" data-background="#222">
-                        <h3>Architecture</h3>
-                        <!-- https://spark.apache.org/docs/latest/cluster-overview.html -->
-                        <img style="width:66%" src="../img/spark/cluster-overview.png">
-                    </section>
-
-                    <section class="flushleft" data-background="#222">
-                        <h3>Chez LesFurets.com</h3>
-                        <p>Glossary + image on https://spark.apache.org/docs/latest/cluster-overview.html<p>
-                    </section>
-
+                <section class="flushleft" data-background="../img/spark/background-lune-de-miel.jpg">
+                    <!-- http://blog.evaneos.com/wp-content/uploads/2014/11/Lune-de-miel_coeur_istockphoto.jpg -->
+                    <h2 style="color:white">Apache Spark</h2>
+                    <h3 style="color:white">la lune de miel</h3>
                 </section>
 
-                <!-- SECTION - APACHE SPARK -->
+                <section class="flushleft" data-background="#222">
+                    <p class="">Apache Spark est un système de <strong>calcul distribué général haute performance</strong>.</p>
+                    <p class="fragment">Il propose des API haut niveau en <strong class="color-indigo300">Java</strong>, <strong class="color-indigo300">Scala</strong>, <strong class="color-indigo300">Python</strong> et <strong class="color-indigo300">R</strong> et contient un moteur d'optimisation générique.</p>
+                    <p class="fragment">Il contient plusieurs outils tels que <span class="fragment color-indigo300">Spark SQL pour la gestion de donnée en SQL, </span><span class="fragment color-indigo200">MLlib pour le machine learning, </span><span class="fragment color-indigo100">GraphX pour le processing de graph et </span><span class="fragment color-indigo000">Spark Streaming pour du micro-batching.</span></p>
+                </section>
 
-                <section>
+                <section class="center" data-background="#222">
+                    <!-- http://i3.kym-cdn.com/photos/images/original/000/085/444/1282786204310.jpg -->
+                    <img style="width:50%" src="../img/spark/meme-puking-rainbows.jpg">
+                </section>
 
-                    <section class="flushleft" data-state="background-pipeline">
-                        <h2 style="color:white">Apache Spark</h2>
-                    </section>
+                <section class="flushleft" data-background="#222">
+                    <p>C'est très simple de démarrer : <strong>notebook Spark en Scala</strong></p>
+                    <!-- our -->
+                    <div class="code-wrapper">
+                    <img class="code" style="width:125%" src="../img/spark/databricks-notebook.png">
+                    </div>
+                </section>
 
-                    <section class="flushleft" data-background="#222">
-                        <h3>SparkSession</h3>
-                        <p>Le point d'entrée de toute les fonctionnalités spark est la classe <code>SparkSession</code></p>
-                        <pre><code class="java" data-trim>
-SparkSession spark = SparkSession.builder()
-        .appName("Salut Snowcamp")
-        .config("spark.some.config.option",
-                "some-value")
-        .getOrCreate();
-                        </code></pre>
-                    </section>
+                <section class="flushleft" data-background="#222">
+                    <p>Le notebook permet</p>
+                    <ul>
+                        <li class="fragment color-gray400">- d'ecrire les commandes dans un REPL</li>
+                        <li class="fragment color-gray400">- d'exporter l'exécution dans un format présentable</li>
+                        <li class="fragment color-gray400">- d'afficher des graphiques léchés sans effort</li>
+                        <li class="fragment color-gray400">- de démarrer des instances à la volée (chez databricks)</li>
+                    </ul>
+                    <p class="fragment">Bref, c'est la classe ...</p>
+                </section>
 
-                    <section class="flushleft" data-background="#222">
-                        <h3>DataFrame</h3>
-                        <p>Un DataFrame est une collection distribuée de data organisée en colonnes nommées et typées. Les exécutions basées sur cette API vont être optimisée par Catalyst.</p>
-                        <p>A partir de notre <code>SparkSession</code> on récupère un <code>DataSet&lt;Row&gt;</code> (soit un DataSet non-typé, appelé DataFrame).</p>
-                        <pre><code class="java" data-trim>
+                <section class="flushleft" data-background="#222">
+                    <p>... et en 2 minutes on trouve pleins de cas d'usages :</p>
+                    <ul>
+                        <li class="fragment color-gray400">- rapport de performance "on-demand"</li>
+                        <li class="fragment color-gray400">- spark streaming pour de l'alerting métier</li>
+                        <li class="fragment color-gray400">- spark MLlib pour les questions tarifantes</li>
+                        <li class="fragment color-gray400">- ...</li>
+                    </ul>
+                </section>
+
+                <section class="flushright" data-background="#222">
+                    <p>... mais on se rend compte qu'<strong>on ne sait pas écrire du Scala</strong></p>
+                    <!-- our -->
+                    <img style="width:66%" src="../img/spark/twitter-troll-scala.png">
+                </section>
+
+                <section class="flushleft" data-background="#222">
+                    <p>... mais surtout, on se rend compte qu'un notebook c'est pratique, mais ce n'est pas très industriel</p>
+                </section>
+
+                <section class="flushleft" data-background="#222">
+                    <ul>
+                        <li class="">- versionnement du code <strong class="fragment color-indigo300">-&gt; git</strong></li>
+                        <li class="">- intégration continue <strong class="fragment color-indigo300">-&gt; jenkins</strong></li>
+                        <li class="">- tests unitaires <strong class="fragment color-indigo300">-&gt; JUnit</strong></li>
+                        <li class="">- utilisation de la code base <strong class="fragment color-indigo300">-&gt; UDF</strong></li>
+                        <li class="">- IDE <strong class="fragment color-indigo300">-&gt; Intellij / Eclipse</strong></li>
+                    </ul>
+                </section>
+
+                <!-- SECTION - LA VRAI VIE -->
+
+                 <section class="flushleft" data-background="../img/spark/background-real-life.jpg">
+                     <!-- http://www.roanokeoutside.com/wp-content/uploads/2015/06/blog-hero.jpg -->
+                     <h2 style="color:white">Apache Spark</h2>
+                     <h3 style="color:white">dans la vrai vie</h3>
+                 </section>
+
+                <section class="flushleft" data-background="#222">
+                    <p>Il suffit de l'ajouter en dépendance dans Maven</p>
+                    <div class="code-wrapper">
+                    <pre><code class="code xml" data-trim data-noescape>
+&lt;dependency&gt;
+  &lt;groupId&gt;org.apache.spark&lt;/groupId&gt;
+  &lt;artifactId&gt;spark-core_<mark>2.11</mark>&lt;/artifactId&gt;
+  &lt;version&gt;2.0.2&lt;/version&gt;
+&lt;/dependency&gt;
+                    </code></pre>
+                    </div>
+                    <p class="fragment small color-gray400">Le 2.11 dans l'<code>artifactId</code> veut dire que Spark a été compilé avec Scala 2.11 (votre cluster Spark devra être démarré avec cette même version, afin d'éviter les problèmes de sérialisation entre les exécuteurs)</p>
+                </section>
+
+                <section class="flushleft" data-background="#222">
+                    <p>Il faut aussi ajouter l'API DataFrame</p>
+                    <div class="code-wrapper">
+                    <pre><code class="code xml" data-trim data-noescape>
+&lt;dependency&gt;
+  &lt;groupId&gt;org.apache.spark&lt;/groupId&gt;
+  &lt;artifactId&gt;spark-sql_2.11&lt;/artifactId&gt;
+  &lt;version&gt;2.0.2&lt;/version&gt;
+&lt;/dependency&gt;
+                    </code></pre>
+                    </div>
+                </section>
+
+                 <section class="center" data-background="#222">
+                     <!-- https://image.slidesharecdn.com/sparksolrrev-timpotter-151021184307-lva1-app6892/95/solr-and-spark-for-realtime-big-data-analytics-presented-by-tim-potter-lucidworks-5-638.jpg -->
+                     <img style="width:66%" src="../img/spark/spark-components.jpg">
+                    <p>Plus ou moins chaque brique s'importe avec une dépendance</p>
+                 </section>
+
+                <section class="flushright" data-background="#222">
+                    <p>Le point d'entré est <code>SparkSession</code></p>
+                    <div class="code-wrapper">
+                    <pre><code class="code java" data-trim data-noescape>
+private static <mark>SparkSession</mark> spark = <mark>SparkSession</mark>.builder()
+  .appName("LesFurets.com - Spark")
+  .master("local[*]")
+  .getOrCreate();
+
+public static void main(String[] args) {
+  spark.emptyDataFrame().show();
+}
+                    </code></pre>
+                    </div>
+                </section>
+
+                 <section class="flushleft" data-background="#222">
+                     <p>La machine qui instancie le <code>SparkSession</code> est ce qu'on appelle le <strong class="color-indigo300">driver</strong>, il contient le contexte et communique avec le <strong class="color-indigo300">cluster manager</strong> afin de lancer les exécutions sur les <strong class="color-indigo300">worker</strong> (ou exécuteur).</p>
+                     <!-- https://spark.apache.org/docs/latest/cluster-overview.html -->
+                     <img class="fragment" style="width:66%" src="../img/spark/cluster-overview.png">
+                 </section>
+
+                 <section class="flushleft" data-background="#222">
+                     <p>Apache Spark est un moteur en cluster, et celui-ci se démarre en 3 modes : <strong class="fragment color-indigo300">local, </strong><strong class="fragment color-indigo200">standalone, </strong><strong class="fragment color-indigo100">cluster.</strong></p>
+                     <ul>
+                         <li class="fragment"><strong class="color-indigo200">- local : </strong>driver et 1 worker sur la même jvm</li>
+                         <li class="fragment"><strong class="color-indigo200">- standalone : </strong>driver et 1 worker sur la même machine</li>
+                         <li class="fragment"><strong class="color-indigo200">- cluster : </strong>driver et n workers sur des machines différentes</li>
+                     </ul>
+                 </section>
+
+                 <section class="flushleft" data-background="#222">
+                     <p>Cela veut dire que le <code>jar</code> contenant votre programme est envoyé par le cluster manager (<strong class="color-indigo300">Standalone, </strong><strong class="color-indigo200">Apache Mesos, </strong><strong class="color-indigo100">Hadoop YARN</strong>) aux workers, et les datas sont sérialisés entre les JVM.</p>
+                     <p class="small color-gray400"><strong>Corollaire : </strong>les workers n'ont pas directement accès aux variables du driver (ou des autres workers).</p>
+                 </section>
+
+                <!-- SECTION - PREMIER USAGE -->
+
+                 <section class="flushleft" data-background="../img/spark/background-les-furets.jpg">
+                     <h2 style="color:white">Apache Spark</h2>
+                     <h3 style="color:white">sur les furets</h3>
+                 </section>
+
+                 <section class="center" data-background="#222">
+                     <p>Et si on faisait un truc simple ?</p>
+                     <p class="fragment color-indigo300">"Trouver la moyenne des prix, par formule, pour un assureur"</p>
+                 </section>
+
+                 <section class="center" data-background="#222">
+                     <p><strong class="color-indigo300">DEMO TIME !</strong> voir StatistiquesPartenaires</p>
+                     <div class="code-wrapper">
+                     <pre><code class="code java" data-trim data-noescape>
+Dataset<Row> averagePrime = tarifs
+    .filter((FilterFunction<Row>) value ->
+            value.<String>getAs("assureur").equals("Mon SUPER assureur"))
+    .groupBy("formule")
+    .agg(avg("prime").as("average"))
+    .withColumn("formuleReadable", callUDF("readableFormule", col("formule")))
+    .orderBy(desc("average"));
+averagePrime.show();
+                     </code></pre>
+                     </div>
+                 </section>
+
+                 <section class="flushleft" data-background="#222">
+                     <p>on peut voir le plan exécution, pendant l'exécution, ou après l'exécution avec le history-server, si on active la persitance de l'historique <code>spark.eventLog.enabled</code></p>
+                     <!-- our -->
+                     <img style="width:66%" src="../img/spark/history-word-count.png">
+                 </section>
+
+                 <section class="flushleft" data-background="#222">
+                     <p>qu'est-ce qu'un <code>Dataset</code> (aussi appelé Dataframe) ?</p>
+                 </section>
+
+                 <section class="flushleft" data-background="#222">
+                    <h3>DataFrame</h3>
+                    <p>Un DataFrame est une collection distribuée de data organisée en colonnes nommées et typées. Les exécutions basées sur cette API vont être optimisée par Catalyst.</p>
+                    <p>A partir de notre <code>SparkSession</code> on récupère un <code>Dataset&lt;Row&gt;</code> (soit un DataSet non-typé, appelé DataFrame).</p>
+                    <div class="code-wrapper">
+                    <pre><code class="code java" data-trim data-noescape>
 // Lecture d'un fichier data.csv avec inférence de schéma
 Dataset&lt;Row&gt; data = spark.read()
         .option("inferSchema", true)
         .csv("data.csv");
-                        </code></pre>
-                        <!-- In Spark, a DataFrame is a distributed collection of data organized into named columns. Users can use DataFrame API to perform various relational operations on both external data sources and Spark’s built-in distributed collections without providing specific procedures for processing data. Also, programs based on DataFrame API will be automatically optimized by Spark’s built-in optimizer, Catalyst -->
-                    </section>
+                    </code></pre>
+                    </div>
+                    <!-- In Spark, a DataFrame is a distributed collection of data organized into named columns. Users can use DataFrame API to perform various relational operations on both external data sources and Spark’s built-in distributed collections without providing specific procedures for processing data. Also, programs based on DataFrame API will be automatically optimized by Spark’s built-in optimizer, Catalyst -->
+                 </section>
 
-                    <section class="flushleft" data-background="#222">
-                        <h3>Les DataFrames ont un schéma</h3>
-                        <pre><code class="java" data-trim>
+                <section class="flushleft" data-background="#222">
+                    <h3>Les DataFrame ont un schéma</h3>
+                    <div class="code-wrapper">
+                    <pre><code class="code java" data-trim>
 data.printSchema();
-                        </code></pre>
-                        <pre><code class="java" data-trim>
+                    </code></pre>
+                    </div>
+                    <div class="code-wrapper">
+                    <pre><code class="code java" data-trim>
 root
  |-- uid: string (nullable = true)
  |-- email_hash: integer (nullable = true)
  |-- date: timestamp (nullable = true)
  |-- heure: string (nullable = true)
  |-- module: string (nullable = true)
-                        </code></pre>
-                    </section>
+                    </code></pre>
+                    </div>
+                </section>
 
-                    <section class="flushleft" data-background="#222">
-                        <h3>DateFrame API</h3>
-                        <img style="width:66%" src="../img/spark/dataframe-diagram.png">
-                        <!-- TODO why reduceByKey missing ? slower than groupByKey... check instapaper article -->
-                        <!-- 
+                <section class="flushleft" data-background="#222">
+                    <h3>DateFrame API</h3>
+                    <img style="width:66%" src="../img/spark/dataframe-diagram.png">
+                    <!-- TODO why reduceByKey missing ? slower than groupByKey... check instapaper article -->
+                    <!-- 
 Why Use DataFrames instead of RDDs?
 For new users familiar with data frames in other programming languages, this API should make them feel at home
 For existing Spark users, the API will make Spark easier to program than using RDDs
 For both sets of users, DataFrames will improve performance through intelligent optimizations and code-generation 
-                        -->
-                    </section>
+                    -->
+                </section>
 
-                    <section class="flushleft" data-background="#222">
-                        <h3>DataSet</h3>
-                        <p>On récupère un <code>DataSet</code> tel quel, ou on converti un <code>DataFrame</code> en le typant.</p>
-                        <p>Soit <code>Question</code> un bean java qui correspond à une question du formulaire LesFurets</p>
-                        <p>%md Dataset strong typing is "virtual" -- it's just a view that can be applied when you want it:</p>
-                        <pre><code class="java" data-trim>
+                <section class="flushleft" data-background="#222">
+                    <h3>DataSet</h3>
+                    <p>On récupère un <code>Dataset</code> tel quel, ou à partir d'un DataFrame typé.</p>
+                    <p>Soit <code>Question</code> un bean java qui correspond à une question du formulaire LesFurets</p>
+                    <!--
+Dataset strong typing is "virtual" it's just a view that can be applied when you want it
+                    -->
+                    <div class="code-wrapper">
+                    <pre><code class="code java" data-trim data-noescape>
 // Convertion du Dataset&lt;Row&gt; en Dataset&lt;Question&gt;
 Dataset&lt;Question&gt; domainData = data
         .as(Encoders.bean(Question.class))
-                        </code></pre>
-                    </section>
+                    </code></pre>
+                    </div>
+                </section>
 
-                    <section class="flushleft" data-background="#222">
-                        <h3>RDD / DataFrames / DataSets</h3>
-                        <p>À partir de Spark 2.0, SparkSQL, DataFrames and DataSets représentent le même composant</p>
-                        <!-- https://i.stack.imgur.com/3rF6p.png -->
-                        <img style="width:66%" src="../img/spark/rdd-dataframe-dataset.png">
-                        <!--
+                <section class="flushleft" data-background="#222">
+                    <h3>RDD / DataFrames / DataSets</h3>
+                    <p>À partir de Spark 2.0, SparkSQL, DataFrames and DataSets représentent le même composant</p>
+                    <!-- https://i.stack.imgur.com/3rF6p.png -->
+                    <img style="width:66%" src="../img/spark/rdd-dataframe-dataset.png">
+                    <!--
 DataFrames
 The preferred abstraction in Spark (introduced in 1.3)
 Strongly typed collection of distributed elements
@@ -191,166 +344,244 @@ DataFrame/DataSet API and SQL (typically via the HiveQL parser) are equivalent w
 SQL serves many general purposes, including analytic work via BI tools (over JDBC and the Thriftserver)
 DataFrames offer more programmatic control and an API familiar to users of Pandas or R
 DataSets are a generalization of DataFrames and the underlying engine, to support more data types and stronger type enforcement
-                        -->
-                    </section>
+                    -->
+                </section>
 
-                    <section class="flushleft" data-background="#222">
-                        <h3>Resilient Distributed Datasets (RDDs)</h3>
-                        <p>C'est la plomberie interne de spark : on n'y touche pas, sauf si vous avez besoin / savez exactement ce que vous faites</p>
-                        <!-- 
-                        -->
-                        <pre><code class="java" data-trim>
+                <section class="flushleft" data-background="#222">
+                    <h3>Resilient Distributed Datasets (RDDs)</h3>
+                    <p>C'est la plomberie interne de spark : on n'y touche pas, sauf si vous avez besoin et vous savez exactement ce que vous faites</p>
+                    <div class="code-wrapper">
+                    <pre><code class="code java" data-trim>
 // Récupération du RDD sous-jacent au dataset
 RDD&lt;Question&gt; rdd = domainData.rdd();
 // API Java du RDD
 JavaRDD&lt;Question&gt; javaRDD = domainData.javaRDD();
-                        </code></pre>
-                    </section>
+                    </code></pre>
+                    </div>
+                    <p>mais l'interface entre les 2 est assez simple</p>
+                    <div class="code-wrapper">
+                    <pre><code class="code java" data-trim>
+Dataset&lt;Row&gt; dataFrame = spark.createDataFrame(rdd, structType);
+                    </code></pre>
+                    </div>
+                </section>
 
-
-                    <section class="flushleft" data-background="#222">
-                        <h3>Catalyst / whole-stage codegen</h3>
-                        <p>TODO whole-stage codegen example</p>
-                        <p>TODO link spark summit conference</p>
-                        <!-- 
-TODO
-                        -->
-                    </section>
-
-                    <section class="flushleft" data-background="#222">
-                        <h3>Performance</h3>
-                        <!-- https://www.ardentex.com/publications/RDDs-DataFrames-and-Datasets-in-Apache-Spark/images/dataframe-performance.png -->
-                        <img style="width:66%" src="../img/spark/dataframe-performance.png">
-                        <!-- 
+                <section class="flushleft" data-background="#222">
+                    <h3>Catalyst / whole-stage codegen</h3>
+                    <p>TODO whole-stage codegen example</p>
+                    <p>TODO link spark summit conference</p>
+                    <!-- https://www.ardentex.com/publications/RDDs-DataFrames-and-Datasets-in-Apache-Spark/images/dataframe-performance.png -->
+                    <img style="width:66%" src="../img/spark/dataframe-performance.png">
+                    <!-- 
 https://databricks.com/blog/2015/02/17/introducing-dataframes-in-spark-for-large-scale-data-science.html
 https://gist.github.com/rxin/c1592c133e4bccf515dd
-                        -->
-                    </section>
-
-                    <section class="flushleft" data-background="#222">
-                        <h3>Data sources</h3>
-                        <img style="width:66%" src="../img/spark/dataframe-sources.png">
-                        <!-- 
-                        -->
-                    </section>
-
-                    <section class="flushleft" data-background="#222">
-                        <h3>Data store (disk / parquet)</h3>
-                        <p>code</p>
-                        <p>https://academy.datastax.com/resources/getting-started-apache-spark-and-cassandra?unit=getting-started-apache-spark-and-cassandra<p>
-                        <!-- 
-In the previous example, we created DataFrames from Parquet and JSON data.
-A Parquet table has a schema (column names and types) that Spark can use. Parquet also allows Spark to be efficient about how it pares down data.
-Spark can infer a Schema from a JSON file.
-                        -->
-                    </section>
-
-                    <section class="flushleft" data-background="#222">
-                        <h3>Data store (Cassandra)</h3>
-                        <p>code</p>
-                        <p>https://academy.datastax.com/resources/getting-started-apache-spark-and-cassandra?unit=getting-started-apache-spark-and-cassandra<p>
-                    </section>
-
+                    -->
                 </section>
 
-                <!-- SECTION - ENVIRONNEMENT -->
+                <!-- SECTION - UNIT TESTS -->
 
-                <section>
+                 <section class="flushleft" data-state="background-pipeline">
+                     <h2 style="color:white">Apache Spark</h2>
+                     <h3 style="color:white">en tests unitaires</h3>
+                 </section>
 
-                    <section class="flushleft" data-state="background-pipeline">
-                        <h2 style="color:white">Environnement pour développeur</h2>
-                    </section>
+                 <section class="flushleft" data-background="#222">
+                     <p>et comment on écrit des tests ?</p>
+                 </section>
 
-                    <section class="flushleft" data-background="#222">
-                        <h3>Notebook</h3>
-                        <!-- our -->
-                        <img style="width:66%" src="../img/spark/databricks-notebook.png">
-                    </section>
+                 <section class="flushleft" data-background="#222">
+                     <p>DEMO TIME ! (WordCountTest)</p>
+                    <div class="code-wrapper">
+                    <pre><code class="code java" data-trim data-noescape>
+@BeforeEach
+public void before() { 
+  // Création des données de test
+  List<Row> rows = Arrays.asList(
+          RowFactory.create("FORMULE 1", 100d),
+          RowFactory.create("FORMULE 1", 80d),
+          RowFactory.create("FORMULE 2", 80d));
 
-                    <section class="flushleft" data-background="#222">
-                        <h3>Industrialisation</h3>
-                        <p>Les notebooks Java n'existent pas, entre autre parce qu'on n'a pas (encore) de REPL en Java</p>
-                        <p>Les notebooks peuvent être pratiques, mais on a besoin de gérer le versionnement du code source, la compilation, les tests unitaires, l'analyse statique, la mise en production.</p>
-                    </section>
+  // Création du schéma de données
+  StructField formule = new StructField("formule", StringType, false, Metadata.empty());
+  StructField prime = new StructField("prime", DoubleType, false, Metadata.empty());
 
-                    <section class="flushleft" data-background="#222">
-                        <h3>Exécution locale</h3>
-                        <p>Avoir un cluster en local : facile, c'est ce que je fais pour cette démo (mode standalone)</p>
-                        <p>Il y a plusieurs possibilités, soit standalone, soit standalone single-jvm (aussi appellé "local"). Ce dernier permet d'éviter d'avoir à gérer un jar à distribuer entre les instances des exécuteurs</p>
-                    </section>
+  // Récupération du Dataframe de test
+  tarifs = spark.createDataFrame(rows, new StructType(new StructField[]{formule, prime}));
+}
+                    </code></pre>
+                    </div>
+                 </section>
 
-                    <section class="flushleft" data-background="#222">
-                        <h3>local[*]</h3>
-                        <p>Spark local (pseudo-cluster): You can run Spark in local mode. In this non-distributed single-JVM deployment mode, Spark spawns all the execution components - driver, executor, backend, and master - in the same single JVM. The default parallelism is the number of threads as specified in the master URL. This is the only mode where a driver is used for execution.</p>
-                    </section>
+                 <section class="flushleft" data-background="#222">
+                    <div class="code-wrapper">
+                    <pre><code class="code java" data-trim data-noescape>
+@Test
+public void should_calculate_average_by_formule_ordered() {
+  Dataset<Row> averagePrime = StatistiquesPartenaires.averagePrime(tarifs);
 
-                    <section class="flushleft" data-background="#222">
-                        <h3>Maven</h3>
-                        <p>Les dépendances dans votre code peuvent être gérés par Maven, les packages Spark sont dans Maven Central.</p>
-                        <p>Ici, on utilise la version 2.0.2 de spark-core qui a été compilée avec Scala 2.11 (important que cette version corresponde aux versions installées sur les machines d'exécution, parce que les jar runtime sont partagés)</p>
-                        <pre><code class="xml" data-trim>
-<dependency>
-  <groupId>org.apache.spark</groupId>
-  <artifactId>spark-core_2.11</artifactId>
-  <version>2.0.2</version>
-</dependency>
-                        </code></pre>
-                    </section>
+  assertEquals(2, averagePrime.count());
+  assertEquals("formule 1", averagePrime.first().getAs("formule"));
+  assertEquals(90, (double) averagePrime.first().<Double>getAs("average"));
+}
+                    </code></pre>
+                    </div>
+                 </section>
 
-                    <section class="flushleft" data-background="#222">
-                        <h3>IDE</h3>
-                        <p>Dans n'importe quel IDE, il suffit de lancer un cluster local et d'exécuter un main pour utiliser spark</p>
-                        <p>DEMO TIME</p>
-                        <p>voir com.lesfurets.slides.IDE</p>
-                    </section>
+                <!-- SECTION - JAVA -->
 
-                    <section class="flushleft" data-background="#222">
-                        <h3>TU</h3>
-                        <p>Spark est facilement testable, il suffit de créer des Dataframe ou Dataset basé sur du contenu de test. Il est aussi possible de tester SparkSql en créant à la volée les tables nécessaires.</p>
-                        <p>DEMO TIME</p>
-                        <p>voir com.lesfurets.slides.TestUnitaires</p>
-                    </section>
+                 <section class="flushleft" data-state="background-pipeline">
+                     <h2 style="color:white">Apache Spark</h2>
+                     <h3 style="color:white">en Java (versus Scala)</h3>
+                 </section>
 
-                    <section class="flushleft" data-background="#222">
-                        <h3>JUnit5</h3>
-                        <p>Instancier un SparkContext global avec @BeforeAll et @AfterAll</p>
-                        <p>@Tag pour tagger des tests spark d'integration</p>
-                        <p>org.junit.jupiter.api.Assumptions pour activer des tests en local</p>
-                    </section>
+                 <section class="flushleft" data-background="#222">
+                     <p>mais sommes-nous limité en java ?</p>
+                 </section>
 
-                    <section class="flushleft" data-background="#222">
-                        <h3>CI</h3>
-                        <p>todo jenkins</p>
-                        <p>DEMO TIME</p>
-                    </section>
+                 <section class="flushleft" data-background="#222">
+                     <p>... oui, un peu</p>
+                     <p>- on s'ennuie du notebook pour le REPL (mais on peut quand même écrire du scala pour prototyper, c'est la même API)</p>
+                     <p>- faut bien connaître l'API (mal) documentée pour Java</p>
+                     <p>- facile de tomber dans des implémentations trop verbeuses pour rien</p>
+                     <p>- on est souvent obligé de passer des sérialiseurs de type (pe <code>Encoders.STRING()</code>)</p>
+                 </section>
 
-                    <section class="flushleft" data-background="#222">
-                        <h3>vs Scala</h3>
-                        <p>todo api diff</p>
-                    </section>
-
+                <section class="flushleft" data-background="#222">
+                    <p>par exemple dans ma première implémentation d'un word count...</p>
+                    <div class="code-wrapper">
+                    <pre><code class="code java" data-trim data-noescape>
+Dataset&lt;Row&gt; wordCount = lines
+  .flatMap(<mark>(FlatMapFunction&lt;Row, String&gt;) row -&gt;</mark> {
+      String[] words = row.&lt;String&gt;getAs("line").split(" ");
+      return asList(words).iterator();
+  }, STRING())
+  .map(<mark>(MapFunction&lt;String, Tuple2&lt;String, Integer&gt;&gt;) word -&gt;</mark>
+          new Tuple2&lt;&gt;(word, 1), tuple(STRING(), INT()))
+  .toDF("word", "count")
+  .groupBy("word")
+  .sum("count")
+  .orderBy(desc("sum(count)"))
+                    </code></pre>
+                    </div>
+                    <p>... on remarque l'usage de flapMap et map, qui prennent des lambdas (très générique mais un peu verbeux)</p>
                 </section>
 
-                <!-- SECTION - USE CASE -->
+                <section class="flushleft" data-background="#222">
+                    <p>... mais ce même word count peut s'écrire de manière beaucoup moins verbeuse en connaissant bien l'API</p>
+                    <div class="code-wrapper">
+                    <pre><code class="code java" data-trim data-noescape>
+Dataset&lt;Row&gt; wordCount = lines
+  .select(split(col("lines"), " ").alias("words"))
+  .select(explode(col("words")).alias("word"))
+  .groupBy("word")
+  .count()
+  .orderBy(desc("count"));
+                    </code></pre>
+                    </div>
+                </section>
 
-                <section>
+                <section class="center" data-background="#222">
+                    <!-- http://www.reactiongifs.com/wp-content/uploads/2013/03/magic.gif -->
+                    <img src="../img/spark/meme-magic.gif">
+                </section>
 
-                    <section class="flushleft" data-state="background-pipeline">
-                        <h2 style="color:white">Cas d'utilisation</h2>
-                        <h3 style="color:white">Todo decision tree ?</h3>
-                    </section>
+                 <section class="flushleft" data-background="#222">
+                     <p>La plupart des fonctions pour <code>map</code>, <code>flapMap</code>, <code>reduce</code>, <code>filter</code>, etc., dont vous aurez besoin sont dans <code>org.apache.spark.sql.functions</code></p>
+                     <p>Avant d'écrire une lambda à la main, cherchez dans ce package (non-documenté)</p>
+                     <p>TODO quelques exemples (FlapMapFunction vs functions)</p>
+                 </section>
 
+                <section class="flushleft" data-background="#222">
+                    <p>l'API spark n'est pas bien pensée pour les lambdas de Java 8, on est obligé de les caster</p>
+                    <p>par exemple pour récupérer le dernier élément d'un groupe</p>
+                    <div class="code-wrapper">
+                    <pre><code class="code java" data-trim data-noescape>
+Dataset&lt;Tuple2&lt;String, TarificationJoin&gt;&gt; tupleTarif = 
+  tarification
+    .groupByKey(<mark>(MapFunction&lt;TarificationJoin, String&gt;)</mark>
+      TarificationJoin::getOffreUid, STRING())
+    .reduceGroups(<mark>(ReduceFunction&lt;TarificationJoin&gt;)</mark> (v1, v2) -&gt;
+      v1.getSnapshotId().compareTo(v2.getSnapshotId()) &gt; 0 ? v1 : v2);
+                    </code></pre>
+                    </div>
+                </section>
+
+                <section class="flushleft" data-background="#222">
+                    <p>les casts ne devraient pas être nécessaires, mais le sont parce les méthodes sont "overload" pour les appels en scala</p>
+                    <p>on devrait simplement pouvoir écrire :</p>
+                    <div class="code-wrapper">
+                    <pre><code class="code java" data-trim data-noescape>
+Dataset&lt;Tuple2&lt;String, TarificationJoin&gt;&gt; tupleTarif = 
+  tarification
+    .groupByKey(TarificationJoin::getOffreUid, STRING())
+    .reduceGroups((v1, v2) -&gt;
+      v1.getSnapshotId().compareTo(v2.getSnapshotId()) &gt; 0 ? v1 : v2);
+                    </code></pre>
+                    </div>
+                </section>
+
+                <section class="flushleft" data-background="#222">
+                    <p>il faut aussi passer explicitement les sérialiseurs qui peuvent devenir très complexe dans certains cas</p>
+                    <div class="code-wrapper">
+                    <pre><code class="code java" data-trim data-noescape>
+Dataset&lt;Tuple2&lt;String, TarificationJoin&gt;&gt; tupleTarif = 
+  tarification
+    .groupByKey((MapFunction&lt;TarificationJoin, String&gt;)
+      TarificationJoin::getOffreUid, <mark>STRING()</mark>)
+    .reduceGroups((ReduceFunction&lt;TarificationJoin&gt;) (v1, v2) -&gt;
+      v1.getSnapshotId().compareTo(v2.getSnapshotId()) &gt; 0 ? v1 : v2);
+                    </code></pre>
+                    </div>
                 </section>
 
                 <!-- SECTION - END -->
 
-                <section>
+                 <section class="flushleft" data-state="background-pipeline">
+                     <h3 style="color:white">en conclusion</h3>
+                 </section>
 
-                    <section class="flushleft" data-background="../img/nwx/lesfurets-background-black-01.jpg">
-                        <h2 style="color:white">END</h2>
-                    </section>
-
+                <section class="flushleft" data-background="#222">
+                    <p>qu'est-ce qu'on a réussi aujourd'hui ?</p>
+                    <p>- versionnement du code : git</p>
+                    <p>- intégration continue : jenkins</p>
+                    <p>- tests unitaires : junit</p>
+                    <p>- utilisation de la code base</p>
+                    <p>- IDE : intellij / eclipse</p>
                 </section>
+
+                <!-- SECTION - END -->
+
+                <section class="flushleft" data-background="../img/nwx/lesfurets-background-black-01.jpg">
+                    <h2 style="color:white">END</h2>
+                </section>
+
+                 <section class="flushleft" data-background="#222">
+                     <p>jenkins ?</p>
+                 </section>
+
+                <section class="flushleft" data-background="#222">
+                    <h3>Data sources ?</h3>
+                    <img style="width:66%" src="../img/spark/dataframe-sources.png">
+                    <p>- disk / parquet</p>
+                    <p>- cassandra</p>
+                    <p>- ...</p>
+                    <!-- 
+https://academy.datastax.com/resources/getting-started-apache-spark-and-cassandra?unit=getting-started-apache-spark-and-cassandra
+In the previous example, we created DataFrames from Parquet and JSON data.
+A Parquet table has a schema (column names and types) that Spark can use. Parquet also allows Spark to be efficient about how it pares down data.
+Spark can infer a Schema from a JSON file.
+                    -->
+                </section>
+
+                <section class="flushleft" data-background="#222">
+                    <h3>vs Scala</h3>
+                    <p>todo api diff</p>
+                </section>
+
+                 <section class="flushleft" data-background="#222">
+                     <h3>Chez LesFurets.com</h3>
+                     <p>Glossary + image on https://spark.apache.org/docs/latest/cluster-overview.html<p>
+                 </section>
 
             </div>
         </div>

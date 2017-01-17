@@ -17,7 +17,7 @@
         </plugins>
     </build>
     <packaging>jar</packaging>
-    <name>LesFurets.com @ Snowcamp</name>
+    <name>LesFurets.com - Apache Spark pour les développeurs Java</name>
     <dependencies>
         <dependency>
             <groupId>org.apache.spark</groupId>
@@ -37,7 +37,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>RELEASE</version>
+            <version>5.0.0-M3</version>
         </dependency>
     </dependencies>
 </project>
