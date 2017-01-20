@@ -4,7 +4,6 @@ import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.RowFactory;
 import org.apache.spark.sql.SparkSession;
-import org.apache.spark.sql.types.Metadata;
 import org.apache.spark.sql.types.StructField;
 import org.apache.spark.sql.types.StructType;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,6 +14,7 @@ import java.util.List;
 
 import static org.apache.spark.sql.types.DataTypes.DoubleType;
 import static org.apache.spark.sql.types.DataTypes.StringType;
+import static org.apache.spark.sql.types.Metadata.empty;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TarifsRunTest {
@@ -28,14 +28,15 @@ public class TarifsRunTest {
 
     @BeforeEach
     public void before() {
-        List<Row> rows = Arrays.asList(RowFactory.create("FORMULE 1", 50d, "Mon SUPER assureur"),
-                RowFactory.create("FORMULE 1", 100d, "Mon SUPER assureur"),
-                RowFactory.create("FORMULE 2", 70d, "Mon SUPER assureur"));
+        List<Row> rows = Arrays.asList(RowFactory.create("F1", 50d, "assureur"),
+                RowFactory.create("F1", 100d, "assureur"),
+                RowFactory.create("F1", 70d, "assureur"));
 
-        StructField formule = new StructField("formule", StringType, false, Metadata.empty());
-        StructField prime = new StructField("prime", DoubleType, false, Metadata.empty());
-        StructField assureur = new StructField("assureur", StringType, false, Metadata.empty());
-        StructType structType = new StructType(new StructField[]{formule, prime, assureur});
+        StructField formule = new StructField("formule", StringType, false, empty());
+        StructField prime = new StructField("prime", DoubleType, false, empty());
+        StructField assureur = new StructField("assureur", StringType, false, empty());
+        StructType structType = new StructType(
+                new StructField[]{formule, prime, assureur});
 
         tarifs = spark.createDataFrame(rows, structType);
     }

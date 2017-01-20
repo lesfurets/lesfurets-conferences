@@ -60,11 +60,6 @@ if( window.location.search.match( /print-pdf/gi ) ) {
                 </section>
 
                 <!--
-                  catalyst vs tungsten
-                  ortho
-                  good exemple
-                  garder udf
-                  driver / master / worker schema plus tot
                   le jar est envoyé par le cluster manager au driver
                   exécution dans le driver / worker
                   example new FilterFunction
@@ -226,16 +221,22 @@ public static void main(String[] args) {
 
                  <section class="center" data-background="#222">
                      <p>Et si on faisait un truc simple ?</p>
-                     <p class="fragment color-indigo300">"Trouver la moyenne des prix, par formule, pour un assureur"</p>
+                     <p class="fragment color-indigo300"><strong>Trouver la moyenne des prix, par formule, pour un assureur</strong></p>
                  </section>
 
                  <section class="center" data-background="#222">
-                     <p><strong class="color-indigo300">DEMO TIME !</strong> voir StatistiquesPartenaires</p>
+                     <p><strong class="color-indigo300">DEMO TIME !</strong> voir TarifsRun</p>
                      <div class="code-wrapper">
                      <pre><code class="code java" data-trim data-noescape>
-Dataset<Row> averagePrime = tarifs
-    .filter((FilterFunction<Row>) value ->
-            value.<String>getAs("assureur").equals("Mon SUPER assureur"))
+spark.udf().register("readableFormule",
+        (UDF1&lt;String, String&gt;) String::toLowerCase, StringType);
+                     </code></pre>
+                     </div>
+                     <div class="code-wrapper">
+                     <pre><code class="code java" data-trim data-noescape>
+Dataset&lt;Row&gt; averagePrime = tarifs
+    .filter((FilterFunction&lt;Row&gt;) value -&gt;
+            value.&lt;String&gt;getAs("assureur").equals("Mon SUPER assureur"))
     .groupBy("formule")
     .agg(avg("prime").as("average"))
     .withColumn("formuleReadable", callUDF("readableFormule", col("formule")))
@@ -246,18 +247,17 @@ averagePrime.show();
                  </section>
 
                  <section class="flushleft" data-background="#222">
-                     <p>on peut voir le plan exécution, pendant l'exécution, ou après l'exécution avec le history-server, si on active la persitance de l'historique <code>spark.eventLog.enabled</code></p>
+                     <p>Pendant l'exécution, plusieurs informations de debug sont disponibles à <code>127.0.0.1:4040</code>. Après l'exécution, ces infos sont disponibles si on active la persitance de l'historique <code>spark.eventLog.enabled</code></p>
                      <!-- our -->
                      <img style="width:66%" src="../img/spark/history-word-count.png">
                  </section>
 
                  <section class="flushleft" data-background="#222">
-                     <p>qu'est-ce qu'un <code>Dataset</code> (aussi appelé Dataframe) ?</p>
+                     <p>Quelle est cette classe <code>Dataset</code> (aussi appelé Dataframe) ?</p>
                  </section>
 
                  <section class="flushleft" data-background="#222">
-                    <h3>DataFrame</h3>
-                    <p>Un DataFrame est une collection distribuée de data organisée en colonnes nommées et typées. Les exécutions basées sur cette API vont être optimisée par Catalyst.</p>
+                    <p>Un <strong class="color-indigo300">DataFrame</strong> est une collection distribuée de data organisée en colonnes nommées et typées.</p>
                     <p>A partir de notre <code>SparkSession</code> on récupère un <code>Dataset&lt;Row&gt;</code> (soit un DataSet non-typé, appelé DataFrame).</p>
                     <div class="code-wrapper">
                     <pre><code class="code java" data-trim data-noescape>
@@ -270,8 +270,8 @@ Dataset&lt;Row&gt; data = spark.read()
                     <!-- In Spark, a DataFrame is a distributed collection of data organized into named columns. Users can use DataFrame API to perform various relational operations on both external data sources and Spark’s built-in distributed collections without providing specific procedures for processing data. Also, programs based on DataFrame API will be automatically optimized by Spark’s built-in optimizer, Catalyst -->
                  </section>
 
-                <section class="flushleft" data-background="#222">
-                    <h3>Les DataFrame ont un schéma</h3>
+                <section class="center" data-background="#222">
+                    <p>Les DataFrame ont un schéma, même si ils sont typés <code>Row</code> comme <code>Dataset&lt;Row&gt;</code></p>
                     <div class="code-wrapper">
                     <pre><code class="code java" data-trim>
 data.printSchema();
@@ -290,7 +290,7 @@ root
                 </section>
 
                 <section class="flushleft" data-background="#222">
-                    <h3>DateFrame API</h3>
+                    <p>Si vous utilisez Spark SQL, vous utilisez les DataFrame, et dans les 2 cas les plans d'exécution seront optimisés par Catalyst.</p>
                     <img style="width:66%" src="../img/spark/dataframe-diagram.png">
                     <!-- TODO why reduceByKey missing ? slower than groupByKey... check instapaper article -->
                     <!-- 
@@ -302,8 +302,7 @@ For both sets of users, DataFrames will improve performance through intelligent 
                 </section>
 
                 <section class="flushleft" data-background="#222">
-                    <h3>DataSet</h3>
-                    <p>On récupère un <code>Dataset</code> tel quel, ou à partir d'un DataFrame typé.</p>
+                    <p>On récupère un <strong class="color-indigo300">DataSet</strong> tel quel, ou à partir d'un DataFrame typé.</p>
                     <p>Soit <code>Question</code> un bean java qui correspond à une question du formulaire LesFurets</p>
                     <!--
 Dataset strong typing is "virtual" it's just a view that can be applied when you want it
@@ -315,10 +314,10 @@ Dataset&lt;Question&gt; domainData = data
         .as(Encoders.bean(Question.class))
                     </code></pre>
                     </div>
+                    <p>Le DataSet, en plus d'avoir un schéma, est typé, par exemple avec <code>Question</code> comme <code>Dataset&lt;Question&gt;</code></p>
                 </section>
 
-                <section class="flushleft" data-background="#222">
-                    <h3>RDD / DataFrames / DataSets</h3>
+                <section class="center" data-background="#222">
                     <p>À partir de Spark 2.0, SparkSQL, DataFrames and DataSets représentent le même composant</p>
                     <!-- https://i.stack.imgur.com/3rF6p.png -->
                     <img style="width:66%" src="../img/spark/rdd-dataframe-dataset.png">
@@ -348,8 +347,7 @@ DataSets are a generalization of DataFrames and the underlying engine, to suppor
                 </section>
 
                 <section class="flushleft" data-background="#222">
-                    <h3>Resilient Distributed Datasets (RDDs)</h3>
-                    <p>C'est la plomberie interne de spark : on n'y touche pas, sauf si vous avez besoin et vous savez exactement ce que vous faites</p>
+                    <p>Les <strong class="color-indigo300">Resilient Distributed Datasets (RDDs)</strong> sont la plomberie interne de spark : pas besoin d'y toucher sauf pour intéragir avec des composants legacy</p>
                     <div class="code-wrapper">
                     <pre><code class="code java" data-trim>
 // Récupération du RDD sous-jacent au dataset
@@ -358,7 +356,7 @@ RDD&lt;Question&gt; rdd = domainData.rdd();
 JavaRDD&lt;Question&gt; javaRDD = domainData.javaRDD();
                     </code></pre>
                     </div>
-                    <p>mais l'interface entre les 2 est assez simple</p>
+                    <p>L'interface entre les les DataFrame et les RDDs est simple</p>
                     <div class="code-wrapper">
                     <pre><code class="code java" data-trim>
 Dataset&lt;Row&gt; dataFrame = spark.createDataFrame(rdd, structType);
@@ -367,9 +365,8 @@ Dataset&lt;Row&gt; dataFrame = spark.createDataFrame(rdd, structType);
                 </section>
 
                 <section class="flushleft" data-background="#222">
-                    <h3>Catalyst / whole-stage codegen</h3>
-                    <p>TODO whole-stage codegen example</p>
-                    <p>TODO link spark summit conference</p>
+                    <p><strong class="color-indigo300">Catalyst</strong> optimise le plan d'exécution de votre programme, disponible avec : <code>Dataset#explain</code></p>
+                    <p>Le code généré par Spark est optimisé pour s'exécuter rapidement, c'est le résultat du projet <strong class="color-indigo300">Tungsten</strong> (whole-stage codegen)</p>
                     <!-- https://www.ardentex.com/publications/RDDs-DataFrames-and-Datasets-in-Apache-Spark/images/dataframe-performance.png -->
                     <img style="width:66%" src="../img/spark/dataframe-performance.png">
                     <!-- 
@@ -380,36 +377,37 @@ https://gist.github.com/rxin/c1592c133e4bccf515dd
 
                 <!-- SECTION - UNIT TESTS -->
 
-                 <section class="flushleft" data-state="background-pipeline">
+                 <section class="flushleft" data-background="../img/spark/background-unit-test.jpg">
+                     <!-- https://i.ytimg.com/vi/C_r5UJrxcck/maxresdefault.jpg -->
                      <h2 style="color:white">Apache Spark</h2>
                      <h3 style="color:white">en tests unitaires</h3>
                  </section>
 
                  <section class="flushleft" data-background="#222">
-                     <p>et comment on écrit des tests ?</p>
+                     <p>Et si on testait notre code ?</p>
                  </section>
 
                  <section class="flushleft" data-background="#222">
-                     <p>DEMO TIME ! (WordCountTest)</p>
-                    <div class="code-wrapper">
-                    <pre><code class="code java" data-trim data-noescape>
+                     <p><strong class="color-indigo300">DEMO TIME !</strong> voir TarifsRunTest</p>
+                     <div class="code-wrapper">
+                     <pre><code class="code java" data-trim data-noescape>
 @BeforeEach
 public void before() { 
-  // Création des données de test
   List<Row> rows = Arrays.asList(
-          RowFactory.create("FORMULE 1", 100d),
-          RowFactory.create("FORMULE 1", 80d),
-          RowFactory.create("FORMULE 2", 80d));
+          RowFactory.create("F1", 50d, "assureur"),
+          RowFactory.create("F1", 100d, "assureur"),
+          RowFactory.create("F1", 70d, "assureur"));
 
-  // Création du schéma de données
-  StructField formule = new StructField("formule", StringType, false, Metadata.empty());
-  StructField prime = new StructField("prime", DoubleType, false, Metadata.empty());
+  StructField formule = new StructField("formule", StringType, ...);
+  StructField prime = new StructField("prime", DoubleType, ...);
+  StructField assureur = new StructField("assureur", StringType, ...);
+  StructType structType = new StructType(
+          new StructField[]{formule, prime, assureur});
 
-  // Récupération du Dataframe de test
-  tarifs = spark.createDataFrame(rows, new StructType(new StructField[]{formule, prime}));
+  tarifs = spark.createDataFrame(rows, structType);
 }
-                    </code></pre>
-                    </div>
+                     </code></pre>
+                     </div>
                  </section>
 
                  <section class="flushleft" data-background="#222">
@@ -417,37 +415,47 @@ public void before() {
                     <pre><code class="code java" data-trim data-noescape>
 @Test
 public void should_calculate_average_by_formule_ordered() {
-  Dataset<Row> averagePrime = StatistiquesPartenaires.averagePrime(tarifs);
+  Dataset<Row> averagePrime = TarifsRun.averagePrime(tarifs);
 
   assertEquals(2, averagePrime.count());
-  assertEquals("formule 1", averagePrime.first().getAs("formule"));
-  assertEquals(90, (double) averagePrime.first().<Double>getAs("average"));
+  assertEquals("FORMULE 1", averagePrime.first().getAs("formule"));
+  assertEquals("formule 1", averagePrime.first().getAs("formuleReadable"));
+  assertEquals(75, (double) averagePrime.first().<Double>getAs("average"));
 }
                     </code></pre>
                     </div>
                  </section>
 
+                 <section class="flushleft" data-background="#222">
+                     <p>Idéalement :</p>
+                     <ul>
+                         <li class="fragment"><strong class="color-indigo300">- démarrage : </strong>pour gagner du temps, démarrez des worker Spark au début des tests</li>
+                         <li class="fragment"><strong class="color-indigo300">- mode : </strong>testez en standalone si possible, pour valider la sérialisation des objets</li>
+                     </ul>
+                 </section>
+
                 <!-- SECTION - JAVA -->
 
-                 <section class="flushleft" data-state="background-pipeline">
+                 <section class="flushleft" data-background="../img/spark/background-java-versus-scala.jpg">
+                     <!-- https://static01.nyt.com/images/2015/10/16/sports/muhammad-ali-obit-9-web/muhammad-ali-obit-9-web-superJumbo.jpg -->
                      <h2 style="color:white">Apache Spark</h2>
-                     <h3 style="color:white">en Java (versus Scala)</h3>
+                     <h3 style="color:white">Java VERSUS Scala</h3>
                  </section>
 
                  <section class="flushleft" data-background="#222">
-                     <p>mais sommes-nous limité en java ?</p>
+                     <p>Mais sommes-nous limité en java ?</p>
                  </section>
 
                  <section class="flushleft" data-background="#222">
-                     <p>... oui, un peu</p>
-                     <p>- on s'ennuie du notebook pour le REPL (mais on peut quand même écrire du scala pour prototyper, c'est la même API)</p>
-                     <p>- faut bien connaître l'API (mal) documentée pour Java</p>
-                     <p>- facile de tomber dans des implémentations trop verbeuses pour rien</p>
-                     <p>- on est souvent obligé de passer des sérialiseurs de type (pe <code>Encoders.STRING()</code>)</p>
+                     <p><strong class="color-indigo300">... oui, un peu</strong></p>
+                     <p class="fragment">- On aimerait un notebook avec REPL (on peut quand même écrire du Scala pour prototyper, c'est la même API)</p>
+                     <p class="fragment">- Il faut bien connaître l'API (mal) documentée pour Java</p>
+                     <p class="fragment">- Il est facile de tomber dans des implémentations trop verbeuses</p>
+                     <p class="fragment">- On est souvent obligé de passer des sérialiseurs de type (par exemple <code>Encoders.STRING()</code>)</p>
                  </section>
 
                 <section class="flushleft" data-background="#222">
-                    <p>par exemple dans ma première implémentation d'un word count...</p>
+                    <p>Par exemple dans ma première implémentation d'un word count...</p>
                     <div class="code-wrapper">
                     <pre><code class="code java" data-trim data-noescape>
 Dataset&lt;Row&gt; wordCount = lines
@@ -463,7 +471,7 @@ Dataset&lt;Row&gt; wordCount = lines
   .orderBy(desc("sum(count)"))
                     </code></pre>
                     </div>
-                    <p>... on remarque l'usage de flapMap et map, qui prennent des lambdas (très générique mais un peu verbeux)</p>
+                    <p>... on remarque l'usage de <code>flapMap</code> et <code>map</code>, qui prennent des lambdas (très générique mais un peu verbeux)</p>
                 </section>
 
                 <section class="flushleft" data-background="#222">
@@ -478,37 +486,34 @@ Dataset&lt;Row&gt; wordCount = lines
   .orderBy(desc("count"));
                     </code></pre>
                     </div>
-                </section>
-
-                <section class="center" data-background="#222">
+                    <p class="fragment">... même si c'est un peu magique</p>
                     <!-- http://www.reactiongifs.com/wp-content/uploads/2013/03/magic.gif -->
-                    <img src="../img/spark/meme-magic.gif">
+                    <img class="fragment" src="../img/spark/meme-magic.gif">
                 </section>
 
                  <section class="flushleft" data-background="#222">
-                     <p>La plupart des fonctions pour <code>map</code>, <code>flapMap</code>, <code>reduce</code>, <code>filter</code>, etc., dont vous aurez besoin sont dans <code>org.apache.spark.sql.functions</code></p>
+                     <p><strong class="center color-indigo300">Best tip of the month : </strong></p>
+                     <p>La plupart des fonctions pour <code>select</code>, <code>map</code>, <code>flapMap</code>, <code>reduce</code>, <code>filter</code>, etc., dont vous aurez besoin sont dans <code>org.apache.spark.sql.functions</code> (comme dans la slide précédante)</p>
                      <p>Avant d'écrire une lambda à la main, cherchez dans ce package (non-documenté)</p>
-                     <p>TODO quelques exemples (FlapMapFunction vs functions)</p>
                  </section>
 
                 <section class="flushleft" data-background="#222">
-                    <p>l'API spark n'est pas bien pensée pour les lambdas de Java 8, on est obligé de les caster</p>
-                    <p>par exemple pour récupérer le dernier élément d'un groupe</p>
+                    <p>Malheureusement, l'usage des <strong class="color-indigo300">lambdas de Java 8</strong> est décevant, on est obligé de les caster.</p>
+                    <p>Par exemple, pour récupérer le dernier élément d'un groupe :</p>
                     <div class="code-wrapper">
                     <pre><code class="code java" data-trim data-noescape>
 Dataset&lt;Tuple2&lt;String, TarificationJoin&gt;&gt; tupleTarif = 
   tarification
-    .groupByKey(<mark>(MapFunction&lt;TarificationJoin, String&gt;)</mark>
+    .groupByKey(<mark class="fragment">(MapFunction&lt;TarificationJoin, String&gt;)</mark>
       TarificationJoin::getOffreUid, STRING())
-    .reduceGroups(<mark>(ReduceFunction&lt;TarificationJoin&gt;)</mark> (v1, v2) -&gt;
+    .reduceGroups(<mark class="fragment">(ReduceFunction&lt;TarificationJoin&gt;)</mark> (v1, v2) -&gt;
       v1.getSnapshotId().compareTo(v2.getSnapshotId()) &gt; 0 ? v1 : v2);
                     </code></pre>
                     </div>
                 </section>
 
                 <section class="flushleft" data-background="#222">
-                    <p>les casts ne devraient pas être nécessaires, mais le sont parce les méthodes sont "overload" pour les appels en scala</p>
-                    <p>on devrait simplement pouvoir écrire :</p>
+                    <p>Pourtant, ces méthodes acceptent bien des <strong class="color-indigo300">Single Abstract Method interfaces (SAM Interfaces)</strong>, mais impossible de les appeler directement parce qu'elles sont "overload" pour les appels en Scala. L'exemple précédent devrait être :</p>
                     <div class="code-wrapper">
                     <pre><code class="code java" data-trim data-noescape>
 Dataset&lt;Tuple2&lt;String, TarificationJoin&gt;&gt; tupleTarif = 
@@ -518,10 +523,11 @@ Dataset&lt;Tuple2&lt;String, TarificationJoin&gt;&gt; tupleTarif =
       v1.getSnapshotId().compareTo(v2.getSnapshotId()) &gt; 0 ? v1 : v2);
                     </code></pre>
                     </div>
+                    <p class="fragment small color-gray400">Le problème est connu et vient de la compatibilité bytecode entre Scala et Java, qui est réglé par Scala 2.12. Le support Spark de cette version de Scala n'est pas triviale, voir les discussions sur le JIRA de Spark : <a href="https://issues.apache.org/jira/browse/SPARK-14220">SPARK-14220</a> et <a href="https://issues.apache.org/jira/browse/SPARK-14643">SPARK-14643</a>.</p>
                 </section>
 
                 <section class="flushleft" data-background="#222">
-                    <p>il faut aussi passer explicitement les sérialiseurs qui peuvent devenir très complexe dans certains cas</p>
+                    <p>Dernier point lourd en Java : il faut aussi passer explicitement les sérialiseurs (<code>Encoders.STRING()</code>, etc.)</p>
                     <div class="code-wrapper">
                     <pre><code class="code java" data-trim data-noescape>
 Dataset&lt;Tuple2&lt;String, TarificationJoin&gt;&gt; tupleTarif = 
@@ -534,19 +540,9 @@ Dataset&lt;Tuple2&lt;String, TarificationJoin&gt;&gt; tupleTarif =
                     </div>
                 </section>
 
-                <!-- SECTION - END -->
-
-                 <section class="flushleft" data-state="background-pipeline">
-                     <h3 style="color:white">en conclusion</h3>
-                 </section>
-
-                <section class="flushleft" data-background="#222">
-                    <p>qu'est-ce qu'on a réussi aujourd'hui ?</p>
-                    <p>- versionnement du code : git</p>
-                    <p>- intégration continue : jenkins</p>
-                    <p>- tests unitaires : junit</p>
-                    <p>- utilisation de la code base</p>
-                    <p>- IDE : intellij / eclipse</p>
+                <section class="center" data-background="#222">
+                    <h3>Verdict ? Spark en Java c'est top !</h3>
+                    <img width="33%" src="../img/spark/git-cat-dunking.gif">
                 </section>
 
                 <!-- SECTION - END -->
@@ -554,34 +550,6 @@ Dataset&lt;Tuple2&lt;String, TarificationJoin&gt;&gt; tupleTarif =
                 <section class="flushleft" data-background="../img/nwx/lesfurets-background-black-01.jpg">
                     <h2 style="color:white">END</h2>
                 </section>
-
-                 <section class="flushleft" data-background="#222">
-                     <p>jenkins ?</p>
-                 </section>
-
-                <section class="flushleft" data-background="#222">
-                    <h3>Data sources ?</h3>
-                    <img style="width:66%" src="../img/spark/dataframe-sources.png">
-                    <p>- disk / parquet</p>
-                    <p>- cassandra</p>
-                    <p>- ...</p>
-                    <!-- 
-https://academy.datastax.com/resources/getting-started-apache-spark-and-cassandra?unit=getting-started-apache-spark-and-cassandra
-In the previous example, we created DataFrames from Parquet and JSON data.
-A Parquet table has a schema (column names and types) that Spark can use. Parquet also allows Spark to be efficient about how it pares down data.
-Spark can infer a Schema from a JSON file.
-                    -->
-                </section>
-
-                <section class="flushleft" data-background="#222">
-                    <h3>vs Scala</h3>
-                    <p>todo api diff</p>
-                </section>
-
-                 <section class="flushleft" data-background="#222">
-                     <h3>Chez LesFurets.com</h3>
-                     <p>Glossary + image on https://spark.apache.org/docs/latest/cluster-overview.html<p>
-                 </section>
 
             </div>
         </div>
