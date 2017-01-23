@@ -43,7 +43,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
                 <section class="flushright" data-background="../img/nwx/lesfurets-background-black-01.jpg">
                     <h1>Apache Spark</h1>
-                    <h2>hands-on et use cases pour développeurs Java</h2>
+                    <h2>Hands-on et use cases pour développeurs Java</h2>
                     <h3>Alexandre DuBreuil</h3>
                 </section>
 
@@ -106,11 +106,11 @@ if( window.location.search.match( /print-pdf/gi ) ) {
                 </section>
 
                 <section class="flushleft" data-background="#222">
-                    <p>... et en 2 minutes on trouve pleins de cas d'usages :</p>
+                    <p>... et en 2 minutes on trouve plusieurs cas d'usages :</p>
                     <ul>
-                        <li class="fragment color-gray400">- rapport de performance "on-demand"</li>
-                        <li class="fragment color-gray400">- spark streaming pour de l'alerting métier</li>
-                        <li class="fragment color-gray400">- spark MLlib pour les questions tarifantes</li>
+                        <li class="fragment color-gray400">- Rapport de performance "on-demand"</li>
+                        <li class="fragment color-gray400">- Spark Streaming pour de l'alerting métier</li>
+                        <li class="fragment color-gray400">- Spark MLlib pour trouver les questions tarifantes</li>
                         <li class="fragment color-gray400">- ...</li>
                     </ul>
                 </section>
@@ -199,7 +199,7 @@ public static void main(String[] args) {
                  </section>
 
                  <section class="flushleft" data-background="#222">
-                     <p>Apache Spark est un moteur en cluster, et celui-ci se démarre en 3 modes : <strong class="fragment color-indigo300">local, </strong><strong class="fragment color-indigo200">standalone, </strong><strong class="fragment color-indigo100">cluster.</strong></p>
+                     <p>Apache Spark est un moteur en cluster, et celui-ci s'utilise en 3 modes : <strong class="fragment color-indigo300">local, </strong><strong class="fragment color-indigo200">standalone, </strong><strong class="fragment color-indigo100">cluster.</strong></p>
                      <ul>
                          <li class="fragment"><strong class="color-indigo200">- local : </strong>driver et 1 worker sur la même jvm</li>
                          <li class="fragment"><strong class="color-indigo200">- standalone : </strong>driver et 1 worker sur la même machine</li>
@@ -247,9 +247,9 @@ averagePrime.show();
                  </section>
 
                  <section class="flushleft" data-background="#222">
-                     <p>Pendant l'exécution, plusieurs informations de debug sont disponibles à <code>127.0.0.1:4040</code>. Après l'exécution, ces infos sont disponibles si on active la persitance de l'historique <code>spark.eventLog.enabled</code></p>
-                     <!-- our -->
-                     <img style="width:66%" src="../img/spark/history-word-count.png">
+                     <p>Pendant l'exécution, les informations de debug sont disponibles dans <strong class="color-indigo300">Spark UI</strong>. Pour voir ces informations après l'exécution, il faut la persistance de l'historique <code>spark.eventLog.enabled</code> et démarrer le <strong class="color-indigo300">Spark UI history server</strong></p>
+                     <!-- https://databricks.com/wp-content/uploads/2015/06/Screen-Shot-2015-06-19-at-2.04.05-PM-1024x879.png -->
+                     <img style="width:100%" src="../img/spark/databricks-spark-ui.png">
                  </section>
 
                  <section class="flushleft" data-background="#222">
@@ -290,7 +290,7 @@ root
                 </section>
 
                 <section class="flushleft" data-background="#222">
-                    <p>Si vous utilisez Spark SQL, vous utilisez les DataFrame, et dans les 2 cas les plans d'exécution seront optimisés par Catalyst.</p>
+                    <p>Si vous utilisez <strong class="color-indigo300">SparkSQL</strong>, vous utilisez les <strong class="color-indigo300">DataFrame</strong>, et dans les 2 cas les plans d'exécution seront optimisés par <strong class="color-indigo300">Catalyst</strong></p>
                     <img style="width:66%" src="../img/spark/dataframe-diagram.png">
                     <!-- TODO why reduceByKey missing ? slower than groupByKey... check instapaper article -->
                     <!-- 
@@ -303,7 +303,7 @@ For both sets of users, DataFrames will improve performance through intelligent 
 
                 <section class="flushleft" data-background="#222">
                     <p>On récupère un <strong class="color-indigo300">DataSet</strong> tel quel, ou à partir d'un DataFrame typé.</p>
-                    <p>Soit <code>Question</code> un bean java qui correspond à une question du formulaire LesFurets</p>
+                    <p>Soit <code>Question</code> un Java Bean qui correspond à une question du formulaire LesFurets</p>
                     <!--
 Dataset strong typing is "virtual" it's just a view that can be applied when you want it
                     -->
@@ -318,7 +318,7 @@ Dataset&lt;Question&gt; domainData = data
                 </section>
 
                 <section class="center" data-background="#222">
-                    <p>À partir de Spark 2.0, SparkSQL, DataFrames and DataSets représentent le même composant</p>
+                    <p>À partir de <strong class="color-indigo300">Spark 2.0</strong>, SparkSQL, DataFrames and DataSets représentent le même composant</p>
                     <!-- https://i.stack.imgur.com/3rF6p.png -->
                     <img style="width:66%" src="../img/spark/rdd-dataframe-dataset.png">
                     <!--
