@@ -61,9 +61,6 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
                 <!--
                   le jar est envoyé par le cluster manager au driver
-                  exécution dans le driver / worker
-                  example new FilterFunction
-                  show() et expression terminales
                   thread vs cluster
                 -->
 
@@ -246,8 +243,29 @@ averagePrime.show();
                      </div>
                  </section>
 
+                 <section class="center" data-background="#222">
+                     <p>Qu'est-ce qui s'exécute sur les <strong class="color-indigo300">worker</strong> ? Et sur le <strong class="color-deeporange300">driver</strong> ?</p>
+                     <div class="code-wrapper">
+                     <pre><code class="code java" data-trim data-noescape>
+tarifs
+    <mark class="fragment" style="background-color:#7986cb">.filter((FilterFunction&lt;Row&gt;) value -&gt;
+            value.&lt;String&gt;getAs("assureur").equals("Mon SUPER assureur"))</mark>
+    <mark class="fragment" style="background-color:#7986cb">.groupBy("formule")</mark>
+    <mark class="fragment" style="background-color:#7986cb">.agg(avg("prime").as("average"))</mark>
+    <mark class="fragment" style="background-color:#7986cb">.withColumn("formuleReadable", callUDF("readableFormule", col("formule")))</mark>
+    <mark class="fragment" style="background-color:#7986cb">.orderBy(desc("average"))</mark>
+    <mark class="fragment" style="background-color:#ff8a65">.show();</mark>
+                     </code></pre>
+                     </div>
+                     <p class="fragment">On appelle <code>averagePrime.show()</code> une opération terminale, tout le reste est lazy (pensez <code>Java 8 Stream</code>).</p>
+                 </section>
+
+                 <section class="center" data-background="#222">
+                   <p>Entre chaque étape, Spark va potentiellement faire du <strong class="color-indigo300">shuffle</strong> (déplacement de données) entre les worker.</p>
+                 </section>
+
                  <section class="flushleft" data-background="#222">
-                     <p>Pendant l'exécution, les informations de debug sont disponibles dans <strong class="color-indigo300">Spark UI</strong>. Pour voir ces informations après l'exécution, il faut la persistance de l'historique <code>spark.eventLog.enabled</code> et démarrer le <strong class="color-indigo300">Spark UI history server</strong></p>
+                     <p>Pendant l'exécution, ces infos sont disponibles dans <strong class="color-indigo300">Spark UI</strong>. Pour voir ces informations après l'exécution, activer <code>spark.eventLog.enabled</code> et démarrer le <strong class="color-indigo300">Spark UI history server</strong></p>
                      <!-- https://databricks.com/wp-content/uploads/2015/06/Screen-Shot-2015-06-19-at-2.04.05-PM-1024x879.png -->
                      <img style="width:100%" src="../img/spark/databricks-spark-ui.png">
                  </section>
