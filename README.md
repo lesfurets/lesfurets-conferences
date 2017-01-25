@@ -64,16 +64,18 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 ### Apache Spark : Hands-on pour développeurs Java dans la vraie vie
 ### Apache Spark : Hands-on pour développeurs Java avec de vrais use case
 -->
-### Apache Spark : Hands-on et use cases pour développeurs Java
+### Apache Spark : Deep dive dans l'API Java pour développeur
 
 **Abstract** : Spark est un framework open source de calcul distribué, utilisé pour faire de l'analyse de donnée sur de grands volumes. Est-il nécessaire d'être "data scientist" et développeur Scala pour utiliser Spark ? Pas du tout ! Non seulement l'analyse de donnée avec Spark est à portée de tout développeur Java, mais elle permet d'avoir un impact direct sur le business. Depuis la version 2.0 de Spark, l'API des DataFrames permet de profiter des optimisations du moteur d'exécution peu importe le langage utilisé, dont Java. Nous allons utiliser Spark sur différentes sources de données (fichiers plats, MySQL, Cassandra) et dans des cas d'usages concrets basés sur les données de LesFurets.com. Dans une présentation alternant slides et démonstrations live, nous passerons en revue l'usage de Spark du point de vue d'un développeur, c'est-à-dire en se souciant de l'écriture de test unitaire et de l'industrialisation du cycle de développement. Nous passeons en revue les principales fonctionnalités du moteur, en particulier Spark Core, Spark SQL et Spark MLlib (Machine Learning Library).
+
+**Apache Spark : Deep dive into the Java API for developers** : Apache Spark proposes a Java API as a first class citizen, yet does it use every feature of the language, such as lambdas, or does it have common pitfalls to avoid? We will dive into the Spark Java API through examples and live coding from our code base, by covering the basic usage and dependency management, unit testing with JUnit, launching from an IDE and integrating Spark code with our existing Java code base. Since Spark version 2.0, the unified DataFrame API makes Spark easier to use and faster to execute in Java, but there is still little documentation on specific use cases, and many syntax quirks make Scala code difficult to convert to Java. The slides and live coding will present the good, the bad and the ugly moments our Java development team encountered while using Spark.
 
 <!--
 **Jury** : Lorsque nous avons commencé à expérimenter avec Spark chez LesFurets.com, nous avons voulu utiliser l'API Java afin de réutiliser notre tooling existant plus facilement, et afin d'être plus à l'aise avec la technologie dans une équipe de développeurs Java. Or nous avons remarqué le manque d'article et de conférences sur l'utilisation de Spark avec Java, surtout d'un point de vue d'un développeur : comment lancer spark à partir de l'IDE ? Comment écrire des tests unitaires et industrialiser le cycle de développement ? Ce talk discute d'un sujet peu abordé mais très utile dans le toolbox de tout développeur Java. Il sera joué à Snowcamp en février et fera parti d'une série d'article à paraître sur le blog de LesFurets.com
 -->
 
-- 9 février 2017 (fr) : Snowcamp [Apache Spark : Hands-on et use cases pour développeur Java](https://lesfurets.github.io/lesfurets-conferences/html/apache-spark-hands-on-developpeurs-java.html)
-- 31 janvier 2017 (fr) : BBL @ Whoz [Apache Spark : Hands-on et use cases pour développeur Java](https://lesfurets.github.io/lesfurets-conferences/html/apache-spark-hands-on-developpeurs-java.html)
+- 9 février 2017 (fr) : Snowcamp
+- 31 janvier 2017 (fr) : BBL @ Whoz
 - 24 janvier 2017 (fr) : BBL @ Murex [Apache Spark : Hands-on et use cases pour développeur Java](https://lesfurets.github.io/lesfurets-conferences/html/apache-spark-hands-on-developpeurs-java-murex.html)
 
 ### JOOQ et JOOλ : Comment écrire du code propre dans vos DAO 
