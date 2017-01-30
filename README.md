@@ -72,6 +72,8 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 
 <!--
 **Jury** : Lorsque nous avons commencé à expérimenter avec Spark chez LesFurets.com, nous avons voulu utiliser l'API Java afin de réutiliser notre tooling existant plus facilement, et afin d'être plus à l'aise avec la technologie dans une équipe de développeurs Java. Or nous avons remarqué le manque d'article et de conférences sur l'utilisation de Spark avec Java, surtout d'un point de vue d'un développeur : comment lancer spark à partir de l'IDE ? Comment écrire des tests unitaires et industrialiser le cycle de développement ? Ce talk discute d'un sujet peu abordé mais très utile dans le toolbox de tout développeur Java. Il sera joué à Snowcamp en février et fera parti d'une série d'article à paraître sur le blog de LesFurets.com
+
+**Jury** : This talk is the result of our experience with Spark in our all-Java development team. It sets itself apart by talking about Spark 2.0+ (DataFrame API) and by focusing on Java 8 good practices (with lambda usage), JUnit testing and continuous integration of Spark code. This talk has already been accepted in meetups and one conference (see the speaker experience section) and will be the focus of a series of article to be published on LesFurets.com technical blog.
 -->
 
 - 9 février 2017 (fr) : Snowcamp
@@ -140,21 +142,28 @@ Using live code examples we will compare different APIs such as RxJava2, Reactiv
 
 Architecte canadien (certifié sans accent) de l'équipe data chez LesFurets.com, je m'intéresse particulièrement au software craftsmanship et à la manière de travailler efficacement le code en équipe. J'affectionne les sujets comme la gestion du code source, la construction d'application et les techniques de continuous delivery.
 
-<!--
-Continuous delivery
+<!-- 
+Alexandre DuBreuil is a french Canadian software developer living in France working as a Java Architect at LesFurets.com. He really likes to code, talk about code in meetups, user groups and conferences.
 
-- 7 novembre 2016 (fr) : WorkIT Software BBL
-- 13 octobre 2016 (fr) : Marseilles JUG
-- 29 juin 2016 (fr) : Societe Generale
-- 31 janvier 2016 (fr) : Tours JUG
-- 10 décembre 2015 (fr) : Octo BBL
-- 1 octobre 2014 (fr) : AgileTour Rennes 2014
+Apache Spark : Deep dive into the Java API for developers
+
+- February 2017 : Snowcamp @ Grenobles
+- January 2017 : Meetup @ Whoz
+- January 2017 : Meetup @ Murex
+
+Continuous merge : Reconciling feature branching and continuous delivery
+
+- November 2016 : Meetup @ WorkIT Software
+- October 2016 : Java User Group @ Marseilles
+- June 2016 : Meetup @ Societe Generale
+- January 2016 : Java User Group @ Tours
+- December 2015 : Meetup @ Octo
+- October 2014 : AgileTour @ Rennes
 
 Software craftmanship
 
-- 4 mars 2016 (en) : BGL Tech Conference - London
-- 26 novembre 2015 (fr) : Codeurs en Seines - Rouen
-- 25 juin 2015 (en) : NWX Summer Festival - Rouen
+- Mars 2016 : BGL Tech Conference @ London
+- November 2015 : Codeurs en Seins @ Rouen 
 -->
 
 ### Ozan Gunalp [@ozangunalp](https://twitter.com/ozangunalp)
