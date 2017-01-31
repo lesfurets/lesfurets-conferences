@@ -77,7 +77,7 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 -->
 
 - 9 février 2017 (fr) : Snowcamp
-- 31 janvier 2017 (fr) : BBL @ Whoz
+- 31 janvier 2017 (fr) : BBL @ Whoz [Apache Spark : Hands-on et use cases pour développeur Java](https://lesfurets.github.io/lesfurets-conferences/html/apache-spark-hands-on-developpeurs-java-whoz.html)
 - 24 janvier 2017 (fr) : BBL @ Murex [Apache Spark : Hands-on et use cases pour développeur Java](https://lesfurets.github.io/lesfurets-conferences/html/apache-spark-hands-on-developpeurs-java-murex.html)
 
 ### JOOQ et JOOλ : Comment écrire du code propre dans vos DAO 
