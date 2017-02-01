@@ -14,8 +14,6 @@ public class CassandraRun {
         SparkSession spark = SparkSession
                 .builder()
                 .master("local[*]")
-                .config("spark.eventLog.enabled", true)
-                .appName("CassandraRun")
                 .getOrCreate();
 
         Map<String, String> tableQuestionSetByDate = new HashMap<>();

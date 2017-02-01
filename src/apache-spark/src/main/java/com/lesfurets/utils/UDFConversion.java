@@ -5,7 +5,7 @@ import com.lesfurets.domain.FormuleMapper;
 import java.io.Serializable;
 import java.util.function.Function;
 
-public interface UDF {
+public interface UDFConversion {
 
     Function<Integer, String> readableFormule = (Serializable & Function<Integer, String>) FormuleMapper::asString;
 

@@ -7,7 +7,7 @@ import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.api.java.UDF1;
 
-import static com.lesfurets.utils.UDF.readableFormule;
+import static com.lesfurets.utils.UDFConversion.readableFormule;
 import static org.apache.spark.sql.functions.*;
 import static org.apache.spark.sql.types.DataTypes.StringType;
 

@@ -14,7 +14,6 @@ public class SampleTarifsRun extends SparkRunner {
 
     private static final SparkSession spark = SparkSession.builder()
             .master("local[*]")
-            .appName("SampleTarifs")
             .getOrCreate();
 
     public static void main(String[] args) {

@@ -14,8 +14,6 @@ public class QuestionSetRun extends SparkRunner {
     private static SparkSession spark = SparkSession
             .builder()
             .master("local[*]")
-            .config("spark.eventLog.enabled", true)
-            .appName("LesFurets @ Snowcamp - QuestionSet")
             .getOrCreate();
 
     public static void main(String[] args) {
