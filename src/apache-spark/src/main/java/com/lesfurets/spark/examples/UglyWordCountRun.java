@@ -14,11 +14,8 @@ import static org.apache.spark.sql.functions.desc;
 
 public class UglyWordCountRun extends SparkRunner {
 
-    private static SparkSession spark = SparkSession
-            .builder()
+    private static SparkSession spark = SparkSession.builder()
             .master("local[*]")
-            .config("spark.eventLog.enabled", true)
-            .appName("LesFurets @ Snowcamp - Count")
             .getOrCreate();
 
     public static void main(String[] args) {

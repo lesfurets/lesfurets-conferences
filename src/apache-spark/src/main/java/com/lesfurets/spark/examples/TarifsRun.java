@@ -7,19 +7,18 @@ import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.api.java.UDF1;
 
+import static com.lesfurets.utils.UDF.readableFormule;
 import static org.apache.spark.sql.functions.*;
 import static org.apache.spark.sql.types.DataTypes.StringType;
 
 public class TarifsRun extends SparkRunner {
 
     private static final SparkSession spark = SparkSession.builder()
-            .appName("TestableStatistiquesPartenaire")
             .master("local[*]")
             .getOrCreate();
 
     static {
-        spark.udf().register("readableFormule",
-                (UDF1<String, String>) String::toLowerCase, StringType);
+        spark.udf().register("readableFormule", (UDF1<Integer, String>) readableFormule::apply, StringType);
     }
 
     public static void main(String[] args) {

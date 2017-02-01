@@ -11,11 +11,9 @@ import org.apache.spark.sql.SparkSession;
 
 public class SlidesRun extends SparkRunner {
 
-    private static SparkSession spark = SparkSession
-            .builder()
-            .master("local[*]")
+    private static SparkSession spark = SparkSession.builder()
             .config("spark.eventLog.enabled", true)
-            .appName("LesFurets @ Snowcamp - QuestionSet")
+            .master("local[*]")
             .getOrCreate();
 
     public static void main(String[] args) {

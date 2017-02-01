@@ -6,7 +6,6 @@ import org.apache.spark.sql.SparkSession;
 public class SimpleUsageRun extends SparkRunner {
 
     private static final SparkSession spark = SparkSession.builder()
-            .appName("LesFurets.com - Spark")
             .master("local[*]")
             .getOrCreate();
 

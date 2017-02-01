@@ -1,8 +1,6 @@
 package com.lesfurets.spark.examples;
 
 import com.lesfurets.spark.utils.SparkRunner;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
@@ -11,10 +9,8 @@ import static org.apache.spark.sql.functions.*;
 
 public class WordCountRun extends SparkRunner {
 
-    private static SparkSession spark = SparkSession
-            .builder()
+    private static SparkSession spark = SparkSession.builder()
             .master("local[*]")
-            .appName("LesFurets @ Count")
             .getOrCreate();
 
     public static void main(String[] args) {
