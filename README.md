@@ -66,7 +66,7 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 -->
 ### Apache Spark : Deep dive dans l'API Java pour développeur
 
-**Abstract** : Spark est un framework open source de calcul distribué, utilisé pour faire de l'analyse de donnée sur de grands volumes. Est-il nécessaire d'être "data scientist" et développeur Scala pour utiliser Spark ? Pas du tout ! Non seulement l'analyse de donnée avec Spark est à portée de tout développeur Java, mais elle permet d'avoir un impact direct sur le business. Depuis la version 2.0 de Spark, l'API des DataFrames permet de profiter des optimisations du moteur d'exécution peu importe le langage utilisé, dont Java. Nous allons utiliser Spark sur différentes sources de données (fichiers plats, MySQL, Cassandra) et dans des cas d'usages concrets basés sur les données de LesFurets.com. Dans une présentation alternant slides et démonstrations live, nous passerons en revue l'usage de Spark du point de vue d'un développeur, c'est-à-dire en se souciant de l'écriture de test unitaire et de l'industrialisation du cycle de développement. Nous passeons en revue les principales fonctionnalités du moteur, en particulier Spark Core, Spark SQL et Spark MLlib (Machine Learning Library).
+**Abstract** : Apache Spark propose une API Java en tant que langage principal, mais utilise-t-il toutes les fonctionnalités du langage, comme les lambdas, s'intègre-t-il à nos outils de test unitaires et à notre code base existante ? Nous allons plonger dans l'API Java de Spark à travers des exemples et du live coding à partir de notre code base. Nous allons couvrir l'usage du cœur de Spark, la gestion des dépendances, les tests unitaires avec JUnit, le lancement à partir d'un IDE et l'intégration du code Spark avec notre code base Java existante. Depuis Spark 2.0, l'API DataFrame unifiée entre les langages rend Spark plus facile à utiliser et plus rapide à exécuter en Java, mais il existe encore peu de documentation sur des cas d'usages spécifiques, et plusieurs particularités de syntaxe rendent le code Scala difficile à convertir en Java. Les slides et le live coding vont présenter les bons et les mauvais moments que notre équipe de développement Java a rencontrés en utilisant Spark.
 
 **Apache Spark : Deep dive into the Java API for developers** : Apache Spark proposes a Java API as a first class citizen, yet does it use every feature of the language, such as lambdas, or does it have common pitfalls to avoid? We will dive into the Spark Java API through examples and live coding from our code base, by covering the basic usage and dependency management, unit testing with JUnit, launching from an IDE and integrating Spark code with our existing Java code base. Since Spark version 2.0, the unified DataFrame API makes Spark easier to use and faster to execute in Java, but there is still little documentation on specific use cases, and many syntax quirks make Scala code difficult to convert to Java. The slides and live coding will present the good, the bad and the ugly moments our Java development team encountered while using Spark.
 
@@ -140,11 +140,11 @@ Using live code examples we will compare different APIs such as RxJava2, Reactiv
 
 ### Alexandre DuBreuil [@dubreuia](https://twitter.com/dubreuia)
 
-Architecte canadien (certifié sans accent) de l'équipe data chez LesFurets.com, je m'intéresse particulièrement au software craftsmanship et à la manière de travailler efficacement le code en équipe. J'affectionne les sujets comme la gestion du code source, la construction d'application et les techniques de continuous delivery.
-
-<!-- 
 Alexandre DuBreuil is a french Canadian software developer living in France working as a Java Architect at LesFurets.com. He really likes to code, talk about code in meetups, user groups and conferences.
 
+Alexandre DuBreuil est un développeur québécois vivant en France et travaillant comme architecte Java chez LesFurets.com. Il aime écrire du code, et parler de code lors de meetups, BBL et conférences.
+
+<!-- 
 Apache Spark : Deep dive into the Java API for developers
 
 - February 2017 : Snowcamp @ Grenobles

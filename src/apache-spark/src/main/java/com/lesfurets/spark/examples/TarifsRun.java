@@ -1,5 +1,6 @@
 package com.lesfurets.spark.examples;
 
+import com.lesfurets.domain.FormuleMapper;
 import com.lesfurets.spark.utils.SparkRunner;
 import org.apache.spark.api.java.function.FilterFunction;
 import org.apache.spark.sql.Dataset;
@@ -7,7 +8,6 @@ import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.api.java.UDF1;
 
-import static com.lesfurets.utils.UDFConversion.readableFormule;
 import static org.apache.spark.sql.functions.*;
 import static org.apache.spark.sql.types.DataTypes.StringType;
 
@@ -18,7 +18,7 @@ public class TarifsRun extends SparkRunner {
             .getOrCreate();
 
     static {
-        spark.udf().register("readableFormule", (UDF1<Integer, String>) readableFormule::apply, StringType);
+        spark.udf().register("readableFormule", (UDF1<Integer, String>) FormuleMapper::asString, StringType);
     }
 
     public static void main(String[] args) {
