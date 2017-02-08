@@ -4,7 +4,7 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 
 * **[Continuous merge : réconcilier feature branching et continuous delivery](https://github.com/lesfurets/lesfurets-conferences#continuous-merge--r%C3%A9concilier-feature-branching-et-continuous-delivery)** ([open-source](https://github.com/lesfurets/git-octopus/)) : Notre organisation en feature branching & continuous merge
 * **[DomainModel.stream()](https://github.com/lesfurets/lesfurets-conferences#domainmodelstream)** : Comment on applatit notre modèle de données dans un KVM (Key Value Mapping)
-* **[Apache Spark : Hands-on et use cases pour développeurs Java](https://github.com/lesfurets/lesfurets-conferences#apache-spark--hands-on-et-use-cases-pour-d%C3%A9veloppeurs-java)** : Application de spark sur des cas d'usage pour développeurs Java
+* **[Apache Spark : Deep dive dans l'API Java pour développeur](https://github.com/lesfurets/lesfurets-conferences#apache-spark--deep-dive-dans-lapi-java-pour-développeur)** : Application de spark sur des cas d'usage pour développeurs Java
 * **[Software craftmanship](https://github.com/lesfurets/lesfurets-conferences#software-craftmanship)** : Retour d’expérience sur notre manière de travailler ensemble sur le code
 * **[Big Data](https://github.com/lesfurets/lesfurets-conferences#big-data)** : Retour d’expérience sur notre data
 * **Zeno Pixel** ([open-source](https://github.com/lesfurets/zeno-pixel)) : Test de régression graphique pixel à pixel
@@ -76,7 +76,7 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 **Jury** : This talk is the result of our experience with Spark in our all-Java development team. It sets itself apart by talking about Spark 2.0+ (DataFrame API) and by focusing on Java 8 good practices (with lambda usage), JUnit testing and continuous integration of Spark code. This talk has already been accepted in meetups and one conference (see the speaker experience section) and will be the focus of a series of article to be published on LesFurets.com technical blog.
 -->
 
-- 9 février 2017 (fr) : Snowcamp @ Grenoble [Apache Spark : Hands-on et use cases pour développeur Java](https://lesfurets.github.io/lesfurets-conferences/html/apache-spark-hands-on-developpeurs-java-snowcamp.html)
+- 9 février 2017 (fr) : Snowcamp @ Grenoble [Apache Spark : Deep dive dans l'API Java pour développeur](https://lesfurets.github.io/lesfurets-conferences/html/apache-spark-hands-on-developpeurs-java-snowcamp.html)
 - 31 janvier 2017 (fr) : BBL @ Whoz [Apache Spark : Hands-on et use cases pour développeur Java](https://lesfurets.github.io/lesfurets-conferences/html/apache-spark-hands-on-developpeurs-java-whoz.html)
 - 24 janvier 2017 (fr) : BBL @ Murex [Apache Spark : Hands-on et use cases pour développeur Java](https://lesfurets.github.io/lesfurets-conferences/html/apache-spark-hands-on-developpeurs-java-murex.html)
 

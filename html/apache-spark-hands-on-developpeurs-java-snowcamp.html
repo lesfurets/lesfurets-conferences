@@ -124,7 +124,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
                 <section class="flushleft" data-background="#222">
                     <p>... et en 2 minutes on trouve plusieurs cas d'usages :</p>
                     <ul>
-                        <li class="fragment color-gray400">- Rapport de performance "on-demand"</li>
+                        <li class="fragment color-gray400">- Rapport de performance et KPI "on-demand"</li>
                         <li class="fragment color-gray400">- Spark Streaming pour de l'alerting métier</li>
                         <li class="fragment color-gray400">- Spark MLlib pour trouver les questions tarifantes</li>
                         <li class="fragment color-gray400">- ...</li>
@@ -563,8 +563,8 @@ Dataset&lt;Tuple2&lt;String, TarificationJoin&gt;&gt; tupleTarif =
                     <p class="fragment small color-gray400">Le problème est connu et vient de la compatibilité bytecode entre Scala et Java, qui est réglé par Scala 2.12. Le support Spark de cette version de Scala n'est pas triviale, voir les discussions sur le JIRA de Spark : <a href="https://issues.apache.org/jira/browse/SPARK-14220">SPARK-14220</a> et <a href="https://issues.apache.org/jira/browse/SPARK-14643">SPARK-14643</a>.</p>
                 </section>
 
-                <section class="flushleft" data-background="#222">
-                    <p>Dernier point lourd en Java : il faut aussi passer explicitement les sérialiseurs (<code>Encoders.STRING()</code>, etc.)</p>
+                <section class="center" data-background="#222">
+                    <p>En Java : il faut aussi passer explicitement les sérialiseurs <code>org.apache.spark.sql.Encoders.*</code></p>
                     <div class="code-wrapper">
                     <pre><code class="code java" data-trim data-noescape>
 Dataset&lt;Tuple2&lt;String, TarificationJoin&gt;&gt; tupleTarif = 
@@ -577,7 +577,16 @@ Dataset&lt;Tuple2&lt;String, TarificationJoin&gt;&gt; tupleTarif =
                     </div>
                 </section>
 
-                <!-- SECTION - INDUSTRIEL -->
+                <section class="flushleft" data-background="#222">
+                    <p>Ce dont on n'a pas parlé</p>
+                    <ul>
+                      <li><strong class="color-indigo300">Spark streaming :</strong> avec une API semblable mais un peu plus difficile à utiliser en Java</li>
+                      <li><strong class="color-indigo300">Cassandra connector :</strong> (ou HDFS) nous force à utiliser les RDD pour donner le partitionnement des données</li>
+                      <li><strong class="color-indigo300">etc.</strong></li>
+                    </ul>
+                </section>
+
+                <!-- SECTION - CONCLUSION -->
 
                  <section class="flushleft" data-background="../img/spark/background-space.jpg">
                      <!-- http://wallpapershome.com/space/earth-sunrise-planet-space-12720.html -->
@@ -586,7 +595,11 @@ Dataset&lt;Tuple2&lt;String, TarificationJoin&gt;&gt; tupleTarif =
                  </section>
 
                 <section class="center" data-background="#222">
-                    <p>Est-ce que Spark s'intègre avec notre tooling Java ?</p>
+                    <p>Face à la compétition (<strong class="color-indigo300">Apache Storm, Apache Flink, Hadoop MapReduce, etc.</strong>), Apache Spark se démarque par une facilité d'utilisation, une excellente performance, et une API léchée.</p>
+                </section>
+
+                <section class="center" data-background="#222">
+                    <p>Mais surtout, Apache Spark s'intègre-t-il avec notre tooling Java ?</p>
                     <p class="fragment"><strong class="color-indigo300">Oui, grâce à une API utilisable avec Java 8 et testable, aux UDF, et au lancement facile dans l'IDE</strong></p>
                     <img class="fragment" width="33%" src="../img/spark/meme-donald-spark.gif">
                 </section>
@@ -597,10 +610,7 @@ Dataset&lt;Tuple2&lt;String, TarificationJoin&gt;&gt; tupleTarif =
                     <h2 style="color:white">Ressources :</h2>
                     <p style="color:white">- Ces slides / ce code : <strong><a href="https://github.com/lesfurets/lesfurets-conferences">LesFurets.com github</a></strong></p>
                     <p style="color:white">- Article Spark en Java : <strong><a href="https://beastie.lesfurets.com/articles/apache-spark-use-cases-developpeurs-java">LesFurets.com blog</a></strong></p>
-                </section>
-
-                <section class="flushleft" data-background="../img/nwx/lesfurets-background-black-01.jpg">
-                    <h2 style="color:white">END</h2>
+                    <h2 class="flushright fragment color-indigo300">END</h2>
                 </section>
 
             </div>
