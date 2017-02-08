@@ -76,7 +76,7 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 **Jury** : This talk is the result of our experience with Spark in our all-Java development team. It sets itself apart by talking about Spark 2.0+ (DataFrame API) and by focusing on Java 8 good practices (with lambda usage), JUnit testing and continuous integration of Spark code. This talk has already been accepted in meetups and one conference (see the speaker experience section) and will be the focus of a series of article to be published on LesFurets.com technical blog.
 -->
 
-- 9 février 2017 (fr) : Snowcamp
+- 9 février 2017 (fr) : Snowcamp @ Grenoble [Apache Spark : Hands-on et use cases pour développeur Java](https://lesfurets.github.io/lesfurets-conferences/html/apache-spark-hands-on-developpeurs-java-snowcamp.html)
 - 31 janvier 2017 (fr) : BBL @ Whoz [Apache Spark : Hands-on et use cases pour développeur Java](https://lesfurets.github.io/lesfurets-conferences/html/apache-spark-hands-on-developpeurs-java-whoz.html)
 - 24 janvier 2017 (fr) : BBL @ Murex [Apache Spark : Hands-on et use cases pour développeur Java](https://lesfurets.github.io/lesfurets-conferences/html/apache-spark-hands-on-developpeurs-java-murex.html)
 
