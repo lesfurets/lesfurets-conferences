@@ -45,3 +45,32 @@ html.background-yoda .reveal:not(.overview) .backgrounds {
     background-repeat: no-repeat;
     filter: saturate(.3) brightness(.8);
 }
+
+html.background-demo .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-image: url("../img/section/playground.jpg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: saturate(.2) brightness(.3);
+}
+
+
+html.background-pipeline .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-image: url("../img/section/pipeline.jpg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: saturate(.2) brightness(.3);
+}
+
+
+html.background-pipeline-test .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-image: url("../img/section/manometer.jpg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: saturate(.2) brightness(.3);
+}
