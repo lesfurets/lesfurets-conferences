@@ -41,24 +41,25 @@
     <div class="slides">
         <section class="flushright" data-state="background-furets">
             <h1>Jenkins by LesFurets.com</h1>
-            <h3>Our experience</h3>
-            <h3>& JenkinsPipelineUnit</h3>
+            <h2>Our experience</h2>
+            <h2>& JenkinsPipelineUnit</h2>
             <p>Ozan GUNALP - Emmanuel QUINCEROT</p>
         </section>
         <section data-state="background-furets">
             <h2>Jenkins by LesFurets.com</h2>
             <!-- TODO retirer les disques, nodisc ne marche pas -->
             <ol class="flushleft" type="I">
-                <li>Our needs</li>
+                <li>LesFurets.com</li>
                 <li>A fery tale</li>
-                <li>Real life</li>
+                <li>Jenkins 2 and pipelines</li>
+                <li>The real life</li>
                 <li>JenkinsPipelineUnit</li>
                 <li>Demo</li>
             </ol>
         </section>
         <section data-state="background-structure">
             <section>
-                <h3>LesFurets - Team structure</h3>
+                <h2>LesFurets - Team structure</h2>
                 <p></p>
                 <ul class="nodisc">
                     <li>4 feature teams</li>
@@ -68,7 +69,7 @@
                 </ul>
             </section>
             <section>
-                <h3>Continuous delivery</h3>
+                <h2>Continuous delivery</h2>
                 <ul class="flushleft nodisc">
                     <li>200 releases a year</li>
                     <li>About 30 branch validations every day</li>
@@ -92,7 +93,7 @@
                 -->
             </section>
             <section>
-                <h3>Our environments</h3>
+                <h2>Our environments</h2>
                 <ul class="nodisc flushleft">
                     <li>Dev</li>
                     <li>Stage</li>
@@ -104,7 +105,7 @@
         </section>
         <section>
             <section data-state="background-contest">
-                <h3>Once upon a time...</h3>
+                <h2>Once upon a time...</h2>
                 <p>Last summer</p>
 
                 <div style="float:left;width: 30%;" class="flushleft">
@@ -129,7 +130,7 @@
                 </div>
             </section>
             <section data-state="background-contest-victory">
-                <h3>Now in 2017</h3>
+                <h2>Now in 2017</h2>
                 <p>Jenkins only!</p>
                 <ul class="flushleft">
                     <li>Continuous Integration</li>
@@ -144,11 +145,11 @@
         </section>
         <section data-state="background-pipeline">
             <section>
-                <h3>Jenkins 2.0 and pipelines</h3>
+                <h2>Jenkins 2.0 and pipelines</h2>
                 <img style="width: 100%" src="../img/jenkins/pkg-pipeline.png">
             </section>
             <section >
-                <h3>What is it?</h3>
+                <h2>What is it?</h2>
                 <p>Describes all the job process by code</p>
                 <p>Master and agents</p>
                 <p>Jenkins DSL based on groovy:</p>
@@ -183,12 +184,12 @@ node('linux') {
                 </div>
             </section>
             <section>
-                <h3>How to declare a job</h3>
+                <h2>How to declare a job</h2>
                 <p>Pipeline: a groovy file</p>
                 <p>Multi-branch pipeline: Jenkinsfile in you repository root</p>
             </section>
             <section>
-                <h3>Pipelines? Why?</h3>
+                <h2>Pipelines? Why?</h2>
                 <ul>
                     <li>Use the power of Groovy</li>
                     <li>Version your pipeline code with Git</li>
@@ -211,7 +212,7 @@ node('linux') {
                 <p></p>
             </section>
             <section>
-                <h3>Where is the trap?</h3>
+                <h2>Where is the trap?</h2>
                 <ul class="fragment">
                     <li>Serializable or you're dead</li>
                     <li>Security Script Approval</li>
@@ -219,7 +220,7 @@ node('linux') {
                 </ul>
             </section>
             <section data-state="background-yoda">
-                <h3>Guidelines by LesFurets.com</h3>
+                <h2>Guidelines by LesFurets.com</h2>
                 <ul>
                     <li class="fragment">The code simple, you'll keep.</li>
                     <li class="fragment">One unique structure for every job, you'll follow.</li>
@@ -227,9 +228,9 @@ node('linux') {
                 </ul>
             </section>
             <section>
-                <h3>There is still risks</h3>
-                <p>One DSL for multiple job.</p>
-                <p>One change can cause regression.</p>
+                <h2>There is still risks</h2>
+                <p class="fragment">One DSL for many jobs.</p>
+                <p class="fragment">One change can cause regression.</p>
                 <blockquote class="fragment">Oops! The load test is triggered after deploying the production!</blockquote>
                 <p class="fragment">We need something to track the impact of our changes!</p>
             </section>
@@ -361,7 +362,7 @@ void testNonReg() throws Exception {
         embedded: true,
 
         //theme: 'lesfurets', // available themes are in /css/theme
-        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+        transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
 
         // Parallax scrolling
         // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
@@ -402,5 +403,6 @@ void testNonReg() throws Exception {
         ]
     });
 </script>
+<script src="../js/lesfurets-theme.js" async></script>
 </body>
 </html>

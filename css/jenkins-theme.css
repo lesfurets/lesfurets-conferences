@@ -8,6 +8,13 @@ html.background-structure .reveal:not(.overview) .backgrounds {
     filter: saturate(.3) brightness(.3);
 }
 
+/*.reveal h2 {
+    color: #f07d00;
+}*/
+
+.reveal h2 {
+    color: #f07d00;
+}
 
 html.background-contest .reveal:not(.overview) .backgrounds {
     background-color: #222;
