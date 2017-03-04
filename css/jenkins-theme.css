@@ -1,0 +1,47 @@
+
+html.background-structure .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-image: url("../img/section/palmenhaus-structure.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: saturate(.3) brightness(.3);
+}
+
+
+html.background-contest .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-image: url("../img/jenkins/contest-TC-jenkins.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: saturate(.3) brightness(.8);
+}
+
+html.background-contest-victory .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-image: url("../img/jenkins/contest-jenkins-wins.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: saturate(.3) brightness(.8);
+}
+
+html.background-evil .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-image: url("../img/jenkins/contest-jenkins-evil.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: saturate(.3) brightness(.8);
+}
+
+
+html.background-yoda .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-image: url("../img/section/yoda.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: saturate(.3) brightness(.8);
+}

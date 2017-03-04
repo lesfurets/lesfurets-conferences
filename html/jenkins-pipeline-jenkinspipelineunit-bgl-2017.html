@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Jenkins by LesFurets.com</title>
+    <meta name="description" content="Jenkins by LesFurets.com">
+    <meta name="author" content="Ozan Günalp">
+    <meta name="author" content="Emmanuel Quincerot">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../bower_components/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="../bower_components/reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="../css/lesfurets-theme.css" id="theme">
+    <link rel="stylesheet" href="../css/git-octopus-theme.css" id="octopus-theme">
+    <link rel="stylesheet" href="../css/code-jooq-theme.css" id="jooq-theme">
+    <link rel="stylesheet" href="../css/jenkins-theme.css" id="jenkins-theme">
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = '../css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+    <!--[if lt IE 9]>
+    <script src="../bower_components/reveal.js/lib/js/html5shiv.js"></script><![endif]-->
+</head>
+<body>
+<div id="footer" class="footer show">
+    <a href="https://www.lesfurets.com" target="_blank">
+        <img class="logo" src="../img/logo_lesfurets_885x128_no_back.png">
+    </a>
+    <a class="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a>
+    <a class="github" href="https://github.com/ozangunalp" target="_blank">https://github.com/ozangunalp</a>
+    <a class="github" href="https://github.com/equincerot" target="_blank">https://github.com/equincerot</a>
+    <a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a>
+</div>
+<div class="reveal">
+    <div class="slides">
+        <section class="flushright" data-state="background-furets">
+            <h1>Jenkins by LesFurets.com</h1>
+            <h3>Our experience</h3>
+            <h3>& JenkinsPipelineUnit</h3>
+            <p>Ozan GUNALP - Emmanuel QUINCEROT</p>
+        </section>
+        <section data-state="background-furets">
+            <h2>Jenkins by LesFurets.com</h2>
+            <!-- TODO retirer les disques, nodisc ne marche pas -->
+            <ol class="flushleft" type="I">
+                <li>Our needs</li>
+                <li>A fery tale</li>
+                <li>Real life</li>
+                <li>JenkinsPipelineUnit</li>
+                <li>Demo</li>
+            </ol>
+        </section>
+        <section data-state="background-structure">
+            <section>
+                <h3>LesFurets - Team structure</h3>
+                <p></p>
+                <ul class="nodisc">
+                    <li>4 feature teams</li>
+                    <li>22 deloppers</li>
+                    <li>3 devops</li>
+                    <li>7 business analysts</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Continuous delivery</h3>
+                <ul class="flushleft nodisc">
+                    <li>200 releases a year</li>
+                    <li>About 30 branch validations every day</li>
+                    <li>15 deployments a day</li>
+                </ul>
+                <!--
+                    Provenance des données :
+                    sur la semaine du 27 février au 3 mars :
+                        5 DEV
+                        50 Stage
+                        9 Docker
+                        4 preprod
+                        4 Prod
+                    => 72 déploiements en 5 jours => 14 déploiements par jour
+
+                    Pour la CI :
+                    activity blue ocean de la CI sur la journée du 3 mars :
+                        4 en features
+                        25 en studies
+                    => 29 sur la journée
+                -->
+            </section>
+            <section>
+                <h3>Our environments</h3>
+                <ul class="nodisc flushleft">
+                    <li>Dev</li>
+                    <li>Stage</li>
+                    <li>Preprod</li>
+                    <li>Prod</li>
+                    <li>+ 30 exposed dockers for insurer tests</li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <section data-state="background-contest">
+                <h3>Once upon a time...</h3>
+                <p>Last summer</p>
+
+                <div style="float:left;width: 30%;" class="flushleft">
+                    <p>Jenkins</p>
+                    <ul>
+                        <li>Deployments</li>
+                        <li>Tooling</li>
+                    </ul>
+                </div>
+                <div style="float:right;width:30%;">
+                    <p>Teamcity</p>
+                    <ul>
+                        <li>Continuous Integration</li>
+                        <li>Seleniums</li>
+                        <li>Octopus</li>
+                        <li>Release</li>
+                    </ul>
+                </div>
+                <div style="float:left;width:100%">
+                    <p>Two systems: unnecessary complexity
+                    <p/>
+                </div>
+            </section>
+            <section data-state="background-contest-victory">
+                <h3>Now in 2017</h3>
+                <p>Jenkins only!</p>
+                <ul class="flushleft">
+                    <li>Continuous Integration</li>
+                    <li>Seleniums</li>
+                    <li>Octopus</li>
+                    <li>Releasing</li>
+                    <li>Deployment</li>
+                    <li>Tooling</li>
+                </ul>
+                <p>How did we do?</p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>Jenkins 2.0 and pipelines</h3>
+                <img style="width: 100%" src="../img/jenkins/pkg-pipeline.png">
+            </section>
+            <section >
+                <h3>What is it?</h3>
+                <p>Describes all the job process by code</p>
+                <p>Master and agents</p>
+                <p>Jenkins DSL based on groovy:</p>
+                <ul class="flushleft">
+                    <li>stage, node, parallel</li>
+                    <li>bat/sh, input, load, withCredentials</li>
+                    <li>possibility to call any Jenkins plugin</li>
+                </ul>
+            </section>
+            <section>
+                <div class="code-wrapper">
+ <pre><code class="code groovy" data-trim data-noescape>
+node('linux') {
+    stage('Packaging') {
+        checkout scm
+        sh 'mvn clean install'
+    }
+    stage('Deploy') {
+        sh 'mvn jetty:run'
+    }
+ }
+ stage ('Post deploy') {
+    parallel(
+        'Slack': {
+            node() { notifySlack('Deployment done') }
+        },
+        'Update Jira': {
+            node() { sh 'update_jira_tickets.sh' }
+        }
+ }
+            </code></pre>
+                </div>
+            </section>
+            <section>
+                <h3>How to declare a job</h3>
+                <p>Pipeline: a groovy file</p>
+                <p>Multi-branch pipeline: Jenkinsfile in you repository root</p>
+            </section>
+            <section>
+                <h3>Pipelines? Why?</h3>
+                <ul>
+                    <li>Use the power of Groovy</li>
+                    <li>Version your pipeline code with Git</li>
+                    <li>No damage caused by accidental click</li>
+                    <li>Steps parallelization</li>
+                    <li>Let the developers maintain their jobs</li>
+                    <li>Better UX</li>
+                </ul>
+                <blockquote>... and they lived happily ever after</blockquote>
+            </section>
+        </section>
+        <section data-state="background-evil">
+            <section>
+                <h2>The real life</h2>
+                <!-- TODO fix that: -->
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+            </section>
+            <section>
+                <h3>Where is the trap?</h3>
+                <ul class="fragment">
+                    <li>Serializable or you're dead</li>
+                    <li>Security Script Approval</li>
+                    <li>Clear documentation coming soon</li>
+                </ul>
+            </section>
+            <section data-state="background-yoda">
+                <h3>Guidelines by LesFurets.com</h3>
+                <ul>
+                    <li class="fragment">The code simple, you'll keep.</li>
+                    <li class="fragment">One unique structure for every job, you'll follow.</li>
+                    <li class="fragment">The tricks with your team, you'll share.</li>
+                </ul>
+            </section>
+            <section>
+                <h3>There is still risks</h3>
+                <p>One DSL for multiple job.</p>
+                <p>One change can cause regression.</p>
+                <blockquote class="fragment">Oops! The load test is triggered after deploying the production!</blockquote>
+                <p class="fragment">We need something to track the impact of our changes!</p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>JenkinsPipelineUnit</h2>
+                <p>Pipeline code is versioned</p>
+                <p>But we want to check what will be executed as well</p>
+                <!-- Autrement dit, on veut la callstack -->
+            </section>
+            <section class="center">
+                <h2>Example: the Job</h2>
+                <div class="code-wrapper">
+                    <pre><code class="code groovy" data-trim data-noescape>
+def execute() {
+    node() {
+        def utils = load 'src/main/jenkins/lib/utils.jenkins'
+        String revision = stage('Checkout') {
+            checkout scm
+            return utils.currentRevision()
+        }
+        gitlabBuilds(builds: ['build', 'test']) {
+            stage('build') {
+                gitlabCommitStatus('build') {
+                    sh "mvn clean package -DskipTests -DgitRevision=$revision"
+                }
+            }
+
+            stage('test') {
+                gitlabCommitStatus('test') {
+                    sh "mvn verify -DgitRevision=$revision"
+                }
+            }
+        }
+    }
+}
+return this
+                    </code></pre>
+                </div>
+            </section>
+            <section class="center">
+                <h2>Example: the Test</h2>
+                <div class="code-wrapper">
+                    <pre><code class="code groovy" data-trim data-noescape>import com.lesfurets.jenkins.helpers.BasePipelineTest
+
+class TestExampleJob extends BasePipelineTest {
+
+        //...
+
+        @Test
+        void should_execute_without_errors() throws Exception {
+            def script = loadScript('job/exampleJob.jenkins')
+            script.execute()
+            printCallStack()
+        }
+}
+                    </code></pre>
+                </div>
+            </section>
+            <section class="center">
+                <h2>Example: the Callstack</h2>
+                <div class="code-wrapper">
+                    <pre><code class="code groovy" data-trim data-noescape>
+exampleJob.run()
+exampleJob.execute()
+    exampleJob.node(groovy.lang.Closure)
+        exampleJob.load(src/main/jenkins/lib/utils.jenkins)
+        utils.run()
+        exampleJob.stage(Checkout, groovy.lang.Closure)
+        exampleJob.checkout({$class=GitSCM, branches=[{name=feature_test}], ...
+        utils.currentRevision()
+            utils.sh({returnStdout=true, script=git rev-parse HEAD})
+        exampleJob.gitlabBuilds({builds=[build, test]}, groovy.lang.Closure)
+        exampleJob.stage(build, groovy.lang.Closure)
+            exampleJob.gitlabCommitStatus(build, groovy.lang.Closure)
+                exampleJob.sh(mvn clean package -DskipTests -DgitRevision=bcc19744)
+        exampleJob.stage(test, groovy.lang.Closure)
+            exampleJob.gitlabCommitStatus(test, groovy.lang.Closure)
+                exampleJob.sh(mvn verify -DgitRevision=bcc19744)
+                    </code></pre>
+                </div>
+            </section>
+            <section>
+                <h2>How does it work?</h2>
+            </section>
+            <section class="center">
+                <h2>Example: the non-regression test</h2>
+                <div class="code-wrapper">
+                    <pre><code class="code groovy" data-trim data-noescape>
+@Test
+void testNonReg() throws Exception {
+    def script = loadScript('job/exampleJob.jenkins')
+    script.execute()
+    super.testNonRegression('example', false)
+}
+                    </code></pre>
+                </div>
+            </section>
+
+            <section>
+                <h2>JenkinsPipelineUnit features</h2>
+                <ul>
+                    <li class="fragment">Mock your environments (jenkins steps as well as job environment)</li>
+                    <li class="fragment">See the callstacks</li>
+                    <li class="fragment">Test your own functions</li>
+                    <li class="fragment">Check for regressions<p/></li>
+                    <li class="fragment">Easy integration with Gradle</li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Demo</h2>
+            </section>
+        </section>
+    </div>
+</div>
+<script src="../bower_components/reveal.js/lib/js/head.min.js"></script>
+<script src="../bower_components/reveal.js/js/reveal.js"></script>
+<script>
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        embedded: true,
+
+        //theme: 'lesfurets', // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            {
+                src: '../bower_components/reveal.js/lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function () {
+                return !!document.body.classList;
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function () {
+                return !!document.body.classList;
+            }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
