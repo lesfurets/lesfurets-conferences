@@ -148,10 +148,10 @@
                 <h2>Jenkins 2.0 and pipelines</h2>
                 <img style="width: 100%" src="../img/jenkins/pkg-pipeline.png">
             </section>
-            <section >
+            <section class="flushleft">
                 <h2>What is it?</h2>
-                <p>Describes all the job process by code</p>
-                <p>Master and agents</p>
+                <p>Job process description by code</p>
+                <p>On-demand agents allocation</p>
                 <p>Jenkins DSL based on groovy:</p>
                 <ul class="flushleft">
                     <li>stage, node, parallel</li>
@@ -160,37 +160,109 @@
                 </ul>
             </section>
             <section>
-                <div class="code-wrapper">
+                <h2>How to declare a job</h2>
+
+                <table>
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Basic pipeline</th>
+                        <th>Multi-branch pipeline</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td></td>
+                        <td>one single job</td>
+                        <td>one job per git branch</td>
+                    </tr>
+                    <tr>
+                        <td>Entry point</td>
+                        <td>any groovy file</td> <!-- TODO vraies icônes -->
+                        <td>the Jenkinsfile in you repository root</td> <!-- TODO vraies icônes -->
+                    </tr>
+                    </tbody>
+                </table>
+
+                <p class="flushleft">Two pipeline syntaxes:</p>
+                <ul class="flushleft">
+                    <li>Scripted pipeline</li>
+                    <li>Declarative pipeline</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Scripted vs. Declarative pipelines</h2>
+                <table>
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Scripted</th>
+                        <th>Declarative</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Language</td>
+                        <td>Groovy like</td>
+                        <td>Yaml like</td>
+                    </tr>
+                    <tr>
+                        <td>Graphical editor</td>
+                        <td>(x)</td> <!-- TODO vraies icônes -->
+                        <td>(/)</td> <!-- TODO vraies icônes -->
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section >
+                <h2>Scripted vs. Declarative pipelines</h2>
+
+                <div style="float:left;width: 30%;" class="flushleft">
+                    <p>Scripted</p>
+                    <div class="code-wrapper">
  <pre><code class="code groovy" data-trim data-noescape>
 node('linux') {
-    stage('Packaging') {
-        checkout scm
-        sh 'mvn clean install'
+  stage('build') {
+    try {
+      sh 'mvn clean install'
+      sh 'notif_success.sh'
     }
-    stage('Deploy') {
-        sh 'mvn jetty:run'
-    }
- }
- stage ('Post deploy') {
-    parallel(
-        'Slack': {
-            node() { notifySlack('Deployment done') }
-        },
-        'Update Jira': {
-            node() { sh 'update_jira_tickets.sh' }
-        }
- }
+    catch (e) { sh 'rollback.sh' }
+  }
+}
             </code></pre>
+
+                </div>
+            </div>
+
+
+                <div style="float:right;width:30%;">
+                    <p>Declarative</p>
+                    <div class="code-wrapper">
+<pre><code class="code groovy" data-trim data-noescape>
+pipeline {
+  agent linux
+  stages {
+    stage('build') {
+      sh 'mvn clean install'
+    }
+  postBuild {
+    success {
+      sh 'notif_success.sh'
+    }
+    failure {
+      sh 'rollback.sh'
+    }
+  }
+}
+            </code></pre>
+                    </div>
                 </div>
             </section>
             <section>
-                <h2>How to declare a job</h2>
-                <p>Pipeline: a groovy file</p>
-                <p>Multi-branch pipeline: Jenkinsfile in you repository root</p>
-            </section>
-            <section>
                 <h2>Pipelines? Why?</h2>
-                <ul>
+                <ul class="flushleft">
                     <li>Use the power of Groovy</li>
                     <li>Version your pipeline code with Git</li>
                     <li>No damage caused by accidental click</li>
@@ -204,20 +276,88 @@ node('linux') {
         <section data-state="background-evil">
             <section>
                 <h2>The real life</h2>
-                <!-- TODO fix that: -->
-                <p></p>
-                <p></p>
-                <p></p>
-                <p></p>
-                <p></p>
-            </section>
-            <section>
-                <h2>Where is the trap?</h2>
                 <ul class="fragment">
                     <li>Serializable or you're dead</li>
                     <li>Security Script Approval</li>
-                    <li>Clear documentation coming soon</li>
+                    <li>Documentation still in progress</li>
                 </ul>
+            </section>
+            <section>
+                <h2>Serializable or you're dead</h2>
+                <div class="code-wrapper fragment">
+                <pre><code class="code groovy" data-trim data-noescape>
+import groovy.json.JsonSlurper
+node() {
+    def a
+    stage('List') {
+        for (def item : parseJson()) {
+            a = item
+        }
+    }
+
+    stage('print') { echo a }
+}
+
+@NonCPS
+Map parseJson() {
+    return new JsonSlurper().parseText('{"aaa":3}')
+}
+            </code></pre></div>
+                <div class="code-wrapper fragment">
+                    <pre><code class="code groovy" data-trim data-noescape>
+java.io.NotSerializableException: java.util.TreeMap$Entry
+            </code></pre></div>
+            </section>
+            <section>
+                <h2>NonCPS calling CPS</h2>
+                <div class="code-wrapper fragment">
+                <pre><code class="code groovy" data-trim data-noescape>
+node() {
+  stage('List') {
+    List&lt;Long&gt; list = createList()
+  }
+}
+
+long getLong() {
+  return 2L
+}
+
+@NonCPS
+List&lt;Long&gt; createList() {
+  return [getLong()]
+}
+                </code></pre></div>
+
+                <div class="code-wrapper fragment">
+                    <pre><code class="code groovy" data-trim data-noescape>
+hudson.remoting.ProxyException:
+org.codehaus.groovy.runtime.typehandling.GroovyCastException:
+Cannot cast object '2' with class 'java.lang.Long' to class 'java.util.List'
+                    </code></pre>
+
+                </div>
+            </section>
+            <section>
+                <h2>NonCPS calling CPS - Fixed</h2>
+                <div class="code-wrapper">
+                <pre><code class="code groovy" data-trim data-noescape>
+node() {
+    stage('List') {
+        List&lt;Long&gt;list = createList()
+    }
+}
+
+<mark>@NonCPS</mark>
+long getLong() {
+    return 2L
+}
+
+@NonCPS
+List&lt;Long&gt; createList() {
+    return [getLong()]
+}
+]]>
+                </code></pre></div>
             </section>
             <section data-state="background-yoda">
                 <h2>Guidelines by LesFurets.com</h2>
@@ -345,6 +485,11 @@ void testNonReg() throws Exception {
         <section>
             <section data-state="background-demo">
                 <h2>Demo</h2>
+                <p>Two jobs:</p>
+                <ul>
+                    <li>one job listing old branches</li>
+                    <li>one multibranch job, validating the pipeline code</li>
+                </ul>
             </section>
         </section>
     </div>
