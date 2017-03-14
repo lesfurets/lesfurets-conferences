@@ -167,7 +167,7 @@
                     <tr>
                         <th></th>
                         <th>Basic pipeline</th>
-                        <th>Multi-branch pipeline</th>
+                        <th>Multibranch pipeline</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -280,6 +280,7 @@ pipeline {
                     <li>Serializable or you're dead</li>
                     <li>Security Script Approval</li>
                     <li>Documentation still in progress</li>
+                    <li>Multibranch pipeline and workspace</li>
                 </ul>
             </section>
             <section>
@@ -358,6 +359,35 @@ List&lt;Long&gt; createList() {
 }
 ]]>
                 </code></pre></div>
+            </section>
+            <section>
+                <h2>Multibranch pipelines and workspaces</h2>
+                <ul>
+                    <li class="fragment">One branch validated on many agents</li>
+                    <li class="fragment">One workspace per branch on each agent</li>
+                    <li class="fragment">96 branches, 1.2GB</li>
+                </ul>
+                <blockquote class="fragment">No space left on disk</blockquote>
+            </section>
+            <section>
+                <h2>Multibranch pipelines and workspaces</h2>
+
+                <p>First try:<p>
+                <ul>
+                    <li class="fragment">clear workspace at the end of the job</li>
+                    <li class="fragment">shallow clone for some tasks</li>
+                    <li></li>
+                    <li class="fragment">Disk usage trouble solved</li>
+                    <li class="fragment">Clone from scratch, intensive network usage</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Multibranch pipelines and workspaces</h2>
+                <p>Next try:</p>
+                <ul>
+                    <li class="fragment">Share the workspace among branches</li>
+                    <li class="fragment">Always start with git clean -xdf</li>
+                </ul>
             </section>
             <section data-state="background-yoda">
                 <h2>Guidelines by LesFurets.com</h2>
