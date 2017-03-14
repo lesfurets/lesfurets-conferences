@@ -16,10 +16,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class WordCountRunTest {
 
-    private SparkSession spark = SparkSession
-            .builder()
+    private SparkSession spark = SparkSession.builder()
             .master("local[*]")
-            .appName("LesFurets @ Snowcamp - CountTest")
             .getOrCreate();
 
     private Dataset<Row> text;

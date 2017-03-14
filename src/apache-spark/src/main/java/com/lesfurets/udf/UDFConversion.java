@@ -1,4 +1,4 @@
-package com.lesfurets.utils;
+package com.lesfurets.udf;
 
 import com.lesfurets.domain.FormuleMapper;
 

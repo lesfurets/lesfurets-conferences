@@ -1,36 +1,30 @@
 package com.lesfurets.spark.examples;
 
-import com.lesfurets.spark.junit5.rule.SparkTest;
-import org.apache.spark.api.java.function.ForeachFunction;
-import org.apache.spark.broadcast.Broadcast;
+import com.lesfurets.spark.junit4.rule.SparkTestSession;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.RowFactory;
-import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.types.StructField;
 import org.apache.spark.sql.types.StructType;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.apache.spark.api.java.JavaSparkContext.fromSparkContext;
 import static org.apache.spark.sql.types.DataTypes.*;
 import static org.apache.spark.sql.types.Metadata.empty;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@SparkTest
-public class TarifsRunTest {
+public class TarifsRunJunit4Test {
 
-    public SparkSession spark;
+    @Rule
+    public SparkTestSession spark = new SparkTestSession();
 
     private Dataset<Row> tarifs;
 
-    @BeforeEach
+    @Before
     public void before() {
         List<Row> rows = Arrays.asList(
                 RowFactory.create(1, 50d, "Mon SUPER assureur"),
@@ -42,18 +36,12 @@ public class TarifsRunTest {
         StructField assureur = new StructField("assureur", StringType, false, empty());
         StructType structType = new StructType(new StructField[]{formule, prime, assureur});
 
-        tarifs = spark.createDataFrame(rows, structType);
+        tarifs = spark.getSpark().createDataFrame(rows, structType);
     }
 
     @Test
     public void should_average_tarif_return_correct_average() {
         Dataset<Row> averagePrime = TarifsRun.averagePrime(tarifs);
-
-        averagePrime.foreach((ForeachFunction<Row>) row -> assertNotNull(row.getAs("formuleReadable")));
-
-        Broadcast<List<String>> broadcast = fromSparkContext(spark.sparkContext()).broadcast(new ArrayList<>());
-        averagePrime.foreach((ForeachFunction<Row>) row -> broadcast.value().add(row.getAs("formuleReadable")));
-        broadcast.value().forEach(Assertions::assertNotNull);
 
         assertEquals(2, averagePrime.count());
         assertEquals(1, (int) averagePrime.first().<Integer>getAs("formule"));
