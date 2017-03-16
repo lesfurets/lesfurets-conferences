@@ -253,42 +253,28 @@ node('linux') {
         </section>
         <section data-state="background-evil">
           <section>
-            <h2>The real life</h2>
-            <p>Lots of pitfalls</p>
-            <!-- TODO angry jenkins image -->
+            <h2></h2>
+
+
           </section>
           <section>
-            <h2>Things are not that simple</h2>
+            <h2>The real life</h2>
+              <!-- Things are not that simple -->
+              <!-- TODO angry jenkins image -->
             <img style="width: 100%" src="../img/jenkins/pkg-pipeline.png">
             <p>10 jobs</p>
             <p>30+ environments</p>
             <p>100 parallel developments</p>
+              <p>Lots of pitfalls</p>
           </section>
             <section>
-                <h2>Be Serializable or you're dead</h2>
-                <div class="code-wrapper fragment">
-                <pre><code class="code groovy" data-trim data-noescape>
-import groovy.json.JsonSlurper
-node() {
-    def a
-    stage('List') {
-        for (def item : parseJson()) {
-            a = item
-        }
-    }
-
-    stage('print') { echo a }
-}
-
-@NonCPS
-Map parseJson() {
-    return new JsonSlurper().parseText('{"aaa":3}')
-}
-            </code></pre></div>
-                <div class="code-wrapper fragment">
-                    <pre><code class="code groovy" data-trim data-noescape>
-java.io.NotSerializableException: java.util.TreeMap$Entry
-            </code></pre></div>
+                <h2>You said it's groovy?</h2>
+                <p>It was a lie.</p>
+                <p>Jenkins uses CPS</p>
+                <!-- TODO -->
+            </section>
+            <section>
+                <h2>CPS details</h2>
             </section>
             <section>
                 <h2>NonCPS calling CPS</h2>
@@ -342,6 +328,33 @@ List&lt;Long&gt; createList() {
                 </code></pre></div>
             </section>
             <section>
+                <h2>Be Serializable or you're dead</h2>
+                <div class="code-wrapper fragment">
+                <pre><code class="code groovy" data-trim data-noescape>
+import groovy.json.JsonSlurper
+node() {
+    def a
+    stage('List') {
+        for (def item : parseJson()) {
+            a = item
+        }
+    }
+
+    stage('print') { echo a }
+}
+
+@NonCPS
+Map parseJson() {
+    return new JsonSlurper().parseText('{"aaa":3}')
+}
+            </code></pre></div>
+                <div class="code-wrapper fragment">
+                    <pre><code class="code groovy" data-trim data-noescape>
+java.io.NotSerializableException: java.util.TreeMap$Entry
+            </code></pre></div>
+            </section>
+
+            <section>
                 <h2>Multibranch pipelines and workspaces</h2>
                 <ul>
                     <li class="fragment">One branch validated on many agents</li>
@@ -380,10 +393,10 @@ List&lt;Long&gt; createList() {
             </section>
             <section>
                 <h2>There is still risks</h2>
-                <p class="fragment">One DSL for many jobs.</p>
+                <p class="fragment">The same code for many environments.</p>
                 <p class="fragment">One change can cause regression.</p>
                 <blockquote class="fragment">Oops! The load test is triggered after deploying the production!</blockquote>
-                <p class="fragment">We need something to track the impact of our changes!</p>
+                <p class="fragment">We need something to test and track the impact of our changes!</p>
             </section>
         </section>
         <section data-state="background-pipeline-test">
@@ -489,7 +502,7 @@ void testNonReg() throws Exception {
                     <li class="fragment">See the callstacks</li>
                     <li class="fragment">Test your own functions</li>
                     <li class="fragment">Check for regressions<p/></li>
-                    <li class="fragment">Easy integration with Gradle</li>
+                    <li class="fragment">Easy integration with test frameweworks</li>
                 </ul>
             </section>
         </section>
