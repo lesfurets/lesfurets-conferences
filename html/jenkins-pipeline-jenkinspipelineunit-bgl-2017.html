@@ -106,121 +106,92 @@
         <section>
             <section data-state="background-contest">
                 <h2>Once upon a time...</h2>
-                <p>Last summer</p>
-
-                <div style="float:left;width: 30%;" class="flushleft">
-                    <p>Jenkins</p>
+                <div style="float:left;width:40%;" class="flushleft">
+                    <p class="strong">Teamcity</p>
                     <ul>
-                        <li>Deployments</li>
-                        <li>Tooling</li>
+                        <li>CI</li>
+                        <li>Flyway</li>
+                        <li>Continuous Merge</li>
+                        <li>Packaging</li>
+                        <li>Release</li>
+                        <!-- <li>Third-Parties</li> -->
+                        <!-- <li>Nightly</li> -->
                     </ul>
                 </div>
-                <div style="float:right;width:30%;">
-                    <p>Teamcity</p>
+                <div style="float:right;width: 40%;" class="flushleft">
+                    <p class="strong">Jenkins</p>
                     <ul>
-                        <li>Continuous Integration</li>
+                        <li>Deployments</li>
                         <li>Seleniums</li>
-                        <li>Octopus</li>
-                        <li>Release</li>
+                        <li>Tooling</li>
+                        <li>Data Batches</li>
                     </ul>
                 </div>
                 <div style="float:left;width:100%">
                     <p>Two systems: unnecessary complexity
-                    <p/>
                 </div>
+            </section>
+            <section>
+                <h2>Deployment to Prod</h2>
+                <ul class="flushleft">
+                    <li>Create release branch
+                        <ul>
+                            <li>Packaging</li>
+                            <li>CI</li>
+                            <li>Nightly</li>
+                        </ul>
+                    </li>
+                    <li class="flushright"><mark>Deploy to PreProd</mark></li>
+                    <li class="flushright"><mark>Seleniums</mark></li>
+                    <li>Find packaging ID</li>
+                    <li class="flushright"><mark>Deploy to Production</mark></li>
+                </ul>
+            </section>
+            <section>
+                <h2>Our problem</h2>
+                <ul>
+                    <li>Cost</li>
+                    <li>Complexity</li>
+                    <li>Lack of flexibility</li>
+                </ul>
             </section>
             <section data-state="background-contest-victory">
                 <h2>Now in 2017</h2>
                 <p>Jenkins only!</p>
+                <!-- TODO Multi colonne -->
                 <ul class="flushleft">
-                    <li>Continuous Integration</li>
-                    <li>Seleniums</li>
-                    <li>Octopus</li>
-                    <li>Releasing</li>
+                    <li>CI</li>
+                    <li>Flyway</li>
+                    <li>Continuous Merge</li>
+                    <li>Lazy Packaging</li>
                     <li>Deployment</li>
+                    <li>Seleniums</li>
+                    <li>Data Batches</li>
+                    <li>Release</li>
                     <li>Tooling</li>
                 </ul>
                 <p>How did we do?</p>
             </section>
         </section>
-        <section data-state="background-pipeline">
+        <section data-state="background-why">
             <section>
-                <h2>Jenkins 2.0 and pipelines</h2>
-                <img style="width: 100%" src="../img/jenkins/pkg-pipeline.png">
-            </section>
-            <section class="flushleft">
-                <h2>What is it?</h2>
-                <p>Job process description by code</p>
-                <p>On-demand agents allocation</p>
-                <p>Jenkins DSL based on groovy:</p>
-                <ul class="flushleft">
-                    <li>stage, node, parallel</li>
-                    <li>bat/sh, input, load, withCredentials</li>
-                    <li>possibility to call any Jenkins plugin</li>
-                </ul>
+                <h2>Why Jenkins 2</h2>
             </section>
             <section>
-                <h2>How to declare a job</h2>
-
-                <table>
-                    <thead>
-                    <tr>
-                        <th></th>
-                        <th>Basic pipeline</th>
-                        <th>Multibranch pipeline</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td></td>
-                        <td>one single job</td>
-                        <td>one job per git branch</td>
-                    </tr>
-                    <tr>
-                        <td>Entry point</td>
-                        <td>any groovy file</td> <!-- TODO vraies icônes -->
-                        <td>the Jenkinsfile in you repository root</td> <!-- TODO vraies icônes -->
-                    </tr>
-                    </tbody>
-                </table>
-
-                <p class="flushleft">Two pipeline syntaxes:</p>
-                <ul class="flushleft">
-                    <li>Scripted pipeline</li>
-                    <li>Declarative pipeline</li>
-                </ul>
+                <h2>Huge Open Source Community</h2>
+                <img style="width: 50%" src="../img/jenkins/chart-jenkins-usage.png">
+                <p># plugins
+                <br># installations</p>
             </section>
-
             <section>
-                <h2>Scripted vs. Declarative pipelines</h2>
-                <table>
-                    <thead>
-                    <tr>
-                        <th></th>
-                        <th>Scripted</th>
-                        <th>Declarative</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Language</td>
-                        <td>Groovy like</td>
-                        <td>Yaml like</td>
-                    </tr>
-                    <tr>
-                        <td>Graphical editor</td>
-                        <td>(x)</td> <!-- TODO vraies icônes -->
-                        <td>(/)</td> <!-- TODO vraies icônes -->
-                    </tr>
-                    </tbody>
-                </table>
+                <h2>Pipeline-as-code</h2>
+                <p>Code your Continuous Delivery pipeline</p>
+                <p>Check-in to your code base</p>
+                <p>Spoiler Alert : Test it!</p>
             </section>
-            <section >
-                <h2>Scripted vs. Declarative pipelines</h2>
-
-                <div style="float:left;width: 30%;" class="flushleft">
-                    <p>Scripted</p>
-                    <div class="code-wrapper">
+            <section>
+                <h2>Groovy-based DSL</h2>
+              <div class="code-wrapper">
  <pre><code class="code groovy" data-trim data-noescape>
 node('linux') {
   stage('build') {
@@ -232,59 +203,69 @@ node('linux') {
   }
 }
             </code></pre>
-
-                </div>
-            </div>
-
-
-                <div style="float:right;width:30%;">
-                    <p>Declarative</p>
-                    <div class="code-wrapper">
-<pre><code class="code groovy" data-trim data-noescape>
-pipeline {
-  agent linux
-  stages {
-    stage('build') {
-      sh 'mvn clean install'
-    }
-  postBuild {
-    success {
-      sh 'notif_success.sh'
-    }
-    failure {
-      sh 'rollback.sh'
-    }
-  }
-}
-            </code></pre>
-                    </div>
-                </div>
+              </div>
+            </section>
+        </section>
+        <section data-state="background-pipeline">
+            <section>
+                <h2>You said pipeline ?</h2>
+                <!-- TODO mettre l'image d'un pipeline simple-->
+                <img style="width: 100%" src="../img/jenkins/pkg-pipeline.png">
+            </section>
+          <section>
+            <h2>How to declare a job?</h2>
+            <h3>Basic pipeline</h3>
+            <p>1 pipeline file = 1 job</p>
+            <h3>Multibranch pipeline</h3>
+            <p>1 branch = 1 job defined in Jenkinsfile</p>
+            <br>
+            <p>DEMO</p>
+            <!-- TODO Inclut demo -->
+            <!-- TODO review -->
+          </section>
+            <section>
+                <h2>Groovy DSL</h2>
+                <ul>
+                  <li>Organize pipeline into (parallel) <span class="strong">stages</span></li>
+                  <li>Agent allocation with nodes</li>
+                  <li>Call any step : bat/sh, input, load</li>
+                  <li>Call any plugins from code</li>
+                  <li>Extensible by plugins</li>
+                  <!-- TODO Mettre en avant le code-->
+                  <!-- TODO Revoir 2 derniers points -->
+                </ul>
             </section>
             <section>
                 <h2>Pipelines? Why?</h2>
-                <ul class="flushleft">
+                <ul>
                     <li>Use the power of Groovy</li>
                     <li>Version your pipeline code with Git</li>
                     <li>No damage caused by accidental click</li>
                     <li>Steps parallelization</li>
-                    <li>Let the developers maintain their jobs</li>
+                    <li>Let developers maintain their jobs</li>
                     <li>Better UX</li>
                 </ul>
-                <blockquote>... and they lived happily ever after</blockquote>
             </section>
+          <section>
+            <!-- TODO funny image-->
+            <blockquote>... and they lived happily ever after</blockquote>
+          </section>
         </section>
         <section data-state="background-evil">
+          <section>
+            <h2>The real life</h2>
+            <p>Lots of pitfalls</p>
+            <!-- TODO angry jenkins image -->
+          </section>
+          <section>
+            <h2>Things are not that simple</h2>
+            <img style="width: 100%" src="../img/jenkins/pkg-pipeline.png">
+            <p>10 jobs</p>
+            <p>30+ environments</p>
+            <p>100 parallel developments</p>
+          </section>
             <section>
-                <h2>The real life</h2>
-                <ul class="fragment">
-                    <li>Serializable or you're dead</li>
-                    <li>Security Script Approval</li>
-                    <li>Documentation still in progress</li>
-                    <li>Multibranch pipeline and workspace</li>
-                </ul>
-            </section>
-            <section>
-                <h2>Serializable or you're dead</h2>
+                <h2>Be Serializable or you're dead</h2>
                 <div class="code-wrapper fragment">
                 <pre><code class="code groovy" data-trim data-noescape>
 import groovy.json.JsonSlurper
@@ -365,7 +346,7 @@ List&lt;Long&gt; createList() {
                 <ul>
                     <li class="fragment">One branch validated on many agents</li>
                     <li class="fragment">One workspace per branch on each agent</li>
-                    <li class="fragment">96 branches, 1.2GB</li>
+                    <li class="fragment">96 branches x 1.2GB</li>
                 </ul>
                 <blockquote class="fragment">No space left on disk</blockquote>
             </section>
@@ -522,6 +503,51 @@ void testNonReg() throws Exception {
                 </ul>
             </section>
         </section>
+      <section >
+        <h2>Scripted vs. Declarative pipelines</h2>
+
+        <div style="float:left;width: 30%;" class="flushleft">
+          <p>Scripted</p>
+          <div class="code-wrapper">
+ <pre><code class="code groovy" data-trim data-noescape>
+node('linux') {
+  stage('build') {
+    try {
+      sh 'mvn clean install'
+      sh 'notif_success.sh'
+    }
+    catch (e) { sh 'rollback.sh' }
+  }
+}
+            </code></pre>
+
+          </div>
+        </div>
+
+
+        <div style="float:right;width:30%;">
+          <p>Declarative</p>
+          <div class="code-wrapper">
+<pre><code class="code groovy" data-trim data-noescape>
+pipeline {
+  agent linux
+  stages {
+    stage('build') {
+      sh 'mvn clean install'
+    }
+  postBuild {
+    success {
+      sh 'notif_success.sh'
+    }
+    failure {
+      sh 'rollback.sh'
+    }
+  }
+}
+            </code></pre>
+          </div>
+        </div>
+      </section>
     </div>
 </div>
 <script src="../bower_components/reveal.js/lib/js/head.min.js"></script>
