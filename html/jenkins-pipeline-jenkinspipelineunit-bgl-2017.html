@@ -45,18 +45,6 @@
             <h2>& JenkinsPipelineUnit</h2>
             <p>Ozan GUNALP - Emmanuel QUINCEROT</p>
         </section>
-        <section data-state="background-furets">
-            <h2>Jenkins by LesFurets.com</h2>
-            <!-- TODO retirer les disques, nodisc ne marche pas -->
-            <ol class="flushleft" type="I">
-                <li>LesFurets.com</li>
-                <li>A fairy tale</li>
-                <li>Jenkins 2 and pipelines</li>
-                <li>The real life</li>
-                <li>JenkinsPipelineUnit</li>
-                <li>Demo</li>
-            </ol>
-        </section>
         <section data-state="background-structure">
             <section>
                 <h2>LesFurets - Team structure</h2>
@@ -131,7 +119,7 @@
                     <p>Two systems: unnecessary complexity
                 </div>
             </section>
-            <section>
+            <section data-state="background-contest">
                 <h2>Deployment to Prod</h2>
                 <ul class="flushleft">
                     <li>Create release branch
@@ -141,10 +129,16 @@
                             <li>Nightly</li>
                         </ul>
                     </li>
-                    <li class="flushright"><mark>Deploy to PreProd</mark></li>
-                    <li class="flushright"><mark>Seleniums</mark></li>
+                    <li class="flushright">
+                        <mark>Deploy to PreProd</mark>
+                    </li>
+                    <li class="flushright">
+                        <mark>Seleniums</mark>
+                    </li>
                     <li>Find packaging ID</li>
-                    <li class="flushright"><mark>Deploy to Production</mark></li>
+                    <li class="flushright">
+                        <mark>Deploy to Production</mark>
+                    </li>
                 </ul>
             </section>
             <section>
@@ -155,22 +149,30 @@
                     <li>Lack of flexibility</li>
                 </ul>
             </section>
-            <section data-state="background-contest-victory">
+            <section data-state="background-jenkins">
                 <h2>Now in 2017</h2>
                 <p>Jenkins only!</p>
-                <!-- TODO Multi colonne -->
-                <ul class="flushleft">
-                    <li>CI</li>
-                    <li>Flyway</li>
-                    <li>Continuous Merge</li>
-                    <li>Lazy Packaging</li>
-                    <li>Deployment</li>
-                    <li>Seleniums</li>
-                    <li>Data Batches</li>
-                    <li>Release</li>
-                    <li>Tooling</li>
-                </ul>
-                <p>How did we do?</p>
+                <div style="display: flex">
+                    <div style="float:left;width:45%;" class="flushleft">
+                        <ul>
+                            <li>CI</li>
+                            <li>Flyway</li>
+                            <li>Continuous Merge</li>
+                            <li>Lazy Packaging</li>
+                            <li>Deployment</li>
+                        </ul>
+
+                    </div>
+                    <div style="float:right;width:45%;" class="flushleft">
+                        <ul>
+                            <li>Seleniums</li>
+                            <li>Data Batches</li>
+                            <li>Release</li>
+                            <li>Tooling</li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="display: flex"><p>How did we do?</p></div>
             </section>
         </section>
         <section data-state="background-why">
@@ -180,8 +182,8 @@
             <section>
                 <h2>Huge Open Source Community</h2>
                 <img style="width: 50%" src="../img/jenkins/chart-jenkins-usage.png">
-                <p># plugins
-                <br># installations</p>
+                <p>1000+ plugins<!-- Source : https://plugins.jenkins.io/ -->
+                    <br>120k+ installations</p><!-- Source : https://plugins.jenkins.io/scm-api -->
             </section>
             <section>
                 <h2>Pipeline-as-code</h2>
@@ -191,7 +193,7 @@
             </section>
             <section>
                 <h2>Groovy-based DSL</h2>
-              <div class="code-wrapper">
+                <div class="code-wrapper">
  <pre><code class="code groovy" data-trim data-noescape>
 node('linux') {
   stage('build') {
@@ -203,7 +205,7 @@ node('linux') {
   }
 }
             </code></pre>
-              </div>
+                </div>
             </section>
         </section>
         <section data-state="background-pipeline">
@@ -212,28 +214,38 @@ node('linux') {
                 <!-- TODO mettre l'image d'un pipeline simple-->
                 <img style="width: 100%" src="../img/jenkins/pkg-pipeline.png">
             </section>
-          <section>
-            <h2>How to declare a job?</h2>
-            <h3>Basic pipeline</h3>
-            <p>1 pipeline file = 1 job</p>
-            <h3>Multibranch pipeline</h3>
-            <p>1 branch = 1 job defined in Jenkinsfile</p>
-            <br>
-            <p>DEMO</p>
-            <!-- TODO Inclut demo -->
-            <!-- TODO review -->
-          </section>
+            <section>
+                <h2>How to declare a job?</h2>
+                <h3>Basic pipeline</h3>
+                <p>1 pipeline file = 1 job</p>
+                <h3>Multibranch pipeline</h3>
+                <p>1 branch = 1 job defined in Jenkinsfile</p>
+                <br>
+                <p>DEMO</p>
+                <!-- TODO Inclut demo -->
+                <!-- TODO review -->
+            </section>
             <section>
                 <h2>Groovy DSL</h2>
-                <ul>
-                  <li>Organize pipeline into (parallel) <span class="strong">stages</span></li>
-                  <li>Agent allocation with nodes</li>
-                  <li>Call any step : bat/sh, input, load</li>
-                  <li>Call any plugins from code</li>
-                  <li>Extensible by plugins</li>
-                  <!-- TODO Mettre en avant le code-->
-                  <!-- TODO Revoir 2 derniers points -->
-                </ul>
+                <p>Organize pipeline into (parallel) <span class="strong">stages</span><br/>
+                    Agent allocation with nodes<br/>
+                    Call any step : bat/sh, input, load<br/>
+                    Call any plugins from code<br/>
+                    Extensible by plugins<br/>
+                    <!-- TODO Mettre en avant le code-->
+                    <!-- TODO Revoir 2 derniers points -->
+                </p>
+            </section>
+            <section>
+                <h2>Groovy DSL</h2>
+                <p>Organize pipeline into (parallel) <span class="strong">stages</span></p>
+                <p>Agent allocation with nodes<p/>
+                <p>Call any step : bat/sh, input, load<p/>
+                <p>Call any plugins from code</p>
+                <p>Extensible by plugins
+                    <!-- TODO Mettre en avant le code-->
+                    <!-- TODO Revoir 2 derniers points -->
+                </p>
             </section>
             <section>
                 <h2>Pipelines? Why?</h2>
@@ -246,27 +258,27 @@ node('linux') {
                     <li>Better UX</li>
                 </ul>
             </section>
-          <section>
-            <!-- TODO funny image-->
-            <blockquote>... and they lived happily ever after</blockquote>
-          </section>
+            <section>
+                <!-- TODO funny image-->
+                <blockquote>... and they lived happily ever after</blockquote>
+            </section>
         </section>
         <section data-state="background-evil">
-          <section>
-            <h2></h2>
+            <section>
+                <h2></h2>
 
 
-          </section>
-          <section>
-            <h2>The real life</h2>
-              <!-- Things are not that simple -->
-              <!-- TODO angry jenkins image -->
-            <img style="width: 100%" src="../img/jenkins/pkg-pipeline.png">
-            <p>10 jobs</p>
-            <p>30+ environments</p>
-            <p>100 parallel developments</p>
-              <p>Lots of pitfalls</p>
-          </section>
+            </section>
+            <section>
+                <h2>The real life</h2>
+                <!-- Things are not that simple -->
+                <!-- TODO angry jenkins image -->
+                <img style="width: 100%" src="../img/jenkins/pkg-pipeline.png">
+                <p>10 jobs</p>
+                <p>30+ environments</p>
+                <p>100 parallel developments</p>
+                <p>Lots of pitfalls</p>
+            </section>
             <section>
                 <h2>You said it's groovy?</h2>
                 <p>It was a lie.</p>
@@ -294,7 +306,8 @@ long getLong() {
 List&lt;Long&gt; createList() {
   return [getLong()]
 }
-                </code></pre></div>
+                </code></pre>
+                </div>
 
                 <div class="code-wrapper fragment">
                     <pre><code class="code groovy" data-trim data-noescape>
@@ -325,7 +338,8 @@ List&lt;Long&gt; createList() {
     return [getLong()]
 }
 ]]>
-                </code></pre></div>
+                </code></pre>
+                </div>
             </section>
             <section>
                 <h2>Be Serializable or you're dead</h2>
@@ -347,11 +361,13 @@ node() {
 Map parseJson() {
     return new JsonSlurper().parseText('{"aaa":3}')
 }
-            </code></pre></div>
+            </code></pre>
+                </div>
                 <div class="code-wrapper fragment">
                     <pre><code class="code groovy" data-trim data-noescape>
 java.io.NotSerializableException: java.util.TreeMap$Entry
-            </code></pre></div>
+            </code></pre>
+                </div>
             </section>
 
             <section>
@@ -366,7 +382,8 @@ java.io.NotSerializableException: java.util.TreeMap$Entry
             <section>
                 <h2>Multibranch pipelines and workspaces</h2>
 
-                <p>First try:<p>
+                <p>First try:
+                <p>
                 <ul>
                     <li class="fragment">clear workspace at the end of the job</li>
                     <li class="fragment">shallow clone for some tasks</li>
@@ -395,7 +412,8 @@ java.io.NotSerializableException: java.util.TreeMap$Entry
                 <h2>There is still risks</h2>
                 <p class="fragment">The same code for many environments.</p>
                 <p class="fragment">One change can cause regression.</p>
-                <blockquote class="fragment">Oops! The load test is triggered after deploying the production!</blockquote>
+                <blockquote class="fragment">Oops! The load test is triggered after deploying the production!
+                </blockquote>
                 <p class="fragment">We need something to test and track the impact of our changes!</p>
             </section>
         </section>
@@ -516,12 +534,12 @@ void testNonReg() throws Exception {
                 </ul>
             </section>
         </section>
-      <section >
-        <h2>Scripted vs. Declarative pipelines</h2>
+        <section>
+            <h2>Scripted vs. Declarative pipelines</h2>
 
-        <div style="float:left;width: 30%;" class="flushleft">
-          <p>Scripted</p>
-          <div class="code-wrapper">
+            <div style="float:left;width: 30%;" class="flushleft">
+                <p>Scripted</p>
+                <div class="code-wrapper">
  <pre><code class="code groovy" data-trim data-noescape>
 node('linux') {
   stage('build') {
@@ -534,13 +552,13 @@ node('linux') {
 }
             </code></pre>
 
-          </div>
-        </div>
+                </div>
+            </div>
 
 
-        <div style="float:right;width:30%;">
-          <p>Declarative</p>
-          <div class="code-wrapper">
+            <div style="float:right;width:30%;">
+                <p>Declarative</p>
+                <div class="code-wrapper">
 <pre><code class="code groovy" data-trim data-noescape>
 pipeline {
   agent linux
@@ -558,9 +576,9 @@ pipeline {
   }
 }
             </code></pre>
-          </div>
-        </div>
-      </section>
+                </div>
+            </div>
+        </section>
     </div>
 </div>
 <script src="../bower_components/reveal.js/lib/js/head.min.js"></script>

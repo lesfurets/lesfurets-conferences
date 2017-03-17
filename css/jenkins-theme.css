@@ -12,6 +12,10 @@ html.background-structure .reveal:not(.overview) .backgrounds {
     color: #f07d00;
 }
 
+.reveal li:before {
+    color: #fff;
+}
+
 html.background-contest .reveal:not(.overview) .backgrounds {
     background-color: #222;
     background-image: url("../img/jenkins/contest-TC-jenkins.png");
@@ -72,6 +76,15 @@ html.background-pipeline .reveal:not(.overview) .backgrounds {
 html.background-pipeline-test .reveal:not(.overview) .backgrounds {
     background-color: #222;
     background-image: url("../img/section/manometer.jpg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: saturate(.2) brightness(.3);
+}
+
+html.background-jenkins .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-image: url("../img/jenkins/Jenkins_logo.png");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
