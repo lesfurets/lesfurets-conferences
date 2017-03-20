@@ -45,8 +45,8 @@
             <h2>& JenkinsPipelineUnit</h2>
             <p>Ozan GUNALP - Emmanuel QUINCEROT</p>
         </section>
-        <section data-state="background-structure">
-            <section>
+        <section>
+            <section data-state="background-structure">
                 <h2>LesFurets - Team structure</h2>
                 <p></p>
                 <ul class="nodisc">
@@ -94,7 +94,7 @@
         <section>
             <section data-state="background-contest">
                 <h2>Once upon a time...</h2>
-                <div style="float:left;width:40%;" class="flushleft">
+                <div style="float:left; width:40%; padding-left: 5%" class="flushleft">
                     <p class="strong">Teamcity</p>
                     <ul>
                         <li>CI</li>
@@ -102,6 +102,7 @@
                         <li>Continuous Merge</li>
                         <li>Packaging</li>
                         <li>Release</li>
+                        <!-- Non mentionnés pour simplifier : -->
                         <!-- <li>Third-Parties</li> -->
                         <!-- <li>Nightly</li> -->
                     </ul>
@@ -121,7 +122,7 @@
             </section>
             <section data-state="background-contest">
                 <h2>Deployment to Prod</h2>
-                <ul class="flushleft">
+                <ul class="flushleft" style="padding-left: 5%">
                     <li>Create release branch
                         <ul>
                             <li>Packaging</li>
@@ -143,7 +144,7 @@
             </section>
             <section>
                 <h2>Our problem</h2>
-                <ul>
+                <ul class="nodisc">
                     <li>Cost</li>
                     <li>Complexity</li>
                     <li>Lack of flexibility</li>
@@ -151,8 +152,8 @@
             </section>
             <section data-state="background-jenkins">
                 <h2>Now in 2017</h2>
-                <p>Jenkins only!</p>
-                <div style="display: flex">
+                <p>Jenkins 2 only!</p>
+                <div style="display: flex; padding-left: 10%">
                     <div style="float:left;width:45%;" class="flushleft">
                         <ul>
                             <li>CI</li>
@@ -163,7 +164,7 @@
                         </ul>
 
                     </div>
-                    <div style="float:right;width:45%;" class="flushleft">
+                    <div style="float:right;width:45%; padding-left: 10%" class="flushleft">
                         <ul>
                             <li>Seleniums</li>
                             <li>Data Batches</li>
@@ -172,7 +173,6 @@
                         </ul>
                     </div>
                 </div>
-                <div style="display: flex"><p>How did we do?</p></div>
             </section>
         </section>
         <section data-state="background-why">
@@ -208,48 +208,34 @@ node('linux') {
                 </div>
             </section>
         </section>
-        <section data-state="background-pipeline">
-            <section>
+        <section>
+            <section data-state="background-pipeline">
                 <h2>You said pipeline ?</h2>
                 <!-- TODO mettre l'image d'un pipeline simple-->
                 <img style="width: 100%" src="../img/jenkins/pkg-pipeline.png">
             </section>
-            <section>
+            <section class="demo">
                 <h2>How to declare a job?</h2>
                 <h3>Basic pipeline</h3>
                 <p>1 pipeline file = 1 job</p>
                 <h3>Multibranch pipeline</h3>
                 <p>1 branch = 1 job defined in Jenkinsfile</p>
                 <br>
-                <p>DEMO</p>
                 <!-- TODO Inclut demo -->
                 <!-- TODO review -->
             </section>
             <section>
                 <h2>Groovy DSL</h2>
-                <p>Organize pipeline into (parallel) <span class="strong">stages</span><br/>
-                    Agent allocation with nodes<br/>
-                    Call any step : bat/sh, input, load<br/>
-                    Call any plugins from code<br/>
-                    Extensible by plugins<br/>
-                    <!-- TODO Mettre en avant le code-->
-                    <!-- TODO Revoir 2 derniers points -->
-                </p>
-            </section>
-            <section>
-                <h2>Groovy DSL</h2>
-                <p>Organize pipeline into (parallel) <span class="strong">stages</span></p>
-                <p>Agent allocation with nodes<p/>
-                <p>Call any step : bat/sh, input, load<p/>
-                <p>Call any plugins from code</p>
-                <p>Extensible by plugins
-                    <!-- TODO Mettre en avant le code-->
-                    <!-- TODO Revoir 2 derniers points -->
-                </p>
+                <ul class="nodisc">
+                    <li>Organize pipeline into (<code>parallel</code>) <code>stage</code>s</li>
+                    <li>Call any step: <code>bat</code>, <code>sh</code>, <code>retry</code>, <code>timeout</code>...</li>
+                    <li>Agent allocation with <code>node</code></li>
+                    <li>Extensible by new and existing plugins</li>
+                </ul>
             </section>
             <section>
                 <h2>Pipelines? Why?</h2>
-                <ul>
+                <ul class="nodisc">
                     <li>Use the power of Groovy</li>
                     <li>Version your pipeline code with Git</li>
                     <li>No damage caused by accidental click</li>
@@ -263,14 +249,11 @@ node('linux') {
                 <blockquote>... and they lived happily ever after</blockquote>
             </section>
         </section>
-        <section data-state="background-evil">
-            <section>
-                <h2></h2>
-
-
+        <section>
+            <section data-state="background-evil">
+                <h2 style="padding-bottom: 50%">The real life</h2>
             </section>
             <section>
-                <h2>The real life</h2>
                 <!-- Things are not that simple -->
                 <!-- TODO angry jenkins image -->
                 <img style="width: 100%" src="../img/jenkins/pkg-pipeline.png">
@@ -372,7 +355,7 @@ java.io.NotSerializableException: java.util.TreeMap$Entry
 
             <section>
                 <h2>Multibranch pipelines and workspaces</h2>
-                <ul>
+                <ul class="nodisc">
                     <li class="fragment">One branch validated on many agents</li>
                     <li class="fragment">One workspace per branch on each agent</li>
                     <li class="fragment">96 branches x 1.2GB</li>
@@ -381,28 +364,34 @@ java.io.NotSerializableException: java.util.TreeMap$Entry
             </section>
             <section>
                 <h2>Multibranch pipelines and workspaces</h2>
+                <p class="flushleft">First try:
+                <ul class="flushleft">
+                    <li>clear workspace at the end of the job</li>
+                    <li>shallow clone for some tasks</li>
+                </ul></p>
 
-                <p>First try:
-                <p>
-                <ul>
-                    <li class="fragment">clear workspace at the end of the job</li>
-                    <li class="fragment">shallow clone for some tasks</li>
-                    <li></li>
-                    <li class="fragment">Disk usage trouble solved</li>
-                    <li class="fragment">Clone from scratch, intensive network usage</li>
-                </ul>
+
+                <div class="fragment">
+                    <p class="flushleft">Result:</p>
+                    <ul class="flushleft">
+                        <li>Disk usage trouble solved</li>
+                        <li>Clone from scratch, intensive network usage</li>
+                    </ul>
+                </div>
             </section>
             <section>
                 <h2>Multibranch pipelines and workspaces</h2>
-                <p>Next try:</p>
-                <ul>
-                    <li class="fragment">Share the workspace among branches</li>
-                    <li class="fragment">Always start with git clean -xdf</li>
+                <p class="flushleft">Next try:</p>
+                <ul class="flushleft">
+                    <li>Share the workspace among branches</li>
+                    <li>Always start with <code>git clean -xdf</code></li>
                 </ul>
             </section>
+        </section>
+        <section>
             <section data-state="background-yoda">
-                <h2>Guidelines by LesFurets.com</h2>
-                <ul>
+                <h2 style="padding-bottom: 20%">Guidelines by LesFurets.com</h2>
+                <ul class="nodisc">
                     <li class="fragment">The code simple, you'll keep.</li>
                     <li class="fragment">One unique structure for every job, you'll follow.</li>
                     <li class="fragment">The tricks with your team, you'll share.</li>
@@ -417,8 +406,8 @@ java.io.NotSerializableException: java.util.TreeMap$Entry
                 <p class="fragment">We need something to test and track the impact of our changes!</p>
             </section>
         </section>
-        <section data-state="background-pipeline-test">
-            <section>
+        <section>
+            <section data-state="background-pipeline-test">
                 <h2>JenkinsPipelineUnit</h2>
                 <p>Pipeline code is versioned</p>
                 <p>But we want to check what will be executed as well</p>
@@ -515,23 +504,23 @@ void testNonReg() throws Exception {
 
             <section>
                 <h2>JenkinsPipelineUnit features</h2>
-                <ul>
-                    <li class="fragment">Mock your environments (jenkins steps as well as job environment)</li>
+                <ul class="flushleft">
+                    <li class="fragment">Mock your environment:
+                        <ul style="padding-left: 5%">
+                            <li>Jenkins steps</li>
+                            <li>Job environment</li>
+                        </ul>
+                    </li>
                     <li class="fragment">See the callstacks</li>
                     <li class="fragment">Test your own functions</li>
-                    <li class="fragment">Check for regressions<p/></li>
+                    <li class="fragment">Check for regressions</li>
                     <li class="fragment">Easy integration with test frameweworks</li>
                 </ul>
             </section>
         </section>
         <section>
-            <section data-state="background-demo">
-                <h2>Demo</h2>
-                <p>Two jobs:</p>
-                <ul>
-                    <li>one job listing old branches</li>
-                    <li>one multibranch job, validating the pipeline code</li>
-                </ul>
+            <section data-state="background-demo" class="demo">
+                <h2 style="padding-bottom: 30%"></h2>
             </section>
         </section>
         <section>

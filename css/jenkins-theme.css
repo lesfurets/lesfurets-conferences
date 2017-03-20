@@ -40,7 +40,7 @@ html.background-evil .reveal:not(.overview) .backgrounds {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    filter: saturate(.3) brightness(.8);
+    filter: saturate(.9) brightness(.9  );
 }
 
 
@@ -50,7 +50,7 @@ html.background-yoda .reveal:not(.overview) .backgrounds {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    filter: saturate(.3) brightness(.8);
+    filter: saturate(.5) brightness(1);
 }
 
 html.background-demo .reveal:not(.overview) .backgrounds {
@@ -84,9 +84,18 @@ html.background-pipeline-test .reveal:not(.overview) .backgrounds {
 
 html.background-jenkins .reveal:not(.overview) .backgrounds {
     background-color: #222;
-    background-image: url("../img/jenkins/Jenkins_logo.png");
+    background-image: url("../img/jenkins/jenkins-alone.png");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    filter: saturate(.2) brightness(.3);
+    filter: saturate(.5) brightness(.8);
+}
+
+.reveal .slides section.demo {
+    padding: 130px 0px;
+    background-image: url("../img/demo.png");
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: 0%;
+    background-size: 30%;
 }
