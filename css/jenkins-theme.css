@@ -99,3 +99,11 @@ html.background-jenkins .reveal:not(.overview) .backgrounds {
     background-position-y: 0%;
     background-size: 30%;
 }
+
+.reveal blockquote:before {
+    margin-right: 0.5em;
+}
+
+.reveal blockquote p {
+    color: #001F36;
+}
