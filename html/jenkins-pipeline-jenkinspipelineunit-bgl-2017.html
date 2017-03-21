@@ -117,7 +117,7 @@
                     </ul>
                 </div>
                 <div style="float:left;width:100%">
-                    <p>Two systems: unnecessary complexity
+                    <p class="strong">Two systems: unnecessary complexity
                 </div>
             </section>
             <section data-state="background-contest">
@@ -159,7 +159,7 @@
                             <li>CI</li>
                             <li>Flyway</li>
                             <li>Continuous Merge</li>
-                            <li>Lazy Packaging</li>
+                            <li>Packaging</li>
                             <li>Deployment</li>
                         </ul>
 
@@ -238,7 +238,7 @@ node() {
                 <h2>Pipelines? Why?</h2>
                 <ul class="nodisc">
                     <li>Use the power of Groovy</li>
-                    <li>Version your pipeline code with Git</li>
+                    <li>Version your pipeline code in VCS</li>
                     <li>No damage caused by accidental click</li>
                     <li>Steps parallelization</li>
                     <li>Let developers maintain their jobs</li>
@@ -261,25 +261,26 @@ node() {
                 <p>10 jobs</p>
                 <p>30+ environments</p>
                 <p>100 parallel developments</p>
-                <p>Lots of pitfalls</p>
+                <p class="strong">Lots of pitfalls</p>
             </section>
             <section>
-                <h2>You said it's groovy?</h2>
-                <p>It was a lie:</p>
-                <p>Jenkins uses CPS.</p>
-                <!-- TODO -->
+                <h2>You said it's Groovy?</h2>
+                <img style="width: 50%" src="../img/jenkins/trump-lie.png">
+              <p class="strong">
+                <a href="https://twitter.com/hashtag/alternativefacts" target="_blank">#alternativefacts</a>
+              </p>
+              <!-- TODO -->
             </section>
             <section>
-                <h2>CPS details</h2>
+                <h2>Continuation Passing Style</h2>
                 <blockquote><p>Groovy interpreter that runs Groovy code in the continuation passing style,
                     so that the execution can be paused any moment and restarted without cooperation
                     from the program being interpreted.</p></blockquote>
             </section>
-            <section>
-                <h2>Be Serializable or you're dead</h2>
-                <div class="code-wrapper fragment">
-                <pre><code class="code groovy" data-trim data-noescape>
-import groovy.json.JsonSlurper
+          <section>
+            <h2>Be Serializable or you're dead</h2>
+            <div class="code-wrapper">
+                <pre><code class="code groovy" data-trim data-noescape><span class="fragment">import groovy.json.JsonSlurper
 node() {
     def a
     stage('List') {
@@ -290,29 +291,29 @@ node() {
 
     stage('print') { echo a }
 }
-
+</span>
 @NonCPS
 Map parseJson() {
     return new JsonSlurper().parseText('{"aaa":3}')
 }
             </code></pre>
-                </div>
-                <div class="code-wrapper fragment">
+            </div>
+            <div class="code-wrapper fragment">
                     <pre><code class="code groovy" data-trim data-noescape>
 java.io.NotSerializableException: java.util.TreeMap$Entry
             </code></pre>
-                </div>
-            </section>
+            </div>
+          </section>
             <section>
                 <h2>NonCPS calling CPS</h2>
-                <div class="code-wrapper fragment">
+                <div class="code-wrapper fragment" data-fragment-index="1">
                 <pre><code class="code groovy" data-trim data-noescape>
 node() {
   stage('List') {
     List&lt;Long&gt; list = createList()
   }
 }
-
+<mark class="fragment" data-fragment-index="3">@NonCPS</mark>
 long getLong() {
   return 2L
 }
@@ -324,7 +325,7 @@ List&lt;Long&gt; createList() {
                 </code></pre>
                 </div>
 
-                <div class="code-wrapper fragment">
+                <div class="code-wrapper fragment" data-fragment-index="2">
                     <pre><code class="code groovy" data-trim data-noescape>
 hudson.remoting.ProxyException:
 org.codehaus.groovy.runtime.typehandling.GroovyCastException:
@@ -333,31 +334,6 @@ Cannot cast object '2' with class 'java.lang.Long' to class 'java.util.List'
 
                 </div>
             </section>
-            <section>
-                <h2>NonCPS calling CPS - Fixed</h2>
-                <div class="code-wrapper">
-                <pre><code class="code groovy" data-trim data-noescape>
-node() {
-    stage('List') {
-        List&lt;Long&gt;list = createList()
-    }
-}
-
-<mark>@NonCPS</mark>
-long getLong() {
-    return 2L
-}
-
-@NonCPS
-List&lt;Long&gt; createList() {
-    return [getLong()]
-}
-]]>
-                </code></pre>
-                </div>
-            </section>
-
-
             <section>
                 <h2>Multibranch pipelines and workspaces</h2>
                 <ul class="nodisc">
@@ -371,8 +347,8 @@ List&lt;Long&gt; createList() {
                 <h2>Multibranch pipelines and workspaces</h2>
                 <p class="flushleft">First try:
                 <ul class="flushleft">
-                    <li>clear workspace at the end of the job</li>
-                    <li>shallow clone for some tasks</li>
+                    <li>Clear workspace at the end of the job</li>
+                    <li>Shallow clone for some tasks</li>
                 </ul></p>
 
 
