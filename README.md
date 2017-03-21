@@ -118,6 +118,19 @@ Using live code examples we will compare different APIs such as RxJava2, Reactiv
 
 -->
 
+### JenkinsPipelineUnit: Test your continuous delivery pipeline
+
+At LesFurets.com, we use Jenkins as our workhorse to automate our continuous delivery pipeline. 
+Each day we test more than 30 parallel developments and deliver only those which are ready for production. 
+From validation to deployment, every step of the pipeline is coded using Jenkins Pipeline DSL and checked into our code base. 
+Although coding pipelines using this DSL is very powerful, pipeline scripts can easily get pretty complex. 
+That’s why we developed a testing framework, which lets you write unit tests on the configuration and conditional logic of the pipeline code. 
+The framework mocks built-in Jenkins commands and job configurations, executing pipeline scripts in a simulated environment. 
+It allows to debug job executions and even track regressions between changes. 
+In this presentation we present our extensive usage of Jenkins, our open source testing framework and best practices we learnt during our migration to the pipeline DSL.
+
+BGL Tech Conference : [JenkinsPipelineUnit: Test your continuous delivery pipeline](https://lesfurets.github.io/lesfurets-conferences/html/jenkins-pipeline-jenkinspipelineunit-bgl-2017.html)
+
 ### Software craftmanship
 
 - 21 - 22 Avril 2016 (fr) : [Devoxx - France - Live code review at LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/html/live-code-review-at-lesfurets-devoxx.html)
