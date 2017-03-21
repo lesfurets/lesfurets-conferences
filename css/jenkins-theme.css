@@ -107,3 +107,11 @@ html.background-jenkins .reveal:not(.overview) .backgrounds {
 .reveal blockquote p {
     color: #001F36;
 }
+
+.reveal .slides section .fragment.highlight-code.visible {
+    background-color: darkred;
+}
+.reveal .slides section .fragment.highlight-code {
+    opacity: 1;
+    visibility: visible;
+}

@@ -217,31 +217,14 @@
                 <p>Check-in to your code base</p>
                 <p>Spoiler Alert : Test it!</p>
             </section>
-            <section>
-                <h2>Groovy-based DSL</h2>
-                <div class="code-wrapper">
- <pre><code class="code groovy" data-trim data-noescape>
-node() {
-    stage('Checkout') {
-        checkout(scm)
-        sh 'git clean -xdf'
-    }
-    stage('Build and test') {
-        sh './gradlew build'
-        junit 'build/test-results/test/*.xml'
-    }
-}
-            </code></pre>
-                </div>
-            </section>
         </section>
         <section>
-            <section data-state="background-pipeline">
+            <section data-state="background-pipeline" class="demo">
                 <h2>You said pipeline ?</h2>
                 <!-- TODO mettre l'image d'un pipeline simple-->
                 <img style="width: 100%" src="../img/jenkins/pkg-pipeline.png">
             </section>
-            <section class="demo">
+            <section>
                 <h2>How to declare a job?</h2>
                 <h3>Basic pipeline</h3>
                 <p>1 pipeline file = 1 job</p>
@@ -259,6 +242,23 @@ node() {
                     <li>Agent allocation with <code>node</code></li>
                     <li>Extensible by new and existing plugins</li>
                 </ul>
+            </section>
+            <section>
+                <h2>Groovy-based DSL</h2>
+                <div class="code-wrapper">
+ <pre><code class="code groovy" data-trim data-noescape>
+node() {
+    stage('Checkout') {
+        checkout(scm)
+        sh 'git clean -xdf'
+    }
+    stage('Build and test') {
+        sh './gradlew build'
+        junit 'build/test-results/test/*.xml'
+    }
+}
+            </code></pre>
+                </div>
             </section>
             <section>
                 <h2>Master and slaves</h2>
@@ -333,11 +333,18 @@ node() {
           <section>
             <h2>Be Serializable or you're dead</h2>
             <div class="code-wrapper">
-                <pre><code class="code groovy" data-trim data-noescape><span class="fragment">import groovy.json.JsonSlurper
+                <pre><code class="code groovy" data-trim data-noescape>
+import groovy.json.JsonSlurper
+
+@NonCPS
+def parseJson() {
+    return new JsonSlurper().parseText('{"aaa":3}')
+}
+                    <span class="fragment" data-fragment-index="1">
 node() {
     def a
     stage('List') {
-        for (def item : parseJson()) {
+        for (<span class="fragment highlight-code" data-fragment-index="3">def item</span> : parseJson()) {
             a = item
         }
     }
@@ -345,18 +352,37 @@ node() {
     stage('print') { echo a }
 }
 </span>
-@NonCPS
-Map parseJson() {
-    return new JsonSlurper().parseText('{"aaa":3}')
-}
+
             </code></pre>
             </div>
-            <div class="code-wrapper fragment">
+            <div class="code-wrapper fragment" data-fragment-index="2">
                     <pre><code class="code groovy" data-trim data-noescape>
 java.io.NotSerializableException: java.util.TreeMap$Entry
             </code></pre>
             </div>
           </section>
+            <section>
+                <h2>This is serializable</h2>
+                <div class="code-wrapper">
+                <pre><code class="code groovy" data-trim data-noescape>
+import groovy.json.JsonSlurper
+
+@NonCPS
+def parseJson(String fieldName) {
+    return new JsonSlurper().parseText('{"aaa":3}')?."$fieldName"
+}
+
+node() {
+    String output
+    stage('List') {
+        output = parseJson('aaa')
+    }
+
+    stage('print') { echo output }
+}
+            </code></pre>
+                </div>
+            </section>
             <section>
                 <h2>NonCPS calling CPS</h2>
                 <div class="code-wrapper fragment" data-fragment-index="1">
@@ -578,7 +604,7 @@ void testNonRegression() throws Exception {
                         <li><mark>Flexibility</mark> Jobs and application evolve together</li>
                         <li><mark>Safety</mark> Job changes are code-reviewable</li>
                         <li><mark>Repeatability</mark> with the non regression tests</li>
-                        <li><mark>Re-use</mark> all environment deploy with the same code</li>
+                        <li><mark>Reusability</mark> all environment deploy with the same code</li>
                     </ul>
                 </div>
                 <div class="fragment flushleft"><h3>Cons:</h3>
