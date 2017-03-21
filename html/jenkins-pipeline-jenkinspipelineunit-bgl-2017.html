@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Jenkins by LesFurets.com</title>
+    <title>Continuous Delivery with Jenkins</title>
     <meta name="description" content="Jenkins by LesFurets.com">
     <meta name="author" content="Ozan Günalp">
     <meta name="author" content="Emmanuel Quincerot">
@@ -40,7 +40,7 @@
 <div class="reveal">
     <div class="slides">
         <section class="flushright" data-state="background-furets">
-            <h1>Jenkins by LesFurets.com</h1>
+            <h1>Continuous Delivery with Jenkins</h1>
             <h2>Our experience</h2>
             <h2>& JenkinsPipelineUnit</h2>
             <p>Ozan GUNALP - Emmanuel QUINCEROT</p>
@@ -152,7 +152,7 @@
             </section>
             <section data-state="background-jenkins">
                 <h2>Now in 2017</h2>
-                <p>Jenkins 2 only!</p>
+                <p>Jenkins only!</p>
                 <div style="display: flex; padding-left: 10%">
                     <div style="float:left;width:45%;" class="flushleft">
                         <ul>
@@ -177,7 +177,7 @@
         </section>
         <section data-state="background-why">
             <section>
-                <h2>Why Jenkins 2?</h2>
+                <h2>Why Jenkins?</h2>
             </section>
             <section>
                 <h2>Huge Open Source Community</h2>
@@ -241,7 +241,7 @@ node() {
                     <li>Version your pipeline code in VCS</li>
                     <li>No damage caused by accidental click</li>
                     <li>Steps parallelization</li>
-                    <li>Let developers maintain their jobs</li>
+                    <li>Let developers maintain their Jenkins jobs</li>
                     <li>Better UX</li>
                 </ul>
             </section>
@@ -379,7 +379,7 @@ Cannot cast object '2' with class 'java.lang.Long' to class 'java.util.List'
                 </ul>
             </section>
             <section>
-                <h2>There is still risks</h2>
+                <h2>There are still risks</h2>
                 <p class="fragment">The same code for many environments.</p>
                 <p class="fragment">One change can cause regression.</p>
                 <blockquote class="fragment"><p>Oops! The load test is triggered after deploying the production!</p>
@@ -390,6 +390,7 @@ Cannot cast object '2' with class 'java.lang.Long' to class 'java.util.List'
         <section>
             <section data-state="background-pipeline-test">
                 <h2>JenkinsPipelineUnit</h2>
+                <p>Opensource Framework by LesFurets.com</p>
                 <p>Pipeline code is versioned</p>
                 <p>But we want to check what will be executed as well</p>
                 <!-- Autrement dit, on veut la callstack -->
@@ -513,7 +514,7 @@ void testNonRegression() throws Exception {
                     <ul>
                         <li>More feedback (slack)</li>
                         <li>Better error management</li>
-                        <li>More automatisation</li>
+                        <li>More automation</li>
                     </ul>
                 </div>
             </section>
@@ -524,7 +525,7 @@ void testNonRegression() throws Exception {
                         <li><mark>Flexibility</mark> Jobs and application evolve together</li>
                         <li><mark>Safety</mark> Job changes are code-reviewable</li>
                         <li><mark>Repeatability</mark> with the non regression tests</li>
-                        <li><mark>Mutualization</mark> all environment deploy with the same code</li>
+                        <li><mark>Re-use</mark> all environment deploy with the same code</li>
                     </ul>
                 </div>
                 <div class="fragment flushleft"><h3>Cons:</h3>
