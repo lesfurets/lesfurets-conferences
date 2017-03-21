@@ -37,3 +37,6 @@ build/Release
 
 # Java
 target
+
+# Linux
+.directory

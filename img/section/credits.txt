@@ -1,0 +1,7 @@
+Fichier, Titre, Auteur, Source, Licence
+manometer.jpg, Manometer, Herr Olsen, https://www.flickr.com/photos/herrolsen/14581865280/, Creative Commons Attribution-NonCommercial 2.0 Generic
+palmenhaus-structure.jpg, Palmenhaus structure - Vienna, Shemsu.Hor, https://www.flickr.com/photos/shemsu_hor/32969715572/, Creative Commons Attribution-NoDerivs 2.0 Generic
+pipeline.jpg, Pipeline, Marko Monetti, https://www.flickr.com/photos/marcomonetti/7983215444/, Creative Commons Attribution-NonCommercial-ShareAlike 2.0 Generic
+playground.jpg, Playground, Tekke, https://www.flickr.com/photos/tekkebln/10405867444/, Creative Commons Attribution-NoDerivs 2.0 Generic
+
+

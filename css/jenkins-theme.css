@@ -1,0 +1,109 @@
+
+html.background-structure .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-image: url("../img/section/palmenhaus-structure.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: saturate(.3) brightness(.3);
+}
+
+.reveal h2 {
+    color: #f07d00;
+}
+
+.reveal li:before {
+    color: #fff;
+}
+
+html.background-contest .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-image: url("../img/jenkins/contest-TC-jenkins.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: saturate(.3) brightness(.8);
+}
+
+html.background-contest-victory .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-image: url("../img/jenkins/contest-jenkins-wins.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: saturate(.3) brightness(.8);
+}
+
+html.background-evil .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-image: url("../img/jenkins/contest-jenkins-evil.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: saturate(.9) brightness(.9  );
+}
+
+
+html.background-yoda .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-image: url("../img/section/yoda.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: saturate(.5) brightness(1);
+}
+
+html.background-demo .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-image: url("../img/section/playground.jpg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: saturate(.2) brightness(.3);
+}
+
+
+html.background-pipeline .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-image: url("../img/section/pipeline.jpg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: saturate(.2) brightness(.3);
+}
+
+
+html.background-pipeline-test .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-image: url("../img/section/manometer.jpg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: saturate(.2) brightness(.3);
+}
+
+html.background-jenkins .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-image: url("../img/jenkins/jenkins-alone.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: saturate(.5) brightness(.8);
+}
+
+.reveal .slides section.demo {
+    padding: 130px 0px;
+    background-image: url("../img/demo.png");
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: 0%;
+    background-size: 30%;
+}
+
+.reveal blockquote:before {
+    margin-right: 0.5em;
+}
+
+.reveal blockquote p {
+    color: #001F36;
+}
