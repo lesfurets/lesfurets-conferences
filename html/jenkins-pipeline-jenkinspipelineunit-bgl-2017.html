@@ -32,9 +32,9 @@
     <a href="https://www.lesfurets.com" target="_blank">
         <img class="logo" src="../img/logo_lesfurets_885x128_no_back.png">
     </a>
-    <a class="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a>
-    <a class="github" href="https://github.com/ozangunalp" target="_blank">https://github.com/ozangunalp</a>
-    <a class="github" href="https://github.com/equincerot" target="_blank">https://github.com/equincerot</a>
+    <a class="github" href="https://github.com/lesfurets/JenkinsPipelineUnit" target="_blank">https://github.com/lesfurets/JenkinsPipelineUnit</a>
+    <a class="github" href="mailto:ogu@lesfurets.com" target="_blank">ogu@lesfurets.com</a>
+    <a class="github" href="mailto:equ@lesfurets.com" target="_blank">equ@lesfurets.com</a>
     <a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a>
 </div>
 <div class="reveal">
@@ -94,7 +94,10 @@
         <section>
             <section data-state="background-contest">
                 <h2>Once upon a time...</h2>
-                <div style="float:left; width:40%; padding-left: 5%" class="flushleft">
+                <aside class="notes">Présenter Teamcity (Jetbrains),
+                    Jenkins (Cloudbees a créé Hudson. Cloudbees racheté par Oracle. Du coup fork opensource de Jenkins)
+                Cloudbees grand contributeur</aside>
+                <div style="float:left; width:40%; padding-left: 5%" class="flushleft fragment" data-fragment-index="1">
                     <p class="strong">Teamcity</p>
                     <ul>
                         <li>CI</li>
@@ -107,7 +110,7 @@
                         <!-- <li>Nightly</li> -->
                     </ul>
                 </div>
-                <div style="float:right;width: 40%;" class="flushleft">
+                <div style="float:right;width: 40%;" class="flushleft fragment" data-fragment-index="1">
                     <p class="strong">Jenkins</p>
                     <ul>
                         <li>Deployments</li>
@@ -116,7 +119,7 @@
                         <li>Data Batches</li>
                     </ul>
                 </div>
-                <div style="float:left;width:100%">
+                <div style="float:left;width:100%" class="fragment" data-fragment-index="2">
                     <p class="strong">Two systems: unnecessary complexity
                 </div>
             </section>
@@ -141,6 +144,10 @@
                         <mark>Deploy to Production</mark>
                     </li>
                 </ul>
+            </section>
+            <section>
+                <h2>Teamcity configuration</h2>
+                <img style="width: 100%" src="../img/jenkins/teamcity-config.png"/>
             </section>
             <section>
                 <h2>Our problem</h2>
@@ -233,6 +240,10 @@ node() {
                     <li>Agent allocation with <code>node</code></li>
                     <li>Extensible by new and existing plugins</li>
                 </ul>
+            </section>
+            <section>
+                <h2>Master and slaves</h2>
+                <img src="../img/jenkins/jenkins-slave-master.png">
             </section>
             <section>
                 <h2>Pipelines? Why?</h2>
