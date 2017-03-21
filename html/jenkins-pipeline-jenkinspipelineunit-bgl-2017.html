@@ -45,6 +45,10 @@
             <h2>& JenkinsPipelineUnit</h2>
             <p>Ozan GUNALP - Emmanuel QUINCEROT</p>
         </section>
+        <aside class="notes">
+            The goal of this presentation is to talk about our Continuous Delivery infrastructure,
+            the problems we encountered, and
+        </aside>
         <section>
             <section data-state="background-structure">
                 <h2>LesFurets - Team structure</h2>
@@ -60,7 +64,7 @@
                 <h2>Continuous delivery</h2>
                 <ul class="flushleft nodisc">
                     <li>200 releases a year</li>
-                    <li>About 30 branch validations every day</li>
+                    <li>30~ branch validations every day</li>
                     <li>15 deployments a day</li>
                 </ul>
                 <!--
@@ -79,6 +83,16 @@
                         25 en studies
                     => 29 sur la journée
                 -->
+            </section>
+            <section>
+                <h2>Continuous Merge</h2>
+                <p>Feature Branching + Continuous Integration</p>
+                <ul class="nodisc">
+                    <li>1 development = 1 branch</li>
+                    <li>Current developments = 1 merge branch</li>
+                    <li>1 release = 1 release branch</li>
+                </ul>
+                <!-- TODO -->
             </section>
             <section>
                 <h2>Our environments</h2>
@@ -144,6 +158,9 @@
                         <mark>Deploy to Production</mark>
                     </li>
                 </ul>
+                <aside class="notes">
+                    Don't complicate things on packaging ID, it is a identification of packaging.
+                </aside>
             </section>
             <section>
                 <h2>Teamcity configuration</h2>
@@ -270,11 +287,34 @@ node() {
             <section>
                 <!-- Things are not that simple -->
                 <!-- TODO angry jenkins image -->
-                <img style="width: 100%" src="../img/jenkins/pkg-pipeline.png">
-                <p>10 jobs</p>
-                <p>30+ environments</p>
-                <p>100 parallel developments</p>
-                <p class="strong">Lots of pitfalls</p>
+                <h2>Jobs, Lots of Jobs...</h2>
+                <ul class="nodisc center">
+                    <li>10 jobs</li>
+                    <li>30+ environments</li>
+                    <li>100 parallel developments</li>
+                </ul>
+              <br>
+              <br>
+              <br>
+              <br>
+                <img style="width: 90%" src="../img/jenkins/pkg-pipeline.png">
+            </section>
+            <section>
+                <h2>Pipelines are complex</h2>
+                <div style="display: flex;">
+                    <div style="width: 45%; padding-right: 10%">
+                        <img style="width: 60%" src="../img/jenkins/deploy_jenkins_trimmed.png">
+                    </div>
+                    <div style="width: 45%; margin-top: 5%">
+                        <p>Job Deploy</p>
+                        <ul class="nodisc flushleft">
+                            <li>14 files</li>
+                            <li>642 lines of code</li>
+                            <li>214 lines of comment</li>
+                        </ul>
+                    </div>
+                </div>
+                    <img style="width: 90%" src="../img/jenkins/pkg-pipeline.png">
             </section>
             <section>
                 <h2>You said it's Groovy?</h2>
@@ -544,7 +584,7 @@ void testNonRegression() throws Exception {
                 <div class="fragment flushleft"><h3>Cons:</h3>
                     <ul>
                         <li>Missing documentation</li>
-                        <li>Cost of taking in hand so early</li>
+                        <li>Cost of early adoption</li>
                         <li>Some traps and imperfections</li>
                     </ul>
                 </div>
