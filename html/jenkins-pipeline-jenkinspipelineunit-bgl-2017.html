@@ -201,9 +201,9 @@
                 </div>
             </section>
         </section>
-        <section data-state="background-why">
-            <section>
-                <h2>Why Jenkins?</h2>
+        <section>
+            <section data-state="background-why">
+                <h2 style="padding-bottom: 30%;">Why Jenkins?</h2>
             </section>
             <section>
                 <h2>Huge Open Source Community</h2>
@@ -468,13 +468,25 @@ Cannot cast object '2' with class 'java.lang.Long' to class 'java.util.List'
         <section>
             <section data-state="background-pipeline-test">
                 <h2>JenkinsPipelineUnit</h2>
-                <p>Opensource Framework by LesFurets.com</p>
-                <p>Pipeline code is versioned</p>
-                <p>But we want to check what will be executed as well</p>
-                <!-- Autrement dit, on veut la callstack -->
+                <p style="font-style: italic">pipeline-as-code</p>
+                <ul class="nodisc">
+                    <li>
+                        Cd pipelines are configured/described with code.
+                        <span class="strong green larger">&#10003;</span>
+                    </li>
+                    <li>
+                        Pipeline code is versioned in our code base.
+                        <span class="strong green larger">&#10003;</span>
+                    </li>
+                    <li class="fragment">
+                        Unit tests to check what will be executed.
+                        <span class="strong green larger">&#10003;</span>
+                    </li>
+                </ul>
+                <p class="strong orangeA700 fragment">Open Sourced by LesFurets.com</p>
             </section>
             <section class="center">
-                <h2>Example: the Job</h2>
+                <h2>Example Job</h2>
                 <div class="code-wrapper">
                     <pre><code class="code groovy" data-trim data-noescape>
 node() {
@@ -491,7 +503,7 @@ node() {
                 </div>
             </section>
             <section class="center demo">
-                <h2>Example: the Test</h2>
+                <h2>Unit Test</h2>
                 <div class="code-wrapper">
                     <pre><code class="code groovy" data-trim data-noescape>import com.lesfurets.jenkins.helpers.BasePipelineTest
 class TestJenkinsfile extends BaseRegressionTestCPS {
@@ -508,7 +520,7 @@ class TestJenkinsfile extends BaseRegressionTestCPS {
                 </div>
             </section>
             <section class="center">
-                <h2>Example: the mocks</h2>
+                <h2>Setup Mock Environment</h2>
                 <div class="code-wrapper">
                     <pre><code class="code groovy" data-trim data-noescape>
     @Override
@@ -525,14 +537,14 @@ class TestJenkinsfile extends BaseRegressionTestCPS {
                 submoduleCfg                     : [],
                 userRemoteConfigs                : [[ url          : "/var/git-repo" ]]
         ])
-        helper.registerAllowedMethod('git', [String.class], null)
+        helper.registerAllowedMethod('junit', [String.class], null)
     }
                     </code></pre>
                 </div>
             </section>
 
             <section class="center">
-                <h2>Example: the Callstack</h2>
+                <h2>Call Stack</h2>
                 <div class="code-wrapper">
                     <pre><code class="code groovy" data-trim data-noescape>
    Jenkinsfile.run()
@@ -547,7 +559,7 @@ class TestJenkinsfile extends BaseRegressionTestCPS {
                 </div>
             </section>
             <section class="center demo">
-                <h2>Example: the non-regression test</h2>
+                <h2>Non-regression Test</h2>
                 <div class="code-wrapper">
                     <pre><code class="code groovy" data-trim data-noescape>
 @Test
@@ -562,11 +574,13 @@ void testNonRegression() throws Exception {
 
             <section>
                 <h2>How does it work?</h2>
+                <p>Transforms and interprets Groovy code.</p>
+                <p>Intercepts method calls for stack tracing and mocking.</p>
             </section>
             <section>
-                <h2>JenkinsPipelineUnit features</h2>
+                <h2>JenkinsPipelineUnit</h2>
                 <ul class="flushleft">
-                    <li class="fragment">Mock your environment:
+                    <li class="fragment">Mock your environment
                         <ul style="padding-left: 5%">
                             <li>Jenkins steps</li>
                             <li>Job environment</li>
@@ -575,7 +589,7 @@ void testNonRegression() throws Exception {
                     <li class="fragment">See the callstacks</li>
                     <li class="fragment">Test your own functions</li>
                     <li class="fragment">Check for regressions</li>
-                    <li class="fragment">Easy integration with test frameweworks</li>
+                    <li class="fragment">Integrates with test frameworks like JUnit, TestNG, Spock</li>
                 </ul>
             </section>
         </section>
@@ -616,9 +630,21 @@ void testNonRegression() throws Exception {
             </section>
         </section>
         <section>
-            <section>
-                <h2 style="padding-bottom: 30%">Questions?</h2>
-                <a href="https://github.com/lesfurets/JenkinsPipelineUnit">https://github.com/lesfurets/JenkinsPipelineUnit</a>
+            <section class="flushleft" data-state="background-furets">
+                <h2>Questions?</h2>
+                <p>Emmanuel Quincerot</p>
+                <p>Ozan Gunalp</p>
+                <p class="flushright strong orangeA700">Open Source @ LesFurets<br/>
+                    <a href="https://github.com/lesfurets">
+                        https://github.com/lesfurets
+                    </a>
+                </p>
+
+                <p class="flushright strong orangeA700">JenkinsPipelineUnit<br/>
+                    <a href="https://github.com/lesfurets/JenkinsPipelineUnit">
+                        https://github.com/lesfurets/JenkinsPipelineUnit
+                    </a>
+                </p>
             </section>
         </section>
         <section>
