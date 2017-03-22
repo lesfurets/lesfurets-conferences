@@ -91,6 +91,15 @@ html.background-jenkins .reveal:not(.overview) .backgrounds {
     filter: saturate(.5) brightness(.8);
 }
 
+html.background-beach .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-image: url("../img/jenkins/beach-francois-herve.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: saturate(.5) brightness(.8);
+}
+
 .reveal .slides section.demo {
     padding: 130px 0px;
     background-image: url("../img/demo.png");
