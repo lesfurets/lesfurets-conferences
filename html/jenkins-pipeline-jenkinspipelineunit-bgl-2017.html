@@ -110,7 +110,8 @@
                 <h2>Once upon a time...</h2>
                 <aside class="notes">Présenter Teamcity (Jetbrains),
                     Jenkins (Cloudbees a créé Hudson. Cloudbees racheté par Oracle. Du coup fork opensource de Jenkins)
-                Cloudbees grand contributeur</aside>
+                    Cloudbees grand contributeur
+                </aside>
                 <div style="float:left; width:40%; padding-left: 5%" class="flushleft fragment" data-fragment-index="1">
                     <p class="strong">Teamcity</p>
                     <ul>
@@ -169,7 +170,8 @@
             <section>
                 <h2>Our problem</h2>
                 <aside class="notes">Teamcity 3 agents gratuits + 2 payés non maintenus. Max 40 jobs. Limite atteinte.
-                    Plus de maintenance pour de vieilles clés. => 2000€/an</aside>
+                    Plus de maintenance pour de vieilles clés. → 2000€/an
+                </aside>
                 <ul class="nodisc">
                     <li>Cost</li>
                     <li>Complexity</li>
@@ -221,26 +223,25 @@
         <section>
             <section data-state="background-pipeline" class="demo">
                 <h2>You said pipeline ?</h2>
-                <!-- TODO mettre l'image d'un pipeline simple-->
-                <img style="width: 100%" src="../img/jenkins/pkg-pipeline.png">
+                <img style="width: 30%" src="../img/jenkins/simple-pipeline.png">
             </section>
             <section>
                 <h2>How to declare a job?</h2>
                 <h3>Basic pipeline</h3>
-                <p>1 pipeline file = 1 job</p>
+                <p>1 pipeline file → 1 job</p>
                 <h3>Multibranch pipeline</h3>
-                <p>1 branch = 1 job defined in Jenkinsfile</p>
+                <p>1 branch → 1 job defined in Jenkinsfile</p>
                 <br>
-                <!-- TODO Inclut demo -->
                 <!-- TODO review -->
             </section>
             <section>
                 <h2>Groovy DSL</h2>
                 <ul class="nodisc">
                     <li>Organize pipeline into (<code>parallel</code>) <code>stage</code>s</li>
-                    <li>Call any step: <code>bat</code>, <code>sh</code>, <code>retry</code>, <code>timeout</code>...</li>
+                    <li>Call any step: <code>bat</code>, <code>sh</code>, <code>retry</code>, <code>timeout</code>...
+                    </li>
                     <li>Agent allocation with <code>node</code></li>
-                    <li>Extensible by new and existing plugins</li>
+                    <li>Extensible by new and existing plugins (e.g. <code>junit</code>)</li>
                 </ul>
             </section>
             <section>
@@ -292,10 +293,10 @@ node() {
                     <li>30+ environments</li>
                     <li>100 parallel developments</li>
                 </ul>
-              <br>
-              <br>
-              <br>
-              <br>
+                <br>
+                <br>
+                <br>
+                <br>
                 <img style="width: 90%" src="../img/jenkins/pkg-pipeline.png">
             </section>
             <section>
@@ -313,15 +314,15 @@ node() {
                         </ul>
                     </div>
                 </div>
-                    <img style="width: 90%" src="../img/jenkins/pkg-pipeline.png">
+                <img style="width: 90%" src="../img/jenkins/pkg-pipeline.png">
             </section>
             <section>
                 <h2>You said it's Groovy?</h2>
                 <img style="width: 50%" src="../img/jenkins/trump-lie.png">
-              <p class="strong">
-                <a href="https://twitter.com/hashtag/alternativefacts" target="_blank">#alternativefacts</a>
-              </p>
-              <!-- TODO -->
+                <p class="strong">
+                    <a href="https://twitter.com/hashtag/alternativefacts" target="_blank">#alternativefacts</a>
+                </p>
+                <!-- TODO -->
             </section>
             <section>
                 <h2>Continuation Passing Style</h2>
@@ -329,9 +330,9 @@ node() {
                     so that the execution can be paused any moment and restarted without cooperation
                     from the program being interpreted.</p></blockquote>
             </section>
-          <section>
-            <h2>Be Serializable or you're dead</h2>
-            <div class="code-wrapper">
+            <section>
+                <h2>Be Serializable or you're dead</h2>
+                <div class="code-wrapper">
                 <pre><code class="code groovy" data-trim data-noescape>
 import groovy.json.JsonSlurper
 
@@ -353,13 +354,13 @@ node() {
 </span>
 
             </code></pre>
-            </div>
-            <div class="code-wrapper fragment" data-fragment-index="2">
+                </div>
+                <div class="code-wrapper fragment" data-fragment-index="2">
                     <pre><code class="code groovy" data-trim data-noescape>
 java.io.NotSerializableException: java.util.TreeMap$Entry
             </code></pre>
-            </div>
-          </section>
+                </div>
+            </section>
             <section>
                 <h2>This is serializable</h2>
                 <div class="code-wrapper">
@@ -423,11 +424,12 @@ Cannot cast object '2' with class 'java.lang.Long' to class 'java.util.List'
             </section>
             <section>
                 <h2>Multibranch pipelines and workspaces</h2>
-                <p class="flushleft">First try:
-                <ul class="flushleft">
-                    <li>Clear workspace at the end of the job</li>
-                    <li>Shallow clone for some tasks</li>
-                </ul></p>
+                <div class="flushleft">First try:
+                    <ul class="flushleft">
+                        <li>Clear workspace at the end of the job</li>
+                        <li>Shallow clone for some tasks</li>
+                    </ul>
+                </div>
 
 
                 <div class="fragment">
@@ -614,10 +616,22 @@ void testNonRegression() throws Exception {
                 <h2>Conclusion</h2>
                 <div class="flushleft"><h3>Pros:</h3>
                     <ul>
-                        <li><mark>Flexibility</mark> Jobs and application evolve together</li>
-                        <li><mark>Safety</mark> Job changes are code-reviewable</li>
-                        <li><mark>Repeatability</mark> with the non regression tests</li>
-                        <li><mark>Reusability</mark> all environment deploy with the same code</li>
+                        <li>
+                            <mark>Flexibility</mark>
+                            Jobs and application evolve together
+                        </li>
+                        <li>
+                            <mark>Safety</mark>
+                            Job changes are code-reviewable
+                        </li>
+                        <li>
+                            <mark>Repeatability</mark>
+                            with the non regression tests
+                        </li>
+                        <li>
+                            <mark>Reusability</mark>
+                            all environment deploy with the same code
+                        </li>
                     </ul>
                 </div>
                 <div class="fragment flushleft"><h3>Cons:</h3>
@@ -646,7 +660,6 @@ void testNonRegression() throws Exception {
                     </a>
                 </p>
             </section>
-        </section>
         <section>
             <h2>Scripted vs. Declarative pipelines</h2>
 
@@ -691,6 +704,8 @@ pipeline {
             </code></pre>
                 </div>
             </div>
+        </section>
+        <section/>
         </section>
     </div>
 </div>
