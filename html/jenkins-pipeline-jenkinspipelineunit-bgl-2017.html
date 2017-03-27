@@ -384,36 +384,6 @@ node() {
                 </div>
             </section>
             <section>
-                <h2>NonCPS calling CPS</h2>
-                <div class="code-wrapper fragment" data-fragment-index="1">
-                <pre><code class="code groovy" data-trim data-noescape>
-node() {
-  stage('List') {
-    List&lt;Long&gt; list = createList()
-  }
-}
-<mark class="fragment" data-fragment-index="3">@NonCPS</mark>
-long getLong() {
-  return 2L
-}
-
-@NonCPS
-List&lt;Long&gt; createList() {
-  return [getLong()]
-}
-                </code></pre>
-                </div>
-
-                <div class="code-wrapper fragment" data-fragment-index="2">
-                    <pre><code class="code groovy" data-trim data-noescape>
-hudson.remoting.ProxyException:
-org.codehaus.groovy.runtime.typehandling.GroovyCastException:
-Cannot cast object '2' with class 'java.lang.Long' to class 'java.util.List'
-                    </code></pre>
-
-                </div>
-            </section>
-            <section>
                 <h2>Multibranch pipelines and workspaces</h2>
                 <ul class="nodisc">
                     <li class="fragment">One branch validated on many agents</li>
@@ -705,6 +675,36 @@ pipeline {
                 </div>
             </div>
         </section>
+          <section>
+            <h2>NonCPS calling CPS</h2>
+            <div class="code-wrapper fragment" data-fragment-index="1">
+                <pre><code class="code groovy" data-trim data-noescape>
+node() {
+  stage('List') {
+    List&lt;Long&gt; list = createList()
+  }
+}
+<mark class="fragment" data-fragment-index="3">@NonCPS</mark>
+long getLong() {
+  return 2L
+}
+
+@NonCPS
+List&lt;Long&gt; createList() {
+  return [getLong()]
+}
+                </code></pre>
+            </div>
+
+            <div class="code-wrapper fragment" data-fragment-index="2">
+                    <pre><code class="code groovy" data-trim data-noescape>
+hudson.remoting.ProxyException:
+org.codehaus.groovy.runtime.typehandling.GroovyCastException:
+Cannot cast object '2' with class 'java.lang.Long' to class 'java.util.List'
+                    </code></pre>
+
+            </div>
+          </section>
         <section/>
         </section>
     </div>
