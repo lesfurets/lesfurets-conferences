@@ -1,4 +1,4 @@
-package com.lesfurets.spark.junit5.rule;
+package com.lesfurets.spark.junit5.extension;
 
 import org.apache.spark.sql.SparkSession;
 import org.junit.jupiter.api.extension.ExtensionContext;

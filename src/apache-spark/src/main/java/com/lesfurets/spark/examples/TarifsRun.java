@@ -35,8 +35,7 @@ public class TarifsRun extends SparkRunner {
     public static Dataset<Row> averagePrime(Dataset<Row> tarifs) {
         Dataset<Row> averagePrime = tarifs
                 .filter((FilterFunction<Row>) value ->
-                        value.<String>getAs("assureur")
-                                .equals("Mon SUPER assureur"))
+                        value.<String>getAs("assureur").equals("Mon SUPER assureur"))
                 .groupBy("formule")
                 .agg(avg("prime").as("average"))
                 .withColumn("formuleReadable", callUDF("readableFormule", col("formule")))
