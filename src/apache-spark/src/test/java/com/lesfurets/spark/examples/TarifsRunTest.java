@@ -1,7 +1,6 @@
 package com.lesfurets.spark.examples;
 
 import com.lesfurets.spark.junit5.extension.SparkTest;
-import com.lesfurets.spark.junit5.rule.SparkTest;
 import org.apache.spark.api.java.function.ForeachFunction;
 import org.apache.spark.broadcast.Broadcast;
 import org.apache.spark.sql.Dataset;
