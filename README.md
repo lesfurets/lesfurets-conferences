@@ -185,6 +185,9 @@ Software craftmanship
 Ingénieur docteur avec 5+ ans d'expérience dans les systèmes distribués, l'Internet des objets et les processus de développement logiciels.
 Chez LesFurets.com je m'intéresse à l'amélioration de la qualité et du pipeline de livraison de logiciel.
 
+Ozan has a PhD in Computer Science, with over 5 years of experience in distributed systems, Internet of Things and software development processes. 
+He joined LesFurets.com more than a year ago and he is interested in improving the quality and software delivery pipeline.
+
 ## Vidéos
 
 - BreizhCamp - Rennes - Continuous delivery : https://www.youtube.com/watch?v=ayvVYc01iEk
