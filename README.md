@@ -100,6 +100,14 @@ La programmation réactive propose une approche différente pour aborder ces pro
 Dans cette présentation, nous comparons différents patterns pour appliquer une programmation réactive sur un composant critique de notre architecture.
 Nous donnons des exemples de différentes API telles que RxJava2, Reactive Streams (Java 9 Flow) et CompletableFutures pour implémenter une orchestration de services tout en garantissant la qualité de services pour les utilisateurs.
 
+**From Legacy to Reactive** : 
+When you search for insurance on LesFurets.com, we invoke up to 40 partners to present the best offers to our customers. 
+To collect these offers, we use programming patterns based on locks, threads, and in-memory queues to orchestrate services within the Java platform. 
+Although mature, these constructs are of very low level and are subject to many errors: They lack suitable abstractions to help implement policies for resource optimization, resilience and performance.
+Reactive programming offers an alternative approach for addressing concurrency issues by allowing developers to describe operations on data streams. 
+In this presentation, we discuss how we transformed a legacy module of our code base, the service orchestrator, into a reactive component using Reactive Extensions for Java (RxJava). 
+We explore various possibilities this reactivity provides us, such as responding to surging requests and optimizing resources, while we continue to guarantee the quality of service for our users.
+
 <!--
 Server-side concurrency is a must in order to achieve acceptable response times for tasks orchestrating external services.
 Traditionally Java deals with concurrency via threads, queues and locks. 
