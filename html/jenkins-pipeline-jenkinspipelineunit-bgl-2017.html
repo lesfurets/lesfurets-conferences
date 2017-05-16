@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Jenkins by LesFurets.com</title>
+    <title>Continuous Delivery with Jenkins</title>
     <meta name="description" content="Jenkins by LesFurets.com">
     <meta name="author" content="Ozan Günalp">
     <meta name="author" content="Emmanuel Quincerot">
@@ -32,19 +32,23 @@
     <a href="https://www.lesfurets.com" target="_blank">
         <img class="logo" src="../img/logo_lesfurets_885x128_no_back.png">
     </a>
-    <a class="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a>
-    <a class="github" href="https://github.com/ozangunalp" target="_blank">https://github.com/ozangunalp</a>
-    <a class="github" href="https://github.com/equincerot" target="_blank">https://github.com/equincerot</a>
+    <a class="github" href="https://github.com/lesfurets/JenkinsPipelineUnit" target="_blank">https://github.com/lesfurets/JenkinsPipelineUnit</a>
+    <a class="github" href="mailto:ogu@lesfurets.com" target="_blank">ogu@lesfurets.com</a>
+    <a class="github" href="mailto:equ@lesfurets.com" target="_blank">equ@lesfurets.com</a>
     <a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a>
 </div>
 <div class="reveal">
     <div class="slides">
         <section class="flushright" data-state="background-furets">
-            <h1>Jenkins by LesFurets.com</h1>
+            <h1>Continuous Delivery with Jenkins</h1>
             <h2>Our experience</h2>
             <h2>& JenkinsPipelineUnit</h2>
             <p>Ozan GUNALP - Emmanuel QUINCEROT</p>
         </section>
+        <aside class="notes">
+            The goal of this presentation is to talk about our Continuous Delivery infrastructure,
+            the problems we encountered, and
+        </aside>
         <section>
             <section data-state="background-structure">
                 <h2>LesFurets - Team structure</h2>
@@ -60,7 +64,7 @@
                 <h2>Continuous delivery</h2>
                 <ul class="flushleft nodisc">
                     <li>200 releases a year</li>
-                    <li>About 30 branch validations every day</li>
+                    <li>30~ branch validations every day</li>
                     <li>15 deployments a day</li>
                 </ul>
                 <!--
@@ -81,6 +85,16 @@
                 -->
             </section>
             <section>
+                <h2>Continuous Merge</h2>
+                <p>Feature Branching + Continuous Integration</p>
+                <ul class="nodisc">
+                    <li>1 development = 1 branch</li>
+                    <li>Staging developments = 1 merge branch</li>
+                    <li>1 release = 1 release branch</li>
+                </ul>
+                <!-- TODO -->
+            </section>
+            <section>
                 <h2>Our environments</h2>
                 <ul class="nodisc flushleft">
                     <li>Dev</li>
@@ -94,7 +108,11 @@
         <section>
             <section data-state="background-contest">
                 <h2>Once upon a time...</h2>
-                <div style="float:left; width:40%; padding-left: 5%" class="flushleft">
+                <aside class="notes">Présenter Teamcity (Jetbrains),
+                    Jenkins (Cloudbees a créé Hudson. Cloudbees racheté par Oracle. Du coup fork opensource de Jenkins)
+                    Cloudbees grand contributeur
+                </aside>
+                <div style="float:left; width:40%; padding-left: 5%" class="flushleft fragment" data-fragment-index="1">
                     <p class="strong">Teamcity</p>
                     <ul>
                         <li>CI</li>
@@ -107,7 +125,7 @@
                         <!-- <li>Nightly</li> -->
                     </ul>
                 </div>
-                <div style="float:right;width: 40%;" class="flushleft">
+                <div style="float:right;width: 40%;" class="flushleft fragment" data-fragment-index="1">
                     <p class="strong">Jenkins</p>
                     <ul>
                         <li>Deployments</li>
@@ -116,7 +134,7 @@
                         <li>Data Batches</li>
                     </ul>
                 </div>
-                <div style="float:left;width:100%">
+                <div style="float:left;width:100%" class="fragment" data-fragment-index="2">
                     <p class="strong">Two systems: unnecessary complexity
                 </div>
             </section>
@@ -141,9 +159,19 @@
                         <mark>Deploy to Production</mark>
                     </li>
                 </ul>
+                <aside class="notes">
+                    Don't complicate things on packaging ID, it is a identification of packaging.
+                </aside>
+            </section>
+            <section>
+                <h2>Teamcity configuration</h2>
+                <img style="width: 100%" src="../img/jenkins/teamcity-config.png"/>
             </section>
             <section>
                 <h2>Our problem</h2>
+                <aside class="notes">Teamcity 3 agents gratuits + 2 payés non maintenus. Max 40 jobs. Limite atteinte.
+                    Plus de maintenance pour de vieilles clés. → 2000€/an
+                </aside>
                 <ul class="nodisc">
                     <li>Cost</li>
                     <li>Complexity</li>
@@ -152,7 +180,7 @@
             </section>
             <section data-state="background-jenkins">
                 <h2>Now in 2017</h2>
-                <p>Jenkins 2 only!</p>
+                <p>Jenkins only!</p>
                 <div style="display: flex; padding-left: 10%">
                     <div style="float:left;width:45%;" class="flushleft">
                         <ul>
@@ -175,9 +203,9 @@
                 </div>
             </section>
         </section>
-        <section data-state="background-why">
-            <section>
-                <h2>Why Jenkins 2?</h2>
+        <section>
+            <section data-state="background-why">
+                <h2 style="padding-bottom: 30%;">Why Jenkins?</h2>
             </section>
             <section>
                 <h2>Huge Open Source Community</h2>
@@ -190,6 +218,31 @@
                 <p>Code your Continuous Delivery pipeline</p>
                 <p>Check-in to your code base</p>
                 <p>Spoiler Alert : Test it!</p>
+            </section>
+        </section>
+        <section>
+            <section data-state="background-pipeline" class="demo">
+                <h2>You said pipeline ?</h2>
+                <img style="width: 30%" src="../img/jenkins/simple-pipeline.png">
+            </section>
+            <section>
+                <h2>How to declare a job?</h2>
+                <h3>Basic pipeline</h3>
+                <p>1 pipeline file → 1 job</p>
+                <h3>Multibranch pipeline</h3>
+                <p>1 branch → 1 job defined in Jenkinsfile</p>
+                <br>
+                <!-- TODO review -->
+            </section>
+            <section>
+                <h2>Groovy DSL</h2>
+                <ul class="nodisc">
+                    <li>Organize pipeline into (<code>parallel</code>) <code>stage</code>s</li>
+                    <li>Call any step: <code>bat</code>, <code>sh</code>, <code>retry</code>, <code>timeout</code>...
+                    </li>
+                    <li>Agent allocation with <code>node</code></li>
+                    <li>Extensible by new and existing plugins (e.g. <code>junit</code>)</li>
+                </ul>
             </section>
             <section>
                 <h2>Groovy-based DSL</h2>
@@ -208,31 +261,9 @@ node() {
             </code></pre>
                 </div>
             </section>
-        </section>
-        <section>
-            <section data-state="background-pipeline">
-                <h2>You said pipeline ?</h2>
-                <!-- TODO mettre l'image d'un pipeline simple-->
-                <img style="width: 100%" src="../img/jenkins/pkg-pipeline.png">
-            </section>
-            <section class="demo">
-                <h2>How to declare a job?</h2>
-                <h3>Basic pipeline</h3>
-                <p>1 pipeline file = 1 job</p>
-                <h3>Multibranch pipeline</h3>
-                <p>1 branch = 1 job defined in Jenkinsfile</p>
-                <br>
-                <!-- TODO Inclut demo -->
-                <!-- TODO review -->
-            </section>
             <section>
-                <h2>Groovy DSL</h2>
-                <ul class="nodisc">
-                    <li>Organize pipeline into (<code>parallel</code>) <code>stage</code>s</li>
-                    <li>Call any step: <code>bat</code>, <code>sh</code>, <code>retry</code>, <code>timeout</code>...</li>
-                    <li>Agent allocation with <code>node</code></li>
-                    <li>Extensible by new and existing plugins</li>
-                </ul>
+                <h2>Master and slaves</h2>
+                <img src="../img/jenkins/jenkins-slave-master.png">
             </section>
             <section>
                 <h2>Pipelines? Why?</h2>
@@ -241,13 +272,12 @@ node() {
                     <li>Version your pipeline code in VCS</li>
                     <li>No damage caused by accidental click</li>
                     <li>Steps parallelization</li>
-                    <li>Let developers maintain their jobs</li>
+                    <li>Let developers maintain their Jenkins jobs</li>
                     <li>Better UX</li>
                 </ul>
             </section>
-            <section>
-                <!-- TODO funny image-->
-                <blockquote><p>... and they lived happily ever after</p></blockquote>
+            <section data-state="background-beach">
+                <blockquote style="margin-bottom:50%;"><p>... and they lived happily ever after</p></blockquote>
             </section>
         </section>
         <section>
@@ -257,19 +287,42 @@ node() {
             <section>
                 <!-- Things are not that simple -->
                 <!-- TODO angry jenkins image -->
-                <img style="width: 100%" src="../img/jenkins/pkg-pipeline.png">
-                <p>10 jobs</p>
-                <p>30+ environments</p>
-                <p>100 parallel developments</p>
-                <p class="strong">Lots of pitfalls</p>
+                <h2>Jobs, Lots of Jobs...</h2>
+                <ul class="nodisc center">
+                    <li>10 jobs</li>
+                    <li>30+ environments</li>
+                    <li>100 parallel developments</li>
+                </ul>
+                <br>
+                <br>
+                <br>
+                <br>
+                <img style="width: 90%" src="../img/jenkins/pkg-pipeline.png">
+            </section>
+            <section>
+                <h2>Pipelines are complex</h2>
+                <div style="display: flex;">
+                    <div style="width: 45%; padding-right: 10%">
+                        <img style="width: 60%" src="../img/jenkins/deploy_jenkins_trimmed.png">
+                    </div>
+                    <div style="width: 45%; margin-top: 5%">
+                        <p>Job Deploy</p>
+                        <ul class="nodisc flushleft">
+                            <li>14 files</li>
+                            <li>642 lines of code</li>
+                            <li>214 lines of comment</li>
+                        </ul>
+                    </div>
+                </div>
+                <img style="width: 90%" src="../img/jenkins/pkg-pipeline.png">
             </section>
             <section>
                 <h2>You said it's Groovy?</h2>
                 <img style="width: 50%" src="../img/jenkins/trump-lie.png">
-              <p class="strong">
-                <a href="https://twitter.com/hashtag/alternativefacts" target="_blank">#alternativefacts</a>
-              </p>
-              <!-- TODO -->
+                <p class="strong">
+                    <a href="https://twitter.com/hashtag/alternativefacts" target="_blank">#alternativefacts</a>
+                </p>
+                <!-- TODO -->
             </section>
             <section>
                 <h2>Continuation Passing Style</h2>
@@ -277,14 +330,21 @@ node() {
                     so that the execution can be paused any moment and restarted without cooperation
                     from the program being interpreted.</p></blockquote>
             </section>
-          <section>
-            <h2>Be Serializable or you're dead</h2>
-            <div class="code-wrapper">
-                <pre><code class="code groovy" data-trim data-noescape><span class="fragment">import groovy.json.JsonSlurper
+            <section>
+                <h2>Be Serializable or you're dead</h2>
+                <div class="code-wrapper">
+                <pre><code class="code groovy" data-trim data-noescape>
+import groovy.json.JsonSlurper
+
+@NonCPS
+def parseJson() {
+    return new JsonSlurper().parseText('{"aaa":3}')
+}
+                    <span class="fragment" data-fragment-index="1">
 node() {
     def a
     stage('List') {
-        for (def item : parseJson()) {
+        for (<span class="fragment highlight-code" data-fragment-index="3">def item</span> : parseJson()) {
             a = item
         }
     }
@@ -292,46 +352,35 @@ node() {
     stage('print') { echo a }
 }
 </span>
-@NonCPS
-Map parseJson() {
-    return new JsonSlurper().parseText('{"aaa":3}')
-}
+
             </code></pre>
-            </div>
-            <div class="code-wrapper fragment">
+                </div>
+                <div class="code-wrapper fragment" data-fragment-index="2">
                     <pre><code class="code groovy" data-trim data-noescape>
 java.io.NotSerializableException: java.util.TreeMap$Entry
             </code></pre>
-            </div>
-          </section>
+                </div>
+            </section>
             <section>
-                <h2>NonCPS calling CPS</h2>
-                <div class="code-wrapper fragment" data-fragment-index="1">
+                <h2>This is serializable</h2>
+                <div class="code-wrapper">
                 <pre><code class="code groovy" data-trim data-noescape>
-node() {
-  stage('List') {
-    List&lt;Long&gt; list = createList()
-  }
-}
-<mark class="fragment" data-fragment-index="3">@NonCPS</mark>
-long getLong() {
-  return 2L
-}
+import groovy.json.JsonSlurper
 
 @NonCPS
-List&lt;Long&gt; createList() {
-  return [getLong()]
+def parseJson(String fieldName) {
+    return new JsonSlurper().parseText('{"aaa":3}')?."$fieldName"
 }
-                </code></pre>
-                </div>
 
-                <div class="code-wrapper fragment" data-fragment-index="2">
-                    <pre><code class="code groovy" data-trim data-noescape>
-hudson.remoting.ProxyException:
-org.codehaus.groovy.runtime.typehandling.GroovyCastException:
-Cannot cast object '2' with class 'java.lang.Long' to class 'java.util.List'
-                    </code></pre>
+node() {
+    String output
+    stage('List') {
+        output = parseJson('aaa')
+    }
 
+    stage('print') { echo output }
+}
+            </code></pre>
                 </div>
             </section>
             <section>
@@ -345,11 +394,12 @@ Cannot cast object '2' with class 'java.lang.Long' to class 'java.util.List'
             </section>
             <section>
                 <h2>Multibranch pipelines and workspaces</h2>
-                <p class="flushleft">First try:
-                <ul class="flushleft">
-                    <li>Clear workspace at the end of the job</li>
-                    <li>Shallow clone for some tasks</li>
-                </ul></p>
+                <div class="flushleft">First try:
+                    <ul class="flushleft">
+                        <li>Clear workspace at the end of the job</li>
+                        <li>Shallow clone for some tasks</li>
+                    </ul>
+                </div>
 
 
                 <div class="fragment">
@@ -379,7 +429,7 @@ Cannot cast object '2' with class 'java.lang.Long' to class 'java.util.List'
                 </ul>
             </section>
             <section>
-                <h2>There is still risks</h2>
+                <h2>There are still risks</h2>
                 <p class="fragment">The same code for many environments.</p>
                 <p class="fragment">One change can cause regression.</p>
                 <blockquote class="fragment"><p>Oops! The load test is triggered after deploying the production!</p>
@@ -390,12 +440,25 @@ Cannot cast object '2' with class 'java.lang.Long' to class 'java.util.List'
         <section>
             <section data-state="background-pipeline-test">
                 <h2>JenkinsPipelineUnit</h2>
-                <p>Pipeline code is versioned</p>
-                <p>But we want to check what will be executed as well</p>
-                <!-- Autrement dit, on veut la callstack -->
+                <p style="font-style: italic">pipeline-as-code</p>
+                <ul class="nodisc">
+                    <li>
+                        Cd pipelines are configured/described with code.
+                        <span class="strong green larger">&#10003;</span>
+                    </li>
+                    <li>
+                        Pipeline code is versioned in our code base.
+                        <span class="strong green larger">&#10003;</span>
+                    </li>
+                    <li class="fragment">
+                        Unit tests to check what will be executed.
+                        <span class="strong green larger">&#10003;</span>
+                    </li>
+                </ul>
+                <p class="strong orangeA700 fragment">Open Sourced by LesFurets.com</p>
             </section>
             <section class="center">
-                <h2>Example: the Job</h2>
+                <h2>Example Job</h2>
                 <div class="code-wrapper">
                     <pre><code class="code groovy" data-trim data-noescape>
 node() {
@@ -412,7 +475,7 @@ node() {
                 </div>
             </section>
             <section class="center demo">
-                <h2>Example: the Test</h2>
+                <h2>Unit Test</h2>
                 <div class="code-wrapper">
                     <pre><code class="code groovy" data-trim data-noescape>import com.lesfurets.jenkins.helpers.BasePipelineTest
 class TestJenkinsfile extends BaseRegressionTestCPS {
@@ -429,7 +492,7 @@ class TestJenkinsfile extends BaseRegressionTestCPS {
                 </div>
             </section>
             <section class="center">
-                <h2>Example: the mocks</h2>
+                <h2>Setup Mock Environment</h2>
                 <div class="code-wrapper">
                     <pre><code class="code groovy" data-trim data-noescape>
     @Override
@@ -446,14 +509,14 @@ class TestJenkinsfile extends BaseRegressionTestCPS {
                 submoduleCfg                     : [],
                 userRemoteConfigs                : [[ url          : "/var/git-repo" ]]
         ])
-        helper.registerAllowedMethod('git', [String.class], null)
+        helper.registerAllowedMethod('junit', [String.class], null)
     }
                     </code></pre>
                 </div>
             </section>
 
             <section class="center">
-                <h2>Example: the Callstack</h2>
+                <h2>Call Stack</h2>
                 <div class="code-wrapper">
                     <pre><code class="code groovy" data-trim data-noescape>
    Jenkinsfile.run()
@@ -468,7 +531,7 @@ class TestJenkinsfile extends BaseRegressionTestCPS {
                 </div>
             </section>
             <section class="center demo">
-                <h2>Example: the non-regression test</h2>
+                <h2>Non-regression Test</h2>
                 <div class="code-wrapper">
                     <pre><code class="code groovy" data-trim data-noescape>
 @Test
@@ -483,11 +546,13 @@ void testNonRegression() throws Exception {
 
             <section>
                 <h2>How does it work?</h2>
+                <p>Transforms and interprets Groovy code as in Jenkins</p>
+                <p>Intercepts method calls for stack tracing and mocking</p>
             </section>
             <section>
-                <h2>JenkinsPipelineUnit features</h2>
+                <h2>JenkinsPipelineUnit</h2>
                 <ul class="flushleft">
-                    <li class="fragment">Mock your environment:
+                    <li class="fragment">Mock your environment
                         <ul style="padding-left: 5%">
                             <li>Jenkins steps</li>
                             <li>Job environment</li>
@@ -496,7 +561,7 @@ void testNonRegression() throws Exception {
                     <li class="fragment">See the callstacks</li>
                     <li class="fragment">Test your own functions</li>
                     <li class="fragment">Check for regressions</li>
-                    <li class="fragment">Easy integration with test frameweworks</li>
+                    <li class="fragment">Integrates with test frameworks like JUnit, TestNG, Spock</li>
                 </ul>
             </section>
         </section>
@@ -513,7 +578,7 @@ void testNonRegression() throws Exception {
                     <ul>
                         <li>More feedback (slack)</li>
                         <li>Better error management</li>
-                        <li>More automatisation</li>
+                        <li>More automation</li>
                     </ul>
                 </div>
             </section>
@@ -521,27 +586,50 @@ void testNonRegression() throws Exception {
                 <h2>Conclusion</h2>
                 <div class="flushleft"><h3>Pros:</h3>
                     <ul>
-                        <li><mark>Flexibility</mark> Jobs and application evolve together</li>
-                        <li><mark>Safety</mark> Job changes are code-reviewable</li>
-                        <li><mark>Repeatability</mark> with the non regression tests</li>
-                        <li><mark>Mutualization</mark> all environment deploy with the same code</li>
+                        <li>
+                            <mark>Flexibility</mark>
+                            Jobs and application evolve together
+                        </li>
+                        <li>
+                            <mark>Safety</mark>
+                            Job changes are code-reviewable
+                        </li>
+                        <li>
+                            <mark>Repeatability</mark>
+                            with the non regression tests
+                        </li>
+                        <li>
+                            <mark>Reusability</mark>
+                            all environment deploy with the same code
+                        </li>
                     </ul>
                 </div>
                 <div class="fragment flushleft"><h3>Cons:</h3>
                     <ul>
                         <li>Missing documentation</li>
-                        <li>Cost of taking in hand so early</li>
+                        <li>Cost of early adoption</li>
                         <li>Some traps and imperfections</li>
                     </ul>
                 </div>
             </section>
         </section>
         <section>
-            <section>
-                <h2 style="padding-bottom: 30%">Questions?</h2>
-                <a href="https://github.com/lesfurets/JenkinsPipelineUnit">https://github.com/lesfurets/JenkinsPipelineUnit</a>
+            <section class="flushleft" data-state="background-furets">
+                <h2>Questions?</h2>
+                <p>Emmanuel Quincerot</p>
+                <p>Ozan Gunalp</p>
+                <p class="flushright strong orangeA700">Open Source @ LesFurets<br/>
+                    <a href="https://github.com/lesfurets">
+                        https://github.com/lesfurets
+                    </a>
+                </p>
+
+                <p class="flushright strong orangeA700">JenkinsPipelineUnit<br/>
+                    <a href="https://github.com/lesfurets/JenkinsPipelineUnit">
+                        https://github.com/lesfurets/JenkinsPipelineUnit
+                    </a>
+                </p>
             </section>
-        </section>
         <section>
             <h2>Scripted vs. Declarative pipelines</h2>
 
@@ -586,6 +674,38 @@ pipeline {
             </code></pre>
                 </div>
             </div>
+        </section>
+          <section>
+            <h2>NonCPS calling CPS</h2>
+            <div class="code-wrapper fragment" data-fragment-index="1">
+                <pre><code class="code groovy" data-trim data-noescape>
+node() {
+  stage('List') {
+    List&lt;Long&gt; list = createList()
+  }
+}
+<mark class="fragment" data-fragment-index="3">@NonCPS</mark>
+long getLong() {
+  return 2L
+}
+
+@NonCPS
+List&lt;Long&gt; createList() {
+  return [getLong()]
+}
+                </code></pre>
+            </div>
+
+            <div class="code-wrapper fragment" data-fragment-index="2">
+                    <pre><code class="code groovy" data-trim data-noescape>
+hudson.remoting.ProxyException:
+org.codehaus.groovy.runtime.typehandling.GroovyCastException:
+Cannot cast object '2' with class 'java.lang.Long' to class 'java.util.List'
+                    </code></pre>
+
+            </div>
+          </section>
+        <section/>
         </section>
     </div>
 </div>

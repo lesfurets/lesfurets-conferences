@@ -16,6 +16,10 @@ html.background-structure .reveal:not(.overview) .backgrounds {
     color: #fff;
 }
 
+.green {
+    color: green;
+}
+
 html.background-contest .reveal:not(.overview) .backgrounds {
     background-color: #222;
     background-image: url("../img/jenkins/contest-TC-jenkins.png");
@@ -47,7 +51,7 @@ html.background-evil .reveal:not(.overview) .backgrounds {
 html.background-yoda .reveal:not(.overview) .backgrounds {
     background-color: #222;
     background-image: url("../img/section/yoda.png");
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     filter: saturate(.5) brightness(1);
@@ -66,7 +70,7 @@ html.background-demo .reveal:not(.overview) .backgrounds {
 html.background-pipeline .reveal:not(.overview) .backgrounds {
     background-color: #222;
     background-image: url("../img/section/pipeline.jpg");
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     filter: saturate(.2) brightness(.3);
@@ -76,7 +80,7 @@ html.background-pipeline .reveal:not(.overview) .backgrounds {
 html.background-pipeline-test .reveal:not(.overview) .backgrounds {
     background-color: #222;
     background-image: url("../img/section/manometer.jpg");
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     filter: saturate(.2) brightness(.3);
@@ -85,7 +89,25 @@ html.background-pipeline-test .reveal:not(.overview) .backgrounds {
 html.background-jenkins .reveal:not(.overview) .backgrounds {
     background-color: #222;
     background-image: url("../img/jenkins/jenkins-alone.png");
-    background-size: contain;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: saturate(.5) brightness(.8);
+}
+
+html.background-beach .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-image: url("../img/jenkins/beach-francois-herve.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: saturate(.5) brightness(.8);
+}
+
+html.background-why .reveal:not(.overview) .backgrounds {
+    background-color: #222;
+    background-image: url("../img/jenkins/jenkins-alone-center.png");
+    background-size: 15%;
     background-position: center;
     background-repeat: no-repeat;
     filter: saturate(.5) brightness(.8);
@@ -106,4 +128,12 @@ html.background-jenkins .reveal:not(.overview) .backgrounds {
 
 .reveal blockquote p {
     color: #001F36;
+}
+
+.reveal .slides section .fragment.highlight-code.visible {
+    background-color: darkred;
+}
+.reveal .slides section .fragment.highlight-code {
+    opacity: 1;
+    visibility: visible;
 }
