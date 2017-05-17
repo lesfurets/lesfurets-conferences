@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>How to write clean code with your Data Access Objects</title>
+    <meta name="description" content="JOOQ et JOOλ : Comment écrire du code propre dans vos DAO">
+    <meta name="author" content="Mathieu Gandin">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../bower_components/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="../bower_components/reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="../css/lesfurets-theme.css" id="theme">
+    <link rel="stylesheet" href="../css/code-jooq-theme.css" id="theme">
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = '../css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+    <!--[if lt IE 9]>
+    <script src="../bower_components/reveal.js/lib/js/html5shiv.js"></script><![endif]-->
+</head>
+<body>
+<div id="footer" class="footer show">
+    <a href="https://www.lesfurets.com" target="_blank"><img class="logo"
+                                                             src="../img/logo_lesfurets_885x128_no_back.png"></a><a
+        class="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a><a
+        class="github" href="https://github.com/mgandin" target="_blank">https://github.com/mgandin</a><a
+        class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a><a class="twitter"
+                                                                                                      href="https://twitter.com/m_gandin"
+                                                                                                      target="_blank">@m_gandin</a>
+</div>
+<div class="reveal">
+    <div class="slides">
+        <!-- START -->
+
+        <section class="flushright" data-background="../img/nwx/lesfurets-background-black-01.jpg">
+            <h1>JOOQ et JOOλ :</h1>
+            <h2>Comment écrire du code propre dans vos DAO</h2>
+            <h3>Mathieu Gandin</h3>
+            <h4>Tech lead @LesFurets.com</h4>
+            <ul class="flushright nodisc">
+                <li>
+                    <a style="color:white" href="https://twitter.com/m_gandin">https://twitter.com/m_gandin</a>
+                </li>
+                <li>
+                    <a style="color:white" href="https://github.com/mgandin">https://github.com/mgandin</a>
+                </li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Problèmes</h2>
+            <ul class="white">
+                <li>En 2017, SQL est toujours présent dans le code des DAO</li>
+                <li>Le mapping objet-relationnel en Java est toujours la combination de deux concepts</li>
+                <li>Comment éviter d'écrire du code spaghetti dans les DAO ?</li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Contexte @lesfurets.com</h2>
+            <ul class="white">
+                <li>Migration de "tout MySQL" à "Cassandra et un peu de MySQL"</li>
+                <li>Framework maison en JDBC</li>
+                <li>Le code existant doit rester proche du SQL</li>
+                <li>Le code existant doit être refactoré dans un style moins spaghetti</li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Java ne manque pas de solutions à ces problèmes</h2>
+            <ul class="white">
+                <li>JDBC</li>
+                <li>JPA / Hibernate</li>
+                <li>JDBC Template</li>
+                <li>MyBatis, framework maison, ...</li>
+                <li><em>Essayons Java Object Oriented Query a.k.a JOOQ</em></li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Live demo</h2>
+            <img src="../img/bettercallsaul.gif" width="750" height="423">
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Comment simplifier le mapping ? Essayons Spring JDBC Template</h2>
+            <div class="badge code"></div>
+            <div class="code-wrapper">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+@Autowired
+public InsuranceParamRepository(DataSource dataSource) {
+  this.jdbcTemplate = new JdbcTemplate(dataSource);
+}
+
+public List&lt;Provider&gt; findProvidersBy(String agencyId) {
+  return jdbcTemplate.query(FIND_PROVIDER_BY_AGENCY_ID,
+    new Object[] { agencyId },
+    (resultSet, i) -> new Provider(resultSet.getString("CODE"),
+                                    resultSet.getString("NAME"),
+                                    resultSet.getString("COUNTRY")));
+}
+            </code>
+            </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Mapping simplifié avec Spring JDBC Template</h2>
+            <ul class="white">
+                <li>Encapsule de nombreux comportements de JDBC</li>
+                <li>Mais le mapping est toujours problématique</li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Si vous vous rappelez de ce code ?</h2>
+            <div class="badge code"></div>
+            <div class="code-wrapper">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+return DSL.using(connection)
+  .select(YEAR_RESULT.DEPARTEMENT,
+            YEAR_RESULT.MANAGER,
+            YEAR_RESULT.NETPROFIT,
+            YEAR_RESULT.OPERATINGEXPENSE,
+            YEAR_RESULT.TURNOVER,
+            YEAR_RESULT.CREATION_DATE)
+  .from(YEAR_RESULT)
+  .where(YEAR_RESULT.DEPARTEMENT.eq(departement))
+  .orderBy(YEAR_RESULT.CREATION_DATE.asc())
+  .stream()
+  .map(r -> new YearReport(r.get(YEAR_RESULT.DEPARTEMENT),
+            r.get(YEAR_RESULT.MANAGER),
+            r.get(YEAR_RESULT.NETPROFIT),
+            r.get(YEAR_RESULT.OPERATINGEXPENSE),
+            r.get(YEAR_RESULT.TURNOVER),
+            r.get(YEAR_RESULT.CREATION_DATE, LocalDate.class)))
+  .collect(toList());
+            </code>
+        </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h3>Un "Extract Method" très simple peut rendre le code encore plus clair</h3>
+            <div class="badge correct"></div>
+            <div class="code-wrapper">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+return DSL.using(connection)
+    .select(YEAR_RESULT.DEPARTEMENT,...)
+    .from(YEAR_RESULT)
+    .where(YEAR_RESULT.DEPARTEMENT.eq(departement))
+    .orderBy(YEAR_RESULT.CREATION_DATE.asc())
+    .stream()
+    .map(this::map)
+    .collect(toList());
+            </code>
+            </pre>
+            </div>
+        </section>
+        <section class="flushleft" data-background="#333">
+          <h3>Un "Extract Method" très simple peut rendre le code encore plus clair</h3>
+          <div class="badge correct"></div>
+          <div class="code-wrapper">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+private YearReport map(Record r) {
+  return new YearReport(r.get(YEAR_RESULT.DEPARTEMENT),
+            r.get(YEAR_RESULT.MANAGER),
+            r.get(YEAR_RESULT.NETPROFIT),
+            r.get(YEAR_RESULT.OPERATINGEXPENSE),
+            r.get(YEAR_RESULT.TURNOVER),
+            r.get(YEAR_RESULT.CREATION_DATE, LocalDate.class));
+}
+            </code>
+            </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Et pourquoi pas un ORM avec JPA ?</h2>
+            <div class="badge code"></div>
+            <div class="code-wrapper">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+@Entity
+@Table(name = "marques")
+public class Marque {
+@Id
+private String code;
+private String name;
+private String logoUrl;
+@Transient
+private byte[] logo;
+@Transient
+private String logoName;
+@OneToMany(mappedBy = "marque", fetch = FetchType.EAGER)
+@Fetch(FetchMode.SELECT)
+private List&lt;Brochure&gt; brochures;
+            </code>
+            </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Et pourquoi pas un ORM avec JPA ?</h2>
+            <div class="badge code"></div>
+            <div class="code-wrapper smaller">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+public class MarqueDao {
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    public Marque findByCode(String code) {
+        try {
+            Query query = entityManager.createQuery("from Marque to where to.code=:code")
+                                        .setParameter("code", code);
+            return (Marque) query.getSingleResult();
+        } catch (Exception e) {
+            throw new ResourceNotFoundException(e);
+    }
+}
+            </code>
+            </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>ORM avec JPA, pros</h2>
+            <ul class="white">
+                <li>Approche POJO, orientée objet</li>
+                <li>Navigation dans une grappe d'object</li>
+                <li>CriteriaQuery</li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>ORM avec JPA, cons pour notre code</h2>
+            <ul class="white">
+                <li>Beaucoup de configuration pour faire le premier pas</li>
+                <li>JPA encourage une approche top-down, chez les furets.com on est plutôt sur une approche yoyo</li>
+                <li>Nous avons pas mal de requêtes SQL complexes, une base dénormalisée, ce qui rend plus complexe l'utilisation de JQL/HQL</li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Fortement typé et valide en SQL</h2>
+            <div class="badge correct"></div>
+            <div class="code-wrapper smaller">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+public Set&lt;Commission&gt; findCommissionsBy(Connection connection, ESite site, EModule module) throws SQLException {
+    return DSL.using(connection)
+                .selectDistinct(field(COL_REFMODULE),
+                    field(COL_REFCUSTOMER),
+                    field(COL_COMMISSION),
+                    field(COL_CREATIONDATETIME, LocalDateTime.class))
+                .from(new TableImpl&lt;&gt;(BO_PRICE_LIST.toString()))
+                .where(COL_REFCUSTOMER.eq(site.getIntValue()))
+                .and(COL_REFMODULE.eq(module.getIntValue()))
+                .orderBy(field(COL_CREATIONDATETIME).desc())
+                .stream()
+                .map(record -> new Commission(EModule.fromIntValue(record.get(COL_REFMODULE, Integer.class)),
+                    ESite.fromIntValue(record.get(COL_REFCUSTOMER, Integer.class)),
+                    ECommissionType.valueOf(record.get(COL_COMMISSION, String.class)),
+                    record.get(COL_CREATIONDATETIME, LocalDateTime.class)))
+                .collect(toSet());
+}
+            </code>
+            </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Fortement typé et valide en SQL</h2>
+            <div class="code-wrapper">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+SELECT distinct
+    COL_REFMODULE,
+    COL_REFCUSTOMER,
+    COL_COMMISSION,
+    COL_CREATIONDATETIME
+FROM BO_PRICE_LIST
+WHERE COL_REFCUSTOMER = 'amaguiz'
+AND COL_REFMODULE = 'auto'
+ORDER BY COL_CREATIONDATETIME
+DESC;
+            </code>
+            </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Et les dates ?</h2>
+            <div class="badge alert"></div>
+            <div class="code-wrapper">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+Date creationDate = resultSet.getDate("creation_date");
+LocalDateTime date = Instant.ofEpochMilli(creationDate.getTime())
+                                            .atZone(ZoneId.systemDefault())
+                                            .toLocalDateTime();
+            </code>
+            </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Et les dates ?</h2>
+            <div class="badge correct"></div>
+            <div class="code-wrapper">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+public List&lt;Tuple2&lt;LocalDateTime, String&gt;&gt; findPlate(Connection connection)
+    throws SQLException {
+  return DSL.using(connection)
+    .fetch(FIND_PLATE_AND_CREATION_DATE)
+    .stream()
+    .map(r -> {
+      String plate = r.getValue(PLATE, String.class);
+      LocalDateTime date = r.getValue(CREATION_DATE, LocalDateTime.class);
+      return new Tuple2<>(date, plate);
+    }).collect(toList());
+}
+            </code>
+            </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Nous utilisons aussi JOOλ avec JOOQ</h2>
+            <ul class="white">
+                <li>Classes Helper pour un style de code plus fonctionnel et déclaratif</li>
+                <li>De Function1 à Function16</li>
+                <li>De Tuple1 à Tuple16</li>
+                <li>Sequences</li>
+                <li>Unchecked Function, Supplier et Consumer</li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>De Tuple1 à Tuple16</h2>
+            <div class="code-wrapper">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+Tuple2&lt;LocalDate, String&gt; tuple =Tuple.tuple(now(), "Yolo");
+            </code>
+            </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Sequences</h2>
+            <div class="code-wrapper">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+Seq.of(1, 2, 3).concat(Seq.of(4, 5, 6)); // == Seq.of(1, 2, 3, 4, 5, 6);
+            </code>
+            </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Function, Supplier et Consumer en Java 8</h2>
+            <div class="badge alert"></div>
+            <div class="code-wrapper">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+Arrays.stream(dir.listFiles()).forEach(file -> {
+  try {
+    System.out.println(file.getCanonicalPath());
+  }
+  catch (IOException e) {
+    throw new RuntimeException(e);
+  }
+});
+            </code>
+            </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Unchecked Function, Supplier et Consumer</h2>
+            <div class="badge correct"></div>
+            <div class="code-wrapper">
+            <pre>
+            <code class="code java" data-trim data-noescape>
+Arrays.stream(dir.listFiles()).forEach(
+  Unchecked.consumer(file -> System.out.println(file.getCanonicalPath()))
+);
+            </code>
+            </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>JOOλ, précautions d'usage</h2>
+            <ul class="white">
+                <li>Ne pas utiliser les Tuples pour remplacer vos POJOS</li>
+                <li>Si vous utilisez Function16, vous avez peut être besoin de refactorer quelques choses avant</li>
+                <li>Rappelez vous que Java n'est <i>pas</i> un langage fonctionnel</li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Generation de code avec JOOQ</h2>
+            <ul class="white">
+                <li>Supporte Ant, Maven et Gradle</li>
+            </ul>
+            <div class="code-wrapper smaller">
+            <pre>
+            <code class="code xml" data-trim data-noescape>
+&lt;configuration&gt;
+    &lt;jdbc&gt;
+      &lt;driver&gt;${db.driver}&lt;/driver&gt;
+      &lt;url&gt;${db.url}&lt;/url&gt;
+      &lt;user&gt;${db.username}&lt;/user&gt;
+      &lt;password&gt;${db.password}&lt;/password&gt;
+    &lt;/jdbc&gt;
+    &lt;generator&gt;
+      &lt;database&gt;
+          &lt;name&gt;org.jooq.util.h2.H2Database&lt;/name&gt;
+          &lt;includes&gt;.*&lt;/includes&gt;
+          &lt;excludes&gt;&lt;/excludes&gt;
+          ...
+        &lt;/database&gt;
+        &lt;generate&gt;
+          &lt;instanceFields&gt;true&lt;/instanceFields&gt;
+        &lt;/generate&gt;
+        &lt;target&gt;
+          &lt;packageName&gt;com.lesfurets.db&lt;/packageName&gt;
+          &lt;directory&gt;target/generated-sources&lt;/directory&gt;
+        &lt;/target&gt;
+      &lt;/generator&gt;
+&lt;/configuration&gt;
+            </code>
+            </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Base de données supportées</h2>
+            <ul class="white">
+                <li>Oracle : dialect spécifique pour les types de données propriétaires, les procédures stockées, ...</li>
+                <li>SQL-Server Dialect support SQL-Server 2012 and 2008</li>
+                <li>Support of MariaDB, PostgreSQL, SQLite, ...</li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Java Object Oriented Query</h2>
+            <ul class="white">
+                <li>Mapping SQL basé sur un DSL</li>
+                <li>Support de l'API stream et java.time</li>
+                <li>Fortement typé et valide en SQL</li>
+                <li>Génération de code</li>
+                <li>On peut utiliser JOOλ avec JOOQ pour simplifier du code</i>
+                <li>Supporte MariaDB, MySQL, Oracle, Oracle, PostgreSQL, SQLite, SQL Server ...</li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Questions</h2>
+            <img src="../img/breakingbad.gif" width="750" height="423">
+        </section>
+    </div>
+</div>
+<script src="../bower_components/reveal.js/lib/js/head.min.js"></script>
+<script src="../bower_components/reveal.js/js/reveal.js"></script>
+<script>
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        embedded: true,
+
+        //theme: 'lesfurets', // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            {
+                src: '../bower_components/reveal.js/lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function () {
+                return !!document.body.classList;
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function () {
+                return !!document.body.classList;
+            }
+            }
+        ]
+    });
+</script>
+<script src="../js/lesfurets-theme.js" async></script>
+<script src="../js/lesfurets-codereview-theme.js" async></script>
+</body>
+</html>

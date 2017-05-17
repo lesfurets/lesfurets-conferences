@@ -40,3 +40,6 @@ target
 
 # Linux
 .directory
+
+# Mac
+.DS_Store
