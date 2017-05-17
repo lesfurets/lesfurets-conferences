@@ -159,7 +159,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
                 <section class="flushleft" data-background="#222">
                     <p>... et en 2 minutes on trouve plusieurs cas d'usages :</p>
                     <ul>
-                        <li class="fragment color-gray400">- Supporter une lambda architecture</li>
+                        <li class="fragment color-gray400">- Supporter une architecture lambda</li>
                         <li class="fragment color-gray400">- Rapport de performance et KPI "on-demand"</li>
                         <li class="fragment color-gray400">- Spark Streaming pour de l'alerting métier</li>
                         <li class="fragment color-gray400">- Spark MLlib pour trouver les questions tarifantes</li>
@@ -495,7 +495,7 @@ public void should_calculate_average_by_formule_ordered() {
 
   assertEquals(2,
                averagePrime.count());
-  assertEquals("FORMULE 1", 
+  assertEquals(1, 
                averagePrime.first().getAs("formule"));
   assertEquals("formule 1", 
                averagePrime.first().getAs("formuleReadable"));
@@ -649,17 +649,13 @@ Dataset&lt;Tuple2&lt;String, TarificationJoin&gt;&gt; tupleTarif =
                     <img class="fragment" width="33%" src="../img/spark/meme-donald-spark.gif">
                 </section>
 
-                <section class="flushleft" data-background="#333">
-                    <img style="width:95%;background-color:antiquewhite;border:5px solid black;" src="../img/spark/breakingcamp-furets.png">
-                </section>
-
                 <!-- SECTION - END -->
 
                 <section class="flushleft" data-background="../img/nwx/lesfurets-background-black-01.jpg">
                     <h2 style="color:white">Ressources :</h2>
-                    <p style="color:white">- Ces slides / ce code (avec exemples annotations Spark JUnit</p>
+                    <p style="color:white">- Ces slides et ce code (avec des exemples d'annotations Spark JUnit4 et JUnit5)</p>
                     <p style="color:white"><strong><a href="https://github.com/lesfurets/lesfurets-conferences">https://github.com/lesfurets/lesfurets-conference</a></strong></p>
-                    <p style="color:white">- Articles Spark en Java et unit testing</p>
+                    <p style="color:white">- Articles Spark en Java et Spark unit testing</p>
                     <p style="color:white"><strong><a href="https://beastie.lesfurets.com/articles/apache-spark-use-cases-developpeurs-java">https://beastie.lesfurets.com/articles</a></strong></p>
                     <h2 class="flushright fragment color-indigo300">END</h2>
                 </section>
