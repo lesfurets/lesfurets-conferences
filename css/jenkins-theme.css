@@ -8,6 +8,10 @@ html.background-structure .reveal:not(.overview) .backgrounds {
     filter: saturate(.3) brightness(.3);
 }
 
+.reveal h1 {
+    font-size: 90px;
+}
+
 .reveal h2 {
     color: #f07d00;
 }

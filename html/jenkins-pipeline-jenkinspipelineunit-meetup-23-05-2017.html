@@ -25,6 +25,11 @@
         }
     </script>
     <!--[if lt IE 9]>
+    <style>
+        h1 {
+            font-size: 7px;
+        }
+    </style>
     <script src="../bower_components/reveal.js/lib/js/html5shiv.js"></script><![endif]-->
 </head>
 <body>
@@ -49,9 +54,8 @@
             The goal of this presentation is to talk about our Continuous Delivery infrastructure,
             the problems we encountered, and
         </aside>
-        <section>
             <section data-state="background-structure">
-                <h2>LesFurets</h2>
+                <h2>LesFurets.com</h2>
                 <p></p>
                 <ul class="nodisc">
                     <li>~70 people</li>
@@ -105,8 +109,6 @@
                     <li>+ 30 exposed dockers for insurer tests</li>
                 </ul>
             </section>
-        </section>
-        <section>
             <section data-state="background-contest">
                 <h2>Once upon a time...</h2>
                 <aside class="notes">Présenter Teamcity (Jetbrains),
@@ -203,42 +205,8 @@
                     </div>
                 </div>
             </section>
-        </section>
-        <section>
             <section data-state="background-evil">
                 <h2 style="padding-bottom: 50%">The real life</h2>
-            </section>
-            <section>
-                <!-- Things are not that simple -->
-                <!-- TODO angry jenkins image -->
-                <h2>Jobs, Lots of Jobs...</h2>
-                <ul class="nodisc center">
-                    <li>10 jobs</li>
-                    <li>30+ environments</li>
-                    <li>100 parallel developments</li>
-                </ul>
-                <br>
-                <br>
-                <br>
-                <br>
-                <img style="width: 90%" src="../img/jenkins/pkg-pipeline.png">
-            </section>
-            <section>
-                <h2>Pipelines are complex</h2>
-                <div style="display: flex;">
-                    <div style="width: 45%; padding-right: 10%">
-                        <img style="width: 60%" src="../img/jenkins/deploy_jenkins_trimmed.png">
-                    </div>
-                    <div style="width: 45%; margin-top: 5%">
-                        <p>Job Deploy</p>
-                        <ul class="nodisc flushleft">
-                            <li>14 files</li>
-                            <li>642 lines of code</li>
-                            <li>214 lines of comment</li>
-                        </ul>
-                    </div>
-                </div>
-                <img style="width: 90%" src="../img/jenkins/pkg-pipeline.png">
             </section>
             <section>
                 <h2>You said it's Groovy?</h2>
@@ -337,14 +305,13 @@ Cannot cast object '2' with class 'java.lang.Long' to class 'java.util.List'
 
                 </div>
             </section>
-        </section>
-        <section>
             <section>
                 <h2>Multibranch pipelines and workspaces</h2>
                 <ul class="nodisc">
                     <li class="fragment">One branch validated on many agents</li>
                     <li class="fragment">One workspace per branch on each agent</li>
-                    <li class="fragment">96 branches x 1.2GB</li>
+                    <li class="fragment">100 branches x 1GB</li>
+                    <li class="fragment">No cleanup</li>
                 </ul>
                 <blockquote class="fragment"><p>No space left on disk</p></blockquote>
             </section>
@@ -372,9 +339,8 @@ Cannot cast object '2' with class 'java.lang.Long' to class 'java.util.List'
                     <li>Share the workspace among branches, with <code>ws</code></li>
                     <li>Always start with <code>git clean -xdf</code></li>
                 </ul>
+                <p>Much closer to the TeamCity behaviour</p>
             </section>
-        </section>
-        <section>
             <section>
                 <h2>Script Loader - why?</h2>
                 <ul class="nodisc">
@@ -394,7 +360,26 @@ Cannot cast object '2' with class 'java.lang.Long' to class 'java.util.List'
                 </ul>
             </section>
             <section>
-                <h2>Script Loader - File structure</h2>
+                <h2>Script loader - Project structure</h2>
+                <div class="code-wrapper"><pre><code class="code groovy" data-trim data-noescape>
+src/main/jenkins
+├── job                         All Jenkins jobs declarations
+│   ├── deploy.jenkins
+│   ├── integration.jenkins
+│   ├── seleniums.jenkins
+│   └── sonar.jenkins
+├── lib
+│   ├── commons.jenkins         Common function declarations
+│   └── scriptLoader.jenkins    Main loader for scripts
+└── step
+    ├── deploy                  Jenkins files for Deployment steps
+    │   ├── flyway.jenkins
+    │   └── tomcat.jenkins
+    └── ...
+                </code></pre></div>
+            </section>
+            <section>
+                <h2>Script Loader - Job structure</h2>
                 <div class="code-wrapper"><pre><code class="code groovy" data-trim data-noescape>
 Map<String, String> imports() {
     [   commons:   'lib/commons.jenkins',
@@ -415,7 +400,7 @@ return this
                     </code></pre></div>
             </section>
             <section>
-                <h2>Script loader - Job definition</h2>
+                <h2>Script loader - Config in Jenkins</h2>
                 <div class="code-wrapper"><pre><code class="code groovy" data-trim data-noescape>
 String scriptToLoad = 'deploy.jenkins'
 def loadedScript = node () {
@@ -428,25 +413,7 @@ loadedScript.execute()
             </section>
 
 
-            <section>
-                <h2>Script loader - Project structure</h2>
-                <div class="code-wrapper"><pre><code class="code groovy" data-trim data-noescape>
-src/main/jenkins
-├── job                         All Jenkins jobs declarations
-│   ├── deploy.jenkins
-│   ├── integration.jenkins
-│   ├── seleniums.jenkins
-│   └── sonar.jenkins
-├── lib
-│   ├── commons.jenkins         Common function declarations
-│   └── scriptLoader.jenkins    Main loader for scripts
-└── step
-    ├── deploy                  Jenkins files for Deployment steps
-    │   ├── flyway.jenkins
-    │   └── tomcat.jenkins
-    └── ...
-                </code></pre></div>
-            </section>
+
             <section>
                 <h2>Script loader - Source</h2>
                 <div class="code-wrapper"><pre><code class="code groovy" data-trim data-noescape>
@@ -469,16 +436,6 @@ private void importAll(runnable) {
 return this
                     </code></pre></div>
             </section>
-        </section>
-        <section>
-            <section data-state="background-yoda">
-                <h2 style="padding-bottom: 20%">Guidelines by LesFurets.com</h2>
-                <ul class="nodisc">
-                    <li class="fragment">The code simple, you'll keep.</li>
-                    <li class="fragment">One unique structure for every job, you'll follow.</li>
-                    <li class="fragment">The tricks with your team, you'll share.</li>
-                </ul>
-            </section>
             <section>
                 <h2>There are still risks</h2>
                 <p class="fragment">The same code for many environments.</p>
@@ -487,8 +444,6 @@ return this
                 </blockquote>
                 <p class="fragment">We need something to test and track the impact of our changes!</p>
             </section>
-        </section>
-        <section>
             <section data-state="background-pipeline-test">
                 <h2>JenkinsPipelineUnit</h2>
                 <p style="font-style: italic">pipeline-as-code</p>
@@ -526,7 +481,7 @@ node() {
                 </div>
             </section>
             <section class="center demo">
-                <h2>Unit Test</h2>
+                <h2>Let's test it!</h2>
                 <div class="code-wrapper">
                     <pre><code class="code groovy" data-trim data-noescape>import com.lesfurets.jenkins.helpers.BasePipelineTest
 class TestJenkinsfile extends BaseRegressionTestCPS {
@@ -542,59 +497,6 @@ class TestJenkinsfile extends BaseRegressionTestCPS {
                     </code></pre>
                 </div>
             </section>
-            <section class="center">
-                <h2>Setup Mock Environment</h2>
-                <div class="code-wrapper">
-                    <pre><code class="code groovy" data-trim data-noescape>
-    @Override
-    @Before
-    void setUp() throws Exception {
-        super.setUp()
-        helper.scriptRoots += 'src/main/groovy'
-        helper.baseScriptRoot = ''
-        binding.setVariable('scm', [
-                $class                           : 'GitSCM',
-                branches                         : [[name: 'AMX-12345_test']],
-                doGenerateSubmoduleConfigurations: false,
-                extensions                       : [],
-                submoduleCfg                     : [],
-                userRemoteConfigs                : [[ url          : "/var/git-repo" ]]
-        ])
-        helper.registerAllowedMethod('junit', [String.class], null)
-    }
-                    </code></pre>
-                </div>
-            </section>
-
-            <section class="center">
-                <h2>Call Stack</h2>
-                <div class="code-wrapper">
-                    <pre><code class="code groovy" data-trim data-noescape>
-   Jenkinsfile.run()
-      Jenkinsfile.node(groovy.lang.Closure)
-         Jenkinsfile.stage(Checkout, groovy.lang.Closure)
-            Jenkinsfile.checkout({$class=GitSCM, branches=[{name=AMX-12345_test}], ...
-            Jenkinsfile.sh(git clean -xdf)
-         Jenkinsfile.stage(Build and test, groovy.lang.Closure)
-            Jenkinsfile.sh(./gradlew build)
-            Jenkinsfile.junit(build/test-results/test/*.xml)
-                    </code></pre>
-                </div>
-            </section>
-            <section class="center demo">
-                <h2>Non-regression Test</h2>
-                <div class="code-wrapper">
-                    <pre><code class="code groovy" data-trim data-noescape>
-@Test
-void testNonRegression() throws Exception {
-    loadScript('Jenkinsfile')
-    printCallStack()
-    super.testNonRegression(false)
-}
-                    </code></pre>
-                </div>
-            </section>
-
             <section>
                 <h2>How does it work?</h2>
                 <p>Transforms and interprets Groovy code as in Jenkins</p>
@@ -615,10 +517,8 @@ void testNonRegression() throws Exception {
                     <li class="fragment">Integrates with test frameworks like JUnit, TestNG, Spock</li>
                 </ul>
             </section>
-        </section>
-        <section>
             <section>
-                <h2>Pipeline And Continuous Integration</h2>
+                <h2>Pipeline Continuous Integration</h2>
                 <ul>
                     <li>Feature branching</li>
                     <li>Pipeline unit test, non regression test</li>
@@ -626,8 +526,6 @@ void testNonRegression() throws Exception {
                     <li>Slack notification</li>
                 </ul>
             </section>
-        </section>
-        <section>
             <section>
                 <h2>Conclusion</h2>
                 <div class="flushleft">
@@ -674,8 +572,6 @@ void testNonRegression() throws Exception {
                     </ul>
                 </div>
             </section>
-        </section>
-        <section>
             <section class="flushleft" data-state="background-furets">
                 <h2>Questions?</h2>
                 <p>Emmanuel Quincerot</p>
@@ -738,8 +634,6 @@ pipeline {
             </div>
         </section>
 
-        <section/>
-        </section>
     </div>
 </div>
 <script src="../bower_components/reveal.js/lib/js/head.min.js"></script>
