@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8"/>
     <title>Continuous Delivery with Jenkins</title>
-    <meta name="description" content="Jenkins by LesFurets.com">
-    <meta name="author" content="Ozan Günalp">
-    <meta name="author" content="Emmanuel Quincerot">
+    <meta name="description" content="Jenkins by LesFurets.com"/>
+    <meta name="author" content="Ozan Günalp"/>
+    <meta name="author" content="Emmanuel Quincerot"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="../bower_components/reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="../bower_components/reveal.js/lib/css/zenburn.css">
-    <link rel="stylesheet" href="../css/lesfurets-theme.css" id="theme">
-    <link rel="stylesheet" href="../css/git-octopus-theme.css" id="octopus-theme">
-    <link rel="stylesheet" href="../css/code-jooq-theme.css" id="jooq-theme">
-    <link rel="stylesheet" href="../css/jenkins-theme.css" id="jenkins-theme">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="../bower_components/reveal.js/css/reveal.css"/>
+    <link rel="stylesheet" href="../bower_components/reveal.js/lib/css/zenburn.css"/>
+    <link rel="stylesheet" href="../css/lesfurets-theme.css" id="theme"/>
+    <link rel="stylesheet" href="../css/git-octopus-theme.css" id="octopus-theme"/>
+    <link rel="stylesheet" href="../css/code-jooq-theme.css" id="jooq-theme"/>
+    <link rel="stylesheet" href="../css/jenkins-theme.css" id="jenkins-theme"/>
     <script>
         if (window.location.search.match(/print-pdf/gi)) {
             var link = document.createElement('link');
@@ -47,7 +47,7 @@
         <section class="flushright" data-state="background-furets">
             <h1>Continuous Delivery with Jenkins</h1>
             <h2>Our experience</h2>
-            <h2>& JenkinsPipelineUnit</h2>
+            <h2>&amp; JenkinsPipelineUnit</h2>
             <p>Ozan GUNALP - Emmanuel QUINCEROT</p>
         </section>
         <aside class="notes">
@@ -138,7 +138,7 @@
                     </ul>
                 </div>
                 <div style="float:left;width:100%" class="fragment" data-fragment-index="2">
-                    <p class="strong">Two systems: unnecessary complexity
+                    <p class="strong">Two systems: unnecessary complexity</p>
                 </div>
             </section>
             <section data-state="background-contest">
@@ -210,7 +210,7 @@
             </section>
             <section>
                 <h2>You said it's Groovy?</h2>
-                <img style="width: 50%" src="../img/jenkins/trump-lie.png">
+                <img style="width: 50%" src="../img/jenkins/trump-lie.png" />
                 <p class="strong">
                     <a href="https://twitter.com/hashtag/alternativefacts" target="_blank">#alternativefacts</a>
                 </p>
@@ -339,7 +339,9 @@ Cannot cast object '2' with class 'java.lang.Long' to class 'java.util.List'
                     <li>Share the workspace among branches, with <code>ws</code></li>
                     <li>Always start with <code>git clean -xdf</code></li>
                 </ul>
-                <p>Much closer to the TeamCity behaviour</p>
+                <br/>
+                <br/>
+                <p class="strong">Much closer to the TeamCity behaviour</p>
             </section>
             <section>
                 <h2>Script Loader - why?</h2>
@@ -517,59 +519,29 @@ class TestJenkinsfile extends BaseRegressionTestCPS {
                     <li class="fragment">Integrates with test frameworks like JUnit, TestNG, Spock</li>
                 </ul>
             </section>
-            <section>
-                <h2>Pipeline Continuous Integration</h2>
-                <ul>
-                    <li>Feature branching</li>
-                    <li>Pipeline unit test, non regression test</li>
-                    <li>Branch CI, even for pipeline</li>
-                    <li>Slack notification</li>
-                </ul>
-            </section>
+
             <section>
                 <h2>Conclusion</h2>
-                <div class="flushleft">
-                    <p>Done:</p>
-                    <ul>
-                        <li>Most jobs migrated to pipelines</li>
-                        <li>Each pipeline is unit tested</li>
-                    </ul>
-                    <p>Continuous improvement:</p>
-                    <ul>
-                        <li>More feedback (slack)</li>
-                        <li>Better error management</li>
-                        <li>More automation</li>
+                <div style="float:left; width:60%; padding-left: 0%" class="flushleft fragment">
+                    <p class="strong">Pros:</p>
+                    <ul class="nodisc">
+                      <li class="fragment">Pipeline as code</li><!-- Rather than clic button configuration-->
+                      <li class="fragment">Readable change history</li>
+                      <li class="fragment">Code is reusable</li>
+                      <li class="fragment">Code is testable</li>
+                      <li class="fragment">Isolation with feature branching</li>
+                      <li class="fragment">May evolve with the application</li>
                     </ul>
                 </div>
-            </section>
-            <section>
-                <h2>Conclusion</h2>
-                <div class="flushleft"><h3>Pros:</h3>
-                    <ul>
-                        <li>
-                            <mark>Flexibility</mark>
-                            Jobs and application evolve together
-                        </li>
-                        <li>
-                            <mark>Safety</mark>
-                            Job changes are code-reviewable
-                        </li>
-                        <li>
-                            <mark>Repeatability</mark>
-                            with the non regression tests
-                        </li>
-                        <li>
-                            <mark>Reusability</mark>
-                            all environment deploy with the same code
-                        </li>
+                <div style="float:right;width: 40%;" class="flushleft fragment">
+                    <p class="strong fragment">Cons:</p>
+                    <ul class="nodisc fragment">
+                          <li>Cost of early adoption</li>
+                          <li>Some traps and imperfections</li>
                     </ul>
                 </div>
-                <div class="fragment flushleft"><h3>Cons:</h3>
-                    <ul>
-                        <li>Missing documentation</li>
-                        <li>Cost of early adoption</li>
-                        <li>Some traps and imperfections</li>
-                    </ul>
+                <div style="float:left;width:100%" class="fragment">
+                    <p class="strong">That rocks!</p>
                 </div>
             </section>
             <section class="flushleft" data-state="background-furets">
