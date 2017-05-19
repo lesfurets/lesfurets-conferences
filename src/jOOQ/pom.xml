@@ -81,10 +81,6 @@
                 <artifactId>sql-maven-plugin</artifactId>
                 <version>1.5</version>
 
-                <configuration>
-                    <forkMode>always</forkMode>
-                </configuration>
-
                 <executions>
                     <execution>
                         <id>create-database-h2</id>
@@ -104,6 +100,7 @@
                             <autocommit>true</autocommit>
                             <srcFiles>
                                 <srcFile>src/main/resources/schema.sql</srcFile>
+                                <srcFile>src/main/resources/schema_fiches_auto.sql</srcFile>
                             </srcFiles>
                         </configuration>
                     </execution>
