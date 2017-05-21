@@ -1,6 +1,6 @@
 package com.lesfurets.db.dao;
 
-import com.lesfurets.db.YearReport;
+import com.lesfurets.model.YearReport;
 import org.junit.Before;
 import org.junit.Test;
 

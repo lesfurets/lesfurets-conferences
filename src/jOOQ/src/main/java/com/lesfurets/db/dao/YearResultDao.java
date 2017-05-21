@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.jooq.impl.DSL;
 
-import com.lesfurets.db.YearReport;
+import com.lesfurets.model.YearReport;
 
 public class YearResultDao {
     private Connection connection;

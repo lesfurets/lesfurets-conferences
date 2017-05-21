@@ -1,7 +1,7 @@
 package com.lesfurets.db.dao;
 
 import com.google.common.annotations.VisibleForTesting;
-import com.lesfurets.db.YearReport;
+import com.lesfurets.model.YearReport;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

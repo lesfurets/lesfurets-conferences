@@ -1,4 +1,4 @@
-package com.lesfurets.db;
+package com.lesfurets.model;
 
 import java.time.LocalDate;
 import java.util.Objects;

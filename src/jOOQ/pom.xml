@@ -31,7 +31,7 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-    
+
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
@@ -143,8 +143,9 @@
                                     <recordTimestampFields>REC_TIMESTAMP</recordTimestampFields>
                                 </database>
                                 <generate>
-                                    <deprecated>false</deprecated>
                                     <instanceFields>true</instanceFields>
+                                    <javaTimeTypes>true</javaTimeTypes>
+                                    <deprecated>true</deprecated>
                                     <pojos>false</pojos>
                                     <records>false</records>
                                 </generate>
