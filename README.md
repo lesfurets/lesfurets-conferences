@@ -158,9 +158,9 @@ Nous présenterons un retour d'expérience de notre utilisation de Jenkins et no
 Nous ferons aussi part des difficultés rencontrées lors de notre migration vers le pipeline DSL et comment nous nous en sommes sortis.
 
 
-* 28 mars 2017 (Peterborough) : BGL META : [JenkinsPipelineUnit: Test your continuous delivery pipeline](https://lesfurets.github.io/lesfurets-conferences/html/jenkins-pipeline-jenkinspipelineunit-bgl-2017.html)
-* 23 mai 2017 Meetup Jenkins (Paris) : [How2Pipeline @CFM](https://www.meetup.com/Paris-Jenkins-Area-Meetup/events/239844966/)
-* 31 août 2017 (San Francisco) : Jenkins World - TODO
+* 28 mars 2017 : BGL META (Peterborough) - [JenkinsPipelineUnit: Test your continuous delivery pipeline](https://lesfurets.github.io/lesfurets-conferences/html/jenkins-pipeline-jenkinspipelineunit-bgl-2017.html)
+* 23 mai 2017 : Meetup Jenkins (Paris) - [How2Pipeline @CFM](https://lesfurets.github.io/lesfurets-conferences/html/jenkins-pipeline-jenkinspipelineunit-meetup-23-05-2017.html)
+* 31 août 2017 : Jenkins World (San Francisco) - TODO
 
 ### Software craftmanship
 
