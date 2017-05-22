@@ -8,6 +8,10 @@ html.background-structure .reveal:not(.overview) .backgrounds {
     filter: saturate(.3) brightness(.3);
 }
 
+.reveal h1 {
+    font-size: 90px;
+}
+
 .reveal h2 {
     color: #f07d00;
 }
@@ -124,6 +128,14 @@ html.background-why .reveal:not(.overview) .backgrounds {
 
 .reveal blockquote:before {
     margin-right: 0.5em;
+}
+.reveal blockquote:after {
+    content: close-quote;
+    margin-left: 0.5em;
+    color: black;
+    font-size: 4em;
+    line-height: 0.1em;
+    vertical-align: -0.45em;
 }
 
 .reveal blockquote p {

@@ -138,6 +138,7 @@ Using live code examples we will compare different APIs such as RxJava2, Reactiv
 
 ### JenkinsPipelineUnit: Test your continuous delivery pipeline
 
+**Abstract en:**
 At LesFurets.com, we use Jenkins as our workhorse to automate our continuous delivery pipeline. 
 Each day we test more than 30 parallel developments and deliver only those which are ready for production. 
 From validation to deployment, every step of the pipeline is coded using Jenkins Pipeline DSL and checked into our code base. 
@@ -147,7 +148,19 @@ The framework mocks built-in Jenkins commands and job configurations, executing 
 It allows to debug job executions and even track regressions between changes. 
 In this presentation we present our extensive usage of Jenkins, our open source testing framework and best practices we learnt during our migration to the pipeline DSL.
 
-BGL Tech Conference : [JenkinsPipelineUnit: Test your continuous delivery pipeline](https://lesfurets.github.io/lesfurets-conferences/html/jenkins-pipeline-jenkinspipelineunit-bgl-2017.html)
+**Abstract fr :**
+Chez LesFurets.com, nous testons en continu plus de 30 développements parallèles et nous livrons ceux qui sont prêts pour la production.
+En avril 2016, Jenkins 2.0 a ouvert de multiples possibilités grâce aux pipelines qui permettent de décrire un job en groovy, depuis nous avons migré nos jobs de validation et de déploiement.
+Mais comment s’assurer qu’un job pipeline se comportera bien comme attendu ? Pour cela, nous avons mis en place un framework de tests afin de tracer l’exécution d’un pipeline. Il fournit un environnement avec des mocks de commandes internes de Jenkins et simule la configuration d’un job.
+On peut ainsi déboguer les exécutions et même suivre les régressions entre deux changements.
+
+Nous présenterons un retour d'expérience de notre utilisation de Jenkins et notre framework de test open-source.
+Nous ferons aussi part des difficultés rencontrées lors de notre migration vers le pipeline DSL et comment nous nous en sommes sortis.
+
+
+* 28 mars 2017 (Peterborough) : BGL META : [JenkinsPipelineUnit: Test your continuous delivery pipeline](https://lesfurets.github.io/lesfurets-conferences/html/jenkins-pipeline-jenkinspipelineunit-bgl-2017.html)
+* 23 mai 2017 Meetup Jenkins (Paris) : [How2Pipeline @CFM](https://www.meetup.com/Paris-Jenkins-Area-Meetup/events/239844966/)
+* 31 août 2017 (San Francisco) : Jenkins World - TODO
 
 ### Software craftmanship
 

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Continuous Delivery with Jenkins</title>
+    <meta name="description" content="Jenkins by LesFurets.com"/>
+    <meta name="author" content="Ozan Günalp"/>
+    <meta name="author" content="Emmanuel Quincerot"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="../bower_components/reveal.js/css/reveal.css"/>
+    <link rel="stylesheet" href="../bower_components/reveal.js/lib/css/zenburn.css"/>
+    <link rel="stylesheet" href="../css/lesfurets-theme.css" id="theme"/>
+    <link rel="stylesheet" href="../css/git-octopus-theme.css" id="octopus-theme"/>
+    <link rel="stylesheet" href="../css/code-jooq-theme.css" id="jooq-theme"/>
+    <link rel="stylesheet" href="../css/jenkins-theme.css" id="jenkins-theme"/>
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = '../css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+    <!--[if lt IE 9]>
+    <style>
+        h1 {
+            font-size: 7px;
+        }
+    </style>
+    <script src="../bower_components/reveal.js/lib/js/html5shiv.js"></script><![endif]-->
+</head>
+<body>
+<div id="footer" class="footer show">
+    <a href="https://www.lesfurets.com" target="_blank">
+        <img class="logo" src="../img/logo_lesfurets_885x128_no_back.png">
+    </a>
+    <a class="github" href="https://github.com/lesfurets/JenkinsPipelineUnit" target="_blank">https://github.com/lesfurets/JenkinsPipelineUnit</a>
+    <a class="github" href="mailto:ogu@lesfurets.com" target="_blank">ogu@lesfurets.com</a>
+    <a class="github" href="mailto:equ@lesfurets.com" target="_blank">equ@lesfurets.com</a>
+    <a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a>
+</div>
+<div class="reveal">
+    <div class="slides">
+        <section class="flushright" data-state="background-furets">
+            <h1>Continuous Delivery with Jenkins</h1>
+            <h2>Our experience</h2>
+            <h2>&amp; JenkinsPipelineUnit</h2>
+            <p>Ozan GUNALP - Emmanuel QUINCEROT</p>
+        </section>
+        <aside class="notes">
+            The goal of this presentation is to talk about our Continuous Delivery infrastructure,
+            the problems we encountered, and
+        </aside>
+            <section data-state="background-structure">
+                <h2>LesFurets.com</h2>
+                <p></p>
+                <ul class="nodisc">
+                    <li>~70 people</li>
+                    <li>4 feature teams</li>
+                    <li>22 developers</li>
+                    <li>3 devops</li>
+                    <li>7 business analysts</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Continuous delivery</h2>
+                <ul class="flushleft nodisc">
+                    <li>200 releases a year</li>
+                    <li>30~ branch validations every day</li>
+                    <li>15 deployments a day</li>
+                </ul>
+                <!--
+                    Provenance des données :
+                    sur la semaine du 27 février au 3 mars :
+                        5 DEV
+                        50 Stage
+                        9 Docker
+                        4 preprod
+                        4 Prod
+                    => 72 déploiements en 5 jours => 14 déploiements par jour
+
+                    Pour la CI :
+                    activity blue ocean de la CI sur la journée du 3 mars :
+                        4 en features
+                        25 en studies
+                    => 29 sur la journée
+                -->
+            </section>
+            <section>
+                <h2>Continuous Merge</h2>
+                <p>Feature Branching + Continuous Integration</p>
+                <ul class="nodisc">
+                    <li>1 development = 1 branch</li>
+                    <li>Staging developments = 1 merge branch</li>
+                    <li>1 release = 1 release branch</li>
+                </ul>
+                <!-- TODO -->
+            </section>
+            <section>
+                <h2>Our environments</h2>
+                <ul class="nodisc flushleft">
+                    <li>Dev</li>
+                    <li>Stage</li>
+                    <li>Preprod</li>
+                    <li>Prod</li>
+                    <li>+ 30 exposed dockers for insurer tests</li>
+                </ul>
+            </section>
+            <section data-state="background-contest">
+                <h2>Once upon a time...</h2>
+                <aside class="notes">Présenter Teamcity (Jetbrains),
+                    Jenkins (Cloudbees a créé Hudson. Cloudbees racheté par Oracle. Du coup fork opensource de Jenkins)
+                    Cloudbees grand contributeur
+                </aside>
+                <div style="float:left; width:40%; padding-left: 5%" class="flushleft fragment" data-fragment-index="1">
+                    <p class="strong">Teamcity</p>
+                    <ul>
+                        <li>CI</li>
+                        <li>Flyway</li>
+                        <li>Continuous Merge</li>
+                        <li>Packaging</li>
+                        <li>Release</li>
+                        <!-- Non mentionnés pour simplifier : -->
+                        <!-- <li>Third-Parties</li> -->
+                        <!-- <li>Nightly</li> -->
+                    </ul>
+                </div>
+                <div style="float:right;width: 40%;" class="flushleft fragment" data-fragment-index="1">
+                    <p class="strong">Jenkins</p>
+                    <ul>
+                        <li>Deployments</li>
+                        <li>Seleniums</li>
+                        <li>Tooling</li>
+                        <li>Data Batches</li>
+                    </ul>
+                </div>
+                <div style="float:left;width:100%" class="fragment" data-fragment-index="2">
+                    <p class="strong">Two systems: unnecessary complexity</p>
+                </div>
+            </section>
+            <section data-state="background-contest">
+                <h2>Deployment to Prod</h2>
+                <ul class="flushleft" style="padding-left: 5%">
+                    <li>Create release branch
+                        <ul>
+                            <li>Packaging</li>
+                            <li>CI</li>
+                            <li>Nightly</li>
+                        </ul>
+                    </li>
+                    <li class="flushright">
+                        <mark>Deploy to PreProd</mark>
+                    </li>
+                    <li class="flushright">
+                        <mark>Seleniums</mark>
+                    </li>
+                    <li>Find packaging ID</li>
+                    <li class="flushright">
+                        <mark>Deploy to Production</mark>
+                    </li>
+                </ul>
+                <aside class="notes">
+                    Don't complicate things on packaging ID, it is a identification of packaging.
+                </aside>
+            </section>
+            <section>
+                <h2>Teamcity configuration</h2>
+                <img style="width: 100%" src="../img/jenkins/teamcity-config.png"/>
+            </section>
+            <section>
+                <h2>Our problem</h2>
+                <aside class="notes">Teamcity 3 agents gratuits + 2 payés non maintenus. Max 40 jobs. Limite atteinte.
+                    Plus de maintenance pour de vieilles clés. → 2000€/an
+                </aside>
+                <ul class="nodisc">
+                    <li>Cost</li>
+                    <li>Complexity</li>
+                    <li>Lack of flexibility</li>
+                </ul>
+            </section>
+            <section data-state="background-jenkins">
+                <h2>Now in 2017</h2>
+                <p>Jenkins only!</p>
+                <div style="display: flex; padding-left: 10%">
+                    <div style="float:left;width:45%;" class="flushleft">
+                        <ul>
+                            <li>CI</li>
+                            <li>Flyway</li>
+                            <li>Continuous Merge</li>
+                            <li>Packaging</li>
+                            <li>Deployment</li>
+                        </ul>
+
+                    </div>
+                    <div style="float:right;width:45%; padding-left: 10%" class="flushleft">
+                        <ul>
+                            <li>Seleniums</li>
+                            <li>Data Batches</li>
+                            <li>Release</li>
+                            <li>Tooling</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section data-state="background-evil">
+                <h2 style="padding-bottom: 50%">The real life</h2>
+            </section>
+            <section>
+                <h2>You said it's Groovy?</h2>
+                <div  class="fragment">
+                    <img style="width: 50%" src="../img/jenkins/trump-lie.png"/>
+                    <p class="strong">
+                        <a href="https://twitter.com/hashtag/alternativefacts" target="_blank">#alternativefacts</a>
+                    </p>
+                </div>
+                <!-- TODO -->
+            </section>
+            <section>
+                <h2>Continuation Passing Style</h2>
+                <blockquote><p>Groovy interpreter that runs Groovy code in the continuation passing style,
+                    so that the execution can be paused any moment and restarted without cooperation
+                    from the program being interpreted.</p></blockquote>
+            </section>
+            <section>
+                <h2>Be Serializable or you're dead</h2>
+                <div class="code-wrapper">
+                <pre><code class="code groovy" data-trim data-noescape>
+@NonCPS
+def parseJson() {
+    return new JsonSlurper().parseText('{"tag":"jenkins"}')
+}
+                    <span class="fragment" data-fragment-index="1">
+node() {
+    def a
+    stage('List') {
+        for (<span class="fragment highlight-code" data-fragment-index="3">def item</span> : parseJson()) {
+            a = item
+        }
+    }
+
+    stage('Print') { echo a.tag }
+}
+</span>
+
+            </code></pre>
+                </div>
+                <div class="code-wrapper fragment" data-fragment-index="2">
+                    <pre><code class="code groovy" data-trim data-noescape>
+java.io.NotSerializableException: java.util.TreeMap$Entry
+            </code></pre>
+            </div>
+          </section>
+            <section>
+                <h2>This is serializable</h2>
+                <div class="code-wrapper">
+                <pre><code class="code groovy" data-trim data-noescape>
+import groovy.json.JsonSlurper
+
+@NonCPS
+def parseJson(String fieldName) {
+    return new JsonSlurper().parseText('{"tag":"jenkins"}')?."$fieldName"
+}
+
+node() {
+    String output
+    stage('List') {
+        output = parseJson('tag')
+    }
+
+    stage('print') { echo output }
+}
+            </code></pre>
+                </div>
+            </section>
+            <section>
+                <h2>NonCPS calling CPS</h2>
+                <div class="code-wrapper fragment" data-fragment-index="1">
+                <pre><code class="code groovy" data-trim data-noescape>
+node() {
+  stage('List') {
+    List&lt;Long&gt; list = createList()
+  }
+}
+<mark class="fragment" data-fragment-index="3">@NonCPS</mark>
+long getLong() {
+  return 2L
+}
+
+@NonCPS
+List&lt;Long&gt; createList() {
+  return [getLong()]
+}
+                </code></pre>
+                </div>
+
+                <div class="code-wrapper fragment" data-fragment-index="2">
+                    <pre><code class="code groovy" data-trim data-noescape>
+hudson.remoting.ProxyException:
+org.codehaus.groovy.runtime.typehandling.GroovyCastException:
+Cannot cast object '2' with class 'java.lang.Long' to class 'java.util.List'
+                    </code></pre>
+
+                </div>
+            </section>
+            <section>
+                <h2>Multibranch pipelines and workspaces</h2>
+                <ul class="nodisc">
+                    <li class="fragment">One branch validated on many agents</li>
+                    <li class="fragment">One workspace per branch on each agent</li>
+                    <li class="fragment">100 branches x 1GB</li>
+                    <li class="fragment">No automatic cleanup</li>
+                </ul>
+                <blockquote class="fragment"><p>No space left on disk</p></blockquote>
+            </section>
+            <section>
+                <h2>Multibranch pipelines and workspaces</h2>
+                <div class="flushleft"><p class="strong">First try</p>
+                    <ul class="flushleft">
+                        <li>Clear workspace at the end of the job</li>
+                        <li>Shallow clone for some tasks</li>
+                    </ul>
+                </div>
+                <br/>
+                <div class="fragment flushleft"><p class="strong">Result</p>
+                    <ul class="flushleft">
+                        <li>Disk usage trouble solved</li>
+                        <li>Clone from scratch, slow and intensive network usage</li>
+                    </ul>
+                </div>
+            </section>
+            <section>
+                <h2>Multibranch pipelines and workspaces</h2>
+                <p class="flushleft strong">Second try</p>
+                <ul class="flushleft">
+                    <li>Share the workspace among branches, with <code>ws</code></li>
+                    <li>Always start with <code>git clean -xdf</code></li>
+                </ul>
+                <br/>
+                <br/>
+                <p class="strong">Much closer to the TeamCity behaviour</p>
+            </section>
+            <section>
+                <h2>Script Loader - why?</h2>
+                <ul class="nodisc">
+                    <li class="fragment">Quickly many Jenkins scripts</li>
+                    <li class="fragment">Each script has its own structure</li>
+                    <li class="fragment">Duplicate code</li>
+                    <li class="fragment">Very long scripts</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Script Loader - goals</h2>
+                <ul class="nodisc">
+                    <li class="fragment">Single entry point</li>
+                    <li class="fragment">Force a unique script structure</li>
+                    <li class="fragment">Reuse code</li>
+                    <li class="fragment">Optimize the loading</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Script loader - Project structure</h2>
+                <div class="code-wrapper"><pre><code class="code groovy" data-trim data-noescape>
+src/main/jenkins
+├── job                         All Jenkins jobs declarations
+│   ├── deploy.jenkins
+│   ├── integration.jenkins
+│   ├── seleniums.jenkins
+│   └── sonar.jenkins
+├── lib
+│   ├── commons.jenkins         Common function declarations
+│   └── scriptLoader.jenkins    Main loader for scripts
+└── step
+    ├── deploy                  Jenkins files for Deployment steps
+    │   ├── flyway.jenkins
+    │   └── tomcat.jenkins
+    └── ...
+                </code></pre></div>
+            </section>
+            <section>
+                <h2>Script Loader - Job structure</h2>
+                <div class="code-wrapper"><pre><code class="code groovy" data-trim data-noescape>
+Map<String, String> imports() {
+    [   commons:   'lib/commons.jenkins',
+        flyway:    'step/deploy/flyway.jenkins',
+        tomcat:    'step/deploy/tomcat.jenkins',
+    ]
+}
+
+void execute() {
+    stage('flyway') {
+        flyway.execute()
+    }
+    stage('tomcat') {
+        tomcat.execute()
+    }
+}
+return this
+                    </code></pre></div>
+            </section>
+            <section>
+                <h2>Script loader - Config in Jenkins</h2>
+                <div class="code-wrapper"><pre><code class="code groovy" data-trim data-noescape>
+String scriptToLoad = 'deploy.jenkins'
+def loadedScript = node () {
+   checkout(/* GIT CONFIGURATION */)
+   def runner = load 'jenkins/src/main/jenkins/lib/scriptLoader.jenkins'
+   return runner.configure(scriptToLoad)
+}
+loadedScript.execute()
+                    </code></pre></div>
+            </section>
+
+
+
+            <section>
+                <h2>Script loader - Source</h2>
+                <div class="code-wrapper"><pre><code class="code groovy" data-trim data-noescape>
+def configure(filename) {
+    def runnable = load(filename)
+    checkIsScript(runnable, filename)
+    importAll(runnable)
+    return runnable
+}
+
+private void importAll(runnable) {
+    List l = createList(runnable.imports().keySet())
+    for (int i = 0; i < l.size(); i++) {
+        String scriptFile = runnable.imports()[l.get(i)]
+        def script = load(scriptFile)
+        checkIsScript(script, scriptFile)
+        runnable."${l.get(i)}" = script
+    }
+}
+return this
+                    </code></pre></div>
+            </section>
+            <section>
+                <h2>There are still risks</h2>
+                <p class="fragment">The same code for many environments.</p>
+                <p class="fragment">One change can cause regression.</p>
+                <blockquote class="fragment"><p>Oops! The load test is triggered after deploying the production!</p>
+                </blockquote>
+                <p class="fragment">We need something to test and track the impact of our changes!</p>
+            </section>
+            <section data-state="background-pipeline-test">
+                <h2>JenkinsPipelineUnit</h2>
+                <p style="font-style: italic">pipeline-as-code</p>
+                <ul class="nodisc">
+                    <li>
+                        Cd pipelines are configured/described with code.
+                        <span class="strong green larger">&#10003;</span>
+                    </li>
+                    <li>
+                        Pipeline code is versioned in our code base.
+                        <span class="strong green larger">&#10003;</span>
+                    </li>
+                    <li class="fragment">
+                        Unit tests to check what will be executed.
+                        <span class="strong green larger">&#10003;</span>
+                    </li>
+                </ul>
+                <p class="strong orangeA700 fragment">Open Sourced by LesFurets.com</p>
+            </section>
+            <section class="center">
+                <h2>Example Job</h2>
+                <div class="code-wrapper">
+                    <pre><code class="code groovy" data-trim data-noescape>
+node() {
+    stage('Checkout') {
+        checkout(scm)
+        sh 'git clean -xdf'
+    }
+    stage('Build and test') {
+        sh './gradlew build'
+        junit 'build/test-results/test/*.xml'
+    }
+}
+                    </code></pre>
+                </div>
+            </section>
+            <section class="center demo">
+                <h2>Let's test it!</h2>
+                <div class="code-wrapper">
+                    <pre><code class="code groovy" data-trim data-noescape>import com.lesfurets.jenkins.helpers.BasePipelineTest
+class TestJenkinsfile extends BaseRegressionTestCPS {
+
+    /*...*/
+
+    @Test
+    void testJenkinsFile() throws Exception {
+        loadScript('Jenkinsfile')
+        printCallStack()
+    }
+}
+                    </code></pre>
+                </div>
+            </section>
+            <section>
+                <h2>How does it work?</h2>
+                <p>Transforms and interprets Groovy code as in Jenkins</p>
+                <p>Intercepts method calls for stack tracing and mocking</p>
+            </section>
+            <section>
+                <h2>JenkinsPipelineUnit</h2>
+                <ul class="flushleft">
+                    <li class="fragment">Mock your environment
+                        <ul style="padding-left: 5%">
+                            <li>Jenkins steps</li>
+                            <li>Job environment</li>
+                        </ul>
+                    </li>
+                    <li class="fragment">See the callstacks</li>
+                    <li class="fragment">Test your own functions</li>
+                    <li class="fragment">Check for regressions</li>
+                    <li class="fragment">Integrates with test frameworks like JUnit, TestNG, Spock</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Conclusion</h2>
+                <div style="float:left; width:60%; padding-left: 0%" class="fragment flushleft">
+                    <p class="strong" style="padding-left: 15%; color: lightgreen">Pros</p>
+                    <ul class="nodisc">
+                      <li class="fragment">Pipeline as code</li><!-- Rather than clic button configuration-->
+                      <li class="fragment">Readable change history</li>
+                      <li class="fragment">Code is reusable</li>
+                      <li class="fragment">Code is testable</li>
+                      <li class="fragment">Isolation with feature branching</li>
+                      <li class="fragment">May evolve with the application</li>
+                    </ul>
+                </div>
+                <div style="float:right;width: 40%;" class="flushleft fragment">
+                    <p class="strong" style="padding-left: 15%; color: red">Cons</p>
+                    <ul class="nodisc fragment">
+                          <li>Cost of early adoption</li>
+                          <li>Some traps and imperfections</li>
+                    </ul>
+                </div>
+                <div style="float:left;width:100%" class="fragment">
+                    <p class="strong">That rocks!</p>
+                </div>
+            </section>
+            <section class="flushleft" data-state="background-furets">
+                <h2>Questions?</h2>
+                <p>Emmanuel Quincerot</p>
+                <p>Ozan Gunalp</p>
+                <p class="flushright strong orangeA700">Open Source @ LesFurets<br/>
+                    <a href="https://github.com/lesfurets">
+                        https://github.com/lesfurets
+                    </a>
+                </p>
+
+                <p class="flushright strong orangeA700">JenkinsPipelineUnit<br/>
+                    <a href="https://github.com/lesfurets/JenkinsPipelineUnit">
+                        https://github.com/lesfurets/JenkinsPipelineUnit
+                    </a>
+                </p>
+            </section>
+        <section>
+            <h2>Scripted vs. Declarative pipelines</h2>
+
+            <div style="float:left;width: 30%;" class="flushleft">
+                <p>Scripted</p>
+                <div class="code-wrapper">
+ <pre><code class="code groovy" data-trim data-noescape>
+node('linux') {
+  stage('build') {
+    try {
+      sh 'mvn clean install'
+      sh 'notif_success.sh'
+    }
+    catch (e) { sh 'rollback.sh' }
+  }
+}
+            </code></pre>
+
+                </div>
+            </div>
+
+
+            <div style="float:right;width:30%;">
+                <p>Declarative</p>
+                <div class="code-wrapper">
+<pre><code class="code groovy" data-trim data-noescape>
+pipeline {
+  agent linux
+  stages {
+    stage('build') {
+      sh 'mvn clean install'
+    }
+  postBuild {
+    success {
+      sh 'notif_success.sh'
+    }
+    failure {
+      sh 'rollback.sh'
+    }
+  }
+}
+            </code></pre>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+<script src="../bower_components/reveal.js/lib/js/head.min.js"></script>
+<script src="../bower_components/reveal.js/js/reveal.js"></script>
+<script>
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        embedded: true,
+
+        //theme: 'lesfurets', // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            {
+                src: '../bower_components/reveal.js/lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function () {
+                return !!document.body.classList;
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function () {
+                return !!document.body.classList;
+            }
+            }
+        ]
+    });
+</script>
+<script src="../js/lesfurets-theme.js" async></script>
+</body>
+</html>
