@@ -210,10 +210,12 @@
             </section>
             <section>
                 <h2>You said it's Groovy?</h2>
-                <img style="width: 50%" src="../img/jenkins/trump-lie.png" />
-                <p class="strong">
-                    <a href="https://twitter.com/hashtag/alternativefacts" target="_blank">#alternativefacts</a>
-                </p>
+                <div  class="fragment">
+                    <img style="width: 50%" src="../img/jenkins/trump-lie.png"/>
+                    <p class="strong">
+                        <a href="https://twitter.com/hashtag/alternativefacts" target="_blank">#alternativefacts</a>
+                    </p>
+                </div>
                 <!-- TODO -->
             </section>
             <section>
@@ -226,11 +228,9 @@
                 <h2>Be Serializable or you're dead</h2>
                 <div class="code-wrapper">
                 <pre><code class="code groovy" data-trim data-noescape>
-import groovy.json.JsonSlurper
-
 @NonCPS
 def parseJson() {
-    return new JsonSlurper().parseText('{"aaa":3}')
+    return new JsonSlurper().parseText('{"tag":"jenkins"}')
 }
                     <span class="fragment" data-fragment-index="1">
 node() {
@@ -241,7 +241,7 @@ node() {
         }
     }
 
-    stage('print') { echo a }
+    stage('Print') { echo a.tag }
 }
 </span>
 
@@ -261,13 +261,13 @@ import groovy.json.JsonSlurper
 
 @NonCPS
 def parseJson(String fieldName) {
-    return new JsonSlurper().parseText('{"aaa":3}')?."$fieldName"
+    return new JsonSlurper().parseText('{"tag":"jenkins"}')?."$fieldName"
 }
 
 node() {
     String output
     stage('List') {
-        output = parseJson('aaa')
+        output = parseJson('tag')
     }
 
     stage('print') { echo output }
@@ -311,21 +311,20 @@ Cannot cast object '2' with class 'java.lang.Long' to class 'java.util.List'
                     <li class="fragment">One branch validated on many agents</li>
                     <li class="fragment">One workspace per branch on each agent</li>
                     <li class="fragment">100 branches x 1GB</li>
-                    <li class="fragment">No cleanup</li>
+                    <li class="fragment">No automatic cleanup</li>
                 </ul>
                 <blockquote class="fragment"><p>No space left on disk</p></blockquote>
             </section>
             <section>
                 <h2>Multibranch pipelines and workspaces</h2>
-                <div class="flushleft">First try:
+                <div class="flushleft"><p class="strong">First try</p>
                     <ul class="flushleft">
                         <li>Clear workspace at the end of the job</li>
                         <li>Shallow clone for some tasks</li>
                     </ul>
                 </div>
-
-                <div class="fragment">
-                    <p class="flushleft">Result:</p>
+                <br/>
+                <div class="fragment flushleft"><p class="strong">Result</p>
                     <ul class="flushleft">
                         <li>Disk usage trouble solved</li>
                         <li>Clone from scratch, slow and intensive network usage</li>
@@ -334,7 +333,7 @@ Cannot cast object '2' with class 'java.lang.Long' to class 'java.util.List'
             </section>
             <section>
                 <h2>Multibranch pipelines and workspaces</h2>
-                <p class="flushleft">Second try:</p>
+                <p class="flushleft strong">Second try</p>
                 <ul class="flushleft">
                     <li>Share the workspace among branches, with <code>ws</code></li>
                     <li>Always start with <code>git clean -xdf</code></li>
@@ -346,7 +345,7 @@ Cannot cast object '2' with class 'java.lang.Long' to class 'java.util.List'
             <section>
                 <h2>Script Loader - why?</h2>
                 <ul class="nodisc">
-                    <li class="fragment">Quickly many Jenkins script</li>
+                    <li class="fragment">Quickly many Jenkins scripts</li>
                     <li class="fragment">Each script has its own structure</li>
                     <li class="fragment">Duplicate code</li>
                     <li class="fragment">Very long scripts</li>
@@ -522,8 +521,8 @@ class TestJenkinsfile extends BaseRegressionTestCPS {
 
             <section>
                 <h2>Conclusion</h2>
-                <div style="float:left; width:60%; padding-left: 0%" class="flushleft fragment">
-                    <p class="strong">Pros:</p>
+                <div style="float:left; width:60%; padding-left: 0%" class="fragment flushleft">
+                    <p class="strong" style="padding-left: 15%; color: lightgreen">Pros</p>
                     <ul class="nodisc">
                       <li class="fragment">Pipeline as code</li><!-- Rather than clic button configuration-->
                       <li class="fragment">Readable change history</li>
@@ -534,7 +533,7 @@ class TestJenkinsfile extends BaseRegressionTestCPS {
                     </ul>
                 </div>
                 <div style="float:right;width: 40%;" class="flushleft fragment">
-                    <p class="strong fragment">Cons:</p>
+                    <p class="strong" style="padding-left: 15%; color: red">Cons</p>
                     <ul class="nodisc fragment">
                           <li>Cost of early adoption</li>
                           <li>Some traps and imperfections</li>

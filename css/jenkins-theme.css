@@ -129,6 +129,14 @@ html.background-why .reveal:not(.overview) .backgrounds {
 .reveal blockquote:before {
     margin-right: 0.5em;
 }
+.reveal blockquote:after {
+    content: close-quote;
+    margin-left: 0.5em;
+    color: black;
+    font-size: 4em;
+    line-height: 0.1em;
+    vertical-align: -0.45em;
+}
 
 .reveal blockquote p {
     color: #001F36;
