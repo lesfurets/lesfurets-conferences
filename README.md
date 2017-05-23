@@ -8,6 +8,7 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 * **[Software craftmanship](https://github.com/lesfurets/lesfurets-conferences#software-craftmanship)** : Retour d’expérience sur notre manière de travailler ensemble sur le code
 * **[Big Data](https://github.com/lesfurets/lesfurets-conferences#big-data)** : Retour d’expérience sur notre data
 * **Zeno Pixel** ([open-source](https://github.com/lesfurets/zeno-pixel)) : Test de régression graphique pixel à pixel
+* **[JenkinsPipelineUnit](https://github.com/lesfurets/lesfurets-conferences#jenkinspipelineunit-test-your-continuous-delivery-pipeline)** : Test your continuous delivery pipeline
 
 ## Conférences
 
