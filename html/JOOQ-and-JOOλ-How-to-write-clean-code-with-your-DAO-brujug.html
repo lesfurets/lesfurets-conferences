@@ -129,7 +129,7 @@
           <ul class="white">
             <li>JDBC</li>
             <li>JPA / Hibernate</li>
-            <li>JDBC Template</li>
+            <li>Spring JDBC Template</li>
             <li>MyBatis, in-house framework, ...</li>
             <li><strong class="color-zen-red">Let's try Java Object Oriented Query a.k.a JOOQ</strong></li>
           </ul>
@@ -384,10 +384,6 @@ private FicheAuto mapFicheAuto(Record7 record) {
           </div>
         </section>
 
-        <section class="flushleft" data-background="#222">
-          <h2>TODO slide with SQL generation of previous code</h2>
-        </section>
-
         <section class="flushleft" data-background="#fafafa">
           <h2 style="color:black">To jOOQ and beyond...</h2>
           <img width="50%" src="../img/jooq/buzz.jpg">
@@ -579,7 +575,6 @@ return abScenarios
         <section class="flushleft" data-background="#222">
           <h2>Our usage of codegen</h2>
           <ul class="white">
-            <li><strong class="color-zen-yellow">instanceFields</strong>: true to ???</li>
             <li><strong class="color-zen-yellow">javaTimeTypes</strong>: true to use <code>java.time</code> instead of <code>java.sql</code> for time types</li>
             <li><strong class="color-zen-yellow">pojos</strong>: false to remove generation of <code>FicheAuto</code> we already have</li>
             <li><strong class="color-zen-yellow">records</strong>: false to remove generation of <code>FicheAutoRecords</code>, we are using <code>Recordn</code> directly</li>
