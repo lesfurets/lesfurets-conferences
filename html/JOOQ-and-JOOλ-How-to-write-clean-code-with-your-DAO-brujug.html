@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>How to write clean code with your Data Access Objects</title>
-    <meta name="description" content="JOOQ et JOOλ : Comment écrire du code propre dans vos DAO">
+    <title>jOOQ et jOOλ: How to write clean code for your Data Access Objects</title>
+    <meta name="description" content="jOOQ et jOOλ: How to write clean code for your Data Access Objects">
     <meta name="author" content="Mathieu Gandin">
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
@@ -63,8 +63,8 @@
         <!-- START -->
 
         <section class="flushright" data-background="../img/nwx/lesfurets-background-black-01.jpg">
-          <h1>JOOQ et JOOλ :</h1>
-          <h2>How to write clean code with your Data Access Objects</h2>
+          <h1>jOOQ et jOOλ :</h1>
+          <h2>How to write clean code for your Data Access Objects</h2>
           <h3>Mathieu Gandin / Alexandre Dubreuil</h3>
           <ul class="flushright nodisc">
             <li>
@@ -131,7 +131,7 @@
             <li>JPA / Hibernate</li>
             <li>Spring JDBC Template</li>
             <li>MyBatis, in-house framework, ...</li>
-            <li><strong class="color-zen-red">Let's try Java Object Oriented Query a.k.a JOOQ</strong></li>
+            <li><strong class="color-zen-red">Let's try Java Object Oriented Query a.k.a jOOQ</strong></li>
           </ul>
         </section>
 
@@ -448,7 +448,7 @@ public List&lt;<mark>Tuple2</mark>&lt;LocalDateTime, String&gt;&gt; findPlate(Co
         </section>
 
         <section class="flushleft" data-background="#222">
-          <h2>We use <span class="color-zen-yellow">JOOλ</span> with <span class="color-zen-yellow">JOOQ</span></h2>
+          <h2>We use <span class="color-zen-yellow">jOOλ</span> with <span class="color-zen-yellow">jOOQ</span></h2>
           <ul class="white">
             <li>Helper classes extending lambda from Java 8</li>
             <li>Your code tends to be more functional, declarative</li>
@@ -516,7 +516,7 @@ return abScenarios
         </section>
 
         <section class="flushleft" data-background="#222">
-          <h2><span class="color-zen-yellow">JOOλ</span>, conditions of usage</h2>
+          <h2><span class="color-zen-yellow">jOOλ</span>, conditions of usage</h2>
           <ul class="white">
             <li>Don't use <code>Tuple</code> to replace POJOS</li>
             <li>You may need to do some refactoring if you're planning to use <code>Function16</code></li>
@@ -525,7 +525,7 @@ return abScenarios
         </section>
 
         <section class="flushleft" data-background="#fafafa">
-          <h2 style="color:black">Code generation with JOOQ</h2>
+          <h2 style="color:black">Code generation with jOOQ</h2>
           <ul class="black">
             <li style="color:black">Works with Ant, Maven and Gradle</li>
           </ul>
@@ -581,7 +581,7 @@ return abScenarios
           </ul>
         </section>
 
-        <section class="flushleft" data-background="#fafafa">
+        <section class="flushright" data-background="#fafafa">
           <h2 style="color:black">Pitfalls</h2>
           <img width="50%" src="../img/jooq/pitfall.png">
         </section>
@@ -596,7 +596,7 @@ return abScenarios
 
         <section class="flushleft" data-background="#222">
           <h2>Falling back to JDBC</h2>
-          <p>Sometimes jOOQ does not support something you need (e.g. insert returning for batch inserts), but falling back to JDBC is easy by using the <code>Query</code> object</p>
+          <p>Sometimes <strong class="color-zen-blue">jOOQ</strong> does not support something you need (e.g. insert returning for batch inserts), but falling back to JDBC is easy by using the <code>Query</code> object</p>
           <div class="code-wrapper small">
             <pre>
             <code class="code java" data-trim data-noescape>
@@ -625,7 +625,7 @@ List&lt;String&gt; queries = leads.stream()
             <li style="color:black">Code generation</li>
             <li style="color:black">Java 8 stream support</li>
             <li style="color:black">Java 8 java.time API support</li>
-            <li style="color:black">You can use <strong class="color-zen-green">JOOλ</strong> to simplify your code</i>
+            <li style="color:black">You can use <strong class="color-zen-green">jOOλ</strong> to simplify your code</i>
             <li style="color:black">Supports MariaDB, MySQL, Oracle, Oracle, PostgreSQL, SQLite, SQL Server ...</li>
           </ul>
         </section>
@@ -637,6 +637,9 @@ List&lt;String&gt; queries = leads.stream()
             <li>Our open source projects (<strong class="color-zen-green">git-octopus</strong>, <strong class="color-zen-green">model-map</strong>, <strong class="color-zen-green">selenium-grid</strong>, etc.)<br><strong><a href="https://github.com/lesfurets">https://github.com/lesfurets</a></strong></li>
           </ul>
             <li>Slide deck (with the code samples)<br><strong><a href="https://github.com/lesfurets/lesfurets-conferences">https://github.com/lesfurets/lesfurets-conference</a></strong></li>
+          </ul>
+          <ul class="white">
+            <li>Our technical blog<br><strong><a href="https://beastie.lesfurets.com">https://beastie.lesfurets.com</a></strong></li>
           </ul>
           <ul class="white">
             <li>Compare insurance<br><strong><a href="https://www.lesfurets.com">https://www.lesfurets.com</a></strong></li>

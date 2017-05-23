@@ -92,7 +92,7 @@ Code source pour live code : [https://github.com/lesfurets/lesfurets-conferences
 **JOOQ and JOOλ : How to write clean code with your Data Access Object** : JOOQ and JOOλ are open-source solutions for integrating your Java application cleanly with your database. So, what's new? After all object-relational mapping is at least as old as the Java platform. But since Java 8, JOOQ allows us to use the Stream API with object-relational mapping, which, coupled with JOOλ, has the effect of writing simpler DAOs in a functional paradigm. During this session we will show you the advantages we can obtain with JOOQ and JOOλ frameworks, compared to pure JDBC, JPA and Spring JDBC Template. And for the icing on the cake, we will show you how to simply introduce JOOQ and JOOλ into your existing code. 
 
 
-- 23 mai 2017 (en) : BruJUG @ Bruxelles [How to write clean code with your Data Access Objects](https://lesfurets.github.io/lesfurets-conferences/html/JOOQ-and-JOO%CE%BB-How-to-write-clean-code-with-your-DAO-brujug.html#/)
+- 23 mai 2017 (en) : BruJUG @ Bruxelles [jOOQ et jOOλ: How to write clean code for your Data Access Objects](https://lesfurets.github.io/lesfurets-conferences/html/JOOQ-and-JOO%CE%BB-How-to-write-clean-code-with-your-DAO-brujug.html#/)
 
 <!-- 
 ### Applying Reactive programming for handling server-side concurrency
