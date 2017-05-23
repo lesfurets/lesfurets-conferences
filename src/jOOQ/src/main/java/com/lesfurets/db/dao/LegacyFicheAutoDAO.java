@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LegacyFicheAutoDAO extends DAO {
 
@@ -30,28 +32,32 @@ public class LegacyFicheAutoDAO extends DAO {
             + COL_CODE_SRA + ", "
             + COL_STATUT
             + " FROM " + TABLE_FICHES_AUTO
-            + " WHERE " + COL_STATUT + " >? "
-            + " ORDER BY statut DESC LIMIT 0,1 ";
+            + " WHERE " + COL_OFFRE_UID + " = ? "
+            + " AND " + COL_STATUT + " > ? "
+            + " ORDER BY statut DESC ";
 
     public LegacyFicheAutoDAO(Connection connection) {
         super(connection);
     }
 
-    public FicheAuto selectRecentFiche(int statut) throws Exception {
+    public List<FicheAuto> selectRecentFiches(String offreUid, int statut) throws Exception {
         try (PreparedStatement ps = connection.prepareStatement(SELECT_ONE)) {
-            ps.setInt(1, statut);
+            ps.setString(1, offreUid);
+            ps.setInt(2, statut);
             try (ResultSet rs = ps.executeQuery()) {
-                if (!rs.next()) {
-                    throw new Exception("No fiche for " + statut);
+                List<FicheAuto> ficheAutos = new ArrayList<>();
+                while (rs.next()) {
+                    ficheAutos.add(
+                            new FicheAuto(
+                                    rs.getInt(COL_ID),
+                                    rs.getString(COL_OFFRE_UID),
+                                    LocalDate.parse(rs.getString(COL_CREATION_DATE), DateTimeFormatter.ISO_DATE),
+                                    rs.getString(COL_CODE_POSTAL),
+                                    rs.getString(COL_EMAIL),
+                                    rs.getString(COL_CODE_SRA),
+                                    rs.getInt(COL_STATUT)));
                 }
-                return new FicheAuto(
-                        rs.getInt(COL_ID),
-                        rs.getString(COL_OFFRE_UID),
-                        LocalDate.parse(rs.getString(COL_CREATION_DATE), DateTimeFormatter.ISO_DATE),
-                        rs.getString(COL_CODE_POSTAL),
-                        rs.getString(COL_EMAIL),
-                        rs.getString(COL_CODE_SRA),
-                        rs.getInt(COL_STATUT));
+                return ficheAutos;
             }
         }
     }

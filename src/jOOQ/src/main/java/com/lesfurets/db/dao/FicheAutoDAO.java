@@ -9,8 +9,11 @@ import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.lesfurets.db.tables.FichesAuto.FICHES_AUTO;
+import static java.util.stream.Collectors.toList;
 import static org.jooq.impl.DSL.trueCondition;
 
 public class FicheAutoDAO extends DAO {
@@ -19,7 +22,7 @@ public class FicheAutoDAO extends DAO {
         super(connection);
     }
 
-    public FicheAuto selectRecentFiche(Integer statut) throws Exception {
+    public List <FicheAuto> selectRecentFiches(String offreUid, Integer statut) throws Exception {
         return DSL
                 .using(connection)
                 .select(FICHES_AUTO.ID,
@@ -31,13 +34,12 @@ public class FicheAutoDAO extends DAO {
                         FICHES_AUTO.CODE_SRA,
                         FICHES_AUTO.STATUT)
                 .from(FICHES_AUTO)
-                .where(statut == null ? trueCondition() : FICHES_AUTO.STATUT.gt(statut))
+                .where(FICHES_AUTO.OFFRE_UID.eq(offreUid))
+                .and(statut == null ? trueCondition() : FICHES_AUTO.STATUT.gt(statut))
                 .orderBy(FICHES_AUTO.STATUT.desc())
-                .limit(1)
                 .stream()
                 .map(this::mapFicheAuto)
-                .findFirst()
-                .orElseThrow(() -> new Exception("No fiche for " + statut));
+                .collect(toList());
     }
 
     private FicheAuto mapFicheAuto(Record8<Integer, String, LocalDate, String, String, String, String, Integer> record) {
