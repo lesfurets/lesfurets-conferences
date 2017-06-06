@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>Seleniums on steroids</title>
-    <meta name="description" content="Seleniums on steroids">
+    <title>Seleniums on steroid</title>
+    <meta name="description" content="Seleniums on steroid">
     <meta name="author" content="Thomas du Boÿs">
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
@@ -17,7 +17,7 @@
             var link = document.createElement('link');
             link.rel = 'stylesheet';
             link.type = 'text/css';
-            link.href = '../css/print/pdf.css';
+            link.href = '../css/print/pdf-lesfurets.css';
             document.getElementsByTagName('head')[0].appendChild(link);
         }
     </script>
@@ -31,15 +31,13 @@
     <a class="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a>
     <a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a>
     <a class="twitter" href="https://twitter.com/tduboys" target="_blank">@tduboys</a>
-    
-    
 </div>
 <div class="reveal">
     <div class="slides">
         <!-- START -->
 
         <section class="flushright" data-background="../img/nwx/lesfurets-background-black-01.jpg">
-            <h1>Seleniums on Steroids</h1>
+            <h1>Seleniums on Steroid</h1>
             <h2>Pour réveiller votre grid Selenium</h2>
             <h3>Thomas du Boÿs</h3>
             <h4>Ops@LesFurets.com</h4>
@@ -69,20 +67,19 @@
             <pre>
                 <code class="code java" data-trim data-noescape>
 # Starting server
-java -jar selenium-server-standalone.jar -role hub -timeout 180  \
-  -browserTimeout 300 -maxSession 100 -newSessionWaitTimeout -1 &
+java -jar selenium-server-standalone.jar \
+  -role hub -maxSession 100 &
 
 # Starting 32 nodes
 for id in {1..32}
 do
-  NUMDISPLAY=$((10 + $id))
-  DISPLAY=$NUMDISPLAY
+  DISPLAY=$((10 + $id))
   PORT=$((5000 + $id))
-  FFPORT=$((7000 + $id))
   GRID_HUB=http://localhost:4444/grid/register
-  xvfb-run --auto-servernum --server-num=${NUMDISPLAY} -s "-screen 0 1600x1050x16" \
-    java  -jar selenium-server-standalone.jar -role node -hub ${GRID_HUB} \
-    -browser browserName=firefox,maxInstances=1,platform=LINUX -port ${PORT}  &
+  xvfb-run --server-num=${DISPLAY} -s "-screen 0 1600x1050x16" \
+    java -jar selenium-server-standalone.jar -role node \
+    -hub ${GRID_HUB} -port ${PORT} \
+    -browser browserName=firefox,maxInstances=1,platform=LINUX &
 done
                 </code>
             </pre>
@@ -110,8 +107,8 @@ done
             <pre>
                 <code class="code java" data-trim data-noescape>
 # Starting server
-java -jar selenium-server-standalone.jar -role hub -timeout 180  \
-  -browserTimeout 300 -maxSession 100 -newSessionWaitTimeout -1 &
+java -jar selenium-server-standalone.jar \
+  -role hub -maxSession 100 &
 
 # Starting 32 nodes
 for id in {1..32}; do
@@ -138,8 +135,7 @@ services:
     ports:
       - "4444:4444"
     environment:
-      - GRID_MAX_SESSION=900
-      - GRID_TIMEOUT=18000000
+      - GRID_MAX_SESSION=100
 
   firefox:
     image: selenium/node-firefox:3.4.0
@@ -170,11 +166,14 @@ services:
     // Full list of configuration options available here:
     // https://github.com/hakimel/reveal.js#configuration
     Reveal.initialize({
-        controls: true,
+        controls: false,
         progress: true,
-        history: true,
+        history: false,
         center: true,
         embedded: true,
+        margin: 0.3,
+        minScale: 0.2,
+	      maxScale: 1.2,
 
         //theme: 'lesfurets', // available themes are in /css/theme
         transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
