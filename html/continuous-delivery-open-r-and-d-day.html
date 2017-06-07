@@ -33,7 +33,6 @@
   <a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a>
   <a class="github" href="https://github.com/dubreuia" target="_blank">https://github.com/dubreuia</a>
   <a style="margin-right: 10px;" class="twitter" href="https://twitter.com/dubreuia" target="_blank">@dubreuia</a>
-  <img style="height:40px;vertical-align:middle;padding:0 10px 0 25px" src="../img/logo-open-r-and-d-day.png">
 </div>
 <div class="reveal">
   <div class="slides">
@@ -54,7 +53,7 @@
 
     <section class="center" data-background="#222">
       <p>L'organisation du code est une composante importante du process de livraison</p>
-      <p>Nous travaillons en <strong class="color-indigo300">feature branching</strong>.</p>
+      <p>Nous travaillons en <strong class="color-indigo300">feature branching</strong> et nous faisons du <strong class="color-indigo300">continuous (daily) delivery</strong></p>
     </section>
     <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
       <img class="nostyle" src="../img/octopus-diagrams/feature_branch_1.svg"/>
@@ -73,7 +72,7 @@
 
     <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
       <img class="nostyle" src="../img/octopus-diagrams/simple_merge_1.svg"/>
-      <p class="flushleft svg-header small"><strong>Merge pre-build</strong> : merge de master sur la branche avant le build.<br>Les outils IC permettent de faire le merge simple automatique.</p>
+      <p class="flushleft svg-header small"><strong>Merge pre-build</strong> : merge de master sur la branche avant le build. Les outils IC permettent de faire le merge simple automatique.</p>
       <aside class="notes">
         <p>Simple merge pre-build</p>
         <ul class="color-gray50 nodisc">
@@ -101,8 +100,8 @@
 
     <!-- SECTION - CONTINUOUS MERGE -->
     <section class="flushleft" data-state="background-merge">
-      <h2 style="color:#f07d00">Continuous merge</h2>
-      <h3 class="flushright section-subheader">Le continuous merge nous permet de créer un environnement commun pour l'intégration continue</h3>
+      <h2 class="color-indigo300">Continuous merge</h2>
+      <h4 class="flushright section-subheader">Réconcilier feature branching et intégration continue, <br>et détecter les conflits rapidement.</h4>
     </section>
 
     <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
@@ -138,11 +137,11 @@ git merge features/*
     </section>
 
     <section class="flushleft" data-background="#222">
-      <p class="color-indigo300">Intégration continue<span style="color:green"> &#10003;</span></p>
-      <p class="color-gray50">Livre ce qui est prêt grâce au <span class="color-indigo300">feature branching</span><span style="color:green"> &#10003;</span></p>
-      <p class="color-gray50">Peu d'investissements pour mettre en place <br><span class="color-gray400">(Git, Jenkins, git-octopus)</span></p>
-      <p class="color-gray50">Passe à l'echelle</p>
-      <p class="color-gray50">On constitue facilement les environnements <strong class="color-indigo300">dev</strong> avec toutes les features, <strong class="color-indigo300">stage</strong> pour la validation, <strong class="color-indigo300">preprod</strong> pour les tickets validés<p>
+      <p class="color-"><span style="color:green">&#10003; </span>On garde l'intégration continue</p>
+      <p class="color-"><span style="color:green">&#10003; </span>On livre ce qui est prêt grâce au <strong class="color-indigo300">feature branching</strong></p>
+      <p class="color-"><span style="color:green">&#10003; </span>Peu d'investissements pour mettre en place <strong class="color-indigo300">(git, jenkins, git-octopus)</strong></p>
+      <p class="color-"><span style="color:green">&#10003; </span>Facile de passer à l'echelle</p>
+      <p class="color-"><span style="color:green">&#10003; </span>On constitue facilement les environnements <strong class="color-indigo300">dev</strong> avec toutes les features, <strong class="color-indigo300">stage</strong> pour la validation, <strong class="color-indigo300">preprod</strong> pour les tickets validés<p>
     </section>
 
     <section class="center" data-background="#222">
@@ -189,89 +188,87 @@ git merge features/*
 
     <!-- SECTION - CONFLICTS -->
     <section class="flushleft" data-state="background-conflict">
-      <h2 style="color:#f07d00">Gestion de conflits</h2>
-      <h3 class="flushright section-subheader">L'utilisation de git-octopus dans l'intégration continue permet de détecter et éviter les
-        conflits</h3>
+      <h2 class="color-indigo300">Gestion de conflits</h2>
+      <h4 class="flushright section-subheader">L'utilisation de git-octopus dans l'intégration continue permet de détecter tôt les conflits</h4>
     </section>
 
     <section class="flushleft" data-background="#222">
-      <h3>Eviter le conflit au niveau code</h3>
-      <p>TODO Conventions de code partagées, éviter les binaires, un code base modulaire, évolutions par abstraction, <span class="under">S</span>OLID</p>
+      <h3>Éviter le conflit au niveau code</h3>
+      <p>Avoir des conventions de code communes, en évitant les binaires, en ayant un code modulaire, avec des évolutions par abstraction, en gardant le code <span class="under">S</span>OLID (single responsability principle)</p>
       <p class="flushright" style="font-weight: bold;">RISQUE: <span class="dangerzone safe">faible</span></p>
+      <aside class="notes">
+        S
+        Single responsibility principle: a class should have only a single responsibility (i.e. only one potential change in the software's specification should be able to affect the specification of the class)
+        O
+        Open/closed principle: “software entities … should be open for extension, but closed for modification.”
+        L
+        Liskov substitution principle: “objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program.” See also design by contract.
+        I
+        Interface segregation principle: “many client-specific interfaces are better than one general-purpose interface.”[8]
+        D
+        Dependency inversion principle: one should “depend upon abstractions, [not] concretions.”[8]
+      </aside>
     </section>
 
     <section class="flushleft" data-background="#222">
       <h3>Enlever la branche de l'octopus</h3>
-      <p>TODO Séparer les branches de longues durée, reprioriser la tâche.</p>
+      <p>Si deux branches sont en conflits, on peut souvent en enlever une en attendant que l'autre soit dans le master, aussi en repriorisant les taches.</p>
+      <p>Règle générale, on évite ou on sépare les branches de longues durée.</p>
       <p class="flushright" style="font-weight: bold;">RISQUE : <span class="dangerzone safe">faible</span></p>
     </section>
 
-
     <section class="flushleft" data-background="#222">
       <h3>Fusionner la branche</h3>
-      <p>TODO Rendre dépandante la livraison d'une branche avec une autre.</p>
+      <p>On peut merger l'historique des deux branches pour résondre le conflit : on perd alors la possibilité de livrer séparément.</p>
+      <p>On peut aussi utiliser un pseudo trunk based : avoir une branche pour du code commun.</p>
       <p class="flushright" style="font-weight: bold;">RISQUE : <span class="dangerzone danger">danger</span></p>
     </section>
 
-
     <section class="flushleft" data-background="#222">
       <h3>Rebaser la branche</h3>
-      <p>TODO Surveiller les évolutions ultérieures de la branche de base.</p>
+      <p>On garde alors une certaine flexibilité dans la livraison : il faut gérer correctement les modifications de la branche de base.</p>
       <p class="flushright" style="font-weight: bold;">RISQUE :<span class="dangerzone danger">danger</span></p>
     </section>
 
     <section class="flushleft" data-background="#222">
       <h3 style="font-weight: bold;">git-conflict</h3>
-      <p>TODO Permet l'évolutions indépendants des branches.<br> Nécessite de surveiller le contenu des resolutions de conflit.</p>
+      <p><code>git-conflict</code> est livré avec <code>git-octopus</code> et permet de persister la résolution à l'extérieur d'une branche (semblable à <code>git rerere</code>).</p>
+      <p>Permet l'évolution indépendantes des branches.</p> 
+      <p>Nécessite de valide le contenu des resolutions de conflit.</p>
       <p class="flushright" style="font-weight: bold;">RISQUE : <span class="dangerzone warning">attention</span></p>
     </section>
 
-
     <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
       <img class="nostyle" src="../img/octopus-diagrams/conflict_1.svg"/>
-      <p class="flushleft svg-header small"><strong>git-conflict</strong> : git-octopus features/* <span
-          class="ko">KO</span>
-        à cause de <code>features/new</code></p>
+      <p class="flushleft svg-header small"><strong>git-conflict</strong> : git-octopus features/* <span class="ko">KO</span> à cause de <code>features/new</code></p>
     </section>
 
     <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
       <img class="nostyle" src="../img/octopus-diagrams/conflict_2.svg"/>
-      <p class="flushleft svg-header small"><strong>git-conflict</strong> : dépôt résolution de conflit situé sous
-        <code>conflict/resolutions</code></p>
+      <p class="flushleft svg-header small"><strong>git-conflict</strong> : dépôt résolution de conflit situé sous <code>conflict/resolutions</code></p>
     </section>
 
     <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
       <img class="nostyle" src="../img/octopus-diagrams/conflict_3.svg"/>
-      <p class="flushleft svg-header small"><strong>git-conflict</strong> : git merge simple <code>features/f2</code>
-        et
-        <code>features/new</code> <span class="ko">KO</span></p>
+      <p class="flushleft svg-header small"><strong>git-conflict</strong> : git merge simple <code>features/f2</code> et <code>features/new</code> <span class="ko">KO</span></p>
     </section>
 
     <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
       <img class="nostyle" src="../img/octopus-diagrams/conflict_4.svg"/>
-      <p class="flushleft svg-header small"><strong>git-conflict</strong> : git-octopus regarde s'il y a une
-        résolution
-        de conflit disponible </p>
+      <p class="flushleft svg-header small"><strong>git-conflict</strong> : git-octopus regarde s'il y a une résolution de conflit disponible </p>
     </section>
 
     <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
       <img class="nostyle" src="../img/octopus-diagrams/conflict_9.svg"/>
-      <p class="flushleft svg-header small"><strong>git-conflict</strong> : git-octopus features/* <span
-          class="ok">OK</span>
+      <p class="flushleft svg-header small"><strong>git-conflict</strong> : git-octopus features/* <span class="ok">OK</span>
       </p>
     </section>
 
     <!-- SECTION - WORFLOW LF -->
 
     <section class="flushleft" data-state="background-furets">
-      <h2 style="color:#f07d00">Process chez LesFurets.com</h2>
-      <h3 class="flushright section-subheader">L'objectif est de pouvoir prendre le temps de valider et de pouvoir livrer une feature dès qu'elle est prête</h3>
-      <h3 class="flushright section-subheader">TODO reformuler : detecter conflit au plus tot</h3>
-    </section>
-
-    <section class="center" data-background="#222">
-      <p>TODO git octopus peut servir de validation a toute equipe avec des branches</p>
-      <p>TODO git octopus c'est comme le merge de toutes les pull requests</p>
+      <h2 class="color-indigo300">Process chez LesFurets.com</h2>
+      <h4 class="flushright">L'objectif est de trouver les <strong class="color-indigo300">conflits le plus rapidement possible</strong>, pouvoir <strong class="color-indigo300">prendre le temps de valider</strong>, pouvoir livrer une feature <strong class="color-indigo300">dès qu'elle est prête</strong></h4>
     </section>
 
     <section class="center" data-background="#222">
@@ -294,6 +291,12 @@ brew install git-octopus
       </pre>
     </section>
 
+    <section class="flushright" data-background="#222">
+      <h2>La <strong class="color-indigo300">détection des conflits</strong> pour tous</h2>
+      <p><code>git octopus</code> peut être utilisé par n'importe quelle équipe pour valider le conflit de ses branches</p>
+      <p><code>git octopus</code> pour valider les conflits entre vos pull requests</p>
+    </section>
+
     <!-- SECTION - CONTRIBUTION -->
 
     <section class="flushleft" data-background="#eee">
@@ -304,7 +307,7 @@ brew install git-octopus
           href="https://groups.google.com/forum/#!forum/git-octopus">https://groups.google.com/forum/#!forum/git-octopus</a>
       </p>
       <p class="flushright" style="color:black">Articles blog sur octopus<br/><a
-          href="http://github.com/lesfurets/lesfurets-conferences">https://beastie.lesfurets.com/projets/git-octopus-outillage-continuous-merge</a>
+          href="http://github.com/lesfurets/lesfurets-conferences">https://beastie.lesfurets.com/projets/</a>
       </p>
       <p class="flushright" style="color:black">Page conférences sur github<br/><a
           href="http://github.com/lesfurets/lesfurets-conferences">https://github.com/lesfurets/lesfurets-conferences</a>
