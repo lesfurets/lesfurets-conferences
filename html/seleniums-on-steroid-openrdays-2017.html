@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Seleniums on steroid</title>
+    <meta name="description" content="Seleniums on steroid">
+    <meta name="author" content="Thomas du Boÿs">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../bower_components/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="../bower_components/reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="../css/lesfurets-theme.css" id="theme">
+    <link rel="stylesheet" href="../css/code-jooq-theme.css" id="theme">
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = '../css/print/pdf-lesfurets.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+    <!--[if lt IE 9]>
+    <script src="../bower_components/reveal.js/lib/js/html5shiv.js"></script><![endif]-->
+</head>
+<body>
+<div id="footer" class="footer show">
+    <a href="https://www.lesfurets.com" target="_blank"><img class="logo" src="../img/logo_lesfurets_885x128_no_back.png"></a>
+    <a target="_blank"><img class="logo" src="../img/openrday-logo-transparent-vert.png"></a>
+    <a class="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a>
+    <a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a>
+    <a class="twitter" href="https://twitter.com/tduboys" target="_blank">@tduboys</a>
+</div>
+<div class="reveal">
+    <div class="slides">
+        <!-- START -->
+
+        <section class="flushright" data-background="../img/nwx/lesfurets-background-black-01.jpg">
+            <h1>Seleniums on Steroid</h1>
+            <h2>Pour réveiller votre grid Selenium</h2>
+            <h3>Thomas du Boÿs</h3>
+            <h4>Ops@LesFurets.com</h4>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Un peu d'histoire</h2>
+            <ul class="white">
+                <li>Station de DEV en guise de grid</li>
+                <li>8 cœurs, 16Go RAM, 8 nœuds</li>
+                <li>200 tests en 45 min</li>
+                <li>Tests instables</li>
+                <li>JVM instables</li>
+            </ul>
+            <h2>Nouveau hardware</h2>
+            <ul class="white">
+                <li>Objectif 32 nœuds</li>
+                <li>Serveur dédié OVH</li>
+                <li>32 cœurs, 128Go RAM</li>
+            </ul>
+        </section>
+        
+        <section class="flushleft" data-background="#333">
+            <h2>Démarrage du grid</h2>
+            <div class="badge alert"></div>
+            <div class="code-wrapper">
+            <pre>
+                <code class="code java" data-trim data-noescape>
+# Starting server
+java -jar selenium-server-standalone.jar \
+  -role hub -maxSession 100 &
+
+# Starting 32 nodes
+for id in {1..32}
+do
+  DISPLAY=$((10 + $id))
+  PORT=$((5000 + $id))
+  FFPORT=$((7000 + $id))
+  GRID_HUB=http://localhost:4444/grid/register
+  xvfb-run --server-num=${DISPLAY} -s "-screen 0 1600x1050x16" \
+    java -jar selenium-server-standalone.jar -role node \
+    -hub ${GRID_HUB} -port ${PORT} \
+    -browser browserName=firefox,maxInstances=1,platform=LINUX &
+done
+                </code>
+            </pre>
+            </div>
+        </section>
+
+
+        <section class="flushleft" data-background="#333">
+            <h2>First OPS problem</h2>
+            <ul class="white">
+                <li>Plantages aléatoires</li>
+                <li>Logs pas très explicites<br />&nbsp;&nbsp;&nbsp;&nbsp;<i>unable to bind unknown port</i></li>
+                <li>Ressources mal utilisées</li>
+            </ul>
+            <h2>Help, please!</h2>
+            <ul class="white">
+                <li>Nombreux locks</li>
+                <li>Dépendances à l'interface réseau et à l'installation de Firefox</li>
+            </ul>
+        </section>
+        
+        <section class="flushleft" data-background="#333">
+            <h2>Comment optimiser ?</h2>
+            <ul class="white">
+                <li>Réseau&nbsp;&rarr;&nbsp;Virtualisation ou Containers</li>
+                <li>Lock sur Firefox&nbsp;&rarr;&nbsp;Templates</li>
+                <li>CPU IOwait&nbsp;&rarr;&nbsp;RamFS</li>
+            </ul>
+        </section>
+        
+        <section class="flushleft" data-background="#333">
+            <h2>Démarrage du grid avec LXC</h2>
+            <div class="badge code"></div>
+            <div class="code-wrapper">
+            <pre>
+                <code class="code java" data-trim data-noescape>
+# Starting server
+java -jar selenium-server-standalone.jar \
+  -role hub -maxSession 100 &
+
+# Starting 32 nodes
+for id in {1..32}; do
+  echo "Cloning node $id"
+  lxc-clone -o node-template -n node${id}
+  echo "Starting node $id"
+  lxc-start -n node${id} -d
+done
+                </code>
+            </pre>
+            <h3>Dans /etc/fstab :</h3>
+            <pre>
+                <code class="code java" data-trim data-noescape>
+tmpfs		/var/lib/lxc	tmpfs	defaults,size=72g	0	0
+                </code>
+              </pre>
+            </div>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Démarrage du grid avec Docker</h2>
+            <div class="badge code"></div>
+            <div class="code-wrapper">
+            <pre>
+                <code class="code java" data-trim data-noescape>
+version: '2'
+services:
+  hub:
+    image: selenium/hub:3.4.0
+    ports:
+      - "4444:4444"
+    environment:
+      - GRID_MAX_SESSION=100
+
+  firefox:
+    image: selenium/node-firefox:3.4.0
+    restart: always
+    environment:
+      - HUB_PORT_4444_TCP_ADDR=grid.mondomaine
+                </code>
+            </pre>
+            <h3>Dans /etc/fstab :</h3>
+            <pre>
+                <code class="code java" data-trim data-noescape>
+tmpfs       /var/lib/docker    tmpfs   defaults,size=48g   0   0
+                </code>
+              </pre>
+            </div>
+        </section>
+        
+        <section class="flushleft" data-background="#333">
+            <h2>Conclusion</h2>
+            <ul class="white">
+                <li>Facilité de maintenance</li>
+                <li>Reproductibilité des tests</li>
+                <li>De 45 à 15 minutes</li>
+                <img src='../img/selenium_htop_grid.png' width='1000'/>
+            </ul>
+        </section>
+    </div>
+</div>
+<script src="../bower_components/reveal.js/lib/js/head.min.js"></script>
+<script src="../bower_components/reveal.js/js/reveal.js"></script>
+<script>
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: false,
+        progress: true,
+        history: false,
+        center: true,
+        embedded: true,
+        margin: 0.3,
+        minScale: 0.2,
+	      maxScale: 1.2,
+
+        //theme: 'lesfurets', // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            {
+                src: '../bower_components/reveal.js/lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function () {
+                return !!document.body.classList;
+            }
+            },
+            {
+                src: '../bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function () {
+                return !!document.body.classList;
+            }
+            }
+        ]
+    });
+</script>
+<script src="../js/lesfurets-theme.js" async></script>
+<script src="../js/lesfurets-codereview-theme.js" async></script>
+</body>
+</html>

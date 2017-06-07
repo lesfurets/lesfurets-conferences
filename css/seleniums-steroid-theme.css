@@ -1,0 +1,55 @@
+.reveal .code-wrapper {
+    font-size: 0.75em;
+    position: relative;
+    right: 50%;
+    text-align: center;
+}
+
+.reveal .code-wrapper.small {
+    font-size: 0.7em;
+}
+
+.reveal .code-wrapper.smaller {
+    font-size: 0.55em;
+}
+
+.reveal .code {
+    display: inline-block;
+    font-family: monospace;
+    line-height: 1.25;
+    padding: 5px 20px;
+    text-align: left;
+    overflow: hidden;
+    margin-right: -100%;
+}
+
+.reveal .badge {
+    background-size: cover;
+    display: block;
+    height: 75px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: -40px;
+    width: 75px;
+}
+
+.reveal .badge.person {
+    left: 75px;
+}
+
+/* http://www.webestools.com/web20-badge-generator-free-image-beta-photoshop-web20-badge-generator.html */
+.reveal .badge.alert {
+    background-image: url('../img/live-code-review/badge-code-01.png');
+}
+
+.reveal .badge.code {
+    background-image: url('../img/live-code-review/badge-02.png');
+}
+
+.reveal ul.white li:before {
+    color: #cccccc;
+}
+.reveal li {
+    margin-left: 50px;
+}
