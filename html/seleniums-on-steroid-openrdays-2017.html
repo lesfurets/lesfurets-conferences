@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../bower_components/reveal.js/css/reveal.css">
     <link rel="stylesheet" href="../bower_components/reveal.js/lib/css/zenburn.css">
     <link rel="stylesheet" href="../css/lesfurets-theme.css" id="theme">
-    <link rel="stylesheet" href="../css/seleniums-steroid-theme.css" id="theme">
+    <link rel="stylesheet" href="../css/code-jooq-theme.css" id="theme">
     <script>
         if (window.location.search.match(/print-pdf/gi)) {
             var link = document.createElement('link');
@@ -52,7 +52,7 @@
                 <li>Tests instables</li>
                 <li>JVM instables</li>
             </ul>
-            <h3>Nouveau hardware</h3>
+            <h2>Nouveau hardware</h2>
             <ul class="white">
                 <li>Objectif 32 nœuds</li>
                 <li>Serveur dédié OVH</li>
@@ -75,6 +75,7 @@ for id in {1..32}
 do
   DISPLAY=$((10 + $id))
   PORT=$((5000 + $id))
+  FFPORT=$((7000 + $id))
   GRID_HUB=http://localhost:4444/grid/register
   xvfb-run --server-num=${DISPLAY} -s "-screen 0 1600x1050x16" \
     java -jar selenium-server-standalone.jar -role node \
@@ -92,11 +93,21 @@ done
             <ul class="white">
                 <li>Plantages aléatoires</li>
                 <li>Logs pas très explicites<br />&nbsp;&nbsp;&nbsp;&nbsp;<i>unable to bind unknown port</i></li>
+                <li>Ressources mal utilisées</li>
             </ul>
-            <h3>Help, please!</h3>
+            <h2>Help, please!</h2>
             <ul class="white">
                 <li>Nombreux locks</li>
                 <li>Dépendances à l'interface réseau et à l'installation de Firefox</li>
+            </ul>
+        </section>
+        
+        <section class="flushleft" data-background="#333">
+            <h2>Comment optimiser ?</h2>
+            <ul class="white">
+                <li>Réseau&nbsp;&rarr;&nbsp;Virtualisation ou Containers</li>
+                <li>Lock sur Firefox&nbsp;&rarr;&nbsp;Templates</li>
+                <li>CPU IOwait&nbsp;&rarr;&nbsp;RamFS</li>
             </ul>
         </section>
         
@@ -119,6 +130,12 @@ for id in {1..32}; do
 done
                 </code>
             </pre>
+            <h3>Dans /etc/fstab :</h3>
+            <pre>
+                <code class="code java" data-trim data-noescape>
+tmpfs		/var/lib/lxc	tmpfs	defaults,size=72g	0	0
+                </code>
+              </pre>
             </div>
         </section>
 
@@ -144,18 +161,22 @@ services:
       - HUB_PORT_4444_TCP_ADDR=grid.mondomaine
                 </code>
             </pre>
+            <h3>Dans /etc/fstab :</h3>
+            <pre>
+                <code class="code java" data-trim data-noescape>
+tmpfs       /var/lib/docker    tmpfs   defaults,size=48g   0   0
+                </code>
+              </pre>
             </div>
         </section>
         
         <section class="flushleft" data-background="#333">
-            <h2>Conclusions</h2>
+            <h2>Conclusion</h2>
             <ul class="white">
-                <li><i>docker-compose up -d hub</i></li>
-                <li><i>docker-compose scale firefox=48</i></li>
                 <li>Facilité de maintenance</li>
-                <li>Cache Docker en ramfs</li>
                 <li>Reproductibilité des tests</li>
                 <li>De 45 à 15 minutes</li>
+                <img src='../img/selenium_htop_grid.png' width='1000'/>
             </ul>
         </section>
     </div>
