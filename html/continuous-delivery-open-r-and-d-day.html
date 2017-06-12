@@ -52,8 +52,8 @@
     </section>
 
     <section class="center" data-background="#222">
-      <p>L'organisation du code est une composante importante du process de livraison</p>
-      <p>Nous travaillons en <strong class="color-indigo300">feature branching</strong> et nous faisons du <strong class="color-indigo300">continuous (daily) delivery</strong></p>
+      <p>Chez LesFurets.com, le <strong class="color-deeporange300">continuous delivery</strong> est un process</p>
+      <p class="fragment">Une partie importante de ce process est le <strong class="color-indigo300">continuous merge</strong> : il nous permet de travailler en <strong class="color-indigo300">feature branching</strong></p>
     </section>
     <section class="center" data-background="#222" data-transition="fade-in" data-transition-speed="slow">
       <img class="nostyle" src="../img/octopus-diagrams/feature_branch_1.svg"/>
@@ -132,7 +132,7 @@
 git merge features/*
         </code></pre>
       <p class="">Mais le merge de plusieurs branches à partir d'un pattern n'existe pas dans git...</p>
-      <p class="fragment"><strong>LesFurets git-octopus</strong> : <br/>
+      <p class="fragment large color-deeporange300"><strong>LesFurets git-octopus</strong> : <br/>
       <a style="color:white;font-weight:bold" href="https://github.com/lesfurets/git-octopus">https://github.com/lesfurets/git-octopus</a></p>
     </section>
 
@@ -192,49 +192,43 @@ git merge features/*
       <h4 class="flushright section-subheader">L'utilisation de git-octopus dans l'intégration continue permet de détecter tôt les conflits</h4>
     </section>
 
-    <section class="flushleft" data-background="#222">
-      <h3>Éviter le conflit au niveau code</h3>
-      <p>Avoir des conventions de code communes, en évitant les binaires, en ayant un code modulaire, avec des évolutions par abstraction, en gardant le code <span class="under">S</span>OLID (single responsability principle)</p>
-      <p class="flushright" style="font-weight: bold;">RISQUE: <span class="dangerzone safe">faible</span></p>
-      <aside class="notes">
-        S
-        Single responsibility principle: a class should have only a single responsibility (i.e. only one potential change in the software's specification should be able to affect the specification of the class)
-        O
-        Open/closed principle: “software entities … should be open for extension, but closed for modification.”
-        L
-        Liskov substitution principle: “objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program.” See also design by contract.
-        I
-        Interface segregation principle: “many client-specific interfaces are better than one general-purpose interface.”[8]
-        D
-        Dependency inversion principle: one should “depend upon abstractions, [not] concretions.”[8]
-      </aside>
+    <section class="flushright" data-background="#222">
+      <p>On défini le <strong class="color-deeporange300">risque d'une résolution de conflit</strong> lorsqu'on ajoute une dépendance entre 2 branches</p>
+      <p>Une dépendance entre 2 branches nous enlève la possibilité de livrer une branche <strong class="color-indigo300">dès qu'elle est prête</strong></p>
     </section>
 
     <section class="flushleft" data-background="#222">
-      <h3>Enlever la branche de l'octopus</h3>
-      <p>Si deux branches sont en conflits, on peut souvent en enlever une en attendant que l'autre soit dans le master, aussi en repriorisant les taches.</p>
-      <p>Règle générale, on évite ou on sépare les branches de longues durée.</p>
+      <h3><span class="color-indigo300">Éviter le conflit</span> au niveau du code</h3>
+      <p>Avoir des conventions de code communes, éviter les binaires, avoir un code modulaire, évoluer par abstraction</p>
       <p class="flushright" style="font-weight: bold;">RISQUE : <span class="dangerzone safe">faible</span></p>
     </section>
 
     <section class="flushleft" data-background="#222">
-      <h3>Fusionner la branche</h3>
-      <p>On peut merger l'historique des deux branches pour résondre le conflit : on perd alors la possibilité de livrer séparément.</p>
-      <p>On peut aussi utiliser un pseudo trunk based : avoir une branche pour du code commun.</p>
+      <h3><span class="color-indigo300">Enlever la branche</span> de l'octopus</h3>
+      <p>Si deux branches sont en conflits, on peut souvent en enlever une en attendant que l'autre soit dans le master</p>
+      <p>Règle générale, éviter les branches de longue durée</p>
+      <p class="flushright" style="font-weight: bold;">RISQUE : <span class="dangerzone safe">faible</span></p>
+    </section>
+
+    <section class="flushleft" data-background="#222">
+      <h3><span class="color-deeporange300">Fusionner</span> la branche</h3>
+      <p>On peut merger l'historique des deux branches pour résoudre le conflit : <strong>on perd alors la possibilité de livrer séparément</strong></p>
+      <p>On peut aussi utiliser une branche partagée pour du code commun</p>
       <p class="flushright" style="font-weight: bold;">RISQUE : <span class="dangerzone danger">danger</span></p>
     </section>
 
     <section class="flushleft" data-background="#222">
-      <h3>Rebaser la branche</h3>
-      <p>On garde alors une certaine flexibilité dans la livraison : il faut gérer correctement les modifications de la branche de base.</p>
-      <p class="flushright" style="font-weight: bold;">RISQUE :<span class="dangerzone danger">danger</span></p>
+      <h3><span class="color-deeporange300">Rebaser</span> la branche</h3>
+      <p>On garde alors une certaine flexibilité dans la livraison</p>
+      <p>Utile pour livrer des branches <strong>par étape</strong>, ou lorsqu'on sait qu'une branche partira avant une autre</p>
+      <p class="flushright" style="font-weight: bold;">RISQUE : <span class="dangerzone danger">danger</span></p>
     </section>
 
     <section class="flushleft" data-background="#222">
-      <h3 style="font-weight: bold;">git-conflict</h3>
-      <p><code>git-conflict</code> est livré avec <code>git-octopus</code> et permet de persister la résolution à l'extérieur d'une branche (semblable à <code>git rerere</code>).</p>
-      <p>Permet l'évolution indépendantes des branches.</p> 
-      <p>Nécessite de valide le contenu des resolutions de conflit.</p>
+      <h3 style="font-weight: bold;"><span class="color-orange300">git-conflict : </span>résolution de conflit partagé</h3>
+      <p><code>git-conflict</code> est livré avec <code>git-octopus</code> et permet de persister la résolution de conflit à l'extérieur d'une branche</p>
+      <p>Permet l'évolution indépendantes des branches</p> 
+      <p>Nécessite de valider le contenu des résolutions de conflit</p>
       <p class="flushright" style="font-weight: bold;">RISQUE : <span class="dangerzone warning">attention</span></p>
     </section>
 
@@ -277,6 +271,12 @@ git merge features/*
 
     <!-- SECTION - END -->
 
+    <section class="flushright" data-background="#222">
+      <h2>La <strong class="color-indigo300">détection des conflits</strong> pour tous</h2>
+      <p><code>git octopus</code> peut être utilisé par n'importe quelle équipe pour <strong class="color-deeporange300">valider le conflit entre les branches</strong></p>
+      <p><code>git octopus</code> pour valider les conflits entre vos <br><strong class="color-deeporange300">pull requests</strong></p>
+    </section>
+
     <section class="flushright" data-background="../img/live-code-review/blindard-01.jpeg">
       <h2>Ajoutez git-octopus à votre CI dès maintenant !</h2>
       <pre class="">
@@ -291,25 +291,19 @@ brew install git-octopus
       </pre>
     </section>
 
-    <section class="flushright" data-background="#222">
-      <h2>La <strong class="color-indigo300">détection des conflits</strong> pour tous</h2>
-      <p><code>git octopus</code> peut être utilisé par n'importe quelle équipe pour valider le conflit de ses branches</p>
-      <p><code>git octopus</code> pour valider les conflits entre vos pull requests</p>
-    </section>
-
     <!-- SECTION - CONTRIBUTION -->
 
     <section class="flushleft" data-background="#eee">
       <h2 style="color:#1a237e">Références</h2>
-      <p class="flushright" style="color:black">Code source git-octopus sur github<br/><a
+      <p class="flushright" style="color:black">Code source <strong>git octopus</strong> sur github<br/><a
           href="http://github.com/lesfurets/lesfurets-conferences">https://github.com/lesfurets/git-octopus</a></p>
-      <p class="flushright" style="color:black">Forum git-octopus sur Google Groups<br/><a
+      <p class="flushright" style="color:black">Forum <strong>git octopus</strong> sur Google Groups<br/><a
           href="https://groups.google.com/forum/#!forum/git-octopus">https://groups.google.com/forum/#!forum/git-octopus</a>
       </p>
-      <p class="flushright" style="color:black">Articles blog sur octopus<br/><a
+      <p class="flushright" style="color:black">Blog technique sur <strong>git octopus</strong><br/><a
           href="http://github.com/lesfurets/lesfurets-conferences">https://beastie.lesfurets.com/projets/</a>
       </p>
-      <p class="flushright" style="color:black">Page conférences sur github<br/><a
+      <p class="flushright" style="color:black">Ces slides<br/><a
           href="http://github.com/lesfurets/lesfurets-conferences">https://github.com/lesfurets/lesfurets-conferences</a>
       </p>
     </section>

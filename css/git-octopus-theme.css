@@ -47,7 +47,7 @@ body {
 }
 
 .reveal .dangerzone.safe {
-    background-color: green;
+    background-color: #7986cb;
     color: black;
 }
 
@@ -57,12 +57,12 @@ body {
 }
 
 .reveal .dangerzone.warning {
-    background-color: yellow;
+    background-color: #ffb74d;
     color: black;
 }
 
 .reveal .dangerzone.danger {
-    background-color: red;
+    background-color: #ff8a65;
     color: black;
 }
 
