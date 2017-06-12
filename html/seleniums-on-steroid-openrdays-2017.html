@@ -75,7 +75,6 @@ for id in {1..32}
 do
   DISPLAY=$((10 + $id))
   PORT=$((5000 + $id))
-  FFPORT=$((7000 + $id))
   GRID_HUB=http://localhost:4444/grid/register
   xvfb-run --server-num=${DISPLAY} -s "-screen 0 1600x1050x16" \
     java -jar selenium-server-standalone.jar -role node \
