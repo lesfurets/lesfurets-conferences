@@ -21,6 +21,23 @@
           document.getElementsByTagName('head')[0].appendChild(link);
       }
   </script>
+  <style>
+.footer.hide {
+  -ms-transform: translateY(0);
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  padding: 5px;
+  z-index: 2;
+  opacity: 0.75;
+}
+.footer.hide img {
+  transform: scale(0.75, 0.75);
+}
+.reveal .controls {
+  top: 10px;
+  right: 30px;
+}
+  </style>
   <!--[if lt IE 9]>
   <script src="../bower_components/reveal.js/lib/js/html5shiv.js"></script><![endif]-->
 </head>
@@ -39,7 +56,7 @@
     <!-- SECTION - INTRO -->
 
     <section class="flushright" data-state="background-furets">
-      <h1><span>Continuous merge</span></h1>
+      <h1>Continuous merge<br>avec git-octopus</h1>
       <h2>Alexandre Dubreuil</h2>
       <ul class="flushright nodisc">
         <li>
@@ -48,6 +65,17 @@
         <li>
           <a style="color:white" href="https://github.com/dubreuia">https://github.com/dubreuia</a>
         </li>
+      </ul>
+    </section>
+
+    <section class="flushleft" data-background="#222">
+      <p>Une histoire de transformation vers du <strong class="color-deeporange300">continuous delivery</strong></p>
+      <ul class="color-gray400">
+        <li class="fragment"><strong>2012</strong> : <span class="color-indigo300">12 releases</span> en sprint scrum mensuel</li>
+        <li class="fragment"><strong>2013</strong> : <span class="color-indigo300">45 releases</span> en sprint scrum hebdo</li>
+        <li class="fragment"><strong>2014</strong> : <span class="color-indigo300">53 releases</span></li>
+        <li class="fragment"><strong>2015</strong> : <span class="color-indigo300">225 releases</span> en kanban daily delivery </li>
+        <li class="fragment"><strong>2016</strong> : <span class="color-indigo300">260 releases</span> avec release 2 heures</li>
       </ul>
     </section>
 
@@ -134,6 +162,10 @@ git merge features/*
       <p class="">Mais le merge de plusieurs branches à partir d'un pattern n'existe pas dans git...</p>
       <p class="fragment large color-deeporange300"><strong>LesFurets git-octopus</strong> : <br/>
       <a style="color:white;font-weight:bold" href="https://github.com/lesfurets/git-octopus">https://github.com/lesfurets/git-octopus</a></p>
+    </section>
+
+    <section class="center" data-background="#222">
+      <img style="position:absolute;left:0;top:0;width:100%;" class="nostyle" src="../img/octopus-05.gif"/>
     </section>
 
     <section class="flushleft" data-background="#222">
