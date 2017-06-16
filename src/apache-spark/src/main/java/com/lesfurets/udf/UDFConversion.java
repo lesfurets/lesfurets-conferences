@@ -1,12 +1,12 @@
 package com.lesfurets.udf;
 
-import com.lesfurets.domain.FormuleMapper;
+import com.lesfurets.domain.ProductMapper;
 
 import java.io.Serializable;
 import java.util.function.Function;
 
 public interface UDFConversion {
 
-    Function<Integer, String> readableFormule = (Serializable & Function<Integer, String>) FormuleMapper::asString;
+    Function<Integer, String> readableProduct = (Serializable & Function<Integer, String>) ProductMapper::french;
 
 }

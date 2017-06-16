@@ -1,6 +1,6 @@
 package com.lesfurets.spark.examples;
 
-import com.lesfurets.domain.FormuleMapper;
+import com.lesfurets.domain.ProductMapper;
 import com.lesfurets.spark.utils.SparkRunner;
 import org.apache.spark.api.java.function.FilterFunction;
 import org.apache.spark.sql.Dataset;
@@ -18,7 +18,7 @@ public class TarifsRun extends SparkRunner {
             .getOrCreate();
 
     static {
-        spark.udf().register("readableFormule", (UDF1<Integer, String>) FormuleMapper::asString, StringType);
+        spark.udf().register("readableFormule", (UDF1<Integer, String>) ProductMapper::french, StringType);
     }
 
     public static void main(String[] args) {

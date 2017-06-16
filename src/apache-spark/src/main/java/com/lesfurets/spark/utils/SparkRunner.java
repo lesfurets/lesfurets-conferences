@@ -7,6 +7,8 @@ public class SparkRunner {
 
     public static final String PATH_TARIFS_CSV = "src/main/resources/tarifs.csv";
 
+    public static final String PATH_PRICES_CSV = "src/main/resources/prices.csv";
+
     public static final String PATH_WORDS_CSV = "src/main/resources/words.csv";
 
     static {
