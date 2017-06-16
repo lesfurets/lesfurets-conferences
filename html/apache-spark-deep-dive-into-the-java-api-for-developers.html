@@ -259,25 +259,25 @@ public static void main(String[] args) {
                  </section>
 
                  <section class="center" data-background="#222">
-                     <p><strong class="color-indigo300">DEMO TIME!</strong> see TarifsRun</p>
+                     <p><strong class="color-indigo300">DEMO TIME!</strong><br/><code>com.lesfurets.spark.examples.PricesRun</code></p>
                      <div class="code-wrapper">
                      <pre><code class="code java" data-trim data-noescape>
-spark.udf().register("readableFormule",
-        (UDF1&lt;String, String&gt;) String::toLowerCase, StringType);
+spark.udf().register("readableProduct",
+        (UDF1&lt;String, String&gt;) ProductMapper::english, StringType);
                      </code></pre>
                      </div>
                      <div class="code-wrapper">
                      <pre><code class="code java" data-trim data-noescape>
-Dataset&lt;Row&gt; averagePrime = tarifs
+Dataset&lt;Row&gt; averagePrice = prices
     .filter((FilterFunction&lt;Row&gt;) value -&gt;
-            value.&lt;String&gt;getAs("assureur")
-                 .equals("Mon SUPER assureur"))
-    .groupBy("formule")
-    .agg(avg("prime").as("average"))
-    .withColumn("formuleReadable", 
-                callUDF("readableFormule", col("formule")))
+            value.&lt;String&gt;getAs("insurer")
+                 .equals("COOL insurer"))
+    .groupBy("product")
+    .agg(avg("price").as("average"))
+    .withColumn("readableProduct", 
+                callUDF("readableProduct", col("product")))
     .orderBy(desc("average"));
-averagePrime.show();
+averagePrice.show();
                      </code></pre>
                      </div>
                  </section>
@@ -286,19 +286,19 @@ averagePrime.show();
                      <p>What is executed on the <strong class="color-indigo300">worker</strong>? And on the <strong class="color-deeporange300">driver</strong>?</p>
                      <div class="code-wrapper">
                      <pre><code class="code java" data-trim data-noescape>
-tarifs
+prices
     <mark class="fragment" style="background-color:#7986cb">.filter((FilterFunction&lt;Row&gt;) value -&gt;
-            value.&lt;String&gt;getAs("assureur")
-                 .equals("Mon SUPER assureur"))</mark>
-    <mark class="fragment" style="background-color:#7986cb">.groupBy("formule")</mark>
-    <mark class="fragment" style="background-color:#7986cb">.agg(avg("prime").as("average"))</mark>
-    <mark class="fragment" style="background-color:#7986cb">.withColumn("formuleReadable", 
-                callUDF("readableFormule", col("formule")))</mark>
+            value.&lt;String&gt;getAs("insurer")
+                 .equals("COOL insurer"))</mark>
+    <mark class="fragment" style="background-color:#7986cb">.groupBy("product")</mark>
+    <mark class="fragment" style="background-color:#7986cb">.agg(avg("price").as("average"))</mark>
+    <mark class="fragment" style="background-color:#7986cb">.withColumn("readableProduct", 
+                callUDF("readableProduct", col("product")))</mark>
     <mark class="fragment" style="background-color:#7986cb">.orderBy(desc("average"))</mark>
     <mark class="fragment" style="background-color:#ff8a65">.show();</mark>
                      </code></pre>
                      </div>
-                     <p class="fragment">We call <code>averagePrime.show()</code> a terminal operation that will launch the calculation, the other operations are lazy (think <code>Java 8 Stream</code>)</p>
+                     <p class="fragment">We call <code>averagePrime.show()</code> a terminal operation that will launch the calculation, the other operations are lazy (think <strong>Java 8 streams</strong>)</p>
                  </section>
 
                  <section class="center" data-background="#222">
@@ -445,24 +445,24 @@ https://gist.github.com/rxin/c1592c133e4bccf515dd
                      <p><strong class="color-deeporange300">What if we test our code?</strong></p>
                  </section>
 
-                 <section class="flushleft" data-background="#222">
-                     <p><strong class="color-indigo300">DEMO TIME !</strong> see TarifsRunTest</p>
+                 <section class="center" data-background="#222">
+                     <p><strong class="color-indigo300">DEMO TIME!</strong><br><code>com.lesfurets.spark.examples.PricesRunTest</code></p>
                      <div class="code-wrapper">
                      <pre><code class="code java" data-trim data-noescape>
 @BeforeEach
 public void before() { 
   List&lt;Row&gt; rows = Arrays.asList(
-          RowFactory.create("F1", 50d, "assureur"),
-          RowFactory.create("F1", 100d, "assureur"),
-          RowFactory.create("F1", 70d, "assureur"));
+          RowFactory.create("F1", 50d, "COOL insurer"),
+          RowFactory.create("F2", 100d, "COOL insurer"),
+          RowFactory.create("F2", 70d, "COOL insurer"));
 
-  StructField formule = new StructField("formule" ...);
-  StructField prime = new StructField("prime" ...);
-  StructField assureur = new StructField("assureur", ...);
+  StructField product = new StructField("product", IntegerType, ...);
+  StructField price = new StructField("price", DoubleType,...);
+  StructField insurer = new StructField("insurer", StringType,...);
   StructType structType = new StructType(
-          new StructField[]{formule, prime, assureur});
+          new StructField[]{ product, price, insurer });
 
-  tarifs = spark.createDataFrame(rows, structType);
+  prices = spark.createDataFrame(rows, structType);
 }
                      </code></pre>
                      </div>
@@ -472,13 +472,16 @@ public void before() {
                     <div class="code-wrapper">
                     <pre><code class="code java" data-trim data-noescape>
 @Test
-public void should_calculate_average_by_formule_ordered() {
-  Dataset&lt;Row&gt; averagePrime = TarifsRun.averagePrime(tarifs);
+public void should_average_price_return_correct_average() {
+  Dataset&lt;Row&gt; averagePrice = PricesRun.averagePrice(prices);
 
-  assertEquals(2, averagePrime.count());
-  assertEquals(1, averagePrime.first().getAs("formule"));
-  assertEquals("formule 1", averagePrime.first().getAs("formuleReadable"));
-  assertEquals(75, (double) averagePrime.first().&lt;Double&gt;getAs("average"));
+  averagePrice.foreach((ForeachFunction&lt;Row&gt;) row 
+                       -&gt; assertNotNull(row.getAs("readableProduct")));
+
+  assertEquals(2, averagePrice.count());
+  assertEquals(1, averagePrice.first().getAs("product"));
+  assertEquals("F2", averagePrice.first().getAs("readableProduct"));
+  assertEquals(75, (double) averagePrice.first().&lt;Double&gt;getAs("average"));
 }
                     </code></pre>
                     </div>
@@ -487,8 +490,8 @@ public void should_calculate_average_by_formule_ordered() {
                  <section class="flushleft" data-background="#222">
                      <p>Testing guidelines:</p>
                      <ul>
-                         <li class="fragment"><strong class="color-indigo300">- test startup : </strong>start Spark workers before the tests and reuse them to save time</li>
-                         <li class="fragment"><strong class="color-indigo300">- test mode : </strong>use standalone mode when possible as it validates object serialization</li>
+                         <li class="fragment"><strong class="color-indigo300">- test startup : </strong>start Spark workers before the tests and reuse them to save time <span class="small color-gray400">(use our <code>@SparkTest</code> JUnit5 extension)</span></li>
+                         <li class="fragment"><strong class="color-indigo300">- test mode : </strong>use standalone mode when possible as it validates object serialization <span class="small color-gray400">(you need to either have a test cluster, on start it with Maven before test phase)</span></li>
                      </ul>
                  </section>
 
@@ -501,15 +504,15 @@ public void should_calculate_average_by_formule_ordered() {
                  </section>
 
                  <section class="flushleft" data-background="#222">
-                     <p>Is the Java API limited compared to Scala?</p>
+                     <p>Is the <strong class="color-deeporange300">Java API</strong> limited compared to <span class="color-indigo300">Scala</span>?</p>
                  </section>
 
                  <section class="flushleft" data-background="#222">
-                     <p><strong class="color-indigo300">... yes, a little</strong></p>
-                     <p class="fragment">- We'd like a Java notebook with a REPL (we can still prototype with Scala since it's the same API)</p>
-                     <p class="fragment">- The Java API is harder to learn since there's less documentation on it's usage (hence this talk)</p>
-                     <p class="fragment">- It's easy to do very verbose implementations</p>
-                     <p class="fragment">- Type serializers (i.e. <code>Encoders.STRING()</code>)</p>
+                     <p><strong class="color-deeporange300">... yes, a little</strong></p>
+                     <p class="fragment">- We'd like a <strong>Java notebook</strong> with a <strong>REPL</strong> (we can still prototype with Scala since it's the same API)</p>
+                     <p class="fragment">- The Java API is harder to learn since there's <strong>less documentation on it's usage</strong> (hence this talk)</p>
+                     <p class="fragment">- It's easy to do very <strong>verbose implementations</strong></p>
+                     <p class="fragment">- <strong>Types</strong>... types everything (e.g. <code>Encoders.STRING()</code>)</p>
                  </section>
 
                 <section class="flushleft" data-background="#222">
@@ -560,11 +563,11 @@ Dataset&lt;Row&gt; wordCount = lines
                     <p>For example, to get the last element in a group:</p>
                     <div class="code-wrapper">
                     <pre><code class="code java" data-trim data-noescape>
-Dataset&lt;Tuple2&lt;String, TarificationJoin&gt;&gt; tupleTarif = 
-  tarification
-    .groupByKey(<mark class="fragment">(MapFunction&lt;TarificationJoin, String&gt;)</mark>
-      TarificationJoin::getOffreUid, STRING())
-    .reduceGroups(<mark class="fragment">(ReduceFunction&lt;TarificationJoin&gt;)</mark> (v1, v2) -&gt;
+Dataset&lt;Tuple2&lt;String, QuoteJoin&gt;&gt; price = 
+  quotes
+    .groupByKey(<mark class="fragment">(MapFunction&lt;QuoteJoin, String&gt;)</mark>
+      QuoteJoin::getUid, STRING())
+    .reduceGroups(<mark class="fragment">(ReduceFunction&lt;QuoteJoin&gt;)</mark> (v1, v2) -&gt;
       v1.getSnapshotId()
         .compareTo(v2.getSnapshotId()) &gt; 0 ? v1 : v2);
                     </code></pre>
@@ -575,9 +578,9 @@ Dataset&lt;Tuple2&lt;String, TarificationJoin&gt;&gt; tupleTarif =
                     <p>However, those methods takes <strong class="color-indigo300">Single Abstract Method interfaces (SAM Interfaces)</strong> as parameters, but can't be called directly because they are overloaded for the Scala calls. Last example should read:</p>
                     <div class="code-wrapper">
                     <pre><code class="code java" data-trim data-noescape>
-Dataset&lt;Tuple2&lt;String, TarificationJoin&gt;&gt; tupleTarif = 
-  tarification
-    .groupByKey(TarificationJoin::getOffreUid, STRING())
+Dataset&lt;Tuple2&lt;String, QuoteJoin&gt;&gt; price = 
+  quotes
+    .groupByKey(QuoteJoin::getUid, STRING())
     .reduceGroups((v1, v2) -&gt; v1.getSnapshotId()
         .compareTo(v2.getSnapshotId()) &gt; 0 ? v1 : v2);
                     </code></pre>
@@ -586,7 +589,7 @@ Dataset&lt;Tuple2&lt;String, TarificationJoin&gt;&gt; tupleTarif =
                 </section>
 
                 <section class="center" data-background="#222">
-                    <p>Type serializer (<code>org.apache.spark.sql.Encoders.*</code>) are inferred in Scala, explicit in Java</p>
+                    <p>Type serializer (<code>org.apache.spark.sql.Encoders.*</code>) are <strong class="color-indigo300">inferred in Scala</strong>, <strong class="color-deeporange300">explicit in Java</strong></p>
                     <div class="code-wrapper">
                     <pre><code class="code java" data-trim data-noescape>
 Dataset&lt;Tuple2&lt;String, TarificationJoin&gt;&gt; tupleTarif = 
@@ -603,8 +606,9 @@ Dataset&lt;Tuple2&lt;String, TarificationJoin&gt;&gt; tupleTarif =
                 <section class="flushleft" data-background="#222">
                     <p>What we didn't talk about</p>
                     <ul>
-                      <li><strong class="color-indigo300">Spark Streaming:</strong> similar API that is a little harder to use with Java</li>
-                      <li><strong class="color-indigo300">Cassandra Connector:</strong> (or HDFS) makes us use the RDD API to give partitioning information, or to join datasets efficiently</li>
+                      <li class="fragment"><strong class="color-indigo300">Spark Streaming:</strong> similar API that is a little harder to use with Java</li>
+                      <li class="fragment"><strong class="color-indigo300">Cassandra Connector:</strong> (or HDFS) makes us use the RDD API <span class="small color-gray400">(to give partitioning information, join datasets efficiently, etc.)</span></li>
+                      <li class="fragment"><strong class="color-indigo300">RDD API:</strong> is kind of a pain in Java, since it's <code>Tuple</code> oriented, which is difficult to use <span class="small color-gray400">(but it can be avoided with the DataFrame API)</span></li>
                     </ul>
                 </section>
 
@@ -616,9 +620,14 @@ Dataset&lt;Tuple2&lt;String, TarificationJoin&gt;&gt; tupleTarif =
                      <h3 style="color:white">Conclusion</h3>
                  </section>
 
-                <section class="center" data-background="#222">
-                    <p>Does Apache Spark integrates well a Java ecosystem?</p>
-                    <p class="fragment"><strong class="">Yes, with its usable and testable Java 8 API, its UDFs, and usability in modern IDEs</strong></p>
+                <section class="flushleft" data-background="#222">
+                    <p class="">Does Apache Spark fit in a Java ecosystem? <strong class="color-deeporange300">Yes! Because</strong></p>
+                    <ul>
+                      <li class="fragment"><strong class="color-indigo300">the unified DataFrame API</strong> is really smooth</li>
+                      <li class="fragment"><strong class="color-indigo300">it's testable</strong> with any unit testing framework</li>
+                      <li class="fragment"><strong class="color-indigo300">it's launchable</strong> easily from Maven and your IDE</li>
+                      <li class="fragment"><strong class="color-indigo300">it's strongly typed</strong> and we like that... (?)</li>
+                    </ul>
                     <img class="fragment" width="33%" src="../img/spark/meme-donald-spark.gif">
                 </section>
 
