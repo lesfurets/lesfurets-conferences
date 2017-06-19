@@ -29,6 +29,21 @@
   top: 10px;
   right: 30px;
 }
+pre.prettyprint,
+code.prettyprint {
+  background-color: transparent !important;
+  width: inherit !important;
+  margin: inherit !important;
+  padding: inherit !important;
+}
+pre mark .pln,
+code mark .pln,
+pre mark .typ,
+code mark .typ,
+pre mark .pun,
+code mark .pun {
+    color: #000 !important;
+}
         </style>
         <script>
 if( window.location.search.match( /print-pdf/gi ) ) {
@@ -39,6 +54,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     document.getElementsByTagName( 'head' )[0].appendChild( link );
 }
         </script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
         <!--[if lt IE 9]><script src="../bower_components/reveal.js/lib/js/html5shiv.js"></script><![endif]-->
     </head>
     <body>
@@ -182,13 +198,11 @@ if( window.location.search.match( /print-pdf/gi ) ) {
                 <section class="flushleft" data-background="#222">
                     <p>Add the dependency in Maven</p>
                     <div class="code-wrapper">
-                    <pre><code class="code xml" data-trim data-noescape>
-&lt;dependency&gt;
+                    <pre class="prettyprint"><code class="code lang-xml" data-trim data-noescape>&lt;dependency&gt;
   &lt;groupId&gt;org.apache.spark&lt;/groupId&gt;
   &lt;artifactId&gt;spark-core_<mark>2.11</mark>&lt;/artifactId&gt;
   &lt;version&gt;2.0.2&lt;/version&gt;
-&lt;/dependency&gt;
-                    </code></pre>
+&lt;/dependency&gt;</code></pre>
                     </div>
                     <p class="fragment small color-gray400">The 2.11 in the <code>artifactId</code> means that Spark was compiled with Scala 2.11 (your Spark cluster will need to be started with same version to avoid serialization problems between the executors)</p>
                 </section>
@@ -196,13 +210,11 @@ if( window.location.search.match( /print-pdf/gi ) ) {
                 <section class="flushleft" data-background="#222">
                     <p>Also add the DataFrame API (aptly placed in the sql package)</p>
                     <div class="code-wrapper">
-                    <pre><code class="code xml" data-trim data-noescape>
-&lt;dependency&gt;
+                    <pre class="prettyprint"><code class="code lang-xml" data-trim data-noescape>&lt;dependency&gt;
   &lt;groupId&gt;org.apache.spark&lt;/groupId&gt;
   &lt;artifactId&gt;spark-sql_2.11&lt;/artifactId&gt;
   &lt;version&gt;2.0.2&lt;/version&gt;
-&lt;/dependency&gt;
-                    </code></pre>
+&lt;/dependency&gt;</code></pre>
                     </div>
                 </section>
 
@@ -215,16 +227,14 @@ if( window.location.search.match( /print-pdf/gi ) ) {
                 <section class="flushright" data-background="#222">
                     <p>The entry point is <code>SparkSession</code></p>
                     <div class="code-wrapper">
-                    <pre><code class="code java" data-trim data-noescape>
-private static <mark>SparkSession</mark> spark = <mark>SparkSession</mark>.builder()
+                    <pre class="prettyprint"><code class="code lang-java" data-trim data-noescape>private static <mark>SparkSession</mark> spark = <mark>SparkSession</mark>.builder()
   .appName("LesFurets.com - Spark")
   .master("local[*]")
   .getOrCreate();
 
 public static void main(String[] args) {
   spark.emptyDataFrame().show();
-}
-                    </code></pre>
+}</code></pre>
                     </div>
                 </section>
 
@@ -261,14 +271,13 @@ public static void main(String[] args) {
                  <section class="center" data-background="#222">
                      <p><strong class="color-indigo300">DEMO TIME!</strong><br/><code>com.lesfurets.spark.examples.PricesRun</code></p>
                      <div class="code-wrapper">
-                     <pre><code class="code java" data-trim data-noescape>
-spark.udf().register("readableProduct",
-        (UDF1&lt;String, String&gt;) ProductMapper::english, StringType);
-                     </code></pre>
+                     <pre class="prettyprint"><code class="code lang-java" data-trim data-noescape>spark.udf()
+     .register("readableProduct",
+               (UDF1&lt;String, String&gt;) ProductMapper::english, 
+               StringType);</code></pre>
                      </div>
                      <div class="code-wrapper">
-                     <pre><code class="code java" data-trim data-noescape>
-Dataset&lt;Row&gt; averagePrice = prices
+                     <pre class="prettyprint"><code class="code lang-java" data-trim data-noescape>Dataset&lt;Row&gt; averagePrice = prices
     .filter((FilterFunction&lt;Row&gt;) value -&gt;
             value.&lt;String&gt;getAs("insurer")
                  .equals("COOL insurer"))
@@ -277,26 +286,23 @@ Dataset&lt;Row&gt; averagePrice = prices
     .withColumn("readableProduct", 
                 callUDF("readableProduct", col("product")))
     .orderBy(desc("average"));
-averagePrice.show();
-                     </code></pre>
+averagePrice.show();</code></pre>
                      </div>
                  </section>
 
                  <section class="center" data-background="#222">
                      <p>What is executed on the <strong class="color-indigo300">worker</strong>? And on the <strong class="color-deeporange300">driver</strong>?</p>
                      <div class="code-wrapper">
-                     <pre><code class="code java" data-trim data-noescape>
-prices
-    <mark class="fragment" style="background-color:#7986cb">.filter((FilterFunction&lt;Row&gt;) value -&gt;
-            value.&lt;String&gt;getAs("insurer")
-                 .equals("COOL insurer"))</mark>
+                     <pre class="prettyprint"><code class="code lang-java" data-trim data-noescape><mark class="fragment" style="background-color:#ff8a65">prices</mark>
+    <mark class="fragment" style="background-color:#7986cb">.filter((FilterFunction&lt;Row&gt;) value -&gt;</mark>
+            <mark class="fragment" style="background-color:#7986cb">value.&lt;String&gt;getAs("insurer")</mark>
+                 <mark class="fragment" style="background-color:#7986cb">.equals("COOL insurer"))</mark>
     <mark class="fragment" style="background-color:#7986cb">.groupBy("product")</mark>
     <mark class="fragment" style="background-color:#7986cb">.agg(avg("price").as("average"))</mark>
-    <mark class="fragment" style="background-color:#7986cb">.withColumn("readableProduct", 
-                callUDF("readableProduct", col("product")))</mark>
+    <mark class="fragment" style="background-color:#7986cb">.withColumn("readableProduct",</mark>
+                <mark class="fragment" style="background-color:#7986cb">callUDF("readableProduct", col("product")))</mark>
     <mark class="fragment" style="background-color:#7986cb">.orderBy(desc("average"))</mark>
-    <mark class="fragment" style="background-color:#ff8a65">.show();</mark>
-                     </code></pre>
+    <mark class="fragment" style="background-color:#ff8a65">.show();</mark></code></pre>
                      </div>
                      <p class="fragment">We call <code>averagePrime.show()</code> a terminal operation that will launch the calculation, the other operations are lazy (think <strong>Java 8 streams</strong>)</p>
                  </section>
@@ -319,12 +325,10 @@ prices
                     <p>A <strong class="color-indigo300">DataFrame</strong> is a typed and named column oriented distributed collection of data</p>
                     <p>From our <code>SparkSession</code> we get a <code>Dataset&lt;Row&gt;</code> (that is an untyped DataSet, also called DataFrame).</p>
                     <div class="code-wrapper">
-                    <pre><code class="code java" data-trim data-noescape>
-// Lecture d'un fichier data.csv avec inférence de schéma
+                    <pre class="prettyprint"><code class="code lang-java" data-trim data-noescape>// Read a csv file with schema inference
 Dataset&lt;Row&gt; data = spark.read()
         .option("inferSchema", true)
-        .csv("data.csv");
-                    </code></pre>
+        .csv("data.csv");</code></pre>
                     </div>
                     <!-- In Spark, a DataFrame is a distributed collection of data organized into named columns. Users can use DataFrame API to perform various relational operations on both external data sources and Spark’s built-in distributed collections without providing specific procedures for processing data. Also, programs based on DataFrame API will be automatically optimized by Spark’s built-in optimizer, Catalyst -->
                  </section>
@@ -332,19 +336,15 @@ Dataset&lt;Row&gt; data = spark.read()
                 <section class="center" data-background="#222">
                     <p>DataFrame have a schema, even if their type argument is <code>Row</code> like <code>Dataset&lt;Row&gt;</code></p>
                     <div class="code-wrapper">
-                    <pre><code class="code java" data-trim>
-data.printSchema();
-                    </code></pre>
+                    <pre class="prettyprint"><code class="code lang-java" data-trim>data.printSchema();</code></pre>
                     </div>
                     <div class="code-wrapper">
-                    <pre><code class="code java" data-trim>
-root
+                    <pre class=""><code class="code lang-spark" data-trim>root
  |-- uid: string (nullable = true)
  |-- email_hash: integer (nullable = true)
  |-- date: timestamp (nullable = true)
  |-- heure: string (nullable = true)
- |-- module: string (nullable = true)
-                    </code></pre>
+ |-- module: string (nullable = true)</code></pre>
                     </div>
                 </section>
 
@@ -366,11 +366,9 @@ For both sets of users, DataFrames will improve performance through intelligent 
 Dataset strong typing is "virtual" it's just a view that can be applied when you want it
                     -->
                     <div class="code-wrapper">
-                    <pre><code class="code java" data-trim data-noescape>
-// Convert Dataset&lt;Row&gt; to Dataset&lt;Question&gt;
+                    <pre class="prettyprint"><code class="code lang-java" data-trim data-noescape>// Convert Dataset&lt;Row&gt; to Dataset&lt;Question&gt;
 Dataset&lt;Question&gt; domainData = data
-        .as(Encoders.bean(Question.class))
-                    </code></pre>
+        .as(Encoders.bean(Question.class))</code></pre>
                     </div>
                     <p>The DataSet is now typed with <code>Question</code>, on top of his existing schema</p>
                 </section>
@@ -407,18 +405,14 @@ DataSets are a generalization of DataFrames and the underlying engine, to suppor
                 <section class="flushleft" data-background="#222">
                     <p><strong class="color-indigo300">Resilient Distributed Datasets (RDDs)</strong> are Spark's internal plumbing: no need to use them, unless you need to interact with legacy libraries or use low level functionalities (<code>RDD#partitionBy</code>)</p>
                     <div class="code-wrapper">
-                    <pre><code class="code java" data-trim>
-// Get the dataset's underlying RDD
+                    <pre class="prettyprint"><code class="code lang-java" data-trim>// Get the dataset's underlying RDD
 RDD&lt;Question&gt; rdd = domainData.rdd();
 // RDD's Java API
-JavaRDD&lt;Question&gt; javaRDD = domainData.javaRDD();
-                    </code></pre>
+JavaRDD&lt;Question&gt; javaRDD = domainData.javaRDD();</code></pre>
                     </div>
                     <p>The interface between DataFrame and RDD is simple</p>
                     <div class="code-wrapper">
-                    <pre><code class="code java" data-trim>
-Dataset&lt;Row&gt; dataFrame = spark.createDataFrame(rdd, structType);
-                    </code></pre>
+                    <pre class="prettyprint"><code class="code lang-java" data-trim>Dataset&lt;Row&gt; dataFrame = spark.createDataFrame(rdd, structType);</code></pre>
                     </div>
                 </section>
 
@@ -448,8 +442,7 @@ https://gist.github.com/rxin/c1592c133e4bccf515dd
                  <section class="center" data-background="#222">
                      <p><strong class="color-indigo300">DEMO TIME!</strong><br><code>com.lesfurets.spark.examples.PricesRunTest</code></p>
                      <div class="code-wrapper">
-                     <pre><code class="code java" data-trim data-noescape>
-@BeforeEach
+                     <pre class="prettyprint"><code class="code lang-java" data-trim data-noescape>@BeforeEach
 public void before() { 
   List&lt;Row&gt; rows = Arrays.asList(
           RowFactory.create("F1", 50d, "COOL insurer"),
@@ -463,15 +456,13 @@ public void before() {
           new StructField[]{ product, price, insurer });
 
   prices = spark.createDataFrame(rows, structType);
-}
-                     </code></pre>
+}</code></pre>
                      </div>
                  </section>
 
                  <section class="flushleft" data-background="#222">
                     <div class="code-wrapper">
-                    <pre><code class="code java" data-trim data-noescape>
-@Test
+                    <pre class="prettyprint"><code class="code lang-java" data-trim data-noescape>@Test
 public void should_average_price_return_correct_average() {
   Dataset&lt;Row&gt; averagePrice = PricesRun.averagePrice(prices);
 
@@ -482,8 +473,7 @@ public void should_average_price_return_correct_average() {
   assertEquals(1, averagePrice.first().getAs("product"));
   assertEquals("F2", averagePrice.first().getAs("readableProduct"));
   assertEquals(75, (double) averagePrice.first().&lt;Double&gt;getAs("average"));
-}
-                    </code></pre>
+}</code></pre>
                     </div>
                  </section>
 
@@ -518,8 +508,7 @@ public void should_average_price_return_correct_average() {
                 <section class="flushleft" data-background="#222">
                     <p>For example my first word count implementation...</p>
                     <div class="code-wrapper">
-                    <pre><code class="code java" data-trim data-noescape>
-Dataset&lt;Row&gt; wordCount = lines
+                    <pre class="prettyprint"><code class="code lang-java" data-trim data-noescape>Dataset&lt;Row&gt; wordCount = lines
   .flatMap(<mark>(FlatMapFunction&lt;Row, String&gt;) row -&gt;</mark> {
       String[] words = row.&lt;String&gt;getAs("line").split(" ");
       return asList(words).iterator();
@@ -529,8 +518,7 @@ Dataset&lt;Row&gt; wordCount = lines
   .toDF("word", "count")
   .groupBy("word")
   .sum("count")
-  .orderBy(desc("sum(count)"))
-                    </code></pre>
+  .orderBy(desc("sum(count)"))</code></pre>
                     </div>
                     <p>... I'm using <code>flapMap</code> and <code>map</code> with lambda as arguments (very useful but a bit verbose)</p>
                 </section>
@@ -538,14 +526,12 @@ Dataset&lt;Row&gt; wordCount = lines
                 <section class="flushleft" data-background="#222">
                     <p>... that same word count can be written more concisely by knowing the API</p>
                     <div class="code-wrapper">
-                    <pre><code class="code java" data-trim data-noescape>
-Dataset&lt;Row&gt; wordCount = lines
+                    <pre class="prettyprint"><code class="code lang-java" data-trim data-noescape>Dataset&lt;Row&gt; wordCount = lines
   .select(split(col("lines"), " ").alias("words"))
   .select(explode(col("words")).alias("word"))
   .groupBy("word")
   .count()
-  .orderBy(desc("count"));
-                    </code></pre>
+  .orderBy(desc("count"));</code></pre>
                     </div>
                     <p class="fragment">... even if it feels a bit magical</p>
                     <!-- http://www.reactiongifs.com/wp-content/uploads/2013/03/magic.gif -->
@@ -562,28 +548,24 @@ Dataset&lt;Row&gt; wordCount = lines
                     <p>Unfortunately, <strong class="color-indigo300">Java 8 lambda</strong> usage has shortcomings, we need to cast everything</p>
                     <p>For example, to get the last element in a group:</p>
                     <div class="code-wrapper">
-                    <pre><code class="code java" data-trim data-noescape>
-Dataset&lt;Tuple2&lt;String, QuoteJoin&gt;&gt; price = 
+                    <pre class="prettyprint"><code class="code lang-java" data-trim data-noescape>Dataset&lt;Tuple2&lt;String, QuoteJoin&gt;&gt; price = 
   quotes
     .groupByKey(<mark class="fragment">(MapFunction&lt;QuoteJoin, String&gt;)</mark>
       QuoteJoin::getUid, STRING())
     .reduceGroups(<mark class="fragment">(ReduceFunction&lt;QuoteJoin&gt;)</mark> (v1, v2) -&gt;
       v1.getSnapshotId()
-        .compareTo(v2.getSnapshotId()) &gt; 0 ? v1 : v2);
-                    </code></pre>
+        .compareTo(v2.getSnapshotId()) &gt; 0 ? v1 : v2);</code></pre>
                     </div>
                 </section>
 
                 <section class="flushleft" data-background="#222">
                     <p>However, those methods takes <strong class="color-indigo300">Single Abstract Method interfaces (SAM Interfaces)</strong> as parameters, but can't be called directly because they are overloaded for the Scala calls. Last example should read:</p>
                     <div class="code-wrapper">
-                    <pre><code class="code java" data-trim data-noescape>
-Dataset&lt;Tuple2&lt;String, QuoteJoin&gt;&gt; price = 
+                    <pre class="prettyprint"><code class="code lang-java" data-trim data-noescape>Dataset&lt;Tuple2&lt;String, QuoteJoin&gt;&gt; price = 
   quotes
     .groupByKey(QuoteJoin::getUid, STRING())
     .reduceGroups((v1, v2) -&gt; v1.getSnapshotId()
-        .compareTo(v2.getSnapshotId()) &gt; 0 ? v1 : v2);
-                    </code></pre>
+        .compareTo(v2.getSnapshotId()) &gt; 0 ? v1 : v2);</code></pre>
                     </div>
                     <p class="fragment small color-gray400">This is a know problem that comes from bytecode compatibility between Scala and Java that is resolved in Scala 2.12. Spark's support of that Scala version is not trivial, see discussions <a href="https://issues.apache.org/jira/browse/SPARK-14220">SPARK-14220</a> and <a href="https://issues.apache.org/jira/browse/SPARK-14643">SPARK-14643</a>.</p>
                 </section>
@@ -591,15 +573,13 @@ Dataset&lt;Tuple2&lt;String, QuoteJoin&gt;&gt; price =
                 <section class="center" data-background="#222">
                     <p>Type serializer (<code>org.apache.spark.sql.Encoders.*</code>) are <strong class="color-indigo300">inferred in Scala</strong>, <strong class="color-deeporange300">explicit in Java</strong></p>
                     <div class="code-wrapper">
-                    <pre><code class="code java" data-trim data-noescape>
-Dataset&lt;Tuple2&lt;String, TarificationJoin&gt;&gt; tupleTarif = 
+                    <pre class="prettyprint"><code class="code langage-java" data-trim data-noescape>Dataset&lt;Tuple2&lt;String, TarificationJoin&gt;&gt; tupleTarif = 
   tarification
     .groupByKey((MapFunction&lt;TarificationJoin, String&gt;)
       TarificationJoin::getOffreUid, <mark>STRING()</mark>)
     .reduceGroups((ReduceFunction&lt;TarificationJoin&gt;) (v1, v2) -&gt;
       v1.getSnapshotId()
-        .compareTo(v2.getSnapshotId()) &gt; 0 ? v1 : v2);
-                    </code></pre>
+        .compareTo(v2.getSnapshotId()) &gt; 0 ? v1 : v2);</code></pre>
                     </div>
                 </section>
 
@@ -671,7 +651,6 @@ Reveal.initialize({
     { src: '../bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
     { src: '../bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
     { src: '../bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-    { src: '../bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
     { src: '../bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
     { src: '../bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
     ]
