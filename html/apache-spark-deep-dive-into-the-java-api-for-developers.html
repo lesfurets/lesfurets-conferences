@@ -481,7 +481,7 @@ public void should_average_price_return_correct_average() {
                      <p>Testing guidelines:</p>
                      <ul>
                          <li class="fragment"><strong class="color-indigo300">- test startup : </strong>start Spark workers before the tests and reuse them to save time <span class="small color-gray400">(use our <code>@SparkTest</code> JUnit5 extension)</span></li>
-                         <li class="fragment"><strong class="color-indigo300">- test mode : </strong>use standalone mode when possible as it validates object serialization <span class="small color-gray400">(you need to either have a test cluster, on start it with Maven before test phase)</span></li>
+                         <li class="fragment"><strong class="color-indigo300">- test mode : </strong>use standalone mode when possible as it validates object serialization <span class="small color-gray400">(you need to either have a test cluster, or start one with Maven before the test phase)</span></li>
                      </ul>
                  </section>
 
@@ -502,7 +502,7 @@ public void should_average_price_return_correct_average() {
                      <p class="fragment">- We'd like a <strong>Java notebook</strong> with a <strong>REPL</strong> (we can still prototype with Scala since it's the same API)</p>
                      <p class="fragment">- The Java API is harder to learn since there's <strong>less documentation on it's usage</strong> (hence this talk)</p>
                      <p class="fragment">- It's easy to do very <strong>verbose implementations</strong></p>
-                     <p class="fragment">- <strong>Types</strong>... types everything (e.g. <code>Encoders.STRING()</code>)</p>
+                     <p class="fragment">- <strong>Types</strong>... types everywhere (e.g. <code>Encoders.STRING()</code>)</p>
                  </section>
 
                 <section class="flushleft" data-background="#222">
@@ -545,7 +545,7 @@ public void should_average_price_return_correct_average() {
                  </section>
 
                 <section class="flushleft" data-background="#222">
-                    <p>Unfortunately, <strong class="color-indigo300">Java 8 lambda</strong> usage has shortcomings, we need to cast everything</p>
+                    <p>Unfortunately, <strong class="color-indigo300">Java 8 lambda</strong> usage has shortcomings, we need to cast them</p>
                     <p>For example, to get the last element in a group:</p>
                     <div class="code-wrapper">
                     <pre class="prettyprint"><code class="code lang-java" data-trim data-noescape>Dataset&lt;Tuple2&lt;String, QuoteJoin&gt;&gt; price = 
@@ -559,7 +559,7 @@ public void should_average_price_return_correct_average() {
                 </section>
 
                 <section class="flushleft" data-background="#222">
-                    <p>However, those methods takes <strong class="color-indigo300">Single Abstract Method interfaces (SAM Interfaces)</strong> as parameters, but can't be called directly because they are overloaded for the Scala calls. Last example should read:</p>
+                    <p>However, these methods take <strong class="color-indigo300">Single Abstract Method interfaces (SAM Interfaces)</strong> as parameters, but can't be called directly because they are overloaded for the Scala calls. Last example should read:</p>
                     <div class="code-wrapper">
                     <pre class="prettyprint"><code class="code lang-java" data-trim data-noescape>Dataset&lt;Tuple2&lt;String, QuoteJoin&gt;&gt; price = 
   quotes
@@ -603,7 +603,7 @@ public void should_average_price_return_correct_average() {
                 <section class="flushleft" data-background="#222">
                     <p class="">Does Apache Spark fit in a Java ecosystem? <strong class="color-deeporange300">Yes! Because</strong></p>
                     <ul>
-                      <li class="fragment"><strong class="color-indigo300">the unified DataFrame API</strong> is really smooth</li>
+                      <li class="fragment"><strong class="color-indigo300">the unified DataFrame API</strong> is really powerful</li>
                       <li class="fragment"><strong class="color-indigo300">it's testable</strong> with any unit testing framework</li>
                       <li class="fragment"><strong class="color-indigo300">it's launchable</strong> easily from Maven and your IDE</li>
                       <li class="fragment"><strong class="color-indigo300">it's strongly typed</strong> and we like that... (?)</li>
