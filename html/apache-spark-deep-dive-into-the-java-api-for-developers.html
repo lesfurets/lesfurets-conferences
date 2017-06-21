@@ -14,13 +14,18 @@
         <link rel="stylesheet" href="../css/git-octopus-theme.css" id="theme">
         <link rel="stylesheet" href="../css/live-code-review-theme.css" id="theme">
         <style>
+.footer {
+  background-color: #f5af33;
+}
 .footer.hide {
   -ms-transform: translateY(0);
   -webkit-transform: translateY(0);
   transform: translateY(0);
   padding: 5px;
   z-index: 2;
-  opacity: 0.75;
+  opacity: 1;
+  background-color: white;
+  font-size: smaller;
 }
 .footer.hide img {
   transform: scale(0.75, 0.75);
@@ -62,10 +67,10 @@ if( window.location.search.match( /print-pdf/gi ) ) {
             <a href="https://www.lesfurets.com" target="_blank">
                 <img class="logo" src="../img/logo_lesfurets_885x128_no_back.png">
             </a>
-            <a class="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a>
-            <a class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a>
-            <a class="github" href="https://github.com/dubreuia" target="_blank">https://github.com/dubreuia</a>
-            <a style="margin-right: 10px;" class="twitter" href="https://twitter.com/dubreuia" target="_blank">@dubreuia</a>
+            <a style="font-size:larger" class="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a>
+            <a style="font-size:larger" class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a>
+            <a style="font-size:larger" class="github" href="https://github.com/dubreuia" target="_blank">https://github.com/dubreuia</a>
+            <a style="font-size:larger" style="margin-right: 10px;" class="twitter" href="https://twitter.com/dubreuia" target="_blank">@dubreuia</a>
             <img style="height:40px;vertical-align:middle;padding:0 10px 0 20px" src="../img/logo-devoxx-poland-01.png">
             <!--<span style="font-family:arial;font-weight:bold;font-size:25px;vertical-align:middle;color:#333">BBL @ WHOZ</span>-->
         </div>
@@ -74,10 +79,10 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
                 <!-- SECTION - INTRO -->
 
-                <section class="flushright" data-background="../img/nwx/lesfurets-background-black-01.jpg">
-                    <h1>Apache Spark</h1>
-                    <h2>Deep dive into the Java API for developers</h2>
-                    <h3>Alexandre DuBreuil</h3>
+                <section class="flushright" data-background="../img/devoxx-poland-2017-template-03.jpg">
+                    <h1 style="color:black">Apache Spark</h1>
+                    <h2 style="color:black">Deep dive into the Java API<br>for developers</h2>
+                    <h3 style="color:black">Alexandre DuBreuil</h3>
                     <img style="height:150px" src="../img/spark/logo-apache-spark-02.jpg">
                     <img style="height:150px" src="../img/logo-devoxx-poland-01.png">
                 </section>
@@ -100,11 +105,20 @@ if( window.location.search.match( /print-pdf/gi ) ) {
                     <h2 style="color:white">LesFurets.com</h2>
                     <p>First independent insurance comparison website in France, launched in September 2012 (40% market share)</p>
                     <p>A single website to compare hundreds of offers (car, motorcycle, housing, health, loan insurance)</p>
-                    <p>"Les furets" means "the ferrets" like Hervé and François in the background!</p>
                 </section>
 
-                <section class="flushleft" data-background="../img/nwx/lesfurets-background-black-01.jpg">
+                <section class="flushleft" data-background="../img/nwx/lesfurets-background-black-01.jpg" data-transition="fade-in">
+                    <img style="width:95%" src="../img/lesfurets-question-set.png">
+                </section>
+
+                <section class="flushleft" data-background="../img/nwx/lesfurets-background-black-01.jpg" data-transition="fade-in">
                     <img style="width:95%" src="../img/spark/lesfurets-pps.png">
+                </section>
+
+                <section class="flushright" data-background="#222">
+                    <p>Currently migrating to a <strong>lambda architecture</strong>...</strong></p>
+                    <!-- our -->
+                    <img style="width:90%" src="../img/spark/lf-dataflow-lambda-migration.png">
                 </section>
 
                 <!--<section class="flushleft" data-background="#222">-->
@@ -293,7 +307,8 @@ averagePrice.show();</code></pre>
                  <section class="center" data-background="#222">
                      <p>What is executed on the <strong class="color-indigo300">worker</strong>? And on the <strong class="color-deeporange300">driver</strong>?</p>
                      <div class="code-wrapper">
-                     <pre class="prettyprint"><code class="code lang-java" data-trim data-noescape><mark class="fragment" style="background-color:#ff8a65">prices</mark>
+                     <pre class="prettyprint"><code class="code lang-java" data-trim data-noescape><mark class="fragment" style="background-color:#ff8a65">spark</mark>
+    <mark class="fragment" style="background-color:#7986cb">.read().csv(PATH)</mark>
     <mark class="fragment" style="background-color:#7986cb">.filter((FilterFunction&lt;Row&gt;) value -&gt;</mark>
             <mark class="fragment" style="background-color:#7986cb">value.&lt;String&gt;getAs("insurer")</mark>
                  <mark class="fragment" style="background-color:#7986cb">.equals("COOL insurer"))</mark>
@@ -607,7 +622,12 @@ public void should_average_price_return_correct_average() {
                       <li class="fragment"><strong class="color-indigo300">it's testable</strong> with any unit testing framework</li>
                       <li class="fragment"><strong class="color-indigo300">it's launchable</strong> easily from Maven and your IDE</li>
                       <li class="fragment"><strong class="color-indigo300">it's strongly typed</strong> and we like that... (?)</li>
+                      <li class="fragment"><strong class="color-indigo300">it can call our Java code</strong></li>
                     </ul>
+                </section>
+
+                <section class="flushleft" data-background="#222">
+                    <p class="">Everybody agrees</p>
                     <img class="fragment" width="33%" src="../img/spark/meme-donald-spark.gif">
                 </section>
 
