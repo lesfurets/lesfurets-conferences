@@ -52,20 +52,6 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 - 8 janvier 2016 : Breizh JUG (http://www.breizhjug.org/#/events)
 - 22 octobre 2015 (fr) : SoftShake Genève (http://soft-shake.ch/2015/fr/)
 
-<!--
-### Apache Spark dans la vraie vie (de développeur Java)
-### Apache Spark : Utilisation journalière pour dévelopeur Java
-### Apache Spark : Hands-on pour développeur Java
-### A concise introduction to Apache Spark for Java developers
-### Apache Spark : Real World Use Cases for Java Developers
-### Apache Spark : Use cases réels pour développeurs Java
-### Apache Spark : Utilisation pour développeurs Java et Mme Michu
-### Apache Spark : Data science pour développeurs Java et Mme Michu
-### Apache Spark : Hands-on pour développeurs Java et Mme Michu
-### SparkOscope: Enabling Apache Spark Optimization Through Cross-Stack Monitoring and Visualization 
-### Apache Spark : Hands-on pour développeurs Java dans la vraie vie
-### Apache Spark : Hands-on pour développeurs Java avec de vrais use case
--->
 ### Apache Spark : Deep dive dans l'API Java pour développeur
 
 Code source pour live code : [https://github.com/lesfurets/lesfurets-conferences/tree/gh-pages/src/apache-spark](https://github.com/lesfurets/lesfurets-conferences/tree/gh-pages/src/apache-spark)
@@ -75,8 +61,14 @@ Code source pour live code : [https://github.com/lesfurets/lesfurets-conferences
 **Apache Spark : Deep dive into the Java API for developers** : Apache Spark proposes a Java API as a first class citizen, but is it as powerful as the Scala API? Does it use every feature of the language, such as lambdas? Does it integrate properly with our unit test tooling and existing Java code base? We will dive into the Spark Java API through examples and live coding from our code base, by covering the basic usage and dependency management, unit testing with JUnit, launching from an IDE and integrating Spark code with our existing Java code base. Since Spark version 2.0, the unified DataFrame API makes Spark easier to use and faster to execute in Java, but there is still little documentation on specific use cases, and many syntax quirks make Scala code difficult to convert to Java. The slides and live coding will present the good, the bad and the ugly moments our Java development team encountered while using Spark.
 
 <!--
-**Jury** : Lorsque nous avons commencé à expérimenter avec Spark chez LesFurets.com, nous avons voulu utiliser l'API Java afin de réutiliser notre tooling existant plus facilement, et afin d'être plus à l'aise avec la technologie dans une équipe de développeurs Java. Or nous avons remarqué le manque d'article et de conférences sur l'utilisation de Spark avec Java, surtout d'un point de vue d'un développeur : comment lancer spark à partir de l'IDE ? Comment écrire des tests unitaires et industrialiser le cycle de développement ? Ce talk discute d'un sujet peu abordé mais très utile dans le toolbox de tout développeur Java. Il sera joué à Snowcamp en février et fera parti d'une série d'article à paraître sur le blog de LesFurets.com
+**Unit testing big data code written in Apache Spark with Java** : Having a fast feedback loop when you have rebellious or downright erroneous data (or code) is an important part of sane big data debugging, and unit testing is a good way to achieve that. However, you seldom ear "big data" and "unit testing" in the same sentence, and sometimes testing big data code can seem daunting. This presentation will show different ways of testing big data code written in Apache Spark 2.0 with the Java DataFrame API. It will explore ways of handling test data, extracting and saving test datasets, distributing assertion for faster validation on bigger datasets, and automating tests on a big data platform like Spark.
+-->
 
+<!--
+**Jury** : Lorsque nous avons commencé à expérimenter avec Spark chez LesFurets.com, nous avons voulu utiliser l'API Java afin de réutiliser notre tooling existant plus facilement, et afin d'être plus à l'aise avec la technologie dans une équipe de développeurs Java. Or nous avons remarqué le manque d'article et de conférences sur l'utilisation de Spark avec Java, surtout d'un point de vue d'un développeur : comment lancer spark à partir de l'IDE ? Comment écrire des tests unitaires et industrialiser le cycle de développement ? Ce talk discute d'un sujet peu abordé mais très utile dans le toolbox de tout développeur Java. Il sera joué à Snowcamp en février et fera parti d'une série d'article à paraître sur le blog de LesFurets.com
+-->
+
+<!--
 **Jury** : This talk is the result of our experience with Spark in our all-Java development team. It sets itself apart by talking about Spark 2.0+ (DataFrame API) and by focusing on Java 8 good practices (with lambda usage), JUnit testing and continuous integration of Spark code. This talk has already been accepted in meetups and one conference (see the speaker experience section) and will be the focus of a series of article to be published on LesFurets.com technical blog.
 -->
 
