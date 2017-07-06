@@ -9,6 +9,8 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 * **[Big Data](https://github.com/lesfurets/lesfurets-conferences#big-data)** : Retour d’expérience sur notre data
 * **Zeno Pixel** ([open-source](https://github.com/lesfurets/zeno-pixel)) : Test de régression graphique pixel à pixel
 * **[JenkinsPipelineUnit](https://github.com/lesfurets/lesfurets-conferences#jenkinspipelineunit-test-your-continuous-delivery-pipeline)** : Test your continuous delivery pipeline
+* **[JOOQ & JOOλ](https://github.com/lesfurets/lesfurets-conferences#jooq-et-jooλ--comment-écrire-du-code-propre-dans-vos-dao)** : Comment écrire du code propre dans vos DAO
+
 
 ## Conférences
 
@@ -86,7 +88,8 @@ Code source pour live code : [https://github.com/lesfurets/lesfurets-conferences
 
 **JOOQ and JOOλ : How to write clean code with your Data Access Object** : JOOQ and JOOλ are open-source solutions for integrating your Java application cleanly with your database. So, what's new? After all object-relational mapping is at least as old as the Java platform. But since Java 8, JOOQ allows us to use the Stream API with object-relational mapping, which, coupled with JOOλ, has the effect of writing simpler DAOs in a functional paradigm. During this session we will show you the advantages we can obtain with JOOQ and JOOλ frameworks, compared to pure JDBC, JPA and Spring JDBC Template. And for the icing on the cake, we will show you how to simply introduce JOOQ and JOOλ into your existing code. 
 
-
+- 05 avril 2017 (fr) : Devoox Fr @ Paris [JOOQ et JOOλ : Comment écrire du code propre dans vos DAO](https://lesfurets.github.io/lesfurets-conferences/html/JOOQ-Comment-ecrire-du-code-propre-dans-vos-DAO-25mn-devoxx.html#/)
+- 21 avril 2017 (fr) : Breizhcamp @ Rennes [JOOQ et JOOλ : Comment écrire du code propre dans vos DAO](https://lesfurets.github.io/lesfurets-conferences/html/JOOQ-Comment-ecrire-du-code-propre-dans-vos-DAO-25mn-fr-breizhcamp.html#/)
 - 23 mai 2017 (en) : BruJUG @ Bruxelles [jOOQ et jOOλ: How to write clean code for your Data Access Objects](https://lesfurets.github.io/lesfurets-conferences/html/JOOQ-and-JOOL-How-to-write-clean-code-with-your-DAO-brujug.html#/)
 
 <!-- 
@@ -205,6 +208,9 @@ Software craftmanship
 - November 2015 : Codeurs en Seins @ Rouen 
 -->
 
+### Mathieu Gandin [@mgandin](https://twitter.com/mgandin)
+Mathieu Gandin est tech-lead chez lesfurets.com. Depuis 16 ans, il développe des applications, travaille sur le Design de code, la transmission de pratiques de développement logiciel, l’implication de l’équipe sur le produit, et le refactoring de code existant.
+
 ### Ozan Gunalp [@ozangunalp](https://twitter.com/ozangunalp)
 
 Ingénieur docteur avec 5+ ans d'expérience dans les systèmes distribués, l'Internet des objets et les processus de développement logiciels.
@@ -215,6 +221,7 @@ He joined LesFurets.com more than a year ago and he is interested in improving t
 
 ## Vidéos
 
+- Devoxx - Paris - JOOQ et JOOλ : https://www.youtube.com/watch?v=Gev7iQ5_VCA
 - BreizhCamp - Rennes - Continuous delivery : https://www.youtube.com/watch?v=ayvVYc01iEk
 - The French Way (en) - Agile Cambridge - Continuous delivery : https://www.youtube.com/watch?v=ayvVYc01iEk
 - SoftIt - Continuous delivery : http://blog.softit.fr/?tag=/Continuous+Delivery+to+Lean+Enterprise
