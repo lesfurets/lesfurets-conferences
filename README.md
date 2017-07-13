@@ -160,6 +160,14 @@ Nous ferons aussi part des difficultés rencontrées lors de notre migration ver
 * 23 mai 2017 : Meetup Jenkins (Paris) - [How2Pipeline @CFM](https://lesfurets.github.io/lesfurets-conferences/html/jenkins-pipeline-jenkinspipelineunit-meetup-23-05-2017.html)
 * 31 août 2017 : Jenkins World (San Francisco) - TODO
 
+### DSL.using(java).toGoBeyond(BeanValidation).at(Devoxx.eq(BE));
+
+**Abstract:** Fluent, stream-like API's are great for writing type checked code, taking advantage of Java 8 functions and lambdas. Perhaps the best example of such project is jOOQ, which creates a fluent Java DSL for SQL. But what about creating your own DSL to manipulate and validate your model? We created an open-source framework for generating validation DSLs from a domain model. This presentation will demonstrate the efficiency and expressivity of this framework to define validation constraints. We will refactor complex legacy business rules during a live code session.
+
+<!--
+We recently started using massively jOOQ in our codebase (see our Devoxx France presentation on the subject https://www.youtube.com/watch?v=Gev7iQ5_VCA) and we where impressed by the ease of use and expressiveness of the resulting code. Our questioning was "Can we also create a DSL to simplify our business rules, using Java 8 lambdas?"
+-->
+
 ### Software craftmanship
 
 - 21 - 22 Avril 2016 (fr) : [Devoxx - France - Live code review at LesFurets.com](https://lesfurets.github.io/lesfurets-conferences/html/live-code-review-at-lesfurets-devoxx.html)
