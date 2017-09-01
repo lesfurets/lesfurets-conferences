@@ -158,7 +158,7 @@ Nous ferons aussi part des difficultés rencontrées lors de notre migration ver
 
 * 28 mars 2017 : BGL META (Peterborough) - [JenkinsPipelineUnit: Test your continuous delivery pipeline](https://lesfurets.github.io/lesfurets-conferences/html/jenkins-pipeline-jenkinspipelineunit-bgl-2017.html)
 * 23 mai 2017 : Meetup Jenkins (Paris) - [How2Pipeline @CFM](https://lesfurets.github.io/lesfurets-conferences/html/jenkins-pipeline-jenkinspipelineunit-meetup-23-05-2017.html)
-* 31 août 2017 : Jenkins World (San Francisco) - TODO
+* 31 août 2017 : Jenkins World (San Francisco) - [JenkinsPipelineUnit: Test your continuous delivery pipeline](https://lesfurets.github.io/lesfurets-conferences/pdf/JenkinsPipelineUnit-JenkinsWorld2017.pdf)
 
 ### DSL.using(java).toGoBeyond(BeanValidation).at(Devoxx.eq(BE));
 
