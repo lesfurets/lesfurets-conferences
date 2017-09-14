@@ -48,6 +48,7 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 
 **Abstract** : Pour faire du traitement de données, les listes, tableaux et maps sont les structures de données les plus faciles à manipuler. Malheureusement la plupart des applications sont conçues autour d'un modèle métier. Chez LesFurets.com nous avons résolu ce problème en développant un KVM (Key Value Mapping). Ce framework est utilisé au cœur de l'application et cohabite avec le modèle métier. Grâce au mapping bidirectionnel de notre modèle métier vers un modèle clé-valeur, les manipulations de données deviennent extrêmement simples à réaliser. La mise en place de ce nouveau paradigme a nécessité un important refactoring de l'application et a permis de l'ouvrir à de nombreux outils actuels (Stream Java 8, RxJava, Spark, Cassandra)
 
+- 14 juin 2017 (fr) : Open R&D day
 - 13 octobre 2016 (fr) : Marseille JUG (http://marsjug.org/#reunions)
 - 28 juin 2016 (fr) : Paris JUG (https://www.parisjug.org/xwiki/wiki/oldversion/view/Meeting/20160628)
 - 30 juin 2016 (fr) : Ch'ti JUG (http://chtijug.org/)
@@ -166,6 +167,7 @@ Nous ferons aussi part des difficultés rencontrées lors de notre migration ver
 
 **Abstract:** Fluent, stream-like API's are great for writing type checked code, taking advantage of Java 8 functions and lambdas. Perhaps the best example of such project is jOOQ, which creates a fluent Java DSL for SQL. But what about creating your own DSL to manipulate and validate your model? We created an open-source framework for generating validation DSLs from a domain model. This presentation will demonstrate the efficiency and expressiveness of this framework to define validation constraints. We will refactor complex legacy business rules during a live code session.
 
+- 26 octobre 2017 (fr) : [SoftShake.ch](https://http://www.soft-shake.ch/2017/fr/index.html)
 <!--
 We recently started using massively jOOQ in our codebase (see our Devoxx France presentation on the subject https://www.youtube.com/watch?v=Gev7iQ5_VCA) and we where impressed by the ease of use and expressiveness of the resulting code. Our questioning was "Can we also create a DSL to simplify our business rules, using Java 8 lambdas?"
 -->
