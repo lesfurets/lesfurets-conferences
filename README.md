@@ -4,7 +4,7 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 
 * **[Continuous merge : réconcilier feature branching et continuous delivery](https://github.com/lesfurets/lesfurets-conferences#continuous-merge--r%C3%A9concilier-feature-branching-et-continuous-delivery)** ([open-source](https://github.com/lesfurets/git-octopus/)) : Notre organisation en feature branching & continuous merge
 * **[DomainModel.stream()](https://github.com/lesfurets/lesfurets-conferences#domainmodelstream)** : Comment on applatit notre modèle de données dans un KVM (Key Value Mapping)
-* **[DSL.using(java).toGoBeyond(BeanValidation);](https://github.com/lesfurets/lesfurets-conferences#domainmodelstream)** : Comment écrire des règles de validation complexes avec un DSL inspiré par JOOQ
+* **[DSL.using(java).toGoBeyond(BeanValidation);](https://github.com/lesfurets/lesfurets-conferences#dslusingjavatogobeyondbeanvalidation)** : Comment écrire des règles de validation complexes avec un DSL inspiré par JOOQ
 * **[Apache Spark : Deep dive dans l'API Java pour développeur](https://github.com/lesfurets/lesfurets-conferences#apache-spark--deep-dive-dans-lapi-java-pour-développeur)** : Application de spark sur des cas d'usage pour développeurs Java
 * **[Programmation réactive pour l''orchestration de services au sein de la JVM](https://github.com/lesfurets/lesfurets-conferences#programmation-réactive-pour-lorchestration-de-services-au-sein-de-la-jvm)** Utilisation de RxJava 2 pour la chorégraphie de 40 webservices en parallèles lors de la comparaison de tarifs sur le site LesFurets.com
 * **[Software craftmanship](https://github.com/lesfurets/lesfurets-conferences#software-craftmanship)** : Retour d’expérience sur notre manière de travailler ensemble sur le code
