@@ -4,7 +4,9 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 
 * **[Continuous merge : réconcilier feature branching et continuous delivery](https://github.com/lesfurets/lesfurets-conferences#continuous-merge--r%C3%A9concilier-feature-branching-et-continuous-delivery)** ([open-source](https://github.com/lesfurets/git-octopus/)) : Notre organisation en feature branching & continuous merge
 * **[DomainModel.stream()](https://github.com/lesfurets/lesfurets-conferences#domainmodelstream)** : Comment on applatit notre modèle de données dans un KVM (Key Value Mapping)
+* **[DSL.using(java).toGoBeyond(BeanValidation);](https://github.com/lesfurets/lesfurets-conferences#domainmodelstream)** : Comment écrire des règles de validation complexes avec un DSL inspiré par JOOQ
 * **[Apache Spark : Deep dive dans l'API Java pour développeur](https://github.com/lesfurets/lesfurets-conferences#apache-spark--deep-dive-dans-lapi-java-pour-développeur)** : Application de spark sur des cas d'usage pour développeurs Java
+* **[Programmation réactive pour l''orchestration de services au sein de la JVM](https://github.com/lesfurets/lesfurets-conferences#programmation-réactive-pour-lorchestration-de-services-au-sein-de-la-jvm)** Utilisation de RxJava 2 pour la chorégraphie de 40 webservices en parallèles lors de la comparaison de tarifs sur le site LesFurets.com
 * **[Software craftmanship](https://github.com/lesfurets/lesfurets-conferences#software-craftmanship)** : Retour d’expérience sur notre manière de travailler ensemble sur le code
 * **[Big Data](https://github.com/lesfurets/lesfurets-conferences#big-data)** : Retour d’expérience sur notre data
 * **Zeno Pixel** ([open-source](https://github.com/lesfurets/zeno-pixel)) : Test de régression graphique pixel à pixel
@@ -160,7 +162,7 @@ Nous ferons aussi part des difficultés rencontrées lors de notre migration ver
 * 23 mai 2017 : Meetup Jenkins (Paris) - [How2Pipeline @CFM](https://lesfurets.github.io/lesfurets-conferences/html/jenkins-pipeline-jenkinspipelineunit-meetup-23-05-2017.html)
 * 31 août 2017 : Jenkins World (San Francisco) - [JenkinsPipelineUnit: Test your continuous delivery pipeline](https://lesfurets.github.io/lesfurets-conferences/pdf/JenkinsPipelineUnit-JenkinsWorld2017.pdf)
 
-### DSL.using(java).toGoBeyond(BeanValidation).at(Devoxx.eq(BE));
+### DSL.using(java).toGoBeyond(BeanValidation);
 
 **Abstract:** Fluent, stream-like API's are great for writing type checked code, taking advantage of Java 8 functions and lambdas. Perhaps the best example of such project is jOOQ, which creates a fluent Java DSL for SQL. But what about creating your own DSL to manipulate and validate your model? We created an open-source framework for generating validation DSLs from a domain model. This presentation will demonstrate the efficiency and expressiveness of this framework to define validation constraints. We will refactor complex legacy business rules during a live code session.
 
