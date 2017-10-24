@@ -1,13 +1,10 @@
 package com.lesfurets.spark.junit5.extension;
 
-import org.apache.spark.sql.SparkSession;
-import org.junit.jupiter.api.extension.ExtensionContext;
-import org.junit.jupiter.api.extension.ParameterContext;
-import org.junit.jupiter.api.extension.ParameterResolver;
-import org.junit.jupiter.api.extension.TestInstancePostProcessor;
-
 import static java.lang.reflect.Modifier.isPublic;
 import static java.util.Arrays.stream;
+
+import org.apache.spark.sql.SparkSession;
+import org.junit.jupiter.api.extension.*;
 
 class SparkTestExtension implements TestInstancePostProcessor, ParameterResolver {
 
@@ -19,9 +16,9 @@ class SparkTestExtension implements TestInstancePostProcessor, ParameterResolver
         if (spark == null) {
             System.out.println("Starting SparkSession " + MASTER);
             spark = SparkSession.builder()
-                    .config("spark.ui.enabled", false)
-                    .master(MASTER)
-                    .getOrCreate();
+                            .config("spark.ui.enabled", false)
+                            .master(MASTER)
+                            .getOrCreate();
         }
         return spark;
     }
@@ -29,20 +26,23 @@ class SparkTestExtension implements TestInstancePostProcessor, ParameterResolver
     @Override
     public void postProcessTestInstance(Object testInstance, ExtensionContext context) throws Exception {
         stream(testInstance.getClass().getDeclaredFields())
-                .filter(field -> field.getType() == SparkSession.class)
-                .filter(field -> isPublic(field.getModifiers()))
-                .findFirst()
-                .orElseThrow(() -> new RuntimeException("Need one public SparkSession field"))
-                .set(testInstance, getSparkOrInitialize());
+                        .filter(field -> field.getType() == SparkSession.class)
+                        .filter(field -> isPublic(field.getModifiers()))
+                        .findFirst()
+                        .orElseThrow(() -> new RuntimeException("Need one public SparkSession field"))
+                        .set(testInstance, getSparkOrInitialize());
     }
 
     @Override
-    public boolean supports(ParameterContext parameterContext, ExtensionContext extensionContext) {
+    public boolean supportsParameter(ParameterContext parameterContext, ExtensionContext extensionContext)
+                    throws ParameterResolutionException {
         return parameterContext.getParameter().getType().equals(SparkSession.class);
+
     }
 
     @Override
-    public Object resolve(ParameterContext parameterContext, ExtensionContext extensionContext) {
+    public Object resolveParameter(ParameterContext parameterContext, ExtensionContext extensionContext)
+                    throws ParameterResolutionException {
         return getSparkOrInitialize();
     }
 
