@@ -77,6 +77,7 @@ Code source pour live code : [https://github.com/lesfurets/lesfurets-conferences
 **Jury** : This talk is the result of our experience with Spark in our all-Java development team. It sets itself apart by talking about Spark 2.0+ (DataFrame API) and by focusing on Java 8 good practices (with lambda usage), JUnit testing and continuous integration of Spark code. This talk has already been accepted in meetups and one conference (see the speaker experience section) and will be the focus of a series of article to be published on LesFurets.com technical blog.
 -->
 
+- 27 octobre 2017 (fr) : Softshake @ Geneva [Apache Spark: Deep dive into the Java API for developers](https://lesfurets.github.io/lesfurets-conferences/html/apache-spark-deep-dive-into-the-java-api-for-developers-softshake.html)
 - 22 juin 2017 (en) : Devoxx @ Krakow [Apache Spark : Deep dive into the Java API for developers](https://lesfurets.github.io/lesfurets-conferences/html/apache-spark-deep-dive-into-the-java-api-for-developers.html)
 - 19 avril 2017 (fr) : Breizhcamp @ Rennes [Apache Spark : Deep dive dans l'API Java pour développeur](https://lesfurets.github.io/lesfurets-conferences/html/apache-spark-hands-on-developpeurs-java-breizhcamp.html)
 - 9 février 2017 (fr) : Snowcamp @ Grenoble [Apache Spark : Deep dive dans l'API Java pour développeur](https://lesfurets.github.io/lesfurets-conferences/html/apache-spark-hands-on-developpeurs-java-snowcamp.html)
