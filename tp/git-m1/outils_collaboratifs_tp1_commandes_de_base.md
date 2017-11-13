@@ -123,7 +123,7 @@ git log
 #     Mon 1e commit
 ```
 
-L'option `--name-status`` donne le contenu des commits (soit les fichiers qui sont dedans)
+L'option `--name-status` donne la liste des fichiers modifiés (le A préfixé veut dire "added", vous avez aussi M pour "modified" et D pour "deleted")
 
 ```bash
 git log --name-status
@@ -179,7 +179,7 @@ git show HEAD
 # +Ligne 1
 ```
 
-La syntaxe `HEAD~1` permet de revenir un commit en arrière (HEAD est le commit courant, HEAD~1 est le commit précédent, HEAD~2 est le commit d'avant, etc.)
+La syntaxe `HEAD~1` permet de revenir un commit en arrière (HEAD est le commit courant, HEAD\~1 est le commit précédent, HEAD\~2 est le commit d'avant, etc.)
 
 ```bash
 git show HEAD~1
@@ -200,6 +200,8 @@ git show HEAD~1
 
 ## Exercice 5 : modifier des fichiers (`git diff`)
 
+On ajoute une ligne aux fichier1 et fichier2 avec `echo`
+
 ```bash
 echo "Ligne 2" >> fichier1
 echo "Ligne 2" >> fichier2
@@ -214,6 +216,8 @@ git status
 # 
 # no changes added to commit (use "git add" and/or "git commit -a")
 ```
+
+La commande `git diff` permet de voir les modifications qu'on a fait (utile avant le commit), c'est le même affichage que la commande `git show` de l'exercice précédent.
 
 ```bash
 git diff
@@ -232,6 +236,8 @@ git diff
 #  Ligne 1
 # +Ligne 2
 ```
+
+On ajoute le fichier1 dans un nouveau commit pour l'exercice suivant
 
 ```bash
 git add fichier1
