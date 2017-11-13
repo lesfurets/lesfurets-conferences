@@ -306,7 +306,7 @@ ls
 # fichier1  fichier2  fichier3
 ```
 
-Utiliser `git reset` pour supprimer le commit. 
+Utiliser `git reset` pour supprimer le commit (attention : cette opération parfois est réversible, mais avec des commandes difficiles à utiliser, éviter l'usage)
 
 ```bash
 git reset --hard HEAD~1
@@ -335,21 +335,65 @@ On est bien revenu sur le 3e commit
 
 ## Exercice 7 : utilisation des branches (`git branch`, `git checkout`)
 
+Les branches permettent de développer des nouvelles fonctionnalités de manière indépendante, la création se fait avec la commande `git branch`
+
+Vous pouvez les voir comme des copies de votre espace de travail, entre lesquelles vous pouvez basculer rapidement, avec la commande `git checkout`
+
 ```bash
-git branch dev1
+git branch develop
 git branch
-git checkout dev1
-git log
-touch fichierdev1
-git add fichierdev1
-git commit -m "Nouveau fichier dev 1"
-git log
-git log master
-git checkout master
-git log
-ls
+#   develop
+# * master
+
+git checkout develop
+# Switched to branch 'develop'
 git branch
+# * develop
+#   master
 ```
+
+Pour l'instant, les 2 branches sont identiques, mais les modifications de l'une ne vont pas impacter l'autre.
+
+On ajoute un fichier "fichierdev" dans la branche courante, soit "develop", dans un nouveau commit
+
+```bash
+touch fichierdev
+git add fichierdev
+git commit -m "Nouveau fichier dev 1"
+# [develop c1fa6e3] Nouveau fichier dev 1
+#  1 file changed, 0 insertions(+), 0 deletions(-)
+#  create mode 100644 fichierdev
+```
+
+On remarque que ce commit est présent dans la branche courante "develop" mais pas dans la branche "master"
+
+```bash
+git log --oneline
+# c1fa6e3 Nouveau fichier dev
+# 59c88f8 Mon 3e commit
+# 888f4ec Mon 2e commit
+# 8e8630d Mon 1e commit
+
+git log --oneline master
+# 59c88f8 Mon 3e commit
+# 888f4ec Mon 2e commit
+# 8e8630d Mon 1e commit
+```
+
+Ce qui veut dire que le nouveau fichier "fichierdev" est présent dans la branche "develop", mais pas dans master
+
+```bash
+ls
+# fichier1  fichier2  fichier3  fichierdev
+
+git checkout master
+# Switched to branch 'master'
+
+ls
+# fichier1  fichier2  fichier3
+```
+
+Le fichier "fichierdev" n'est pas présent dans votre répertoire de travail
 
 ## Exercice 8 : fusion des branches (`git merge`)
 
@@ -357,7 +401,7 @@ git branch
 touch fichiermaster
 git add fichiermaster
 git commit -m "Nouveau fichier master"
-git merge --no-edit dev1
+git merge --no-edit develop
 git log
 git log --oneline --graph
 ```
