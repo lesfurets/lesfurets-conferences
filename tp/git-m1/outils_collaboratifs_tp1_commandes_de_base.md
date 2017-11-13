@@ -10,6 +10,8 @@
 
 ## Exercice 1 : configurer git (`git config`)
 
+Les commit dans git contienne votre nom et mail, ce sera important pour le TP2
+
 ```bash
 git config --global user.name
 # Alexandre DuBreuil
@@ -20,6 +22,8 @@ git config --global user.email
 
 ## Exercice 2 : initialiser un dépôt vide (`git init`)
 
+Pour démarrer un nouveau dépôt, utiliser `git init`, puis `cd` pour entrer dans le répertoire créé par git.
+
 ```bash
 git init tp-git
 # Initialized empty Git repository in tp-git/.git/
@@ -29,6 +33,8 @@ cd tp-git
 
 ## Exercice 3 : ajouter des commits (`git add`, `git commit`, `git status`)
 
+Utiliser `echo` pour créer 3 nouveaux fichiers avec comme contenu une ligne "Ligne 1"
+
 ```bash
 echo "Ligne 1" >> fichier1
 echo "Ligne 1" >> fichier2
@@ -37,6 +43,8 @@ echo "Ligne 1" >> fichier3
 ls
 # fichier1  fichier2  fichier3
 ```
+
+Avec `git status`, git vous montre qu'il y a 3 nouveaux fichier dans votre répertoire de travail qui sont "untracked" ou inconnu.
 
 ```bash
 git status
@@ -52,7 +60,13 @@ git status
 # 	fichier3
 # 
 # nothing added to commit but untracked files present (use "git add" to track)
+```
 
+Pour ajouter ces fichiers au "staging", il faut utiliser la commande `git add`. Attention: cela n'ajoute pas le fichier à git, pour se faire il faut faire un "commit".
+
+La commande `git status` vous montre l'état de votre dépôt
+
+```bash
 git add fichier1
 git status
 # On branch master
@@ -69,14 +83,18 @@ git status
 # 
 # 	fichier2
 # 	fichier3
+```
 
+Le "staging" est la partie notée par "changes to be commited". Pour créer un nouveau commit, utiliser la commande `git commit`. À partir du moment ou un fichier est dans un commit, il est persisté à jamais dans git.
+
+```bash
 git commit -m "Mon 1e commit"
 # [master (root-commit) 8e8630d] Mon 1e commit
 #  1 file changed, 1 insertion(+)
 #  create mode 100644 fichier1
 ```
 
-**TODO:** Ajouter fichier2 et fichier3 dans un 2e commit
+**TODO:** Ajouter fichier2 et fichier3 dans un 2e commit, jusqu'à ce que git affiche "working tree clean", ce qui veut dire que le dépôt git contient tous les fichiers qui sont dans votre répertoire de travail.
 
 ```bash
 git add ...
@@ -233,6 +251,7 @@ Utiliser `git revert` pour créer un commit qui est l'inverse du commit (les lig
 touch poubelle
 ls
 # fichier1  fichier2  fichier3  poubelle
+
 git add poubelle
 git commit -m poubelle
 # [master 3012558] poubelle
@@ -271,14 +290,32 @@ ls
 # fichier1  fichier2  fichier3
 ```
 
+Utiliser `git reset` pour supprimer le commit. La syntaxe `HEAD~1` permet de revenir un commit en arrière (HEAD est le commit courant, HEAD~1 est le commit précédent, HEAD~2 est le commit d'avant, etc.)
+
 ```bash
 git reset --hard HEAD~1
-git log
+# HEAD is now at 3012558 poubelle
+
 ls
-git reset --hard HEAD~1
-git log
-ls
+fichier1  fichier2  fichier3  poubelle
 ```
+
+On est de retour sur le commit avec le fichier "poubelle"
+
+```bash
+git reset --hard HEAD~1
+# HEAD is now at 59c88f8 Mon 3e commit
+
+git log
+#commit 59c88f86b6b64c6f016bb6e078d520d89826dfb7
+#Author: Alexandre DuBreuil <adu@lesfurets.com>
+#Date:   Mon Nov 13 17:41:17 2017 +0100
+#
+#    Mon 3e commit
+# ...
+```
+
+On est bien revenu sur le 3e commit
 
 ## Exercice 7 : utilisation des branches (`git branch`, `git checkout`)
 
