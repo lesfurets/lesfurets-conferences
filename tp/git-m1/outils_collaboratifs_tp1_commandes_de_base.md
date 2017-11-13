@@ -106,6 +106,8 @@ git status
 
 ## Exercice 4 : visualiser l'historique (`git log`, `git show`)
 
+Vous avez déjà fait 2 commits et la commande `git log` vous permet de les voir
+
 ```bash
 git log
 # commit 888f4ecca3f04f6dc8ef5f314b279078a5086092
@@ -120,6 +122,8 @@ git log
 # 
 #     Mon 1e commit
 ```
+
+L'option `--name-status`` donne le contenu des commits (soit les fichiers qui sont dedans)
 
 ```bash
 git log --name-status
@@ -147,6 +151,10 @@ git log --oneline --graph --decorate
 # * 8e8630d Mon 1e commit
 ```
 
+La commande `git show` permet de voir le contenu des modifications, les lignes ajoutées sont préfixées d'un +, les lignes supprimées sont préfixées d'un - (ce sont les seules modifications possibles)
+
+Le paramètre HEAD veut dire "commit courant"
+
 ```bash
 git show HEAD
 # commit 888f4ecca3f04f6dc8ef5f314b279078a5086092
@@ -170,6 +178,8 @@ git show HEAD
 # @@ -0,0 +1 @@
 # +Ligne 1
 ```
+
+La syntaxe `HEAD~1` permet de revenir un commit en arrière (HEAD est le commit courant, HEAD~1 est le commit précédent, HEAD~2 est le commit d'avant, etc.)
 
 ```bash
 git show HEAD~1
@@ -290,7 +300,7 @@ ls
 # fichier1  fichier2  fichier3
 ```
 
-Utiliser `git reset` pour supprimer le commit. La syntaxe `HEAD~1` permet de revenir un commit en arrière (HEAD est le commit courant, HEAD~1 est le commit précédent, HEAD~2 est le commit d'avant, etc.)
+Utiliser `git reset` pour supprimer le commit. 
 
 ```bash
 git reset --hard HEAD~1
