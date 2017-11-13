@@ -176,27 +176,102 @@ git show HEAD~1
 echo "Ligne 2" >> fichier1
 echo "Ligne 2" >> fichier2
 git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+# 
+# 	modified:   fichier1
+# 	modified:   fichier2
+# 
+# no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+```bash
 git diff
+# diff --git a/fichier1 b/fichier1
+# index 1aafa9c..304294e 100644
+# --- a/fichier1
+# +++ b/fichier1
+# @@ -1 +1,2 @@
+#  Ligne 1
+# +Ligne 2
+# diff --git a/fichier2 b/fichier2
+# index 1aafa9c..304294e 100644
+# --- a/fichier2
+# +++ b/fichier2
+# @@ -1 +1,2 @@
+#  Ligne 1
+# +Ligne 2
+```
+
+```bash
 git add fichier1
-git status
 git commit -m "Mon 3e commit"
-git log --name-status
-git status
+# [master 59c88f8] Mon 3e commit
+#  1 file changed, 1 insertion(+)
 ```
 
 ## Exercice 6 : retour en arrière (`git checkout`, `git revert`, `git reset`)
 
+Utiliser `git checkout` pour récupérer la dernière version d'un fichier (si le fichier est modifié, on revient à la version du dernier commit)
+
 ```bash
 cat fichier2
+# Ligne 1
+# Ligne 2
+
 git checkout fichier2
+
 cat fichier2
+# Ligne 1
+```
+
+Utiliser `git revert` pour créer un commit qui est l'inverse du commit (les lignes ajoutées seront enlevées et vice-versa)
+
+```bash
 touch poubelle
 ls
+# fichier1  fichier2  fichier3  poubelle
 git add poubelle
 git commit -m poubelle
+# [master 3012558] poubelle
+#  1 file changed, 0 insertions(+), 0 deletions(-)
+#  create mode 100644 poubelle
+
 git revert --no-edit HEAD
+# [master b010b1b] Revert "poubelle"
+#  1 file changed, 0 insertions(+), 0 deletions(-)
+#  delete mode 100644 poubelle
+
 git log
+# commit b010b1b337739fdb644e0161ebaba0e8de78f34f
+# Author: Alexandre DuBreuil <adu@lesfurets.com>
+# Date:   Mon Nov 13 17:56:06 2017 +0100
+# 
+#     Revert "poubelle"
+#     
+#     This reverts commit 301255866e8f06f12fad3e709e5f8e63076e7bc4.
+# 
+# commit 301255866e8f06f12fad3e709e5f8e63076e7bc4
+# Author: Alexandre DuBreuil <adu@lesfurets.com>
+# Date:   Mon Nov 13 17:55:38 2017 +0100
+# 
+#     poubelle
+# 
+# commit 59c88f86b6b64c6f016bb6e078d520d89826dfb7
+# Author: Alexandre DuBreuil <adu@lesfurets.com>
+# Date:   Mon Nov 13 17:41:17 2017 +0100
+# 
+#     Mon 3e commit
+# 
+# ...
+
 ls
+# fichier1  fichier2  fichier3
+```
+
+```bash
 git reset --hard HEAD~1
 git log
 ls
