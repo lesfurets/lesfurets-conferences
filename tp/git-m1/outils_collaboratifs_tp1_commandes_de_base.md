@@ -397,11 +397,42 @@ Le fichier "fichierdev" n'est pas présent dans votre répertoire de travail
 
 ## Exercice 8 : fusion des branches (`git merge`)
 
+La branche "develop" a plus de commit que la branche master, comment fait-on pour rassembler l'historique ?
+
+On crée un nouveau commit sur la branche "master", on aura donc 2 branches divergeantes comme dans cet example
+
+![split](https://git-scm.com/book/en/v2/images/advance-master.png)
+
 ```bash
 touch fichiermaster
 git add fichiermaster
 git commit -m "Nouveau fichier master"
-git merge --no-edit develop
-git log
-git log --oneline --graph
+# [master 509f5a4] Nouveau fichier master
+#  1 file changed, 0 insertions(+), 0 deletions(-)
+#  create mode 100644 fichiermaster
 ```
+
+Pour fusionner l'historique on utilise la commande `git merge`, en passant comme argument l'autre (ou les autres) branche à fusionner
+
+```bash
+git merge --no-edit develop
+# Merge made by the 'recursive' strategy.
+#  fichierdev | 0
+#  1 file changed, 0 insertions(+), 0 deletions(-)
+#  create mode 100644 fichierdev
+
+git log --oneline --graph --decorate
+# *   f5cf4f0 (HEAD -> master) Merge branch 'develop'
+# |\  
+# | * c1fa6e3 (develop) Nouveau fichier dev 1
+# * | 509f5a4 Nouveau fichier master
+# |/  
+# * 59c88f8 Mon 3e commit
+# * 888f4ec Mon 2e commit
+# * 8e8630d Mon 1e commit
+```
+
+On voit que l'historique des branches s'est séparé, puis fusionné en avec un commit de merge (le commit nommé "Merge branch 'develop'")
+
+![merge](https://git-scm.com/book/en/v2/images/basic-merging-2.png)
+
