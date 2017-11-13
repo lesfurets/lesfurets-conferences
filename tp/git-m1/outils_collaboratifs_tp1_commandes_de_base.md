@@ -399,7 +399,7 @@ Le fichier "fichierdev" n'est pas présent dans votre répertoire de travail
 
 La branche "develop" a plus de commit que la branche master, comment fait-on pour rassembler l'historique ?
 
-On crée un nouveau commit sur la branche "master", on aura donc 2 branches divergeantes comme dans cet example
+On crée un nouveau commit sur la branche "master", on aura donc 2 branches divergeantes comme dans cet exemple (remplacer "testing" par "develop")
 
 ![split](https://git-scm.com/book/en/v2/images/advance-master.png)
 
@@ -424,7 +424,7 @@ git merge --no-edit develop
 git log --oneline --graph --decorate
 # *   f5cf4f0 (HEAD -> master) Merge branch 'develop'
 # |\  
-# | * c1fa6e3 (develop) Nouveau fichier dev 1
+# | * c1fa6e3 (develop) Nouveau fichier dev
 # * | 509f5a4 Nouveau fichier master
 # |/  
 # * 59c88f8 Mon 3e commit
