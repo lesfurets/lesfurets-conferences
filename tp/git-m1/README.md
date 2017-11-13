@@ -15,10 +15,10 @@
 Configurer git (`config`)
 
 ```bash
-alexandre@lesfurets:~$ git config --global user.name
-Alexandre DuBreuil
-alexandre@lesfurets:~$ git config --global user.email
-adu@lesfurets.com
+git config --global user.name
+> Alexandre DuBreuil
+git config --global user.email
+> adu@lesfurets.com
 ```
 
 Initialiser un dépôt vide (`init`)
