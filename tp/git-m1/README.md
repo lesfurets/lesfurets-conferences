@@ -32,7 +32,6 @@ cd tp-git
 ### Exercice 3 : ajouter des commits (`git add`, `git commit`, `git status`)
 
 ```bash
-# Initialisation de 3 fichiers avec comme contenu une ligne
 echo "Ligne 1" >> fichier1
 echo "Ligne 1" >> fichier2
 echo "Ligne 1" >> fichier3
@@ -82,7 +81,6 @@ git commit -m "Mon 1e commit"
 **TODO:** Ajouter fichier2 et fichier3 dans un 2e commit
 
 ```bash
-# TODO ajouter fichier2 et fichier3 dans un 2e commit
 git add ...
 git commit ...
 git status
@@ -94,10 +92,84 @@ git status
 
 ```bash
 git log
+# commit 888f4ecca3f04f6dc8ef5f314b279078a5086092
+# Author: Alexandre DuBreuil <adu@lesfurets.com>
+# Date:   Mon Nov 13 17:21:53 2017 +0100
+# 
+#     Mon 2e commit
+# 
+# commit 8e8630d691ada27638084dcb1e5c4f55b0ef451d
+# Author: Alexandre DuBreuil <adu@lesfurets.com>
+# Date:   Mon Nov 13 17:12:21 2017 +0100
+# 
+#     Mon 1e commit
+```
+
+```bash
 git log --name-status
+# commit 888f4ecca3f04f6dc8ef5f314b279078a5086092
+# Author: Alexandre DuBreuil <adu@lesfurets.com>
+# Date:   Mon Nov 13 17:21:53 2017 +0100
+# 
+#     Mon 2e commit
+# 
+# A       fichier2
+# A       fichier3
+# 
+# commit 8e8630d691ada27638084dcb1e5c4f55b0ef451d
+# Author: Alexandre DuBreuil <adu@lesfurets.com>
+# Date:   Mon Nov 13 17:12:21 2017 +0100
+# 
+#     Mon 1e commit
+# 
+# A       fichier1
+```
+
+```bash
 git log --oneline --graph --decorate
+# * 888f4ec (HEAD -> master) Mon 2e commit
+# * 8e8630d Mon 1e commit
+```
+
+```bash
 git show HEAD
+# commit 888f4ecca3f04f6dc8ef5f314b279078a5086092
+# Author: Alexandre DuBreuil <adu@lesfurets.com>
+# Date:   Mon Nov 13 17:21:53 2017 +0100
+# 
+#     Mon 2e commit
+# 
+# diff --git a/fichier2 b/fichier2
+# new file mode 100644
+# index 0000000..1aafa9c
+# --- /dev/null
+# +++ b/fichier2
+# @@ -0,0 +1 @@
+# +Ligne 1
+# diff --git a/fichier3 b/fichier3
+# new file mode 100644
+# index 0000000..1aafa9c
+# --- /dev/null
+# +++ b/fichier3
+# @@ -0,0 +1 @@
+# +Ligne 1
+```
+
+```bash
 git show HEAD~1
+# commit 8e8630d691ada27638084dcb1e5c4f55b0ef451d
+# Author: Alexandre DuBreuil <adu@lesfurets.com>
+# Date:   Mon Nov 13 17:12:21 2017 +0100
+# 
+#     Mon 1e commit
+# 
+# diff --git a/fichier1 b/fichier1
+# new file mode 100644
+# index 0000000..1aafa9c
+# --- /dev/null
+# +++ b/fichier1
+# @@ -0,0 +1 @@
+# +Ligne 1
 ```
 
 ### Exercice 5 : modifier des fichiers (`git diff`)
