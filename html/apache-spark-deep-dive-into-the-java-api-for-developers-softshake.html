@@ -70,8 +70,6 @@ if( window.location.search.match( /print-pdf/gi ) ) {
         <img class="logo" src="../img/logo_lesfurets_885x128_no_back_white.png">
       </a>
       <a style="font-size:larger" class="github" href="https://github.com/lesfurets" target="_blank">https://github.com/lesfurets</a>
-      <a style="font-size:larger" class="twitter" href="https://twitter.com/BeastieFurets" target="_blank">@BeastieFurets</a>
-      <a style="font-size:larger" class="github" href="https://github.com/dubreuia" target="_blank">https://github.com/dubreuia</a>
       <a style="font-size:larger" style="margin-right: 10px;" class="twitter" href="https://twitter.com/dubreuia" target="_blank">@dubreuia</a>
       <img style="height:40px;vertical-align:middle;padding:0 10px 0 20px" src="../img/logo-softshake-transparent.png">
       <!--<span style="font-family:arial;font-weight:bold;font-size:25px;vertical-align:middle;color:#333">BBL @ WHOZ</span>-->
@@ -236,7 +234,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
             <pre class="prettyprint"><code class="code lang-xml" data-trim data-noescape>&lt;dependency&gt;
   &lt;groupId&gt;org.apache.spark&lt;/groupId&gt;
   &lt;artifactId&gt;spark-sql_2.11&lt;/artifactId&gt;
-  &lt;version&gt;2.0.2&lt;/version&gt;
+  &lt;version&gt;2.2.0&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
           </div>
         </section>
@@ -466,7 +464,7 @@ JavaRDD&lt;Question&gt; javaRDD = domainData.javaRDD();</code></pre>
         <section class="center" data-background="#222">
           <p><strong class="color-indigo300">DEMO TIME!</strong><br><code>com.lesfurets.spark.examples.PricesRunTest</code></p>
           <div class="code-wrapper">
-            <pre class="prettyprint"><code class="code lang-java" data-trim data-noescape>@BeforeEach
+            <pre class="prettyprint"><code class="code lang-java small" data-trim data-noescape>@BeforeEach
 public void before() { 
   List&lt;Row&gt; rows = Arrays.asList(
           RowFactory.create("F1", 50d, "COOL insurer"),
@@ -486,7 +484,7 @@ public void before() {
 
         <section class="flushleft" data-background="#222">
           <div class="code-wrapper">
-            <pre class="prettyprint"><code class="code lang-java" data-trim data-noescape>@Test
+            <pre class="prettyprint"><code class="code lang-java small" data-trim data-noescape>@Test
 public void should_average_price_return_correct_average() {
   Dataset&lt;Row&gt; averagePrice = PricesRun.averagePrice(prices);
 
