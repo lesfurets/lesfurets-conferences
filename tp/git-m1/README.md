@@ -14,20 +14,19 @@
 
 ```bash
 git config --global user.name
-> Alexandre DuBreuil
+# Alexandre DuBreuil
 
 git config --global user.email
-> adu@lesfurets.com
+# adu@lesfurets.com
 ```
 
 ### Exercice 2 : initialiser un dépôt vide (`git init`)
 
 ```bash
 git init tp-git
-> Initialized empty Git repository in tp-git/.git/
+# Initialized empty Git repository in tp-git/.git/
 
 cd tp-git
->
 ```
 
 ### Exercice 3 : ajouter des commits (`git add`, `git commit`, `git status`)
@@ -35,62 +34,60 @@ cd tp-git
 ```bash
 # Initialisation de 3 fichiers avec comme contenu une ligne
 echo "Ligne 1" >> fichier1
->
-
 echo "Ligne 1" >> fichier2
->
-
 echo "Ligne 1" >> fichier3
->
 
 ls
-> fichier1  fichier2  fichier3
+# fichier1  fichier2  fichier3
 ```
 
 ```bash
-# Ajout du fichier1 dans git un 1e commit
 git status
-> On branch master
-> 
-> Initial commit
-> 
-> Untracked files:
->   (use "git add <file>..." to include in what will be committed)
-> 
-> 	fichier1
-> 	fichier2
-> 	fichier3
-> 
-> nothing added to commit but untracked files present (use "git add" to track)
+# On branch master
+# 
+# Initial commit
+# 
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+# 
+# 	fichier1
+# 	fichier2
+# 	fichier3
+# 
+# nothing added to commit but untracked files present (use "git add" to track)
 
 git add fichier1
->
-
 git status
-> On branch master
-> 
-> Initial commit
-> 
-> Changes to be committed:
->   (use "git rm --cached <file>..." to unstage)
-> 
-> 	new file:   fichier1
-> 
-> Untracked files:
->   (use "git add <file>..." to include in what will be committed)
-> 
-> 	fichier2
-> 	fichier3
+# On branch master
+# 
+# Initial commit
+# 
+# Changes to be committed:
+#   (use "git rm --cached <file>..." to unstage)
+# 
+# 	new file:   fichier1
+# 
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+# 
+# 	fichier2
+# 	fichier3
 
 git commit -m "Mon 1e commit"
-> [master (root-commit) 8e8630d] Mon 1e commit
->  1 file changed, 1 insertion(+)
->  create mode 100644 fichier1
+# [master (root-commit) 8e8630d] Mon 1e commit
+#  1 file changed, 1 insertion(+)
+#  create mode 100644 fichier1
+```
 
+**TODO:** Ajouter fichier2 et fichier3 dans un 2e commit
+
+```bash
 # TODO ajouter fichier2 et fichier3 dans un 2e commit
 git add ...
 git commit ...
 git status
+# On branch master
+# nothing to commit, working tree clean
 ```
 
 ### Exercice 4 : visualiser l'historique (`git log`, `git show`)
