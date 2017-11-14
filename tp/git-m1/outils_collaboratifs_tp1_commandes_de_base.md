@@ -256,6 +256,8 @@ git commit -m "Mon 3e commit"
 #  1 file changed, 1 insertion(+)
 ```
 
+![commits](https://git-scm.com/book/en/v2/images/branch-and-history.png)
+
 ## Exercice 6 : retour en arrière (`git checkout`, `git revert`, `git reset`)
 
 Utiliser `git checkout` pour récupérer la dernière version d'un fichier (si le fichier est modifié, on revient à la version du dernier commit)

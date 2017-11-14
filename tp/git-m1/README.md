@@ -1,5 +1,7 @@
 # Outils collaboratifs
 
+http://bit.ly/2zWn7WR
+
 ## Travaux pratiques 1 : git commandes de base
 
 - [Lien TP1](outils_collaboratifs_tp1_commandes_de_base.md)
