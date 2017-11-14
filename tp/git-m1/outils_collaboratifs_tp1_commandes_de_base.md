@@ -2,11 +2,21 @@
 
 ## Introduction
 
-- Concept de working directory (espace de travail, `ls`)
-- Concept de dépôt git (base de donnée .git, `git`)
-- Concept de commit
-- Concept de branche
-- Concept de sha1
+### Le working directory (espace de travail, `ls`)
+
+![working dir](https://git-scm.com/book/en/v2/images/areas.png)
+
+### Le dépôt git (base de donnée .git, `git`)
+
+![repository](https://git-scm.com/book/en/v2/images/snapshots.png)
+
+### Le commit (`git commit`)
+
+![commit](https://git-scm.com/book/en/v2/images/lifecycle.png)
+
+### Les branches
+
+![branches](https://git-scm.com/book/en/v2/images/branch-and-history.png)
 
 ## Exercice 1 : configurer git (`git config`)
 
@@ -313,7 +323,7 @@ git reset --hard HEAD~1
 # HEAD is now at 3012558 poubelle
 
 ls
-fichier1  fichier2  fichier3  poubelle
+# fichier1  fichier2  fichier3  poubelle
 ```
 
 On est de retour sur le commit avec le fichier "poubelle"
@@ -323,12 +333,12 @@ git reset --hard HEAD~1
 # HEAD is now at 59c88f8 Mon 3e commit
 
 git log
-#commit 59c88f86b6b64c6f016bb6e078d520d89826dfb7
-#Author: Alexandre DuBreuil <adu@lesfurets.com>
-#Date:   Mon Nov 13 17:41:17 2017 +0100
-#
-#    Mon 3e commit
-# ...
+# commit 59c88f86b6b64c6f016bb6e078d520d89826dfb7
+# Author: Alexandre DuBreuil <adu@lesfurets.com>
+# Date:   Mon Nov 13 17:41:17 2017 +0100
+# 
+#     Mon 3e commit
+#  ...
 ```
 
 On est bien revenu sur le 3e commit
