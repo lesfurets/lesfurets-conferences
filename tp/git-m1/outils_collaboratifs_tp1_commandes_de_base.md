@@ -98,6 +98,15 @@ git status
 Le "staging" est la partie notée par "changes to be commited". Pour créer un nouveau commit, utiliser la commande `git commit`. À partir du moment ou un fichier est dans un commit, il est persisté à jamais dans git.
 
 ```bash
+git commit
+# [master (root-commit) 8e8630d] Mon 1e commit
+#  1 file changed, 1 insertion(+)
+#  create mode 100644 fichier1
+```
+
+Il est aussi possible de passer directement le message de commit avec `-m`, c'est la syntaxe que nous utiliserons à partir de maintenant
+
+```bash
 git commit -m "Mon 1e commit"
 # [master (root-commit) 8e8630d] Mon 1e commit
 #  1 file changed, 1 insertion(+)
@@ -369,7 +378,7 @@ Pour l'instant, les 2 branches sont identiques, mais les modifications de l'une 
 On ajoute un fichier "fichierdev" dans la branche courante, soit "develop", dans un nouveau commit
 
 ```bash
-touch fichierdev
+echo "Contenu dev" >> fichierdev
 git add fichierdev
 git commit -m "Nouveau fichier dev 1"
 # [develop c1fa6e3] Nouveau fichier dev 1
@@ -447,4 +456,59 @@ git log --oneline --graph --decorate
 On voit que l'historique des branches s'est séparé, puis fusionné en avec un commit de merge (le commit nommé "Merge branch 'develop'")
 
 ![merge](https://git-scm.com/book/en/v2/images/basic-merging-2.png)
+
+## Exercice 9 : conflit de merge
+
+Lors de la fusion de branche, les conflits sont possibles si les deux branches contiennent une modification sur le même fichier, et sur la même ligne. Si c'est le cas, git marque les conflits dans le fichier en question, et il faut les corriger, puis compléter la fusion.
+
+Sur la branche "master" On enlève le commit de merge précédemment créé, pour en refaire un nouveau.
+
+```bash
+git reset --hard HEAD~1
+```
+
+On ajoute du contenu au fichier "fichierdev", pour rappel, un fichier de même nom est dans la branche "develop"
+
+```bash
+echo "Contenu master" >> fichierdev
+git commit --amend --no-edit fichierdev
+# [master 1ebf23b] Nouveau fichier master
+#  Date: Mon Nov 13 18:43:50 2017 +0100
+#  2 files changed, 2 insertions(+)
+#  create mode 100644 fichierdev
+#  create mode 100644 fichiermaster
+```
+
+On a maintenant :
+
+- Dans la branche "master", le contenu de "fichierdev" est "Contenu master"
+- Dans la branche "develop", le contenu de "fichierdev" est "Contenu develop"
+
+Lorsqu'on fait le merge, git ne sait pas quelle version prendre
+
+```bash
+git merge develop
+# Auto-merging fichierdev
+# CONFLICT (add/add): Merge conflict in fichierdev
+# Automatic merge failed; fix conflicts and then commit the result.
+
+cat fichierdev
+# <<<<<<< HEAD
+# Contenu master
+# =======
+# Contenu dev
+# >>>>>>> develop
+```
+
+Le contenu de "fichierdev" a été modifié par git, il affiche entre les chevrons <<< et le égal === le contenu de HEAD (donc la branche "master"), et entre le égal et les chevrons >>> le contenu de la branche "develop".
+
+C'est au développeur de choisir quelle version il veut ! Éditez le fichier pour garder que la ligne "Contenu master" ou "Contenu develop"
+
+Puis il faut dire à git que la résolution de conflit est terminée en ajoutant le fichier, puis en faisant un commit
+
+```bash
+git add fichierdev
+git commit --no-edit
+# [master 982ac41] Merge branch 'develop'
+```
 
