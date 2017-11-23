@@ -461,7 +461,7 @@ On voit que l'historique des branches s'est séparé, puis fusionné en avec un 
 
 Lors de la fusion de branche, les conflits sont possibles si les deux branches contiennent une modification sur le même fichier, et sur la même ligne. Si c'est le cas, git marque les conflits dans le fichier en question, et il faut les corriger, puis compléter la fusion.
 
-Sur la branche "master" On enlève le commit de merge précédemment créé, pour en refaire un nouveau.
+Sur la branche "master", on enlève le commit de merge précédemment créé, pour en refaire un nouveau.
 
 ```bash
 git reset --hard HEAD~1

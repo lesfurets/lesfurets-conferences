@@ -9,5 +9,8 @@
 
 ## Exercices
 
-TODO
+- Donner le contexte chez LesFurets.com
+- Faire un jeu ou ils doivent reproduire
+-- une version par client (2 personnes par client)
+-- et une version commune
 
