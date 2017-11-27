@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <title>Kanban au long court @lesfurets.com</title>
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../bower_components/reveal.js/css/reveal.css">
     <link rel="stylesheet" href="../bower_components/reveal.js/lib/css/zenburn.css">
     <link rel="stylesheet" href="../css/lesfurets-theme.css" id="theme">
-    <link rel="stylesheet" href="../css/code-jooq-theme.css" id="theme">
+    <link rel="stylesheet" href="../css/lkfr-theme.css" id="theme">
     <script>
         if (window.location.search.match(/print-pdf/gi)) {
             var link = document.createElement('link');
@@ -45,7 +45,7 @@
             <h4>Benoit Meunier - Product Owner @lesfurets.com</h4>
         </section>
 
-        <section class="center" data-background="#333">
+        <section class="flushleft" data-background="#333">
             <h2>A l'issue de cette présentation vous repartirez avec</h2>
             <ul class="white">
                 <li>Un retour d'expérience sur un changement organisationnel dans un contexte de delivery à haute dose</li>
@@ -59,12 +59,32 @@
             <h2>Part one</h2>
         </section>
 
-        <section class="center" data-background="#333">
+        <section class="flushleft" data-background="#333">
+            <h2>Lesfurets.com, qui sommes nous ?</h2>
+            <table>
+                <tr>
+                    <td>
+                        <ul class="white">
+                            <li>Comparateur d'assurance</li>
+                            <li>3 millions de devis par an</li>
+                            <li>Des formulaires riches (40-200 questions)</li>
+                        </ul>
+                    </td>
+                    <td>            <img class="nostyle" src="../img/lkfr/produits.png"/>
+                        <img class="nostyle" src="../img/lkfr/tunnel.png"/></td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="flushleft" data-background="#333">
             <h2>Le delivery chez LesFurets.com</h2>
-            <h3 class="flushright section-subheader">On a un rythme de marathonien,<br/> pas de sprinter</h3>
-            <p>L'équipe IT est constituée de <strong>25 développeurs</strong>, intégrés dans 3 features team.</p>
-            <p class="color-gray400">Les développeurs ont des responsabilités devops, telles que la livraison en production,
-                la gestion de la configuration des environnements, le monitoring, etc.</p>
+            <ul class="white">
+                <li>7 Experts Métier, 23 développeurs </li>
+                <li>3 Feature Teams (SEO, Conversion, Infrastructure)</li>
+                <li>1 base de code de 500.000 lignes</li>
+                <li>1 à 3 release par jour</li>
+                <li>20/30 branches Git en parallèle</li>
+            </ul>
         </section>
 
         <section class="center" data-background="#333">
@@ -96,37 +116,35 @@
                     release par feature, release partial
                 </li>
             </ul>
-        </section>
-
-        <section class="center" data-background="#333">
-            <h2>Le delivery chez LesFurets.com</h2>
-            <ul class="color-gray400 nodisc">
-                <li>Gestion de code source flexible</li>
-                <li>Integration continue</li>
-                <li>Build rapide et automatique avec des tests fiables</li>
-                <li>Gestion des artéfacts</li>
-                <li>Déploiement automatique</li>
-            </ul>
+            <aside class="notes">
+                <ul class="color-gray400 nodisc">
+                    <li>Gestion de code source flexible</li>
+                    <li>Integration continue</li>
+                    <li>Build rapide et automatique avec des tests fiables</li>
+                    <li>Gestion des artéfacts</li>
+                    <li>Déploiement automatique</li>
+                </ul>
+            </aside>
         </section>
 
         <section class="center" data-background="#333">
             <h2>3 équipes différentes</h2>
-            <img src="../img/lkfr/Step1.png">
+            <img class="nostyle" src="../img/lkfr/Step1.png">
         </section>
 
         <section class="center" data-background="#333">
             <h2>1 équipe 3 Kanbans différents</h2>
-            <img src="../img/lkfr/Step2.png">
+            <img class="nostyle" src="../img/lkfr/Step2.png">
         </section>
 
         <section class="center" data-background="#333">
             <h2> 1 équipe 1 Kanban</h2>
-            <img src="../img/lkfr/Step3.png">
+            <img class="nostyle" src="../img/lkfr/Step3.png">
         </section>
 
         <section class="center" data-background="#333">
             <h2>Fonctionnement actuel</h2>
-            <img src="../img/lkfr/Step4.png">
+            <img class="nostyle" src="../img/lkfr/Step4.png">
         </section>
 
         <section class="center" data-background="#333">
@@ -134,75 +152,83 @@
             <h2>Part two</h2>
         </section>
 
-        <section class="center" data-background="#333">
+        <section class="flushleft" data-background="#333">
             <h2>Comment ça s'est passé pour l'équipe</h2>
             <ul class="white">
                 <li>Pourquoi fusionne-t-on les équipes alors qu'elles sont fonctionnelles ?</li>
-                <li>Peur du changement, mais on y gagne peut être quelques choses</li>
                 <li>La fusion est forcée</li>
                 <li>Spécialisation encore présente malgré quelques électrons libres : sujet front et back trop séparés</li>
+            </ul>
+        </section>
+
+        <section class="flushleft" data-background="#333">
+            <h2>Comment ça s'est passé pour l'équipe</h2>
+            <ul class="white">
                 <li>Envie de découvrir et d'apprendre de nouveaux sujets pour savoir comment mieux faire après</li>
+                <li>Peur du changement, mais on y gagne peut être quelques choses</li>
                 <li>Au final plus de visibilité sur ce qui se passe</li>
             </ul>
         </section>
 
         <section class="center" data-background="#333">
             <h3>Plus les changements organisationnels seront forcés plus la résistance au changement sera grande</h3>
-            <img src="../img/lkfr/change.png"/>
+            <img class="nostyle" src="../img/lkfr/change.png"/>
             <p>Quel problème est-on en train de solutionner ?</p>
         </section>
 
-        <section class="center" data-background="#333">
+        <section class="flushleft" data-background="#333">
             <h2>Quelles sont les choses que nous avons mises en place qui ont bien marché ?</h2>
             <ul class="white">
-                <li>Objectif commun : Plus de sens dans l'équipe, quand on a un problème, maintenant ça concerne tout le monde</li>
+                <li>Mise en place progressif d'un objectif commun</li>
+                <li>Ca fait plus de sens dans l'équipe et quand nous avons un problème, maintenant ça concerne tout le monde</li>
                 <li>Amélioration en continue et dynamique d'équipe lors des rétrospectives</li>
                 <li>PO et TL en posture de Servant Leadership</li>
             </ul>
         </section>
 
-        <section class="center" data-background="#333">
+        <section class="flushleft" data-background="#333">
             <h2>La rétrospective</h2>
             <ul class="white">
-                <li>On parle de manière libre</li>
-                <li>Débat ouvert sur 2/3 gros sujets</li>
-                <li>Un plan d'actions faisables à jour avec obligatoirement un porteur d'action</li>
-                <li>Une équipe est plus heureuse si elle améliore sa situation de jour en jour</li>
+                <li>Nous nous exprimons de manière libre pendant un team-mood</li>
+                <li>Nous lançons un débat ouvert sur 2/3 gros sujets</li>
+                <li>Nous établissons un plan d'actions réaliste, mis à jour avec obligatoirement un porteur d'action</li>
+                <li>Nous constatons que l'équipe se sent plus heureuse si elle améliore sa situation de jour en jour</li>
             </ul>
         </section>
 
         <section class="center" data-background="#333">
             <h2>La rétrospective</h2>
-            <img src="../img/lkfr/retro.jpg"/>
+            <img class="nostyle" src="../img/lkfr/retro.jpg"/>
         </section>
 
-        <section class="center" data-background="#333">
+        <section class="flushleft" data-background="#333">
             <h2>Quelles sont les choses que nous avons mises en place qui n’ont pas marché ?</h2>
             <ul class="white">
                 <li>Plaquer des solutions sans bien connaitre le problème</li>
-                <li>Taille de l'équipe trop grande, plus de collaboration en interne qu'avec les autres équipes</li>
+                <li>Garder une équipe trop grande : plus de collaboration en interne qu'avec les autres équipes</li>
                 <li>Pas de formation pour passer du back au front</li>
-                <li>Delivery tendu sur tous les sujets, pas assez de binômage et ça pousse à rester sur ses sujets de prédilection</li>
+                <li>Delivery tendu sur tous les sujets, pas assez de binômage, ce qui pousse à rester sur ses sujets de prédilection</li>
             </ul>
         </section>
 
         <section class="center" data-background="#333">
             <h2>Tension entre delivery, formation et partage de connaissance</h2>
-            <img src="../img/lkfr/lego.png"/>
+            <img class="nostyle" src="../img/lkfr/lego.png"/>
         </section>
 
-        <section class="center" data-background="#333">
+        <section class="flushleft" data-background="#333">
             <h2>Quelles sont les choses qui aurait pu être faites différement ?</h2>
             <ul class="white">
                 <li>Etudier le mode de fonctionnement de chaque équipe avant de les rassembler en une seule</li>
                 <li>Si c'est un changement organisationnel poussé par l'exec, bien communiquer avec la future équipe</li>
                 <li>Limiter la taille de l'équipe</li>
+                <li>Se réorganiser régulièrement par petit projet pour être plus souple sur certaines priorités</li>
             </ul>
         </section>
 
         <section class="center" data-background="#333">
-            <h2>Suppression des features teams</h2>
-            <img src="../img/lkfr/spotitruc.jpg"/>
+            <h2>Suppression des features teams ?</h2>
+            <img class="nostyle" src="../img/lkfr/spotitruc.jpg"/>
         </section>
 
         <section class="center" data-background="#333">
@@ -210,14 +236,14 @@
             <h2>Part Three</h2>
         </section>
 
-        <section class="center" data-background="#333">
+        <section class="flushleft" data-background="#333">
             <h2>Product Owner</h2>
             <ul class="white">
                 <li>TODO : Expliciter la prise de rôle de PO en plus de celle de BA</li>
             </ul>
         </section>
 
-        <section class="center" data-background="#333">
+        <section class="flushleft" data-background="#333">
             <h2>Tech Lead</h2>
             <ul class="white">
                 <li>Faire le balancier entre les tâches de développement et les tâches de coordination</li>
@@ -228,10 +254,10 @@
             </ul>
         </section>
 
-        <section class="center" data-background="#333">
-            <h1>Recap</h1>
-            <p>Quel problème est-on en train de solutionner ? (relire cette question encore 2 fois)</p>
-            <p>La rétrospective est primordiale lorsque vous effectuez un changement organisationnel quand vous faites du Continuous Delivery</p>
+        <section class="flushleft" data-background="#333">
+            <h2>Wrap up</h2>
+            <p>Quel problème sommes-nous en train de solutionner ? (relire cette question encore 3 fois)</p>
+            <p>La rétrospective est primordiale</p>
             <p>Garder du temps en plus pour l'apprentissage</p>
         </section>
 
