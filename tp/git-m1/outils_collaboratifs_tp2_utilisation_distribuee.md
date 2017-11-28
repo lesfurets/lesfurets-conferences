@@ -1,5 +1,18 @@
 # Travaux pratiques 2 : git utilisation en groupe
 
+## Rappel TP1
+
+Les commandes utilisées au TP précédent
+
+- `git init`
+- `git status`
+- `git log`
+- `git add`
+- `git commit`
+- `git reset`
+- `git revert`
+- `git checkout`
+
 ## Le dépôt distant
 
 ![remote](https://www.cs.swarthmore.edu/~newhall/unixhelp/gitrepos.gif)
@@ -9,7 +22,7 @@
 
 ![pull request](https://guides.github.com/activities/hello-world/branching.png)
 
-## Contexte "Choose a license https://choosealicense.com"
+## Contexte
 
 Le code sur lequel vous allez travailler est un petit site web (https://choosealicense.com), dont le code est disponible sur https://github.com/github/choosealicense.com. Le code a été copié sur le dépôt git de l'université, https://---------------------.univ-rouen.fr/git/tp-git.
 
@@ -54,6 +67,7 @@ Quand vous faites
 
 - `git pull` (tirer en anglais, pour récupérer de la donnée), vous mergez la branche "origin/master" dans votre branche locale "master"
 - `git push` (pousser en anglais, pour envoyer de la donnée), vous mettez à jour sur le dépôt distant le pointeur de branche "origin/master" sur votre dernier commit
+- `git fetch`, vous permet de récupérer le contenu du dépôt distant, mais sans l'appliquer en local
 
 Attention : pour faire `git push` vous devez être à jour de la branche "origin/master" (c'est-à-dire faire `git pull` avant)
 
@@ -79,7 +93,7 @@ Attention : pour faire `git push` vous devez être à jour de la branche "origin
 
 Le dossier "\_licenses" contient les licences qui sont affichées sur le site. Vous allez ajouter une license à votre nom (par exemple "alexandre-dubreuil-1.0.txt") et commiter le résultat.
 
-Pour savoir si vous êtes à jour avec le dépôt distant, vous pouvez faire un "git status"
+Pour savoir si vous êtes à jour avec le dépôt distant, vous pouvez faire un "git status".
 
 ```bash
 git status
@@ -88,7 +102,6 @@ git status
 #   (use "git push" to publish your local commits)
 # nothing to commit, working tree clean
 ```
-
 Dans ce cas, vous avez un commit en plus en local qui n'est pas sur le distant (`Your branch is ahead of 'origin/master' by 1 commit.`). Pour envoyer votre dernier commit, il faut faire un push. 
 
 ```bash
@@ -164,6 +177,32 @@ Regardez dans le dossier "\_licenses"
 
 Vous avez donc tous en local sur votre branche "master", le contenu ajouté des autres étudiants.
 
+## La commande `git fetch`
+
+La commande `git fetch` va récupérer les commits qui sont sur le serveur, mais ne va pas les appliquer comme `git pull`. Si personne n'a encore poussé de nouveaux commit, la commande ne retourne rien
+
+```bash
+git fetch
+# Username for 'https://---------------------.univ-rouen.fr': dubreale
+# Password for 'https://dubreale@---------------------.univ-rouen.fr': 
+```
+
+S'il y a de nouveaux commit, la commande va afficher ce que git a récupéré, mais ne va rien appliquer.
+
+```bash
+git fetch
+# Username for 'https://svn-etu-info-sciences.univ-rouen.fr': dubreale
+# Password for 'https://dubreale@svn-etu-info-sciences.univ-rouen.fr': 
+# remote: Counting objects: 11, done.
+# remote: Compressing objects: 100% (7/7), done.
+# remote: Total 7 (delta 5), reused 0 (delta 0)
+# Unpacking objects: 100% (7/7), done.
+# From https://svn-etu-info-sciences.univ-rouen.fr/git/tp-git
+#  + abf1ba8...4c93465 master     -> origin/master  (forced update)
+```
+
+Règle générale, vous pouvez toujours utiliser `git pull`
+
 ## Exercice 5 : résoudre les conflits
 
 Modifier le fichier "spec/license\_meta\_spec.rb", dans le tableau "legacy", ajouter votre license à la première ligne.
@@ -233,4 +272,48 @@ Deviennent :
 ```
 
 On garde les 2 lignes parce qu'on souhaite garder la modification des 2 personnes. Chaque résolution de conflit est différente.
+
+## Exercice 6 : créer une branche distante
+
+Vous pouvez aussi créer des branches sur le serveur git. Pour cela il faut pousser (`git push`) la branche sur le serveur.
+
+Par exemple, pour créer une branche qui s'appelle "alexandre-dubreuil" sur le serveur, et qui contient le même contenu que master, vous pouvez faire la commande suivante. La notation `master:alexandre-dubreuil` veut dire la branche `master` en local va servir de référence pour créer la branche `alexandre-dubreuil` sur le serveur.
+
+```bash
+git push origin master:alexandre-dubreuil
+# Username for 'https://---------------------.univ-rouen.fr': dubreale
+# Password for 'https://dubreale@---------------------.univ-rouen.fr': 
+# Counting objects: 4, done.
+# Delta compression using up to 8 threads.
+# Compressing objects: 100% (4/4), done.
+# Writing objects: 100% (4/4), 411 bytes | 0 bytes/s, done.
+# Total 4 (delta 3), reused 0 (delta 0)
+# To https://---------------------.univ-rouen.fr/git/tp-git
+#  * [new branch]      master -> alexandre-dubreuil
+```
+
+Pour la supprimer, on utilise aussi `git push`
+
+```bash
+git push --delete origin alexandre-dubreuil
+# Username for 'https://---------------------.univ-rouen.fr': dubreale
+# Password for 'https://dubreale@---------------------.univ-rouen.fr': 
+# To https://---------------------.univ-rouen.fr/git/tp-git
+#  - [deleted]         alexandre-dubreuil
+```
+
+
+## Bonus : créer son dépot git
+
+### Option 1 : utiliser un service existant
+
+- https://github.com
+- https://about.gitlab.com/
+
+### Option 2 : sur son propre serveur
+
+- Installer ssh et git sur le serveur
+- Créer un nouveau dépôt git sur le serveur avec `git init depot`
+- Éditer le fichier `.git/condig`, ajouter la ligne `bare = true`
+- Sur une autre machine, faire `git clone utilisateur@ip:depot`, en modifiant l'utilisateur, l'ip et le chemin vers le depot
 
