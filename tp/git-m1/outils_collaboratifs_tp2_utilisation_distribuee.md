@@ -1,25 +1,17 @@
 # Travaux pratiques 2 : git utilisation en groupe
 
-## Introduction
-
-### Le dépôt distant
+## Le dépôt distant
 
 ![remote](https://www.cs.swarthmore.edu/~newhall/unixhelp/gitrepos.gif)
 ![remote](https://i.stack.imgur.com/UvZ0M.png)
 
-### Le "pull request" (ou "merge request")
+## Le "pull request" (ou "merge request")
 
 ![pull request](https://guides.github.com/activities/hello-world/branching.png)
 
-### Le pull / push
-
-![branch](https://git-scm.com/book/en/v2/images/remote-branches-1.png)
-![branch](https://git-scm.com/book/en/v2/images/remote-branches-2.png)
-![branch](https://git-scm.com/book/en/v2/images/remote-branches-3.png)
-
 ## Contexte "Choose a license https://choosealicense.com"
 
-Le code sur lequel vous allez travailler est un petit site web (https://choosealicense.com), dont le code est disponible sur https://github.com/github/choosealicense.com
+Le code sur lequel vous allez travailler est un petit site web (https://choosealicense.com), dont le code est disponible sur https://github.com/github/choosealicense.com. Le code a été copié sur le dépôt git de l'université, https://---------------------.univ-rouen.fr/git/tp-git.
 
 ## Exercice 1 : récupérer le projet git
 
@@ -50,7 +42,7 @@ git branch -a
 #   remotes/origin/master
 ```
 
-Votre branche "master" est par défaut, une branche de suivie. Vous pouvez faire `git status` pour vous en assurer.
+Votre branche "master" est par défaut une branche de suivie. Vous pouvez faire `git status` pour vous en assurer (il faut voir `Your branch is up-to-date with 'origin/master'.`).
 ```bash
 git status
 # On branch master
@@ -76,6 +68,12 @@ Attention : pour faire `git push` vous devez être à jour de la branche "origin
 - Quelle est la commande pour revenir à la version précédente sur le fichier "index.html" ?
 - Un test unitaire a été supprimé dans le commit `5e7b07f`, quel est le fichier supprimé ?
 - Quelle est la commande pour récupérer le fichier supprimé ?
+
+## Le pull / push
+
+![branch](https://git-scm.com/book/en/v2/images/remote-branches-1.png)
+![branch](https://git-scm.com/book/en/v2/images/remote-branches-2.png)
+![branch](https://git-scm.com/book/en/v2/images/remote-branches-3.png)
 
 ## Exercice 4 : envoyer un commit sur le dépôt distant
 
@@ -137,7 +135,7 @@ git pull
 # From https://---------------------.univ-rouen.fr/git/tp-git
 #    93848fa..13d14c9  master     -> origin/master
 # Merge made by the 'recursive' strategy.
-#  test | 0
+#  _licenses/john-doe-1.0.txt | 0
 #  1 file changed, 0 insertions(+), 0 deletions(-)
 #  create mode 100644 _licenses/john-doe-1.0.txt
 ```
@@ -159,8 +157,10 @@ git push
 
 Regardez dans le dossier "\_licenses"
 
-- Quels fichiers voyez-vous ? Quels fichiers viennent des autres étudiants du TP ?
-- Regardez l'historique git, à quoi ressemble le graphe de branche ? Comment repérer les commits des autres étudiants du TP ?
+- Quels fichiers viennent des autres étudiants du TP ?
+- Comment savoir qui a ajouté une license en particulier ?
+- Regardez l'historique git, à quoi ressemble le graphe de branche ? 
+- Comment repérer les commits des autres étudiants du TP ?
 
 Vous avez donc tous en local sur votre branche "master", le contenu ajouté des autres étudiants.
 
@@ -171,7 +171,7 @@ Modifier le fichier "spec/license\_meta\_spec.rb", dans le tableau "legacy", ajo
 ```ruby
 ...
         legacy = [
-          'alexandre-dubreuil-1.0.txt',
+          'alexandre-dubreuil-1.0.txt', # Ajouter votre ligne ici
           'afl-3.0',
           'agpl-3.0',
           'artistic-2.0',
@@ -233,3 +233,4 @@ Deviennent :
 ```
 
 On garde les 2 lignes parce qu'on souhaite garder la modification des 2 personnes. Chaque résolution de conflit est différente.
+
