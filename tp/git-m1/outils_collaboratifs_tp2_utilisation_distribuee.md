@@ -302,13 +302,12 @@ git push --delete origin alexandre-dubreuil
 #  - [deleted]         alexandre-dubreuil
 ```
 
-
 ## Bonus : créer son dépot git
 
 ### Option 1 : utiliser un service existant
 
-- https://github.com
-- https://about.gitlab.com/
+- https://github.com : plus connu, mais pas de dépôts privés gratuits
+- https://about.gitlab.com/ : permet d'avoir des dépôts privés gratuitement (utile pour vos projet)
 
 ### Option 2 : sur son propre serveur
 
