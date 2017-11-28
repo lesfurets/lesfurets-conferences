@@ -91,7 +91,7 @@ git status
 # nothing to commit, working tree clean
 ```
 
-Dans ce cas, vous avez un commit en plus en local qui n'est pas sur le distant ("Your branch is ahead of 'origin/master' by 1 commit."). Pour envoyer votre dernier commit, il faut faire un push. 
+Dans ce cas, vous avez un commit en plus en local qui n'est pas sur le distant (`Your branch is ahead of 'origin/master' by 1 commit.`). Pour envoyer votre dernier commit, il faut faire un push. 
 
 ```bash
 git push
@@ -106,7 +106,7 @@ git push
 #    9d9fe7d..93848fa  master -> master
 ```
 
-On voit le master qui a avancé son pointeur de branche, `9d9fe7d..93848fa  master -> master`, donc le dépôt distant pointe maintenant sur votre dernier commit.
+On voit le master qui a avancé son pointeur de branche, `9d9fe7d..93848fa master -> master`, donc le dépôt distant pointe maintenant sur votre dernier commit.
 
 **Si vous n'êtes pas le premier à pusher, git va vous demander de faire un `git pull` avant de pouvoir faire un `git push`. Lorsque vous faites un `git push` vous devez être à jour avec le distant, c'est-à-dire que vous devez avoir tous les commits du distant en local.**
 
@@ -124,7 +124,7 @@ git push
 # hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 ```
 
-Vous devez donc faire un "merge" de la branche distante "origin/master" avec la votre "master". On utilise `git pull`
+Si vous voyez `! [rejected] master -> master (fetch first)` vous devez faire un "merge" de la branche distante "origin/master" avec la votre "master". On utilise `git pull`
 
 ```bash
 git pull
@@ -157,3 +157,79 @@ git push
 #    13d14c9..819a887  master -> master
 ```
 
+Regardez dans le dossier "\_licenses"
+
+- Quels fichiers voyez-vous ? Quels fichiers viennent des autres étudiants du TP ?
+- Regardez l'historique git, à quoi ressemble le graphe de branche ? Comment repérer les commits des autres étudiants du TP ?
+
+Vous avez donc tous en local sur votre branche "master", le contenu ajouté des autres étudiants.
+
+## Exercice 5 : résoudre les conflits
+
+Modifier le fichier "spec/license\_meta\_spec.rb", dans le tableau "legacy", ajouter votre license à la première ligne.
+
+```ruby
+...
+        legacy = [
+          'alexandre-dubreuil-1.0.txt',
+          'afl-3.0',
+          'agpl-3.0',
+          'artistic-2.0',
+          'bsd-2-clause',
+          'bsd-3-clause',
+...
+```
+
+Commiter le fichier et faites un `git push`. Si vous avez besoin de faire un `git pull`, vous allez entrer en conflit, puisque tout le monde a modifié la même ligne.
+
+```bash
+git pull
+# Username for 'https://--------------------------------.fr': dubreale
+# Password for 'https://dubreale@--------------------------------.fr': 
+# remote: Counting objects: 7, done.
+# remote: Compressing objects: 100% (4/4), done.
+# remote: Total 4 (delta 3), reused 0 (delta 0)
+# Unpacking objects: 100% (4/4), done.
+# From https://--------------------------------.fr/git/tp-git
+#    93848fa..abf1ba8  master     -> origin/master
+# Auto-merging spec/license_meta_spec.rb
+# CONFLICT (content): Merge conflict in spec/license_meta_spec.rb
+# Automatic merge failed; fix conflicts and then commit the result.
+
+git status
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 2 and 1 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+# You have unmerged paths.
+#   (fix conflicts and run "git commit")
+#   (use "git merge --abort" to abort the merge)
+# 
+# Unmerged paths:
+#   (use "git add <file>..." to mark resolution)
+# 
+# 	both modified:   spec/license_meta_spec.rb
+# 
+# no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+Vous êtes en conflit sur le fichier "both modified: spec/license\_meta\_spec.rb". Vous devez l'ouvrir, garder les deux lignes du conflit, commiter, puis faire un `git push`.
+
+Autrement dit, les lignes suivantes :
+
+```ruby
+<<<<<<< HEAD
+          'john-doe-1.0.txt',
+=======
+          'alexandre-dubreuil-1.0.txt',
+>>>>>>> abf1ba89021c1ac0571fc04429df5f9fb476dc45
+```
+
+Deviennent :
+
+```ruby
+          'john-doe-1.0.txt',
+          'alexandre-dubreuil-1.0.txt',
+```
+
+On garde les 2 lignes parce qu'on souhaite garder la modification des 2 personnes. Chaque résolution de conflit est différente.
