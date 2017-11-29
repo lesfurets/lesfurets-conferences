@@ -351,16 +351,16 @@ Pour faire des tags et des branches dans svn, il faut copier le dépôt. Par dé
 
 ```bash
 # Équivalent de "git tag name"
-svn copy http://example.com/svn/trunk http://example.com/svn/tags/name
+svn copy file:///home/user/svn-repository/tp-svn/trunk file:///home/user/svn-repository/tp-svn/tags/name
 
 # Équivalent de "git branch name"
-svn copy http://example.com/svn/trunk http://example.com/svn/branches/name
+svn copy file:///home/user/svn-repository/tp-svn/trunk file:///home/user/svn-repository/tp-svn/branches/name
 
 # Équivalent de "git checkout name" pour changer de branche
-svn switch http://example.com/svn/branches/name
+svn switch file:///home/user/svn-repository/tp-svn/branches/names
 
 # Équivalent de "git branch"
-svn list http://example.com/svn/branches/
+svn list file:///home/user/svn-repository/tp-svn/branches
 ```
 
 ## Bonus : créer son dépot git
