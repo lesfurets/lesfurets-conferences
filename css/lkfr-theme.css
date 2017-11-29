@@ -367,6 +367,30 @@
     background-image: url('../img/live-code-review/badge-jeremy-01.jpg');
 }
 
+.reveal .badge.ba {
+    background-image: url('../img/lkfr/BA.png');
+    width: 30px;
+    height: 30px;
+    position: relative;
+}
+
+.reveal .badge.tl {
+    background-image: url('../img/lkfr/TL.png');
+    width: 30px;
+    height: 30px;
+    position: relative;
+}
+
+.reveal .badge.dev {
+    background-image: url('../img/lkfr/DEV.png');
+    width: 30px;
+    height: 30px;
+    position: relative;
+}
+.reveal .legend {
+    font-size: 40%;
+    padding: 10px 0 0 40px
+}
 .reveal .highlight {
     font-weight: bold;
     color: red;
