@@ -302,12 +302,71 @@ git push --delete origin alexandre-dubreuil
 #  - [deleted]         alexandre-dubreuil
 ```
 
+## Exercice 7 : SVN
+
+Subvertion (`git`) est un gestionnaire de source centralisé. Il propose le même usage que git, mais ne permet pas de travailler en mode "offline", c'est-à-dire faire des commits sans faire de "push".
+
+```bash
+# Équivalent de "git init'
+svnadmin create repo
+svn import file://repo
+cd repo
+```
+
+```bash
+touch file
+
+# Équivalent de "git add", "git rm", "git mv"
+svn add file
+svn rm file
+svn mv file
+```
+
+```bash
+# Équivalent de "git status", "git diff"
+svn status
+svn diff
+```
+
+La commande commit est différente pour svn : la commande commit va immédiatement envoyer la version vers le dépôt distant (svn est toujours synchronisé avec le distant). Si le dépôt est indisponible, vous ne pouvez pas commiter
+
+```bash
+# Équivalent de "git commit" + "git push"
+svn commit
+```
+
+```bash
+# Équivalent de "git log"
+svn log
+```
+
+```bash
+# Équivalent de "git pull"
+svn update
+```
+
+Pour faire des tags et des branches dans svn, il faut copier le dépôt. Par défaut la branche principale dans svn s'appelle "trunk" (équivalent de "master")
+
+```bash
+# Équivalent de "git tag name"
+svn copy http://example.com/svn/trunk http://example.com/svn/tags/name
+
+# Équivalent de "git branch name"
+svn copy http://example.com/svn/trunk http://example.com/svn/branches/name
+
+# Équivalent de "git checkout name" pour changer de branche
+svn switch http://example.com/svn/branches/name
+
+# Équivalent de "git branch"
+svn list http://example.com/svn/branches/
+```
+
 ## Bonus : créer son dépot git
 
 ### Option 1 : utiliser un service existant
 
 - https://github.com : plus connu, mais pas de dépôts privés gratuits
-- https://about.gitlab.com/ : permet d'avoir des dépôts privés gratuitement (utile pour vos projet)
+- https://about.gitlab.com/ : permet d'avoir des dépôts privés gratuitement (utile pour vos projets)
 
 ### Option 2 : sur son propre serveur
 
