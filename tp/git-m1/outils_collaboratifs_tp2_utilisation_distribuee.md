@@ -312,6 +312,7 @@ mkdir svn-repository
 cd svn-repository
 svnadmin create tp-svn
 svn import /home/user/svn-repository/tp-svn file:///home/user/svn-repository/tp-svn/trunk -m "Initial import of project1"
+# Il faut faire un checkout dans un autre dossier que le precedant /home/user/svn-repository/tp-svn
 svn co file:///home/user/svn-repository/tp-svn/trunk /home/user/tp-svn
 ```
 
