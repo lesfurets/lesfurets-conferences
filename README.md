@@ -12,6 +12,7 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 * **Zeno Pixel** ([open-source](https://github.com/lesfurets/zeno-pixel)) : Test de régression graphique pixel à pixel
 * **[JenkinsPipelineUnit](https://github.com/lesfurets/lesfurets-conferences#jenkinspipelineunit-test-your-continuous-delivery-pipeline)** : Test your continuous delivery pipeline
 * **[JOOQ & JOOλ](https://github.com/lesfurets/lesfurets-conferences#jooq-et-jooλ--comment-écrire-du-code-propre-dans-vos-dao)** : Comment écrire du code propre dans vos DAO
+* **[Kanban au long cours @lesfurets](https://lesfurets.github.io/lesfurets-conferences/html/Kanban-au-long-court_LKFR.html#/)** : Retours d'expérience de fusion d'équipe
 
 
 ## Conférences
@@ -95,6 +96,11 @@ Code source pour live code : [https://github.com/lesfurets/lesfurets-conferences
 - 05 avril 2017 (fr) : Devoox Fr @ Paris [JOOQ et JOOλ : Comment écrire du code propre dans vos DAO](https://lesfurets.github.io/lesfurets-conferences/html/JOOQ-Comment-ecrire-du-code-propre-dans-vos-DAO-25mn-devoxx.html#/)
 - 21 avril 2017 (fr) : Breizhcamp @ Rennes [JOOQ et JOOλ : Comment écrire du code propre dans vos DAO](https://lesfurets.github.io/lesfurets-conferences/html/JOOQ-Comment-ecrire-du-code-propre-dans-vos-DAO-25mn-fr-breizhcamp.html#/)
 - 23 mai 2017 (en) : BruJUG @ Bruxelles [jOOQ et jOOλ: How to write clean code for your Data Access Objects](https://lesfurets.github.io/lesfurets-conferences/html/JOOQ-and-JOOL-How-to-write-clean-code-with-your-DAO-brujug.html#/)
+
+### Kanban au long cours @lesfurets ###
+**Abstract :** Depuis 2014 le site lesfurets.com a été mis en production 694 fois. Que ce passe-t-il lorsque deux équipes fusionnent en une seule sans casser le rythme de continuous delivery ? Nous vous partageons ici les différents petits pas d’amélioration continue que nous avons effectués lors de ce copieux retour d’expérience.
+
+- 30 Novembre 2017 (fr) : Lean Kanban France @ Paris [Kanban au long cours @lesfurets](https://lesfurets.github.io/lesfurets-conferences/html/Kanban-au-long-court_LKFR.html#/)
 
 <!-- 
 ### Applying Reactive programming for handling server-side concurrency
@@ -231,6 +237,8 @@ Chez LesFurets.com je m'intéresse à l'amélioration de la qualité et du pipel
 
 Ozan has a PhD in Computer Science, with over 5 years of experience in distributed systems, Internet of Things and software development processes. 
 He joined LesFurets.com more than a year ago and he is interested in improving the quality and software delivery pipeline.
+
+
 
 ## Vidéos
 
