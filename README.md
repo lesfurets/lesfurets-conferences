@@ -205,28 +205,6 @@ Alexandre DuBreuil is a french Canadian software developer living in France work
 
 Alexandre DuBreuil est un développeur québécois vivant en France et travaillant comme architecte Java chez LesFurets.com. Il aime écrire du code, et parler de code lors de meetups, BBL et conférences.
 
-<!-- 
-Apache Spark : Deep dive into the Java API for developers
-
-- February 2017 : Snowcamp @ Grenobles
-- January 2017 : Meetup @ Whoz
-- January 2017 : Meetup @ Murex
-
-Continuous merge : Reconciling feature branching and continuous delivery
-
-- November 2016 : Meetup @ WorkIT Software
-- October 2016 : Java User Group @ Marseilles
-- June 2016 : Meetup @ Societe Generale
-- January 2016 : Java User Group @ Tours
-- December 2015 : Meetup @ Octo
-- October 2014 : AgileTour @ Rennes
-
-Software craftmanship
-
-- Mars 2016 : BGL Tech Conference @ London
-- November 2015 : Codeurs en Seins @ Rouen 
--->
-
 ### Mathieu Gandin [@mgandin](https://twitter.com/mgandin)
 Mathieu Gandin est tech-lead chez lesfurets.com. Depuis 16 ans, il développe des applications, travaille sur le Design de code, la transmission de pratiques de développement logiciel, l’implication de l’équipe sur le produit, et le refactoring de code existant.
 
