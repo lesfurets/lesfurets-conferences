@@ -14,7 +14,6 @@ Conférences et présentations de l'équipe R&D du [comparateur d'assurance LesF
 * **[JOOQ & JOOλ](https://github.com/lesfurets/lesfurets-conferences#jooq-et-jooλ--comment-écrire-du-code-propre-dans-vos-dao)** : Comment écrire du code propre dans vos DAO
 * **[Kanban au long cours @lesfurets](https://lesfurets.github.io/lesfurets-conferences/html/Kanban-au-long-court_LKFR.html#/)** : Retours d'expérience de fusion d'équipe
 
-
 ## Conférences
 
 ### Continuous merge : réconcilier feature branching et continuous delivery

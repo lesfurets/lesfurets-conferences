@@ -24,14 +24,25 @@ if (inIframe()) {
     parentDocument.getElementById('speaker-controls').style.top = '0';
 }
 
-Reveal.addEventListener( 'slidechanged', function( event ) {
-    var footer = document.getElementById('footer');
-    if (footer) {
-        if (!Reveal.isFirstSlide() && !Reveal.isLastSlide()) {
-            footer.className = footer.className.replace('show', 'hide');
-        } else {
-            footer.className = footer.className.replace('hide', 'show');
-        }
+// Trims white space for code elements
+$('.prettyprint').each(function () {
+  $(this).html($(this).html().trim());
+});
+$('.prettyprint .code').each(function () {
+  $(this).html($(this).html().trim());
+});
+
+// Changes footer visibility on pages
+const setFooterVisibility = function() {
+  const footer = document.getElementById('footer');
+  if (footer) {
+    if (Reveal.isFirstSlide()) {
+      footer.className = footer.className.replace('show', 'hide');
+    } else {
+      footer.className = footer.className.replace('hide', 'show');
     }
-} );
+  }
+}
+setFooterVisibility();
+Reveal.addEventListener('slidechanged', function(event) { setFooterVisibility(); });
 
