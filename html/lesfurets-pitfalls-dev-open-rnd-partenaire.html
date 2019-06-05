@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Kanban pitfalls @ lesfurets.com</title>
+    <meta name="description" content="Kanban pitfalls @ les furets.com">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../bower_components/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="../bower_components/reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="../css/theme-open-rnday.css" id="theme">
+    <script>
+      if (window.location.search.match(/print-pdf/gi)) {
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../css/print/pdf.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+      }
+    </script>
+  </head>
+
+  <body class="noFullScreen">
+    <div id="footer" class="footer show">
+      <img class="logo-lesfurets" src="../img/logo_lesfurets_blanc.png">
+      <img class="logo-conference" src="../img/logo_open_rnday.png">
+      <div class="card">
+        <p><a href="https://github.com/mgandin"><img class="logo" width="20px" src="../img/logo_github.svg"></a><a href="https://twitter.com/mgandin"><img class="logo" width="20px" src="../img/logo_twitter.svg"></a>@m_gandin</p>
+      </div>
+    </div>
+    <div id="reveal" class="reveal">
+      <div class="slides">
+
+        <section>
+          <img class="logo herve-francois" width="33%" src="../img/lf_com_herve_francois.png">
+          <h1>Kanban Pitfalls @ lesfurets.com</h1>
+          <p><strong>Mathieu Gandin</strong></p>
+        </section>
+
+
+        <section>
+          <h2>Le delivery chez lesfurets.com</h2>
+          <ul class="color-gray400 nodisc">
+            <li class="color-gray400">
+              <span style="color:#f07d00;font-weight: bold">2012</span> :
+              <span class="white">Spring Scrum mensuel</span><br>
+              <span class="color-indigo300">12 releases</span>
+              <span class="color-gray">(build 15 minutes et selenium 1 heure)</span>
+            </li>
+            <br>
+            <li class="color-gray400">
+              <span style="color:#f07d00;font-weight: bold">2013</span> :
+              <span class="white">Sprint scrum hebdo</span><br>
+              <span class="color-indigo300">45 releases</span>
+              <span class="color-gray">(build 3 minutes, release 1 jour)</span>
+            </li>
+            <br>
+            <li class="color-gray400">
+              <span style="color:#f07d00;font-weight: bold">2014 - 2016</span> :
+              <span class="white">Flux Kanban livraison quotidienne</span><br>
+              <span class="color-indigo300">208, 217, 220+ releases</span>
+              (release 2 heures)
+            </li>
+            <br>
+            <li class="white">
+              <span style="color:#f07d00;font-weight: bold">2017+</span> :
+              Release partielle, release par feature
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Quelques freins à notre delivery</h3>
+          <ul>
+            <li><strong class="color-zen-blue">Feature Branching: </strong>Changements de branche, rebase entre branche</li>
+            <li><strong class="color-zen-green">Déploiements longs: </strong>Rallongent le temps de certains feedbacks</li>
+            <li><strong class="color-zen-blue">Interaction avec l'UX: </strong>Validation du design et implémentation</li>
+            <li><strong class="color-zen-orange">Recette avec un assureur: </strong>Aller-retours pour valider l'exactitude du mapping</li>
+          </ul>
+          <p>Toute transaction économique engendre des coûts préalable à sa réalisation : <strong>Coût de transaction</strong></p>
+        </section>
+
+        <section>
+          <h3>Symptômes</h3>
+          <p><strong>Coût de transaction</strong> : Engendre des délais</p>
+          <ul>
+            <li>Tâches bloqués</li>
+            <li>Files d'attente entre deux étapes</li>
+            <li>Visibles dans nos Kanbans</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Coût de transaction : visible dans Jira</h3>
+          <img width="80%" src="../img/jira-bloque.png">
+        </section>
+
+        <section>
+          <h3>Quelques solutions</h3>
+          <ul>
+            <li><strong class="color-zen-blue">Changements de branche: </strong>Plusieurs clones du projet, meilleurs postes de développement</li>
+            <li><strong class="color-zen-green">Déploiements longs: Refactoring de notre Pipeline Jenkins 2</strong></li>
+            <li><strong class="color-zen-blue">Interaction avec l'UX: </strong>Design Systems et changements de notre process pour impliquer les développeurs en amont</li>
+            <li><strong class="color-zen-orange">Recette avec un assureur: Extranet partenaire</strong></li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Merci !</h1>
+        </section>
+
+      </div>
+    </div>
+    <script src="../bower_components/reveal.js/lib/js/head.min.js"></script>
+    <script src="../bower_components/reveal.js/js/reveal.js"></script>
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: false,
+        progress: true,
+        history: true,
+        center: true,
+        embedded: true,
+        mouseWheel: true,
+        slideNumber: true,
+        slideNumber: 'c/t',
+        viewDistance: 5,
+
+        width: 1280,
+        height: 900,
+        margin: 0,
+
+        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'bower_components/reveal.js/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+          { src: 'bower_components/reveal.js/plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+          { src: 'bower_components/reveal.js/plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+          //{ src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+          { src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+  </body>
+</html>
+<!-- vim: set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab: -->
