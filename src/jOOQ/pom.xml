@@ -16,7 +16,7 @@
         <target.level>1.8</target.level>
         <org.jooq.version>3.9.1</org.jooq.version>
         <h2.version>1.4.193</h2.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <assertj.version>3.6.2</assertj.version>
         <guava.version>19.0</guava.version>
         <db.driver>org.h2.Driver</db.driver>
